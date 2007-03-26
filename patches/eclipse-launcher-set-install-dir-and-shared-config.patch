@@ -1,0 +1,158 @@
+### Eclipse Workspace Patch 1.0
+#P platform-launcher
+Index: library/eclipseConfig.c
+===================================================================
+RCS file: /cvsroot/eclipse/platform-launcher/library/eclipseConfig.c,v
+retrieving revision 1.11
+diff -u -r1.11 eclipseConfig.c
+--- library/eclipseConfig.c	15 Apr 2005 19:17:10 -0000	1.11
++++ library/eclipseConfig.c	25 Oct 2006 22:10:20 -0000
+@@ -30,8 +30,11 @@
+ 
+ #endif
+ 
+-int readConfigFile(_TCHAR* program, _TCHAR* arg0, int *argc, _TCHAR ***argv) 
++/* installDir must end in path separator */
++int readConfigFile(_TCHAR* installDir, _TCHAR* arg0, int *argc, _TCHAR ***argv) 
+ {
++	_TCHAR* temp;
++	_TCHAR* programName;
+ 	_TCHAR* config_file = NULL;
+ 	_TCHAR buffer[1024];
+ 	_TCHAR argument[1024];
+@@ -39,11 +42,20 @@
+ 	int maxArgs = 128;
+ 	int index;
+ 	
+-	if (program == NULL || argc == NULL || argv == NULL) return -1;
+-
+-	/* Get a copy */
+-	config_file = _tcsdup(program);
++	if (installDir == NULL || argc == NULL || argv == NULL) return -1;
+ 	
++    /* Determine the name of the executable */
++	temp = malloc( (_tcslen( arg0 ) + 1) * sizeof(_TCHAR) );
++    _tcscpy( temp, arg0 );
++    programName = _tcsrchr( temp, dirSeparator );
++	if (programName == NULL)
++		programName = temp;		
++	else 
++		programName++;
++		
++	/* Get a copy */
++	config_file = _tcsdup(installDir);
++
+ #ifdef _WIN32
+ 	{
+ 		/* Search for the extension .exe and replace it with .ini */
+@@ -57,8 +69,11 @@
+ 	}
+ #else
+ 	/* Append the extension */
+-	config_file = (char*)realloc(config_file, strlen(config_file) + 5);
+-	strcat(config_file, ".ini");
++	config_file = (char*)realloc(config_file, strlen(config_file) + strlen(programName) + 5);
++	strcat(config_file, programName);
++	free(temp);
++	programName = NULL;
++	strcat(config_file, ".ini");
+ #endif
+ 	
+ 	/* Open the config file as a text file 
+Index: library/eclipse.c
+===================================================================
+RCS file: /cvsroot/eclipse/platform-launcher/library/eclipse.c,v
+retrieving revision 1.71
+diff -u -r1.71 eclipse.c
+--- library/eclipse.c	25 Apr 2006 14:31:50 -0000	1.71
++++ library/eclipse.c	25 Oct 2006 22:10:20 -0000
+@@ -295,7 +295,8 @@
+ 
+ /* Define the required VM arguments (all platforms). */
+ static _TCHAR* jar = _T_ECLIPSE("-jar");
+-static _TCHAR**  reqVMarg[] = { &jar, &jarFile, NULL };
++static _TCHAR* sharedConfigurationDir = _T_ECLIPSE("-Dosgi.sharedConfiguration.area=/usr/lib/eclipse/configuration");
++static _TCHAR**  reqVMarg[] = { &sharedConfigurationDir, &jar, &jarFile, NULL };
+ 
+ /* Local methods */
+ static int createUserArgs(int configArgc, _TCHAR **configArgv, int *argc, _TCHAR ***argv);
+@@ -387,8 +388,19 @@
+ #endif
+     }
+ 	
++    /* Find the directory where Eclipse is installed. */
++    programDir = getProgramDir();
++    if (programDir == NULL)
++    {
++        errorMsg = malloc( (_tcslen(homeMsg) + _tcslen(officialName) + 10) * sizeof(_TCHAR) );
++        _stprintf( errorMsg, homeMsg, officialName );
++        displayMessage( officialName, errorMsg );
++        free( errorMsg );
++    	exit( 1 );
++    }
++
+ 	/* Parse configuration file arguments */
+-	if (isMainEclipse(argc, argv) && readConfigFile(program, argv[0], &configArgc, &configArgv) == 0)
++	if (isMainEclipse(argc, argv) && readConfigFile(programDir, argv[0], &configArgc, &configArgv) == 0)
+ 	{
+ 		parseArgs (&configArgc, configArgv);
+ 	}
+@@ -411,17 +423,6 @@
+     /* Initialize the window system. */
+     initWindowSystem( &argc, argv, (showSplashArg != NULL) );
+ 
+-    /* Find the directory where the Eclipse program is installed. */
+-    programDir = getProgramDir();
+-    if (programDir == NULL)
+-    {
+-        errorMsg = malloc( (_tcslen(homeMsg) + _tcslen(officialName) + 10) * sizeof(_TCHAR) );
+-        _stprintf( errorMsg, homeMsg, officialName );
+-        displayMessage( officialName, errorMsg );
+-        free( errorMsg );
+-    	exit( 1 );
+-    }
+-
+     /* If the exit data option was given, set exit data */
+     if (exitDataArg != NULL)
+     {
+@@ -1078,19 +1079,12 @@
+  */
+ _TCHAR* getProgramDir( )
+ {
+-	_TCHAR*  ch;
+ 	_TCHAR*  programDir;
++	_TCHAR* temp = _T_ECLIPSE("/usr/share/eclipse/");
+ 
+-    programDir = malloc( (_tcslen( program ) + 1) * sizeof(_TCHAR) );
+-    _tcscpy( programDir, program );
+-    ch = _tcsrchr( programDir, dirSeparator );
+-	if (ch != NULL)
+-    {
+-    	*(ch+1) = _T_ECLIPSE('\0');
+-   		return programDir;
+-    }
+-
+-    free( programDir );
+-    return NULL;
++    programDir = malloc( (_tcslen( temp + 1 )) * sizeof(_TCHAR) );
++    _tcscpy( programDir, temp );
++   	return programDir;
+ }
+ 
++
+Index: library/gtk/make_linux.mak
+===================================================================
+RCS file: /cvsroot/eclipse/platform-launcher/library/gtk/make_linux.mak,v
+retrieving revision 1.11
+diff -u -r1.11 make_linux.mak
+--- library/gtk/make_linux.mak	9 Mar 2006 19:01:05 -0000	1.11
++++ library/gtk/make_linux.mak	25 Oct 2006 22:10:20 -0000
+@@ -27,7 +27,7 @@
+ OBJS = eclipse.o eclipseUtil.o eclipseShm.o eclipseConfig.o eclipseMozilla.o eclipseGtk.o
+ EXEC = $(PROGRAM_OUTPUT)
+ LIBS = `pkg-config --libs-only-L gtk+-2.0` -lgtk-x11-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lgdk-x11-2.0
+-CFLAGS = -O -s \
++CFLAGS = -O -s -g \
+ 	-fpic \
+ 	-DLINUX \
+ 	-DMOZILLA_FIX \

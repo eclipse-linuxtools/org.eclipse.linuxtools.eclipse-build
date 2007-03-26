@@ -1,0 +1,6 @@
+* create a way to have common post processing scripts
+* create a way to have common files listing using generated files lists based on features.
+* debug info when doing builds? debian, gentoo?
+* stand-alone swt build
+* stand-alone ecj build
+* orbit manifests in eclipse-build project.

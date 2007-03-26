@@ -1,0 +1,165 @@
+Index: src/org/eclipse/core/runtime/Platform.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java,v
+retrieving revision 1.106
+diff -u -r1.106 Platform.java
+--- plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java	13 Apr 2006 00:42:47 -0000	1.106
++++ plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java	31 Jan 2007 21:33:51 -0000
+@@ -339,6 +339,11 @@
+ 	 * @since 3.1
+ 	 */
+ 	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
++	
++	public static final String ARCH_PPC64 = "ppc64";//$NON-NLS-1$
++	public static final String ARCH_SPARC64 = "sparc64";//$NON-NLS-1$
++	public static final String ARCH_S390 = "s390";//$NON-NLS-1$
++	public static final String ARCH_S390X = "s390x";//$NON-NLS-1$
+ 
+ 	/**
+ 	 * Constant string (value "win32") indicating the platform is running on a
+Index: src/org/eclipse/core/internal/runtime/InternalPlatform.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java,v
+retrieving revision 1.253
+diff -u -r1.253 InternalPlatform.java
+--- plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java	21 Apr 2006 20:49:57 -0000	1.253
++++ plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java	31 Jan 2007 21:33:50 -0000
+@@ -52,6 +52,10 @@
+ 			Platform.ARCH_X86, //
+ 			Platform.ARCH_AMD64, // 
+ 			Platform.ARCH_IA64, //
++			Platform.ARCH_PPC64, //
++			Platform.ARCH_SPARC64, //
++			Platform.ARCH_S390, //
++			Platform.ARCH_S390X, //
+ 			Platform.ARCH_IA64_32};
+ 	private static final String BOOT = "-boot"; //$NON-NLS-1$
+ 	private static final String CLASSLOADER_PROPERTIES = "-classloaderProperties"; //$NON-NLS-1$	
+Index: eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java,v
+retrieving revision 1.13
+diff -u -r1.13 PluginConverterImpl.java
+--- plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java	13 Apr 2006 16:10:27 -0000	1.13
++++ plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java	31 Jan 2007 21:33:52 -0000
+@@ -64,7 +64,7 @@
+ 	private static final String MANIFEST_VERSION = "Manifest-Version"; //$NON-NLS-1$
+ 	private static final String PLUGIN_PROPERTIES_FILENAME = "plugin"; //$NON-NLS-1$
+ 	private static PluginConverterImpl instance;
+-	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64};
++	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64, org.eclipse.osgi.service.environment.Constants.ARCH_PPC64, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC64, org.eclipse.osgi.service.environment.Constants.ARCH_S390, org.eclipse.osgi.service.environment.Constants.ARCH_S390X};
+ 	static public final String FRAGMENT_MANIFEST = "fragment.xml"; //$NON-NLS-1$
+ 	static public final String GENERATED_FROM = "Generated-from"; //$NON-NLS-1$
+ 	static public final String MANIFEST_TYPE_ATTRIBUTE = "type"; //$NON-NLS-1$
+Index: eclipseAdaptor/src/org/eclipse/osgi/service/environment/Constants.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/osgi/service/environment/Constants.java,v
+retrieving revision 1.9
+diff -u -r1.9 Constants.java
+--- plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/osgi/service/environment/Constants.java	13 Jun 2005 17:14:22 -0000	1.9
++++ plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/osgi/service/environment/Constants.java	31 Jan 2007 21:33:52 -0000
+@@ -119,6 +119,11 @@
+ 	 */
+ 	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
+ 
++	public static final String ARCH_PPC64 = "ppc64";//$NON-NLS-1$
++	public static final String ARCH_SPARC64 = "sparc64";//$NON-NLS-1$
++	public static final String ARCH_S390 = "s390";//$NON-NLS-1$
++	public static final String ARCH_S390X = "s390x";//$NON-NLS-1$
++	
+ 	/**
+ 	 * Constant string (value "win32") indicating the platform is running on a
+ 	 * machine using the Windows windowing system.
+Index: feature.xml
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.sdk-feature/features/org.eclipse.rcp/feature.xml,v
+retrieving revision 1.40.2.1
+diff -u -r1.40.2.1 feature.xml
+--- features/org.eclipse.rcp/feature.xml 1 Aug 2006 17:29:33 -0000 1.40.2.1
++++ features/org.eclipse.rcp/feature.xml 6 Feb 2007 23:44:22 -0000
+@@ -308,5 +308,60 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
++    
++   <plugin
++         id="org.eclipse.swt.gtk.linux.ppc64"
++         os="linux"
++         ws="gtk"
++         arch="ppc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.s390"
++         os="linux"
++         ws="gtk"
++         arch="s390"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.s390x"
++         os="linux"
++         ws="gtk"
++         arch="s390x"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.sparc"
++         os="linux"
++         ws="gtk"
++         arch="sparc"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.swt.gtk.linux.sparc64"
++         os="linux"
++         ws="gtk"
++         arch="sparc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
+ 
+ </feature>
+diff -ru features/org.eclipse.platform.source/feature.xml features/org.eclipse.platform.source/feature.xml
+--- features/org.eclipse.platform.source/feature.xml	2007-02-06 19:04:05.000000000 -0500
++++ features/org.eclipse.platform.source/feature.xml	2007-02-06 19:07:26.000000000 -0500
+@@ -28,4 +28,8 @@
+ 	<plugin ws="gtk"  os="linux" fragment="true" arch="x86" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.gtk.x86" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
+ 	<plugin ws="win32"  os="win32" fragment="true" arch="x86" download-size="0" install-size="0" id="org.eclipse.platform.source.win32.win32.x86" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
+ 	<plugin ws="motif"  os="linux" fragment="true" arch="x86" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.motif.x86" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="s390" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.gtk.s390" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="s390x" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.gtk.s390x" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="sparc" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.gtk.sparc" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="sparc64" download-size="0" install-size="0" id="org.eclipse.platform.source.linux.gtk.sparc64" version="3.2.2.r322_v20070119-CXMbUe9K_WF26uA"/>
+ </feature>
+diff -ru features/org.eclipse.rcp.source/feature.xml features/org.eclipse.rcp.source/feature.xml
+--- features/org.eclipse.rcp.source/feature.xml	2007-02-06 19:04:06.000000000 -0500
++++ features/org.eclipse.rcp.source/feature.xml	2007-02-06 19:09:11.000000000 -0500
+@@ -28,4 +28,9 @@
+ 	<plugin ws="win32"  os="win32" fragment="true" arch="x86" download-size="0" install-size="0" id="org.eclipse.rcp.source.win32.win32.x86" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
+ 	<plugin ws="motif"  os="solaris" fragment="true" arch="sparc" download-size="0" install-size="0" id="org.eclipse.rcp.source.solaris.motif.sparc" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
+ 	<plugin ws="motif"  os="linux" fragment="true" arch="x86" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.motif.x86" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="ppc64" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.gtk.ppc64" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="s390" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.gtk.s390" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="s390x" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.gtk.s390x" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="sparc" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.gtk.sparc" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
++	<plugin ws="gtk"  os="linux" fragment="true" arch="sparc64" download-size="0" install-size="0" id="org.eclipse.rcp.source.linux.gtk.sparc64" version="3.2.2.r322_v20070104-iwP0VLKnfFC923K"/>
+ </feature>

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+CLASSPATH=@JAVADIR@/eclipse-ecj.jar${CLASSPATH:+:}$CLASSPATH \
+java org.eclipse.jdt.internal.compiler.batch.Main "$@"

@@ -1,0 +1,90 @@
+Index: build.xml
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.help.webapp/build.xml,v
+retrieving revision 1.71
+diff -u -r1.71 build.xml
+--- build.xml	16 Mar 2006 21:57:15 -0000	1.71
++++ build.xml	5 Jul 2006 15:48:12 -0000
+@@ -84,8 +84,8 @@
+ 				<pathelement path="../org.eclipse.help"/>
+ 				<pathelement path="../org.eclipse.help.base"/>
+ 				<pathelement path="../org.eclipse.help.appserver"/>
+-				<pathelement path="../org.eclipse.tomcat/servlet.jar"/>
+-				<pathelement path="../org.eclipse.tomcat/jasper-runtime.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/servletapi5.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/jasper-runtime.jar"/>
+ 			</classpath>
+ 			<src path="src/"			/>
+ 			<compilerarg line="-log ${temp.folder}/webapp.jar.bin${logExtension}" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"/> 
+@@ -141,8 +141,12 @@
+ 				<pathelement path="../org.eclipse.help"/>
+ 				<pathelement path="../org.eclipse.help.base"/>
+ 				<pathelement path="../org.eclipse.help.appserver"/>
+-				<pathelement path="../org.eclipse.tomcat/servlet.jar"/>
+-				<pathelement path="../org.eclipse.tomcat/jasper-runtime.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/servletapi5.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/jasper-runtime.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/tomcat-util.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/jspapi.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/commons-el.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/commons-logging.jar"/>
+ 			</classpath>
+ 			<src path="src_servlets/"			/>
+ 			<compilerarg line="-log ${temp.folder}/WEB-INF/lib/servlets.jar.bin${logExtension}" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"/> 
+@@ -170,21 +174,22 @@
+ 		<!-- generate java code from JSPs -->
+ 		<path id="jasper.classpath" > 
+ 			<pathelement location="../org.apache.ant/lib/ant.jar"/>
+-			<pathelement location="../org.apache.ant/lib/optional.jar"/>
+-			<pathelement location="../org.eclipse.tomcat/jasper-compiler.jar" />
+-			<pathelement location="../org.eclipse.tomcat/jasper-runtime.jar" />
+-			<pathelement location="../org.eclipse.tomcat/servlet.jar" />
+-			<pathelement location="../org.eclipse.tomcat/tomcat_util.jar" />  
++			<pathelement location="../org.apache.ant/lib/ant-launcher.jar"/>
++			<pathelement location="../org.eclipse.tomcat/lib/jasper-compiler.jar" />
++			<pathelement location="../org.eclipse.tomcat/lib/jasper-runtime.jar" />
++			<pathelement location="../org.eclipse.tomcat/lib/servletapi5.jar" />
++			<pathelement location="../org.eclipse.tomcat/lib/commons-logging-api.jar" /> 
++			<pathelement location="../org.eclipse.tomcat/lib/commons-el.jar" />
++			<pathelement location="../org.eclipse.tomcat/lib/jspapi.jar" />
+ 		</path>
+ 		<delete dir="${temp.folder}/jsp.jar.src"/>
+   		<mkdir dir="${temp.folder}/jsp.jar.src"/>
+ 		<java
+ 			classname="org.apache.jasper.JspC"
+ 			fork="true"
+-			failonerror="false"
++			failonerror="true"
+ 			classpathref="jasper.classpath"
+ 			output="${temp.folder}/WEB-INF/lib/jsp.jar.bin${logExtension}">
+-			<arg value="-v3" />
+ 			<arg value="-d" /><arg value="${temp.folder}/jsp.jar.src" />
+ 			<arg value="-die" />
+ 			<arg value="-p" /><arg value="org.eclipse.help.internal.webapp.jsp"/>
+@@ -222,8 +227,9 @@
+ 				<pathelement path="../org.eclipse.help"/>
+ 				<pathelement path="../org.eclipse.help.base"/>
+ 				<pathelement path="../org.eclipse.help.appserver"/>
+-				<pathelement path="../org.eclipse.tomcat/servlet.jar"/>
+-				<pathelement path="../org.eclipse.tomcat/jasper-runtime.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/servletapi5.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/jasper-runtime.jar"/>
++				<pathelement path="../org.eclipse.tomcat/lib/jspapi.jar"/>
+ 			</classpath>
+ 			<src path="${temp.folder}/jsp.jar.src/"			/>
+ 			<compilerarg line="-log ${temp.folder}/WEB-INF/lib/jsp.jar.bin${logExtension}" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"/> 
+Index: build.properties
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.help.webapp/build.properties,v
+retrieving revision 1.32
+diff -u -r1.32 build.properties
+--- build.properties	18 Mar 2005 08:00:28 -0000	1.32
++++ build.properties	5 Jul 2006 15:48:11 -0000
+@@ -33,5 +33,5 @@
+                      ../org.eclipse.help.appserver/bin,\
+                      ../org.eclipse.help.appserver,\
+                      ../org.eclipse.help.appserver/@dot,\
+-                     ../org.eclipse.tomcat/servlet.jar,\
+-                     ../org.eclipse.tomcat/jasper-runtime.jar
++                     ../org.eclipse.tomcat/lib/servletapi5.jar,\
++                     ../org.eclipse.tomcat/lib/jasper-runtime.jar
