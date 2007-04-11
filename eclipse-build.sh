@@ -58,8 +58,15 @@ pushd plugins/org.eclipse.jdt.core
 patch -p0 < $PATCHESDIR/eclipse-ecj-square-bracket-classpath.patch
 popd
 
-# Link to the system-installed javadocs instead of to the javadocs on sun.com
-patch -p0 < $PATCHESDIR/eclipse-javadoc-linkoffine.patch
+# Use the system-installed javadocs instead of the javadocs on sun.com
+sed --in-place "s|http://java.sun.com/j2se/1.4.2/docs/api|/usr/share/javadocs/java|" \
+   plugins/org.eclipse.platform.doc.isv/platformOptions.txt
+sed --in-place "s|http://java.sun.com/j2se/1.5/docs/api|/usr/share/javadocs/java|" \
+   plugins/org.eclipse.jdt.doc.isv/jdtaptOptions.txt                    \
+   plugins/org.eclipse.jdt.doc.isv/jdtOptions.txt
+sed --in-place "s|http://java.sun.com/j2se/1.4/docs/api|/usr/share/javadocs/java|" \
+   plugins/org.eclipse.pde.doc.user/pdeOptions.txt                      \
+   plugins/org.eclipse.pde.doc.user/pdeOptions
 
 # launcher patches
 rm plugins/org.eclipse.platform/launchersrc.zip

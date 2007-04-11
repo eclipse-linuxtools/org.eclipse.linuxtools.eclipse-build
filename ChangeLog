@@ -1,3 +1,7 @@
+2007-04-11  Ben Konrath  <bkonrath@redhat.com>
+	* patches/eclipse-javadoc-linkoffine.patch: remove.
+	* eclipse-build.sh: fix system-installed javadoc links.
+
 2007-03-26  Ben Konrath  <bkonrath@redhat.com>
 
 	* patches:
