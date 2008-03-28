@@ -4,3 +4,5 @@
 * stand-alone swt build
 * stand-alone ecj build
 * orbit manifests in eclipse-build project.
+
+mknauer was here... (testing the access rights in the SVN repository, sorry for that, i'll tell the webmasters)
