@@ -1,0 +1,11 @@
+This project should provide a simplified build for eclipse sdk on linux distributions.
+The current state is not working at all.
+It just build pdebuild-ant and it's dependencies in the bootstrapPlugins.
+
+To test it do the following:
+1. run ./fetch-sources.sh - This will download the latest milestone build 
+for eclipse from the main eclipse.org site. It may be better if you just download 
+eclipse-sourceBuild-srcIncluded-3.5M3.zip from a mirror near you and place it in 
+the folder. If the file is found download is not performed and only unzipping is done.
+2. run ant -f pdebuild.xml - This build script is still work in progress but you should 
+get all the dependencies of pdebuild-ant in the bootstrapPlugins folder. 
