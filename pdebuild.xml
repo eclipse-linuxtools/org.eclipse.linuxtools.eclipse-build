@@ -1,0 +1,95 @@
+<project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
+	<property name="javacFailOnError" value="true" />
+	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
+	<property file="pdebuild.properties" />
+	<filelist id="depsDirs" dir="plugins">
+		<file name="org.eclipse.osgi" />
+		<file name="org.eclipse.equinox.common" />
+		<file name="org.eclipse.core.jobs" />
+		<file name="org.eclipse.equinox.registry" />
+		<file name="org.eclipse.equinox.preferences" />
+		<file name="org.eclipse.core.runtime.compatibility.auth" />
+		<file name="org.eclipse.equinox.app" />
+		<file name="org.eclipse.core.contenttype" />
+		<file name="org.eclipse.core.runtime" />
+		<file name="org.eclipse.core.variables" />
+		<file name="org.eclipse.ant.core" />
+		<file name="org.eclipse.equinox.security" />
+		<file name="org.eclipse.core.net" />
+		<file name="org.eclipse.update.configurator" />
+		<file name="org.eclipse.core.runtime.compatibility" />
+		<file name="org.eclipse.equinox.p2.core" />
+		<file name="org.eclipse.update.core" />
+		<file name="org.eclipse.equinox.p2.jarprocessor" />
+		<file name="org.eclipse.pde.build" />
+		<file name="org.eclipse.equinox.launcher" />
+	</filelist>
+	<fileset id="depsZips" dir="plugins" includes="**/*_*.zip">
+	</fileset>
+	<target name="bootstrap">
+		<subant>
+			<filelist refid="depsDirs" />
+		</subant>
+	</target>
+	<target name="zipPlugins" depends="bootstrap">
+		<taskdef name="eclipse.versionReplacer"
+		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
+		         classpathref="pdebuildClasspath" />
+		<subant target="zip.plugin">
+			<filelist refid="depsDirs" />
+		</subant>
+	</target>
+	<target name="collectBootstrapPlugins" depends="zipPlugins">
+		<mkdir dir="bootstrapPlugins" />
+		<copy todir="bootstrapPlugins" flatten="true" >
+			<fileset refid="depsZips" />
+		</copy>
+		<unzip dest="bootstrapPlugins" >
+			<fileset dir="bootstrapPlugins">
+				<include name="**/*.zip" />
+			</fileset>
+		</unzip>
+		<delete>
+			<fileset dir="bootstrapPlugins">
+				<include name="**/*.zip" />
+			</fileset>
+		</delete>
+	</target>
+	<target name="clean">
+		<subant target="clean">
+			<filelist refid="depsDirs" />
+		</subant>
+		<delete file="bootstrapPlugins" />
+	</target>
+	<path id="pdebuildClasspath">
+		<pathelement location="plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
+		<pathelement location="plugins/org.eclipse.pde.build/pdebuild.jar" />
+		<pathelement path="plugins/org.eclipse.equinox.common/@dot" />
+		<pathelement path="plugins/org.eclipse.core.runtime/@dot" />
+		<pathelement location="plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
+		<pathelement path="plugins/org.eclipse.osgi/@dot" />
+		<pathelement path="plugins/org.eclipse.equinox.launcher/@dot" />
+	</path>
+
+	<target name="buildScript">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" append="true" >
+			<classpath id="test">
+				<pathelement location="bootstrapPlugins/org.eclipse.osgi_3.5.0.v20081027-1700" />
+				<pathelement location="bootstrapPlugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800"/>
+			</classpath>
+			<arg line="-clean" />
+			<arg line="-data workspace" />
+			<arg line="-configuration ./configuration " />
+			<arg line="	-framework ./bootstrapPlugins/org.eclipse.osgi_3.5.0.v20081027-1700 " />
+			<arg line="-debug -consoleLog " />
+			<arg line="--launcher.ini ./eclipse.ini" />
+			<arg line="-vmargs" />
+			<arg line="-Xdebug" />
+			<arg line="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000" />
+			<arg line="	-application org.eclipse.ant.core.antRunner " />
+			<arg line="-verbose" />
+			<arg line="-buildfile ./generatebuild.xml" />
+		</java>
+	</target>
+
+</project>

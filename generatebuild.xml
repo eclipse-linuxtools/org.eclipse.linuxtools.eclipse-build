@@ -1,0 +1,13 @@
+<project name="Pdebuild bootstrap" default="eclipse.buildScript">
+	<property name="javacFailOnError" value="true" />
+	<property file="pdebuild.properties" />
+
+	<target name="eclipse.buildScript">
+		<taskdef name="eclipse.buildScript"
+		         classname="org.eclipse.pde.internal.build.tasks.BuildScriptGeneratorTask"
+		         classpathref="test" />
+		<eclipse.buildScript elements="bundle@org.apache.ant"
+		                     configInfo="linux, gtk, x86" builddirectory="../.." pluginpath="bootstrapPlugins"/>
+	</target>
+
+</project>
