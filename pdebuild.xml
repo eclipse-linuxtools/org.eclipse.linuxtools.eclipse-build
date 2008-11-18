@@ -40,17 +40,17 @@
 		</subant>
 	</target>
 	<target name="collectBootstrapPlugins" depends="zipPlugins">
-		<mkdir dir="bootstrapPlugins" />
-		<copy todir="bootstrapPlugins" flatten="true">
+		<mkdir dir="bootstrap/plugins" />
+		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
 		</copy>
-		<unzip dest="bootstrapPlugins">
-			<fileset dir="bootstrapPlugins">
+		<unzip dest="bootstrap/plugins">
+			<fileset dir="bootstrap/plugins">
 				<include name="**/*.zip" />
 			</fileset>
 		</unzip>
 		<delete>
-			<fileset dir="bootstrapPlugins">
+			<fileset dir="bootstrap/plugins">
 				<include name="**/*.zip" />
 			</fileset>
 		</delete>
@@ -59,7 +59,7 @@
 		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
-		<delete file="bootstrapPlugins" />
+		<delete file="bootstrap/plugins" />
 	</target>
 	<path id="pdebuildClasspath">
 		<pathelement location="plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
@@ -72,18 +72,18 @@
 	</path>
 
 	<target name="buildScript">
-		<java classname="org.eclipse.equinox.launcher.Main" fork="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" directory="bootstrap">
 			<classpath id="test">
-				<pathelement location="bootstrapPlugins/org.eclipse.osgi_3.5.0.v20081027-1700" />
-				<pathelement location="bootstrapPlugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
+				<pathelement location="plugins/org.eclipse.osgi_3.5.0.v20081027-1700" />
+				<pathelement location="/plugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
 			</classpath>
-			<arg line="-configuration ./configuration " />
+			<arg line="-configuration configuration " />
 			<arg line="-debug -consoleLog " />
-			<arg line="--launcher.ini ./eclipse.ini" />
+			<arg line="--launcher.ini eclipse.ini" />
 			<arg line="-console" />
 			<arg line="-vmargs -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000" />
 			<arg line="	-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ./generatebuild.xml" />
+			<arg line="-buildfile ../generatebuild.xml" />
 		</java>
 	</target>
 
