@@ -7,7 +7,7 @@
 		<taskdef name="eclipse.buildScript"
 		         classname="org.eclipse.pde.internal.build.tasks.BuildScriptGeneratorTask"
 		         classpathref="test" />
-		<eclipse.buildScript elements="bundle@org.apache.ant"
+		<eclipse.buildScript elements="bundle@org.eclipse.equinox.p2.core"
 		                     configInfo="linux, gtk, x86" builddirectory="../.." pluginpath="bootstrap/plugins"/>
 	</target>
 

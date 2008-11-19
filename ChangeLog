@@ -1,5 +1,10 @@
 2008-11-19  Andrew Overholt  <overholt@redhat.com>
 
+	* bootstrap/configuration/config.ini: Remove runtime.compatibility.registry.  Remove ignoreApp.
+	* generatebuild.xml: Remove osgi from bundles list.
+
+2008-11-19  Andrew Overholt  <overholt@redhat.com>
+
 	* generatebuild.xml: Fix path to include bootstrap/plugins.
 	* pdebuild.xml: Move things to SDK directory.
 	* fetch-sources.sh: Likewise.
