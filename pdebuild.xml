@@ -2,7 +2,7 @@
 	<property name="javacFailOnError" value="true" />
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
 	<property file="pdebuild.properties" />
-	<filelist id="depsDirs" dir="plugins">
+	<filelist id="depsDirs" dir="SDK/plugins">
 		<file name="org.eclipse.osgi" />
 		<file name="org.eclipse.equinox.common" />
 		<file name="org.eclipse.core.jobs" />
@@ -24,7 +24,7 @@
 		<file name="org.eclipse.pde.build" />
 		<file name="org.eclipse.equinox.launcher" />
 	</filelist>
-	<fileset id="depsZips" dir="plugins" includes="**/*_*.zip">
+	<fileset id="depsZips" dir="SDK/plugins" includes="**/*_*.zip">
 	</fileset>
 	<target name="bootstrap">
 		<subant>
@@ -39,7 +39,7 @@
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
-	<target name="collectBootstrapPlugins" depends="zipPlugins">
+	<target name="collectBootstrapPlugins">
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
@@ -62,29 +62,23 @@
 		<delete file="bootstrap/plugins" />
 	</target>
 	<path id="pdebuildClasspath">
-		<pathelement location="plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
-		<pathelement location="plugins/org.eclipse.pde.build/pdebuild.jar" />
-		<pathelement path="plugins/org.eclipse.equinox.common/@dot" />
-		<pathelement path="plugins/org.eclipse.core.runtime/@dot" />
-		<pathelement location="plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
-		<pathelement path="plugins/org.eclipse.osgi/@dot" />
-		<pathelement path="plugins/org.eclipse.equinox.launcher/@dot" />
+		<pathelement location="SDK/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
+		<pathelement location="SDK/plugins/org.eclipse.pde.build/pdebuild.jar" />
+		<pathelement path="SDK/plugins/org.eclipse.equinox.common/@dot" />
+		<pathelement path="SDK/plugins/org.eclipse.core.runtime/@dot" />
+		<pathelement location="SDK/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
+		<pathelement path="SDK/plugins/org.eclipse.osgi/@dot" />
+		<pathelement path="SDK/plugins/org.eclipse.equinox.launcher/@dot" />
 	</path>
-
 	<target name="buildScript">
-		<java classname="org.eclipse.equinox.launcher.Main" fork="true" directory="bootstrap">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="bootstrap">
 			<classpath id="test">
-				<pathelement location="plugins/org.eclipse.osgi_3.5.0.v20081027-1700" />
-				<pathelement location="/plugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
+				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-debug -consoleLog " />
-			<arg line="--launcher.ini eclipse.ini" />
-			<arg line="-console" />
-			<arg line="-vmargs -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000" />
-			<arg line="	-application org.eclipse.ant.core.antRunner " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ../generatebuild.xml" />
 		</java>
 	</target>
-
 </project>

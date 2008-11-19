@@ -3,6 +3,7 @@
 	<property file="pdebuild.properties" />
 
 	<target name="eclipse.buildScript">
+		<echo message="Hello!"/>
 		<taskdef name="eclipse.buildScript"
 		         classname="org.eclipse.pde.internal.build.tasks.BuildScriptGeneratorTask"
 		         classpathref="test" />
