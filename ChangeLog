@@ -1,5 +1,16 @@
 2008-11-19  Andrew Overholt  <overholt@redhat.com>
 
+	* test.properties: New file.
+	* bootstrap/configuration/config.ini: Add com.ibm.icu, org.apache.ant,
+	org.eclipse.update.configurator and org.junit to osgi.bundles. Could perhaps be
+	trimmed.
+	* generatebuild.xml: Refactor a bit. Generate a feature before generating plugin
+	build.xml files.
+	* pdebuild.xml: Organize and clean up depsDirs. Add Orbit deps like JUnit and
+	ICU4J. Build in a 'build' directory and clean it beforehand.
+
+2008-11-19  Andrew Overholt  <overholt@redhat.com>
+
 	* bootstrap/configuration/config.ini: Remove runtime.compatibility.registry.  Remove ignoreApp.
 	* generatebuild.xml: Remove osgi from bundles list.
 
