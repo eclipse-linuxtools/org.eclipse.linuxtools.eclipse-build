@@ -1,5 +1,4 @@
 TODO:
-* Generate build.xml for some plugin with the builded pdebuild as a proof of concept.
 * Clean all build.xml files.
 * Generate build.xml files for every plugin.
 * Rebuild all the plugins with the builded pdebuild and generated build.xml.

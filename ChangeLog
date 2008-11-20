@@ -1,5 +1,12 @@
 2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
 
+	* pdebuild.xml: Renamed to build.xml.
+	* build.xml: New file.
+	* README: Update with the latest locations and info.
+	* TODO: Remove the sample build.xml generation which is done.
+	
+2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
+
 	* pdebuild.xml: Fix plugin order in depsDir. Make collectBootstrapPlugins depend on zipPlugins.
 
 2008-11-19  Andrew Overholt  <overholt@redhat.com>
