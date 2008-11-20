@@ -2,28 +2,29 @@
 	<property name="javacFailOnError" value="true" />
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
 	<property file="test.properties" />
+	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="SDK/plugins">
-		<file name="org.apache.ant" />
-		<file name="org.eclipse.ant.core" />
-		<file name="org.eclipse.core.contenttype" />
-		<file name="org.eclipse.core.jobs" />
-		<file name="org.eclipse.core.net" />
-		<file name="org.eclipse.core.runtime" />
-		<file name="org.eclipse.core.runtime.compatibility" />
-		<file name="org.eclipse.core.runtime.compatibility.auth" />
-		<file name="org.eclipse.core.variables" />
-		<file name="org.eclipse.equinox.app" />
-		<file name="org.eclipse.equinox.common" />
-		<file name="org.eclipse.equinox.launcher" />
-		<file name="org.eclipse.equinox.p2.core" />
-		<file name="org.eclipse.equinox.p2.jarprocessor" />
-		<file name="org.eclipse.equinox.preferences" />
-		<file name="org.eclipse.equinox.registry" />
-		<file name="org.eclipse.equinox.security" />
 		<file name="org.eclipse.osgi" />
-		<file name="org.eclipse.pde.build" />
+		<file name="org.eclipse.equinox.common" />
+		<file name="org.eclipse.core.jobs" />
+		<file name="org.eclipse.equinox.registry" />
+		<file name="org.eclipse.equinox.preferences" />
+		<file name="org.eclipse.core.runtime.compatibility.auth" />
+		<file name="org.eclipse.equinox.app" />
+		<file name="org.eclipse.core.contenttype" />
+		<file name="org.eclipse.core.runtime" />
+		<file name="org.eclipse.core.variables" />
+		<file name="org.eclipse.ant.core" />
+		<file name="org.eclipse.equinox.security" />
+		<file name="org.eclipse.core.net" />
 		<file name="org.eclipse.update.configurator" />
+		<file name="org.eclipse.core.runtime.compatibility" />
+		<file name="org.eclipse.equinox.p2.core" />
 		<file name="org.eclipse.update.core" />
+		<file name="org.eclipse.equinox.p2.jarprocessor" />
+		<file name="org.eclipse.pde.build" />
+		<file name="org.eclipse.equinox.launcher" />
+		<file name="org.apache.ant" />
 	</filelist>
 	<fileset dir="SDK/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
@@ -44,7 +45,7 @@
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
-	<target name="collectBootstrapPlugins">
+	<target name="collectBootstrapPlugins" depends="zipPlugins">
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
@@ -87,7 +88,7 @@
 		<mkdir dir="build/features" />
 		<mkdir dir="build/plugins" />
 		<copy todir="build/plugins/${pluginId}">
-			<fileset dir="SDK/plugins/${pluginId}"/>
+			<fileset dir="SDK/plugins/${pluginId}" />
 		</copy>
 		<delete>
 			<fileset dir="build/plugins/${pluginId}">
@@ -95,7 +96,9 @@
 				<include name="*.args" />
 			</fileset>
 		</delete>
-		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="bootstrap">
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="bootstrap">
 			<classpath>
 				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
 			</classpath>

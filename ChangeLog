@@ -1,3 +1,7 @@
+2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* pdebuild.xml: Fix plugin order in depsDir. Make collectBootstrapPlugins depend on zipPlugins.
+
 2008-11-19  Andrew Overholt  <overholt@redhat.com>
 
 	* test.properties: New file.
