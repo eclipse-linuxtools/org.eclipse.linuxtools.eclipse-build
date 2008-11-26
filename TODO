@@ -1,4 +1,3 @@
 TODO:
-* Clean all build.xml files.
-* Generate build.xml files for every plugin.
+* Get rid of prepare_elements.sh - rewrite it in ant.
 * Rebuild all the plugins with the builded pdebuild and generated build.xml.

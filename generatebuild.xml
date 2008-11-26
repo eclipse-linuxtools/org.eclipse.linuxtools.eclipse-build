@@ -1,22 +1,20 @@
 <project name="Pdebuild bootstrap" default="genBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<property file="test.properties"/>
-
+	<property file="test.properties" />
 	<target name="genBuild">
-		<echo message="About to generate feature"/>
-		<eclipse.generateFeature
-			featureId="${featureId}"
-			buildDirectory="${buildDirectory}"
-			baseLocation="${baseLocation}"
-			pluginList="${pluginId}"
-			includeLaunchers="false"
-		/>
-		<!--
-		<taskdef name="eclipse.buildScript"
-		         classname="org.eclipse.pde.internal.build.tasks.BuildScriptGeneratorTask"/>
-		-->
-		<echo message="About to generate build.xml"/>
-		<eclipse.buildScript elements="plugin@${pluginId}"/>
+		<echo message="About to generate feature" />
+		<exec executable="../../prepare_elements.sh"
+		      outputproperty="plugins"
+		      dir="./build/plugins" />
+		<eclipse.generateFeature featureId="${featureId}"
+		                         buildDirectory="${buildDirectory}"
+		                         baseLocation="${baseLocation}"
+		                         pluginList="${plugins}"
+		                         includeLaunchers="false" />
+		<echo message="About to generate build.xml" />
+		<eclipse.buildScript elements="${plugins}"
+		                     configInfo="*,*,*"
+		                     buildingosgi="true" />
 	</target>
 
 </project>

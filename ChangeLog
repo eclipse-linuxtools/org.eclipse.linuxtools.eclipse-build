@@ -1,3 +1,11 @@
+2008-11-26  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* TODO: Update todo items.
+	* prepare_elements.sh: New file.
+	* build.xml: Copy all plugins to be build, rename wherever needed.
+	* generatebuild.xml: Regenerate build.xml files for all the plugins.
+	
+
 2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* pdebuild.xml: Renamed to build.xml.
