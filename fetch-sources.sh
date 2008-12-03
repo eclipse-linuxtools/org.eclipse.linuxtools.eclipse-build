@@ -7,6 +7,6 @@ then
 	wget "http://download.eclipse.org/eclipse/downloads/drops/S-3.5M3-200810301917/$fileName"
 fi
 
-rmdir SDK
+rm -fr SDK
 mkdir -p SDK
 unzip -d SDK -q $fileName
