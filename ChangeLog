@@ -1,3 +1,10 @@
+2008-12-03  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* TODO: Add todo about equinox.http.jetty bundle name.
+	* build.xml: Switch default task to one step further generateBuildScripts.
+	* prepare_elements.sh: Skip equinox.http.jetty bundle.
+	* test.properties: Add properties needed for compilation.
+
 2008-11-26  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* TODO: Update todo items.

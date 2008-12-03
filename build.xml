@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
+	<target name="cleanBuild" depends="clean,generateBuildScripts" />
 	<property file="test.properties" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="SDK/plugins">
@@ -45,7 +45,14 @@
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
-	<target name="collectBootstrapPlugins" depends="zipPlugins">
+	<condition property="bootstap.ready">
+		<and>
+			<available file="build/plugins" />
+		</and>
+	</condition>
+	<target name="collectBootstrapPlugins"
+	        depends="zipPlugins"
+	        >
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
@@ -68,7 +75,8 @@
 		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
-		<delete file="bootstrap/plugins" />
+		<delete dir="bootstrap/plugins" />
+		<delete dir="build" />
 	</target>
 	<path id="pdebuildClasspath">
 		<pathelement location="SDK/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
@@ -79,7 +87,7 @@
 		<pathelement path="SDK/plugins/org.eclipse.osgi/@dot" />
 		<pathelement path="SDK/plugins/org.eclipse.equinox.launcher/@dot" />
 	</path>
-	<target name="buildScript">
+	<target name="prepareBuildScriptGeneration" unless="bootstrap.ready" depends="collectBootstrapPlugins">
 		<delete failonerror="false">
 			<fileset dir="build">
 				<include name="**" />
@@ -89,14 +97,17 @@
 		<mkdir dir="build/plugins" />
 		<copy todir="build/plugins/">
 			<fileset dir="SDK/plugins/">
-				<exclude name="**/*source/" />
+				<exclude name="**/*.source/" />
 			</fileset>
 		</copy>
-		<move tofile="build/plugins/org.eclipse.equinox.http.jetty"
-		        file="build/plugins/org.eclipse.equinox.http.jetty_1.1.0" />
+		<copy todir="build/features/">
+			<fileset dir="SDK/features/" />
+		</copy>
 		<!-- TODO is it really needed -->
 		<move tofile="build/plugins/org.junit"
-				        file="build/plugins/org.junit_3.8.2.v20080602-1318" />
+		      file="build/plugins/org.junit_3.8.2.v20080602-1318" />
+	</target>
+	<target name="generateBuildScripts" depends="prepareBuildScriptGeneration">
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
 		      dir="bootstrap"
@@ -110,4 +121,14 @@
 			<arg line="-buildfile ../generatebuild.xml" />
 		</java>
 	</target>
+
+	<target name="buildAll">
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.sdk"
+		     target="all.features"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+		</ant>
+	</target>
+
 </project>
