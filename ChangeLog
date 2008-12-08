@@ -1,3 +1,9 @@
+2008-12-08  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* build.xml: Don't copy source features, generate them. Add temp task for clean.
+	* generatebuild.xml: Generate source features.
+	* test.properties: Remove not needed properties.
+
 2008-12-03  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* TODO: Add todo about equinox.http.jetty bundle name.

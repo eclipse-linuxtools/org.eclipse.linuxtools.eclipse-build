@@ -50,9 +50,7 @@
 			<available file="build/plugins" />
 		</and>
 	</condition>
-	<target name="collectBootstrapPlugins"
-	        depends="zipPlugins"
-	        >
+	<target name="collectBootstrapPlugins" depends="zipPlugins">
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
@@ -87,7 +85,9 @@
 		<pathelement path="SDK/plugins/org.eclipse.osgi/@dot" />
 		<pathelement path="SDK/plugins/org.eclipse.equinox.launcher/@dot" />
 	</path>
-	<target name="prepareBuildScriptGeneration" unless="bootstrap.ready" depends="collectBootstrapPlugins">
+	<target name="prepareBuildScriptGeneration"
+	        unless="bootstrap.ready"
+	        depends="collectBootstrapPlugins">
 		<delete failonerror="false">
 			<fileset dir="build">
 				<include name="**" />
@@ -101,7 +101,9 @@
 			</fileset>
 		</copy>
 		<copy todir="build/features/">
-			<fileset dir="SDK/features/" />
+			<fileset dir="SDK/features/">
+				<exclude name="**/*.source/" />
+			</fileset>
 		</copy>
 		<!-- TODO is it really needed -->
 		<move tofile="build/plugins/org.junit"
@@ -125,9 +127,16 @@
 	<target name="buildAll">
 		<ant antfile="build.xml"
 		     dir="build/features/org.eclipse.sdk"
+		     target="all.features" >
+			<property name="target" value="build.jars" />
+		</ant>
+	</target>
+	<target name="buildAllClean">
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.sdk"
 		     target="all.features"
 		     inheritall="true">
-			<property name="target" value="build.jars" />
+			<property name="target" value="clean" />
 		</ant>
 	</target>
 

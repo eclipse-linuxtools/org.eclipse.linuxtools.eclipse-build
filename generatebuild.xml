@@ -9,12 +9,15 @@
 		<eclipse.generateFeature featureId="${featureId}"
 		                         buildDirectory="${buildDirectory}"
 		                         baseLocation="${baseLocation}"
-		                         pluginList="${plugins}"
+		                         pluginList="${pluginId}"
 		                         includeLaunchers="false" />
 		<echo message="About to generate build.xml" />
 		<eclipse.buildScript elements="${plugins}"
 		                     configInfo="*,*,*"
 		                     buildingosgi="true" />
+		<eclipse.buildScript elements="feature@org.eclipse.sdk"
+		                     configInfo="*,*,*"
+		                     buildingosgi="true" recursivegeneration="true"/>
 	</target>
 
 </project>
