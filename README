@@ -1,14 +1,19 @@
 This project should provide a simplified build for eclipse sdk on linux distributions.
-The current state is not working at all.
-It just build pdebuild-ant and it's dependencies in the bootstrap/plugins.
+The current state is not producing a usable eclipse build. The completed steps are:
+1. Build pdebuild-ant and it's dependencies in the bootstrap/plugins.
+2. Copy all the sources from the downloaded SDK to build directory, removing source plugins
+and features.
+3. Regenerate build.xml files with the bootstrapped pdebuild-and. There are exceptions here
+because some of the plugins are with custom build.xml files so they are just skipped
 
 To test it do the following:
 1. run ./fetch-sources.sh - This will download the latest milestone build 
 for eclipse from the main eclipse.org site. It may be better if you just download 
 eclipse-sourceBuild-srcIncluded-3.5M3.zip from a mirror near you and place it in 
 the folder. If the file is found download is not performed and only unzipping is done.
-2. run `ant`  - This build script is still work in progress but you should 
-get all the dependencies of pdebuild-ant in the bootstrap/plugins folder. 
-3. runt `ant buildScript` - This task is simply creating a build.xml for one plugin, but it
-is supposed to do this for all the plugins. Please use it only if you want to help with the 
+2. run `ant`  - This build script is still work in progress but you should get:
+	* all the dependencies of pdebuild-ant in the bootstrap/plugins folder. 
+	* build.xml files regenerated whenever possible
+	* source plugins and features generated
+3. runt `ant buildAll` - This task is trying to build org.eclipse.sdk feature. Please use it only if you want to help with the 
 development. 
