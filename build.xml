@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,generateBuildScripts" />
+	<target name="cleanBuild" depends="clean,buildAll" />
 	<property file="test.properties" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="SDK/plugins">
@@ -124,20 +124,17 @@
 		</java>
 	</target>
 
-	<target name="buildAll">
+	<target name="buildAll" depends="generateBuildScripts">
+		<!-- Copy back the original features because they get borked during source features generation. -->
+		<copy todir="build/features/" overwrite="true">
+			<fileset dir="SDK/features/">
+				<exclude name="**/*.source/" />
+			</fileset>
+		</copy>
 		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.sdk"
-		     target="all.features" >
+		     dir="build/features/org.eclipse.rcp"
+		     target="all.children">
 			<property name="target" value="build.jars" />
 		</ant>
 	</target>
-	<target name="buildAllClean">
-		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.sdk"
-		     target="all.features"
-		     inheritall="true">
-			<property name="target" value="clean" />
-		</ant>
-	</target>
-
 </project>

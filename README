@@ -4,7 +4,8 @@ The current state is not producing a usable eclipse build. The completed steps a
 2. Copy all the sources from the downloaded SDK to build directory, removing source plugins
 and features.
 3. Regenerate build.xml files with the bootstrapped pdebuild-and. There are exceptions here
-because some of the plugins are with custom build.xml files so they are just skipped
+because some of the plugins are with custom build.xml files so they are just skipped.
+4. All plugins and features of org.eclipse.sdk builded.
 
 To test it do the following:
 1. run ./fetch-sources.sh - This will download the latest milestone build 
@@ -15,5 +16,4 @@ the folder. If the file is found download is not performed and only unzipping is
 	* all the dependencies of pdebuild-ant in the bootstrap/plugins folder. 
 	* build.xml files regenerated whenever possible
 	* source plugins and features generated
-3. runt `ant buildAll` - This task is trying to build org.eclipse.sdk feature. Please use it only if you want to help with the 
-development. 
+	* all.children of org.eclipse.sdk feature builded

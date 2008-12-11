@@ -1,3 +1,9 @@
+2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* build.xml: Enable buildAll invocation by default now that it is working.
+	* README: Update to the current state.
+	* TODO: Fix todo entries.
+
 2008-12-09  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* README: Update to the current state.
