@@ -1,5 +1,9 @@
 2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
 
+	* TODO: More tod entries.
+	
+2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
+
 	* build.xml: Enable buildAll invocation by default now that it is working.
 	* README: Update to the current state.
 	* TODO: Fix todo entries.
