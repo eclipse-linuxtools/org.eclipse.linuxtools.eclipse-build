@@ -132,9 +132,12 @@
 			</fileset>
 		</copy>
 		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.rcp"
+		     dir="build/features/org.eclipse.sdk"
 		     target="all.children">
 			<property name="target" value="build.jars" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+
 		</ant>
 	</target>
 </project>

@@ -1,3 +1,8 @@
+2008-12-12  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* build.xml: Build sdk feature not rcp.
+	* generatebuild.xml: Add some echo.
+
 2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* TODO: More tod entries.

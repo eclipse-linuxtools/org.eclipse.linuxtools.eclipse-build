@@ -15,9 +15,11 @@
 		<eclipse.buildScript elements="${plugins}"
 		                     configInfo="*,*,*"
 		                     buildingosgi="true" />
+		<echo message="About to generate source bundles" />
 		<eclipse.buildScript elements="feature@org.eclipse.sdk"
 		                     configInfo="*,*,*"
-		                     buildingosgi="true" recursivegeneration="true"/>
+		                     buildingosgi="true"
+		                     recursivegeneration="true" />
 	</target>
 
 </project>
