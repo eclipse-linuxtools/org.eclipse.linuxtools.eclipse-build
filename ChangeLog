@@ -1,3 +1,7 @@
+2008-12-15  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* build.xml: Set ws and os properties to build only linux-gtk.
+
 2008-12-12  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: Build sdk feature not rcp.

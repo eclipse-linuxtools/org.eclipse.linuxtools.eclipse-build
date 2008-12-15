@@ -137,7 +137,8 @@
 			<property name="target" value="build.jars" />
 			<property name="javacSource" value="1.5" />
 			<property name="javacTarget" value="1.5" />
-
+			<property name="ws" value="gtk"/>
+			<property name="os" value="linux"/>
 		</ant>
 	</target>
 </project>
