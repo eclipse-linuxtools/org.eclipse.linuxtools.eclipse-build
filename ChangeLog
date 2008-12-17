@@ -1,3 +1,8 @@
+2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* ABOUT: New file.
+	* TODO: Add some overall plan.
+
 2008-12-15  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: Set ws and os properties to build only linux-gtk. Set arch too.
