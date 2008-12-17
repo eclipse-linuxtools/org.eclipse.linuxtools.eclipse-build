@@ -1,5 +1,10 @@
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
+	* build.xml: Simplify delete.
+	* generatebuild.xml: Build scripts should be regenerated with recursive call.
+	
+2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
+
 	* bootstrap/configuration/config.ini: Fix osgi bundles.
 	* build.xml: Correctly ignore source bundles when coping.
 	* prepare_elements.sh: Ignore the correct jetty.

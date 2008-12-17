@@ -11,15 +11,11 @@
 		                         baseLocation="${baseLocation}"
 		                         pluginList="${pluginId}"
 		                         includeLaunchers="false" />
-		<echo message="About to generate build.xml" />
-		<eclipse.buildScript elements="${plugins}"
-		                     configInfo="*,*,*"
-		                     buildingosgi="true" />
-		<echo message="About to generate source bundles" />
+		<echo message="About to generate source bundles and build.xml files" />
 		<eclipse.buildScript elements="feature@org.eclipse.sdk"
 		                     configInfo="*,*,*"
 		                     buildingosgi="true"
-		                     recursivegeneration="true" />
+		                     recursivegeneration="true" children="true"/>
 	</target>
 
 </project>
