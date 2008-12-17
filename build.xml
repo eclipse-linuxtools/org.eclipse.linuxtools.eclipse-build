@@ -147,7 +147,7 @@
 			<property name="javacTarget" value="1.5" />
 			<property name="ws" value="gtk" />
 			<property name="os" value="linux" />
-			<property name="arch" value="${os.arch}" />
+			<property name="arch" value="x86_64" />
 		</ant>
 	</target>
 </project>
