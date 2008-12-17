@@ -22,6 +22,11 @@
 		<file name="org.eclipse.equinox.p2.core" />
 		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.jarprocessor" />
+		<file name="org.eclipse.equinox.frameworkadmin.equinox" />
+		<file name="org.eclipse.equinox.p2.metadata" />
+		<file name="org.eclipse.equinox.p2.artifact.repository" />
+		<file name="org.eclipse.equinox.p2.metadata.repository" />
+		<file name="org.eclipse.equinox.p2.publisher" />
 		<file name="org.eclipse.pde.build" />
 		<file name="org.eclipse.equinox.launcher" />
 		<file name="org.apache.ant" />
