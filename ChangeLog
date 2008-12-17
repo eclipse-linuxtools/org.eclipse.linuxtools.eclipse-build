@@ -1,5 +1,11 @@
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
+	* bootstrap/configuration/config.ini: Fix osgi bundles.
+	* build.xml: Correctly ignore source bundles when coping.
+	* prepare_elements.sh: Ignore the correct jetty.
+	
+2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
+
 	* bootstrap/configuration/config.ini: Update with 3.5M4 needed plugins.
 	* build.xml: fix bootstrap plugins for 3.5M4. Fix launcher path. Include ecf to orbitDeps.	
 	* fetch-sources.sh: Jump to 3.5M4.

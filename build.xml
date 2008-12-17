@@ -22,6 +22,7 @@
 		<file name="org.eclipse.equinox.p2.core" />
 		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.jarprocessor" />
+		<file name="org.eclipse.equinox.frameworkadmin" />
 		<file name="org.eclipse.equinox.frameworkadmin.equinox" />
 		<file name="org.eclipse.equinox.p2.metadata" />
 		<file name="org.eclipse.equinox.p2.artifact.repository" />
@@ -29,6 +30,7 @@
 		<file name="org.eclipse.equinox.p2.publisher" />
 		<file name="org.eclipse.pde.build" />
 		<file name="org.eclipse.equinox.launcher" />
+		<file name="org.eclipse.osgi.services" />
 		<file name="org.apache.ant" />
 	</filelist>
 	<fileset dir="SDK/plugins" id="orbitDeps">
@@ -90,7 +92,6 @@
 		<pathelement location="SDK/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
 		<pathelement path="SDK/plugins/org.eclipse.osgi/@dot" />
 		<pathelement path="SDK/plugins/org.eclipse.equinox.launcher/@dot" />
-		<pathelement path="SDK/plugins/org.eclipse.equinox.frameworkadmin.equinox/@dot" />
 	</path>
 	<target name="prepareBuildScriptGeneration"
 	        unless="bootstrap.ready"
@@ -104,7 +105,7 @@
 		<mkdir dir="build/plugins" />
 		<copy todir="build/plugins/">
 			<fileset dir="SDK/plugins/">
-				<exclude name="**/*.source/" />
+				<exclude name="**/*.source_*/" />
 			</fileset>
 		</copy>
 		<copy todir="build/features/">
