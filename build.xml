@@ -120,7 +120,7 @@
 		      dir="bootstrap"
 		      failonerror="true">
 			<classpath>
-				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher_1.0.200.v20080825-1800" />
+				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher_1.0.200.v20081201-1815" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-debug -consoleLog " />
