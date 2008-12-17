@@ -1,7 +1,7 @@
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: Simplify delete.
-	* generatebuild.xml: Build scripts should be regenerated with recursive call.
+	* generatebuild.xml: Build scripts should be regenerated with recursive call and only for linux, gtk.
 	
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 

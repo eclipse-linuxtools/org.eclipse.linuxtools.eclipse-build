@@ -13,7 +13,7 @@
 		                         includeLaunchers="false" />
 		<echo message="About to generate source bundles and build.xml files" />
 		<eclipse.buildScript elements="feature@org.eclipse.sdk"
-		                     configInfo="*,*,*"
+		                     configInfo="linux,gtk,*"
 		                     buildingosgi="true"
 		                     recursivegeneration="true" children="true"/>
 	</target>
