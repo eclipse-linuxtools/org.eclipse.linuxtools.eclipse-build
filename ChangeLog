@@ -1,3 +1,7 @@
+2008-12-18  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* build.xml: org.eclipse.update.core is not needed for bootstraping.
+
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: Simplify delete.

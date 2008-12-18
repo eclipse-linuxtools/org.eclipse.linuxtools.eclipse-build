@@ -20,7 +20,6 @@
 		<file name="org.eclipse.update.configurator" />
 		<file name="org.eclipse.core.runtime.compatibility" />
 		<file name="org.eclipse.equinox.p2.core" />
-		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.jarprocessor" />
 		<file name="org.eclipse.equinox.frameworkadmin" />
 		<file name="org.eclipse.equinox.frameworkadmin.equinox" />
