@@ -1,3 +1,7 @@
+2009-01-05  Alexander Kurtakov  <akurtakov@gmail.com>
+
+	* fetch.xml: Rewrite fetching as ant task to be able to embed it in the main build.xml.
+
 2008-12-18  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: org.eclipse.update.core is not needed for bootstraping.
