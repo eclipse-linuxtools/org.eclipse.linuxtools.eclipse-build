@@ -2,6 +2,8 @@
 	<property name="javacFailOnError" value="true" />
 	<target name="cleanBuild" depends="clean,buildAll" />
 	<property file="test.properties" />
+	<property name="fileName" value="SDK" />
+	<available file="${fileName}" property="fetched" value="true" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="SDK/plugins">
 		<file name="org.eclipse.osgi" />
@@ -39,7 +41,10 @@
 	</fileset>
 	<fileset id="depsZips" dir="SDK/plugins" includes="**/*_*.zip">
 	</fileset>
-	<target name="bootstrap">
+	<target name="fetch" unless="fetched">
+		<ant antfile="fetch.xml"/>
+	</target>
+	<target name="bootstrap" depends="fetch">
 		<subant>
 			<filelist refid="depsDirs" />
 		</subant>
@@ -76,7 +81,7 @@
 			<fileset refid="orbitDeps" />
 		</copy>
 	</target>
-	<target name="clean">
+	<target name="clean" depends="fetch">
 		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
