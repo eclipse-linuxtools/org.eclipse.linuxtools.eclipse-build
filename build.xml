@@ -40,12 +40,14 @@
 		<include name="org.junit_*/" />
 		<include name="com.ibm.icu_*" />
 		<include name="org.eclipse.ecf*" />
-		<include name="org.apache.ant_*/**"/>
+		<include name="org.apache.ant_*/**" />
+		<include name="org.mortbay.jetty*" />
+		<include name="org.apache.lucene*" />
 	</fileset>
 	<fileset id="depsZips" dir="SDK/plugins" includes="**/*_*.zip">
 	</fileset>
 	<target name="fetch" unless="fetched">
-		<ant antfile="fetch.xml"/>
+		<ant antfile="fetch.xml" />
 	</target>
 	<target name="bootstrap" depends="fetch">
 		<subant>
@@ -80,7 +82,7 @@
 				<include name="**/*.zip" />
 			</fileset>
 		</delete>
-		<copy todir="bootstrap/plugins" flatten="false" >
+		<copy todir="bootstrap/plugins" flatten="false">
 			<fileset refid="orbitDeps" />
 		</copy>
 	</target>
@@ -136,17 +138,76 @@
 			<arg line="-debug -consoleLog " />
 		</java>
 	</target>
-
-	<target name="buildAll" depends="generateBuildScripts">
+	<target name="copyToBuild" depends="generateBuildScripts">
 		<!-- Copy back the original features because they get borked during source features generation. -->
 		<copy todir="build/features/" overwrite="true">
 			<fileset dir="SDK/features/">
 				<exclude name="**/*.source/" />
 			</fileset>
 		</copy>
+	</target>
+
+	<target name="buildAll" depends="copyToBuild">
+		<!--FIXME Ugly hack due to 3.5M5 can't compile sdk without first compilint whatever possible from platform. -->
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+			<property name="javacFailOnError" value="false" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.help"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="clean" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+		</ant>
+		<!-- END OF HACK -->
 		<ant antfile="build.xml"
 		     dir="build/features/org.eclipse.sdk"
-		     target="all.children">
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+		</ant>
+	</target>
+
+	<target name="testBuildAll">
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.sdk"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="clean" />
+			<property name="javacSource" value="1.5" />
+			<property name="javacTarget" value="1.5" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="javacSource" value="1.5" />
 			<property name="javacTarget" value="1.5" />

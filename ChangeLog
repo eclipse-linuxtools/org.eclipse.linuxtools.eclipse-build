@@ -1,3 +1,7 @@
+2009-02-11  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Ugly hack to fix build with 3.5 M5.
+
 2009-02-04  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* bootstrap/configuration/config.ini: Update to 3.5 M5.
