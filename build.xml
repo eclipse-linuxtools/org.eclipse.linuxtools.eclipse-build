@@ -210,6 +210,7 @@
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="3.5M5" />
 			<property name="collectingFolder" value="collected" />
+			<property name="archivePrefix" value="eclipse" />
 		</ant>
 	</target>
 </project>

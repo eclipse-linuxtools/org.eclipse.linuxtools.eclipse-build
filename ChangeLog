@@ -1,5 +1,11 @@
 2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* fetch-sources.sh: Removed.
+	* build.xml: Set archivePrefix.
+	* README: Remove not needed step for running fetch-sources.
+
+2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* bootstrap/configuration/config.ini: Add o.e.equinox.launcher to the osgi.bundles.
 	* test.properties: Removed.
 	* build.properties: New file. Renamed from test.properties.
