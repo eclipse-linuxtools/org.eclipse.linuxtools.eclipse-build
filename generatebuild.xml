@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="genBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<property file="test.properties" />
+	<property file="build.properties" />
 	<target name="genBuild">
 		<echo message="About to generate feature" />
 		<exec executable="../../prepare_elements.sh"
@@ -13,7 +13,7 @@
 		                         includeLaunchers="false" />
 		<echo message="About to generate source bundles and build.xml files" />
 		<eclipse.buildScript elements="feature@org.eclipse.sdk"
-		                     configInfo="linux,gtk,*"
+		                     configInfo="linux,gtk,${buildArch}"
 		                     buildingosgi="true"
 		                     recursivegeneration="true" children="true"/>
 	</target>

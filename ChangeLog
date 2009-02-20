@@ -1,3 +1,10 @@
+2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* test.properties: Removed.
+	* build.properties: New file. Renamed from test.properties.
+	* build.xml: Build with arch set and start of jaring task.
+	* generatebuild.xml: Generate only for the specified arch.
+
 2009-02-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Ugly hack to fix build with 3.5 M5.
