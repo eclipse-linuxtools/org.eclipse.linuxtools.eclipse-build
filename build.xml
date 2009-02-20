@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,buildAll" />
+	<target name="cleanBuild" depends="clean,jarIn" />
 	<property name="fileName" value="SDK" />
 	<property file="build.properties" />
 	<available file="${fileName}" property="fetched" value="true" />
@@ -147,7 +147,7 @@
 		</copy>
 	</target>
 
-	<target name="buildAll" depends="copyToBuild">
+	<target name="buildAll" depends="generateBuildScripts">
 		<!--FIXME Ugly hack due to 3.5M5 can't compile sdk without first compilint whatever possible from platform. -->
 		<ant antfile="build.xml"
 		     dir="build/features/org.eclipse.platform"
@@ -196,7 +196,7 @@
 			<property name="arch" value="${buildArch}" />
 		</ant>
 	</target>
-	<target name="jarIn">
+	<target name="jarIn" depends="buildAll">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
@@ -206,11 +206,12 @@
 		<taskdef name="eclipse.brand"
 		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
 		         classpathref="pdebuildClasspath" />
-		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml" dir="build">
+		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml" dir="build" >
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="3.5M5" />
 			<property name="collectingFolder" value="collected" />
 			<property name="archivePrefix" value="eclipse" />
+			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
 	</target>
 </project>
