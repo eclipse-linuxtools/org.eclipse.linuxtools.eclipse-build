@@ -1,6 +1,7 @@
 <project name="Pdebuild bootstrap" default="genBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
 	<property file="build.properties" />
+	<property name="buildArch" value="x86" />
 	<target name="genBuild">
 		<echo message="About to generate feature" />
 		<exec executable="../../prepare_elements.sh"

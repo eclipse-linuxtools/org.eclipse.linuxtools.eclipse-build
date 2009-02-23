@@ -138,6 +138,7 @@
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ../generatebuild.xml" />
 			<arg line="-debug -consoleLog " />
+			<arg line="-DbuildArch=${buildArch} " />
 		</java>
 	</target>
 	<target name="copyToBuild" depends="generateBuildScripts">
