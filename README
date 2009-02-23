@@ -8,9 +8,12 @@ because some of the plugins are with custom build.xml files so they are just ski
 4. All plugins and features of org.eclipse.sdk builded.
 
 To test it do the following:
-run `ant`  - This build script is still work in progress but you should get:
+run `ant -DbuildArch=YOUR_ARCH`  - This build script is still work in progress but you should get:
 	* all the dependencies of pdebuild-ant in the bootstrap/plugins folder. 
 	* build.xml files regenerated whenever possible
 	* source plugins and features generated
 	* all.children of org.eclipse.sdk feature builded
 	* invoke generated assemble build file - only for testing purposes for now
+
+YOUR_ARCH should be in the way eclipse defines archs, e.g i*86 becomes x86, x86_64 is the same.
+I haven't tested or looked with other archs. Any help is welcome.

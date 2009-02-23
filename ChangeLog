@@ -1,5 +1,6 @@
 2009-02-23  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* README: Add info about the -DbuildArch parameter needed.
 	* build.properties: Remove buildArch it needs to be passed as a parameter.
 	* build.xml: Allow passing buildArch as a parameter.
 
