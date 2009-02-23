@@ -1,3 +1,8 @@
+2009-02-23  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Remove buildArch it needs to be passed as a parameter.
+	* build.xml: Allow passing buildArch as a parameter.
+
 2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Invoke jarIn by default.

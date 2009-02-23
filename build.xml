@@ -3,6 +3,7 @@
 	<target name="cleanBuild" depends="clean,jarIn" />
 	<property name="fileName" value="SDK" />
 	<property file="build.properties" />
+	<property name="buildArch" value="x86" />
 	<available file="${fileName}" property="fetched" value="true" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="SDK/plugins">
@@ -87,6 +88,7 @@
 		</copy>
 	</target>
 	<target name="clean" depends="fetch">
+		<echo>${buildArch}</echo>
 		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
@@ -206,7 +208,8 @@
 		<taskdef name="eclipse.brand"
 		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
 		         classpathref="pdebuildClasspath" />
-		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml" dir="build" >
+		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml"
+		     dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="3.5M5" />
 			<property name="collectingFolder" value="collected" />
