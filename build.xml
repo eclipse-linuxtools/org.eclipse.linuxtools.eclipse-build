@@ -50,7 +50,7 @@
 	<target name="fetch" unless="fetched">
 		<ant antfile="fetch.xml" />
 	</target>
-	<target name="bootstrap" depends="fetch">
+	<target name="bootstrap" depends="applyPatches">
 		<subant>
 			<filelist refid="depsDirs" />
 		</subant>
@@ -218,4 +218,8 @@
 			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
 	</target>
+	<target name="applyPatches" depends="fetch">
+		<patch patchfile="./patches/eclipse-buildswtnatives.patch" dir="./SDK" strip="0"/>
+	</target>
+	
 </project>

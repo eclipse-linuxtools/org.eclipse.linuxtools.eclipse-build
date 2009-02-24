@@ -1,3 +1,8 @@
+2009-02-24  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-buildswtnatives.patch: New file.
+	* build.xml: Add patch for building swt native parts. 
+
 2009-02-23  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* generatebuild.xml: Allow passing buildArch as a parameter.
