@@ -1,3 +1,10 @@
+2009-03-22  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* bootstrap/configuration/config.ini: Adapt to pdebuild changes.
+	* build.properties: Flatten dependencies.
+	* build.xml: Simplify build step.
+	* fetch.xml: Simplify srcBuild definition.
+
 2009-03-03  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* fetch.xml: Remove so files after unzipping.
