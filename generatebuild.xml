@@ -16,7 +16,8 @@
 		<eclipse.buildScript elements="feature@org.eclipse.sdk"
 		                     configInfo="linux,gtk,${buildArch}"
 		                     buildingosgi="true"
-		                     recursivegeneration="true" children="true"/>
+		                     recursivegeneration="true"
+		                     children="true" />
 	</target>
 
 </project>

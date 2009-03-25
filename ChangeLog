@@ -1,3 +1,12 @@
+2009-03-25  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* pdebuild.xml: New file.
+	* bootstrap/configuration/config.ini: Adapt to latest I-build.
+	* build.properties: Add buildArch.
+	* build.xml: Pde-build bootstrap in new file.
+	* fetch.xml:  Adapt to latest I-build.
+	* generatebuild.xml: Format.
+
 2009-03-22  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* bootstrap/configuration/config.ini: Adapt to pdebuild changes.
