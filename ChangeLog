@@ -1,5 +1,10 @@
 2009-03-25  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* prepare_elements.sh: Removed.
+	* generatebuild.xml: Preparing elements done in ant instead of sh. Patch by Marvin Schmidt.
+	 
+2009-03-25  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* pdebuild.xml: New file.
 	* bootstrap/configuration/config.ini: Adapt to latest I-build.
 	* build.properties: Add buildArch.

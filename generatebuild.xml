@@ -4,9 +4,19 @@
 	<property name="buildArch" value="x86" />
 	<target name="genBuild">
 		<echo message="About to generate feature" />
-		<exec executable="../../prepare_elements.sh"
-		      outputproperty="plugins"
-		      dir="./build/plugins" />
+		<pathconvert pathsep=", " property="plugins">
+			<dirset dir="./build/plugins">
+				<include name="*" />
+				<exclude name="org.eclipse.equinox.http.jetty_2.0.0" />
+			</dirset>
+
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="plugin@*" />
+				</chainedmapper>
+			</mapper>
+		</pathconvert>
 		<eclipse.generateFeature featureId="${featureId}"
 		                         buildDirectory="${buildDirectory}"
 		                         baseLocation="${baseLocation}"
