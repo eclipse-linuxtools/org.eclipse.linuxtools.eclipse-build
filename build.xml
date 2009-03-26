@@ -49,19 +49,58 @@
 		</java>
 	</target>
 	<target name="buildAll" depends="generateBuildScripts">
+		<!--FIXME Ugly hack because?  flattenDependencies doesn't work . -->
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+			<property name="arch" value="${buildArch}" />
+			<property name="javacFailOnError" value="false" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.help"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+			<property name="arch" value="${buildArch}" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="clean" />
+			<property name="ws" value="gtk" />
+			<property name="os" value="linux" />
+			<property name="arch" value="${buildArch}" />
+			<property name="javacFailOnError" value="false" />
+		</ant>
+		<!-- END OF HACK -->
 		<ant antfile="build.xml"
 		     dir="build/features/org.eclipse.sdk"
 		     target="all.children"
 		     inheritall="true">
 			<property name="target" value="build.jars" />
-			<property name="javacSource" value="1.5" />
-			<property name="javacTarget" value="1.5" />
 			<property name="ws" value="gtk" />
 			<property name="os" value="linux" />
 			<property name="arch" value="${buildArch}" />
-			<property name="flattenDependencies" value="true" />
 		</ant>
 	</target>
+	<path id="pdebuildClasspath">
+		<pathelement location="build/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
+		<pathelement location="build/plugins/org.eclipse.pde.build/pdebuild.jar" />
+		<pathelement path="build/plugins/org.eclipse.equinox.common/@dot" />
+		<pathelement path="build/plugins/org.eclipse.core.runtime/@dot" />
+		<pathelement location="build/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
+		<pathelement path="build/plugins/org.eclipse.osgi/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.launcher/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
+	</path>
 	<target name="jarIn" depends="buildAll">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"

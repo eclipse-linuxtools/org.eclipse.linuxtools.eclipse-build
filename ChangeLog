@@ -1,3 +1,9 @@
+2009-03-26  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Define javacSource and javacTarget here.
+	* build.xml: Build hack again.
+	* fetch.xml: New I-build.
+
 2009-03-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* prepare_elements.sh: Removed.

@@ -1,6 +1,6 @@
 <project name="Fetch srcIncluded zip" default="newSources" basedir=".">
 	<property name="downloadFileID"
-        value="I20090324-1325" />
+        value="I20090325-1135" />
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${downloadFileID}.zip" />
 	<available file="${fileName}" property="downloaded" value="true" />
