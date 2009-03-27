@@ -1,3 +1,10 @@
+2009-03-27  Alexander Kurtakov  <akurtako@redhat.com>
+	Use symlinks to ease switching to new builds. Thanks to Marvin Schmidt.
+	* bootstrap/configuration/config.ini: Use symlink instead of versioned dir.
+	* build.xml: Likewise. Add cleanAll target.
+	* fetch.xml: Add clean target.
+	* pdebuild.xml: Enhance clean target. Create symlinks for o.e.osgi and o.e.equinox.launcher.
+
 2009-03-26  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.properties: Define javacSource and javacTarget here.

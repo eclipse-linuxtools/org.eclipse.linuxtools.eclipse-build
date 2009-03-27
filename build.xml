@@ -15,6 +15,11 @@
 	<target name="clean" depends="fetch">
 		<delete dir="build" />
 	</target>
+	<target name="cleanAll">
+		<ant antfile="pdebuild.xml" target="clean" />
+		<ant antfile="fetch.xml" target="clean" />
+		<delete dir="build" />
+	</target>
 	<target name="prepareBuildScriptGeneration" depends="bootstrap">
 		<delete dir="build" />
 		<mkdir dir="build/features" />
@@ -39,7 +44,7 @@
 		      dir="bootstrap"
 		      failonerror="true">
 			<classpath>
-				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher_1.0.200.v20090306-1900" />
+				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />

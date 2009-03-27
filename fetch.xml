@@ -1,6 +1,5 @@
 <project name="Fetch srcIncluded zip" default="newSources" basedir=".">
-	<property name="downloadFileID"
-        value="I20090325-1135" />
+	<property name="downloadFileID" value="I20090325-1135" />
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${downloadFileID}.zip" />
 	<available file="${fileName}" property="downloaded" value="true" />
@@ -17,9 +16,11 @@
 		<unzip dest="SDK" src="${downloadFileName}" />
 		<delete>
 			<fileset dir="SDK">
-				<include name="**/*.so"/>
+				<include name="**/*.so" />
 			</fileset>
 		</delete>
-
+	</target>
+	<target name="clean">
+		<delete dir="SDK" />
 	</target>
 </project>

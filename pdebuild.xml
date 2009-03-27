@@ -93,12 +93,35 @@
 		<copy todir="bootstrap/plugins" flatten="false">
 			<fileset refid="orbitDeps" />
 		</copy>
+		<!-- symlink o.e.osgi to o.e.osgi_<VERSION> -->
+		<dirset dir="bootstrap/plugins"
+		        includes="org.eclipse.osgi_*"
+		        id="osgitest" />
+
+		<property name="osgiplugin" refid="osgitest" />
+		<echo message="${osgiplugin}" />
+
+		<symlink link="bootstrap/plugins/org.eclipse.osgi"
+		         resource="${osgiplugin}"
+		         overwrite="true" />
+		<!-- symlink o.e.equinox.launcher to o.e.equinox.launcher_<VERSION> -->
+		<dirset dir="bootstrap/plugins"
+		        includes="org.eclipse.equinox.launcher_*"
+		        id="launcher" />
+
+		<property name="launcherplugin" refid="launcher" />
+		<echo message="${launcherplugin}" />
+
+		<symlink link="bootstrap/plugins/org.eclipse.equinox.launcher"
+		         resource="${launcherplugin}"
+		         overwrite="true" />
+
 	</target>
-	<target name="clean" depends="fetch">
-		<echo>${buildArch}</echo>
-		<subant target="clean">
-			<filelist refid="depsDirs" />
-		</subant>
+	<target name="clean" >
 		<delete dir="bootstrap/plugins" />
+		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />
+		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
+		<delete dir="bootstrap/configuration/org.eclipse.osgi" />
+		<delete dir="bootstrap/workspace" />
 	</target>
 </project>
