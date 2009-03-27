@@ -1,4 +1,9 @@
 2009-03-27  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Put buildID here.
+	* fetch.xml: Move buildId to build.properties.
+
+2009-03-27  Alexander Kurtakov  <akurtako@redhat.com>
 	Use symlinks to ease switching to new builds. Thanks to Marvin Schmidt.
 	* bootstrap/configuration/config.ini: Use symlink instead of versioned dir.
 	* build.xml: Likewise. Add cleanAll target.

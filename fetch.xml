@@ -1,10 +1,9 @@
 <project name="Fetch srcIncluded zip" default="newSources" basedir=".">
-	<property name="downloadFileID" value="I20090325-1135" />
 	<property name="downloadFileName"
-	          value="eclipse-sourceBuild-srcIncluded-${downloadFileID}.zip" />
+	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
 	<available file="${fileName}" property="downloaded" value="true" />
 	<target name="download" unless="downloaded">
-		<get src="http://download.eclipse.org/eclipse/downloads/drops/${downloadFileID}/${downloadFileName}"
+		<get src="http://download.eclipse.org/eclipse/downloads/drops/${buildID}/${downloadFileName}"
 		     dest="${downloadFileName}"
 		     usetimestamp="true" />
 	</target>
