@@ -1,4 +1,4 @@
-<project name="Fetch srcIncluded zip" default="newSources" basedir=".">
+<project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
 	<available file="${fileName}" property="downloaded" value="true" />
@@ -18,6 +18,11 @@
 				<include name="**/*.so" />
 			</fileset>
 		</delete>
+	</target>
+	<target name="applyPatches" depends="newSources">
+		<patch patchfile="./patches/eclipse-buildswtnatives.patch"
+		       dir="./SDK"
+		       strip="0" />
 	</target>
 	<target name="clean">
 		<delete dir="SDK" />
