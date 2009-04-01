@@ -1,3 +1,10 @@
+2009-04-01  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* bootstrap/configuration/config.ini: Add new p2.repository to the classpath.
+	* build.properties: Switch to new I-build.
+	* patches/eclipse-buildswtnatives.patch: Update patch.
+	* pdebuild.xml: Add new p2.repository to the classpath.
+
 2009-03-31  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Move apply-patches to fetch.xml.

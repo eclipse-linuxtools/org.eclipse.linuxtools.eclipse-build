@@ -22,6 +22,7 @@
 		<file name="org.eclipse.equinox.frameworkadmin.equinox" />
 		<file name="org.eclipse.equinox.p2.jarprocessor" />
 		<file name="org.eclipse.equinox.security" />
+		<file name="org.eclipse.equinox.p2.repository" />
 		<file name="org.eclipse.equinox.p2.artifact.repository" />
 		<file name="org.eclipse.equinox.p2.metadata.repository" />
 		<file name="org.eclipse.equinox.p2.publisher" />
