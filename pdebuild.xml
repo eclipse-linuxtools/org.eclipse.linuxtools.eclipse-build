@@ -37,7 +37,12 @@
 		<file name="org.eclipse.pde.build" />
 		<file name="org.eclipse.equinox.launcher" />
 		<file name="org.eclipse.osgi.services" />
+		<file name="org.eclipse.equinox.p2.console" />
 		<file name="org.eclipse.equinox.p2.director.app" />
+		<file name="org.eclipse.core.net" />
+		<file name="org.eclipse.update.core" />
+		<file name="org.eclipse.equinox.p2.garbagecollector" />
+		<file name="org.eclipse.equinox.p2.exemplarysetup" />
 	</filelist>
 	<fileset dir="SDK/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
@@ -46,6 +51,7 @@
 		<include name="org.apache.ant_*/**" />
 		<include name="org.mortbay.jetty*" />
 		<include name="org.apache.lucene*" />
+		<include name="org.sat4j*" />
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="SDK/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
@@ -124,5 +130,6 @@
 		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
 		<delete dir="bootstrap/configuration/org.eclipse.osgi" />
 		<delete dir="bootstrap/workspace" />
+		<delete dir="bootstrap/p2" />
 	</target>
 </project>
