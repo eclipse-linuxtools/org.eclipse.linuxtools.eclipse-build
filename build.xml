@@ -1,4 +1,4 @@
-<project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
+<project name="Eclipse SDK build" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
 	<target name="cleanBuild" depends="clean,jarIn" />
 	<property name="fileName" value="SDK" />
@@ -116,8 +116,14 @@
 		<taskdef name="eclipse.brand"
 		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
 		         classpathref="pdebuildClasspath" />
-		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml"
-		     dir="build">
+		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.x86.xml" dir="build">
+			<property name="buildLabel" value="3.5" />
+			<property name="buildId" value="3.5M6" />
+			<property name="collectingFolder" value="collected" />
+			<property name="archivePrefix" value="eclipse" />
+			<property name="generateFeatureVersionSuffix" value="true" />
+		</ant>
+		<ant antfile="package.org.eclipse.sdk.linux.gtk.x86.xml" dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="3.5M6" />
 			<property name="collectingFolder" value="collected" />
