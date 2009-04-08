@@ -1,7 +1,7 @@
 <project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
-	<available file="${fileName}" property="skipFetch" value="true" />
+	<available file="${sdkSource}" property="skipFetch" value="true" />
 	<target name="download" unless="skipFetch">
 		<get src="http://download.eclipse.org/eclipse/downloads/drops/${buildID}/${downloadFileName}"
 		     dest="${downloadFileName}"
@@ -13,24 +13,24 @@
 	<target name="newSources"
 	        depends="download"
 	        description="Replace old unzipped sources with unmodified from the downloaded zip">
-		<delete dir="SDK" />
-		<mkdir dir="SDK" />
-		<unzip dest="SDK" src="${downloadFileName}" />
+		<delete dir="${sdkSource}" />
+		<mkdir dir="${sdkSource}" />
+		<unzip dest="${sdkSource}" src="${downloadFileName}" />
 		<delete>
-			<fileset dir="SDK">
+			<fileset dir="${sdkSource}">
 				<include name="**/*.so" />
 			</fileset>
 		</delete>
 	</target>
 	<target name="applyPatches" depends="newSources">
 		<patch patchfile="./patches/eclipse-buildswtnatives.patch"
-		       dir="./SDK"
+		       dir="./${sdkSource}"
 		       strip="0" />
 		<!-- Fetch due to bug in srcIncluded generation.-->
-		<copy tofile="SDK/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
+		<copy tofile="${sdkSource}/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
 		      file="com.ibm.icu.source_4.0.1.v20090109.jar" />
 	</target>
 	<target name="clean">
-		<delete dir="SDK" />
+		<delete dir="${sdkSource}" />
 	</target>
 </project>

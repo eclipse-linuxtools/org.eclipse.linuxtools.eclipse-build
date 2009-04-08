@@ -1,10 +1,9 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
-	<property name="fileName" value="SDK" />
 	<property file="build.properties" />
-	<available file="${fileName}" property="fetched" value="true" />
+	<available file="${sdkSource}" property="fetched" value="true" />
 	<!-- Order in this filelist is critical for building !!! -->
-	<filelist id="depsDirs" dir="SDK/plugins">
+	<filelist id="depsDirs" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.osgi" />
 		<file name="org.eclipse.equinox.common" />
 		<file name="org.eclipse.core.jobs" />
@@ -44,7 +43,7 @@
 		<file name="org.eclipse.equinox.p2.garbagecollector" />
 		<file name="org.eclipse.equinox.p2.exemplarysetup" />
 	</filelist>
-	<fileset dir="SDK/plugins" id="orbitDeps">
+	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
 		<include name="com.ibm.icu_*" />
 		<include name="org.eclipse.ecf*" />
@@ -54,17 +53,17 @@
 		<include name="org.sat4j*" />
 	</fileset>
 	<path id="pdebuildClasspath">
-		<pathelement location="SDK/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
-		<pathelement location="SDK/plugins/org.eclipse.pde.build/pdebuild.jar" />
-		<pathelement path="SDK/plugins/org.eclipse.equinox.common/@dot" />
-		<pathelement path="SDK/plugins/org.eclipse.core.runtime/@dot" />
-		<pathelement location="SDK/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
-		<pathelement path="SDK/plugins/org.eclipse.osgi/@dot" />
-		<pathelement path="SDK/plugins/org.eclipse.equinox.launcher/@dot" />
-		<pathelement path="SDK/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
-		<pathelement path="SDK/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
+		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
+		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/pdebuild.jar" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.common/@dot" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.core.runtime/@dot" />
+		<pathelement location="${sdkSource}/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.osgi/@dot" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.launcher/@dot" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
+		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
 	</path>
-	<fileset id="depsZips" dir="SDK/plugins" includes="**/*_*.zip">
+	<fileset id="depsZips" dir="${sdkSource}/plugins" includes="**/*_*.zip">
 	</fileset>
 	<target name="fetch" unless="fetched">
 		<ant antfile="fetch.xml" />
