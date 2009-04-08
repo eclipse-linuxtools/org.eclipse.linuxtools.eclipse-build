@@ -1,10 +1,20 @@
 <project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
-	<available file="${fileName}" property="downloaded" value="true" />
-	<target name="download" unless="downloaded">
+	<condition property="fetch">
+		<and>
+			<available file="${fileName}" />
+			<not>
+				<equals arg1="${skipFetch}" arg2="true" />
+			</not>
+		</and>
+	</condition>
+	<target name="download" if="fetch">
 		<get src="http://download.eclipse.org/eclipse/downloads/drops/${buildID}/${downloadFileName}"
 		     dest="${downloadFileName}"
+		     usetimestamp="true" />
+		<get src="http://download.eclipse.org/tools/orbit/downloads/drops/S20090307012903/bundles/com.ibm.icu.source_4.0.1.v20090109.jar"
+		     dest="com.ibm.icu.source_4.0.1.v20090109.jar"
 		     usetimestamp="true" />
 	</target>
 	<target name="newSources"
@@ -24,8 +34,6 @@
 		       dir="./SDK"
 		       strip="0" />
 		<!-- Fetch due to bug in srcIncluded generation.-->
-		<get src="http://download.eclipse.org/tools/orbit/downloads/drops/S20090307012903/bundles/com.ibm.icu.source_4.0.1.v20090109.jar"
-		     dest="com.ibm.icu.source_4.0.1.v20090109.jar" />
 		<copy tofile="SDK/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
 		      file="com.ibm.icu.source_4.0.1.v20090109.jar" />
 	</target>

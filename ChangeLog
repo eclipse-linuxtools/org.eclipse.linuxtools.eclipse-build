@@ -1,6 +1,7 @@
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
-	* fetch.xml: Fix icu.source to be fetched only once.
+	* fetch.xml: Fix icu.source to be fetched only once. Add property to control fetch.
+	
 	
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
