@@ -25,7 +25,9 @@
 		       strip="0" />
 		<!-- Fetch due to bug in srcIncluded generation.-->
 		<get src="http://download.eclipse.org/tools/orbit/downloads/drops/S20090307012903/bundles/com.ibm.icu.source_4.0.1.v20090109.jar"
-		     dest="SDK/plugins/com.ibm.icu.source_4.0.1.v20090109.jar" />
+		     dest="com.ibm.icu.source_4.0.1.v20090109.jar" />
+		<copy tofile="SDK/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
+		      file="com.ibm.icu.source_4.0.1.v20090109.jar" />
 	</target>
 	<target name="clean">
 		<delete dir="SDK" />

@@ -1,5 +1,9 @@
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* fetch.xml: Fix icu.source to be fetched only once.
+	
+2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* build.properties: New I-build.
 	* build.xml: Invoke packake.* to finish build.
 	* fetch.xml: Fetch com.ibm.icu.source bundle due to problem in srcIncluded.
