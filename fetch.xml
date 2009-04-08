@@ -1,15 +1,8 @@
 <project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
-	<condition property="fetch">
-		<and>
-			<available file="${fileName}" />
-			<not>
-				<equals arg1="${skipFetch}" arg2="true" />
-			</not>
-		</and>
-	</condition>
-	<target name="download" if="fetch">
+	<available file="${fileName}" property="skipFetch" value="true" />
+	<target name="download" unless="skipFetch">
 		<get src="http://download.eclipse.org/eclipse/downloads/drops/${buildID}/${downloadFileName}"
 		     dest="${downloadFileName}"
 		     usetimestamp="true" />
