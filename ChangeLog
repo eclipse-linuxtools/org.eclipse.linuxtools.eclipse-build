@@ -1,3 +1,7 @@
+2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Manually insert ecf bundles in the resulting zip.
+
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 	Apply modified patch from #271657 and add a playground for p2 based build.
 	* build-p2.xml: New file.

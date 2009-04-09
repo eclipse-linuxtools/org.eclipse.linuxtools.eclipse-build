@@ -1,6 +1,6 @@
 <project name="Eclipse SDK build" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,jarIn" />
+	<target name="cleanBuild" depends="clean,insert-ecf" />
 	<property name="sdkSource" value="SDK" />
 	<property file="build.properties" />
 	<property name="buildArch" value="x86" />
@@ -106,7 +106,7 @@
 		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
 	</path>
-	<target name="jarIn" depends="buildAll">
+	<target name="assemble" depends="buildAll">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
@@ -130,5 +130,13 @@
 			<property name="archivePrefix" value="eclipse" />
 			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
+	</target>
+	<target name="insert-ecf" depends="assemble">
+		<zip destfile="build/3.5/org.eclipse.sdk-3.5M6-linux.gtk.x86.zip"
+		     update="true">
+			<zipfileset dir="build/plugins"
+			            includes="org.eclipse.ecf*.jar"
+			            prefix="eclipse/plugins" />
+		</zip>
 	</target>
 </project>
