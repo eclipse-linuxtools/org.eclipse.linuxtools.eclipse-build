@@ -177,4 +177,16 @@
 			            prefix="eclipse/plugins" />
 		</zip>
 	</target>
+    <target name="distSrc" description="Creates an all-in-one zip.">
+    	<ant antfile="fetch.xml" target="download" /> 
+    	<zip destfile="eclipse-SDK-all.zip">
+    		<fileset dir="." includes="eclipse-sourceBuild-srcIncluded-${buildID}.zip"/>
+    		<fileset dir="." includes="com.ibm.icu.source_4.0.1.v20090109.jar"/>
+    		<fileset dir="." includes="*.xml"/>
+    		<fileset dir="." includes="*.properties"/>
+    		<fileset dir="." includes="*.mediawiki"/>
+    		<fileset dir="." includes="bootstrap/**"/>
+    		<fileset dir="." includes="patches/**"/>
+    	</zip>
+    </target>
 </project>

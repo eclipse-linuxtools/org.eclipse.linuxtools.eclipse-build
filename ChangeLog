@@ -1,7 +1,11 @@
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Add distSrc target.
+	
+2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* patches/eclipse-swt-buildagainstxulrunner.patch: New file.
-	* build.xml: Compile native parts.
+	* build.xml: Compile native parts. 
 	* fetch.xml: Apply one more patch.
 
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
