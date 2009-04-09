@@ -106,7 +106,45 @@
 		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
 	</path>
-	<target name="assemble" depends="buildAll">
+	<target name="compilelibs" >
+		<ant antfile="build.xml"
+		     target="build.nativeLibraries"
+		     dir="build/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
+
+		<property name="launcherlibs"
+		          value="build/features/org.eclipse.equinox.executable" />
+		<exec dir="${launcherlibs}/library/gtk/"
+		      executable="sh"
+		      failonerror="true">
+			<arg line="build.sh" />
+		</exec>
+		<copy file="${launcherlibs}/library/gtk/eclipse"
+		      todir="build/eclipse/" />
+
+		<property name="launcherfragment"
+		          value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
+
+		<copy file="${launcherlibs}/library/gtk/eclipse"
+		      todir="build/features/org.eclipse.equinox.executable/contributed/gtk/linux/${buildArch}/" />
+		<copy todir="build/plugins/${launcherfragment}">
+			<fileset dir="${launcherlibs}/library/gtk">
+				<include name="**/*.so" />
+			</fileset>
+		</copy>
+
+		<!-- build liblocalfile -->
+		<exec dir="build/plugins/org.eclipse.core.filesystem/natives/unix/linux"
+		      executable="make"
+		      failonerror="true" />
+		<move file="build/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so"
+		      todir="build/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		</move>
+		<!-- build libupdate -->
+		<ant dir="build/plugins/org.eclipse.update.core.linux/src"
+		     antfile="build.xml" />
+
+	</target>
+	<target name="assemble" depends="buildAll, compilelibs">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />

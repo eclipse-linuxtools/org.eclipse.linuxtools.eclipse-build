@@ -1,0 +1,33 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.swt
+Index: Eclipse SWT PI/gtk/library/build.sh
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh,v
+retrieving revision 1.48
+diff -u -r1.48 build.sh
+--- Eclipse SWT PI/gtk/library/build.sh	5 Jun 2008 17:31:51 -0000	1.48
++++ Eclipse SWT PI/gtk/library/build.sh	6 Apr 2009 21:11:22 -0000
+@@ -99,19 +99,19 @@
+ 		MOZILLA_LIBS=`pkg-config --libs mozilla-xpcom`
+ 		export MOZILLA_INCLUDES
+ 		export MOZILLA_LIBS
+-		MAKE_MOZILLA=make_mozilla
++		MAKE_MOZILLA="make_mozilla make_xpcominit"
+ 	elif [ x`pkg-config --exists firefox-xpcom && echo YES` = "xYES" ]; then
+ 		MOZILLA_INCLUDES=`pkg-config --cflags firefox-xpcom`
+ 		MOZILLA_LIBS=`pkg-config --libs firefox-xpcom`
+ 		export MOZILLA_INCLUDES
+ 		export MOZILLA_LIBS
+-		MAKE_MOZILLA=make_mozilla
++		MAKE_MOZILLA="make_mozilla make_xpcominit"
+ 	elif [ x`pkg-config --exists libxul && echo YES` = "xYES" ]; then
+ 		XULRUNNER_INCLUDES=`pkg-config --cflags libxul`
+-		XULRUNNER_LIBS=`pkg-config --libs libxul`
++		XULRUNNER_LIBS="`pkg-config --libs libxul` -lxpcomglue"
+ 		export XULRUNNER_INCLUDES
+ 		export XULRUNNER_LIBS
+-		MAKE_MOZILLA=make_xulrunner
++		MAKE_MOZILLA="make_xulrunner make_xpcominit"
+ 	else
+ 		echo "None of the following libraries were found:  Mozilla/XPCOM, Firefox/XPCOM, or XULRunner/XPCOM"
+ 		echo "    *** Mozilla embedding support will not be compiled."

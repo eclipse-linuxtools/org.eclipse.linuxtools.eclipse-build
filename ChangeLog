@@ -1,4 +1,10 @@
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-swt-buildagainstxulrunner.patch: New file.
+	* build.xml: Compile native parts.
+	* fetch.xml: Apply one more patch.
+
+2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
 	Switch docs to mediawiki format.
 	* .settings: New file.
 	* ABOUT.mediawiki: New file.

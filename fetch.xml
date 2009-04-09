@@ -26,6 +26,9 @@
 		<patch patchfile="./patches/eclipse-buildswtnatives.patch"
 		       dir="./${sdkSource}"
 		       strip="0" />
+		<patch patchfile="./patches/eclipse-swt-buildagainstxulrunner.patch"
+				       dir="./${sdkSource}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
+				       strip="3" />
 		<!-- Fetch due to bug in srcIncluded generation.-->
 		<copy tofile="${sdkSource}/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
 		      file="com.ibm.icu.source_4.0.1.v20090109.jar" />
