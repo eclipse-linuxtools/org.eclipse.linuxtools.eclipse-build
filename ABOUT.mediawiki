@@ -1,14 +1,13 @@
-*** About building Eclipse ***
+'''About building Eclipse''' 
 
 Building Eclipse is not a simple process. You can not simply download a tarball from eclipse.org and
 build it. There are a lot of manual interactions needed.
 
-*** About eclipse-build ***
+'''About eclipse-build''' 
 
 With eclipse-build we hope to simplify the build significantly.
 Current plan is to create:
-1. Working ant build.
-2. Common place and infrastructure for storing/applying patches needed for clean build 
-on various linux distributions.
-3. Standartize the usage of system libraries. 
+# Working ant build.
+# Common place and infrastructure for storing/applying patches needed for clean build on various linux distributions.
+# Standartize the usage of system libraries. 
 

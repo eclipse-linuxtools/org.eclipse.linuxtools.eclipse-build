@@ -1,5 +1,12 @@
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
-
+	Switch docs to mediawiki format.
+	* .settings: New file.
+	* ABOUT.mediawiki: New file.
+	* README.mediawiki: New file.
+	* TODO.mediawiki: New file.
+	* ABOUT: Removed.
+	* README: Removed.
+	* TODO: Removed.
 	* build.xml: Manually insert ecf bundles in the resulting zip.
 
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
