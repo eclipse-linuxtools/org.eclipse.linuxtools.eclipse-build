@@ -1,3 +1,7 @@
+2009-04-14  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Switch to latest I-build.
+
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Add distSrc target.
