@@ -1,3 +1,13 @@
+2009-04-18  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* assemble-p2.xml: New file.
+	* build-p2.xml: Sync with main build.
+	* generatebuild-p2.xml: Likewise.
+	* build.properties: Externalise some properties here.
+	* build.xml: Fix buildArch usage and remove not needed props.
+	* fetch.xml: Fix buildId in the sources.
+	* p2.properties: Keep only p2 specific properties.
+
 2009-04-16  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.properties: Switch to latest I-build.

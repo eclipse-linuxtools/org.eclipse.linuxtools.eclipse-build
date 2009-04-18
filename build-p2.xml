@@ -1,9 +1,11 @@
-<project name="Eclipse SDK build using p2" default="cleanBuild" basedir=".">
+<project name="Eclipse SDK build" default="cleanBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,jarIn" />
-	<property name="fileName" value="SDK" />
+	<target name="cleanBuild" depends="clean,insert-ecf" />
+	<property name="sdkSource" value="SDK" />
+	<property file="build.properties" />
 	<property file="p2.properties" />
-	<available file="${fileName}" property="fetched" value="true" />
+	<property name="buildArch" value="x86" />
+	<available file="${sdkSource}" property="fetched" value="true" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<target name="fetch" unless="fetched">
 		<ant antfile="fetch.xml" />
@@ -24,12 +26,17 @@
 		<mkdir dir="build/features" />
 		<mkdir dir="build/plugins" />
 		<copy todir="build/plugins/">
-			<fileset dir="SDK/plugins/">
+			<fileset dir="${sdkSource}/plugins/">
 				<exclude name="**/*.source_*/" />
 			</fileset>
 		</copy>
+		<copy todir="build/features/">
+			<fileset dir="${sdkSource}/features/">
+				<exclude name="**/*.source/" />
+			</fileset>
+		</copy>
 		<copy todir="build/plugins/">
-			<fileset dir="SDK/plugins/">
+			<fileset dir="${sdkSource}/plugins/">
 				<include name="org.apache.ant.source_*" />
 				<include name="org.apache.commons.codec.source_*" />
 				<include name="org.apache.commons.httpclient.source_*" />
@@ -42,11 +49,7 @@
 				<include name="javax.servlet.jsp.source_*" />
 				<include name="org.junit.source_*" />
 				<include name="org.objectweb.asm.source_*" />
-			</fileset>
-		</copy>
-		<copy todir="build/features/">
-			<fileset dir="SDK/features/">
-				<exclude name="**/*.source/" />
+				<include name="com.ibm.icu.source_*" />
 			</fileset>
 		</copy>
 		<!-- TODO is it really needed -->
@@ -66,8 +69,6 @@
 			<arg line="-buildfile ../generatebuild-p2.xml" />
 			<arg line="-debug -consoleLog " />
 			<arg line="-DbuildArch=${buildArch} " />
-			<arg line="-profileProperties -p2.os linux -p2.ws gtk -p2.arch x86 " />
-			<arg line="-configs linux,gtk,x86 " />
 		</java>
 	</target>
 	<target name="buildAll" depends="generateBuildScripts">
@@ -123,36 +124,88 @@
 		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.publisher/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.artifact.repository/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.core/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.p2.artifact.repository/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.metadata/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.app/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.metadata.repository/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/@dot" />
+		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/lib/repository-tools-ant.jar" />
 	</path>
-	<target name="jarIn" >
-		<taskdef name="eclipse.versionReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.idReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.IdReplaceTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.brand"
-		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.gatherBundle"
-		         classname="org.eclipse.pde.internal.build.publisher.GatherBundleTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.gatherBundle"
-		         classname="org.eclipse.pde.internal.build.publisher.GatherFeatureTask"
-		         classpathref="pdebuildClasspath" />
-		<ant antfile="assemble.org.eclipse.sdk.p2.xml" dir="build">
-			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
-			<property name="customTargets" value="plugins/org.eclipse.pde.build/feature/builder/customTargets.xml" />
-		</ant>
+	<target name="compilelibs">
+		<ant antfile="build.xml"
+		     target="build.nativeLibraries"
+		     dir="build/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
+
+		<property name="launcherlibs"
+		          value="build/features/org.eclipse.equinox.executable" />
+		<exec dir="${launcherlibs}/library/gtk/"
+		      executable="sh"
+		      failonerror="true">
+			<arg line="build.sh" />
+		</exec>
+		<copy file="${launcherlibs}/library/gtk/eclipse"
+		      todir="build/eclipse/" />
+
+		<property name="launcherfragment"
+		          value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
+
+		<copy file="${launcherlibs}/library/gtk/eclipse"
+		      todir="build/features/org.eclipse.equinox.executable/contributed/gtk/linux/${buildArch}/" />
+		<copy todir="build/plugins/${launcherfragment}">
+			<fileset dir="${launcherlibs}/library/gtk">
+				<include name="**/*.so" />
+			</fileset>
+		</copy>
+
+		<!-- build liblocalfile -->
+		<exec dir="build/plugins/org.eclipse.core.filesystem/natives/unix/linux"
+		      executable="make"
+		      failonerror="true" />
+		<move file="build/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so"
+		      todir="build/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		</move>
+		<!-- build libupdate -->
+		<ant dir="build/plugins/org.eclipse.update.core.linux/src"
+		     antfile="build.xml" />
+
+	</target>
+	<target name="assemble" depends="buildAll, compilelibs">
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="bootstrap"
+		      failonerror="true">
+			<classpath>
+				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ../assemble-p2.xml" />
+			<arg line="-debug -consoleLog " />
+			<arg line="-DbuildArch=${buildArch} " />
+		</java>
+	</target>
+	<target name="insert-ecf" depends="assemble">
+		<zip destfile="build/3.5/org.eclipse.sdk-3.5M6-linux.gtk.x86.zip"
+		     update="true">
+			<zipfileset dir="build/plugins"
+			            includes="org.eclipse.ecf*.jar"
+			            prefix="eclipse/plugins" />
+		</zip>
+	</target>
+	<target name="distSrc" description="Creates an all-in-one zip.">
+		<ant antfile="fetch.xml" target="download" />
+		<zip destfile="eclipse-SDK-all.zip">
+			<fileset dir="."
+			         includes="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
+			<fileset dir="."
+			         includes="com.ibm.icu.source_4.0.1.v20090109.jar" />
+			<fileset dir="." includes="*.xml" />
+			<fileset dir="." includes="*.properties" />
+			<fileset dir="." includes="*.mediawiki" />
+			<fileset dir="." includes="bootstrap/**" />
+			<fileset dir="." includes="patches/**" />
+		</zip>
 	</target>
 </project>

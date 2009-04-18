@@ -1,4 +1,5 @@
 <project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
+	<property file="build.properties" />
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
 	<available file="${sdkSource}" property="skipFetch" value="true" />
@@ -22,7 +23,15 @@
 			</fileset>
 		</delete>
 	</target>
-	<target name="applyPatches" depends="newSources">
+	<target name="insertBuildId" depends="newSources">
+			<replace dir="${sdkSource}/plugins" value="${buildID}" token="@build@">
+				<include name="**/about.mappings" />
+			</replace>
+			<replace dir="${sdkSource}" value="${buildID}" token="@build@">
+				<include name="**/configuration/config.ini" />
+			</replace>
+		</target>
+	<target name="applyPatches" depends="insertBuildId">
 		<patch patchfile="./patches/eclipse-buildswtnatives.patch"
 		       dir="./${sdkSource}"
 		       strip="0" />

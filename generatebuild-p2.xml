@@ -1,7 +1,7 @@
 <project name="Pdebuild bootstrap" default="genBuild" basedir=".">
 	<property name="javacFailOnError" value="true" />
+	<property file="build.properties" />
 	<property file="p2.properties" />
-	<property name="buildArch" value="x86" />
 	<target name="genBuild">
 		<echo message="About to generate feature" />
 		<pathconvert pathsep=", " property="plugins">
