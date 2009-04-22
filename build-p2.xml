@@ -1,26 +1,22 @@
 <project name="Eclipse SDK build" default="cleanBuild" basedir=".">
-	<property name="javacFailOnError" value="true" />
-	<target name="cleanBuild" depends="clean,insert-ecf" />
-	<property name="sdkSource" value="SDK" />
 	<property file="build.properties" />
 	<property file="p2.properties" />
-	<property name="buildArch" value="x86" />
-	<available file="${sdkSource}" property="fetched" value="true" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
-	<target name="fetch" unless="fetched">
-		<ant antfile="fetch.xml" />
+
+	<target name="cleanBuild" depends="clean,insert-ecf" />
+
+	<target name="clean">
+		<delete dir="build" />
 	</target>
+
+	<target name="cleanAll" depends="clean">
+		<ant antfile="pdebuild.xml" target="clean" />
+	</target>
+
 	<target name="bootstrap" unless="bootstrapped">
 		<ant antfile="pdebuild.xml" />
 	</target>
-	<target name="clean" depends="fetch">
-		<delete dir="build" />
-	</target>
-	<target name="cleanAll">
-		<ant antfile="pdebuild.xml" target="clean" />
-		<ant antfile="fetch.xml" target="clean" />
-		<delete dir="build" />
-	</target>
+
 	<target name="prepareBuildScriptGeneration" depends="bootstrap">
 		<delete dir="build" />
 		<mkdir dir="build/features" />
@@ -56,6 +52,7 @@
 		<move tofile="build/plugins/org.junit"
 		      file="build/plugins/org.junit_3.8.2.v20090203-1005" />
 	</target>
+
 	<target name="generateBuildScripts" depends="prepareBuildScriptGeneration">
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
@@ -71,6 +68,7 @@
 			<arg line="-DbuildArch=${buildArch} " />
 		</java>
 	</target>
+
 	<target name="buildAll" depends="generateBuildScripts">
 		<!--FIXME Ugly hack because?  flattenDependencies doesn't work . -->
 		<ant antfile="build.xml"
@@ -113,6 +111,7 @@
 			<property name="arch" value="${buildArch}" />
 		</ant>
 	</target>
+
 	<path id="pdebuildClasspath">
 		<pathelement location="build/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
 		<pathelement location="build/plugins/org.eclipse.pde.build/pdebuild.jar" />
@@ -171,6 +170,7 @@
 		     antfile="build.xml" />
 
 	</target>
+
 	<target name="assemble" depends="buildAll, compilelibs">
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
@@ -186,26 +186,13 @@
 			<arg line="-DbuildArch=${buildArch} " />
 		</java>
 	</target>
+
 	<target name="insert-ecf" depends="assemble">
 		<zip destfile="build/3.5/org.eclipse.sdk-3.5M6-linux.gtk.x86.zip"
 		     update="true">
 			<zipfileset dir="build/plugins"
 			            includes="org.eclipse.ecf*.jar"
 			            prefix="eclipse/plugins" />
-		</zip>
-	</target>
-	<target name="distSrc" description="Creates an all-in-one zip.">
-		<ant antfile="fetch.xml" target="download" />
-		<zip destfile="eclipse-SDK-all.zip">
-			<fileset dir="."
-			         includes="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
-			<fileset dir="."
-			         includes="com.ibm.icu.source_4.0.1.v20090109.jar" />
-			<fileset dir="." includes="*.xml" />
-			<fileset dir="." includes="*.properties" />
-			<fileset dir="." includes="*.mediawiki" />
-			<fileset dir="." includes="bootstrap/**" />
-			<fileset dir="." includes="patches/**" />
 		</zip>
 	</target>
 </project>

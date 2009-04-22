@@ -1,9 +1,13 @@
-<project name="Fetch srcIncluded zip" default="applyPatches" basedir=".">
+<project name="Create all-in-one tarball" default="distSrc" basedir=".">
 	<property file="build.properties" />
 	<property name="downloadFileName"
 	          value="eclipse-sourceBuild-srcIncluded-${buildID}.zip" />
-	<available file="${sdkSource}" property="skipFetch" value="true" />
-	<target name="download" unless="skipFetch">
+
+	<target name="clean">
+		<delete dir="${sdkSource}" />
+	</target>
+
+	<target name="download">
 		<get src="http://download.eclipse.org/eclipse/downloads/drops/${buildID}/${downloadFileName}"
 		     dest="${downloadFileName}"
 		     usetimestamp="true" />
@@ -11,6 +15,7 @@
 		     dest="com.ibm.icu.source_4.0.1.v20090109.jar"
 		     usetimestamp="true" />
 	</target>
+
 	<target name="newSources"
 	        depends="download"
 	        description="Replace old unzipped sources with unmodified from the downloaded zip">
@@ -23,26 +28,50 @@
 			</fileset>
 		</delete>
 	</target>
+
 	<target name="insertBuildId" depends="newSources">
-			<replace dir="${sdkSource}/plugins" value="${buildID}" token="@build@">
-				<include name="**/about.mappings" />
-			</replace>
-			<replace dir="${sdkSource}" value="${buildID}" token="@build@">
-				<include name="**/configuration/config.ini" />
-			</replace>
-		</target>
+		<replace dir="${sdkSource}/plugins" value="${buildID}" token="@build@">
+			<include name="**/about.mappings" />
+		</replace>
+		<replace dir="${sdkSource}" value="${buildID}" token="@build@">
+			<include name="**/configuration/config.ini" />
+		</replace>
+	</target>
+
 	<target name="applyPatches" depends="insertBuildId">
 		<patch patchfile="./patches/eclipse-buildswtnatives.patch"
-		       dir="./${sdkSource}"
+		       dir="${sdkSource}"
 		       strip="0" />
 		<patch patchfile="./patches/eclipse-swt-buildagainstxulrunner.patch"
-				       dir="./${sdkSource}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
-				       strip="3" />
+		       dir="${sdkSource}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
+		       strip="3" />
+
 		<!-- Fetch due to bug in srcIncluded generation.-->
 		<copy tofile="${sdkSource}/plugins/com.ibm.icu.source_4.0.1.v20090109.jar"
 		      file="com.ibm.icu.source_4.0.1.v20090109.jar" />
 	</target>
-	<target name="clean">
-		<delete dir="${sdkSource}" />
+
+	<target name="distSrc"
+	        depends="applyPatches"
+	        description="Package the patched SDK, all scripts and documentation">
+		<basename property="ant.file.name" file="${ant.file}"/>
+
+		<tar destfile="eclipse-linuxBuild-${buildID}.tar.bz2" longfile="gnu" compression="bzip2">
+			<tarfileset dir=".">
+				<!-- SDK sources -->
+				<include name="${sdkSource}/**" />
+
+				<!-- bootstrap config -->
+				<include name="bootstrap/configuration/config.ini" />
+
+				<!-- all build scripts except this one -->
+				<include name="*.xml" />
+				<include name="*.properties" />
+				<exclude name="${ant.file.name}" />
+
+				<!-- documentation -->
+				<include name="*.mediawiki" />
+			</tarfileset>
+		</tar>
 	</target>
 </project>

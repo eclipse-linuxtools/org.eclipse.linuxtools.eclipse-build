@@ -1,7 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
 	<property file="build.properties" />
-	<available file="${sdkSource}" property="fetched" value="true" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.osgi" />
@@ -65,9 +64,6 @@
 	</path>
 	<fileset id="depsZips" dir="${sdkSource}/plugins" includes="**/*_*.zip">
 	</fileset>
-	<target name="fetch" unless="fetched">
-		<ant antfile="fetch.xml" />
-	</target>
 	<target name="bootstrap">
 		<subant>
 			<filelist refid="depsDirs" />

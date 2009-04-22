@@ -1,3 +1,11 @@
+2009-04-22  Alexander Kurtakov  <akurtako@redhat.com>
+	Apply patch from #272820 and update to newer I-build.
+	* build-p2.xml: Remove unneede parts.
+	* build.properties: Externalize sdkSource.
+	* build.xml: Remove unneeded parts.
+	* fetch.xml: Move distSrc here and modify it to create a patche sources tar.bz2.
+	* pdebuild.xml: Remove unneeded parts.
+
 2009-04-18  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* assemble-p2.xml: New file.
