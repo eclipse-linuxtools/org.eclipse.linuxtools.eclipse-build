@@ -1,3 +1,16 @@
+2009-04-29  Alexander Kurtakov  <akurtako@redhat.com>
+	Make p2.gathering=true by default. 
+	* assemble-p2.xml: Removed.
+	* build-p2.xml: Removed.
+	* generatebuild-p2.xml: Removed.
+	* p2.properties: Removed.
+	* assemble.xml: New file.
+	* productize.xml: New file.
+	* bootstrap/configuration/config.ini: Latest p2 test.
+	* build.properties: Likewise.
+	* build.xml: Likewise.
+	* pdebuild.xml: Likewise.
+
 2009-04-22  Alexander Kurtakov  <akurtako@redhat.com>
 	Apply patch from #272820 and update to newer I-build.
 	* build-p2.xml: Remove unneede parts.

@@ -1,6 +1,5 @@
 <project name="Pdebuild bootstrap" default="assemble" basedir=".">
 	<property file="build.properties" />
-	<property file="p2.properties" />
 	<path id="pdebuildClasspath">
 		<pathelement location="build/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
 		<pathelement location="build/plugins/org.eclipse.pde.build/pdebuild.jar" />
@@ -21,7 +20,7 @@
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/@dot" />
 		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/lib/repository-tools-ant.jar" />
 		<fileset dir="build/plugins">
-			<include name="org.apache.lucene_*.jar" />
+			<include name="*.jar" />
 		</fileset>
 		<pathelement path="build/plugins/org.eclipse.help/@dot" />
 		<pathelement path="build/plugins/org.eclipse.help.base/@dot" />
@@ -52,9 +51,12 @@
 		<taskdef name="help.buildHelpIndex"
 		         classname="org.eclipse.help.internal.base.ant.BuildHelpIndex"
 		         classpathref="pdebuildClasspath" />
+		<!--<taskdef name="pde.convertSchemaToHTML"
+		         classname="org.eclipse.pde.internal.core.ant.ConvertSchemaToHTML"
+		         classpathref="pdebuildClasspath" />-->
 		<ant antfile="assemble.org.eclipse.sdk.p2.xml" dir="build">
 			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
+			<property name="buildId" value="${buildID}" />
 			<property name="collectingFolder" value="collected" />
 			<property name="archivePrefix" value="eclipse" />
 			<property name="generateFeatureVersionSuffix" value="true" />
@@ -62,7 +64,7 @@
 		<ant antfile="assemble.org.eclipse.sdk.group.group.group.xml"
 		     dir="build">
 			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
+			<property name="buildId" value="${buildID}" />
 			<property name="collectingFolder" value="collected" />
 			<property name="archivePrefix" value="eclipse" />
 			<property name="generateFeatureVersionSuffix" value="true" />
@@ -70,7 +72,7 @@
 		<ant antfile="package.org.eclipse.sdk.group.group.group.xml"
 		     dir="build">
 			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
+			<property name="buildId" value="${buildID}" />
 			<property name="collectingFolder" value="collected" />
 			<property name="archivePrefix" value="eclipse" />
 			<property name="generateFeatureVersionSuffix" value="true" />

@@ -2,7 +2,7 @@
 	<property file="build.properties" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
-	<target name="cleanBuild" depends="clean,insert-ecf" />
+	<target name="cleanBuild" depends="clean,productize" />
 
 	<target name="clean">
 		<delete dir="build" />
@@ -76,28 +76,27 @@
 	<target name="buildAll" depends="generateBuildScripts">
 		<!--FIXME Ugly hack because?  flattenDependencies doesn't work . -->
 		<ant antfile="build.xml"
-				     dir="build/features/org.eclipse.platform"
-				     target="all.children"
-				     inheritall="true">
-					<property name="target" value="build.jars" />
-					<property name="arch" value="${buildArch}" />
-					<property name="javacFailOnError" value="false" />
-				</ant>
-				<ant antfile="build.xml"
-				     dir="build/features/org.eclipse.help"
-				     target="all.children"
-				     inheritall="true">
-					<property name="target" value="build.jars" />
-					<property name="arch" value="${buildArch}" />
-				</ant>
-				<ant antfile="build.xml"
-				     dir="build/features/org.eclipse.platform"
-				     target="all.children"
-				     inheritall="true">
-					<property name="target" value="clean" />
-					<property name="arch" value="${buildArch}" />
-					<property name="javacFailOnError" value="false" />
-				</ant>
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="arch" value="${buildArch}" />
+			<property name="javacFailOnError" value="false" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.help"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="build.jars" />
+			<property name="arch" value="${buildArch}" />
+		</ant>
+		<ant antfile="build.xml"
+		     dir="build/features/org.eclipse.platform"
+		     target="all.children"
+		     inheritall="true">
+			<property name="target" value="clean" />
+			<property name="arch" value="${buildArch}" />
+		</ant>
 		<!-- END OF HACK -->
 		<ant antfile="build.xml"
 		     dir="build/features/org.eclipse.sdk"
@@ -133,6 +132,8 @@
 		</exec>
 		<copy file="${launcherlibs}/library/gtk/eclipse"
 		      todir="build/eclipse/" />
+		<copy file="${launcherlibs}/library/gtk/eclipse"
+		      todir="build/tmp/collected/linux.gtk.${buildArch}/collected" />
 
 		<property name="launcherfragment"
 		          value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
@@ -158,40 +159,82 @@
 
 	</target>
 
-	<target name="assemble" depends="buildAll, compilelibs">
-		<taskdef name="eclipse.versionReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.idReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.IdReplaceTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.brand"
-		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
-		         classpathref="pdebuildClasspath" />
-		<ant antfile="assemble.org.eclipse.sdk.linux.gtk.${buildArch}.xml"
-		     dir="build">
-			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
-		</ant>
-		<ant antfile="package.org.eclipse.sdk.linux.gtk.${buildArch}.xml"
-		     dir="build">
-			<property name="buildLabel" value="3.5" />
-			<property name="buildId" value="3.5M6" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
-		</ant>
+	<target name="assemble" depends="buildAll, compilelibs" >
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="bootstrap"
+		      failonerror="true">
+			<classpath>
+				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-debug -consolelog" />
+			<arg line="-buildfile ../assemble.xml" />
+			<arg line="-DbuildArch=${buildArch} " />
+		</java>
 	</target>
 
 	<target name="insert-ecf" depends="assemble">
-		<zip destfile="build/3.5/org.eclipse.sdk-3.5M6-linux.gtk.${buildArch}.zip"
+		<zip destfile="build/3.5/org.eclipse.sdk-${buildID}-linux.gtk.${buildArch}.zip"
 		     update="true">
 			<zipfileset dir="build/plugins"
 			            includes="org.eclipse.ecf*.jar"
 			            prefix="eclipse/plugins" />
+			<zipfileset dir="build/plugins"
+			            includes="org.apache.commons.httpclient_*.jar"
+			            prefix="eclipse/plugins" />
+			<zipfileset dir="build/plugins"
+			            includes="org.apache.commons.codec_*.jar"
+			            prefix="eclipse/plugins" />
 		</zip>
+	</target>
+
+	<target name="productize" depends="insert-ecf">
+		<mkdir dir="build/p2-temp" />
+		<unzip src="build/3.5/org.eclipse.sdk-${buildID}-linux.gtk.${buildArch}.zip"
+		       dest="build/p2-temp" />
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="build/p2-temp"
+		      failonerror="true">
+			<classpath>
+				<fileset dir="build/p2-temp/eclipse/plugins">
+					<include name="org.eclipse.equinox.launcher_*.jar" />
+				</fileset>
+			</classpath>
+			<arg line="-application org.eclipse.equinox.p2.metadata.generator.EclipseGenerator" />
+			<arg line="-metadataRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
+			<arg line="-artifactRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
+			<arg line="-source eclipse/ " />
+			<arg line='-root "Fedora Eclipse Platform"' />
+			<arg line="-rootVersion 3.5.0 " />
+			<arg line="-flavor tooling " />
+			<arg line="-publishArtifacts " />
+			<arg line="-append " />
+			<arg line='-artifactRepositoryName "Fedora Eclipse"' />
+			<arg line='-metadataRepositoryName "Fedora Eclipse"' />
+		</java>
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="build/p2-temp"
+		      failonerror="true">
+			<classpath>
+				<fileset dir="build/p2-temp/eclipse/plugins">
+					<include name="org.eclipse.equinox.launcher_*.jar" />
+				</fileset>
+			</classpath>
+			<jvmarg line="-Declipse.p2.data.area=./eclipse/p2 -Declipse.p2.MD5Check=false" />
+			<arg line="-application org.eclipse.equinox.p2.director.app.application" />
+			<arg line="--launcher.suppressErrors -flavor tooling" />
+			<arg line=' -installIU "Fedora Eclipse Platform"' />
+			<arg line='-version 3.5.0 -p2.os linux -p2.ws gtk -p2.arch x86' />
+			<arg line='-roaming -profile PlatformProfile' />
+			<arg line='-profileProperties org.eclipse.update.install.features=true' />
+			<arg line="-metadataRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
+			<arg line="-artifactRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
+			<arg line="-destination ${basedir}/build/p2-temp/eclipse-Provisioned" />
+			<arg line="-bundlepool ${basedir}/build/p2-temp/eclipse " />
+		</java>
 	</target>
 </project>

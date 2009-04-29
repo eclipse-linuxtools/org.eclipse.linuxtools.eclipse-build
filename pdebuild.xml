@@ -41,6 +41,11 @@
 		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.garbagecollector" />
 		<file name="org.eclipse.equinox.p2.exemplarysetup" />
+		<file name="org.eclipse.core.expressions" />
+		<file name="org.eclipse.equinox.http.servlet" />
+		<file name="org.eclipse.equinox.http.jetty_2.0.0" />
+		<file name="org.eclipse.help" />
+		<file name="org.eclipse.help.base" />
 	</filelist>
 	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
@@ -50,6 +55,8 @@
 		<include name="org.mortbay.jetty*" />
 		<include name="org.apache.lucene*" />
 		<include name="org.sat4j*" />
+		<include name="org.hamcrest.core*" />
+		<include name="javax.servlet*" />
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
@@ -66,6 +73,11 @@
 	</fileset>
 	<target name="bootstrap">
 		<subant>
+			<filelist refid="depsDirs" />
+		</subant>
+	</target>
+	<target name="cleanBuilded">
+		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
@@ -119,7 +131,7 @@
 		         overwrite="true" />
 
 	</target>
-	<target name="clean" >
+	<target name="clean">
 		<delete dir="bootstrap/plugins" />
 		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />
 		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
