@@ -2,7 +2,7 @@
 	<property file="build.properties" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
-	<target name="cleanBuild" depends="clean,productize" />
+	<target name="cleanBuild" depends="clean,assemble" />
 
 	<target name="clean">
 		<delete dir="build" />
@@ -169,72 +169,9 @@
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-debug -consolelog" />
 			<arg line="-buildfile ../assemble.xml" />
 			<arg line="-DbuildArch=${buildArch} " />
 		</java>
 	</target>
 
-	<target name="insert-ecf" depends="assemble">
-		<zip destfile="build/3.5/org.eclipse.sdk-${buildID}-linux.gtk.${buildArch}.zip"
-		     update="true">
-			<zipfileset dir="build/plugins"
-			            includes="org.eclipse.ecf*.jar"
-			            prefix="eclipse/plugins" />
-			<zipfileset dir="build/plugins"
-			            includes="org.apache.commons.httpclient_*.jar"
-			            prefix="eclipse/plugins" />
-			<zipfileset dir="build/plugins"
-			            includes="org.apache.commons.codec_*.jar"
-			            prefix="eclipse/plugins" />
-		</zip>
-	</target>
-
-	<target name="productize" depends="insert-ecf">
-		<mkdir dir="build/p2-temp" />
-		<unzip src="build/3.5/org.eclipse.sdk-${buildID}-linux.gtk.${buildArch}.zip"
-		       dest="build/p2-temp" />
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="build/p2-temp"
-		      failonerror="true">
-			<classpath>
-				<fileset dir="build/p2-temp/eclipse/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
-			</classpath>
-			<arg line="-application org.eclipse.equinox.p2.metadata.generator.EclipseGenerator" />
-			<arg line="-metadataRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
-			<arg line="-artifactRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
-			<arg line="-source eclipse/ " />
-			<arg line='-root "Fedora Eclipse Platform"' />
-			<arg line="-rootVersion 3.5.0 " />
-			<arg line="-flavor tooling " />
-			<arg line="-publishArtifacts " />
-			<arg line="-append " />
-			<arg line='-artifactRepositoryName "Fedora Eclipse"' />
-			<arg line='-metadataRepositoryName "Fedora Eclipse"' />
-		</java>
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="build/p2-temp"
-		      failonerror="true">
-			<classpath>
-				<fileset dir="build/p2-temp/eclipse/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
-			</classpath>
-			<jvmarg line="-Declipse.p2.data.area=./eclipse/p2 -Declipse.p2.MD5Check=false" />
-			<arg line="-application org.eclipse.equinox.p2.director.app.application" />
-			<arg line="--launcher.suppressErrors -flavor tooling" />
-			<arg line=' -installIU "Fedora Eclipse Platform"' />
-			<arg line='-version 3.5.0 -p2.os linux -p2.ws gtk -p2.arch x86' />
-			<arg line='-roaming -profile PlatformProfile' />
-			<arg line='-profileProperties org.eclipse.update.install.features=true' />
-			<arg line="-metadataRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
-			<arg line="-artifactRepository file:${basedir}/build/p2-temp/eclipse/metadata" />
-			<arg line="-destination ${basedir}/build/p2-temp/eclipse-Provisioned" />
-			<arg line="-bundlepool ${basedir}/build/p2-temp/eclipse " />
-		</java>
-	</target>
 </project>

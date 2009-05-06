@@ -47,6 +47,22 @@
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
 	</filelist>
+	<filelist id="depsDirs2" dir="${sdkSource}/plugins">
+		<file name="org.eclipse.swt.gtk.linux.${buildArch}" />
+		<file name="org.eclipse.core.filesystem" />
+		<file name="org.eclipse.core.resources" />
+		<file name="org.eclipse.core.commands" />
+		<file name="org.eclipse.jface" />
+		<file name="org.eclipse.text" />
+		<file name="org.eclipse.jface.text" />
+		<file name="org.eclipse.team.core" />
+		<file name="org.eclipse.core.filebuffers" />
+		<file name="org.eclipse.debug.core" />
+		<file name="org.eclipse.jdt.core" />
+		<file name="org.eclipse.jdt.debug" />
+		<file name="org.eclipse.jdt.launching" />
+		<file name="org.eclipse.pde.core" />
+	</filelist>
 	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
 		<include name="com.ibm.icu_*" />
@@ -76,17 +92,26 @@
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
-	<target name="cleanBuilded">
-		<subant target="clean">
-			<filelist refid="depsDirs" />
+	<target name="bootstrap2" depends="bootstrap">
+		<taskdef name="eclipse.versionReplacer"
+		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
+		         classpathref="pdebuildClasspath" />
+		<subant>
+			<filelist refid="depsDirs2" />
 		</subant>
 	</target>
-	<target name="zipPlugins" depends="bootstrap">
+	<target name="cleanBuilded">
+		<subant target="clean">
+			<filelist refid="depsDirs2" />
+		</subant>
+	</target>
+	<target name="zipPlugins" depends="bootstrap2">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
 		<subant target="zip.plugin">
 			<filelist refid="depsDirs" />
+			<filelist refid="depsDirs2" />
 		</subant>
 	</target>
 	<target name="collectBootstrapPlugins" depends="zipPlugins">
@@ -129,13 +154,13 @@
 		<symlink link="bootstrap/plugins/org.eclipse.equinox.launcher"
 		         resource="${launcherplugin}"
 		         overwrite="true" />
-
 	</target>
 	<target name="clean">
 		<delete dir="bootstrap/plugins" />
 		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />
 		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
 		<delete dir="bootstrap/configuration/org.eclipse.osgi" />
+		<delete dir="bootstrap/configuration/org.eclipse.update" />
 		<delete dir="bootstrap/workspace" />
 		<delete dir="bootstrap/p2" />
 	</target>

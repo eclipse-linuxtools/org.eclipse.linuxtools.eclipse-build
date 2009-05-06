@@ -51,9 +51,9 @@
 		<taskdef name="help.buildHelpIndex"
 		         classname="org.eclipse.help.internal.base.ant.BuildHelpIndex"
 		         classpathref="pdebuildClasspath" />
-		<!--<taskdef name="pde.convertSchemaToHTML"
+		<taskdef name="pde.convertSchemaToHTML"
 		         classname="org.eclipse.pde.internal.core.ant.ConvertSchemaToHTML"
-		         classpathref="pdebuildClasspath" />-->
+		         classpathref="pdebuildClasspath" />
 		<ant antfile="assemble.org.eclipse.sdk.p2.xml" dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="${buildID}" />

@@ -1,3 +1,11 @@
+2009-05-06  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* assemble.xml: Changes to make the build finish with p2.gathering=true.
+	* bootstrap/configuration/config.ini: Likewise.
+	* build.properties: Likewise.
+	* build.xml: Likewise.
+	* pdebuild.xml: Likewise.
+
 2009-04-29  Alexander Kurtakov  <akurtako@redhat.com>
 	Make p2.gathering=true by default. 
 	* assemble-p2.xml: Removed.
