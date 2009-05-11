@@ -1,8 +1,13 @@
 <project name="Eclipse SDK build" default="cleanBuild" basedir=".">
 	<property file="build.properties" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
+	<available file="fetch.xml" property="fetch.file.present" value="true" />
 
-	<target name="cleanBuild" depends="clean,assemble" />
+	<target name="fetch" if="fetch.file.present">
+		<ant antfile="fetch.xml" target="applyPatches" />
+	</target>
+
+	<target name="cleanBuild" depends="fetch,clean,assemble" />
 
 	<target name="clean">
 		<delete dir="build" />
@@ -10,11 +15,6 @@
 
 	<target name="cleanAll" depends="clean">
 		<ant antfile="pdebuild.xml" target="clean" />
-	</target>
-
-	<target name="devBuild">
-		<ant antfile="fetch.xml" target="applyPatches" />
-		<antcall target="cleanBuild" />
 	</target>
 
 	<target name="bootstrap" unless="bootstrapped">

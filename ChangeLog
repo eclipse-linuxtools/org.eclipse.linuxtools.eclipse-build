@@ -1,5 +1,9 @@
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Simplify ant call for devBuilds. Patch by Marvin Schmidt.
+	
+2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* assemble.xml: Simplify.
 	* bootstrap/configuration/config.ini: Add o.e.pde.api.tools.
 	* build.properties: generateAPIDescription=true
