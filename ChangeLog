@@ -1,5 +1,12 @@
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* assemble.xml: Simplify.
+	* bootstrap/configuration/config.ini: Add o.e.pde.api.tools.
+	* build.properties: generateAPIDescription=true
+	* pdebuild.xml: Add o.e.pde.api.tools.
+	
+2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* assemble.xml: Use properties from the properties file.
 	* build.properties: Extract some properties here and switch to neweer build.
 

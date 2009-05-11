@@ -62,6 +62,7 @@
 		<file name="org.eclipse.jdt.debug" />
 		<file name="org.eclipse.jdt.launching" />
 		<file name="org.eclipse.pde.core" />
+		<file name="org.eclipse.pde.api.tools" />
 	</filelist>
 	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
@@ -73,6 +74,7 @@
 		<include name="org.sat4j*" />
 		<include name="org.hamcrest.core*" />
 		<include name="javax.servlet*" />
+		<include name="org.objectweb.asm*" />
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />

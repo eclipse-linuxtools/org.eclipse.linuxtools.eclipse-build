@@ -1,59 +1,6 @@
 <project name="Pdebuild bootstrap" default="assemble" basedir=".">
 	<property file="build.properties" />
-	<path id="pdebuildClasspath">
-		<pathelement location="build/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
-		<pathelement location="build/plugins/org.eclipse.pde.build/pdebuild.jar" />
-		<pathelement path="build/plugins/org.eclipse.equinox.common/@dot" />
-		<pathelement path="build/plugins/org.eclipse.core.runtime/@dot" />
-		<pathelement location="build/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
-		<pathelement path="build/plugins/org.eclipse.osgi/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.launcher/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.publisher/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.core/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.artifact.repository/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.metadata/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.app/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.metadata.repository/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.repository.tools/lib/repository-tools-ant.jar" />
-		<fileset dir="build/plugins">
-			<include name="*.jar" />
-		</fileset>
-		<pathelement path="build/plugins/org.eclipse.help/@dot" />
-		<pathelement path="build/plugins/org.eclipse.help.base/@dot" />
-		<pathelement path="build/plugins/org.eclipse.help.base/ant_tasks/helpbase-ant.jar" />
-	</path>
 	<target name="assemble">
-		<taskdef name="eclipse.versionReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.idReplacer"
-		         classname="org.eclipse.pde.internal.build.tasks.IdReplaceTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.brand"
-		         classname="org.eclipse.pde.internal.build.tasks.BrandTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.gatherBundle"
-		         classname="org.eclipse.pde.internal.build.publisher.GatherBundleTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.gatherFeature"
-		         classname="org.eclipse.pde.internal.build.publisher.GatherFeatureTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="eclipse.publish.featuresAndBundles"
-		         classname="org.eclipse.pde.internal.build.publisher.FeaturesAndBundlesTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="p2.mirror"
-		         classname="org.eclipse.equinox.p2.internal.repository.tools.tasks.MirrorTask"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="help.buildHelpIndex"
-		         classname="org.eclipse.help.internal.base.ant.BuildHelpIndex"
-		         classpathref="pdebuildClasspath" />
-		<taskdef name="pde.convertSchemaToHTML"
-		         classname="org.eclipse.pde.internal.core.ant.ConvertSchemaToHTML"
-		         classpathref="pdebuildClasspath" />
 		<ant antfile="assemble.org.eclipse.sdk.p2.xml" dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="${buildID}" />
