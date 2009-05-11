@@ -57,25 +57,16 @@
 		<ant antfile="assemble.org.eclipse.sdk.p2.xml" dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="${buildID}" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
 		<ant antfile="assemble.org.eclipse.sdk.group.group.group.xml"
 		     dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="${buildID}" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
 		<ant antfile="package.org.eclipse.sdk.group.group.group.xml"
 		     dir="build">
 			<property name="buildLabel" value="3.5" />
 			<property name="buildId" value="${buildID}" />
-			<property name="collectingFolder" value="collected" />
-			<property name="archivePrefix" value="eclipse" />
-			<property name="generateFeatureVersionSuffix" value="true" />
 		</ant>
 	</target>
 </project>

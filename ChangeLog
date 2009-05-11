@@ -1,3 +1,8 @@
+2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* assemble.xml: Use properties from the properties file.
+	* build.properties: Extract some properties here and switch to neweer build.
+
 2009-05-06  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* assemble.xml: Changes to make the build finish with p2.gathering=true.
