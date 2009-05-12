@@ -1,3 +1,8 @@
+2009-05-12  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* productize.xml: Removed. Left over from before enabling p2.gathering.
+	* build.properties: New I-build.
+
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Simplify ant call for devBuilds. Patch by Marvin Schmidt.
