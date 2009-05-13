@@ -1,3 +1,8 @@
+2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.sh: New file.
+	* build.properties: New I-build. Add properties needed to build with ecj.
+
 2009-05-12  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* productize.xml: Removed. Left over from before enabling p2.gathering.
