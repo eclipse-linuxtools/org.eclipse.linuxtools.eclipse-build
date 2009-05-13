@@ -107,17 +107,6 @@
 		</ant>
 	</target>
 
-	<path id="pdebuildClasspath">
-		<pathelement location="build/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
-		<pathelement location="build/plugins/org.eclipse.pde.build/pdebuild.jar" />
-		<pathelement path="build/plugins/org.eclipse.equinox.common/@dot" />
-		<pathelement path="build/plugins/org.eclipse.core.runtime/@dot" />
-		<pathelement location="build/plugins/org.eclipse.osgi/osgi/osgi.core.jar" />
-		<pathelement path="build/plugins/org.eclipse.osgi/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.launcher/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
-		<pathelement path="build/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
-	</path>
 	<target name="compilelibs">
 		<ant antfile="build.xml"
 		     target="build.nativeLibraries"

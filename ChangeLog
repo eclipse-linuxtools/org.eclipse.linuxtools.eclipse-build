@@ -1,5 +1,9 @@
 2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Remove pdebuildClasspath - not needed anymore.
+	
+2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* build.sh: New file.
 	* build.properties: New I-build. Add properties needed to build with ecj.
 
