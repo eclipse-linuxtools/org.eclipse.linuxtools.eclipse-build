@@ -13,6 +13,7 @@ ant -f compilejdtcore.xml
 
 #Copy ecj jar to the base folder
 cd ../..
+rm -f ecj.jar
 cp SDK/ecj.jar ecj.jar
 
 #Build Eclipse SDK with the builded ecj

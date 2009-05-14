@@ -1,3 +1,8 @@
+2009-05-14  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Next I-build.
+	* build.sh: Delete ecj.jar before copying.
+
 2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Remove pdebuildClasspath - not needed anymore.
