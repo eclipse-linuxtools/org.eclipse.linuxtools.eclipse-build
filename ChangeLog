@@ -1,3 +1,7 @@
+2009-05-20  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Newer I-build.
+
 2009-05-15  Andrew Overholt  <overholt@redhat.com>
 
 	* README.mediawiki: Fix some typos.
