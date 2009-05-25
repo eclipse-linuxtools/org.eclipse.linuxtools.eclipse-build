@@ -1,3 +1,8 @@
+2009-05-25  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSource.sh: Simple testing script to follow upstream procedures. *Very*
+	preliminary.
+
 2009-05-20  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.properties: Newer I-build.
