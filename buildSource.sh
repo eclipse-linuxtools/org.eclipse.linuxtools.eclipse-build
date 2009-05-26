@@ -97,7 +97,13 @@ fetchMasterFeature \
 -DmapVersionTag=${buildID} \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
 
-tar cjf eclipse-${buildID}-fetched.tar.bz2 ${fetchDirectory}
+pushd ${fetchDirectory}
+mkdir eclipse-${buildID}-fetched-src
+mv * eclipse-${buildID}-fetched-src
+tar cjf ${workDirectory}/eclipse-${buildID}-fetched-src.tar.bz2 \
+  eclipse-${buildID}-fetched-src
+popd
+
 rm -rf ${fetchDirectory}/*
 
 java -jar \
@@ -116,6 +122,11 @@ fetchSdkTestsFeature \
 -DmapVersionTag=${buildID} \
 2>&1 | tee ${workDirectory}/testsFetch.log
 
-tar cjf eclipse-sdktests-${buildID}-fetched.tar.bz2 ${fetchDirectory}
+pushd ${fetchDirectory}
+mkdir eclipse-sdktests-${buildID}-fetched-src
+mv * eclipse-sdktests-${buildID}-fetched-src
+tar cjf ${workDirectory}/eclipse-sdktests-${buildID}-fetched-src.tar.bz2 \
+  eclipse-sdktests-${buildID}-fetched-src
+popd
 
 popd

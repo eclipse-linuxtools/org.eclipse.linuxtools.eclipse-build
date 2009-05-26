@@ -1,5 +1,9 @@
 2009-05-26  Andrew Overholt  <overholt@redhat.com>
 
+	* buildSource.sh: Name tarballs and contained directories better.
+
+2009-05-26  Andrew Overholt  <overholt@redhat.com>
+
 	* patches/eclipse-addFetchMasterAndTestsTargets.patch: Initial commit.  
 	Adds targets to org.eclipse.releng.eclipsebuilder/buildAll.xml
 	* buildSource.sh: Cleanups.  Fetch both the master feature and the SDK
