@@ -1,0 +1,30 @@
+Index: buildAll.xml
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.releng.eclipsebuilder/buildAll.xml,v
+retrieving revision 1.243
+diff -u -r1.243 buildAll.xml
+--- buildAll.xml	20 May 2009 18:12:20 -0000	1.243
++++ buildAll.xml	26 May 2009 19:12:58 -0000
+@@ -602,4 +602,22 @@
+ 		<copy file="${buildrssproperties}" tofile="${base.builder}/plugins/org.eclipse.build.tools/properties/${rssproperties}" overwrite="true" failonerror="true" />
+ 	</target>
+ 
++	<target name="fetchMasterFeature" depends="init">
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
++			<property name="builder" value="${eclipse.build.configs}/master" />
++		</ant>
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
++			<property name="builder" value="${eclipse.build.configs}/master" />
++		</ant>
++	</target>
++
++	<target name="fetchSdkTestsFeature" depends="init">
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
++			<property name="builder" value="${eclipse.build.configs}/sdk.tests" />
++		</ant>
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
++			<property name="builder" value="${eclipse.build.configs}/sdk.tests" />
++		</ant>
++	</target>
++
+ </project>
