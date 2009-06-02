@@ -1,8 +1,9 @@
-<project name="Pdebuild bootstrap" default="genBuild" basedir=".">
+<project name="Pdebuild bootstrap" default="genBuild">
 	<property name="javacFailOnError" value="true" />
 	<property file="build.properties" />
 	<property name="buildArch" value="x86" />
 	<target name="genBuild">
+		<!--
 		<echo message="About to generate feature" />
 		<pathconvert pathsep=", " property="plugins">
 			<dirset dir="./build/plugins">
@@ -22,11 +23,13 @@
 		                         baseLocation="${baseLocation}"
 		                         pluginList="${pluginId}"
 		                         includeLaunchers="false" />
+	 	-->
 		<echo message="About to generate source bundles and build.xml files" />
-		<eclipse.buildScript elements="feature@org.eclipse.sdk"
+		<eclipse.buildScript elements="feature@${featureToBuild}"
 		                     configInfo="linux,gtk,${buildArch}"
 		                     buildingosgi="true"
 		                     recursivegeneration="true"
+							 builddirectory="${buildDirectory}"
 		                     children="true" />
 	</target>
 

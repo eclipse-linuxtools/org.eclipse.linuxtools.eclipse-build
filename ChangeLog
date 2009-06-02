@@ -1,3 +1,19 @@
+2009-06-02  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Make bootstrap stuff default but allow over-riding.  Add 
+	init target to do extraction of buildSource.sh-generated tarball.  Move 
+	insertBuildId and applyPatches targets here.  Add package target for 
+	debugging use.  Add full paths everywhere. 
+	* generatebuild.xml: Use a fetched feature instead of generating one.  
+	Pass buildDirectory property.
+	* patches/cleanupMaster.patch: Initial checkin.  Don't include some SWT 
+	fragments.
+	* build.properties: Don't hard-code plugin or feature ID.  Set other 
+	BREEs.  Update buildDirectory to reflect buildSource.sh output.
+	* patches/eclipse-swt-buildagainstxulrunner.patch: Update to use unstable 
+	XULRunner headers (dom/ files).
+	* assemble.xml: Call assemble and package files for feature we're building.
+
 2009-05-26  Andrew Overholt  <overholt@redhat.com>
 
 	* buildSource.sh: Name tarballs and contained directories better.

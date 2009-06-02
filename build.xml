@@ -1,5 +1,9 @@
-<project name="Eclipse SDK build" default="cleanBuild" basedir=".">
+<project name="Eclipse SDK build" default="assemble" basedir=".">
 	<property file="build.properties" />
+	<property name="baseBuilder" value="bootstrap" />
+	<property name="launcher" value="bootstrap/plugins/org.eclipse.equinox.launcher" />
+	<property name="featureToBuild" value="master" />
+
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="fetch.xml" property="fetch.file.present" value="true" />
 
@@ -19,6 +23,37 @@
 
 	<target name="bootstrap" unless="bootstrapped">
 		<ant antfile="pdebuild.xml" />
+	</target>
+
+	<target name="init">
+		<delete dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build" />
+		<echo message="Extracting SDK source (tar jxf eclipse-${buildID}-fetched-src.tar.bz2)" />
+		<exec dir="${basedir}/build" executable="tar">
+			<arg line="jxf ${basedir}/eclipse-${buildID}-fetched-src.tar.bz2" />
+		</exec>
+		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildID}-fetched-src" />
+	</target>
+	
+	<target name="insertBuildId" depends="init">
+		<replace dir="${buildDirectory}/plugins" value="${buildID}" token="@build@">
+			<include name="**/about.mappings" />
+		</replace>
+		<replace dir="${buildDirectory}" value="${buildID}" token="@build@">
+			<include name="**/configuration/config.ini" />
+		</replace>
+	</target>
+
+	<target name="applyPatches" depends="init">
+		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch"
+		       dir="${buildDirectory}"
+		       strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch"
+		       dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
+		       strip="3" />
+		<patch patchfile="${basedir}/patches/cleanupMaster.patch"
+		       dir="${buildDirectory}/features/master"
+		       strip="0" />
 	</target>
 
 	<target name="prepareBuildScriptGeneration" depends="bootstrap">
@@ -53,113 +88,114 @@
 			</fileset>
 		</copy>
 		<!-- TODO is it really needed -->
-		<move tofile="build/plugins/org.junit"
-		      file="build/plugins/org.junit_3.8.2.v20090203-1005" />
+		<move tofile="build/plugins/org.junit" file="build/plugins/org.junit_3.8.2.v20090203-1005" />
 	</target>
 
-	<target name="generateBuildScripts" depends="prepareBuildScriptGeneration">
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="bootstrap"
-		      failonerror="true">
+	<target name="generateBuildScripts" depends="insertBuildId,applyPatches">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
-				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher" />
+				<pathelement location="${launcher}" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ../generatebuild.xml" />
+			<arg line="-buildfile ${basedir}/generatebuild.xml" />
 			<arg line="-debug -consoleLog " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-DbuildID=${buildID} " />
 			<arg line="-DbuildArch=${buildArch} " />
+			<arg line="-DfeatureToBuild=${featureToBuild} " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;"/>	
 		</java>
 	</target>
 
 	<target name="buildAll" depends="generateBuildScripts">
 		<!--FIXME Ugly hack because?  flattenDependencies doesn't work . -->
-		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.platform"
-		     target="all.children"
-		     inheritall="true">
+		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.platform" target="all.children" inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="arch" value="${buildArch}" />
 			<property name="javacFailOnError" value="false" />
 		</ant>
-		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.help"
-		     target="all.children"
-		     inheritall="true">
+		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.help" target="all.children" inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="arch" value="${buildArch}" />
 		</ant>
-		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.platform"
-		     target="all.children"
-		     inheritall="true">
+		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.platform" target="all.children" inheritall="true">
 			<property name="target" value="clean" />
 			<property name="arch" value="${buildArch}" />
 		</ant>
 		<!-- END OF HACK -->
-		<ant antfile="build.xml"
-		     dir="build/features/org.eclipse.sdk"
-		     target="all.children"
-		     inheritall="true">
+		<ant antfile="build.xml" dir="${buildDirectory}/features/${featureToBuild}" target="all.children" inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="arch" value="${buildArch}" />
 		</ant>
 	</target>
 
-	<target name="compilelibs">
-		<ant antfile="build.xml"
-		     target="build.nativeLibraries"
-		     dir="build/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
+	<target name="compilelibs" depends="buildAll">
+		<ant antfile="build.xml" target="build.nativeLibraries" dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
 
-		<property name="launcherlibs"
-		          value="build/features/org.eclipse.equinox.executable" />
-		<exec dir="${launcherlibs}/library/gtk/"
-		      executable="sh"
-		      failonerror="true">
+		<property name="launcherlibs" value="${buildDirectory}/features/org.eclipse.equinox.executable" />
+		<exec dir="${launcherlibs}/library/gtk/" executable="sh" failonerror="true">
 			<arg line="build.sh" />
 		</exec>
-		<copy file="${launcherlibs}/library/gtk/eclipse"
-		      todir="build/eclipse/" />
-		<copy file="${launcherlibs}/library/gtk/eclipse"
-		      todir="build/tmp/collected/linux.gtk.${buildArch}/collected" />
+		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/eclipse/" />
+		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/tmp/collected/linux.gtk.${buildArch}/collected" />
 
-		<property name="launcherfragment"
-		          value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
+		<property name="launcherfragment" value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
 
-		<copy file="${launcherlibs}/library/gtk/eclipse"
-		      todir="build/features/org.eclipse.equinox.executable/contributed/gtk/linux/${buildArch}/" />
-		<copy todir="build/plugins/${launcherfragment}">
+		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/features/org.eclipse.equinox.executable/contributed/gtk/linux/${buildArch}/" />
+		<copy todir="${buildDirectory}/plugins/${launcherfragment}">
 			<fileset dir="${launcherlibs}/library/gtk">
 				<include name="**/*.so" />
 			</fileset>
 		</copy>
 
 		<!-- build liblocalfile -->
-		<exec dir="build/plugins/org.eclipse.core.filesystem/natives/unix/linux"
-		      executable="make"
-		      failonerror="true" />
-		<move file="build/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so"
-		      todir="build/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		<exec dir="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux" executable="make" failonerror="true" />
+		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
 		</move>
 		<!-- build libupdate -->
-		<ant dir="build/plugins/org.eclipse.update.core.linux/src"
-		     antfile="build.xml" />
+		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
 
 	</target>
 
-	<target name="assemble" depends="buildAll, compilelibs" >
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="bootstrap"
-		      failonerror="true">
+	<target name="assemble" depends="compilelibs">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
-				<pathelement location="bootstrap/plugins/org.eclipse.equinox.launcher" />
+				<pathelement location="${launcher}" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ../assemble.xml" />
+			<arg line="-buildfile ${basedir}/assemble.xml" />
 			<arg line="-DbuildArch=${buildArch} " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-DbuildID=${buildID} " />
+			<arg line="-DfeatureToBuild=${featureToBuild} " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+		</java>
+	</target>
+	
+	<target name="package">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
+			<classpath>
+				<pathelement location="${launcher}" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${basedir}/assemble.xml" />
+			<arg line="package " />
+			<arg line="-DbuildArch=${buildArch} " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-DbuildID=${buildID} " />
+			<arg line="-DfeatureToBuild=${featureToBuild} " />
+			<jvmarg value="-Xms512M"/>
+			<jvmarg value="-Xmx2048M"/>
+			<jvmarg value="-XX:MaxPermSize=512M"/>
 		</java>
 	</target>
 

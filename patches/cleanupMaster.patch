@@ -1,0 +1,25 @@
+### Eclipse Workspace Patch 1.0
+#P master
+Index: feature.xml
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.sdk-feature/features/master/feature.xml,v
+retrieving revision 1.38
+diff -u -r1.38 feature.xml
+--- feature.xml	25 Apr 2009 17:20:44 -0000	1.38
++++ feature.xml	1 Jun 2009 17:36:26 -0000
+@@ -50,7 +50,7 @@
+          download-size="0"
+          install-size="0"
+          version="0.0.0"/> 
+-
++<!--
+    <plugin
+          id="org.eclipse.swt.win32.wce_ppc.arm"
+          download-size="0"
+@@ -66,5 +66,5 @@
+          version="0.0.0"
+          fragment="true"
+          unpack="false"/>       
+-          
++-->          
+ </feature>
