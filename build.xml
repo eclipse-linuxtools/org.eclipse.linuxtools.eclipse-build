@@ -1,8 +1,9 @@
-<project name="Eclipse SDK build" default="assemble" basedir=".">
+<project name="Eclipse SDK build" default="compilelibs" basedir=".">
 	<property file="build.properties" />
 	<property name="baseBuilder" value="bootstrap" />
 	<property name="launcher" value="bootstrap/plugins/org.eclipse.equinox.launcher" />
-	<property name="featureToBuild" value="master" />
+	<property name="featureToBuild" value="eclipse-build-feature" />
+	<property name="eclipse.pdebuild.scripts" value="bootstrap/plugins/org.eclipse.pde.build/scripts"/>
 
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="fetch.xml" property="fetch.file.present" value="true" />
@@ -28,18 +29,37 @@
 	<target name="init">
 		<delete dir="${basedir}/build" />
 		<mkdir dir="${basedir}/build" />
-		<echo message="Extracting SDK source (tar jxf eclipse-${buildID}-fetched-src.tar.bz2)" />
+
+		<!-- User home used for build -->
+		<delete dir="${basedir}/home" />
+		<mkdir dir="${basedir}/home" />
+		<property name="homeDir" value="${basedir}/home" />
+
+		<delete dir="${buildDirectory}/buildConfigs" />
+		<mkdir dir="${buildDirectory}/buildConfigs" />
+		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
+
+		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
 		<exec dir="${basedir}/build" executable="tar">
-			<arg line="jxf ${basedir}/eclipse-${buildID}-fetched-src.tar.bz2" />
+			<arg line="jxf ${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" />
 		</exec>
-		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildID}-fetched-src" />
+		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
+
+		<echo message="Extracting eclipse-build main feature source (tar zxf eclipse-build-feature-src.tar.gz)" />
+		<exec dir="${buildDirectory}/features" executable="tar">
+			<arg line="zxf ${basedir}/eclipse-build-feature-src.tar.gz" />
+		</exec>
+		<echo message="Extracting eclipse-build builder (tar zxf eclipse-build-buildConfig.tar.gz)" />
+		<exec dir="${buildConfigs}" executable="tar">
+			<arg line="zxf ${basedir}/eclipse-build-buildConfig.tar.gz" />
+		</exec>
 	</target>
 	
 	<target name="insertBuildId" depends="init">
-		<replace dir="${buildDirectory}/plugins" value="${buildID}" token="@build@">
+		<replace dir="${buildDirectory}/plugins" value="${buildId}" token="@build@">
 			<include name="**/about.mappings" />
 		</replace>
-		<replace dir="${buildDirectory}" value="${buildID}" token="@build@">
+		<replace dir="${buildDirectory}" value="${buildId}" token="@build@">
 			<include name="**/configuration/config.ini" />
 		</replace>
 	</target>
@@ -51,9 +71,6 @@
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch"
 		       dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
 		       strip="3" />
-		<patch patchfile="${basedir}/patches/cleanupMaster.patch"
-		       dir="${buildDirectory}/features/master"
-		       strip="0" />
 	</target>
 
 	<target name="prepareBuildScriptGeneration" depends="bootstrap">
@@ -99,11 +116,14 @@
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ${basedir}/generatebuild.xml" />
-			<arg line="-debug -consoleLog " />
+			<arg line="-consoleLog " />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Djava.home=${java.home} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
-			<arg line="-DbuildID=${buildID} " />
+			<arg line="-Duser.home=${homeDir} " />
 			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-DfeatureToBuild=${featureToBuild} " />
+			<arg line="-DbuildId=${buildId} " />
 			<jvmarg value="-Xms256m"/>
 			<jvmarg value="-Xmx1024m"/>
 			<jvmarg value="-XX:MaxPermSize=384m"/>
@@ -113,27 +133,116 @@
 	</target>
 
 	<target name="buildAll" depends="generateBuildScripts">
-		<!--FIXME Ugly hack because?  flattenDependencies doesn't work . -->
+		<!--FIXME Hack because help system doesn't build -->
+		<!--
 		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.platform" target="all.children" inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="arch" value="${buildArch}" />
 			<property name="javacFailOnError" value="false" />
 		</ant>
+		-->
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
+			<classpath>
+				<pathelement location="${launcher}" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${buildDirectory}/features/org.eclipse.platform/build.xml" />
+			<arg line="-consoleLog " />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Djava.home=${java.home} " />
+			<arg line="-Duser.home=${homeDir} " />
+			<arg line="-Darch=${buildArch} " />
+			<arg line="-Dtarget=build.jars " />
+			<arg line="-DjavacFailOnError=false" />
+			<arg line="all.children " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;"/>	
+		</java>
+		<!--
 		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.help" target="all.children" inheritall="true">
 			<property name="target" value="build.jars" />
 			<property name="arch" value="${buildArch}" />
 		</ant>
+		-->
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
+			<classpath>
+				<pathelement location="${launcher}" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${buildDirectory}/features/org.eclipse.help/build.xml" />
+			<arg line="-consoleLog " />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Djava.home=${java.home} " />
+			<arg line="-Duser.home=${homeDir} " />
+			<arg line="-Darch=${buildArch} " />
+			<arg line="-Dtarget=build.jars " />
+			<arg line="all.children " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;"/>	
+		</java>
+		<!--
 		<ant antfile="build.xml" dir="${buildDirectory}/features/org.eclipse.platform" target="all.children" inheritall="true">
 			<property name="target" value="clean" />
 			<property name="arch" value="${buildArch}" />
 		</ant>
+		-->
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
+			<classpath>
+				<pathelement location="${launcher}" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${buildDirectory}/features/org.eclipse.platform/build.xml" />
+			<arg line="-consoleLog " />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Djava.home=${java.home} " />
+			<arg line="-Duser.home=${homeDir} " />
+			<arg line="-Darch=${buildArch} " />
+			<arg line="-Dtarget=clean " />
+			<arg line="all.children " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;"/>	
+		</java>
 		<!-- END OF HACK -->
-		<ant antfile="build.xml" dir="${buildDirectory}/features/${featureToBuild}" target="all.children" inheritall="true">
-			<property name="target" value="build.jars" />
+		<!--
+		<ant antfile="build.xml" dir="${buildDirectory}/features/${featureToBuild}" target="build.jars" inheritall="true">
 			<property name="arch" value="${buildArch}" />
+			<property name="target" value="build.jars" />
 		</ant>
+		-->
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
+			<classpath>
+				<pathelement location="${launcher}" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${buildDirectory}/features/${featureToBuild}/build.xml" />
+			<arg line="-consoleLog " />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Djava.home=${java.home} " />
+			<arg line="-Duser.home=${homeDir} " />
+			<arg line="-Darch=${buildArch} " />
+			<arg line="-Dtarget=build.jars " />
+			<arg line="build.jars " />
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-XX:MaxPermSize=384m"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;"/>
+			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;"/>	
+		</java>
 	</target>
-
+	
 	<target name="compilelibs" depends="buildAll">
 		<ant antfile="build.xml" target="build.nativeLibraries" dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
 
@@ -162,7 +271,11 @@
 
 	</target>
 
-	<target name="assemble" depends="compilelibs">
+	<target name="assemble">
+		<!-- if we're running with antRunner application -->
+		<!--
+		<ant inheritall="true" dir="${basedir}" antfile="assemble.xml" />
+		-->
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
 				<pathelement location="${launcher}" />
@@ -170,17 +283,19 @@
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ${basedir}/assemble.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
-			<arg line="-DbuildID=${buildID} " />
+			<arg line="-DbuildId=${buildId} " />
 			<arg line="-DfeatureToBuild=${featureToBuild} " />
-			<jvmarg value="-Xms256m"/>
-			<jvmarg value="-Xmx1024m"/>
+			<arg line="-DbuildId=${buildId} " />
+			<jvmarg value="-Xms1024m"/>
+			<jvmarg value="-Xmx2048m"/>
 			<jvmarg value="-XX:MaxPermSize=384m"/>
 		</java>
 	</target>
 	
-	<target name="package">
+	<target name="package" depends="assemble">
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
 				<pathelement location="${launcher}" />
@@ -188,11 +303,13 @@
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ${basedir}/assemble.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="package " />
 			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
-			<arg line="-DbuildID=${buildID} " />
+			<arg line="-DbuildId=${buildId} " />
 			<arg line="-DfeatureToBuild=${featureToBuild} " />
+			<arg line="-DbuildId=${buildId} " />
 			<jvmarg value="-Xms512M"/>
 			<jvmarg value="-Xmx2048M"/>
 			<jvmarg value="-XX:MaxPermSize=512M"/>

@@ -1,3 +1,18 @@
+2009-06-09  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/cleanupMaster.patch: Remove.
+	* build.xml: Set eclipse.pdebuild.scripts property.  Use
+	"eclipse-build-feature" feature and builder.  Use a fake home directory 
+	for the builds.  Change buildID to buildId everywhere.  Remove unnecessary 
+	cleanupMaster patch.  Pass property file to antRunner calls.  Build with 
+	antRunner and not plain ant.  Temporarily make assemble not depend upon 
+	compilelibs (for testing).  
+	* build.properties: Change buildID to buildId.  Remove parallel compilation
+	and flattenDependencies for now.  Don't generate API descriptions.
+	Fully-expand bootclasspath (need to be more generic here).  Add
+	OSGi/Minimum-1.2 BREE.  Full expand BREEs for use with antRunner (somehow 
+	it doesn't expand in-file properties).
+
 2009-06-02  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Make bootstrap stuff default but allow over-riding.  Add 
