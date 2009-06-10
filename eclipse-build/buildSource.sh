@@ -131,7 +131,7 @@ popd
 
 popd
 
-svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/eclipse-build-config
+svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/trunk/eclipse-build-config
 tar czf ${workDirectory}/eclipse-build-buildConfig.tar.gz eclipse-build-config
-svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/eclipse-build-feature
+svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/trunk/eclipse-build-feature
 tar czf ${workDirectory}/eclipse-build-feature-src.tar.gz eclipse-build-feature

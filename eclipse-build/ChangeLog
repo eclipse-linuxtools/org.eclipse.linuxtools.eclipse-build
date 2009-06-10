@@ -1,3 +1,7 @@
+2009-06-10  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* buildSource.sh: Fix builder and feature path.
+
 2009-06-09  Andrew Overholt  <overholt@redhat.com>
 
 	* buildSource.sh: Generate tarballs for builder and feature.
