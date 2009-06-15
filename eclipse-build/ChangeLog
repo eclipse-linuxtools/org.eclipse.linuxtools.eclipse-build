@@ -1,3 +1,7 @@
+2009-06-15  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSource.sh: Replace example build ID with probably 3.5 one.
+
 2009-06-10  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildSource.sh: Fix builder and feature path.

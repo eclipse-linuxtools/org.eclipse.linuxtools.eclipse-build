@@ -34,7 +34,7 @@ done
 
 # Must specify a build ID
 if [ "x${buildID}x" == "xx" ]; then
-    echo >&2 "Must specify build ID.  Example:  I20090522-1710 ."
+    echo >&2 "Must specify build ID.  Example:  I20090611-1540 ."
     echo >&2 "${usage}"
     exit 1
 else
