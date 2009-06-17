@@ -1,5 +1,9 @@
 2009-06-17  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Fix path for builtZip.
+
+2009-06-17  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Build directly from build config. Do p2 director installation.
 	* generatebuild.xml: Explicitly enable flattenDependencies and
 	parallelCompilation.
