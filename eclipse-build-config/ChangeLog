@@ -1,3 +1,14 @@
+2009-06-17  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/platform/p2.inf: Initial checkin.
+	* productFiles/platform/platform.product: Likewise.
+	* productFiles/platform.sdk/p2.inf: Likewise.
+	* productFiles/platform.sdk/platform.product:Likewise. 
+	* productFiles/rcp/rcp.product: Likewise.
+	* productFiles/rcp.sdk/rcp.product: Likewise.
+	* productFiles/sdk/p2.inf: Likewise.
+	* productFiles/sdk/sdk.product: Likewise.
+
 2009-06-09  Andrew Overholt  <overholt@redhat.com>
 
 	* allElements.xml: Initial checkin.
