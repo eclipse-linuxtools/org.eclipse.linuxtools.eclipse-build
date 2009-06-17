@@ -362,7 +362,7 @@
 		</java>
 	</target>
 
-	<target name="p2prep" depends="build">
+	<target name="p2prep">
 		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildId}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
@@ -402,8 +402,6 @@
 			<advice kind="featureVersions" file="${buildDirectory}/finalFeaturesVersions.properties" />
 			<advice kind="pluginVersions" file="${buildDirectory}/finalPluginsVersions.properties" />
 		</p2.publish.product>
-
-		<mkdir dir="${buildRepo}" />
 	</target>
 
 	<target name="provision.sdk"  depends="p2prep">
