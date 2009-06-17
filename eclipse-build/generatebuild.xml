@@ -30,6 +30,8 @@
 		                     buildingosgi="true"
 		                     recursivegeneration="true"
 							 builddirectory="${buildDirectory}"
+				             flattenDependencies="${flattenDependencies}"
+            				 parallelCompilation="${parallelCompilation}"
 		                     children="true" />
 	</target>
 
