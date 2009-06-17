@@ -1,5 +1,10 @@
 2009-06-17  Andrew Overholt  <overholt@redhat.com>
 
+	* build.properties: Explicitly enable flattenDependencies and
+	parallelCompilation.
+
+2009-06-17  Andrew Overholt  <overholt@redhat.com>
+
 	* productFiles/platform/p2.inf: Initial checkin.
 	* productFiles/platform/platform.product: Likewise.
 	* productFiles/platform.sdk/p2.inf: Likewise.
