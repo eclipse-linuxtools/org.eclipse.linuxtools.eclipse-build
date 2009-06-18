@@ -9,12 +9,13 @@
 
 baseDir=$(pwd)
 workDirectory=
-buildID=
+buildID=I20090611-1540
 baseBuilder=
 eclipseBuilder=
 baseBuilderTag="R35_M7"
+fetchTests="yes"
 
-usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>]"
+usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
 while [ $# -gt 0 ]
 do
@@ -24,6 +25,7 @@ do
                 -baseBuilder) baseBuilder="$2"; shift;;
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
+                -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
                 --help) echo $usage; exit 0;;
                 -h) echo $usage; exit 0;;
@@ -57,6 +59,12 @@ fi
 
 fetchDirectory=${workDirectory}/fetch
 mkdir -p ${fetchDirectory}
+homeDirectory=${workDirectory}/userhome
+rm -rf ${homeDirectory}
+mkdir -p ${homeDirectory}
+workspace=${workDirectory}/workspace
+rm -rf ${workspace}
+mkdir -p ${workspace}
 cvsRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse"
 mapsRoot="org.eclipse.releng/maps"
 
@@ -84,6 +92,7 @@ pushd ${eclipseBuilder}
 java -jar \
 ${baseBuilder}/plugins/org.eclipse.equinox.launcher_*.jar \
 -consolelog \
+-data ${workspace} \
 -application org.eclipse.ant.core.antRunner \
 -f buildAll.xml \
 fetchMasterFeature \
@@ -95,6 +104,7 @@ fetchMasterFeature \
 -DmapsRoot=${mapsRoot} \
 -DmapsCheckoutTag=${buildID} \
 -DmapVersionTag=${buildID} \
+-Duser.home=${homeDirectory} \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
 
 pushd ${fetchDirectory}
@@ -104,11 +114,14 @@ tar cjf ${workDirectory}/eclipse-${buildID}-fetched-src.tar.bz2 \
   eclipse-${buildID}-fetched-src
 popd
 
+if [ "${fetchTests}" == "yes" ]; then
+
 rm -rf ${fetchDirectory}/*
 
 java -jar \
 ${baseBuilder}/plugins/org.eclipse.equinox.launcher_*.jar \
 -consolelog \
+-data ${workspace} \
 -application org.eclipse.ant.core.antRunner \
 -f buildAll.xml \
 fetchSdkTestsFeature \
@@ -120,6 +133,7 @@ fetchSdkTestsFeature \
 -DmapsRoot=${mapsRoot} \
 -DmapsCheckoutTag=${buildID} \
 -DmapVersionTag=${buildID} \
+-Duser.home=${homeDirectory} \
 2>&1 | tee ${workDirectory}/testsFetch.log
 
 pushd ${fetchDirectory}
@@ -129,6 +143,7 @@ tar cjf ${workDirectory}/eclipse-sdktests-${buildID}-fetched-src.tar.bz2 \
   eclipse-sdktests-${buildID}-fetched-src
 popd
 
+fi
 popd
 
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/trunk/eclipse-build-config

@@ -1,3 +1,8 @@
+2009-06-18  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSource.sh: Set workspace and user.home during fetching. Make 3.5
+	build ID the default. Add -noTests flag to not fetch the tests' source.
+
 2009-06-17  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Fix path for builtZip.  Remove extraneous "mkdir
