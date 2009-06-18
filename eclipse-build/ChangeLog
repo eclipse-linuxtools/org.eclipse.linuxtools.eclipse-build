@@ -2,6 +2,7 @@
 
 	* buildSource.sh: Set workspace and user.home during fetching. Make 3.5
 	build ID the default. Add -noTests flag to not fetch the tests' source.
+	* build.xml: Make default target build and provision.
 
 2009-06-17  Andrew Overholt  <overholt@redhat.com>
 

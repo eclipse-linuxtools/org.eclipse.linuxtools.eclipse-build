@@ -362,7 +362,7 @@
 		</java>
 	</target>
 
-	<target name="p2prep">
+	<target name="p2prep" depends="built">
 		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildId}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
