@@ -1,5 +1,9 @@
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
+	* build.properties: Don't set p2.{metadata,artifact}.repo.name.
+
+2009-06-22  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #280681
 	
 	* build.xml: Explicitly set eclipse.p2.data.area as a JVM argument when
