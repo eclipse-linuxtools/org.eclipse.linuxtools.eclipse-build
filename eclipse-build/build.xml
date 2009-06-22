@@ -6,9 +6,10 @@
 	<property name="eclipse.pdebuild.scripts" value="bootstrap/plugins/org.eclipse.pde.build/scripts" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
+	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="repo" value="${buildDirectory}/repo" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
-	
+
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="fetch.xml" property="fetch.file.present" value="true" />
 
@@ -368,7 +369,6 @@
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
 		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip"/>
 		<!--<property name="builtZip" value="${basedir}/eclipse-SDK-${buildId}.zip"/>-->
-		<property name="productFiles" value="${buildConfig}/productFiles" />
 		<replace token="@qualifier@" file="${productFiles}/sdk/sdk.product" value="${buildId}" />
 
 		<delete dir="${repo}" />
@@ -384,7 +384,8 @@
 		<exec executable="unzip" dir="${reposource}">
 			<arg line="features/*.jar -d ${tempexec}" />
 		</exec>
-		
+
+		<!-- We need a full path for ${reposource} -->
 		<property name="buildDirectoryAbsoluteTemp" value="${buildDirectory}/absolutetemp.txt" />
 		<echo message="${reposource}" file="${buildDirectoryAbsoluteTemp}" />
 		<replaceregexp file="${buildDirectoryAbsoluteTemp}" match="org.eclipse.releng.eclipsebuilder/../src/" replace="src/" />
@@ -396,6 +397,8 @@
 			<property name="p2.build.repo" value="file:/${buildDirectoryAbsolute}" />
 		</subant>
 
+		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
+
 		<echo message="p2.publish.product being called with:  repository=file:${reposource} productFile=${productFiles}/sdk/sdk.product compress=true" />
 		<p2.publish.product flavor="tooling" repository="file:${reposource}" productFile="${productFiles}/sdk/sdk.product" compress="true">
 			<config os="linux" ws="gtk" arch="${buildArch}" />
@@ -403,8 +406,8 @@
 			<advice kind="pluginVersions" file="${buildDirectory}/finalPluginsVersions.properties" />
 		</p2.publish.product>
 	</target>
-
-	<target name="provision.sdk"  depends="p2prep">
+	
+	<target name="provision.sdk" depends="p2prep">
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
 			<param name="p2.director.version" value="3.5.0.${buildId}" />
@@ -456,5 +459,5 @@
 		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
 	</target>
-	
+
 </project>
