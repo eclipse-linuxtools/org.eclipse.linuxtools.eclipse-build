@@ -424,11 +424,12 @@
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2"/>
 		<move file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
+		<!-- FIXME:  When we move to bootstrap by default, investigate using <exec> on the bootstrapped launcher
+		     like in eclipsebuilder's equinox.prov/run.xml -->
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
 				<pathelement location="${launcher}" />
 			</classpath>
-			<arg line="-configuration configuration " />
 			<arg line="-data ${buildworkspace} " />
 			<arg line="-application org.eclipse.equinox.p2.director.app.application " />
 			<arg line="-consoleLog" />
@@ -455,6 +456,7 @@
 			<jvmarg value="-Xms512M" />
 			<jvmarg value="-Xmx2048M" />
 			<jvmarg value="-XX:MaxPermSize=512M" />
+			<jvmarg value="-Declipse.p2.data.area=${p2.director.install.path}/p2"/>
 		</java>
 		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />

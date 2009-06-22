@@ -1,8 +1,17 @@
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #280681
+	
+	* build.xml: Explicitly set eclipse.p2.data.area as a JVM argument when
+	running director.
+
+2009-06-22  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #280679
+	
 	* build.xml: Define productFiles globally.  Generate feature for root
 	files.  To use this, ensure eclipse-build-config is up to date -- 
-	especially the generated tarball of it.
+	especially the generated tarball of it.	
 
 2009-06-18  Andrew Overholt  <overholt@redhat.com>
 
