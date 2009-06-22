@@ -6,7 +6,7 @@
 	* productFiles/rcpConfig/config.product: Likewise.
 	* productFiles/rcpConfig/feature.properties: Likewise.
 	* productFiles/rcpConfig/feature.xml: Likewise.
-	* productFiles/rcpConfig/p2.inf: Likewise
+	* productFiles/rcpConfig/p2.inf: Likewise.
 
 2009-06-17  Andrew Overholt  <overholt@redhat.com>
 
