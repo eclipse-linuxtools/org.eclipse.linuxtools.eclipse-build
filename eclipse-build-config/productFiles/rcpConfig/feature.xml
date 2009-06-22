@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.rcp.configuration"
+      label="%featureName"
+      version="1.0.0.I20090611-1540"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+</feature>
