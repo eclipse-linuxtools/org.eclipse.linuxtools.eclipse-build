@@ -9,6 +9,7 @@
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="repo" value="${buildDirectory}/repo" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
+	<property name="buildId" value="I20090611-1540" />
 
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="fetch.xml" property="fetch.file.present" value="true" />

@@ -1,5 +1,13 @@
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #280684
+
+	* ABOUT.mediawiki: Add some bug links and a bit more documentation.
+	* build.xml: Default to 3.5 final build ID.
+	* README.mediawiki: Update a bit with how to test.
+
+2009-06-22  Andrew Overholt  <overholt@redhat.com>
+
 	* build.properties: Don't set p2.{metadata,artifact}.repo.name.
 
 2009-06-22  Andrew Overholt  <overholt@redhat.com>

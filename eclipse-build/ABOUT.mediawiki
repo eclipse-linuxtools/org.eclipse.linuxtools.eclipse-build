@@ -11,3 +11,18 @@ Current plan is to create:
 # Working ant build.
 # Common place and infrastructure for storing/applying patches needed for clean build on various Linux distributions.
 # Standardize the usage of system libraries. 
+
+'''Patches and Bugs'''
+
+We are always open to patches to document, clean up, or improve our process.  Please open a bug against Technology -> Linux Tools -> Packaging Tools with an attached patch.  Please put "&#91;eclipse-build&#93;" at the start of the bug title.  Here is a link to follow to open a bug:
+
+http://preview.tinyurl.com/eclipse-build-bug
+
+The current list of open bugs is available via this query:
+
+http://preview.tinyurl.com/eclipse-build-openbugs
+
+'''Current status'''
+
+As of 2009-06-22, it is possible to build the Eclipse SDK entirely from a tarball of the sources.  The build procedure is ''very'' similar to 
+what is done by the upstream release engineers.  The resulting provisioned SDK can be run and have additional software installed into it.  See README.mediawiki for more information.

@@ -1,20 +1,25 @@
 This project should provide a simplified build for the Eclipse SDK on Linux 
-distributions.  The current state is not producing a usable eclipse build. 
+distributions.  The current state is producing a usable eclipse build under build/(build Id)/installation. 
 The completed steps are:
 # Build pdebuild-ant and its dependencies in the directory bootstrap/plugins.
-# Copy all the sources from the downloaded SDK to build directory, removing source plugins and features.
-# Regenerate build.xml files with the bootstrapped pdebuild-ant. There are exceptions here because some of the plugins have custom build.xml files so they are just skipped.
+# Generate source tarball of entire Eclipse SDK and required other files (buildSource.sh)
 # All plugins and features of org.eclipse.sdk built.
+# Use p2 publisher to create metadata for all built components
+# Provision org.eclipse.sdk using p2 director
 
 To test it do the following:
-''run `ant -DbuildArch=YOUR_ARCH`''   
 
-This build script is still work in progress but you should get:
-* all the dependencies of pdebuild-ant in the bootstrap/plugins folder. 
-* build.xml files regenerated whenever possible
-* source plugins and features generated
+* generate source using <tt>./buildSource.sh</tt> (alternatively, look for 3.5 sources here:  http://download.eclipse.org/technology/linuxtools/eclipse-build/ -- get all of the tarballs and verify their md5sums match)
+** <tt>./buildSource.sh -workdir /tmp/eclipseSDKBuild</tt>
+* if you are using pre-generated source tarballs, check out basebuilder:
+** <tt>mkdir -p /tmp/eclipseSDKBuild; cd /tmp/eclipseSDKBuild; cvs -d:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse co -r R35_M7 org.eclipse.releng.basebuilder</tt>
+* ensure the directory in which you are running the build contains the generated source tarballs (3 of them until we start building the SDK tests: eclipse-I20090611-1540-fetched-src.tar.bz2, eclipse-build-buildConfig.tar.gz, eclipse-build-feature-src.tar.gz)
+* run the build using an existing basebuilder checkout ('''note''':  YOUR_ARCH should be in the way eclipse defines archs, e.g i*86 becomes x86, x86_64 is the same.  We have yet to test with other archs.  Any help is welcome.)
+** <tt>java -jar <basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -consolelog -debug -data $(pwd)/baseworkspace -Duser.home=$(pwd)/userhome -application org.eclipse.ant.core.antRunner -DbuildArch=YOUR_ARCH -DbaseBuilder=<basebuilder> -Dlauncher=<basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -Declipse.pdebuild.scripts=<basebuilder>/plugins/org.eclipse.pde.build_3.5.0.v20090430-1420 -DskipFetch=true 2>&1 | tee build.log</tt>
+
+You should get:
+<!-- Not anymore.  We need to fix this.
+* all the dependencies of pdebuild-ant in the bootstrap/plugins folder. -->
 * all.children of org.eclipse.sdk feature built
-* invoke generated assemble build file - only for testing purposes for now
-
-YOUR_ARCH should be in the way eclipse defines archs, e.g i*86 becomes x86, x86_64 is the same.
-I haven't tested or looked with other archs. Any help is welcome.
+* p2 metadata created for all components
+* p2 director used to install org.eclipse.sdk into build/(build Id)/installation directory
