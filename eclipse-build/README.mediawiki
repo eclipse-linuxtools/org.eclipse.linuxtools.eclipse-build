@@ -15,7 +15,7 @@ To test it do the following:
 ** <tt>mkdir -p /tmp/eclipseSDKBuild; cd /tmp/eclipseSDKBuild; cvs -d:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse co -r R35_M7 org.eclipse.releng.basebuilder</tt>
 * ensure the directory in which you are running the build contains the generated source tarballs (3 of them until we start building the SDK tests: eclipse-I20090611-1540-fetched-src.tar.bz2, eclipse-build-buildConfig.tar.gz, eclipse-build-feature-src.tar.gz)
 * run the build using an existing basebuilder checkout ('''note''':  YOUR_ARCH should be in the way eclipse defines archs, e.g i*86 becomes x86, x86_64 is the same.  We have yet to test with other archs.  Any help is welcome.)
-** <tt>java -jar <basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -consolelog -debug -data $(pwd)/baseworkspace -Duser.home=$(pwd)/userhome -application org.eclipse.ant.core.antRunner -DbuildArch=YOUR_ARCH -DbaseBuilder=<basebuilder> -Dlauncher=<basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -Declipse.pdebuild.scripts=<basebuilder>/plugins/org.eclipse.pde.build_3.5.0.v20090430-1420 -DskipFetch=true 2>&1 | tee build.log</tt>
+** <tt>java -jar <basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -consolelog -data $(pwd)/baseworkspace -Duser.home=$(pwd)/userhome -application org.eclipse.ant.core.antRunner -DbuildArch=YOUR_ARCH -DbaseBuilder=<basebuilder> -Dlauncher=<basebuilder>/plugins/org.eclipse.equinox.launcher_1.0.200.v20090429-1630.jar -Declipse.pdebuild.scripts=<basebuilder>/plugins/org.eclipse.pde.build_3.5.0.v20090430-1420 -DskipFetch=true 2>&1 | tee build.log</tt>
 
 You should get:
 <!-- Not anymore.  We need to fix this.
