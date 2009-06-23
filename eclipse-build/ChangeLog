@@ -1,15 +1,19 @@
-2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	Removed not needed file.
-	* directory.txt: Removed.
+2009-06-23  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Remove unused targets.
 
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	Removed old script.
-	* retrieve_map.sh: Removed.
+	
+	* directory.txt: Removed; no longer necessary.
+
+2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
+	
+	* retrieve_map.sh: Removed; no longer necessary.
 	
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	Remove parts from the old build.
-	* assemble.xml: Removed.
-	* fetch.xml: Removed.
+	
+	* assemble.xml: Removed; no longer necessary.
+	* fetch.xml: Likewise.
 	* build.xml: Remove old targets.
 
 2009-06-22  Andrew Overholt  <overholt@redhat.com>

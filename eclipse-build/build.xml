@@ -75,96 +75,11 @@
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 	</target>
 
-	<target name="prepareBuildScriptGeneration" depends="bootstrap">
-		<delete dir="build" />
-		<mkdir dir="build/features" />
-		<copy todir="build/features/">
-			<fileset dir="${sdkSource}/features/">
-				<exclude name="**/*.source/" />
-			</fileset>
-		</copy>
-		<mkdir dir="build/plugins" />
-		<copy todir="build/plugins/">
-			<fileset dir="${sdkSource}/plugins/">
-				<exclude name="**/*.source_*/" />
-			</fileset>
-		</copy>
-		<copy todir="build/plugins/">
-			<fileset dir="${sdkSource}/plugins/">
-				<include name="org.apache.ant.source_*" />
-				<include name="org.apache.commons.codec.source_*" />
-				<include name="org.apache.commons.httpclient.source_*" />
-				<include name="org.apache.commons.el.source_*" />
-				<include name="org.apache.commons.logging.source_*" />
-				<include name="com.jcraft.jsch.source_*" />
-				<include name="com.ibm.icu.source_*" />
-				<include name="org.apache.jasper.source_*" />
-				<include name="javax.servlet.source_*" />
-				<include name="javax.servlet.jsp.source_*" />
-				<include name="org.junit.source_*" />
-				<include name="org.objectweb.asm.source_*" />
-				<include name="com.ibm.icu.source_*" />
-			</fileset>
-		</copy>
-		<!-- TODO is it really needed -->
-		<move tofile="build/plugins/org.junit" file="build/plugins/org.junit_3.8.2.v20090203-1005" />
-	</target>
-
-	<target name="generateBuildScripts" depends="insertBuildId,applyPatches">
-		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
-			<classpath>
-				<pathelement location="${launcher}" />
-			</classpath>
-			<arg line="-configuration configuration " />
-			<arg line="-data ${buildworkspace} " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${basedir}/generatebuild.xml" />
-			<arg line="-consoleLog " />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-Djava.home=${java.home} " />
-			<arg line="-DbuildDirectory=${buildDirectory} " />
-			<arg line="-Duser.home=${homeDir} " />
-			<arg line="-DbuildArch=${buildArch} " />
-			<arg line="-DfeatureToBuild=${featureToBuild} " />
-			<arg line="-DbuildId=${buildId} " />
-			<jvmarg value="-Xms256m" />
-			<jvmarg value="-Xmx1024m" />
-			<jvmarg value="-XX:MaxPermSize=384m" />
-			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;" />
-			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;" />
-		</java>
-	</target>
-
 	<target name="build" depends="insertBuildId,applyPatches">
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
 			<property name="arch" value="${buildArch}"/>
 			<property name="builder" value="${buildConfig}" />
 		</ant>
-	</target>
-
-	<target name="buildAllTest" depends="generateBuildScripts">
-		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
-			<classpath>
-				<pathelement location="${launcher}" />
-			</classpath>
-			<arg line="-configuration configuration " />
-			<arg line="-data ${buildworkspace} " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${buildDirectory}/features/${featureToBuild}/build.xml" />
-			<arg line="-consoleLog " />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-Djava.home=${java.home} " />
-			<arg line="-Duser.home=${homeDir} " />
-			<arg line="-Darch=${buildArch} " />
-			<arg line="-Dtarget=build.jars " />
-			<arg line="-DjavacFailOnError=true" />
-			<arg line="all.children " />
-			<jvmarg value="-Xms256m" />
-			<jvmarg value="-Xmx1024m" />
-			<jvmarg value="-XX:MaxPermSize=384m" />
-			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/core/internal/dtree/DataTreeNode,forwardDeltaWith&quot;" />
-			<jvmarg value="-XX:CompileCommand=&quot;exclude,org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding,&lt;init&gt;&quot;" />
-		</java>
 	</target>
 
 	<target name="compilelibs" >
