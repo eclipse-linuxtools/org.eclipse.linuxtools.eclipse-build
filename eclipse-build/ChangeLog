@@ -1,5 +1,19 @@
 2009-06-23  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Fail if source tarball not present.  Copy build config and 
+	feature instead of untarring (bug #281135).
+	* build.properties: Don't set buildDirectory here.  Do it in build.xml
+	instead.  Define featureToBuild here.
+	* buildSource.sh: Run both SDK source fetching and eclipse-build fetching.
+	* buildSDKSource.sh: Re-name buildSource.sh to indicate just fetching of 
+	SDK sources.  Default to $(pwd) instead of /tmp/eclipseSDKBuild.  Don't 
+	fetch tests by default.
+	* buildEclipseBuildSource.sh: New file.  Create tarball of eclipse-build
+	source.
+	* README.mediawiki: Update a bit.
+
+2009-06-23  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Remove unused targets.
 
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>

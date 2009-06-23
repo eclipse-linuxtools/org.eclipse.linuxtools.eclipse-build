@@ -1,64 +1,72 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
-	<property file="build.properties" />
+	<property name="buildId" value="I20090611-1540" />
+	
 	<property name="baseBuilder" value="bootstrap" />
 	<property name="launcher" value="bootstrap/plugins/org.eclipse.equinox.launcher" />
-	<property name="featureToBuild" value="eclipse-build-feature" />
 	<property name="eclipse.pdebuild.scripts" value="bootstrap/plugins/org.eclipse.pde.build/scripts" />
-	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
-	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
-	<property name="productFiles" value="${buildConfig}/productFiles" />
-	<property name="repo" value="${buildDirectory}/repo" />
-	<property name="reposource" value="${buildDirectory}/reposource" />
-	<property name="buildId" value="I20090611-1540" />
 
+	<property file="build.properties" />
+	
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
+	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
 
-	<target name="clean">
-		<delete dir="build" />
-	</target>
-
-	<target name="cleanAll" depends="clean">
-		<ant antfile="pdebuild.xml" target="clean" />
-	</target>
-
+	<property name="topBuildDir" value="${basedir}/build"/>
+	<property name="homeDir" value="${basedir}/home" />
+	<property name="baseworkspace" value="${basedir}/baseworkspace" />
+	<property name="buildworkspace" value="${basedir}/buildworkspace" />
+	
 	<target name="bootstrap" unless="bootstrapped">
 		<ant antfile="pdebuild.xml" />
 	</target>
+	
+	<target name="fetch" unless="sdkSourcePresent">
+		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
+	</target>
 
-	<target name="init">
-		<delete dir="${basedir}/build" />
-		<mkdir dir="${basedir}/build" />
+	<target name="init" depends="fetch">
+		<delete dir="${topBuildDir}" />
+		<mkdir dir="${topBuildDir}" />
 
 		<!-- User home used for build -->
-		<delete dir="${basedir}/home" />
-		<mkdir dir="${basedir}/home" />
-		<property name="homeDir" value="${basedir}/home" />
+		<delete dir="${homeDir}" />
+		<mkdir dir="${homeDir}" />
 
 		<!-- Workspaces used for build -->
-		<property name="baseworkspace" value="${basedir}/baseworkspace" />
 		<delete dir="${baseworkspace}" />
 		<mkdir dir="${baseworkspace}" />
-		<property name="buildworkspace" value="${basedir}/buildworkspace" />
 		<delete dir="${buildworkspace}" />
 		<mkdir dir="${buildworkspace}" />
-
-		<delete dir="${buildDirectory}/buildConfigs" />
-		<mkdir dir="${buildDirectory}/buildConfigs" />
 
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
 		<exec dir="${basedir}/build" executable="tar">
 			<arg line="jxf ${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" />
 		</exec>
 		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
+		
+		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
+		<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
+		<property name="productFiles" value="${buildConfig}/productFiles" />
+		<property name="repo" value="${buildDirectory}/repo" />
+		<property name="reposource" value="${buildDirectory}/reposource" />
+		
+		<delete dir="${buildDirectory}/buildConfigs" />
+		<mkdir dir="${buildDirectory}/buildConfigs" />
 
-		<echo message="Extracting eclipse-build main feature source (tar zxf eclipse-build-feature-src.tar.gz)" />
-		<exec dir="${buildDirectory}/features" executable="tar">
-			<arg line="zxf ${basedir}/eclipse-build-feature-src.tar.gz" />
-		</exec>
-		<echo message="Extracting eclipse-build builder (tar zxf eclipse-build-buildConfig.tar.gz)" />
-		<exec dir="${buildConfigs}" executable="tar">
-			<arg line="zxf ${basedir}/eclipse-build-buildConfig.tar.gz" />
-		</exec>
+		<echo message="Copying eclipse-build main feature source" />
+		<copy todir="${buildConfigs}/eclipse-build-config">
+			<fileset dir="eclipse-build-config"/>
+		</copy>
+		<echo message="Copying eclipse-build builder" />
+		<copy todir="${buildDirectory}/features/eclipse-build-feature">
+			<fileset dir="eclipse-build-feature"/>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="${homeDir}" />
+		<delete dir="${baseworkspace}" />
+		<delete dir="${buildworkspace}" />
+		<delete dir="${topBuildDir}" />
 	</target>
 
 	<target name="insertBuildId" depends="init">
@@ -153,7 +161,7 @@
 			<advice kind="pluginVersions" file="${buildDirectory}/finalPluginsVersions.properties" />
 		</p2.publish.product>
 	</target>
-	
+
 	<target name="provision.sdk" depends="p2prep">
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
