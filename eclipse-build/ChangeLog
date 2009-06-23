@@ -1,4 +1,8 @@
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
+	Removed not needed file.
+	* directory.txt: Removed.
+
+2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
 	Removed old script.
 	* retrieve_map.sh: Removed.
 	
