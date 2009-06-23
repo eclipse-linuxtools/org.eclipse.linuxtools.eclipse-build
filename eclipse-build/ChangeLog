@@ -1,3 +1,9 @@
+2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
+	Remove parts from the old build.
+	* assemble.xml: Removed.
+	* fetch.xml: Removed.
+	* build.xml: Remove old targets.
+
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #280684
