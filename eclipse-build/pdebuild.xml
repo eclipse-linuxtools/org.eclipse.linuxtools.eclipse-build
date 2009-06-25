@@ -1,6 +1,7 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
 	<property file="build.properties" />
+	<property name="sdkSource" value="build/eclipse-${buildId}-fetched-src" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.osgi" />
@@ -43,7 +44,7 @@
 		<file name="org.eclipse.equinox.p2.exemplarysetup" />
 		<file name="org.eclipse.core.expressions" />
 		<file name="org.eclipse.equinox.http.servlet" />
-		<file name="org.eclipse.equinox.http.jetty_2.0.0" />
+		<!--<file name="org.eclipse.equinox.http.jetty_2.0.0" />-->
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
 	</filelist>
@@ -87,10 +88,27 @@
 		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.simpleconfigurator.manipulator/@dot" />
 		<pathelement path="${sdkSource}/plugins/org.eclipse.equinox.p2.updatesite/@dot" />
 	</path>
-	<fileset id="depsZips" dir="${sdkSource}/plugins" includes="**/*_*.zip">
-	</fileset>
+	<fileset id="depsZips" dir="${sdkSource}/plugins" includes="**/*_*.zip" />
+	<target name="generateScripts">
+		<pathconvert pathsep=", " property="plugins">
+			<filelist refid="depsDirs" />
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="plugin@*" />
+				</chainedmapper>
+			</mapper>
+		</pathconvert>
+		<eclipse.buildScript elements="${plugins}"
+		                     builddirectory="build/eclipse-I20090611-1540-fetched-src" />
+	</target>
 	<target name="bootstrap">
 		<subant>
+			<filelist refid="depsDirs" />
+		</subant>
+	</target>
+	<target name="bootstrap-clean">
+		<subant target="clean">
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
