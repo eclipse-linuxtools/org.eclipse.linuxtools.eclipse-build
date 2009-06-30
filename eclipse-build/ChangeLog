@@ -1,5 +1,6 @@
 2009-06-30  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* bootstrap/configuration/config.ini: Point to the bootstrap folder.
 	* pdebuild.properties: New file.
 	* pdebuild.xml: Fix build of pde.build with the new sources.
 
