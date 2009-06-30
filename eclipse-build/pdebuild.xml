@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
-	<property file="build.properties" />
+	<property file="pdebuild.properties" />
 	<property name="sdkSource" value="build/eclipse-${buildId}-fetched-src" />
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins">
@@ -125,13 +125,13 @@
 			<filelist refid="depsDirs2" />
 		</subant>
 	</target>
-	<target name="zipPlugins" depends="bootstrap2">
+	<target name="zipPlugins" depends="bootstrap">
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
 		<subant target="zip.plugin">
 			<filelist refid="depsDirs" />
-			<filelist refid="depsDirs2" />
+			<!--<filelist refid="depsDirs2" />-->
 		</subant>
 	</target>
 	<target name="collectBootstrapPlugins" depends="zipPlugins">
@@ -174,6 +174,10 @@
 		<symlink link="bootstrap/plugins/org.eclipse.equinox.launcher"
 		         resource="${launcherplugin}"
 		         overwrite="true" />
+		<jar destfile="bootstrap/plugins/org.eclipse.equinox.launcher.jar"
+		     basedir="bootstrap/plugins/org.eclipse.equinox.launcher"
+		     includes="**" manifest="bootstrap/plugins/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF">
+		</jar>
 	</target>
 	<target name="clean">
 		<delete dir="bootstrap/plugins" />

@@ -1,3 +1,8 @@
+2009-06-30  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* pdebuild.properties: New file.
+	* pdebuild.xml: Fix build of pde.build with the new sources.
+
 2009-06-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.properties: Remove hardcoded sdkSource property.
