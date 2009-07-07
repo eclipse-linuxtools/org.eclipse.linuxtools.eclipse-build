@@ -1,5 +1,5 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
-	<target name="cleanBuild" depends="clean,collectBootstrapPlugins" />
+	<target name="cleanBuild" depends="clean,zipPlugins2" />
 	<property file="pdebuild.properties" />
 	<property name="sdkSource" value="build/eclipse-${buildId}-fetched-src" />
 	<!-- Order in this filelist is critical for building !!! -->
@@ -102,6 +102,20 @@
 		<eclipse.buildScript elements="${plugins}"
 		                     builddirectory="build/eclipse-I20090611-1540-fetched-src" />
 	</target>
+	<target name="generateScripts2">
+		<pathconvert pathsep=", " property="plugins">
+			<filelist refid="depsDirs2" />
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="plugin@*" />
+				</chainedmapper>
+			</mapper>
+		</pathconvert>
+
+		<eclipse.buildScript elements="${plugins}"
+		                     builddirectory="../build/eclipse-I20090611-1540-fetched-src" />
+	</target>
 	<target name="bootstrap">
 		<subant>
 			<filelist refid="depsDirs" />
@@ -112,7 +126,22 @@
 			<filelist refid="depsDirs" />
 		</subant>
 	</target>
-	<target name="bootstrap2" depends="bootstrap">
+	<target name="bootstrap2" depends="zipPlugins">
+		<antcall target="collectBootstrapPlugins" />
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="bootstrap"
+		      failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ../pdebuild.xml generateScripts2" />
+			<arg line="-DbuildArch=${buildArch} " />
+			<arg line="-DbuildId=${buildId} " />
+			<arg line="-debug -consolelog " />
+		</java>
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
@@ -131,10 +160,18 @@
 		         classpathref="pdebuildClasspath" />
 		<subant target="zip.plugin">
 			<filelist refid="depsDirs" />
-			<!--<filelist refid="depsDirs2" />-->
 		</subant>
 	</target>
-	<target name="collectBootstrapPlugins" depends="zipPlugins">
+	<target name="zipPlugins2" depends="bootstrap2">
+		<taskdef name="eclipse.versionReplacer"
+		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
+		         classpathref="pdebuildClasspath" />
+		<subant target="zip.plugin">
+			<filelist refid="depsDirs2" />
+		</subant>
+		<antcall target="collectBootstrapPlugins" />
+	</target>
+	<target name="collectBootstrapPlugins" >
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
@@ -176,7 +213,8 @@
 		         overwrite="true" />
 		<jar destfile="bootstrap/plugins/org.eclipse.equinox.launcher.jar"
 		     basedir="bootstrap/plugins/org.eclipse.equinox.launcher"
-		     includes="**" manifest="bootstrap/plugins/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF">
+		     includes="**"
+		     manifest="bootstrap/plugins/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF">
 		</jar>
 	</target>
 	<target name="clean">
