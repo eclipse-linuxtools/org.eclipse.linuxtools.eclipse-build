@@ -45,8 +45,16 @@
 		<file name="org.eclipse.core.expressions" />
 		<file name="org.eclipse.equinox.http.servlet" />
 		<!--<file name="org.eclipse.equinox.http.jetty_2.0.0" />-->
+		<!--
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
+		-->
+	</filelist>
+	<filelist id="helpDirs" dir="${sdkSource}/plugins">
+			<file name="org.eclipse.equinox.http.jetty_1.1.100" />
+			<file name="org.eclipse.equinox.http.jetty_2.0.0" />
+			<file name="org.eclipse.help" />
+			<file name="org.eclipse.help.base" />
 	</filelist>
 	<filelist id="depsDirs2" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.swt.gtk.linux.${buildArch}" />
@@ -100,7 +108,20 @@
 			</mapper>
 		</pathconvert>
 		<eclipse.buildScript elements="${plugins}"
-		                     builddirectory="build/eclipse-I20090611-1540-fetched-src" />
+		                     builddirectory="${sdkSource}" />
+		<!-- FIXME:  don't blindly use /tmp -->
+		<move file="${sdkSource}/plugins/org.eclipse.equinox.http.jetty_1.1.100" todir="/tmp"/>
+		<eclipse.buildScript elements="plugin@org.eclipse.equinox.http.jetty"
+		                     significantVersionDigits="2.0.0"
+		                     builddirectory="${sdkSource}" />
+		<move file="/tmp/org.eclipse.equinox.http.jetty_1.1.100" todir="${sdkSource}/plugins"/>
+		<eclipse.buildScript elements="plugin@org.eclipse.equinox.http.jetty"
+							 significantVersionDigits="1.1.100"
+		                     builddirectory="${sdkSource}" />
+		<eclipse.buildScript elements="plugin@org.eclipse.help.base"
+		                     builddirectory="${sdkSource}" />
+		<eclipse.buildScript elements="plugin@org.eclipse.help"
+		                     builddirectory="${sdkSource}" />
 	</target>
 	<target name="generateScripts2">
 		<pathconvert pathsep=", " property="plugins">
@@ -117,13 +138,20 @@
 		                     builddirectory="../build/eclipse-I20090611-1540-fetched-src" />
 	</target>
 	<target name="bootstrap">
+	<echo message="CDC-1.1/Foundation-1.1 = ${CDC-1.1/Foundation-1.1}"/>
 		<subant>
 			<filelist refid="depsDirs" />
+		</subant>
+		<subant>
+			<filelist refid="helpDirs" />
 		</subant>
 	</target>
 	<target name="bootstrap-clean">
 		<subant target="clean">
 			<filelist refid="depsDirs" />
+		</subant>
+		<subant target="clean">
+			<filelist refid="helpDirs" />
 		</subant>
 	</target>
 	<target name="bootstrap2" depends="zipPlugins">
@@ -160,6 +188,9 @@
 		         classpathref="pdebuildClasspath" />
 		<subant target="zip.plugin">
 			<filelist refid="depsDirs" />
+		</subant>
+		<subant target="zip.plugin">
+			<filelist refid="helpDirs" />
 		</subant>
 	</target>
 	<target name="zipPlugins2" depends="bootstrap2">
