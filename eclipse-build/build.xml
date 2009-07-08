@@ -38,9 +38,7 @@
 		<mkdir dir="${buildworkspace}" />
 
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
-		<exec dir="${basedir}/build" executable="tar">
-			<arg line="jxf ${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" />
-		</exec>
+		<untar dest="${basedir}/build" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
 		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
 		
 		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />

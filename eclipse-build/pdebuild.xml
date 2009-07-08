@@ -84,6 +84,7 @@
 		<include name="org.hamcrest.core*" />
 		<include name="javax.servlet*" />
 		<include name="org.objectweb.asm*" />
+		<exclude name="*.source*"/>
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
