@@ -8,7 +8,7 @@ workDirectory=
 buildID=I20090611-1540
 baseBuilder=
 eclipseBuilder=
-baseBuilderTag="R35_M7"
+baseBuilderTag="R3_5"
 fetchTests="no"
 eclipse-buildTag="R0_0_1"
 
@@ -103,6 +103,18 @@ fetchMasterFeature \
 -DmapVersionTag=${buildID} \
 -Duser.home=${homeDirectory} \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
+
+java -jar \
+${baseBuilder}/plugins/org.eclipse.equinox.launcher_*.jar \
+-consolelog \
+-data ${workspace} \
+-application org.eclipse.ant.core.antRunner \
+-f ../pdebuild.xml generateScripts \
+-DbuildDirectory=${fetchDirectory} \
+-DskipBase=true \
+-Duser.home=${homeDirectory} \
+-DsdkSource=${fetchDirectory} \
+2>&1 | tee ${workDirectory}/generatePdeBuildScripts.log
 
 pushd ${fetchDirectory}
 mkdir eclipse-${buildID}-fetched-src
