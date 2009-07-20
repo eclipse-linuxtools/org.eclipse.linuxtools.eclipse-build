@@ -1,7 +1,7 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
-	<target name="cleanBuild" depends="clean,zipPlugins2" />
 	<property file="pdebuild.properties" />
 	<property name="sdkSource" value="build/eclipse-${buildId}-fetched-src" />
+	<target name="cleanBuild" depends="clean,zipPlugins2"/>
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.osgi" />
@@ -44,6 +44,8 @@
 		<file name="org.eclipse.equinox.p2.exemplarysetup" />
 		<file name="org.eclipse.core.expressions" />
 		<file name="org.eclipse.equinox.http.servlet" />
+		<file name="org.eclipse.equinox.p2.touchpoint.eclipse" />
+		<file name="org.eclipse.equinox.p2.touchpoint.natives" />
 		<!--<file name="org.eclipse.equinox.http.jetty_2.0.0" />-->
 		<!--
 		<file name="org.eclipse.help" />
@@ -51,10 +53,10 @@
 		-->
 	</filelist>
 	<filelist id="helpDirs" dir="${sdkSource}/plugins">
-			<file name="org.eclipse.equinox.http.jetty_1.1.100" />
-			<file name="org.eclipse.equinox.http.jetty_2.0.0" />
-			<file name="org.eclipse.help" />
-			<file name="org.eclipse.help.base" />
+		<file name="org.eclipse.equinox.http.jetty_1.1.100" />
+		<file name="org.eclipse.equinox.http.jetty_2.0.0" />
+		<file name="org.eclipse.help" />
+		<file name="org.eclipse.help.base" />
 	</filelist>
 	<filelist id="depsDirs2" dir="${sdkSource}/plugins">
 		<file name="org.eclipse.swt.gtk.linux.${buildArch}" />
@@ -123,7 +125,27 @@
 		                     builddirectory="${sdkSource}" />
 		<eclipse.buildScript elements="plugin@org.eclipse.help"
 		                     builddirectory="${sdkSource}" />
+		<mkdir dir="generatedScripts"/>
+		<pathconvert pathsep=" " property="generatedBuildXmls">
+			<filelist refid="depsDirs" />
+			<filelist refid="helpDirs" />
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="*/build.xml" />
+				</chainedmapper>
+			</mapper>
+		</pathconvert>
+		<copy todir="generatedScripts/plugins">
+			<fileset dir="${sdkSource}/plugins/" includes="${generatedBuildXmls}"/>
+		</copy>
+		<tar destfile="eclipse-build-generatedScripts.tar.bz2"
+			 compression="bzip2"
+			 basedir="generatedScripts"
+			 includes="**/*"
+		/>
 	</target>
+
 	<target name="generateScripts2">
 		<pathconvert pathsep=", " property="plugins">
 			<filelist refid="depsDirs2" />
@@ -139,11 +161,17 @@
 		                     builddirectory="../build/eclipse-I20090611-1540-fetched-src" />
 	</target>
 	<target name="bootstrap">
-	<echo message="CDC-1.1/Foundation-1.1 = ${CDC-1.1/Foundation-1.1}"/>
+		<echo message="bootclasspath=${CDC-1.1/Foundation-1.1}"/>
 		<subant>
+			<property name="buildId" value="${buildId}"/>
+			<property name="buildArch" value="${buildArch}"/>
+			<property file="pdebuild.properties" />
 			<filelist refid="depsDirs" />
 		</subant>
 		<subant>
+			<property name="buildId" value="${buildId}"/>
+			<property name="buildArch" value="${buildArch}"/>
+			<property file="pdebuild.properties" />
 			<filelist refid="helpDirs" />
 		</subant>
 	</target>
@@ -243,12 +271,87 @@
 		<symlink link="bootstrap/plugins/org.eclipse.equinox.launcher"
 		         resource="${launcherplugin}"
 		         overwrite="true" />
+		<!-- symlink o.e.update.configurator to o.e.update.configurator_<VERSION> -->
+		<dirset dir="bootstrap/plugins"
+		        includes="org.eclipse.update.configurator_*"
+		        id="updatetest" />
+
+		<property name="updateconfiguratorplugin" refid="updatetest" />
+		<echo message="${updateconfiguratorplugin}" />
+
+		<symlink link="bootstrap/plugins/org.eclipse.update.configurator"
+		         resource="${updateconfiguratorplugin}"
+		         overwrite="true" />
+		<!-- symlink o.e.e.common to o.e.e.common_<VERSION> -->
+		<dirset dir="bootstrap/plugins"
+		        includes="org.eclipse.equinox.common_*"
+		        id="equinoxcommontest" />
+
+		<property name="equinoxcommonplugin" refid="equinoxcommontest" />
+		<echo message="${equinoxcommonplugin}" />
+
+		<symlink link="bootstrap/plugins/org.eclipse.equinox.common"
+		         resource="${equinoxcommonplugin}"
+		         overwrite="true" />
+
+		<!-- symlink o.e.p.build to o.e.p.build_<VERSION> -->
+		<dirset dir="bootstrap/plugins"
+		        includes="org.eclipse.pde.build_*"
+		        id="pdebuildtest" />
+
+		<property name="pdebuildplugin" refid="pdebuildtest" />
+		<echo message="${pdebuildplugin}" />
+
+		<symlink link="bootstrap/plugins/org.eclipse.pde.build"
+		         resource="${pdebuildplugin}"
+		         overwrite="true" />
+		
+		<!-- jar up base equinox bundles -->
 		<jar destfile="bootstrap/plugins/org.eclipse.equinox.launcher.jar"
 		     basedir="bootstrap/plugins/org.eclipse.equinox.launcher"
 		     includes="**"
 		     manifest="bootstrap/plugins/org.eclipse.equinox.launcher/META-INF/MANIFEST.MF">
 		</jar>
+		<jar destfile="bootstrap/plugins/org.eclipse.equinox.common.jar"
+		     basedir="bootstrap/plugins/org.eclipse.equinox.common"
+		     includes="**"
+		     manifest="bootstrap/plugins/org.eclipse.equinox.common/META-INF/MANIFEST.MF">
+		</jar>
+		<jar destfile="bootstrap/plugins/org.eclipse.osgi.jar"
+		     basedir="bootstrap/plugins/org.eclipse.osgi"
+		     includes="**"
+		     manifest="bootstrap/plugins/org.eclipse.osgi/META-INF/MANIFEST.MF">
+		</jar>
+		<jar destfile="bootstrap/plugins/org.eclipse.update.configurator.jar"
+		     basedir="bootstrap/plugins/org.eclipse.update.configurator"
+		     includes="**"
+		     manifest="bootstrap/plugins/org.eclipse.update.configurator/META-INF/MANIFEST.MF">
+		</jar>
+		<!-- directory of o.e.osgi seems to get picked up before jar; remove it -->
+		<symlink action="delete" link="bootstrap/plugins/org.eclipse.osgi"/>
+		<symlink action="delete" link="bootstrap/plugins/org.eclipse.equinox.common"/>
+		<symlink action="delete" link="bootstrap/plugins/org.eclipse.update.configurator"/>
+		<symlink action="delete" link="bootstrap/plugins/org.eclipse.equinox.launcher"/>
+		<!--<delete file="bootstrap/plugins/${equinoxcommonplugin}"/>-->
+		<delete dir="bootstrap/plugins/${equinoxcommonplugin}"/>
+		<delete dir="bootstrap/plugins/${launcherplugin}"/>
+		<delete dir="bootstrap/plugins/${updateconfiguratorplugin}"/>
+		<delete dir="bootstrap/plugins/${osgiplugin}"/>
+		<!-- also remove symlink -->
+		<delete verbose="true" followsymlinks="true">
+			<fileset dir="bootstrap/plugins">
+				<include name="org.eclipse.osgi" />
+			</fileset>
+		</delete>
+		<!-- osgi can only be found if _ is in name -->
+		<symlink action="delete"
+		         link="bootstrap/plugins/org.eclipse.osgi_3.5.0.jar"
+		         failonerror="false"/>
+		<symlink link="bootstrap/plugins/org.eclipse.osgi_3.5.0.jar"
+		         resource="org.eclipse.osgi.jar"
+		         overwrite="true"/>
 	</target>
+
 	<target name="clean">
 		<delete dir="bootstrap/plugins" />
 		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />

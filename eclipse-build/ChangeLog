@@ -1,3 +1,18 @@
+2009-07-20  Andrew Overholt  <overholt@redhat.com>
+
+	* pdebuild.properties: Hard-code build ID.  Don't use ecj for 
+	bootstrapping since we don't necessarily have it around.
+	* build.xml: Default to bootstrapping. Use bootstrapped launcher jar by 
+	default.
+	* pdebuild.xml: Add bundles required by director app to list of bundles to
+	bootstrap. Zip and symlink base framework plugins.  Add target for
+	generating bootstrapping build scripts.
+	* bootstrap/configuration/config.ini: Add bundles required by director app 
+	to osgi.bundles. Remove unnecessary osgi.framework properties. Add eof 
+	property.
+	* eclipse-build-generatedScripts.tar.bz2: Initial checkin of generated
+	build scripts for bootstrapping.
+
 2009-07-15  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildSDKSource.sh: Fix source tarball generation to include build.xml files for bootstrap.
