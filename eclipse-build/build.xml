@@ -149,22 +149,32 @@
 
 	</target>
 
-	<target name="p2prep" depends="build">
+	<target name="p2prep">
 		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildId}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
 		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip"/>
 		<!--<property name="builtZip" value="${basedir}/eclipse-SDK-${buildId}.zip"/>-->
 		<replace token="@qualifier@" file="${productFiles}/sdk/sdk.product" value="${buildId}" />
+		<property name="tempexec" value="${buildDirectory}/tempexec" />
 
+		<antcall target="createRepo"/>
+		<antcall target="extractLauncher"/>
+		<antcall target="publishLauncher"/>
+		<antcall target="createAndPublishLauncherFeature"/>
+		<antcall target="publishSDK"/>
+	</target>
+	
+    <target name="createRepo">
 		<delete dir="${reposource}" />
 		<mkdir dir="${reposource}" />
 		<echo message="Unzipping ${builtZip} into ${reposource}" />
 		<exec executable="unzip" dir=".">
 			<arg line="-q ${builtZip} -d ${reposource}" />
 		</exec>
-
-		<property name="tempexec" value="${buildDirectory}/tempexec" />
+    </target>
+	
+	<target name="extractLauncher">
 		<delete dir="${tempexec}" />
 		<mkdir dir="${tempexec}" />
 
@@ -177,7 +187,9 @@
 		<exec executable="unzip" dir="${tempexec}">
 			<arg line="-q features/*.jar -d ${tempexec}" />
 		</exec>
-
+	</target>
+	
+	<target name="publishLauncher">
 		<!-- Do we need a full path for ${reposource}? 
 		<property name="buildDirectoryAbsoluteTemp" value="${buildDirectory}/absolutetemp.txt" />
 		<echo message="${reposource}" file="${buildDirectoryAbsoluteTemp}" />
@@ -205,7 +217,9 @@
 			<arg line="-consolelog " />
 			<arg line="publish.bin.parts " />
 		</java>
-		
+	</target>
+	
+	<target name="createAndPublishLauncherFeature">
 		<!--
 			<jvmarg value="-Xdebug"/>
 			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
@@ -215,7 +229,6 @@
 		-->
 
 		<!-- This next part creates and publishs a feature including the binary launcher -->
-		
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
 		      dir="${productFiles}/rcpConfig"
@@ -240,7 +253,9 @@
 		<!--
 		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
 		-->
-		
+	</target>
+	
+	<target name="publishSDK">
 		<!-- This next part publishes the entire SDK -->
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
@@ -253,7 +268,7 @@
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile publishProduct.xml" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-Dconfigs=linux,gtk,${buildArch} " />
+			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-Dreposource=${reposource} " />
 			<arg line="-DbuildConfig=${buildConfig} " />
 			<arg line="-DproductFiles=${productFiles} " />
@@ -262,7 +277,7 @@
 		</java>
 	</target>
 
-	<target name="provision.sdk" depends="p2prep">
+	<target name="provision.sdk">
 		<echo message="Installing into:  ${buildDirectory}/installation"/>
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
@@ -277,8 +292,9 @@
 		</antcall>
 	</target>
 
-	<target name="run.director">
+	<target name="run.director" depends="p2prep">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2"/>
+		<echo message="Moving ${baseBuilderConfig} to ${baseBuilderConfig}.bak"/>
 		<move failonerror="false" file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
 		<!-- FIXME:  When we move to bootstrap by default, investigate using <exec> on the bootstrapped launcher
 		     like in eclipsebuilder's equinox.prov/run.xml -->
@@ -287,13 +303,11 @@
 				<pathelement location="${launcher}" />
 			</classpath>
 			<arg line="-data ${buildworkspace} " />
-			<!--<arg line="-application org.eclipse.equinox.p2.director " />-->
-			<arg line="-application org.eclipse.equinox.p2.director.app.application " />
+			<arg line="-application org.eclipse.equinox.p2.director " />
 			<arg line="-consoleLog" />
 			<!--<arg line="-help" />-->
 			<arg line="-flavor ${p2.flavor}" />
 			<arg line="-installIU ${p2.director.installIU}" />
-			<arg line="-version ${p2.director.version}" />
 			<arg line="-p2.os ${p2.os}" />
 			<arg line="-p2.ws ${p2.ws}" />
 			<arg line="-p2.arch ${p2.arch}" />
@@ -302,8 +316,6 @@
 			<arg line="${p2.director.extraArgs}" />
 			<arg line="-metadatarepository file:${p2.repo}" />
 			<arg line="-artifactrepository file:${p2.repo}" />
-			<arg line="-metadataRepositoryName ${p2.repo.name}" />
-			<arg line="-artifactRepositoryName ${p2.repo.name}" />
 			<arg line="-destination ${p2.director.install.path}" />
 			<arg line="-bundlepool ${p2.director.install.path}" />
 			<arg line="-vmargs" />
