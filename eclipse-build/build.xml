@@ -1,14 +1,13 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
-	<property name="buildId" value="I20090611-1540" />
-	
-	<property name="baseBuilder" value="bootstrap" />
-	<property name="launcher" value="bootstrap/plugins/org.eclipse.equinox.launcher" />
-	<property name="eclipse.pdebuild.scripts" value="bootstrap/plugins/org.eclipse.pde.build/scripts" />
+	<property name="baseBuilder" value="${basedir}/bootstrap" />
+	<property name="launcher" value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+	<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
 
 	<property file="build.properties" />
 	
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
+	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPreset" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build"/>
 	<property name="homeDir" value="${basedir}/home" />
@@ -16,11 +15,27 @@
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
 	
 	<target name="bootstrap" unless="bootstrapped">
-		<ant antfile="pdebuild.xml" />
+		<ant inheritall="false" antfile="pdebuild.xml">
+			<property name="buildId" value="${buildId}"/>
+			<property name="buildArch" value="${buildArch}"/>
+		</ant>
+	</target>
+
+	<!-- Run this target with antRunner application -->
+	<target name="generateBuildXmls" depends="init">
+		<ant antfile="pdebuild.xml" target="generateScripts"/>
 	</target>
 	
 	<target name="fetch" unless="sdkSourcePresent">
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
+	</target>
+	
+	<target name="extractBuildXmls" if="scriptsPreset">
+		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildId}-fetched-src"
+			   src="${basedir}/eclipse-build-generatedScripts.tar.bz2"/>
+		<!--
+		<fail message="Build scripts to bootstrap PDE Build must be generated and present in eclipse-build-generatedScripts.tar.bz2.  See pdebuild.xml for details."/>
+		-->
 	</target>
 
 	<target name="init" depends="fetch">
@@ -39,12 +54,12 @@
 
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
 		<untar dest="${basedir}/build" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
+		<antcall target="extractBuildXmls"/>
 		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
 		
 		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 		<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 		<property name="productFiles" value="${buildConfig}/productFiles" />
-		<property name="repo" value="${buildDirectory}/repo" />
 		<property name="reposource" value="${buildDirectory}/reposource" />
 		
 		<delete dir="${buildDirectory}/buildConfigs" />
@@ -81,11 +96,29 @@
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 	</target>
 
-	<target name="build" depends="insertBuildId,applyPatches">
+	<target name="build" depends="insertBuildId,applyPatches,bootstrap">
+	        <echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}"/>
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="${basedir}"
+		      failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Dbuilder=${buildConfig} " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-consolelog " />
+		</java>
+<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
 			<property name="arch" value="${buildArch}"/>
 			<property name="builder" value="${buildConfig}" />
 		</ant>
+-->
 	</target>
 
 	<target name="compilelibs" >
@@ -124,43 +157,113 @@
 		<!--<property name="builtZip" value="${basedir}/eclipse-SDK-${buildId}.zip"/>-->
 		<replace token="@qualifier@" file="${productFiles}/sdk/sdk.product" value="${buildId}" />
 
-		<delete dir="${repo}" />
-		<mkdir dir="${repo}" />
 		<delete dir="${reposource}" />
 		<mkdir dir="${reposource}" />
+		<echo message="Unzipping ${builtZip} into ${reposource}" />
 		<exec executable="unzip" dir=".">
 			<arg line="-q ${builtZip} -d ${reposource}" />
 		</exec>
+
 		<property name="tempexec" value="${buildDirectory}/tempexec" />
-		<mkdir dir="${tempexec}" />
 		<delete dir="${tempexec}" />
-		<exec executable="unzip" dir="${reposource}">
-			<arg line="features/*.jar -d ${tempexec}" />
+		<mkdir dir="${tempexec}" />
+
+		<copy todir="${tempexec}">
+			<fileset dir="${reposource}">
+				<include name="features/org.eclipse.equinox.executable_*.jar" />
+			</fileset>
+		</copy>
+		
+		<exec executable="unzip" dir="${tempexec}">
+			<arg line="-q features/*.jar -d ${tempexec}" />
 		</exec>
 
-		<!-- We need a full path for ${reposource} -->
+		<!-- Do we need a full path for ${reposource}? 
 		<property name="buildDirectoryAbsoluteTemp" value="${buildDirectory}/absolutetemp.txt" />
 		<echo message="${reposource}" file="${buildDirectoryAbsoluteTemp}" />
 		<replaceregexp file="${buildDirectoryAbsoluteTemp}" match="org.eclipse.releng.eclipsebuilder/../src/" replace="src/" />
 		<loadfile property="buildDirectoryAbsolute" srcFile="${buildDirectoryAbsoluteTemp}" failonerror="false" />
 		<delete file="${buildDirectoryAbsoluteTemp}" />
+		-->
 
-		<subant antfile="build.xml" target="publish.bin.parts" buildpath="${tempexec}/build.xml">
-			<property name="p2.gathering" value="true" />
-			<property name="p2.build.repo" value="file:/${buildDirectoryAbsolute}" />
-		</subant>
+		<!-- This next part merges metadata for the launcher binary into the rest of the metadata -->
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="${basedir}"
+		      failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${tempexec}/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Dbuilder=${buildConfig} " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-Dp2.gathering=true " />
+			<arg line="-Dp2.build.repo=file:/${reposource} " />
+			<arg line="-consolelog " />
+			<arg line="publish.bin.parts " />
+		</java>
+		
+		<!--
+			<jvmarg value="-Xdebug"/>
+			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
+		
+			<jvmarg value="-Xdebug"/>
+			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
+		-->
 
+		<!-- This next part creates and publishs a feature including the binary launcher -->
+		
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="${productFiles}/rcpConfig"
+		      failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile buildConfiguration.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Dconfigs=linux,gtk,${buildArch} " />
+			<arg line="-Dreposource=${reposource} " />
+			<arg line="-DbuildConfig=${buildConfig} " />
+			<arg line="-Dbasedir=${productFiles}/rcpConfig" />
+			<arg line="-DbuildId=${buildId} " />
+			<arg line="-DbaseBuildPath=${buildDirectory} " />
+			<arg line="-Declipse.pdebuild.scripts=${eclipse.pdebuild.scripts} " />
+			<arg line="-consolelog " />
+		</java>
+		
+		<!--
 		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
-
-		<echo message="p2.publish.product being called with:  repository=file:${reposource} productFile=${productFiles}/sdk/sdk.product compress=true" />
-		<p2.publish.product flavor="tooling" repository="file:${reposource}" productFile="${productFiles}/sdk/sdk.product" compress="true">
-			<config os="linux" ws="gtk" arch="${buildArch}" />
-			<advice kind="featureVersions" file="${buildDirectory}/finalFeaturesVersions.properties" />
-			<advice kind="pluginVersions" file="${buildDirectory}/finalPluginsVersions.properties" />
-		</p2.publish.product>
+		-->
+		
+		<!-- This next part publishes the entire SDK -->
+		<java classname="org.eclipse.equinox.launcher.Main"
+		      fork="true"
+		      dir="${basedir}"
+		      failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile publishProduct.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-Dconfigs=linux,gtk,${buildArch} " />
+			<arg line="-Dreposource=${reposource} " />
+			<arg line="-DbuildConfig=${buildConfig} " />
+			<arg line="-DproductFiles=${productFiles} " />
+			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-consolelog " />
+		</java>
 	</target>
 
 	<target name="provision.sdk" depends="p2prep">
+		<echo message="Installing into:  ${buildDirectory}/installation"/>
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
 			<param name="p2.director.version" value="3.5.0.${buildId}" />
@@ -176,7 +279,7 @@
 
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2"/>
-		<move file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
+		<move failonerror="false" file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
 		<!-- FIXME:  When we move to bootstrap by default, investigate using <exec> on the bootstrapped launcher
 		     like in eclipsebuilder's equinox.prov/run.xml -->
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
@@ -184,8 +287,10 @@
 				<pathelement location="${launcher}" />
 			</classpath>
 			<arg line="-data ${buildworkspace} " />
+			<!--<arg line="-application org.eclipse.equinox.p2.director " />-->
 			<arg line="-application org.eclipse.equinox.p2.director.app.application " />
 			<arg line="-consoleLog" />
+			<!--<arg line="-help" />-->
 			<arg line="-flavor ${p2.flavor}" />
 			<arg line="-installIU ${p2.director.installIU}" />
 			<arg line="-version ${p2.director.version}" />
@@ -195,8 +300,8 @@
 			<arg line="-roaming" />
 			<arg line="-profile ${p2.director.profile}" />
 			<arg line="${p2.director.extraArgs}" />
-			<arg line="-metadataRepository file:${p2.repo}" />
-			<arg line="-artifactRepository file:${p2.repo}" />
+			<arg line="-metadatarepository file:${p2.repo}" />
+			<arg line="-artifactrepository file:${p2.repo}" />
 			<arg line="-metadataRepositoryName ${p2.repo.name}" />
 			<arg line="-artifactRepositoryName ${p2.repo.name}" />
 			<arg line="-destination ${p2.director.install.path}" />
