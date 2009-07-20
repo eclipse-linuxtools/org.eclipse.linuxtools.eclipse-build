@@ -159,9 +159,20 @@
 		<property name="tempexec" value="${buildDirectory}/tempexec" />
 
 		<antcall target="createRepo"/>
+		
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.orig" failonerror="false"/>
+		
 		<antcall target="extractLauncher"/>
 		<antcall target="publishLauncher"/>
+		
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterlauncher" failonerror="false"/>
+		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterlauncher" failonerror="false"/>
+		
 		<antcall target="createAndPublishLauncherFeature"/>
+		
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterrcpConfig" failonerror="false"/>
+		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterrcpConfig" failonerror="false"/>
+		
 		<antcall target="publishSDK"/>
 	</target>
 	
