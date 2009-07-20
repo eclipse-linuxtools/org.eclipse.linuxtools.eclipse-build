@@ -1,24 +1,39 @@
-<project name="org.eclipse.rcp.configuration" default="main" basedir="${buildDirectory}">
+<project name="org.eclipse.rcp.configuration" default="main">
 
 	<target name="main" >
         <property name="product" value="${basedir}/config.product" />
         <property name="id" value="org.eclipse.pde.build.container.feature" />
         <property name="type" value="feature" />
 		<property name="verify" value="false" />
+		
+		<echo message="In buildConfiguration.xml"/>
+		<echo message="basedir=${basedir}"/>
+		<echo message="buildDirectory=${buildDirectory}"/>
+		<echo message="buildConfig=${buildConfig}"/>
+		<echo message="buildId=${buildId}"/>
+		<echo message="product=${product}"/>
+		<echo message="eclipse.pdebuild.scripts=${eclipse.pdebuild.scripts}"/>
 
 		<path id="launcher.paths">
 			<fileset dir="${reposource}" includes="plugins/org.eclipse.equinox.launcher*" />
 			<!-- the built version of the org.eclipse.equinox.executable feature -->
-			<dirset dir="${buildDirectory}" includes="features/org.eclipse.equinox.executable*" />  
+			<dirset dir="${baseBuildPath}" includes="features/org.eclipse.equinox.executable*" />  
 		</path>
 
 		<!-- generate a feature based on our .product file -->
+
+		<echo message="buildDirectory = ${buildDirectory}"/>
+		<echo message="about to source ${buildConfig}/build.properties"/>
 		<property file="${buildConfig}/build.properties" />
+		<echo message="buildDirectory = ${buildDirectory}"/>
+		<echo message="andrew = ${andrew}"/>
+		
 		<ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" target="generateFeature" >
 			<property name="buildDirectory" value="${basedir}/temp"/>
 		</ant>
 		<!-- generate product build scripts for the generated feature -->
-		<ant antfile="${eclipse.pdebuild.scripts}/genericTargets.xml" target="generateScript" >
+		<echo message="About to call generateScript with buildDirectory = ${basedir}/temp"/>
+		<ant antfile="${eclipse.pdebuild.scripts}/genericTargets.xml" target="generateScript">
             <property name="buildDirectory" value="${basedir}/temp"/>
 			<property name="baseLocation" value="" />
 			<property name="transformedRepoLocation" value="" />

@@ -1,3 +1,9 @@
+2009-07-20  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/rcpConfig/buildConfiguration.xml: Don't try to use undefined
+	buildDirectory property for launcher.paths property.  Add some debugging
+	statements.
+
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
 	* productFiles/rcpConfig/build.properties: Initial checkin. Used to ensure IUs
