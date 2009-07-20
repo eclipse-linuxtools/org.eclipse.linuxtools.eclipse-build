@@ -26,7 +26,6 @@
 		<echo message="about to source ${buildConfig}/build.properties"/>
 		<property file="${buildConfig}/build.properties" />
 		<echo message="buildDirectory = ${buildDirectory}"/>
-		<echo message="andrew = ${andrew}"/>
 		
 		<ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" target="generateFeature" >
 			<property name="buildDirectory" value="${basedir}/temp"/>
