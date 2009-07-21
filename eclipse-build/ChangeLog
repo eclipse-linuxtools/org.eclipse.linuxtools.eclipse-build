@@ -1,3 +1,7 @@
+2009-07-21  Andrew Overholt  <overholt@redhat.com>
+
+	* publishProduct.xml: Initial commit.
+
 2009-07-20  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Add some debugging of content.{xml,jar}.
