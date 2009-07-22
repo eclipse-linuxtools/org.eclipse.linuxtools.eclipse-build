@@ -1,3 +1,8 @@
+2009-07-22  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/rcpConfig/buildConfiguration.xml: Pass buildDirectory to
+	buildConfiguration.xml call.
+
 2009-07-20  Andrew Overholt  <overholt@redhat.com>
 
 	* productFiles/rcpConfig/buildConfiguration.xml: Remove extraneous

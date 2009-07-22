@@ -46,6 +46,7 @@
 		
 		<!-- publish the configuration feature with the generated p2.inf -->
 		<replace file="${basedir}/feature.xml" token="@qualifier@" value="${buildId}" />
+		<property name="buildDirectory" value="${baseBuildPath}"/>
 		<eclipse.gatherFeature
 			metadataRepository="file:${reposource}"
 			artifactRepository="file:${reposource}"
