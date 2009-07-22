@@ -234,9 +234,9 @@
 		<!--
 			<jvmarg value="-Xdebug"/>
 			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
-		
+
 			<jvmarg value="-Xdebug"/>
-			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
+			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40001"/>	
 		-->
 
 		<!-- This next part creates and publishs a feature including the binary launcher -->
@@ -303,7 +303,7 @@
 		</antcall>
 	</target>
 
-	<target name="run.director" depends="p2prep">
+	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2"/>
 		<echo message="Moving ${baseBuilderConfig} to ${baseBuilderConfig}.bak"/>
 		<move failonerror="false" file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />

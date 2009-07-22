@@ -1,3 +1,7 @@
+2009-07-22  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Remove erroneous depends= between run.director and p2prep.
+
 2009-07-21  Andrew Overholt  <overholt@redhat.com>
 
 	* publishProduct.xml: Initial commit.
