@@ -1,5 +1,10 @@
 2009-07-22  Andrew Overholt  <overholt@redhat.com>
 
+	* productFiles/rcpConfig/buildConfiguration.xml: Don't source
+	buildConfig's build.properties.  Remove some debugging statements.
+
+2009-07-22  Andrew Overholt  <overholt@redhat.com>
+
 	* productFiles/rcpConfig/p2.inf: Remove generated properties.
 	* productFiles/rcpConfig/buildConfiguration.xml: Pass buildDirectory to
 	buildConfiguration.xml call.
