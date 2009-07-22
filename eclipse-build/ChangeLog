@@ -1,5 +1,11 @@
 2009-07-22  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #280686
+
+	* build.sh: Wrap ant call with arch-finding logic. 
+
+2009-07-22  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Don't pass buildConfig to buildConfiguration.xml.
 
 2009-07-22  Andrew Overholt  <overholt@redhat.com>
