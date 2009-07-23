@@ -1,26 +1,5 @@
 #!/bin/sh
 
-# FIXME:  do we need to do these steps anymore?
-
-#Prepare sources
-#ant -f fetch.xml applyPatches
-
-#Build ecj with system compiler
-#cd SDK/jdtcoresrc
-#ant -f compilejdtcorewithjavac.xml
-
-#Build ecj with itself
-#export CLASSPATH=ecj.jar
-#ant -f compilejdtcore.xml
-
-#Copy ecj jar to the base folder
-#cd ../..
-#rm -f ecj.jar
-#cp SDK/ecj.jar ecj.jar
-
-#Build Eclipse SDK with the built ecj
-#export CLASSPATH=ecj.jar
-
 if `uname -m > /dev/null 2>&1`; then
 	echo "blah"
 	arch=`uname -m`

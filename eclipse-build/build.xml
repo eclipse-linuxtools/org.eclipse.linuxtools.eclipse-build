@@ -4,7 +4,7 @@
 	<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
 
 	<property file="build.properties" />
-	
+
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPreset" value="true" />
@@ -13,7 +13,8 @@
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
-	
+	<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
+
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
 			<property name="buildId" value="${buildId}"/>
@@ -25,11 +26,11 @@
 	<target name="generateBuildXmls" depends="init">
 		<ant antfile="pdebuild.xml" target="generateScripts"/>
 	</target>
-	
+
 	<target name="fetch" unless="sdkSourcePresent">
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
 	</target>
-	
+
 	<target name="extractBuildXmls" if="scriptsPreset">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildId}-fetched-src"
 			   src="${basedir}/eclipse-build-generatedScripts.tar.bz2"/>
@@ -55,13 +56,12 @@
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
 		<untar dest="${basedir}/build" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
 		<antcall target="extractBuildXmls"/>
-		<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
-		
+
 		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 		<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 		<property name="productFiles" value="${buildConfig}/productFiles" />
 		<property name="reposource" value="${buildDirectory}/reposource" />
-		
+
 		<delete dir="${buildDirectory}/buildConfigs" />
 		<mkdir dir="${buildDirectory}/buildConfigs" />
 
@@ -91,13 +91,13 @@
 		</replace>
 	</target>
 
-	<target name="applyPatches" depends="init">
+	<target name="applyPatches" depends="insertBuildId">
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 	</target>
 
-	<target name="build" depends="insertBuildId,applyPatches,bootstrap">
-	        <echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}"/>
+	<target name="build" depends="applyPatches,bootstrap,compilelibs">
+		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}"/>
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
 		      dir="${basedir}"
@@ -113,7 +113,7 @@
 			<arg line="-DbuildDirectory=${buildDirectory} " />
 			<arg line="-consolelog " />
 		</java>
-<!--
+		<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
 			<property name="arch" value="${buildArch}"/>
 			<property name="builder" value="${buildConfig}" />
@@ -122,18 +122,26 @@
 	</target>
 
 	<target name="compilelibs" >
-		<ant antfile="build.xml" target="build.nativeLibraries" dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
+		<delete verbose="true">
+			<fileset dir="${buildDirectory}/features/org.eclipse.equinox.executable">
+				<include name="eclipse" />
+			</fileset>
+			<fileset dir="${buildDirectory}">
+				<include name="**/*.so" />
+			</fileset>
+		</delete>
+		<ant antfile="build.xml"
+		     target="build.nativeLibraries"
+		     dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
 
 		<property name="launcherlibs" value="${buildDirectory}/features/org.eclipse.equinox.executable" />
 		<exec dir="${launcherlibs}/library/gtk/" executable="sh" failonerror="true">
 			<arg line="build.sh" />
 		</exec>
-		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/eclipse/" />
-		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/tmp/collected/linux.gtk.${buildArch}/collected" />
 
 		<property name="launcherfragment" value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
 
-		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/features/org.eclipse.equinox.executable/contributed/gtk/linux/${buildArch}/" />
+		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/features/org.eclipse.equinox.executable/bin/gtk/linux/${buildArch}/" />
 		<copy todir="${buildDirectory}/plugins/${launcherfragment}">
 			<fileset dir="${launcherlibs}/library/gtk">
 				<include name="**/*.so" />
@@ -143,6 +151,12 @@
 		<!-- build liblocalfile -->
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux" executable="make" failonerror="true" />
 		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		</move>
+		<!-- build libgnomeproxy -->
+		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net.linux.${buildArch}/">
+		</copy>
+		<move file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net/fragments/org.eclipse.core.net.linux.${buildArch}/">
 		</move>
 		<!-- build libupdate -->
 		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
@@ -159,32 +173,32 @@
 		<property name="tempexec" value="${buildDirectory}/tempexec" />
 
 		<antcall target="createRepo"/>
-		
+
 		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.orig" failonerror="false"/>
-		
+
 		<antcall target="extractLauncher"/>
 		<antcall target="publishLauncher"/>
-		
+
 		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterlauncher" failonerror="false"/>
 		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterlauncher" failonerror="false"/>
-		
+
 		<antcall target="createAndPublishLauncherFeature"/>
-		
+
 		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterrcpConfig" failonerror="false"/>
 		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterrcpConfig" failonerror="false"/>
-		
+
 		<antcall target="publishSDK"/>
 	</target>
-	
-    <target name="createRepo">
+
+	<target name="createRepo">
 		<delete dir="${reposource}" />
 		<mkdir dir="${reposource}" />
 		<echo message="Unzipping ${builtZip} into ${reposource}" />
 		<exec executable="unzip" dir=".">
 			<arg line="-q ${builtZip} -d ${reposource}" />
 		</exec>
-    </target>
-	
+	</target>
+
 	<target name="extractLauncher">
 		<delete dir="${tempexec}" />
 		<mkdir dir="${tempexec}" />
@@ -194,12 +208,12 @@
 				<include name="features/org.eclipse.equinox.executable_*.jar" />
 			</fileset>
 		</copy>
-		
+
 		<exec executable="unzip" dir="${tempexec}">
 			<arg line="-q features/*.jar -d ${tempexec}" />
 		</exec>
 	</target>
-	
+
 	<target name="publishLauncher">
 		<!-- Do we need a full path for ${reposource}? 
 		<property name="buildDirectoryAbsoluteTemp" value="${buildDirectory}/absolutetemp.txt" />
@@ -229,7 +243,7 @@
 			<arg line="publish.bin.parts " />
 		</java>
 	</target>
-	
+
 	<target name="createAndPublishLauncherFeature">
 		<!--
 			<jvmarg value="-Xdebug"/>
@@ -259,12 +273,12 @@
 			<arg line="-Declipse.pdebuild.scripts=${eclipse.pdebuild.scripts} " />
 			<arg line="-consolelog " />
 		</java>
-		
+
 		<!--
 		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
 		-->
 	</target>
-	
+
 	<target name="publishSDK">
 		<!-- This next part publishes the entire SDK -->
 		<java classname="org.eclipse.equinox.launcher.Main"
