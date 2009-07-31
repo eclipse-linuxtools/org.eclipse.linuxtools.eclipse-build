@@ -14,7 +14,11 @@
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
 	<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
-
+	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
+	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
+	<property name="productFiles" value="${buildConfig}/productFiles" />
+	<property name="reposource" value="${buildDirectory}/reposource" />
+	
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
 			<property name="buildId" value="${buildId}"/>
@@ -56,11 +60,6 @@
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
 		<untar dest="${basedir}/build" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
 		<antcall target="extractBuildXmls"/>
-
-		<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
-		<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
-		<property name="productFiles" value="${buildConfig}/productFiles" />
-		<property name="reposource" value="${buildDirectory}/reposource" />
 
 		<delete dir="${buildDirectory}/buildConfigs" />
 		<mkdir dir="${buildDirectory}/buildConfigs" />
@@ -122,6 +121,7 @@
 	</target>
 
 	<target name="compilelibs" >
+		<!-- TODO: Reenable when libgnomeproxy build is fixed.
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}/features/org.eclipse.equinox.executable">
 				<include name="eclipse" />
@@ -129,7 +129,7 @@
 			<fileset dir="${buildDirectory}">
 				<include name="**/*.so" />
 			</fileset>
-		</delete>
+		</delete>-->
 		<ant antfile="build.xml"
 		     target="build.nativeLibraries"
 		     dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
@@ -153,11 +153,12 @@
 		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
 		</move>
 		<!-- build libgnomeproxy -->
+		<!-- TODO: Reenable when libgnomeproxy build is fixed.
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net.linux.${buildArch}/">
 		</copy>
 		<move file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net/fragments/org.eclipse.core.net.linux.${buildArch}/">
-		</move>
+		</move>-->
 		<!-- build libupdate -->
 		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
 
