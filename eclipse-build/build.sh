@@ -16,6 +16,8 @@ case ${arch} in
 		arch=ia64 ;;
 	ppc)
 		arch=ppc ;;
+	ppc64)
+		arch=ppc64 ;;
 	x86_64)
 		arch=x86_64 ;;
 	*)
