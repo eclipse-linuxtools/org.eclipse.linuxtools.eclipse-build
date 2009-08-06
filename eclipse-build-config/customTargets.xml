@@ -120,6 +120,15 @@
 		<copy todir="${linux.gtk.ppc.rootfiles}">
 			<fileset dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.ppc" includes="about_files/**" />
 		</copy>
+		
+		<!--copy linux gtk ppc64 about_files to in temp location where it will be copied into root of eclipse at assembly time-->
+		<property name="linux.gtk.ppc64.rootfiles" value="${buildDirectory}/features/org.eclipse.platform/about_files/linux.gtk.ppc64" />
+		<mkdir dir="${linux.gtk.ppc64.rootfiles}" />
+		<copy tofile="${linux.gtk.ppc64.rootfiles}/about.html" file="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.ppc64/about.html" />
+
+		<copy todir="${linux.gtk.ppc64.rootfiles}">
+			<fileset dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.ppc64" includes="about_files/**" />
+		</copy>
 	</target>
 
 	<!-- ===================================================================== -->
