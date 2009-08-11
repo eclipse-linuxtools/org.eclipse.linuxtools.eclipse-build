@@ -1,9 +1,7 @@
 #!/bin/sh
 
 if `uname -m > /dev/null 2>&1`; then
-	echo "blah"
 	arch=`uname -m`
-	echo "blah"
 else
 	arch=`uname -p`
 fi

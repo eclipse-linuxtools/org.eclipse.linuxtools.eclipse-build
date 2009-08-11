@@ -1,3 +1,7 @@
+2009-08-11  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.sh: Remove test output.
+
 2009-08-06  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-buildswtnatives.patch: Remove ia64 part.
