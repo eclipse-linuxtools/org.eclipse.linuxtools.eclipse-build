@@ -1,5 +1,6 @@
 2009-08-11  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* buildEclipseBuildSource.sh: Create 0.3.0 by default.
 	* build.sh: Remove test output.
 
 2009-08-06  Alexander Kurtakov  <akurtako@redhat.com>

@@ -2,7 +2,7 @@
 
 baseDir=$(pwd)
 workDirectory=
-eclipsebuildTag="R0_0_1"
+eclipsebuildTag="R0_3_0"
 
 usage="usage:  <eclipse-build tag (ex. R0_0_2)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
 
