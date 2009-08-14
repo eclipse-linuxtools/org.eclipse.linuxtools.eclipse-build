@@ -22,15 +22,15 @@ do
         shift
 done
 
-if [ "x${workDirectory}x" == "xx" ]; then
+if [ "x${workDirectory}x" = "xx" ]; then
   workDirectory=/tmp/eclipse-build
   echo "Working directory not set; using /tmp/eclipse-build."
 fi
 
 echo "Going to create source tarball for eclipse-build ${eclipsebuildTag}."
 
-mkdir -p ${workDirectory}
-pushd ${workDirectory}
+mkdir -p "${workDirectory}"
+cd "${workDirectory}"
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build
 mv eclipse-build eclipse-build-${eclipsebuildTag}
 cd eclipse-build-${eclipsebuildTag}
@@ -38,6 +38,6 @@ svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclip
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-feature
 cd ..
 tar czf eclipse-build-${eclipsebuildTag}.tar.gz eclipse-build-${eclipsebuildTag}
-popd
+cd "${baseDir}"
 
 echo "Built ${workDirectory}/eclipse-build-${eclipsebuildTag}.tar.gz"
