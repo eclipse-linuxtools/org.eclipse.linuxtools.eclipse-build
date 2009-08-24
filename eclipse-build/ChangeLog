@@ -1,8 +1,14 @@
+2009-08-24  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #286826
+
+	* build.sh: Apply patch to tee to a log file from Niels Thykier.
+
 2009-08-14  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #286571
 
-	* buildEclipseBuildSource.sh: Apply fixes from nthykier for bash-isms. 
+	* buildEclipseBuildSource.sh: Apply fixes from nthykier for bash-isms.
 	* buildSDKSource.sh: Likewise.
 
 2009-08-11  Alexander Kurtakov  <akurtako@redhat.com>
@@ -32,7 +38,7 @@
 
 	Bug #280686
 
-	* build.sh: Wrap ant call with arch-finding logic. 
+	* build.sh: Wrap ant call with arch-finding logic.
 
 2009-07-22  Andrew Overholt  <overholt@redhat.com>
 
@@ -65,15 +71,15 @@
 
 2009-07-20  Andrew Overholt  <overholt@redhat.com>
 
-	* pdebuild.properties: Hard-code build ID.  Don't use ecj for 
+	* pdebuild.properties: Hard-code build ID.  Don't use ecj for
 	bootstrapping since we don't necessarily have it around.
-	* build.xml: Default to bootstrapping. Use bootstrapped launcher jar by 
+	* build.xml: Default to bootstrapping. Use bootstrapped launcher jar by
 	default.
 	* pdebuild.xml: Add bundles required by director app to list of bundles to
 	bootstrap. Zip and symlink base framework plugins.  Add target for
 	generating bootstrapping build scripts.
-	* bootstrap/configuration/config.ini: Add bundles required by director app 
-	to osgi.bundles. Remove unnecessary osgi.framework properties. Add eof 
+	* bootstrap/configuration/config.ini: Add bundles required by director app
+	to osgi.bundles. Remove unnecessary osgi.framework properties. Add eof
 	property.
 	* eclipse-build-generatedScripts.tar.bz2: Initial checkin of generated
 	build scripts for bootstrapping.
@@ -115,13 +121,13 @@
 
 2009-06-23  Andrew Overholt  <overholt@redhat.com>
 
-	* build.xml: Fail if source tarball not present.  Copy build config and 
+	* build.xml: Fail if source tarball not present.  Copy build config and
 	feature instead of untarring (bug #281135).
 	* build.properties: Don't set buildDirectory here.  Do it in build.xml
 	instead.  Define featureToBuild here.
 	* buildSource.sh: Run both SDK source fetching and eclipse-build fetching.
-	* buildSDKSource.sh: Re-name buildSource.sh to indicate just fetching of 
-	SDK sources.  Default to $(pwd) instead of /tmp/eclipseSDKBuild.  Don't 
+	* buildSDKSource.sh: Re-name buildSource.sh to indicate just fetching of
+	SDK sources.  Default to $(pwd) instead of /tmp/eclipseSDKBuild.  Don't
 	fetch tests by default.
 	* buildEclipseBuildSource.sh: New file.  Create tarball of eclipse-build
 	source.
@@ -132,15 +138,15 @@
 	* build.xml: Remove unused targets.
 
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	
+
 	* directory.txt: Removed; no longer necessary.
 
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	
+
 	* retrieve_map.sh: Removed; no longer necessary.
-	
+
 2009-06-23  Alexander Kurtakov  <akurtako@redhat.com>
-	
+
 	* assemble.xml: Removed; no longer necessary.
 	* fetch.xml: Likewise.
 	* build.xml: Remove old targets.
@@ -160,17 +166,17 @@
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #280681
-	
+
 	* build.xml: Explicitly set eclipse.p2.data.area as a JVM argument when
 	running director.
 
 2009-06-22  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #280679
-	
+
 	* build.xml: Define productFiles globally.  Generate feature for root
-	files.  To use this, ensure eclipse-build-config is up to date -- 
-	especially the generated tarball of it.	
+	files.  To use this, ensure eclipse-build-config is up to date --
+	especially the generated tarball of it.
 
 2009-06-18  Andrew Overholt  <overholt@redhat.com>
 
@@ -205,30 +211,30 @@
 
 	* patches/cleanupMaster.patch: Remove.
 	* build.xml: Set eclipse.pdebuild.scripts property.  Use
-	"eclipse-build-feature" feature and builder.  Use a fake home directory 
-	for the builds.  Change buildID to buildId everywhere.  Remove unnecessary 
-	cleanupMaster patch.  Pass property file to antRunner calls.  Build with 
-	antRunner and not plain ant.  Temporarily make assemble not depend upon 
-	compilelibs (for testing).  
+	"eclipse-build-feature" feature and builder.  Use a fake home directory
+	for the builds.  Change buildID to buildId everywhere.  Remove unnecessary
+	cleanupMaster patch.  Pass property file to antRunner calls.  Build with
+	antRunner and not plain ant.  Temporarily make assemble not depend upon
+	compilelibs (for testing).
 	* build.properties: Change buildID to buildId.  Remove parallel compilation
 	and flattenDependencies for now.  Don't generate API descriptions.
 	Fully-expand bootclasspath (need to be more generic here).  Add
-	OSGi/Minimum-1.2 BREE.  Full expand BREEs for use with antRunner (somehow 
+	OSGi/Minimum-1.2 BREE.  Full expand BREEs for use with antRunner (somehow
 	it doesn't expand in-file properties).
 
 2009-06-02  Andrew Overholt  <overholt@redhat.com>
 
-	* build.xml: Make bootstrap stuff default but allow over-riding.  Add 
-	init target to do extraction of buildSource.sh-generated tarball.  Move 
-	insertBuildId and applyPatches targets here.  Add package target for 
-	debugging use.  Add full paths everywhere. 
-	* generatebuild.xml: Use a fetched feature instead of generating one.  
+	* build.xml: Make bootstrap stuff default but allow over-riding.  Add
+	init target to do extraction of buildSource.sh-generated tarball.  Move
+	insertBuildId and applyPatches targets here.  Add package target for
+	debugging use.  Add full paths everywhere.
+	* generatebuild.xml: Use a fetched feature instead of generating one.
 	Pass buildDirectory property.
-	* patches/cleanupMaster.patch: Initial checkin.  Don't include some SWT 
+	* patches/cleanupMaster.patch: Initial checkin.  Don't include some SWT
 	fragments.
-	* build.properties: Don't hard-code plugin or feature ID.  Set other 
+	* build.properties: Don't hard-code plugin or feature ID.  Set other
 	BREEs.  Update buildDirectory to reflect buildSource.sh output.
-	* patches/eclipse-swt-buildagainstxulrunner.patch: Update to use unstable 
+	* patches/eclipse-swt-buildagainstxulrunner.patch: Update to use unstable
 	XULRunner headers (dom/ files).
 	* assemble.xml: Call assemble and package files for feature we're building.
 
@@ -238,7 +244,7 @@
 
 2009-05-26  Andrew Overholt  <overholt@redhat.com>
 
-	* patches/eclipse-addFetchMasterAndTestsTargets.patch: Initial commit.  
+	* patches/eclipse-addFetchMasterAndTestsTargets.patch: Initial commit.
 	Adds targets to org.eclipse.releng.eclipsebuilder/buildAll.xml
 	* buildSource.sh: Cleanups.  Fetch both the master feature and the SDK
 	tests feature.  Build .tar.bz2 files for both fetches.
@@ -266,7 +272,7 @@
 2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Remove pdebuildClasspath - not needed anymore.
-	
+
 2009-05-13  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.sh: New file.
@@ -280,14 +286,14 @@
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Simplify ant call for devBuilds. Patch by Marvin Schmidt.
-	
+
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* assemble.xml: Simplify.
 	* bootstrap/configuration/config.ini: Add o.e.pde.api.tools.
 	* build.properties: generateAPIDescription=true
 	* pdebuild.xml: Add o.e.pde.api.tools.
-	
+
 2009-05-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* assemble.xml: Use properties from the properties file.
@@ -302,7 +308,7 @@
 	* pdebuild.xml: Likewise.
 
 2009-04-29  Alexander Kurtakov  <akurtako@redhat.com>
-	Make p2.gathering=true by default. 
+	Make p2.gathering=true by default.
 	* assemble-p2.xml: Removed.
 	* build-p2.xml: Removed.
 	* generatebuild-p2.xml: Removed.
@@ -343,11 +349,11 @@
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Add distSrc target.
-	
+
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-swt-buildagainstxulrunner.patch: New file.
-	* build.xml: Compile native parts. 
+	* build.xml: Compile native parts.
 	* fetch.xml: Apply one more patch.
 
 2009-04-09  Alexander Kurtakov  <akurtako@redhat.com>
@@ -369,11 +375,11 @@
 	* build.xml: Make sdkSource property configurable.
 	* fetch.xml: Likewise.
 	* pdebuild.xml: Likewise.
-	
+
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* fetch.xml: Fix icu.source to be fetched only once. Add property to control fetch.
-	
+
 2009-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.properties: New I-build.
@@ -420,7 +426,7 @@
 
 	* prepare_elements.sh: Removed.
 	* generatebuild.xml: Preparing elements done in ant instead of sh. Patch by Marvin Schmidt.
-	 
+
 2009-03-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* pdebuild.xml: New file.
@@ -444,7 +450,7 @@
 2009-02-24  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-buildswtnatives.patch: New file.
-	* build.xml: Add patch for building swt native parts. 
+	* build.xml: Add patch for building swt native parts.
 
 2009-02-23  Alexander Kurtakov  <akurtako@redhat.com>
 
@@ -452,11 +458,11 @@
 	* README: Add info about the -DbuildArch parameter needed.
 	* build.properties: Remove buildArch it needs to be passed as a parameter.
 	* build.xml: Allow passing buildArch as a parameter.
-	
+
 2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Invoke jarIn by default.
-	
+
 2009-02-20  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* fetch-sources.sh: Removed.
@@ -498,17 +504,17 @@
 
 	* build.xml: Simplify delete.
 	* generatebuild.xml: Build scripts should be regenerated with recursive call and only for linux, gtk.
-	
+
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* bootstrap/configuration/config.ini: Fix osgi bundles.
 	* build.xml: Correctly ignore source bundles when coping.
 	* prepare_elements.sh: Ignore the correct jetty.
-	
+
 2008-12-17  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* bootstrap/configuration/config.ini: Update with 3.5M4 needed plugins.
-	* build.xml: fix bootstrap plugins for 3.5M4. Fix launcher path. Include ecf to orbitDeps.	
+	* build.xml: fix bootstrap plugins for 3.5M4. Fix launcher path. Include ecf to orbitDeps.
 	* fetch-sources.sh: Jump to 3.5M4.
 	* ABOUT: New file.
 	* TODO: Add some overall plan.
@@ -525,7 +531,7 @@
 2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* TODO: More tod entries.
-	
+
 2008-12-11  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* build.xml: Enable buildAll invocation by default now that it is working.
@@ -555,7 +561,7 @@
 	* prepare_elements.sh: New file.
 	* build.xml: Copy all plugins to be build, rename wherever needed.
 	* generatebuild.xml: Regenerate build.xml files for all the plugins.
-	
+
 
 2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
 
@@ -563,7 +569,7 @@
 	* build.xml: New file.
 	* README: Update with the latest locations and info.
 	* TODO: Remove the sample build.xml generation which is done.
-	
+
 2008-11-20  Alexander Kurtakov  <akurtakov@gmail.com>
 
 	* pdebuild.xml: Fix plugin order in depsDir. Make collectBootstrapPlugins depend on zipPlugins.

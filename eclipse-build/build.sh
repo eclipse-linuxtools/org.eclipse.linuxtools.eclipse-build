@@ -22,5 +22,7 @@ case ${arch} in
 		echo "Unrecognized architecture:  $arch" 1>&2
 		exit 1 ;;
 esac
+DATE=`date +%Y%m%d%H%M%S`
 
-ant -DbuildArch=${arch}
+ant -DbuildArch=${arch} 2>&1 | tee build_${DATE}.log
+echo "Build log is available in build_${DATE}.log
