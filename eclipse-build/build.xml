@@ -79,6 +79,18 @@
 		<delete dir="${baseworkspace}" />
 		<delete dir="${buildworkspace}" />
 		<delete dir="${topBuildDir}" />
+		<delete dir="configuration" />
+		<delete dir="p2" />
+		<delete dir="workspace" />
+	</target>
+
+	<target name="distclean" depends="clean">
+		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />
+		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
+		<delete dir="bootstrap/configuration/org.eclipse.osgi" />
+		<delete dir="bootstrap/p2" />
+		<delete dir="bootstrap/plugins" />
+		<delete dir="bootstrap/workspace" />
 	</target>
 
 	<target name="insertBuildId" depends="init">

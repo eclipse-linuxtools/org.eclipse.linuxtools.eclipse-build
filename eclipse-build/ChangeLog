@@ -1,3 +1,9 @@
+2009-08-26  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #287719
+
+	* build.xml: Add distclean target (from Benjamin Drung).
+
 2009-08-24  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #286826
