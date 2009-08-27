@@ -1,5 +1,12 @@
 2009-08-27  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #287753
+
+	* build.xml: Add patch to not modify JAVA_HOME and to optimize compilation
+	of liblocalfile.so (from Benjamin Drung).
+
+2009-08-27  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #287752
 
 	* build.xml: Add patch to not store build logs in separate files (from
