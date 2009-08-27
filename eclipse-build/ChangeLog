@@ -1,3 +1,10 @@
+2009-08-27  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #287752
+
+	* build.xml: Add patch to not store build logs in separate files (from
+	Benjamin Drung).
+
 2009-08-26  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #287719

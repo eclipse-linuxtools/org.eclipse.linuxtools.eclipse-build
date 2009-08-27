@@ -18,7 +18,7 @@
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
-	
+
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
 			<property name="buildId" value="${buildId}"/>
@@ -105,6 +105,7 @@
 	<target name="applyPatches" depends="insertBuildId">
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
+		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
 	</target>
 
 	<target name="build" depends="applyPatches,bootstrap,compilelibs">
@@ -228,7 +229,7 @@
 	</target>
 
 	<target name="publishLauncher">
-		<!-- Do we need a full path for ${reposource}? 
+		<!-- Do we need a full path for ${reposource}?
 		<property name="buildDirectoryAbsoluteTemp" value="${buildDirectory}/absolutetemp.txt" />
 		<echo message="${reposource}" file="${buildDirectoryAbsoluteTemp}" />
 		<replaceregexp file="${buildDirectoryAbsoluteTemp}" match="org.eclipse.releng.eclipsebuilder/../src/" replace="src/" />
@@ -263,7 +264,7 @@
 			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000"/>
 
 			<jvmarg value="-Xdebug"/>
-			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40001"/>	
+			<jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40001"/>
 		-->
 
 		<!-- This next part creates and publishs a feature including the binary launcher -->
