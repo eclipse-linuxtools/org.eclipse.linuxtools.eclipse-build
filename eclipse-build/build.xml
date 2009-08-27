@@ -5,9 +5,14 @@
 
 	<property file="build.properties" />
 
-	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPreset" value="true" />
+
+	<!-- Check what has already been done -->
+	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
+	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
+	<uptodate property="build.complete" srcfile="unpack-stamp" targetfile="build-stamp" />
+	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build"/>
 	<property name="homeDir" value="${basedir}/home" />
@@ -27,7 +32,7 @@
 	</target>
 
 	<!-- Run this target with antRunner application -->
-	<target name="generateBuildXmls" depends="init">
+	<target name="generateBuildXmls" depends="unpack">
 		<ant antfile="pdebuild.xml" target="generateScripts"/>
 	</target>
 
@@ -43,7 +48,7 @@
 		-->
 	</target>
 
-	<target name="init" depends="fetch">
+	<target name="unpack" depends="fetch" unless="unpack.complete">
 		<delete dir="${topBuildDir}" />
 		<mkdir dir="${topBuildDir}" />
 
@@ -72,6 +77,8 @@
 		<copy todir="${buildDirectory}/features/eclipse-build-feature">
 			<fileset dir="eclipse-build-feature"/>
 		</copy>
+		<!-- Create a stamp file -->
+		<echo file="unpack-stamp" />
 	</target>
 
 	<target name="clean">
@@ -82,6 +89,9 @@
 		<delete dir="configuration" />
 		<delete dir="p2" />
 		<delete dir="workspace" />
+		<delete>
+		  <fileset dir="." includes="*-stamp" />
+		</delete>
 	</target>
 
 	<target name="distclean" depends="clean">
@@ -93,7 +103,7 @@
 		<delete dir="bootstrap/workspace" />
 	</target>
 
-	<target name="insertBuildId" depends="init">
+	<target name="insertBuildId" depends="unpack">
 		<replace dir="${buildDirectory}/plugins" value="${buildId}" token="@build@">
 			<include name="**/about.mappings" />
 		</replace>
@@ -102,14 +112,15 @@
 		</replace>
 	</target>
 
-	<target name="applyPatches" depends="insertBuildId">
+	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="3" />
+		<echo file="patch-stamp" />
 	</target>
 
-	<target name="build" depends="applyPatches,bootstrap,compilelibs">
+ 	<target name="build" depends="applyPatches,bootstrap,compilelibs" unless="build.complete">
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}"/>
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
@@ -132,6 +143,7 @@
 			<property name="builder" value="${buildConfig}" />
 		</ant>
 -->
+		<echo file="build-stamp" />
 	</target>
 
 	<target name="compilelibs" >
@@ -362,9 +374,11 @@
 			<arg line="-Declipse.p2.MD5Check=false" />
 			<arg line="-Declipse.p2.profile=@none" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
+			<!--
 			<jvmarg value="-Xms512M" />
 			<jvmarg value="-Xmx2048M" />
 			<jvmarg value="-XX:MaxPermSize=512M" />
+			-->
 			<jvmarg value="-Declipse.p2.data.area=${p2.director.install.path}/p2"/>
 		</java>
 		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />

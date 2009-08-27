@@ -1,5 +1,14 @@
 2009-08-27  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #286824
+
+	* build.xml: Re-name "init" target to "unpack".  Add stamp files to
+	allow skipping previously-done targets.  Comment out some JVM args
+	for director call that caused issues on Debian.  All courtesy
+	Niels Thykier.
+
+2009-08-27  Andrew Overholt  <overholt@redhat.com>
+
 	Bug # 287758
 
 	* build.properties: Add default-java JVM path for Debian (courtesy
