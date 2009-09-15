@@ -1,3 +1,9 @@
+2009-09-15  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/tests-noapttests.patch: New file.  Patch for eclipse bug #244178.
+	* build.xml: Fix "scriptsPreset" typo.  Build test framework and SDK tests.
+	* buildSDKSource.sh: Add fetching of test scripts not included elsewhere.
+
 2009-08-27  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #286824

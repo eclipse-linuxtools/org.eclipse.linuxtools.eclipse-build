@@ -6,23 +6,31 @@
 	<property file="build.properties" />
 
 	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
-	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPreset" value="true" />
+	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
 	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
+	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
-	<uptodate property="build.complete" srcfile="unpack-stamp" targetfile="build-stamp" />
+	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
+	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
+	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build"/>
+	<property name="testsBuildDir" value="${basedir}/testsBuild"/>
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
-	<property name="buildDirectory" value="${basedir}/build/eclipse-${buildId}-fetched-src" />
+	<property name="buildDirectory" value="${topBuildDir}/eclipse-${buildId}-fetched-src" />
+	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${buildId}-fetched-src" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
+	<property name="testsBuildLabel" value="3.5"/>
+
+	<property name="doTests" value="true" />
 
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
@@ -40,7 +48,7 @@
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
 	</target>
 
-	<target name="extractBuildXmls" if="scriptsPreset">
+	<target name="extractBuildXmls" if="scriptsPresent">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildId}-fetched-src"
 			   src="${basedir}/eclipse-build-generatedScripts.tar.bz2"/>
 		<!--
@@ -63,7 +71,7 @@
 		<mkdir dir="${buildworkspace}" />
 
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
-		<untar dest="${basedir}/build" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
+		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
 		<antcall target="extractBuildXmls"/>
 
 		<delete dir="${buildDirectory}/buildConfigs" />
@@ -81,6 +89,33 @@
 		<echo file="unpack-stamp" />
 	</target>
 
+	<target name="unpackTests" unless="testsunpack.complete">
+		<delete dir="${testsBuildDir}" />
+		<mkdir dir="${testsBuildDir}" />
+
+		<!-- User home used for build -->
+		<delete dir="${homeDir}" />
+		<mkdir dir="${homeDir}" />
+
+		<!-- Workspaces used for build -->
+		<delete dir="${baseworkspace}" />
+		<mkdir dir="${baseworkspace}" />
+		<delete dir="${buildworkspace}" />
+		<mkdir dir="${buildworkspace}" />
+
+		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${buildId}-fetched-src.tar.bz2)" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildId}-fetched-scripts.tar.bz2" compression="bzip2" />
+		<move todir="${testsBuildDir}">
+			<fileset dir="${testsBuildDir}/eclipse-sdktests-${buildId}-fetched-scripts">
+				<include name="**/*" />
+			</fileset>
+		</move>
+
+		<!-- Create a stamp file -->
+		<echo file="testsunpack-stamp" />
+	</target>
+
 	<target name="clean">
 		<delete dir="${homeDir}" />
 		<delete dir="${baseworkspace}" />
@@ -90,7 +125,7 @@
 		<delete dir="p2" />
 		<delete dir="workspace" />
 		<delete>
-		  <fileset dir="." includes="*-stamp" />
+			<fileset dir="." includes="*-stamp" />
 		</delete>
 	</target>
 
@@ -120,7 +155,12 @@
 		<echo file="patch-stamp" />
 	</target>
 
- 	<target name="build" depends="applyPatches,bootstrap,compilelibs" unless="build.complete">
+	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
+		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<echo file="testspatch-stamp" />
+	</target>
+
+	<target name="build" depends="applyPatches,bootstrap,compilelibs" unless="build.complete">
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}"/>
 		<java classname="org.eclipse.equinox.launcher.Main"
 		      fork="true"
@@ -144,6 +184,50 @@
 		</ant>
 -->
 		<echo file="build-stamp" />
+	</target>
+
+	<target name="checkBuildTests" depends="buildTests.check" if="buildTests.run">
+	</target>
+
+	<target name="buildTests.check">
+		<condition property="buildTests.run">
+			<and>
+				<istrue value="${doTests}"/>
+				<not>
+					<istrue value="${testsbuild.complete}"/>
+				</not>
+			</and>
+		</condition>
+	</target>
+
+	<target name="buildTests" depends="applyTestPatches,provision.sdk" unless="checkBuildTests">
+		<!-- Test framework -->
+		<exec executable="${buildDirectory}/installation/eclipse">
+			<arg line="-nosplash " />
+			<arg line="-consolelog " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
+			<arg line="-Dtype=feature -Did=org.eclipse.test " />
+			<arg line="-DbaseLocation=${buildDirectory}/installation " />
+			<arg line="-DbuildLabel=${testsBuildLabel} " />
+			<arg line="-data ${buildworkspace} " />
+		</exec>
+		<!-- SDK tests -->
+		<exec executable="${buildDirectory}/installation/eclipse">
+			<arg line="-nosplash " />
+			<arg line="-consolelog " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
+			<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
+			<arg line="-DbaseLocation=${buildDirectory}/installation " />
+			<arg line="-DbuildLabel=${testsBuildLabel} " />
+			<arg line="-data ${buildworkspace} " />
+		</exec>
+		<echo file="testsbuild-stamp" />
 	</target>
 
 	<target name="compilelibs" >

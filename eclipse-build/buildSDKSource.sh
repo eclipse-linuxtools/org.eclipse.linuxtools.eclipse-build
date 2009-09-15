@@ -152,4 +152,19 @@ tar cjf "${workDirectory}"/eclipse-sdktests-${buildID}-fetched-src.tar.bz2 \
   eclipse-sdktests-${buildID}-fetched-src
 
 fi
+
+# Testing runtests and test.xml scripts which are not in org.eclipse.test
+cvs -d:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse co \
+  -r v${buildID} \
+  org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts
+scriptsDir=org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts
+testScripts=eclipse-sdktests-${buildID}-fetched-scripts
+mkdir ${testScripts}
+mv ${scriptsDir}/runtests ${testScripts}
+mv ${scriptsDir}/test.xml ${testScripts}
+rm -rf org.eclipse.releng.eclipsebuilder
+tar cjf \
+  "${workDirectory}"/eclipse-sdktests-${buildID}-fetched-scripts.tar.bz2 \
+  ${testScripts}
+
 cd "${baseDir}"
