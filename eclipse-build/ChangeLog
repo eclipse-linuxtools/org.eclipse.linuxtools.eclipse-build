@@ -1,5 +1,9 @@
 2009-09-21  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Add stamp for inserting the build ID.
+
+2009-09-21  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #289938
 
 	* build.xml: Add install target to install provisioned SDK (courtesy

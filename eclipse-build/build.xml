@@ -11,6 +11,7 @@
 	<!-- Check what has already been done -->
 	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
 	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
+	<uptodate property="buildId.complete" srcfile="buildId-stamp" targetfile="unpack-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
 	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
@@ -144,13 +145,14 @@
 		<delete dir="bootstrap/workspace" />
 	</target>
 
-	<target name="insertBuildId" depends="unpack">
+	<target name="insertBuildId" depends="unpack" unless="buildId.complete">
 		<replace dir="${buildDirectory}/plugins" value="${buildId}" token="@build@">
 			<include name="**/about.mappings" />
 		</replace>
 		<replace dir="${buildDirectory}" value="${buildId}" token="@build@">
 			<include name="**/configuration/config.ini" />
 		</replace>
+		<echo file="buildId-stamp"/>
 	</target>
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
