@@ -13,8 +13,11 @@
 	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
+	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
 	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
+	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
+	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build"/>
@@ -230,7 +233,7 @@
 		<echo file="testsbuild-stamp" />
 	</target>
 
-	<target name="compilelibs" >
+	<target name="compilelibs" unless="compilelibs.complete">
 		<!-- TODO: Reenable when libgnomeproxy build is fixed.
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}/features/org.eclipse.equinox.executable">
@@ -272,9 +275,10 @@
 		<!-- build libupdate -->
 		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
 
+		<echo file="compilelibs-stamp" />
 	</target>
 
-	<target name="p2prep" depends="build">
+	<target name="p2prep" depends="build" unless="p2prep.complete">
 		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildId}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
@@ -299,6 +303,8 @@
 		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterrcpConfig" failonerror="false"/>
 
 		<antcall target="publishSDK"/>
+
+		<echo file="p2prep-stamp" />
 	</target>
 
 	<target name="createRepo">
@@ -412,7 +418,7 @@
 		</java>
 	</target>
 
-	<target name="provision.sdk" depends="p2prep">
+	<target name="provision.sdk" depends="p2prep" unless="provision.sdk.complete">
 		<echo message="Installing into:  ${buildDirectory}/installation"/>
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
@@ -425,6 +431,7 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
+		<echo file="provision.sdk-stamp" />
 	</target>
 
 	<target name="run.director">

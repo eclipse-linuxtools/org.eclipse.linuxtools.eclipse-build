@@ -1,3 +1,10 @@
+2009-09-21  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #289939
+
+	* build.xml: Apply patch from Benjamin Drung to add stamp files for
+	provisioning SDK and other targets.
+
 2009-09-15  Andrew Overholt  <overholt@redhat.com>
 
 	* patches/tests-noapttests.patch: New file.  Patch for eclipse bug #244178.
