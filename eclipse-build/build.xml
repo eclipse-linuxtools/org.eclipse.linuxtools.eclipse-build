@@ -33,6 +33,9 @@
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="testsBuildLabel" value="3.5"/>
 
+	<property name="destDir" value="" />
+	<property name="prefix" value="/usr/local" />
+
 	<property name="doTests" value="true" />
 
 	<target name="bootstrap" unless="bootstrapped">
@@ -474,6 +477,25 @@
 		</java>
 		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
+	</target>
+
+	<target name="install" depends="provision.sdk">
+		<mkdir dir="${destDir}${prefix}/lib/eclipse"/>
+		<exec executable="cp">
+			<arg value="-rf"/>
+			<arg value="--no-target-directory" />
+			<arg value="${buildDirectory}/installation" />
+			<arg value="${destDir}${prefix}/lib/eclipse" />
+		</exec>
+		<!-- install desktop file -->
+		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
+		<!-- install icons -->
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png"
+				tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png"
+				tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png"
+				tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
 	</target>
 
 </project>

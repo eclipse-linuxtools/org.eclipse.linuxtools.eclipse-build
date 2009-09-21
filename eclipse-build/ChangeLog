@@ -1,5 +1,13 @@
 2009-09-21  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #289938
+
+	* build.xml: Add install target to install provisioned SDK (courtesy
+	Benjamin Drung).
+	* eclipse.desktop: Initial checking (courtesy Benjamin Drung).
+
+2009-09-21  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #289939
 
 	* build.xml: Apply patch from Benjamin Drung to add stamp files for

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Eclipse
+Comment=Develop applications in a variety of different programming languages
+Icon=eclipse
+Exec=eclipse
+Terminal=false
+Categories=Development;IDE;Java;
