@@ -25,4 +25,4 @@ esac
 DATE=`date +%Y%m%d%H%M%S`
 
 ant -DbuildArch=${arch} 2>&1 | tee build_${DATE}.log
-echo "Build log is available in build_${DATE}.log
+echo "Build log is available in build_${DATE}.log"
