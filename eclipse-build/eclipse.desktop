@@ -1,7 +1,8 @@
 [Desktop Entry]
+Encoding=UTF-8
 Type=Application
 Name=Eclipse
-Comment=Develop applications in a variety of different programming languages
+Comment=Eclipse Integrated Development Environment
 Icon=eclipse
 Exec=eclipse
 Terminal=false
