@@ -2,9 +2,9 @@
 
 baseDir=$(pwd)
 workDirectory=
-eclipsebuildTag="R0_3_0"
+eclipsebuildTag="R0_3_1"
 
-usage="usage:  <eclipse-build tag (ex. R0_0_2)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
+usage="usage:  <eclipse-build tag (ex. R0_3_1)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
 
 while [ $# -gt 0 ]
 do

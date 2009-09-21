@@ -1,5 +1,9 @@
 2009-09-21  Andrew Overholt  <overholt@redhat.com>
 
+	* buildEclipseBuildSource.sh: Make default tag 0.3.1.
+
+2009-09-21  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Add stamp for inserting the build ID.
 
 2009-09-21  Andrew Overholt  <overholt@redhat.com>
