@@ -7,6 +7,8 @@
 
 	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPresent" value="true" />
+	<available file="eclipse-sdktests-${buildId}-fetched-src.tar.bz2" property="testsSourcePresent" value="true" />
+	<available file="eclipse-sdktests-${buildId}-fetched-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
 	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
@@ -19,6 +21,7 @@
 	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
+	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build"/>
@@ -36,6 +39,30 @@
 
 	<property name="destDir" value="" />
 	<property name="prefix" value="/usr/local" />
+	<!-- Do we want /usr/lib64 if it's a 64-bit architecture? -->
+	<property name="multilib" value="false" />
+	<condition property="setLib64">
+		<and>
+			<istrue value="${multilib}" />
+			<or>
+				<!-- Is it a 64-bit architecture? -->
+				<equals arg1="${buildArch}" arg2="x86_64" />
+				<equals arg1="${buildArch}" arg2="ppc64" />
+			</or>
+		</and>
+	</condition>
+
+	<target name="setLib64Dir" if="setLib64">
+			<property name="libDir" value="lib64" />
+	</target>
+
+	<target name="setLibDir" depends="setLib64Dir">
+		<property name="libDir" value="lib" />
+	</target>
+
+	<target name="getInstallationDir" depends="setLibDir">
+		<echo message="Installation directory will be ${destDir}/${prefix}/${libDir}"/>
+	</target>
 
 	<property name="doTests" value="true" />
 
@@ -55,6 +82,14 @@
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
 	</target>
 
+	<target name="fetchTestSources" unless="testsSourcePresent">
+		<fail message="SDK tests source tarball is not present.  Please either download a file such as eclipse-sdktests-I20090611-1540-fetched-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh."/>
+	</target>
+
+	<target name="fetchTestScripts" unless="testsScriptsPresent">
+		<fail message="Scripts for the SDK tests tarball is not present.  Please either download a file such as eclipse-sdktests-I20090611-1540-fetched-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh." />
+	</target>
+
 	<target name="extractBuildXmls" if="scriptsPresent">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildId}-fetched-src"
 			   src="${basedir}/eclipse-build-generatedScripts.tar.bz2"/>
@@ -63,7 +98,7 @@
 		-->
 	</target>
 
-	<target name="unpack" depends="fetch" unless="unpack.complete">
+	<target name="unpack" depends="fetch,setLibDir" unless="unpack.complete">
 		<delete dir="${topBuildDir}" />
 		<mkdir dir="${topBuildDir}" />
 
@@ -96,7 +131,7 @@
 		<echo file="unpack-stamp" />
 	</target>
 
-	<target name="unpackTests" unless="testsunpack.complete">
+	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
 		<delete dir="${testsBuildDir}" />
 		<mkdir dir="${testsBuildDir}" />
 
@@ -196,6 +231,7 @@
 		<echo file="build-stamp" />
 	</target>
 
+	<!--
 	<target name="checkBuildTests" depends="buildTests.check" if="buildTests.run">
 	</target>
 
@@ -209,8 +245,9 @@
 			</and>
 		</condition>
 	</target>
+	-->
 
-	<target name="buildTests" depends="applyTestPatches,provision.sdk" unless="checkBuildTests">
+	<target name="buildTests" depends="applyTestPatches,provision.sdk" unless="testsbuild.complete">
 		<!-- Test framework -->
 		<exec executable="${buildDirectory}/installation/eclipse">
 			<arg line="-nosplash " />
@@ -441,6 +478,48 @@
 		<echo file="provision.sdk-stamp" />
 	</target>
 
+	<target name="provision.tests" depends="buildTests" unless="provision.tests.complete">
+		<mkdir dir="${buildDirectory}/testsInstallation"/>
+		<exec executable="cp">
+			<arg value="-rf"/>
+			<arg value="--no-target-directory" />
+			<arg value="${buildDirectory}/installation" />
+			<arg value="${buildDirectory}/testsInstallation" />
+		</exec>
+		<!-- To prevent contamination for those with test framework installed on their system -->
+		<exec executable="/bin/sed">
+			<arg value="-i"/>
+			<arg value="/dropins/d" />
+			<arg value="${buildDirectory}/testsInstallation/eclipse.ini" />
+		</exec>
+		<!--
+		<echo message="Installing test framework into:  ${buildDirectory}/testsInstallation"/>
+		<antcall target="run.director">
+			<param name="p2.director.installIU" value="org.eclipse.test.feature.group" />
+			<param name="p2.director.profile" value="SDKProfile" />
+			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation" />
+			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.os" value="linux" />
+			<param name="p2.ws" value="gtk" />
+			<param name="p2.arch" value="${buildArch}" />
+			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
+		</antcall>
+-->
+		<echo message="Installing SDK tests into:  ${buildDirectory}/testsInstallation"/>
+		<antcall target="run.installed.director">
+			<param name="directorToRun" value="${buildDirectory}/testsInstallation/eclipse" />
+			<param name="p2.director.installIU" value="org.eclipse.sdk.tests.feature.group" />
+			<param name="p2.director.profile" value="SDKProfile" />
+			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation" />
+			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.os" value="linux" />
+			<param name="p2.ws" value="gtk" />
+			<param name="p2.arch" value="${buildArch}" />
+			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
+		</antcall>
+		<echo file="provision.tests-stamp" />
+	</target>
+
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2"/>
 		<echo message="Moving ${baseBuilderConfig} to ${baseBuilderConfig}.bak"/>
@@ -471,6 +550,7 @@
 			<arg line="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
 			<arg line="-Declipse.p2.MD5Check=false" />
 			<arg line="-Declipse.p2.profile=@none" />
+			<arg line="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<!--
 			<jvmarg value="-Xms512M" />
@@ -483,13 +563,41 @@
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
 	</target>
 
+	<target name="run.installed.director">
+		<exec executable="${directorToRun}">
+			<arg line="-nosplash " />
+			<arg line="-application org.eclipse.equinox.p2.director " />
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-consoleLog" />
+			<arg line="-flavor ${p2.flavor}" />
+			<arg line="-installIU ${p2.director.installIU}" />
+			<arg line="-p2.os ${p2.os}" />
+			<arg line="-p2.ws ${p2.ws}" />
+			<arg line="-p2.arch ${p2.arch}" />
+			<arg line="-roaming" />
+			<arg line="-profile ${p2.director.profile}" />
+			<arg line="${p2.director.extraArgs}" />
+			<arg line="-metadatarepository file:${p2.repo}" />
+			<arg line="-artifactrepository file:${p2.repo}" />
+			<arg line="-destination ${p2.director.install.path}" />
+			<arg line="-bundlepool ${p2.director.install.path}" />
+			<arg line="-vmargs" />
+			<arg line="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
+			<arg line="-Declipse.p2.MD5Check=false" />
+			<arg line="-Declipse.p2.profile=@none" />
+			<arg line="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=" />
+			<arg line="-Declipse.p2.data.area=${p2.director.install.path}/p2"/>
+			<arg line="-propertyfile ${basedir}/build.properties " />
+		</exec>
+	</target>
+
 	<target name="install" depends="provision.sdk">
-		<mkdir dir="${destDir}${prefix}/lib/eclipse"/>
+		<mkdir dir="${destDir}${prefix}/${libDir}/eclipse"/>
 		<exec executable="cp">
 			<arg value="-rf"/>
 			<arg value="--no-target-directory" />
 			<arg value="${buildDirectory}/installation" />
-			<arg value="${destDir}${prefix}/lib/eclipse" />
+			<arg value="${destDir}${prefix}/${libDir}/eclipse" />
 		</exec>
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
@@ -500,6 +608,7 @@
 				tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png"
 				tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
+		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${destDir}${prefix}/share/eclipse/dropins"/>
 	</target>
 
 </project>

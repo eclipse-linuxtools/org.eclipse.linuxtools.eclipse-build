@@ -1,3 +1,13 @@
+2009-09-22  Andrew Overholt  <overholt@redhat.com>
+
+	* genReport.xml: Initial checkin.  Generate HTML from the JUnit XML output.
+	* runtests.sh: Initial checkin.  Run the SDK tests after a build (will be
+	in build.xml in the near future).
+	* build.properties: Add testsBuildID.
+	* build.xml: Add multilib property to allow use of /usr/lib64.  Add
+	getInstallationDir target to test for multilib and 64-bit architecture.
+	Add provisioning of tests into test installation directory.
+
 2009-09-22  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-help-toolbar.patch: New file.

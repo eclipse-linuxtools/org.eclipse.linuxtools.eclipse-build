@@ -1,0 +1,20 @@
+<project name="Generate SDK Test Results HTML" default="genResults">
+
+	<condition property="resultsDefined">
+		<isset property="results"/>
+	</condition>
+
+	<condition property="eclipseHomeSet">
+		<isset property="eclipse-home"/>
+	</condition>
+
+	<target name="genResults">
+		<fail message="results directory not set"
+	      unless="resultsDefined"/>
+		<fail message="Eclipse installation directory not set"
+	      unless="eclipseHomeSet"/>
+		<echo message="Generating results in ${results}/html"/>
+		<style style="${eclipse-home}/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${results}/xml" destdir="${results}/html" />
+	</target>
+
+</project>
