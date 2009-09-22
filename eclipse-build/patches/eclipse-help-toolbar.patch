@@ -1,0 +1,71 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.help.webapp
+Index: advanced/tocToolbar.jsp
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.help.webapp/advanced/tocToolbar.jsp,v
+retrieving revision 1.14
+diff -u -r1.14 tocToolbar.jsp
+--- plugins/org.eclipse.help.webapp/advanced/tocToolbar.jsp	22 Jan 2009 22:19:55 -0000	1.14
++++ plugins/org.eclipse.help.webapp/advanced/tocToolbar.jsp	21 Sep 2009 20:55:27 -0000
+@@ -16,6 +16,9 @@
+ 	String printError = UrlUtil.JavaScriptEncode(ServletResources.getString("PrintError", request));
+ 	String menuData = printTopicLabel + "=printTopic(\\'" + printError + "\\')," + printTocLabel + "=printToc(\\'" + printError + "\\')";
+     String quickSearchError = UrlUtil.JavaScriptEncode(ServletResources.getString("QuickSearchError", request));
++    // See  Bug 290064 for an explanation of why these constants are used
++    final String ON = "on";
++    final String OFF = "off";
+ %>
+ 
+ <jsp:include page="toolbar.jsp">
+@@ -62,6 +65,6 @@
+ 	<jsp:param name="image"    value="auto_synch_toc.gif"/>
+ 	<jsp:param name="action"   value="toggleAutosynch"/>
+ 	<jsp:param name="param"    value=""/>	
+-	<jsp:param name="state"    value="<%=((new CookiesData(application, request, response)).isSynchToc() ? "on" : "off")%>"/>
++	<jsp:param name="state"    value="<%=((new CookiesData(application, request, response)).isSynchToc() ? ON : OFF)%>"/>
+ 	
+ </jsp:include>
+\ No newline at end of file
+Index: advanced/searchToolbar.jsp
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.help.webapp/advanced/searchToolbar.jsp,v
+retrieving revision 1.12
+diff -u -r1.12 searchToolbar.jsp
+--- plugins/org.eclipse.help.webapp/advanced/searchToolbar.jsp	29 Aug 2007 22:45:40 -0000	1.12
++++ plugins/org.eclipse.help.webapp/advanced/searchToolbar.jsp	21 Sep 2009 20:55:27 -0000
+@@ -1,5 +1,5 @@
+ <%--
+- Copyright (c) 2000, 2007 IBM Corporation and others.
++ Copyright (c) 2000, 2009 IBM Corporation and others.
+  All rights reserved. This program and the accompanying materials 
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+@@ -9,6 +9,11 @@
+      IBM Corporation - initial API and implementation
+ --%>
+ <%@ include file="header.jsp"%>
++<%
++    // See  Bug 290064 for an explanation of why these constants are used
++    final String ON = "on";
++    final String OFF = "off";
++%>
+ 
+ 
+ <jsp:include page="toolbar.jsp">
+@@ -27,13 +32,13 @@
+ 	<jsp:param name="image"    value="show_categories.gif"/>
+ 	<jsp:param name="action"   value="toggleShowCategories"/>
+ 	<jsp:param name="param"    value=""/>
+-	<jsp:param name="state"    value="<%=((new SearchData(application, request, response)).isShowCategories() ? "on" : "off")%>"/>
++	<jsp:param name="state"    value="<%=((new SearchData(application, request, response)).isShowCategories() ? ON : OFF)%>"/>
+ 
+ 	<jsp:param name="name"     value="show_descriptions"/>
+ 	<jsp:param name="tooltip"  value='show_descriptions'/>
+ 	<jsp:param name="image"    value="show_descriptions.gif"/>
+ 	<jsp:param name="action"   value="toggleShowDescriptions"/>
+ 	<jsp:param name="param"    value=""/>
+-	<jsp:param name="state"    value="<%=((new SearchData(application, request, response)).isShowDescriptions() ? "on" : "off")%>"/>
++	<jsp:param name="state"    value="<%=((new SearchData(application, request, response)).isShowDescriptions() ? ON : OFF)%>"/>
+ 
+ </jsp:include>
+\ No newline at end of file

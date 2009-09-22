@@ -1,3 +1,8 @@
+2009-09-22  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-help-toolbar.patch: New file.
+	* build.xml: Appy the help toolbar patch.
+
 2009-09-21  Andrew Overholt  <overholt@redhat.com>
 
 	* buildEclipseBuildSource.sh: Make default tag 0.3.1.
