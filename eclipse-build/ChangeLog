@@ -4,7 +4,8 @@
 	genReport.xml and runtests.sh into test installation parent directory.
 	Add runTests target.
 	* runtests.sh: Add all test suites back (don't know if they all work,
-	but ...).
+	but ...).  Add FIXME to remember to deal with plugins that have multiple
+	suites.
 
 2009-09-22  Andrew Overholt  <overholt@redhat.com>
 

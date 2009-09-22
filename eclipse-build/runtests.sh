@@ -225,6 +225,8 @@ function findAndRunTestPlugins() {
 				echo "Running ${pluginName} (${pluginVersion})"
 				testDriver="${eclipseHome}/plugins/${pluginName}_${pluginVersion}/test.xml"
 				runTestSuite
+				# FIXME:  need to deal with plugins that have multiple suites
+				# Something like junit-report target in upstream's runtests to join multiple XML files.
 				mv ${results}/${pluginName}*.xml ${results}/xml/${pluginName}_${pluginVersion}.xml
 				mv ${results}/${pluginName}*.txt ${results}/logs
 			fi
