@@ -484,13 +484,13 @@
 			<arg value="-rf"/>
 			<arg value="--no-target-directory" />
 			<arg value="${buildDirectory}/installation" />
-			<arg value="${buildDirectory}/testsInstallation" />
+			<arg value="${buildDirectory}/testsInstallation/eclipse" />
 		</exec>
 		<!-- To prevent contamination for those with test framework installed on their system -->
 		<exec executable="/bin/sed">
 			<arg value="-i"/>
 			<arg value="/dropins/d" />
-			<arg value="${buildDirectory}/testsInstallation/eclipse.ini" />
+			<arg value="${buildDirectory}/testsInstallation/eclipse/eclipse.ini" />
 		</exec>
 		<!--
 		<echo message="Installing test framework into:  ${buildDirectory}/testsInstallation"/>
@@ -507,17 +507,34 @@
 -->
 		<echo message="Installing SDK tests into:  ${buildDirectory}/testsInstallation"/>
 		<antcall target="run.installed.director">
-			<param name="directorToRun" value="${buildDirectory}/testsInstallation/eclipse" />
+			<param name="directorToRun" value="${buildDirectory}/testsInstallation/eclipse/eclipse" />
 			<param name="p2.director.installIU" value="org.eclipse.sdk.tests.feature.group" />
 			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation" />
+			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation/eclipse" />
 			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
 		</antcall>
+		<exec executable="cp">
+			<arg value="-p"/>
+			<arg value="${basedir}/genReport.xml" />
+			<arg value="${buildDirectory}/testsInstallation" />
+		</exec>
+		<exec executable="cp">
+			<arg value="-p"/>
+			<arg value="${basedir}/runtests.sh" />
+			<arg value="${buildDirectory}/testsInstallation" />
+		</exec>
 		<echo file="provision.tests-stamp" />
+	</target>
+
+	<target name="runTests" depends="provision.tests">
+		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation"/>
+		<!--
+		<copydir dest="${basedir}" src="${buildDirectory}/testsInstallation/results**"/>
+		-->
 	</target>
 
 	<target name="run.director">

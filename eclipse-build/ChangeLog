@@ -1,5 +1,13 @@
 2009-09-22  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Copy the test installation into a sub-directory.  Copy
+	genReport.xml and runtests.sh into test installation parent directory.
+	Add runTests target.
+	* runtests.sh: Add all test suites back (don't know if they all work,
+	but ...).
+
+2009-09-22  Andrew Overholt  <overholt@redhat.com>
+
 	* genReport.xml: Initial checkin.  Generate HTML from the JUnit XML output.
 	* runtests.sh: Initial checkin.  Run the SDK tests after a build (will be
 	in build.xml in the near future).
