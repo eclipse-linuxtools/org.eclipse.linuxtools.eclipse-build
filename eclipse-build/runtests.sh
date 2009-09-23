@@ -71,6 +71,7 @@ function init() {
 	debugTests=0
 	headless=1
 	eclipseHome=$(pwd)/eclipse
+	cp -rp ${eclipseHome}/configuration{,.knowngood}
 	testFramework=org.eclipse.test_3.2.0
 	libraryXml=${eclipseHome}/plugins/${testFramework}/library.xml
 	if [ -z ${timestamp} ]; then
@@ -197,6 +198,12 @@ function runTestSuite() {
 	-Duser.home=${homedir}
 }
 
+function cleanAfterTestSuite() {
+	rm -rf ${datadir} ${homedir} ${testhome} ${eclipseHome}/configuration
+	cp -rp ${eclipseHome}/configuration{.knowngood,}
+	mkdir -p ${datadir} ${homedir} ${testhome}
+}
+
 #function setupForP2Tests() {
 #	# Set up for p2 tests
 #	platformZip=$(grep platform.archive /usr/lib/eclipse/dropins/eclipse/rpm.properties | sed s/.*=//g)
@@ -231,6 +238,7 @@ function findAndRunTestPlugins() {
 				echo "Running ${pluginName} (${pluginVersion})"
 				testDriver="${eclipseHome}/plugins/${pluginName}_${pluginVersion}/test.xml"
 				runTestSuite
+				cleanAfterTestSuite
 				mv ${results}/*.txt ${results}/logs
 				xmlDir=${results}/tmpXml
 				mkdir -p ${xmlDir}

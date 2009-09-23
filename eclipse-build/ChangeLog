@@ -1,3 +1,7 @@
+2009-09-23  Andrew Overholt  <overholt@redhat.com>
+
+	* runtests.sh: Try to clean up between runs of each suite.
+
 2009-09-23  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-jdt_launch-customBuild.patch: New file.
