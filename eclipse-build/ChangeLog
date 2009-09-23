@@ -1,3 +1,8 @@
+2009-09-23  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-jdt_launch-customBuild.patch: New file.
+	* build.xml: Fix o.e.jdt.launching custombuild.
+
 2009-09-23  Andrew Overholt  <overholt@redhat.com>
 
 	* runtests.sh: Enable all test suites.
