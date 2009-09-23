@@ -247,7 +247,7 @@
 	</target>
 	-->
 
-	<target name="buildTests" depends="applyTestPatches,provision.sdk" unless="testsbuild.complete">
+	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
 		<!-- Test framework -->
 		<exec executable="${buildDirectory}/installation/eclipse">
 			<arg line="-nosplash " />
