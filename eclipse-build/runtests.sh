@@ -16,6 +16,37 @@ _EOF_
 }
 
 function init() {
+	# At present (2009-09-23) on Fedora 11, there are failures/errors in the following
+	# suites.  Some old-ish analysis which may no longer be correct is included which
+	# may help tracking down issues.
+	#
+	#   org.eclipse.core.tests.resources (0/73)
+	#   org.eclipse.core.tests.runtime (0/3)
+	#   org.eclipse.jdt.core.tests.compiler (org.eclipse.jdt.core.tests.compiler.regression) (2/0)
+	#   org.eclipse.jdt.ui.tests (3/0)
+	#     - the error here seems likely due to a flaky test.  One of the failures
+	#       appears to be some sort of character encoding issue but does not occur
+	#       when I run it locally.  The two others are an ordering issue in JUnit
+	#       XML output.  More investigation is required.
+	#   org.eclipse.jdt.ui.tests (LeakTestSuite) (3/1)
+	#   org.eclipse.osgi.tests (0/104)
+	#     - the error in org.eclipse.osgi.tests.services.datalocation.BasicLocationTests.testNone()
+    #       is likely due to some sort of read-only thing.
+	#     - there are four failures due to incorrect bundle states ... this requires investigation
+	#     - there are 22 errors due to some sort of casting issue.  More investigation is required.
+	#     - I'm not sure off-hand what's up with the NPE at:   org.eclipse.osgi.tests.securityadmin.SecurityManagerTests.testBug254600(SecurityManagerTests.java:447)
+	#	org.eclipse.pde.ui.tests (2/0)
+	#	org.eclipse.pde.build.tests (26/1)
+	#	org.eclipse.swt.tests ()
+	#	  - this is an assertion failure expecting 1 but getting 0:
+  	#	    org.eclipse.swt.tests.junit.Test_org_eclipse_swt_widgets_Text.test_getTopIndex(Test_org_eclipse_swt_widgets_Text.java:792)
+  	#	    I suspect valid SWT/window manager/GTK issues
+	#	org.eclipse.team.tests.core (0/1)
+	#	  - '/tmp' is not a valid location for linked resources. <-- huh?
+	#	org.eclipse.ui.parts.tests (12/0)
+	#	org.eclipse.ui.tests (39/7)
+	#	org.eclipse.ui.tests.session (0/35)
+
 	# Test suites to run
 	testPluginsToRun="\
 	org.eclipse.ant.tests.core \
@@ -191,11 +222,17 @@ function runTestSuite() {
 	-application org.eclipse.ant.core.antRunner \
 	-file $testDriver \
 	-Declipse-home=$eclipseHome \
+	-Dos=linux \
+	-Dws=gtk \
+	-Darch=${arch} \
 	-Dlibrary-file=$libraryXml \
 	-propertyfile $properties \
 	-logger org.apache.tools.ant.DefaultLogger \
 	-vmargs \
 	-Duser.home=${homedir}
+	-Dosgi.os=linux \
+	-Dosgi.ws=gtk \
+	-Dosgi.arch=${arch}
 }
 
 function cleanAfterTestSuite() {
