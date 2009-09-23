@@ -519,7 +519,7 @@
 		</antcall>
 		<exec executable="cp">
 			<arg value="-p"/>
-			<arg value="${basedir}/genReport.xml" />
+			<arg value="${basedir}/junitHelper.xml" />
 			<arg value="${buildDirectory}/testsInstallation" />
 		</exec>
 		<exec executable="cp">

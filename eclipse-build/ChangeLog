@@ -1,5 +1,10 @@
 2009-09-23  Andrew Overholt  <overholt@redhat.com>
 
+	* runtests.sh: Enable all test suites.
+	* build.xml: Copy re-named junitHelper.xml instead of genReport.xml
+
+2009-09-23  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Make building of tests depend upon building of SDK.
 
 2009-09-23  Andrew Overholt  <overholt@redhat.com>

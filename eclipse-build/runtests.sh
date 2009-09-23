@@ -17,47 +17,46 @@ _EOF_
 
 function init() {
 	# Test suites to run
-	testPluginsToRun="org.eclipse.ant.tests.ui"
-#	testPluginsToRun="\
-#	org.eclipse.ant.tests.core \
-#	org.eclipse.ant.tests.ui \
-#	org.eclipse.compare.tests \
-#	org.eclipse.core.expressions.tests \
-#	org.eclipse.core.filebuffers.tests \
-#	org.eclipse.core.tests.net \
-#	org.eclipse.core.tests.resources \
-#	org.eclipse.core.tests.runtime \
-#	org.eclipse.equinox.security.tests \
-#	org.eclipse.jdt.core.tests.builder \
-#	org.eclipse.jdt.core.tests.compiler \
-#	org.eclipse.jdt.core.tests.model \
-#	org.eclipse.jdt.core.tests.performance \
-#	org.eclipse.jdt.debug.tests \
-#	org.eclipse.jdt.text.tests \
-#	org.eclipse.jdt.ui.tests \
-#	org.eclipse.jdt.ui.tests.refactoring \
-#	org.eclipse.jface.tests.databinding \
-#	org.eclipse.jface.text.tests \
-#	org.eclipse.ltk.core.refactoring.tests \
-#	org.eclipse.ltk.ui.refactoring.tests \
-#	org.eclipse.osgi.tests \
-#	org.eclipse.pde.api.tools.tests \
-#	org.eclipse.pde.build.tests \
-#	org.eclipse.pde.ds.tests \
-#	org.eclipse.pde.ui.tests \
-#	org.eclipse.search.tests \
-#	org.eclipse.swt.tests \
-#	org.eclipse.team.tests.core \
-#	org.eclipse.text.tests \
-#	org.eclipse.ua.tests \
-#	org.eclipse.ui.editors.tests \
-#	org.eclipse.ui.tests \
-#	org.eclipse.ui.tests.forms \
-#	org.eclipse.ui.tests.navigator \
-#	org.eclipse.ui.tests.rcp \
-#	org.eclipse.ui.tests.views.properties.tabbed \
-#	org.eclipse.ui.workbench.texteditor.tests \
-#	"
+	testPluginsToRun="\
+	org.eclipse.ant.tests.core \
+	org.eclipse.ant.tests.ui \
+	org.eclipse.compare.tests \
+	org.eclipse.core.expressions.tests \
+	org.eclipse.core.filebuffers.tests \
+	org.eclipse.core.tests.net \
+	org.eclipse.core.tests.resources \
+	org.eclipse.core.tests.runtime \
+	org.eclipse.equinox.security.tests \
+	org.eclipse.jdt.core.tests.builder \
+	org.eclipse.jdt.core.tests.compiler \
+	org.eclipse.jdt.core.tests.model \
+	org.eclipse.jdt.core.tests.performance \
+	org.eclipse.jdt.debug.tests \
+	org.eclipse.jdt.text.tests \
+	org.eclipse.jdt.ui.tests \
+	org.eclipse.jdt.ui.tests.refactoring \
+	org.eclipse.jface.tests.databinding \
+	org.eclipse.jface.text.tests \
+	org.eclipse.ltk.core.refactoring.tests \
+	org.eclipse.ltk.ui.refactoring.tests \
+	org.eclipse.osgi.tests \
+	org.eclipse.pde.api.tools.tests \
+	org.eclipse.pde.build.tests \
+	org.eclipse.pde.ds.tests \
+	org.eclipse.pde.ui.tests \
+	org.eclipse.search.tests \
+	org.eclipse.swt.tests \
+	org.eclipse.team.tests.core \
+	org.eclipse.text.tests \
+	org.eclipse.ua.tests \
+	org.eclipse.ui.editors.tests \
+	org.eclipse.ui.tests \
+	org.eclipse.ui.tests.forms \
+	org.eclipse.ui.tests.navigator \
+	org.eclipse.ui.tests.rcp \
+	org.eclipse.ui.tests.views.properties.tabbed \
+	org.eclipse.ui.workbench.texteditor.tests \
+	"
 
 	# We're not quite ready to run these yet (setup, etc.)
 	# 	org.eclipse.equinox.p2.tests \
