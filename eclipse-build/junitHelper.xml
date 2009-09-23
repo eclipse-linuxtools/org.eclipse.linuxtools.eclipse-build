@@ -8,13 +8,16 @@
 		<isset property="eclipse-home"/>
 	</condition>
 
+	<property name="htmlDir" value="${results}/html"/>
+	<property name="xmlDir" value="${results}/xml"/>
+
 	<target name="genResults">
 		<fail message="results directory not set"
 	      unless="resultsDefined"/>
 		<fail message="Eclipse installation directory not set"
 	      unless="eclipseHomeSet"/>
-		<echo message="Generating results in ${results}/html"/>
-		<style style="${eclipse-home}/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${results}/xml" destdir="${results}/html" />
+		<echo message="Generating results in ${htmlDir}"/>
+		<style style="${eclipse-home}/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${xmlDir}" destdir="${htmlDir}" />
 	</target>
 
 </project>

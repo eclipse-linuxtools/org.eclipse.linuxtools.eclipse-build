@@ -1,3 +1,14 @@
+2009-09-23  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Pass in a timestamp when running the tests.  Copy final test
+	results to ${basedir}/testResults-${timestamp}.  Copy vncpwd file for use.
+	* runtests.sh: Rename genReport function to genHtml.  Handle test suites
+	with multiple XML output files.  Add ability to pass in timestamp.
+	Document VNC password.
+	* junitHelper.xml: Rename from genReport.xml.
+	* eclipse-tests-vncpwd: Initial checkin.  Default VNC password of
+	VNCpassword1.
+
 2009-09-22  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Copy the test installation into a sub-directory.  Copy

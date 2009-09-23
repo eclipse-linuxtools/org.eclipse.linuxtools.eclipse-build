@@ -11,51 +11,53 @@ Optional arguments:
    -e      Eclipse SDK location
    -g      Don't run the tests headless
    -d      Allow remote connection to test runs' JVM
+   -t      Timestamp string with which to tag the results
 _EOF_
 }
 
 function init() {
 	# Test suites to run
-	testPluginsToRun="\
-	org.eclipse.ant.tests.core \
-	org.eclipse.ant.tests.ui \
-	org.eclipse.compare.tests \
-	org.eclipse.core.expressions.tests \
-	org.eclipse.core.filebuffers.tests \
-	org.eclipse.core.tests.net \
-	org.eclipse.core.tests.resources \
-	org.eclipse.core.tests.runtime \
-	org.eclipse.equinox.security.tests \
-	org.eclipse.jdt.core.tests.builder \
-	org.eclipse.jdt.core.tests.compiler \
-	org.eclipse.jdt.core.tests.model \
-	org.eclipse.jdt.core.tests.performance \
-	org.eclipse.jdt.debug.tests \
-	org.eclipse.jdt.text.tests \
-	org.eclipse.jdt.ui.tests \
-	org.eclipse.jdt.ui.tests.refactoring \
-	org.eclipse.jface.tests.databinding \
-	org.eclipse.jface.text.tests \
-	org.eclipse.ltk.core.refactoring.tests \
-	org.eclipse.ltk.ui.refactoring.tests \
-	org.eclipse.osgi.tests \
-	org.eclipse.pde.api.tools.tests \
-	org.eclipse.pde.build.tests \
-	org.eclipse.pde.ds.tests \
-	org.eclipse.pde.ui.tests \
-	org.eclipse.search.tests \
-	org.eclipse.swt.tests \
-	org.eclipse.team.tests.core \
-	org.eclipse.text.tests \
-	org.eclipse.ua.tests \
-	org.eclipse.ui.editors.tests \
-	org.eclipse.ui.tests \
-	org.eclipse.ui.tests.forms \
-	org.eclipse.ui.tests.navigator \
-	org.eclipse.ui.tests.rcp \
-	org.eclipse.ui.tests.views.properties.tabbed \
-	org.eclipse.ui.workbench.texteditor.tests \
-	"
+	testPluginsToRun="org.eclipse.ant.tests.ui"
+#	testPluginsToRun="\
+#	org.eclipse.ant.tests.core \
+#	org.eclipse.ant.tests.ui \
+#	org.eclipse.compare.tests \
+#	org.eclipse.core.expressions.tests \
+#	org.eclipse.core.filebuffers.tests \
+#	org.eclipse.core.tests.net \
+#	org.eclipse.core.tests.resources \
+#	org.eclipse.core.tests.runtime \
+#	org.eclipse.equinox.security.tests \
+#	org.eclipse.jdt.core.tests.builder \
+#	org.eclipse.jdt.core.tests.compiler \
+#	org.eclipse.jdt.core.tests.model \
+#	org.eclipse.jdt.core.tests.performance \
+#	org.eclipse.jdt.debug.tests \
+#	org.eclipse.jdt.text.tests \
+#	org.eclipse.jdt.ui.tests \
+#	org.eclipse.jdt.ui.tests.refactoring \
+#	org.eclipse.jface.tests.databinding \
+#	org.eclipse.jface.text.tests \
+#	org.eclipse.ltk.core.refactoring.tests \
+#	org.eclipse.ltk.ui.refactoring.tests \
+#	org.eclipse.osgi.tests \
+#	org.eclipse.pde.api.tools.tests \
+#	org.eclipse.pde.build.tests \
+#	org.eclipse.pde.ds.tests \
+#	org.eclipse.pde.ui.tests \
+#	org.eclipse.search.tests \
+#	org.eclipse.swt.tests \
+#	org.eclipse.team.tests.core \
+#	org.eclipse.text.tests \
+#	org.eclipse.ua.tests \
+#	org.eclipse.ui.editors.tests \
+#	org.eclipse.ui.tests \
+#	org.eclipse.ui.tests.forms \
+#	org.eclipse.ui.tests.navigator \
+#	org.eclipse.ui.tests.rcp \
+#	org.eclipse.ui.tests.views.properties.tabbed \
+#	org.eclipse.ui.workbench.texteditor.tests \
+#	"
 
 	# We're not quite ready to run these yet (setup, etc.)
 	# 	org.eclipse.equinox.p2.tests \
@@ -72,11 +74,13 @@ function init() {
 	eclipseHome=$(pwd)/eclipse
 	testFramework=org.eclipse.test_3.2.0
 	libraryXml=${eclipseHome}/plugins/${testFramework}/library.xml
-	results=$(pwd)/results-`date "+%Y%m%d%H%M%S"`
+	if [ -z ${timestamp} ]; then
+		timestamp=$(date "+%Y%m%d%H%M%S")
+	fi
+	results=$(pwd)/results-${timestamp}
 	datadir=$(pwd)/testDataDir
 	homedir=$(pwd)/home
 	testhome=$(pwd)/testhome
-
 
 	rm -rf $datadir $homedir $testhome
 	mkdir -p $datadir $homedir $testhome $results/{xml,logs,html}
@@ -108,6 +112,9 @@ function processArgs() {
 	             ;;
 	         g)
 	             headless=0
+	             ;;
+	         t)
+	             timestamp=$OPTARG
 	             ;;
 	         h)
 	             usage
@@ -147,7 +154,7 @@ function setupXvnc() {
 	# Pick a high display number.
 	port=`expr '(' $RANDOM '*' 9 / 32767 ')' + 58`
 	echo localhost > Xvnc.cfg
-	echo "Setting up Xvnc on port $port"
+	echo "Setting up Xvnc on port ${port} with password VNCpassword1"
 	$xvnc :$port -screen 1 1024x768x32 -auth Xvnc.cfg -localhost -PasswordFile eclipse-tests-vncpwd &> Xvnc.log &
 	Xvncpid=$!
 	DISPLAY=`$HOST`:$port
@@ -225,17 +232,20 @@ function findAndRunTestPlugins() {
 				echo "Running ${pluginName} (${pluginVersion})"
 				testDriver="${eclipseHome}/plugins/${pluginName}_${pluginVersion}/test.xml"
 				runTestSuite
-				# FIXME:  need to deal with plugins that have multiple suites
-				# Something like junit-report target in upstream's runtests to join multiple XML files.
-				mv ${results}/${pluginName}*.xml ${results}/xml/${pluginName}_${pluginVersion}.xml
-				mv ${results}/${pluginName}*.txt ${results}/logs
+				mv ${results}/*.txt ${results}/logs
+				xmlDir=${results}/tmpXml
+				mkdir -p ${xmlDir}
+				mv ${results}/*.xml ${xmlDir}
+				genHtml
+				mv ${xmlDir}/* ${results}/xml
+				rm -rf ${xmlDir}
 			fi
 		fi
 	done
 }
 
-function genReport() {
-	ant -Declipse-home=${eclipseHome} -Dresults=${results} -f genReport.xml
+function genHtml() {
+	ant -Declipse-home=${eclipseHome} -Dresults=${results} -DxmlDir=${xmlDir} -f junitHelper.xml
 }
 
 init
@@ -243,5 +253,4 @@ processArgs
 findXvncAndSetDisplay
 setArch
 findAndRunTestPlugins
-genReport
 cleanupXvnc

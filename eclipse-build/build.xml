@@ -53,7 +53,7 @@
 	</condition>
 
 	<target name="setLib64Dir" if="setLib64">
-			<property name="libDir" value="lib64" />
+		<property name="libDir" value="lib64" />
 	</target>
 
 	<target name="setLibDir" depends="setLib64Dir">
@@ -527,14 +527,26 @@
 			<arg value="${basedir}/runtests.sh" />
 			<arg value="${buildDirectory}/testsInstallation" />
 		</exec>
+		<exec executable="cp">
+			<arg value="-p"/>
+			<arg value="${basedir}/eclipse-tests-vncpwd" />
+			<arg value="${buildDirectory}/testsInstallation" />
+		</exec>
 		<echo file="provision.tests-stamp" />
 	</target>
 
 	<target name="runTests" depends="provision.tests">
-		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation"/>
-		<!--
-		<copydir dest="${basedir}" src="${buildDirectory}/testsInstallation/results**"/>
-		-->
+		<tstamp>
+			<format property="timestamp" pattern="yyyyMMddhhmmss"/>
+		</tstamp>
+		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation">
+			<arg line="-t ${timestamp}"/>
+		</exec>
+		<copy failonerror="false" todir="${basedir}/testResults-${timestamp}">
+			<fileset dir="${buildDirectory}/testsInstallation/results-${timestamp}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="run.director">
