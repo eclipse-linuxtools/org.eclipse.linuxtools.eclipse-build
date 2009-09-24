@@ -1,3 +1,9 @@
+2009-09-22  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/sdk/sdk.product: Remote dropins from default eclipse.ini as
+	it causes the tests to pick up system-installed stuff.  We'll add it to
+	eclipse.ini later.
+
 2009-09-14  Andrew Overholt  <overholt@redhat.com>
 
 	* productFiles/sdk/sdk.product: Add /usr/share/eclipse/dropins to list of
@@ -50,7 +56,7 @@
 	* productFiles/platform/p2.inf: Initial checkin.
 	* productFiles/platform/platform.product: Likewise.
 	* productFiles/platform.sdk/p2.inf: Likewise.
-	* productFiles/platform.sdk/platform.product:Likewise. 
+	* productFiles/platform.sdk/platform.product:Likewise.
 	* productFiles/rcp/rcp.product: Likewise.
 	* productFiles/rcp.sdk/rcp.product: Likewise.
 	* productFiles/sdk/p2.inf: Likewise.

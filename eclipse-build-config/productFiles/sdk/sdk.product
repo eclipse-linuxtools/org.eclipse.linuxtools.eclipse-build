@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Eclipse SDK" id="org.eclipse.sdk.ide" application="org.eclipse.ui.ide.workbench" version="3.5.0.@qualifier@" useFeatures="true">
+<product name="Eclipse SDK" id="org.eclipse.sdk.ide" application="org.eclipse.ui.ide.workbench" version="3.5.0.@qualifier@" useFeatures="true" includeLaunchers="true">
 
-   <configIni use="default">      
+   <configIni use="default">
    </configIni>
 
-   
    <launcherArgs>
       <programArgs>-showsplash org.eclipse.platform --launcher.XXMaxPermSize 256m</programArgs>
-      <vmArgs>-Xms40m -Xmx256m -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=/usr/share/eclipse/dropins</vmArgs>
+      <vmArgs>-Xms40m -Xmx256m</vmArgs>
       <vmArgsMac>-Xdock:icon=../Resources/Eclipse.icns -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
