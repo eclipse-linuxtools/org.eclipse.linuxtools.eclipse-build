@@ -1,6 +1,7 @@
 2009-09-24  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Add message requesting posting of results.
+	Update URL for downloading (use mirrors).
 	* runtests.sh: Add wiki page for posting results.
 
 2009-09-24  Andrew Overholt  <overholt@redhat.com>
