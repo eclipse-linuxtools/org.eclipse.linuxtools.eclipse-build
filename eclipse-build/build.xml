@@ -356,9 +356,7 @@
 		<delete dir="${reposource}" />
 		<mkdir dir="${reposource}" />
 		<echo message="Unzipping ${builtZip} into ${reposource}" />
-		<exec executable="unzip" dir=".">
-			<arg line="-q ${builtZip} -d ${reposource}" />
-		</exec>
+		<unzip dest="${reposource}" src="${builtZip}" />
 	</target>
 
 	<target name="extractLauncher">
@@ -370,10 +368,11 @@
 				<include name="features/org.eclipse.equinox.executable_*.jar" />
 			</fileset>
 		</copy>
-
-		<exec executable="unzip" dir="${tempexec}">
-			<arg line="-q features/*.jar -d ${tempexec}" />
-		</exec>
+		<unzip dest="${tempexec}">
+			<fileset dir="${tempexec}/features">
+		        <include name="*.jar"/>
+		    </fileset>
+		</unzip>
 	</target>
 
 	<target name="publishLauncher">
@@ -481,12 +480,9 @@
 
 	<target name="provision.tests" depends="buildTests" unless="provision.tests.complete">
 		<mkdir dir="${buildDirectory}/testsInstallation"/>
-		<exec executable="cp">
-			<arg value="-rf"/>
-			<arg value="--no-target-directory" />
-			<arg value="${buildDirectory}/installation" />
-			<arg value="${buildDirectory}/testsInstallation/eclipse" />
-		</exec>
+		<copy todir="${buildDirectory}/testsInstallation/eclipse" overwrite="true" >
+			<fileset dir="${buildDirectory}/installation"/>
+		</copy>
 		<!-- To prevent contamination for those with test framework installed on their system -->
 		<exec executable="/bin/sed">
 			<arg value="-i"/>
@@ -518,21 +514,9 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
 		</antcall>
-		<exec executable="cp">
-			<arg value="-p"/>
-			<arg value="${basedir}/junitHelper.xml" />
-			<arg value="${buildDirectory}/testsInstallation" />
-		</exec>
-		<exec executable="cp">
-			<arg value="-p"/>
-			<arg value="${basedir}/runtests.sh" />
-			<arg value="${buildDirectory}/testsInstallation" />
-		</exec>
-		<exec executable="cp">
-			<arg value="-p"/>
-			<arg value="${basedir}/eclipse-tests-vncpwd" />
-			<arg value="${buildDirectory}/testsInstallation" />
-		</exec>
+		<copy preservelastmodified="true" file="${basedir}/junitHelper.xml" todir="${buildDirectory}/testsInstallation" />
+		<copy preservelastmodified="true" file="${basedir}/runtests.sh" todir="${buildDirectory}/testsInstallation" />
+		<copy preservelastmodified="true" file="${basedir}/eclipse-tests-vncpwd" todir="${buildDirectory}/testsInstallation" />
 		<echo file="provision.tests-stamp" />
 	</target>
 
@@ -540,6 +524,7 @@
 		<tstamp>
 			<format property="timestamp" pattern="yyyyMMddhhmmss"/>
 		</tstamp>
+		<chmod perm="ugo+rx" file="${buildDirectory}/testsInstallation/runtests.sh" />
 		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation">
 			<arg line="-t ${timestamp}"/>
 		</exec>
@@ -594,6 +579,7 @@
 	</target>
 
 	<target name="run.installed.director">
+		<chmod perm="ugo+rx" file="${directorToRun}" />
 		<exec executable="${directorToRun}">
 			<arg line="-nosplash " />
 			<arg line="-application org.eclipse.equinox.p2.director " />
@@ -623,12 +609,9 @@
 
 	<target name="install" depends="provision.sdk">
 		<mkdir dir="${destDir}${prefix}/${libDir}/eclipse"/>
-		<exec executable="cp">
-			<arg value="-rf"/>
-			<arg value="--no-target-directory" />
-			<arg value="${buildDirectory}/installation" />
-			<arg value="${destDir}${prefix}/${libDir}/eclipse" />
-		</exec>
+		<copy todir="${destDir}${prefix}/${libDir}/eclipse" overwrite="true" >
+			<fileset dir="${buildDirectory}/installation"/>
+		</copy>
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install icons -->

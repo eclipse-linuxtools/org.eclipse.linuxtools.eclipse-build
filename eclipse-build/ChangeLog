@@ -1,3 +1,7 @@
+2009-09-24  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Use ant tasks instead of execs.
+
 2009-09-23  Andrew Overholt  <overholt@redhat.com>
 
 	* runtests.sh: Add some information about failing tests.  Run with
