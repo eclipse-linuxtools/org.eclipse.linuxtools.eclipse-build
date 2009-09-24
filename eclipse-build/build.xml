@@ -521,6 +521,13 @@
 	</target>
 
 	<target name="runTests" depends="provision.tests">
+		<echo message="###################################################################"/>
+		<echo message="#                                                                 #"/>
+		<echo message="#             Please post and discuss results here:               #"/>
+		<echo message="# http://wiki.eclipse.org/Linux_Tools_Project/Eclipse_Build/Tests #"/>
+		<echo message="#                                                                 #"/>
+		<echo message="###################################################################"/>
+		<echo message=""/>
 		<tstamp>
 			<format property="timestamp" pattern="yyyyMMddhhmmss"/>
 		</tstamp>
