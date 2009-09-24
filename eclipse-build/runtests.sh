@@ -37,7 +37,7 @@ function init() {
 	#     - I'm not sure off-hand what's up with the NPE at:   org.eclipse.osgi.tests.securityadmin.SecurityManagerTests.testBug254600(SecurityManagerTests.java:447)
 	#	org.eclipse.pde.ui.tests (2/0)
 	#	org.eclipse.pde.build.tests (26/1)
-	#	org.eclipse.swt.tests ()
+	#	org.eclipse.swt.tests (1/0)
 	#	  - this is an assertion failure expecting 1 but getting 0:
   	#	    org.eclipse.swt.tests.junit.Test_org_eclipse_swt_widgets_Text.test_getTopIndex(Test_org_eclipse_swt_widgets_Text.java:792)
   	#	    I suspect valid SWT/window manager/GTK issues
@@ -274,6 +274,9 @@ function findAndRunTestPlugins() {
 			if [ $? == 0 ]; then
 				echo "Running ${pluginName} (${pluginVersion})"
 				testDriver="${eclipseHome}/plugins/${pluginName}_${pluginVersion}/test.xml"
+				if [ ${pluginName} == "org.eclipse.swt.tests" ]; then
+					echo "plugin-path=${eclipseHome}/plugins/${pluginName}_${pluginVersion}" >> ${properties}
+				fi
 				runTestSuite
 				cleanAfterTestSuite
 				mv ${results}/*.txt ${results}/logs
@@ -283,6 +286,9 @@ function findAndRunTestPlugins() {
 				genHtml
 				mv ${xmlDir}/* ${results}/xml
 				rm -rf ${xmlDir}
+				if [ ${pluginName} == "org.eclipse.swt.tests" ]; then
+					sed -i "/plugin-path/d" ${properties}
+				fi
 			fi
 		fi
 	done

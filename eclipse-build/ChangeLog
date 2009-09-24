@@ -1,3 +1,7 @@
+2009-09-24  Andrew Overholt  <overholt@redhat.com>
+
+	* runtests.sh: Define "plugin-path" for SWT tests.
+
 2009-09-24  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Use ant tasks instead of execs.
