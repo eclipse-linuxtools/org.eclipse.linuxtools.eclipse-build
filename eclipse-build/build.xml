@@ -204,6 +204,7 @@
 
 	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
 		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-nostyletask.patch" dir="${testsBuildDirectory}" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 

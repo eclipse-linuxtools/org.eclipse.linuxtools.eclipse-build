@@ -17,7 +17,7 @@
 		<fail message="Eclipse installation directory not set"
 	      unless="eclipseHomeSet"/>
 		<echo message="Generating results in ${htmlDir}"/>
-		<style style="${eclipse-home}/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${xmlDir}" destdir="${htmlDir}" />
+		<xslt style="${eclipse-home}/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${xmlDir}" destdir="${htmlDir}" />
 	</target>
 
 </project>

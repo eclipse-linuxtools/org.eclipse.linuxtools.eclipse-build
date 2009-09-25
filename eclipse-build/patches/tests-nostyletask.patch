@@ -1,0 +1,11 @@
+--- plugins/org.eclipse.test/library.xml.sav	2009-09-25 11:47:54.867564002 +0300
++++ plugins/org.eclipse.test/library.xml	2009-09-25 11:48:25.279814120 +0300
+@@ -138,7 +138,7 @@
+ 			</fileset>
+ 		</junitreport>
+ 
+-		<style style="${eclipse-home}/dropins/eclipse/plugins/org.eclipse.test/JUNIT.XSL"
++		<xslt style="${eclipse-home}/dropins/eclipse/plugins/org.eclipse.test/JUNIT.XSL"
+ 			basedir="${junit-report-output}"
+ 			includes="${classname}.result.xml"
+ 			destdir="${junit-report-output}" />
