@@ -1,3 +1,7 @@
+2009-09-25  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Delete testBuild folder in clean.
+
 2009-09-24  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Add message requesting posting of results.

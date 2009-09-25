@@ -163,6 +163,7 @@
 		<delete dir="${baseworkspace}" />
 		<delete dir="${buildworkspace}" />
 		<delete dir="${topBuildDir}" />
+		<delete dir="${testsBuildDir}" />
 		<delete dir="configuration" />
 		<delete dir="p2" />
 		<delete dir="workspace" />
