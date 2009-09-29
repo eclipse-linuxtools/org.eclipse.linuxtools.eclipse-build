@@ -1,0 +1,10 @@
+--- eclipse/buildConfigs/master/customTargets.xml.orig	2009-09-29 15:43:44.000000000 -0400
++++ eclipse/buildConfigs/master/customTargets.xml	2009-09-29 15:44:31.000000000 -0400
+@@ -122,6 +122,7 @@
+ 		<replace file="${buildDirectory}/directory.txt" token="http://www.eclipse.org/external/tools/orbit/downloads/drops/R20090825191606/updateSite" value="file://${buildDirectory}/orbitRepo" />
+ 		<replace file="${buildDirectory}/directory.txt" token="http://download.eclipse.org/tools/orbit/downloads/drops/R20090825191606/updateSite" value="file://${buildDirectory}/orbitRepo" />
+ 		<replace file="${buildDirectory}/directory.txt" token="http://download.eclipse.org/tools/orbit/downloads/drops/S20090426201227/bundles" value="file://${buildDirectory}/orbitRepo/plugins" />
++		<replace file="${buildDirectory}/directory.txt" token="http://www.eclipse.org/external/rt/ecf/integration/platform/v2009-08-31_12-00-11/plugins" value="file://${buildDirectory}/ecfBundles" />
+ 	</target>
+ 
+ 	<!-- ===================================================================== -->

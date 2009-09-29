@@ -1,0 +1,13 @@
+--- eclipse/buildConfigs/master/customTargets.xml	2009-06-26 10:21:47.000000000 -0400
++++ eclipse/buildConfigs/master/customTargets.xml	2009-09-29 09:56:25.000000000 -0400
+@@ -118,6 +118,10 @@
+ 	<!-- Steps to do before fetching the build elements -->
+ 	<!-- ===================================================================== -->
+ 	<target name="preFetch">
++		<replace file="${buildDirectory}/directory.txt" token="http://fullmoon.ottawa.ibm.com/tools/orbit/downloads/drops/R20090825191606/updateSite" value="file://${buildDirectory}/orbitRepo" />
++		<replace file="${buildDirectory}/directory.txt" token="http://www.eclipse.org/external/tools/orbit/downloads/drops/R20090825191606/updateSite" value="file://${buildDirectory}/orbitRepo" />
++		<replace file="${buildDirectory}/directory.txt" token="http://download.eclipse.org/tools/orbit/downloads/drops/R20090825191606/updateSite" value="file://${buildDirectory}/orbitRepo" />
++		<replace file="${buildDirectory}/directory.txt" token="http://download.eclipse.org/tools/orbit/downloads/drops/S20090426201227/bundles" value="file://${buildDirectory}/orbitRepo/plugins" />
+ 	</target>
+ 
+ 	<!-- ===================================================================== -->
