@@ -35,7 +35,6 @@
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
-	<property name="testsBuildLabel" value="3.5"/>
 
 	<property name="destDir" value="" />
 	<property name="prefix" value="/usr/local" />
@@ -468,7 +467,7 @@
 		<echo message="Installing into:  ${buildDirectory}/installation"/>
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
-			<param name="p2.director.version" value="3.5.0.${buildId}" />
+			<param name="p2.director.version" value="${p2.director.version}" />
 			<param name="p2.director.profile" value="SDKProfile" />
 			<param name="p2.director.install.path" value="${buildDirectory}/installation" />
 			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />

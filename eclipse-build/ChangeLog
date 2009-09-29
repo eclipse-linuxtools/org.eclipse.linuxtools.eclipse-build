@@ -1,3 +1,22 @@
+2009-09-29  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSDKSource.sh: Update for 3.5.1.  Use local Orbit and ECF dumps if
+	present.  Check out a version of eclipsebuilder (not HEAD).  Don't generate
+	bootstrap build.xml files as part of source fetching.  Fetch ECF sources.
+	* build.xml: Use testsBuildLabel and p2.director.version properties from
+	build.properties.
+	* build.properties: Move testsBuildLabel and p2.director.version here.
+	Update default buildId.
+	* patches/eclipse-useLocalECFBundles.patch: Initial check-in. Use local ECF
+	bundles instead of hitting eclipse.org where possible.
+	* patches/eclipse-dontusefullmoonformaster.patch: Initial check-in. Don't use
+	internal IBM mirror.
+
+2009-09-25  Andrew Overholt  <overholt@redhat.com>
+
+	* eclipse.desktop: Remove Encoding
+	(see http://standards.freedesktop.org/desktop-entry-spec/1.0/apc.html).
+
 2009-09-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/tests-nostyletask.patch: New file.
