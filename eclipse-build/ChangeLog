@@ -1,3 +1,7 @@
+2009-09-30  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* eclipse-build-generatedScripts.tar.bz2: Regenerate for 3.5.1.
+
 2009-09-30  Andrew Overholt  <overholt@redhat.com>
 
 	* buildSDKSource.sh: Don't use "v" prefix for tag of tests.
@@ -26,7 +30,7 @@
 	* patches/tests-nostyletask.patch: New file.
 	* build.xml: Apply patch to not use deprecated ant task.
 	* junitHelper.xml: Likewise.
-
+	
 2009-09-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Delete testBuild folder in clean.
