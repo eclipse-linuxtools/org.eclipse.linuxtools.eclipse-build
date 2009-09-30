@@ -1,5 +1,10 @@
 2009-09-30  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.properties: Separate buildId and buildTag.
+	* build.xml: Likewise.
+	
+2009-09-30  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* eclipse-build-generatedScripts.tar.bz2: Regenerate for 3.5.1.
 
 2009-09-30  Andrew Overholt  <overholt@redhat.com>

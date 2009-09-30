@@ -5,14 +5,14 @@
 
 	<property file="build.properties" />
 
-	<available file="eclipse-${buildId}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
+	<available file="eclipse-${buildTag}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPresent" value="true" />
-	<available file="eclipse-sdktests-${buildId}-fetched-src.tar.bz2" property="testsSourcePresent" value="true" />
-	<available file="eclipse-sdktests-${buildId}-fetched-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
+	<available file="eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" property="testsSourcePresent" value="true" />
+	<available file="eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
-	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
-	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
+	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
+	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
@@ -29,8 +29,8 @@
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
-	<property name="buildDirectory" value="${topBuildDir}/eclipse-${buildId}-fetched-src" />
-	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${buildId}-fetched-src" />
+	<property name="buildDirectory" value="${topBuildDir}/eclipse-${buildTag}-fetched-src" />
+	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${buildTag}-fetched-src" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
@@ -90,7 +90,7 @@
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">
-		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildId}-fetched-src"
+		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildTag}-fetched-src"
 			   src="${basedir}/eclipse-build-generatedScripts.tar.bz2"/>
 		<!--
 		<fail message="Build scripts to bootstrap PDE Build must be generated and present in eclipse-build-generatedScripts.tar.bz2.  See pdebuild.xml for details."/>
@@ -111,8 +111,8 @@
 		<delete dir="${buildworkspace}" />
 		<mkdir dir="${buildworkspace}" />
 
-		<echo message="Extracting SDK source (tar jxf eclipse-${buildId}-fetched-src.tar.bz2)" />
-		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
+		<echo message="Extracting SDK source (tar jxf eclipse-${buildTag}-fetched-src.tar.bz2)" />
+		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
 		<antcall target="extractBuildXmls"/>
 
 		<delete dir="${buildDirectory}/buildConfigs" />
@@ -144,11 +144,11 @@
 		<delete dir="${buildworkspace}" />
 		<mkdir dir="${buildworkspace}" />
 
-		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${buildId}-fetched-src.tar.bz2)" />
-		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildId}-fetched-src.tar.bz2" compression="bzip2" />
-		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildId}-fetched-scripts.tar.bz2" compression="bzip2" />
+		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${buildTag}-fetched-src.tar.bz2)" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2" compression="bzip2" />
 		<move todir="${testsBuildDir}">
-			<fileset dir="${testsBuildDir}/eclipse-sdktests-${buildId}-fetched-scripts">
+			<fileset dir="${testsBuildDir}/eclipse-sdktests-${buildTag}-fetched-scripts">
 				<include name="**/*" />
 			</fileset>
 		</move>
@@ -325,7 +325,7 @@
 	</target>
 
 	<target name="p2prep" depends="build" unless="p2prep.complete">
-		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildId}-group.group.group.zip" />-->
+		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildTag}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
 		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip"/>
