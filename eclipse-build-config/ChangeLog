@@ -1,3 +1,8 @@
+2009-09-30  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/sdk/sdk.product: Update for 3.5.1.
+	* productFiles/rcp.sdk/rcp.product: Likewise.
+
 2009-09-22  Andrew Overholt  <overholt@redhat.com>
 
 	* productFiles/sdk/sdk.product: Remote dropins from default eclipse.ini as
