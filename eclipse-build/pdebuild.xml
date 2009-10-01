@@ -158,7 +158,7 @@
 		</pathconvert>
 
 		<eclipse.buildScript elements="${plugins}"
-		                     builddirectory="../build/eclipse-I20090611-1540-fetched-src" />
+		                     builddirectory="../build/eclipse-${buildTag}-fetched-src" />
 	</target>
 	<target name="bootstrap">
 		<echo message="bootclasspath=${CDC-1.1/Foundation-1.1}"/>

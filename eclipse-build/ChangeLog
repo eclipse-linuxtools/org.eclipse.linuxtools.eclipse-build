@@ -1,5 +1,9 @@
 2009-10-01  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* pdebuild.xml: Use buildTag variable instead of hard-coded value.
+	
+2009-10-01  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* pdebuild.properties: Sync buildId and buildTag with build.properties.
 	* pdebuild.xml: Likewise.
 
