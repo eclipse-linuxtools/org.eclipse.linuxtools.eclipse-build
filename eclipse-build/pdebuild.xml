@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property file="pdebuild.properties" />
-	<property name="sdkSource" value="build/eclipse-${buildId}-fetched-src" />
+	<property name="sdkSource" value="build/eclipse-${buildTag}-fetched-src" />
 	<target name="cleanBuild" depends="clean,zipPlugins2"/>
 	<!-- Order in this filelist is critical for building !!! -->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins">
