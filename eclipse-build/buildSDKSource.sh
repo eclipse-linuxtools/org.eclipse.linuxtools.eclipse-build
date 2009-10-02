@@ -13,7 +13,7 @@ eclipseBuilderTag="R3_5_1"
 fetchTests="no"
 orbitRepoZip=orbitRepo-R20090825191606.zip
 ecfBundlesZip=ecf-R3_5_1.zip
-ecfTag="v20090831-1906"
+ecfTag="v20090831-1453"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
