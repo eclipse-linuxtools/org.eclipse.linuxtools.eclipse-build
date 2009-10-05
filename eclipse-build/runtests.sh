@@ -89,7 +89,7 @@ function init() {
 	mkdir -p $datadir $homedir $testhome $results/{xml,logs,html}
 
 	properties=$(pwd)/sdk-tests.properties
-	rm $properties
+	rm -f $properties
 	echo "data-dir=$datadir" >> $properties
 	echo "useEclipseExe=true" >> $properties
 	echo "junit-report-output=$results" >> $properties
