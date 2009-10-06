@@ -191,13 +191,17 @@
 	</target>
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
+		<!-- eclipse-build-only patches -->
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
-		<!-- See https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
-		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-jdt_launch-customBuild.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="3" />
+		<!-- end eclipse-build-only patches -->
+		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
+		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
+		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=287307 -->
+		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch" dir="${buildDirectory}/plugins/org.eclipse.swt " strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 

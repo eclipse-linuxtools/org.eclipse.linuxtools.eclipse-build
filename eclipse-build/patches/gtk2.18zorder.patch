@@ -1,0 +1,218 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.swt
+Index: Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java,v
+retrieving revision 1.380.2.1
+diff -u -r1.380.2.1 Control.java
+--- Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java	7 Aug 2009 18:50:38 -0000	1.380.2.1
++++ Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java	30 Sep 2009 16:19:55 -0000
+@@ -3332,6 +3332,30 @@
+ 	region = null;
+ }
+ 
++void restackWindow (int /*long*/ window, int /*long*/ sibling, boolean above) {
++	    if (OS.GTK_VERSION >= OS.VERSION (2, 17, 11)) {
++	    	OS.gdk_window_restack (window, sibling, above);
++	    } else {
++	    	/*
++			* Feature in X. If the receiver is a top level, XConfigureWindow ()
++			* will fail (with a BadMatch error) for top level shells because top
++			* level shells are reparented by the window manager and do not share
++			* the same X window parent.  This is the correct behavior but it is
++			* unexpected.  The fix is to use XReconfigureWMWindow () instead.
++			* When the receiver is not a top level shell, XReconfigureWMWindow ()
++			* behaves the same as XConfigureWindow ().
++			*/
++			int /*long*/ xDisplay = OS.gdk_x11_drawable_get_xdisplay (window);
++			int /*long*/ xWindow = OS.gdk_x11_drawable_get_xid (window);
++			int xScreen = OS.XDefaultScreen (xDisplay);
++			int flags = OS.CWStackMode | OS.CWSibling;			
++			XWindowChanges changes = new XWindowChanges ();
++			changes.sibling = OS.gdk_x11_drawable_get_xid (sibling);
++			changes.stack_mode = above ? OS.Above : OS.Below;
++			OS.XReconfigureWMWindow (xDisplay, xWindow, xScreen, flags, changes);
++	    }
++	}
++
+ boolean sendDragEvent (int button, int stateMask, int x, int y, boolean isStateMask) {
+ 	Event event = new Event ();
+ 	event.button = button;
+@@ -3682,15 +3706,7 @@
+ 			if (!OS.GDK_WINDOWING_X11 ()) {
+ 				OS.gdk_window_raise (enableWindow);
+ 			} else {
+-				int /*long*/ topWindow = OS.GTK_WIDGET_WINDOW (topHandle);			
+-				int /*long*/ xDisplay = OS.gdk_x11_drawable_get_xdisplay (topWindow);
+-				int /*long*/ xWindow = OS.gdk_x11_drawable_get_xid (enableWindow);
+-				int xScreen = OS.XDefaultScreen (xDisplay);
+-				int flags = OS.CWStackMode | OS.CWSibling;			
+-				XWindowChanges changes = new XWindowChanges ();
+-				changes.sibling = OS.gdk_x11_drawable_get_xid (topWindow);
+-				changes.stack_mode = OS.Above;
+-				OS.XReconfigureWMWindow (xDisplay, xWindow, xScreen, flags, changes);
++				restackWindow (enableWindow, OS.GTK_WIDGET_WINDOW (topHandle), true);
+ 			}
+ 			if (OS.GTK_WIDGET_VISIBLE (topHandle)) OS.gdk_window_show_unraised (enableWindow);
+ 		}
+@@ -4170,29 +4186,12 @@
+ 				OS.gdk_window_lower (window);
+ 			}
+ 		} else {
+-			XWindowChanges changes = new XWindowChanges ();
+-			changes.sibling = OS.gdk_x11_drawable_get_xid (siblingWindow != 0 ? siblingWindow : redrawWindow);
+-			changes.stack_mode = above ? OS.Above : OS.Below;
+-			if (redrawWindow != 0 && siblingWindow == 0) changes.stack_mode = OS.Below;
+-			int /*long*/ xDisplay = OS.gdk_x11_drawable_get_xdisplay (window);
+-			int /*long*/ xWindow = OS.gdk_x11_drawable_get_xid (window);
+-			int xScreen = OS.XDefaultScreen (xDisplay);
+-			int flags = OS.CWStackMode | OS.CWSibling;
+-			/*
+-			* Feature in X. If the receiver is a top level, XConfigureWindow ()
+-			* will fail (with a BadMatch error) for top level shells because top
+-			* level shells are reparented by the window manager and do not share
+-			* the same X window parent.  This is the correct behavior but it is
+-			* unexpected.  The fix is to use XReconfigureWMWindow () instead.
+-			* When the receiver is not a top level shell, XReconfigureWMWindow ()
+-			* behaves the same as XConfigureWindow ().
+-			*/
+-			OS.XReconfigureWMWindow (xDisplay, xWindow, xScreen, flags, changes);			
++			int /*long*/ siblingW = siblingWindow != 0 ? siblingWindow : redrawWindow;
++			boolean stack_mode = above;
++			if (redrawWindow != 0 && siblingWindow == 0) stack_mode = false;
++			restackWindow (window, siblingW, stack_mode);
+ 			if (enableWindow != 0) {
+-				changes.sibling = OS.gdk_x11_drawable_get_xid (window);
+-				changes.stack_mode = OS.Above;
+-				xWindow = OS.gdk_x11_drawable_get_xid (enableWindow);
+-				OS.XReconfigureWMWindow (xDisplay, xWindow, xScreen, flags, changes);
++				 restackWindow (enableWindow, window, true);
+ 			}
+ 		}
+ 	}
+Index: Eclipse SWT PI/gtk/library/os_stats.h
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.h,v
+retrieving revision 1.180
+diff -u -r1.180 os_stats.h
+--- Eclipse SWT PI/gtk/library/os_stats.h	29 May 2009 21:30:13 -0000	1.180
++++ Eclipse SWT PI/gtk/library/os_stats.h	30 Sep 2009 16:19:54 -0000
+@@ -511,6 +511,7 @@
+ 	_1gdk_1window_1raise_FUNC,
+ 	_1gdk_1window_1remove_1filter_FUNC,
+ 	_1gdk_1window_1resize_FUNC,
++	_1gdk_1window_1restack_FUNC,
+ 	_1gdk_1window_1scroll_FUNC,
+ 	_1gdk_1window_1set_1accept_1focus_FUNC,
+ 	_1gdk_1window_1set_1back_1pixmap_FUNC,
+Index: Eclipse SWT PI/gtk/library/os_custom.h
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h,v
+retrieving revision 1.80
+diff -u -r1.80 os_custom.h
+--- Eclipse SWT PI/gtk/library/os_custom.h	29 May 2009 21:30:14 -0000	1.80
++++ Eclipse SWT PI/gtk/library/os_custom.h	30 Sep 2009 16:19:54 -0000
+@@ -112,6 +112,7 @@
+ #define gtk_status_icon_set_tooltip_LIB "libgtk-x11-2.0.so.0"
+ #define gtk_window_get_group_LIB "libgtk-x11-2.0.so.0"
+ #define gtk_window_get_opacity_LIB "libgtk-x11-2.0.so.0"
++#define gdk_window_restack_LIB "libgdk-x11-2.0.so.0"
+ #define gdk_window_set_keep_above_LIB "libgdk-x11-2.0.so.0"
+ #define gdk_window_set_accept_focus_LIB "libgdk-x11-2.0.so.0"
+ #define gtk_window_set_opacity_LIB "libgtk-x11-2.0.so.0"
+Index: Eclipse SWT PI/gtk/library/os_stats.c
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c,v
+retrieving revision 1.180
+diff -u -r1.180 os_stats.c
+--- Eclipse SWT PI/gtk/library/os_stats.c	29 May 2009 21:30:13 -0000	1.180
++++ Eclipse SWT PI/gtk/library/os_stats.c	30 Sep 2009 16:19:54 -0000
+@@ -8,7 +8,7 @@
+  * the LGPL accompanying this distribution and there is any conflict
+  * between the two license versions, the terms of the LGPL accompanying
+  * this distribution shall govern.
+- * 
++ *
+  * Contributors:
+  *     IBM Corporation - initial API and implementation
+  *******************************************************************************/
+@@ -18,8 +18,8 @@
+ 
+ #ifdef NATIVE_STATS
+ 
+-int OS_nativeFunctionCount = 1291;
+-int OS_nativeFunctionCallCount[1291];
++int OS_nativeFunctionCount = 1292;
++int OS_nativeFunctionCallCount[1292];
+ char * OS_nativeFunctionNames[] = {
+ #ifndef JNI64
+ 	"Call__IIII",
+@@ -503,6 +503,7 @@
+ 	"_1gdk_1window_1raise",
+ 	"_1gdk_1window_1remove_1filter",
+ 	"_1gdk_1window_1resize",
++	"_1gdk_1window_1restack",
+ 	"_1gdk_1window_1scroll",
+ 	"_1gdk_1window_1set_1accept_1focus",
+ 	"_1gdk_1window_1set_1back_1pixmap",
+Index: Eclipse SWT PI/gtk/library/os.c
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c,v
+retrieving revision 1.272
+diff -u -r1.272 os.c
+--- Eclipse SWT PI/gtk/library/os.c	29 May 2009 21:30:14 -0000	1.272
++++ Eclipse SWT PI/gtk/library/os.c	30 Sep 2009 16:19:54 -0000
+@@ -5944,6 +5944,24 @@
+ }
+ #endif
+ 
++#ifndef NO__1gdk_1window_1restack
++JNIEXPORT void JNICALL OS_NATIVE(_1gdk_1window_1restack)
++	(JNIEnv *env, jclass that, jintLong arg0, jintLong arg1, jboolean arg2)
++{
++	OS_NATIVE_ENTER(env, that, _1gdk_1window_1restack_FUNC);
++/*
++	gdk_window_restack((GdkWindow *)arg0, (GdkWindow *)arg1, (gboolean)arg2);
++*/
++	{
++		LOAD_FUNCTION(fp, gdk_window_restack)
++		if (fp) {
++			((void (CALLING_CONVENTION*)(GdkWindow *, GdkWindow *, gboolean))fp)((GdkWindow *)arg0, (GdkWindow *)arg1, (gboolean)arg2);
++		}
++	}
++	OS_NATIVE_EXIT(env, that, _1gdk_1window_1restack_FUNC);
++}
++#endif
++
+ #ifndef NO__1gdk_1window_1scroll
+ JNIEXPORT void JNICALL OS_NATIVE(_1gdk_1window_1scroll)
+ 	(JNIEnv *env, jclass that, jintLong arg0, jint arg1, jint arg2)
+Index: Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java,v
+retrieving revision 1.525.2.1
+diff -u -r1.525.2.1 OS.java
+--- Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java	20 Aug 2009 19:16:37 -0000	1.525.2.1
++++ Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java	30 Sep 2009 16:19:55 -0000
+@@ -4887,6 +4887,21 @@
+ 		lock.unlock();
+ 	}
+ }
++/** 
++ * @method flags=dynamic
++ * @param window cast=(GdkWindow *)
++ * @param sibling cast=(GdkWindow *)
++ * @param above cast=(gboolean)
++ */
++public static final native void _gdk_window_restack(int /*long*/ window, int /*long*/ sibling, boolean above);
++public static final void gdk_window_restack(int /*long*/ window, int /*long*/ sibling, boolean above) {
++	lock.lock();
++	try {
++		_gdk_window_restack(window, sibling, above);
++	} finally {
++		lock.unlock();
++	}
++}
+ /** @param window cast=(GdkWindow *) */
+ public static final native void _gdk_window_scroll(int /*long*/ window, int dx, int dy);
+ public static final void gdk_window_scroll(int /*long*/ window, int dx, int dy) {
