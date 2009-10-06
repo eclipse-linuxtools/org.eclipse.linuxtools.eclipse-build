@@ -10,7 +10,7 @@ Tasks completed so far:
 To test it do the following:
 
 <!-- FIXME:  Include SVN instructions as an alternative -->
-* generate source using <tt>./buildSource.sh</tt> (alternatively, look for 3.5 sources here:  http://download.eclipse.org/technology/linuxtools/eclipse-build/ -- get the tarball for 3.5:  eclipse-I20090611-1540-fetched-src.tar.bz2 and verify its md5sum matches)
+* generate source using <tt>./buildSource.sh</tt> (alternatively, look for 3.5.1 sources here:  http://download.eclipse.org/technology/linuxtools/eclipse-build/ -- get the tarball for 3.5.1:  eclipse-R3_5_1-fetched-src.tar.bz2 and verify its md5sum matches)
 ** <tt>./buildSource.sh -workdir /tmp/eclipseSDKBuild</tt>
 * if you are using pre-generated source tarballs, check out basebuilder:
 ** <tt>mkdir -p /tmp/eclipseSDKBuild; cd /tmp/eclipseSDKBuild; cvs -d:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse co -r R35_M7 org.eclipse.releng.basebuilder</tt>
@@ -21,4 +21,4 @@ To test it do the following:
 You should get:
 <!-- Not anymore.  We need to fix this.
 * all the dependencies of pdebuild-ant in the bootstrap/plugins folder. -->
-* working Eclipse SDK 3.5 build in build/(build Id)/installation directory
+* working Eclipse SDK 3.5.1 build in build/(build Id)/installation directory
