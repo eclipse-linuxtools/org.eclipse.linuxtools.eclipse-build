@@ -530,17 +530,43 @@
 		<echo message="###################################################################"/>
 		<echo message=""/>
 		<tstamp>
-			<format property="timestamp" pattern="yyyyMMddhhmmss"/>
+			<format property="timestamp" pattern="yyyyMMddHHmmss"/>
 		</tstamp>
 		<chmod perm="ugo+rx" file="${buildDirectory}/testsInstallation/runtests.sh" />
 		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation">
-			<arg line="-t ${timestamp}"/>
+			<arg value="-t${timestamp}"/>
 		</exec>
-		<copy failonerror="false" todir="${basedir}/testResults-${timestamp}">
+		<property name="testResultDir" value="${basedir}/testResults-${timestamp}"/>
+		<copy failonerror="false" todir="${testResultDir}">
 			<fileset dir="${buildDirectory}/testsInstallation/results-${timestamp}">
 				<include name="**/*" />
 			</fileset>
 		</copy>
+		<!-- Copy over the XML to generate a top-level report for all of the tests -->
+		<mkdir dir="${testResultDir}/origXml"/>
+		<copy failonerror="false" todir="${testResultDir}/origXml">
+			<fileset dir="${testResultDir}/xml">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<!-- Un-"collect" the results -->
+		<replace dir="${testResultDir}/origXml" value="">
+		  <include name="**/*.xml"/>
+		    <replacetoken>&lt;testsuites&gt;</replacetoken>
+		</replace>
+		<replace dir="${testResultDir}/origXml" value="">
+		  <include name="**/*.xml"/>
+		    <replacetoken>&lt;/testsuites&gt;</replacetoken>
+		</replace>
+		<!-- Aggregate XML report files -->
+		<junitreport todir="${testResultDir}/xml" tofile="org.eclipse.sdk.tests.xml">
+			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
+		</junitreport>
+		<!-- Generate top-level HTML report -->
+		<xslt style="${buildDirectory}/testsInstallation/eclipse/plugins/org.eclipse.test_3.2.0/JUNIT.XSL"
+			basedir="${testResultDir}/xml"
+			includes="org.eclipse.sdk.tests.xml"
+			destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">

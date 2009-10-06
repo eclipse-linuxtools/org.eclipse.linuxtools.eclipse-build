@@ -1,6 +1,16 @@
+2009-10-05  Andrew Overholt  <overholt@redhat.com>
+
+	* runtests.sh: Move option parsing out of function.
+	* build.xml: Generate top-level test report HTML file.
+
 2009-10-05  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* pdebuild.xml: Add macrodef for running the buildScripts generation.
+
+2009-10-04  Andrew Overholt  <overholt@redhat.com>
+
+	* runtests.sh: Ignore missing SDK test properties file if not present
+	whem removing.
 
 2009-10-02  Alexander Kurtakov  <akurtako@redhat.com>
 

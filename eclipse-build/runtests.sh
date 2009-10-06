@@ -102,35 +102,6 @@ function init() {
 	fi
 }
 
-function processArgs() {
-	# Command-line arguments
-	while getopts “hgdbe:” OPTION
-	do
-	     case $OPTION in
-	         d)
-	             debugTests=1
-	             ;;
-	         e)
-	             eclipseHome=$OPTARG
-	             ;;
-	         g)
-	             headless=0
-	             ;;
-	         t)
-	             timestamp=$OPTARG
-	             ;;
-	         h)
-	             usage
-	             exit
-	             ;;
-	         ?)
-	             usage
-	             exit
-	             ;;
-	     esac
-	done
-}
-
 function findXvncAndSetDisplay() {
 	if [ ${headless} == 1 ]; then
 		# Try to find Xvnc
@@ -270,8 +241,30 @@ function genHtml() {
 	ant -Declipse-home=${eclipseHome} -Dresults=${results} -DxmlDir=${xmlDir} -f junitHelper.xml
 }
 
+# Command-line arguments
+while getopts "de:gt:h" OPTION
+do
+     case $OPTION in
+         d)
+             debugTests=1
+             ;;
+         e)
+             eclipseHome=$OPTARG
+             ;;
+         g)
+             headless=0
+             ;;
+         t)
+             timestamp=$OPTARG
+             ;;
+         h)
+             usage
+             exit 1
+             ;;
+     esac
+done
+
 init
-processArgs
 findXvncAndSetDisplay
 setArch
 findAndRunTestPlugins
