@@ -1,5 +1,12 @@
 2009-10-06  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #291504
+
+	* build.xml: Apply patch from Benjamin Drung to add link to the
+	launcher binary in the installation directory.
+
+2009-10-06  Andrew Overholt  <overholt@redhat.com>
+
 	* patches/gtk2.18zorder.patch: Initial check-in of 3.5.1 back-port for
 	(https://bugs.eclipse.org/287307).
 	* build.xml: Apply GTK 2.18 z-order patch.  Organize patch section a
