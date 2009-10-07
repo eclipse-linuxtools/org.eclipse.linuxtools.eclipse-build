@@ -661,6 +661,8 @@
 				tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
 		<mkdir dir="${destDir}${prefix}/share/pixmaps"/>
 		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" />
+		<!--shared dropins folder--> 
+		<mkdir dir="${destDir}${prefix}/share/eclipse/dropins" />
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
 		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />

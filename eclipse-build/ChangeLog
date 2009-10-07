@@ -1,5 +1,9 @@
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Install shared dropins folder.
+
+2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* build.xml: Install icon in  /usr/share/pixmaps.
 	
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
