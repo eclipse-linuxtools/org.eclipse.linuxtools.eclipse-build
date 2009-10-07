@@ -201,7 +201,7 @@
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
 		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=287307 -->
-		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch" dir="${buildDirectory}/plugins/org.eclipse.swt " strip="0" />
+		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch" dir="${buildDirectory}/plugins/org.eclipse.swt" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
