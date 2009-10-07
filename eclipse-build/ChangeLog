@@ -1,5 +1,9 @@
 2009-10-07  Andrew Overholt  <overholt@redhat.com>
 
+	* runtests.sh: Add missing line continuation.
+
+2009-10-07  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #291531 - Work courtesy Niels Thykier
 
 	* swt_bundle.sh: Initial checkin (Niels Thykier).

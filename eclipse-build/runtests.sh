@@ -172,7 +172,7 @@ function runTestSuite() {
 	-propertyfile $properties \
 	-logger org.apache.tools.ant.DefaultLogger \
 	-vmargs \
-	-Duser.home=${homedir}
+	-Duser.home=${homedir} \
 	-Dosgi.os=linux \
 	-Dosgi.ws=gtk \
 	-Dosgi.arch=${arch}
