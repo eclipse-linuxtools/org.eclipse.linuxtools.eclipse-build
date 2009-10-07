@@ -1,3 +1,11 @@
+2009-10-07  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #291531 - Work courtesy Niels Thykier
+
+	* swt_bundle.sh: Initial checkin (Niels Thykier).
+	* build.xml: Add target to call script to extract SWT bundle for
+	standalone packaging (Niels Thykier).
+
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Install shared dropins folder.
@@ -5,7 +13,7 @@
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Install icon in  /usr/share/pixmaps.
-	
+
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Fix patch applying to unbreak build.
@@ -45,7 +53,7 @@
 2009-10-01  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* pdebuild.xml: Use buildTag variable instead of hard-coded value.
-	
+
 2009-10-01  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* pdebuild.properties: Sync buildId and buildTag with build.properties.
@@ -55,7 +63,7 @@
 
 	* build.properties: Separate buildId and buildTag.
 	* build.xml: Likewise.
-	
+
 2009-09-30  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* eclipse-build-generatedScripts.tar.bz2: Regenerate for 3.5.1.
@@ -88,7 +96,7 @@
 	* patches/tests-nostyletask.patch: New file.
 	* build.xml: Apply patch to not use deprecated ant task.
 	* junitHelper.xml: Likewise.
-	
+
 2009-09-25  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Delete testBuild folder in clean.
