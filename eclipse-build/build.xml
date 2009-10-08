@@ -482,6 +482,21 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
+			<classpath>
+				<fileset dir="${buildDirectory}/installation/plugins">
+					<include name="org.eclipse.equinox.launcher_*.jar" />
+				</fileset>
+			</classpath>
+			<arg line="-application org.eclipse.ant.core.antRunner" />
+			<arg line="-f build.xml" />
+			<arg line="build.update.jar" />
+		</java>
+		<copy todir="${buildDirectory}/installation/plugins">
+			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
+				<include name="org.eclipse.equinox.initializer*.jar"/>
+			</fileset>
+		</copy>
 		<echo file="provision.sdk-stamp" />
 	</target>
 

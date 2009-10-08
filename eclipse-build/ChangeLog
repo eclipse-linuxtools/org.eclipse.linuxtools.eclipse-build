@@ -1,3 +1,9 @@
+2009-10-08  Andrew Overholt  <overholt@redhat.com>
+
+	Bud #291681 - Patch courtesy Benjamin Drung
+
+	* build.xml: Add patch to build Equinox initializer application.
+
 2009-10-08  Alexander Kurtakov  <akurtako@redhat.com>
     Add pdebuild and companions.
 	* pdebuild/eclipse-copy-platform.sh: New file.
