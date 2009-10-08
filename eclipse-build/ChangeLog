@@ -1,3 +1,8 @@
+2009-10-08  Alexander Kurtakov  <akurtako@redhat.com>
+    Add pdebuild and companions.
+	* pdebuild/eclipse-copy-platform.sh: New file.
+	* pdebuild/eclipse-pdebuild.sh: Likewise.
+
 2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-pde.build-add-package-build.patch: New file.
