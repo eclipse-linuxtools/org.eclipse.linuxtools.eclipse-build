@@ -1,3 +1,8 @@
+2009-10-07  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-pde.build-add-package-build.patch: New file.
+	* build.xml: Apply pdebuild script patch.
+
 2009-10-07  Andrew Overholt  <overholt@redhat.com>
 
 	* runtests.sh: Add missing line continuation.

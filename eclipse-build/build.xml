@@ -197,6 +197,8 @@
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="3" />
+		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}/plugins/org.eclipse.pde.build" strip="0" />
+		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse"/>
 		<!-- end eclipse-build-only patches -->
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
 		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
