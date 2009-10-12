@@ -1,5 +1,9 @@
 2009-10-12  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Create a symlink to o.e.equinox.launcher in the install. (Niels Thykier) 
+	
+2009-10-12  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* ecf-filetransfer-build.properties: New file.
 	* ecf-filetransfer-feature.xml: New file.
 	* build.xml: Compile ecf bundles.

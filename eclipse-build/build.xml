@@ -700,6 +700,11 @@
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
 		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />
+		<!-- Create the "startup.jar" symlink -->
+		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
+		<property name="startupjarpath" refid="startupjar" />
+		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar" resource="plugins/${startupjarpath}" />
+
 		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${destDir}${prefix}/share/eclipse/dropins" />
 	</target>
 
