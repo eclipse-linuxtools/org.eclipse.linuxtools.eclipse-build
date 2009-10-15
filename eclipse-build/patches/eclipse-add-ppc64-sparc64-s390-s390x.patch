@@ -1,0 +1,61 @@
+diff -ru eclipse-3.3-src.orig/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
+--- eclipse-3.3-src.orig/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java	2007-06-25 15:57:02.000000000 -0400
++++ eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java	2007-07-16 16:08:02.000000000 -0400
+@@ -47,6 +47,11 @@
+ 			Platform.ARCH_X86, //
+ 			Platform.ARCH_AMD64, // 
+ 			Platform.ARCH_IA64, //
++			Platform.ARCH_PPC64, //
++			Platform.ARCH_SPARC64, //
++			Platform.ARCH_S390, //
++			Platform.ARCH_S390X, //
++			Platform.ARCH_ALPHA, //
+ 			Platform.ARCH_IA64_32};
+ 
+ 	// debug support:  set in loadOptions()
+Only in eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime: InternalPlatform.java.orig
+diff -ru eclipse-3.3-src.orig/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java
+--- eclipse-3.3-src.orig/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java	2007-06-25 15:57:18.000000000 -0400
++++ eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java	2007-07-16 16:08:02.000000000 -0400
+@@ -346,6 +346,12 @@
+ 	 * @since 3.1
+ 	 */
+ 	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
++	
++	public static final String ARCH_PPC64 = "ppc64";//$NON-NLS-1$
++	public static final String ARCH_SPARC64 = "sparc64";//$NON-NLS-1$
++	public static final String ARCH_S390 = "s390";//$NON-NLS-1$
++	public static final String ARCH_S390X = "s390x";//$NON-NLS-1$
++	public static final String ARCH_ALPHA = "alpha";//$NON-NLS-1$
+ 
+ 	/**
+ 	 * Constant string (value "win32") indicating the platform is running on a
+Only in eclipse-3.3-src/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime: Platform.java.orig
+diff -ru eclipse-3.3-src.orig/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java eclipse-3.3-src/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
+--- eclipse-3.3-src.orig/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java	2007-06-25 15:57:06.000000000 -0400
++++ eclipse-3.3-src/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java	2007-07-16 16:08:02.000000000 -0400
+@@ -64,7 +64,7 @@
+ 	private static final String MANIFEST_VERSION = "Manifest-Version"; //$NON-NLS-1$
+ 	private static final String PLUGIN_PROPERTIES_FILENAME = "plugin"; //$NON-NLS-1$
+ 	private static PluginConverterImpl instance;
+-	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64};
++	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64, org.eclipse.osgi.service.environment.Constants.ARCH_PPC64, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC64, org.eclipse.osgi.service.environment.Constants.ARCH_S390, org.eclipse.osgi.service.environment.Constants.ARCH_S390X, org.eclipse.osgi.service.environment.Constants.ARCH_ALPHA};
+ 	static public final String FRAGMENT_MANIFEST = "fragment.xml"; //$NON-NLS-1$
+ 	static public final String GENERATED_FROM = "Generated-from"; //$NON-NLS-1$
+ 	static public final String MANIFEST_TYPE_ATTRIBUTE = "type"; //$NON-NLS-1$
+diff -ru eclipse-3.4-src.orig/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java eclipse-3.4-src/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java
+--- eclipse-3.4-src.orig/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java.orig	2008-07-22 08:37:14.000000000 -0400
++++ eclipse-3.4-src/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java	2008-07-22 08:38:02.000000000 -0400
+@@ -131,6 +131,12 @@
+ 	 */
+ 	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
+ 
++	public static final String ARCH_PPC64 = "ppc64";//$NON-NLS-1$
++	public static final String ARCH_SPARC64 = "sparc64";//$NON-NLS-1$
++	public static final String ARCH_S390 = "s390";//$NON-NLS-1$
++	public static final String ARCH_S390X = "s390x";//$NON-NLS-1$
++	public static final String ARCH_ALPHA = "alpha";//$NON-NLS-1$
++
+ 	/**
+ 	 * Constant string (value "win32") indicating the platform is running on a
+ 	 * machine using the Windows windowing system.

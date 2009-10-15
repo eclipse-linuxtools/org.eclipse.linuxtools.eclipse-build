@@ -1,3 +1,8 @@
+2009-10-15  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-add-ppc64-sparc64-s390-s390x.patch: New file.
+	* build.xml: Add patch with constants for additional args.
+
 2009-10-12  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Create a symlink to o.e.equinox.launcher in the install. (Niels Thykier) 
