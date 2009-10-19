@@ -1,5 +1,9 @@
 2009-10-19  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* generateAdditionalPlatforms.xml: New file.
+
+2009-10-19  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* eclipse-build-additionalArchs.tar.bz2: New file.
 	* additionalArchs/rename.sh: New file.
 	* patches/eclipse-add-ppc64-filesystem.patch: New file.
