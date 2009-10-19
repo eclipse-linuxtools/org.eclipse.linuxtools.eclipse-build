@@ -1,0 +1,19 @@
+--- ./features/org.eclipse.platform/feature.xml	2009-08-07 18:30:54.000000000 +0300
++++ ./features/org.eclipse.platform/feature.xml	2009-08-07 18:50:29.043863537 +0300
+@@ -440,6 +440,16 @@
+          version="0.0.0"
+          fragment="true"
+          unpack="false"/>
++	 
++   <plugin
++         id="org.eclipse.core.filesystem.linux.ppc64"
++         os="linux"
++         arch="ppc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
+ 
+    <plugin
+          id="org.eclipse.core.filesystem.linux.x86"
