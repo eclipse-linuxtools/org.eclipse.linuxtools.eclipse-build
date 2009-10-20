@@ -212,10 +212,10 @@ diff -N templates/package-build/customTargets.xml
 +   		plugin projects to be in the 'plugins' directory. The build infrastructure
 +		normally arranges the projects during the fetch stage. Since we aren't doing
 + 		the fetch stage, we have to manually arrange the files -->
-+		<exec dir="${builder}" executable="/bin/sh">
++		<exec dir="${builder}" executable="/bin/bash" failOnError="true">
 +			<arg line="prepare-build-dir.sh ${sourceDirectory} ${buildDirectory} ${testing}" />
 +		</exec>
-+		<exec dir="${builder}" executable="/bin/sh">
++		<exec dir="${builder}" executable="/bin/bash" failOnError="true">
 +		    <arg line="symlink-deps.sh ${buildDirectory} ${orbitDepsDir}" />
 +		</exec>
 +
