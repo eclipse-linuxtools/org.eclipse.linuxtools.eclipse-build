@@ -18,6 +18,12 @@ case ${arch} in
 		arch=ppc64 ;;
 	x86_64)
 		arch=x86_64 ;;
+	sparc)
+		arch=sparc ;;
+	sparcv9)
+		arch=sparc ;;
+	sparc64)
+		arch=sparc64 ;;
 	*)
 		echo "Unrecognized architecture:  $arch" 1>&2
 		exit 1 ;;
