@@ -1,5 +1,13 @@
 2009-10-21  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* patches/eclipse-add-ppc64-filesystem.patch: Removed.
+	* patches/eclipse-add-ppc64-swt.patch: Removed.
+	* patches/eclipse-add-archs-executable.patch: New file.
+	* patches/eclipse-add-archs-filesystem.patch: New file.
+	* patches/eclipse-add-archs-swt.patch: New file.
+	* build.xml: Apply new patches adding sparc support and launcher fragments.
+	* eclipse-build-additionalArchs.tar.bz2: Regenerated.
+	* generateAdditionalPlatforms.xml: Generated sparc* fragments.
 	* build.sh: Add support for sparc* archs.
 
 2009-10-20  Alexander Kurtakov  <akurtako@redhat.com>
