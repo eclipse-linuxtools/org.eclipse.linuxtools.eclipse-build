@@ -31,8 +31,8 @@
 			</exec>
 			<replace dir="${archsDir}" value="@{newArch}">
 				<exclude name="rename.sh" />
-				<include name="**/*.*" />
-				<excludesfile name="rename.sh" />
+				<include name="*@{newArch}/**/*.*" />
+				<excludesfile name="${archsDir}/rename.sh" />
 				<replacetoken>ppc</replacetoken>
 			</replace>
 		</sequential>
@@ -49,6 +49,8 @@
 
 	<target name="generate" depends="init">
 		<generateArch newArch="ppc64" />
+		<generateArch newArch="sparc" />
+	    <generateArch newArch="sparc64" />
 	</target>
 
 	<target name="createTarball" depends="generate">

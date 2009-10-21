@@ -1,0 +1,57 @@
+--- features/org.eclipse.equinox.executable/target.build.properties.real	2009-10-21 14:21:08.843594049 +0300
++++ features/org.eclipse.equinox.executable/target.build.properties	2009-10-21 14:22:18.142845083 +0300
+@@ -25,6 +25,15 @@ root.linux.gtk.x86.permissions.755=libca
+ root.linux.gtk.ppc=bin/gtk/linux/ppc,gtk_root
+ root.linux.gtk.ppc.permissions.755=libcairo-swt.so
+ 
++root.linux.gtk.ppc64=bin/gtk/linux/ppc64,gtk_root
++root.linux.gtk.ppc64.permissions.755=libcairo-swt.so
++
++root.linux.gtk.sparc=bin/gtk/linux/sparc,gtk_root
++root.linux.gtk.sparc.permissions.755=libcairo-swt.so
++
++root.linux.gtk.sparc64=bin/gtk/linux/sparc64,gtk_root
++root.linux.gtk.sparc64.permissions.755=libcairo-swt.so
++
+ root.macosx.carbon.ppc=bin/carbon/macosx/ppc
+ root.macosx.carbon.ppc.permissions.755=${launcherName}.app/Contents/MacOS/${launcherName}
+ 
+--- features/org.eclipse.equinox.executable/feature.xml.real	2009-10-21 14:35:44.818598403 +0300
++++ features/org.eclipse.equinox.executable/feature.xml	2009-10-21 14:37:07.063593607 +0300
+@@ -97,6 +97,36 @@
+          install-size="0"
+          version="0.0.0"
+          fragment="true"/>
++	 
++    <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.ppc64"
++         os="linux"
++         ws="gtk"
++         arch="ppc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++	 
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.sparc"
++         os="linux"
++         ws="gtk"
++         arch="sparc"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++   
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.sparc64"
++         os="linux"
++         ws="gtk"
++         arch="sparc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
+ 
+    <plugin
+          id="org.eclipse.equinox.launcher.gtk.linux.x86"
