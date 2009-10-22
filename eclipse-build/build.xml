@@ -1,59 +1,27 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
 	<property name="baseBuilder" value="${basedir}/bootstrap" />
-	<property name="launcher"
-	          value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
-	<property name="eclipse.pdebuild.scripts"
-	          value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
+	<property name="launcher" value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+	<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
 
 	<property file="build.properties" />
 
-	<available file="eclipse-${buildTag}-fetched-src.tar.bz2"
-	           property="sdkSourcePresent"
-	           value="true" />
-	<available file="eclipse-build-generatedScripts.tar.bz2"
-	           property="scriptsPresent"
-	           value="true" />
-	<available file="eclipse-sdktests-${buildTag}-fetched-src.tar.bz2"
-	           property="testsSourcePresent"
-	           value="true" />
-	<available file="eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2"
-	           property="testsScriptsPresent"
-	           value="true" />
+	<available file="eclipse-${buildTag}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
+	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPresent" value="true" />
+	<available file="eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" property="testsSourcePresent" value="true" />
+	<available file="eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
-	<uptodate property="unpack.complete"
-	          srcfile="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2"
-	          targetfile="unpack-stamp" />
-	<uptodate property="testsunpack.complete"
-	          srcfile="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2"
-	          targetfile="testsunpack-stamp" />
-	<uptodate property="buildId.complete"
-	          srcfile="unpack-stamp"
-	          targetfile="buildId-stamp" />
-	<uptodate property="patch.complete"
-	          srcfile="unpack-stamp"
-	          targetfile="patch-stamp" />
-	<uptodate property="testspatch.complete"
-	          srcfile="testsunpack-stamp"
-	          targetfile="testspatch-stamp" />
-	<uptodate property="compilelibs.complete"
-	          srcfile="unpack-stamp"
-	          targetfile="compilelibs-stamp" />
-	<uptodate property="build.complete"
-	          srcfile="patch-stamp"
-	          targetfile="build-stamp" />
-	<uptodate property="p2prep.complete"
-	          srcfile="build-stamp"
-	          targetfile="p2prep-stamp" />
-	<uptodate property="testsbuild.complete"
-	          srcfile="testspatch-stamp"
-	          targetfile="testsbuild-stamp" />
-	<uptodate property="provision.sdk.complete"
-	          srcfile="build-stamp"
-	          targetfile="provision.sdk-stamp" />
-	<uptodate property="provision.tests.complete"
-	          srcfile="testsbuild-stamp"
-	          targetfile="provision.tests-stamp" />
+	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
+	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
+	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
+	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
+	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
+	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
+	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
+	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
+	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
+	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
+	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build" />
@@ -61,10 +29,8 @@
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
-	<property name="buildDirectory"
-	          value="${topBuildDir}/eclipse-${buildTag}-fetched-src" />
-	<property name="testsBuildDirectory"
-	          value="${testsBuildDir}/eclipse-sdktests-${buildTag}-fetched-src" />
+	<property name="buildDirectory" value="${topBuildDir}/eclipse-${buildTag}-fetched-src" />
+	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${buildTag}-fetched-src" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
@@ -83,6 +49,9 @@
 				<equals arg1="${buildArch}" arg2="ppc64" />
 			</or>
 		</and>
+	</condition>
+	<condition property="build.libgnomeproxy">
+		<equals arg1="${buildArch}" arg2="x86" />
 	</condition>
 
 	<target name="setLib64Dir" if="setLib64">
@@ -124,9 +93,7 @@
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">
-		<untar compression="bzip2"
-		       dest="${basedir}/build/eclipse-${buildTag}-fetched-src"
-		       src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
+		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildTag}-fetched-src" src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
 		<!--
 		<fail message="Build scripts to bootstrap PDE Build must be generated and present in eclipse-build-generatedScripts.tar.bz2.  See pdebuild.xml for details."/>
 		-->
@@ -147,9 +114,7 @@
 		<mkdir dir="${buildworkspace}" />
 
 		<echo message="Extracting SDK source (tar jxf eclipse-${buildTag}-fetched-src.tar.bz2)" />
-		<untar dest="${topBuildDir}"
-		       src="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2"
-		       compression="bzip2" />
+		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
 		<antcall target="extractBuildXmls" />
 
 		<delete dir="${buildDirectory}/buildConfigs" />
@@ -164,9 +129,7 @@
 			<fileset dir="eclipse-build-feature" />
 		</copy>
 		<!-- add additional archs -->
-		<untar compression="bzip2"
-				       dest="${basedir}/build/eclipse-${buildTag}-fetched-src/plugins"
-				       src="${basedir}/eclipse-build-additionalArchs.tar.bz2" />
+		<untar compression="bzip2" dest="${basedir}/build/eclipse-${buildTag}-fetched-src/plugins" src="${basedir}/eclipse-build-additionalArchs.tar.bz2" />
 		<!-- prepare ecf build tree -->
 		<mkdir dir="${buildDirectory}/ecf-src/plugins" />
 		<move todir="${buildDirectory}/ecf-src/plugins">
@@ -175,17 +138,13 @@
 			</fileset>
 		</move>
 		<mkdir dir="${buildDirectory}/ecf-src/features/org.eclipse.ecf.filetransfer-feature" />
-		<copy tofile="${buildDirectory}/ecf-src/features/org.eclipse.ecf.filetransfer-feature/feature.xml"
-		      file="ecf-filetransfer-feature.xml" />
-		<copy tofile="${buildDirectory}/ecf-src/features/org.eclipse.ecf.filetransfer-feature/build.properties"
-		      file="ecf-filetransfer-build.properties" />
+		<copy tofile="${buildDirectory}/ecf-src/features/org.eclipse.ecf.filetransfer-feature/feature.xml" file="ecf-filetransfer-feature.xml" />
+		<copy tofile="${buildDirectory}/ecf-src/features/org.eclipse.ecf.filetransfer-feature/build.properties" file="ecf-filetransfer-build.properties" />
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
 	</target>
 
-	<target name="unpackTests"
-	        depends="fetchTestSources,fetchTestScripts"
-	        unless="testsunpack.complete">
+	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
 		<delete dir="${testsBuildDir}" />
 		<mkdir dir="${testsBuildDir}" />
 
@@ -200,12 +159,8 @@
 		<mkdir dir="${buildworkspace}" />
 
 		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${buildTag}-fetched-src.tar.bz2)" />
-		<untar dest="${testsBuildDir}"
-		       src="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2"
-		       compression="bzip2" />
-		<untar dest="${testsBuildDir}"
-		       src="${basedir}/eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2"
-		       compression="bzip2" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2" compression="bzip2" />
 		<move todir="${testsBuildDir}">
 			<fileset dir="${testsBuildDir}/eclipse-sdktests-${buildTag}-fetched-scripts">
 				<include name="**/*" />
@@ -240,9 +195,7 @@
 	</target>
 
 	<target name="insertBuildId" depends="unpack" unless="buildId.complete">
-		<replace dir="${buildDirectory}/plugins"
-		         value="${buildId}"
-		         token="@build@">
+		<replace dir="${buildDirectory}/plugins" value="${buildId}" token="@build@">
 			<include name="**/about.mappings" />
 		</replace>
 		<replace dir="${buildDirectory}" value="${buildId}" token="@build@">
@@ -253,71 +206,35 @@
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<!-- eclipse-build-only patches -->
-		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch"
-		       dir="${buildDirectory}"
-		       strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-jdt_launch-customBuild.patch"
-		       dir="${buildDirectory}"
-		       strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch"
-		       dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library"
-		       strip="3" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch"
-		       dir="${buildDirectory}"
-		       strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch"
-		       dir="${buildDirectory}"
-		       strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch"
-				       dir="${buildDirectory}"
-				       strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch"
-		       dir="${buildDirectory}"
-		       strip="1" />
-		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch"
-		       dir="${buildDirectory}"
-		       strip="3" />
-		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch"
-		       dir="${buildDirectory}"
-		       strip="3" />
-		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch"
-		       dir="${buildDirectory}/plugins/org.eclipse.pde.build"
-		       strip="0" />
-		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties"
-		         token="/usr/share/eclipse"
-		         value="/usr/${libDir}/eclipse" />
+		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-jdt_launch-customBuild.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
+		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="3" />
+		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}/plugins/org.eclipse.pde.build" strip="0" />
+		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
+		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<!-- end eclipse-build-only patches -->
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
-		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch"
-		       dir="${buildDirectory}"
-		       strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=287307 -->
-		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch"
-		       dir="${buildDirectory}/plugins/org.eclipse.swt"
-		       strip="0" />
+		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch" dir="${buildDirectory}/plugins/org.eclipse.swt" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
-	<target name="applyTestPatches"
-	        depends="unpackTests"
-	        unless="testspatch.complete">
-		<patch patchfile="${basedir}/patches/tests-noapttests.patch"
-		       dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests"
-		       strip="0" />
-		<patch patchfile="${basedir}/patches/tests-nostyletask.patch"
-		       dir="${testsBuildDirectory}"
-		       strip="0" />
+	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
+		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-nostyletask.patch" dir="${testsBuildDirectory}" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 
-	<target name="build"
-	        depends="applyPatches,bootstrap,compilelibs"
-	        unless="build.complete">
+	<target name="build" depends="applyPatches,bootstrap,compilelibs" unless="build.complete">
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="${basedir}"
-		      failonerror="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
@@ -354,9 +271,7 @@
 	</target>
 	-->
 
-	<target name="buildTests"
-	        depends="provision.sdk,applyTestPatches"
-	        unless="testsbuild.complete">
+	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
 		<!-- Test framework -->
 		<exec executable="${buildDirectory}/installation/eclipse">
 			<arg line="-nosplash " />
@@ -386,8 +301,14 @@
 		<echo file="testsbuild-stamp" />
 	</target>
 
+	<target name="compile.libgnomeproxy" if="build.libgnomeproxy">
+		<!-- build libgnomeproxy -->
+		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net.linux.${buildArch}/" />
+		<move file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net/fragments/org.eclipse.core.net.linux.${buildArch}/" />
+	</target>
+
 	<target name="compilelibs" unless="compilelibs.complete">
-		<!-- TODO: Reenable when libgnomeproxy build is fixed.
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}/features/org.eclipse.equinox.executable">
 				<include name="eclipse" />
@@ -395,24 +316,17 @@
 			<fileset dir="${buildDirectory}">
 				<include name="**/*.so" />
 			</fileset>
-		</delete>-->
-		<ant antfile="build.xml"
-		     target="build.nativeLibraries"
-		     dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
+		</delete>
+		<ant antfile="build.xml" target="build.nativeLibraries" dir="${buildDirectory}/plugins/org.eclipse.swt.gtk.linux.${buildArch}" />
 
-		<property name="launcherlibs"
-		          value="${buildDirectory}/features/org.eclipse.equinox.executable" />
-		<exec dir="${launcherlibs}/library/gtk/"
-		      executable="sh"
-		      failonerror="true">
+		<property name="launcherlibs" value="${buildDirectory}/features/org.eclipse.equinox.executable" />
+		<exec dir="${launcherlibs}/library/gtk/" executable="sh" failonerror="true">
 			<arg line="build.sh" />
 		</exec>
 
-		<property name="launcherfragment"
-		          value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
+		<property name="launcherfragment" value="org.eclipse.equinox.launcher.gtk.linux.${buildArch}" />
 
-		<copy file="${launcherlibs}/library/gtk/eclipse"
-		      todir="${buildDirectory}/features/org.eclipse.equinox.executable/bin/gtk/linux/${buildArch}/" />
+		<copy file="${launcherlibs}/library/gtk/eclipse" todir="${buildDirectory}/features/org.eclipse.equinox.executable/bin/gtk/linux/${buildArch}/" />
 		<copy todir="${buildDirectory}/plugins/${launcherfragment}">
 			<fileset dir="${launcherlibs}/library/gtk">
 				<include name="**/*.so" />
@@ -420,22 +334,13 @@
 		</copy>
 
 		<!-- build liblocalfile -->
-		<exec dir="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux"
-		      executable="make"
-		      failonerror="true" />
-		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so"
-		      todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		<exec dir="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux" executable="make" failonerror="true" />
+		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
 		</move>
 		<!-- build libgnomeproxy -->
-		<!-- TODO: Reenable when libgnomeproxy build is fixed.
-		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
-		<copy file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net.linux.${buildArch}/">
-		</copy>
-		<move file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net/fragments/org.eclipse.core.net.linux.${buildArch}/">
-		</move>-->
+		<antcall target="compile.libgnomeproxy" />
 		<!-- build libupdate -->
-		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src"
-		     antfile="build.xml" />
+		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
 
 		<echo file="compilelibs-stamp" />
 	</target>
@@ -444,38 +349,25 @@
 		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildTag}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
-		<property name="builtZip"
-		          value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip" />
+		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip" />
 		<!--<property name="builtZip" value="${basedir}/eclipse-SDK-${buildId}.zip"/>-->
-		<replace token="@qualifier@"
-		         file="${productFiles}/sdk/sdk.product"
-		         value="${buildId}" />
+		<replace token="@qualifier@" file="${productFiles}/sdk/sdk.product" value="${buildId}" />
 		<property name="tempexec" value="${buildDirectory}/tempexec" />
 
 		<antcall target="createRepo" />
 
-		<copy file="${reposource}/content.xml"
-		      tofile="${reposource}/content.xml.orig"
-		      failonerror="false" />
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.orig" failonerror="false" />
 
 		<antcall target="extractLauncher" />
 		<antcall target="publishLauncher" />
 
-		<copy file="${reposource}/content.xml"
-		      tofile="${reposource}/content.xml.afterlauncher"
-		      failonerror="false" />
-		<copy file="${reposource}/content.jar"
-		      tofile="${reposource}/content.jar.afterlauncher"
-		      failonerror="false" />
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterlauncher" failonerror="false" />
+		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterlauncher" failonerror="false" />
 
 		<antcall target="createAndPublishLauncherFeature" />
 
-		<copy file="${reposource}/content.xml"
-		      tofile="${reposource}/content.xml.afterrcpConfig"
-		      failonerror="false" />
-		<copy file="${reposource}/content.jar"
-		      tofile="${reposource}/content.jar.afterrcpConfig"
-		      failonerror="false" />
+		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterrcpConfig" failonerror="false" />
+		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterrcpConfig" failonerror="false" />
 
 		<antcall target="publishSDK" />
 
@@ -515,10 +407,7 @@
 		-->
 
 		<!-- This next part merges metadata for the launcher binary into the rest of the metadata -->
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="${basedir}"
-		      failonerror="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
@@ -545,10 +434,7 @@
 		-->
 
 		<!-- This next part creates and publishs a feature including the binary launcher -->
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="${productFiles}/rcpConfig"
-		      failonerror="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${productFiles}/rcpConfig" failonerror="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
@@ -572,10 +458,7 @@
 
 	<target name="publishSDK">
 		<!-- This next part publishes the entire SDK -->
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="${basedir}"
-		      failonerror="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
@@ -592,27 +475,21 @@
 		</java>
 	</target>
 
-	<target name="provision.sdk"
-	        depends="p2prep"
-	        unless="provision.sdk.complete">
+	<target name="provision.sdk" depends="p2prep" unless="provision.sdk.complete">
 		<echo message="Installing into:  ${buildDirectory}/installation" />
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
 			<param name="p2.director.version" value="${p2.director.version}" />
 			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path"
-			       value="${buildDirectory}/installation" />
-			<param name="p2.director.extraArgs"
-			       value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.director.install.path" value="${buildDirectory}/installation" />
+			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
 		<!-- build equinox initializer -->
-		<java classname="org.eclipse.core.launcher.Main"
-		      dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer"
-		      fork="true">
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
 				<fileset dir="${buildDirectory}/installation/plugins">
 					<include name="org.eclipse.equinox.launcher_*.jar" />
@@ -630,13 +507,9 @@
 		<!-- build ecf -->
 		<mkdir dir="ecf-src/build" />
 		<mkdir dir="ecf-src/home" />
-		<dirset dir="${buildDirectory}/installation/plugins"
-		        includes="org.eclipse.pde.build_*"
-		        id="pdebuild" />
+		<dirset dir="${buildDirectory}/installation/plugins" includes="org.eclipse.pde.build_*" id="pdebuild" />
 		<property name="pdebuildplugin" refid="pdebuild" />
-		<java classname="org.eclipse.core.launcher.Main"
-		      dir="${buildDirectory}/ecf-src"
-		      fork="true">
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/ecf-src" fork="true">
 			<classpath>
 				<fileset dir="${buildDirectory}/installation/plugins">
 					<include name="org.eclipse.equinox.launcher_*.jar" />
@@ -652,8 +525,7 @@
 			<arg line="-Dbuilder=${buildDirectory}/installation/plugins/${pdebuildplugin}/templates/package-build" />
 			<arg line="-f ${buildDirectory}/installation/plugins/${pdebuildplugin}/scripts/build.xml" />
 		</java>
-		<unzip dest="${buildDirectory}/ecf-src/build/rpmBuild"
-		       src="${buildDirectory}/ecf-src/build/rpmBuild/org.eclipse.ecf.filetransfer_feature.zip" />
+		<unzip dest="${buildDirectory}/ecf-src/build/rpmBuild" src="${buildDirectory}/ecf-src/build/rpmBuild/org.eclipse.ecf.filetransfer_feature.zip" />
 		<copy todir="${buildDirectory}/installation/plugins">
 			<fileset dir="${buildDirectory}/ecf-src/build/rpmBuild/eclipse/plugins">
 				<filename name="org.eclipse.*.jar" />
@@ -662,12 +534,9 @@
 		<echo file="provision.sdk-stamp" />
 	</target>
 
-	<target name="provision.tests"
-	        depends="buildTests"
-	        unless="provision.tests.complete">
+	<target name="provision.tests" depends="buildTests" unless="provision.tests.complete">
 		<mkdir dir="${buildDirectory}/testsInstallation" />
-		<copy todir="${buildDirectory}/testsInstallation/eclipse"
-		      overwrite="true">
+		<copy todir="${buildDirectory}/testsInstallation/eclipse" overwrite="true">
 			<fileset dir="${buildDirectory}/installation" />
 		</copy>
 		<!-- To prevent contamination for those with test framework installed on their system -->
@@ -691,29 +560,19 @@
 -->
 		<echo message="Installing SDK tests into:  ${buildDirectory}/testsInstallation" />
 		<antcall target="run.installed.director">
-			<param name="directorToRun"
-			       value="${buildDirectory}/testsInstallation/eclipse/eclipse" />
-			<param name="p2.director.installIU"
-			       value="org.eclipse.sdk.tests.feature.group" />
+			<param name="directorToRun" value="${buildDirectory}/testsInstallation/eclipse/eclipse" />
+			<param name="p2.director.installIU" value="org.eclipse.sdk.tests.feature.group" />
 			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path"
-			       value="${buildDirectory}/testsInstallation/eclipse" />
-			<param name="p2.director.extraArgs"
-			       value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation/eclipse" />
+			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
 		</antcall>
-		<copy preservelastmodified="true"
-		      file="${basedir}/junitHelper.xml"
-		      todir="${buildDirectory}/testsInstallation" />
-		<copy preservelastmodified="true"
-		      file="${basedir}/runtests.sh"
-		      todir="${buildDirectory}/testsInstallation" />
-		<copy preservelastmodified="true"
-		      file="${basedir}/eclipse-tests-vncpwd"
-		      todir="${buildDirectory}/testsInstallation" />
+		<copy preservelastmodified="true" file="${basedir}/junitHelper.xml" todir="${buildDirectory}/testsInstallation" />
+		<copy preservelastmodified="true" file="${basedir}/runtests.sh" todir="${buildDirectory}/testsInstallation" />
+		<copy preservelastmodified="true" file="${basedir}/eclipse-tests-vncpwd" todir="${buildDirectory}/testsInstallation" />
 		<echo file="provision.tests-stamp" />
 	</target>
 
@@ -728,14 +587,11 @@
 		<tstamp>
 			<format property="timestamp" pattern="yyyyMMddHHmmss" />
 		</tstamp>
-		<chmod perm="ugo+rx"
-		       file="${buildDirectory}/testsInstallation/runtests.sh" />
-		<exec executable="${buildDirectory}/testsInstallation/runtests.sh"
-		      dir="${buildDirectory}/testsInstallation">
+		<chmod perm="ugo+rx" file="${buildDirectory}/testsInstallation/runtests.sh" />
+		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation">
 			<arg value="-t${timestamp}" />
 		</exec>
-		<property name="testResultDir"
-		          value="${basedir}/testResults-${timestamp}" />
+		<property name="testResultDir" value="${basedir}/testResults-${timestamp}" />
 		<copy failonerror="false" todir="${testResultDir}">
 			<fileset dir="${buildDirectory}/testsInstallation/results-${timestamp}">
 				<include name="**/*" />
@@ -758,29 +614,20 @@
 			<replacetoken>&lt;/testsuites&gt;</replacetoken>
 		</replace>
 		<!-- Aggregate XML report files -->
-		<junitreport todir="${testResultDir}/xml"
-		             tofile="org.eclipse.sdk.tests.xml">
+		<junitreport todir="${testResultDir}/xml" tofile="org.eclipse.sdk.tests.xml">
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${buildDirectory}/testsInstallation/eclipse/plugins/org.eclipse.test_3.2.0/JUNIT.XSL"
-		      basedir="${testResultDir}/xml"
-		      includes="org.eclipse.sdk.tests.xml"
-		      destdir="${testResultDir}/html" />
+		<xslt style="${buildDirectory}/testsInstallation/eclipse/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2" />
 		<echo message="Moving ${baseBuilderConfig} to ${baseBuilderConfig}.bak" />
-		<move failonerror="false"
-		      file="${baseBuilderConfig}"
-		      tofile="${baseBuilderConfig}.bak" />
+		<move failonerror="false" file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
 		<!-- FIXME:  When we move to bootstrap by default, investigate using <exec> on the bootstrapped launcher
 		     like in eclipsebuilder's equinox.prov/run.xml -->
-		<java classname="org.eclipse.equinox.launcher.Main"
-		      fork="true"
-		      dir="${baseBuilder}"
-		      failonerror="true">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
 			<classpath>
 				<pathelement location="${launcher}" />
 			</classpath>
@@ -813,9 +660,7 @@
 			-->
 			<jvmarg value="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
 		</java>
-		<delete dir="${baseBuilderConfig}"
-		        includeemptydirs="true"
-		        failonerror="false" />
+		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
 	</target>
 
@@ -854,35 +699,24 @@
 			<fileset dir="${buildDirectory}/installation" />
 		</copy>
 		<!-- install desktop file -->
-		<copy file="eclipse.desktop"
-		      todir="${destDir}${prefix}/share/applications" />
+		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install icons -->
-		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png"
-		      tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
-		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png"
-		      tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
-		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png"
-		      tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png" tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png" tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png" tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
 		<mkdir dir="${destDir}${prefix}/share/pixmaps" />
-		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png"
-		         resource="../icons/hicolor/48x48/apps/eclipse.png" />
+		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" />
 		<!--shared dropins folder-->
 		<mkdir dir="${destDir}${prefix}/share/eclipse/dropins" />
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
-		<symlink link="${destDir}${prefix}/bin/eclipse"
-		         resource="../${libDir}/eclipse/eclipse" />
+		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />
 		<!-- Create the "startup.jar" symlink -->
-		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins"
-		         includes="org.eclipse.equinox.launcher_*"
-		         id="startupjar" />
+		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
 		<property name="startupjarpath" refid="startupjar" />
-		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar"
-		         resource="plugins/${startupjarpath}" />
+		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar" resource="plugins/${startupjarpath}" />
 
-		<echo append="true"
-		      file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini"
-		      message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${destDir}${prefix}/share/eclipse/dropins" />
+		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${destDir}${prefix}/share/eclipse/dropins" />
 	</target>
 
 	<target name="package.extract.swt">

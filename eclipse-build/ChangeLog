@@ -1,3 +1,8 @@
+2009-10-22  Alexander Kurtakov  <akurtako@redhat.com>
+    Fix #292078. (Niels Thykier)
+	* patches/gnomeproxy-makefile.patch: New file.
+	* build.xml: Build libgnomeproxy only on x86.
+
 2009-10-21  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-add-ppc64-filesystem.patch: Removed.
