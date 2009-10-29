@@ -140,7 +140,7 @@ RCS file: templates/package-build/customTargets.xml
 diff -N templates/package-build/customTargets.xml
 --- /dev/null	1 Jan 1970 00:00:00 -0000
 +++ templates/package-build/customTargets.xml	1 Jan 1970 00:00:00 -0000
-@@ -0,0 +1,149 @@
+@@ -0,0 +1,154 @@
 +<project name="Build specific targets and properties" default="noDefault">
 +
 +	<fail unless="type" message="Please set the ${type} property to 'feature', 'plugin' or 'fragment'." />
@@ -150,8 +150,8 @@ diff -N templates/package-build/customTargets.xml
 +	<!-- we need to do this because you can't expand variables in target names -->
 +	<copy file="${builder}/customTargets-assemble-target.xml" tofile="${buildDirectory}/customTargets-${id}-assemble-target.xml" />
 +	<replace file="${buildDirectory}/customTargets-${id}-assemble-target.xml" token="@id@" value="${id}" />
-+	<replace file="${buildDirectory}/customTargets-${id}-assemble-target.xml" token="@configs@" value="${configs}" />              
-+	<replace file="${buildDirectory}/customTargets-${id}-assemble-target.xml" token="," value="." />              
++	<replace file="${buildDirectory}/customTargets-${id}-assemble-target.xml" token="@configs@" value="${configs}" />
++	<replace file="${buildDirectory}/customTargets-${id}-assemble-target.xml" token="," value="." />
 +	<import file="${buildDirectory}/customTargets-${id}-assemble-target.xml" />
 +
 +	<!-- ===================================================================== -->
@@ -215,10 +215,15 @@ diff -N templates/package-build/customTargets.xml
 +		<exec dir="${builder}" executable="/bin/bash" failOnError="true">
 +			<arg line="prepare-build-dir.sh ${sourceDirectory} ${buildDirectory} ${testing}" />
 +		</exec>
-+		<exec dir="${builder}" executable="/bin/bash" failOnError="true">
-+		    <arg line="symlink-deps.sh ${buildDirectory} ${orbitDepsDir}" />
-+		</exec>
++		<antcall target="symlinkDeps" />
++	</target>
 +
++	<target name="symlinkDeps" if="orbitDepsDir">
++		<apply executable="ln" parallel="false" dir="${buildDirectory}/plugins" verbose="true">
++			<arg line="-s" />
++			<srcfile />
++			<fileset dir="${orbitDepsDir}" includes="*.jar" />
++		</apply>
 +	</target>
 +
 +	<!-- ===================================================================== -->
@@ -309,31 +314,3 @@ diff -N templates/package-build/build.properties
 +archiveName=${id}.zip
 +runPackager=false
 +baseLocation=/usr/share/eclipse
-Index: templates/package-build/symlink-deps.sh
-===================================================================
-RCS file: templates/package-build/symlink-deps.sh
-diff -N templates/package-build/symlink-deps.sh
---- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ templates/package-build/symlink-deps.sh	1 Jan 1970 00:00:00 -0000
-@@ -0,0 +1,21 @@
-+#!/bin/sh -x
-+
-+if [ $# -ne 2 ]; then
-+  echo "usage: $0 <path to build dir> <dependencies>"
-+  exit 1
-+fi
-+
-+if [ ! -d $1 ]; then
-+  echo "usage: $0 <path to build dir> <dependencies>"
-+  exit 1
-+fi
-+
-+BUILDDIR=$1
-+DEPENDENCIESDIR=$2
-+
-+pushd $BUILDDIR/plugins
-+  for dep in `ls $DEPENDENCIESDIR`; do
-+      echo "ln -s $DEPENDENCIESDIR/$dep"
-+      ln -s $DEPENDENCIESDIR/$dep
-+  done
-+popd

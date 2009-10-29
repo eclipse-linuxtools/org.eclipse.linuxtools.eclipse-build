@@ -1,3 +1,7 @@
+2009-10-29  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-pde.build-add-package-build.patch: Remove one shell script (done in ant now).
+
 2009-10-22  Alexander Kurtakov  <akurtako@redhat.com>
     Fix #292078. (Niels Thykier)
 	* patches/gnomeproxy-makefile.patch: New file.
