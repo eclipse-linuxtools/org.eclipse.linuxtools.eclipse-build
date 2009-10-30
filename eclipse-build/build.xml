@@ -218,6 +218,7 @@
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}/plugins/org.eclipse.pde.build" strip="0" />
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
+		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=290064-->
 		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
@@ -695,9 +696,12 @@
 
 	<target name="install" depends="provision.sdk">
 		<mkdir dir="${destDir}${prefix}/${libDir}/eclipse" />
-		<copy todir="${destDir}${prefix}/${libDir}/eclipse" overwrite="true">
-			<fileset dir="${buildDirectory}/installation" />
-		</copy>
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd"/>
+			<arg value="--no-target-directory" />
+			<arg value="${buildDirectory}/installation" />
+			<arg value="${destDir}${prefix}/${libDir}/eclipse"/>
+		</exec>
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install icons -->

@@ -1,3 +1,10 @@
+2009-10-30  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #292610 (Benjamin Drung)
+
+	* build.xml: Apply patches from Benjamin Drung to maintain permissions upon
+	installation.  Also give executable bit to package-build shell scripts.
+
 2009-10-29  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/eclipse-pde.build-add-package-build.patch: Remove one shell script (done in ant now).
