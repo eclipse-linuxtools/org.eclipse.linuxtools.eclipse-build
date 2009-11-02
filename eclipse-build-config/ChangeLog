@@ -1,3 +1,8 @@
+2009-11-02  Matthias Klose  <doko@ubuntu.com>
+
+	* productFiles/rcpConfig/build.properties: Add arm support.
+	* build.properties: Likewise.
+
 2009-10-22  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* productFiles/rcpConfig/build.properties: Add rootfiles for sparc[64].
