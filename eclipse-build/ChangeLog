@@ -1,5 +1,9 @@
 2009-11-02  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Re-name variable for clarity. 
+
+2009-11-02  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #292475 (Benjamin Drung)
 
 	* build.xml: Support build with extracted source (not just with tarball).

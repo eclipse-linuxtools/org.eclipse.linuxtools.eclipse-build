@@ -14,7 +14,7 @@
 			<istrue value="${extractedSdkSourcePresent}" />
 		</and>
 	</condition>
-	<condition property="oneSdkSourcePresent">
+	<condition property="sdkSourceTarballPresent">
 		<or>
 			<isset property="sdkSourcePresent"/>
 			<isset property="extractedSdkSourcePresent"/>
@@ -95,7 +95,7 @@
 		<ant antfile="pdebuild.xml" target="generateScripts" />
 	</target>
 
-	<target name="fetch" unless="oneSdkSourcePresent">
+	<target name="fetch" unless="sdkSourceTarballPresent">
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
 	</target>
 
