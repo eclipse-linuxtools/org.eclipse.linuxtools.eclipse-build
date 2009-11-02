@@ -2,7 +2,7 @@
 
 newArch=$1
 
-function moves(){
+moves(){
 for f in $(find -type d); do
       tofile=$(echo $f | sed "s/ppc/$newArch/")
       if [ $tofile != $f ]; then
