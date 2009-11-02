@@ -1,3 +1,9 @@
+2009-11-02  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #292475 (Benjamin Drung)
+
+	* build.xml: Support build with extracted source (not just with tarball).
+
 2009-10-30  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #292610 (Benjamin Drung)

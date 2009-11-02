@@ -6,12 +6,27 @@
 	<property file="build.properties" />
 
 	<available file="eclipse-${buildTag}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
+	<available file="eclipse-${testsBuildLabel}/plugins/org.eclipse.equinox.launcher/build.properties" property="extractedSdkSourcePresent" value="true" />
+
+	<condition property="onlyExtractedSdkSourcePresent">
+		<and>
+			<isfalse value="${sdkSourcePresent}" />
+			<istrue value="${extractedSdkSourcePresent}" />
+		</and>
+	</condition>
+	<condition property="oneSdkSourcePresent">
+		<or>
+			<isset property="sdkSourcePresent"/>
+			<isset property="extractedSdkSourcePresent"/>
+		</or>
+	</condition>
+
 	<available file="eclipse-build-generatedScripts.tar.bz2" property="scriptsPresent" value="true" />
 	<available file="eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" property="testsSourcePresent" value="true" />
 	<available file="eclipse-sdktests-${buildTag}-fetched-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
-	<uptodate property="unpack.complete" srcfile="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" targetfile="unpack-stamp" />
+	<available property="unpack.complete" file="unpack-stamp" value="true" />
 	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${buildTag}-fetched-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
@@ -80,7 +95,7 @@
 		<ant antfile="pdebuild.xml" target="generateScripts" />
 	</target>
 
-	<target name="fetch" unless="sdkSourcePresent">
+	<target name="fetch" unless="oneSdkSourcePresent">
 		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
 	</target>
 
@@ -99,6 +114,21 @@
 		-->
 	</target>
 
+	<target name="extractSource" unless="onlyExtractedSdkSourcePresent">
+		<echo message="Extracting SDK source (tar jxf eclipse-${buildTag}-fetched-src.tar.bz2)" />
+		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
+	</target>
+
+	<target name="copySource" unless="sdkSourcePresent">
+		<echo message="Copy SDK source (cp -rd --not-target-directory eclipse-${testsBuildLabel} ${buildDirectory})" />
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="eclipse-${testsBuildLabel}" />
+			<arg value="${buildDirectory}" />
+		</exec>
+	</target>
+
 	<target name="unpack" depends="fetch,setLibDir" unless="unpack.complete">
 		<delete dir="${topBuildDir}" />
 		<mkdir dir="${topBuildDir}" />
@@ -113,8 +143,8 @@
 		<delete dir="${buildworkspace}" />
 		<mkdir dir="${buildworkspace}" />
 
-		<echo message="Extracting SDK source (tar jxf eclipse-${buildTag}-fetched-src.tar.bz2)" />
-		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${buildTag}-fetched-src.tar.bz2" compression="bzip2" />
+		<antcall target="extractSource" />
+		<antcall target="copySource" />
 		<antcall target="extractBuildXmls" />
 
 		<delete dir="${buildDirectory}/buildConfigs" />
