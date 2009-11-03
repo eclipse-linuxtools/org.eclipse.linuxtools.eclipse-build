@@ -8,10 +8,18 @@ fi
 
 # Massage arch for Eclipse-uname differences
 case ${arch} in
+	arm*)
+		arch=arm ;;
 	i[0-9]*86)
 		arch=x86 ;;
 	ia64)
 		arch=ia64 ;;
+	mips*)
+		if which dpkg-architecture >/dev/null 2>&1; then
+			arch=`dpkg-architecture -q-qDEB_HOST_ARCH`
+		fi ;;
+	parisc*)
+		arch=PA_RISC ;;
 	ppc)
 		arch=ppc ;;
 	ppc64)
