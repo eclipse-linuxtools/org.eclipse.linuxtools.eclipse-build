@@ -1,4 +1,13 @@
+2009-11-03  Matthias Klose  <doko@ubuntu.com>
+
+	Bug #293951
+
+	* build.properties: Add MIPS and PA_RISC.
+	* productFiles/rcpConfig/build.properties: Likewise.
+
 2009-11-02  Matthias Klose  <doko@ubuntu.com>
+
+	Bug #293951
 
 	* productFiles/rcpConfig/build.properties: Add arm support.
 	* build.properties: Likewise.
