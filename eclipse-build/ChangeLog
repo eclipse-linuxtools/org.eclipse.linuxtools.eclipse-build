@@ -1,5 +1,11 @@
 2009-11-03  Matthias Klose  <doko@ubuntu.com>
 
+	* eclipse-build-additionalArchs.tar.bz2:  Add files for arm, mips, mipsel,
+	PA_RISC, alpha, ia64.  Fix existing files for 64-bit platforms (ppc64 and
+	sparc64).  Copy over fix for bug #293974.
+
+2009-11-03  Matthias Klose  <doko@ubuntu.com>
+
 	Bug #293948
 
 	* patches/eclipse-add-archs-filesystem.patch: Add MIPs, PA_RISC, alpha,
