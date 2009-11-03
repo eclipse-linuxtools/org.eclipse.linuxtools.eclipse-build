@@ -1,6 +1,6 @@
 --- plugins/org.eclipse.jdt.launching/scripts/customBuild.xml.orig	2009-03-09 15:06:45.000000000 +0100
 +++ plugins/org.eclipse.jdt.launching/scripts/customBuild.xml	2009-03-09 16:57:53.000000000 +0100
-@@ -14,5 +14,64 @@
+@@ -24,5 +24,64 @@
      	<property name="bundleJavacTarget" value="${tempTarget}"/>
      </target>	
  

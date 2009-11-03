@@ -35,3 +35,4 @@
  	SWT_PTR_CFLAGS=-DJNI64
  	export SWT_PTR_CFLAGS
  	if [ -d /lib64 ]; then
+
