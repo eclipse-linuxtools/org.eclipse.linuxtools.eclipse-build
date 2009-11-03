@@ -1,3 +1,10 @@
+2009-11-03  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #293952 (Matthias Klose)
+
+	* build.properties.in: Re-name from build.properties and copy to
+	build.properties at build time.
+
 2009-11-03  Matthias Klose  <doko@ubuntu.com>
 
 	Bug #293951
