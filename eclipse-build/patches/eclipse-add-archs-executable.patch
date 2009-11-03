@@ -1,11 +1,40 @@
 --- features/org.eclipse.equinox.executable/target.build.properties.real	2009-10-21 14:21:08.843594049 +0300
 +++ features/org.eclipse.equinox.executable/target.build.properties	2009-10-21 14:22:18.142845083 +0300
-@@ -25,6 +25,15 @@ root.linux.gtk.x86.permissions.755=libca
+@@ -19,12 +19,48 @@
+ root.win32.win32.ia64=file:contributed/win32/win32/ia64/launcher.exe
+ root.win32.wpf.x86=file:bin/wpf/win32/x86/launcher.exe
+ 
+-root.linux.gtk.x86=bin/gtk/linux/x86,gtk_root
+-root.linux.gtk.x86.permissions.755=libcairo-swt.so
++root.linux.gtk.alpha=bin/gtk/linux/alpha,gtk_root
++root.linux.gtk.alpha.permissions.755=libcairo-swt.so
++
++root.linux.gtk.arm=bin/gtk/linux/arm,gtk_root
++root.linux.gtk.arm.permissions.755=libcairo-swt.so
++
++root.linux.gtk.ia64=bin/gtk/linux/ia64,gtk_root
++root.linux.gtk.ia64.permissions.755=libcairo-swt.so
++
++root.linux.gtk.mips=bin/gtk/linux/mips,gtk_root
++root.linux.gtk.mips.permissions.755=libcairo-swt.so
++
++root.linux.gtk.mipsel=bin/gtk/linux/mipsel,gtk_root
++root.linux.gtk.mipsel.permissions.755=libcairo-swt.so
++
++root.linux.gtk.PA_RISC=bin/gtk/linux/PA_RISC,gtk_root
++root.linux.gtk.PA_RISC.permissions.755=libcairo-swt.so
+ 
  root.linux.gtk.ppc=bin/gtk/linux/ppc,gtk_root
  root.linux.gtk.ppc.permissions.755=libcairo-swt.so
  
 +root.linux.gtk.ppc64=bin/gtk/linux/ppc64,gtk_root
 +root.linux.gtk.ppc64.permissions.755=libcairo-swt.so
++
++root.linux.gtk.s390=bin/gtk/linux/s390,gtk_root
++root.linux.gtk.s390.permissions.755=libcairo-swt.so
++
++root.linux.gtk.s390x=bin/gtk/linux/s390x,gtk_root
++root.linux.gtk.s390x.permissions.755=libcairo-swt.so
 +
 +root.linux.gtk.sparc=bin/gtk/linux/sparc,gtk_root
 +root.linux.gtk.sparc.permissions.755=libcairo-swt.so
@@ -13,16 +42,99 @@
 +root.linux.gtk.sparc64=bin/gtk/linux/sparc64,gtk_root
 +root.linux.gtk.sparc64.permissions.755=libcairo-swt.so
 +
++root.linux.gtk.x86=bin/gtk/linux/x86,gtk_root
++root.linux.gtk.x86.permissions.755=libcairo-swt.so
++
++root.linux.gtk.x86_64=bin/gtk/linux/x86_64,gtk_root
++root.linux.gtk.x86_64.permissions.755=libcairo-swt.so
++
  root.macosx.carbon.ppc=bin/carbon/macosx/ppc
  root.macosx.carbon.ppc.permissions.755=${launcherName}.app/Contents/MacOS/${launcherName}
  
+@@ -49,9 +85,6 @@
+ root.solaris.gtk.x86=bin/gtk/solaris/x86
+ root.solaris.gtk.sparc=bin/gtk/solaris/sparc
+ 
+-root.linux.gtk.x86_64=bin/gtk/linux/x86_64,gtk_root
+-root.linux.gtk.x86_64.permissions.755=libcairo-swt.so
+-
+ root.qnx.photon.x86=bin/photon/qnx/x86
+ 
+ root.linux.motif.x86=bin/motif/linux/x86,motif_root
+ 
 --- features/org.eclipse.equinox.executable/feature.xml.real	2009-10-21 14:35:44.818598403 +0300
 +++ features/org.eclipse.equinox.executable/feature.xml	2009-10-21 14:37:07.063593607 +0300
-@@ -97,6 +97,36 @@
-          install-size="0"
+@@ -89,6 +89,66 @@
+          fragment="true"/>
+ 
+    <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.alpha"
++         os="linux"
++         ws="gtk"
++         arch="alpha"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.arm"
++         os="linux"
++         ws="gtk"
++         arch="arm"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.ia64"
++         os="linux"
++         ws="gtk"
++         arch="ia64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.mips"
++         os="linux"
++         ws="gtk"
++         arch="mips"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.mipsel"
++         os="linux"
++         ws="gtk"
++         arch="mipsel"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.PA_RISC"
++         os="linux"
++         ws="gtk"
++         arch="PA_RISC"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
+          id="org.eclipse.equinox.launcher.gtk.linux.ppc"
+          os="linux"
+          ws="gtk"
+@@ -98,6 +158,56 @@
           version="0.0.0"
           fragment="true"/>
-+	 
+ 
 +    <plugin
 +         id="org.eclipse.equinox.launcher.gtk.linux.ppc64"
 +         os="linux"
@@ -34,6 +146,26 @@
 +         fragment="true"/>
 +	 
 +   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.s390"
++         os="linux"
++         ws="gtk"
++         arch="s390"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
++         id="org.eclipse.equinox.launcher.gtk.linux.s390x"
++         os="linux"
++         ws="gtk"
++         arch="s390x"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"/>
++
++   <plugin
 +         id="org.eclipse.equinox.launcher.gtk.linux.sparc"
 +         os="linux"
 +         ws="gtk"
@@ -42,7 +174,7 @@
 +         install-size="0"
 +         version="0.0.0"
 +         fragment="true"/>
-+   
++
 +   <plugin
 +         id="org.eclipse.equinox.launcher.gtk.linux.sparc64"
 +         os="linux"
@@ -52,6 +184,33 @@
 +         install-size="0"
 +         version="0.0.0"
 +         fragment="true"/>
- 
++
     <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.x86"
+          os="linux"
+@@ -198,25 +308,5 @@
+          version="0.0.0"
+          fragment="true"/>
+ 
+-   <plugin
+-         id="org.eclipse.equinox.launcher.gtk.linux.s390"
+-         os="linux"
+-         ws="gtk"
+-         arch="s390"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         fragment="true"/>
+-
+-   <plugin
+-         id="org.eclipse.equinox.launcher.gtk.linux.s390x"
+-         os="linux"
+-         ws="gtk"
+-         arch="s390x"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         fragment="true"/>
+-
+ 
+ </feature>

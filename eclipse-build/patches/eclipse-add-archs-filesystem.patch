@@ -1,6 +1,73 @@
---- ./features/org.eclipse.platform/feature.xml	2009-08-07 18:30:54.000000000 +0300
-+++ ./features/org.eclipse.platform/feature.xml	2009-08-07 18:50:29.043863537 +0300
-@@ -440,6 +440,36 @@
+--- ./features/org.eclipse.platform/feature.xml.orig	2009-10-29 20:07:20.000000000 +0100
++++ ./features/org.eclipse.platform/feature.xml	2009-10-29 20:16:08.000000000 +0100
+@@ -432,6 +432,66 @@
+          unpack="false"/>
+ 
+    <plugin
++         id="org.eclipse.core.filesystem.linux.alpha"
++         os="linux"
++         arch="alpha"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++	 
++   <plugin
++         id="org.eclipse.core.filesystem.linux.arm"
++         os="linux"
++         arch="arm"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++	 
++   <plugin
++         id="org.eclipse.core.filesystem.linux.ia64"
++         os="linux"
++         arch="ia64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.core.filesystem.linux.mips"
++         os="linux"
++         arch="mips"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.core.filesystem.linux.mipsel"
++         os="linux"
++         arch="mipsel"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
++         id="org.eclipse.core.filesystem.linux.PA_RISC"
++         os="linux"
++         arch="PA_RISC"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
+          id="org.eclipse.core.filesystem.linux.ppc"
+          os="linux"
+          arch="ppc"
+@@ -440,6 +500,56 @@
           version="0.0.0"
           fragment="true"
           unpack="false"/>
@@ -9,6 +76,26 @@
 +         id="org.eclipse.core.filesystem.linux.ppc64"
 +         os="linux"
 +         arch="ppc64"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++	 
++   <plugin
++         id="org.eclipse.core.filesystem.linux.s390"
++         os="linux"
++         arch="s390"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++	 
++   <plugin
++         id="org.eclipse.core.filesystem.linux.s390x"
++         os="linux"
++         arch="s390x"
 +         download-size="0"
 +         install-size="0"
 +         version="0.0.0"

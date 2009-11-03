@@ -1,5 +1,19 @@
 2009-11-03  Matthias Klose  <doko@ubuntu.com>
 
+	Bug #293948
+
+	* patches/eclipse-add-archs-filesystem.patch: Add MIPs, PA_RISC, alpha,
+	arm, ia64.  Alphabetize platforms.
+	* patches/eclipse-add-archs-executable.patch: Likewise.
+	* patches/eclipse-add-archs-swt.patch: Likewise.
+	* patches/eclipse-add-ppc64-sparc64-s390-s390x.patch: Add MIPS and arm.
+	* build.xml: Set strip=0 for eclipse-add-pp64-sparc64-s390-s390x.patch.
+	Add application of patches/eclipse-addArchesAnd64bitSWT.patch.
+	* patches/eclipse-64bitSWT.patch: New file.  Add arm, PA_RISC, sparcv9,
+	MIPS to SWT build.sh.  Make SWT 64-bit on alpha, too. 
+
+2009-11-03  Matthias Klose  <doko@ubuntu.com>
+
 	Bug #293951
 
 	* build.sh: Add MIPS and PA_RISC.
