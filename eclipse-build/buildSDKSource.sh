@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Possible optimizations:
 # - don't check out non-Linux fragments (will need to patch features for this)
@@ -188,6 +189,14 @@ cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
 # copied into the right places for the build
 rm -rf ecfBundles orbitRepo
+
+# Remove files from the version control system
+find -depth -name CVS -exec rm -rf {} \;
+
+# Remove prebuilt binaries
+find \( -name '*.exe' -o -name '*.dll' \) -delete
+find \( -name '*.so' -o -name '*.so.2' \) -delete
+find features/org.eclipse.equinox.executable -name eclipse -delete
 
 mkdir eclipse-${buildID}-fetched-src
 mv * eclipse-${buildID}-fetched-src

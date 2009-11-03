@@ -1,5 +1,12 @@
 2009-11-03  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #292706
+
+	* buildSDKSource.sh: Apply patch from Benjamin Drung to remove binaries
+	and CVS files from source tarball. 
+
+2009-11-03  Andrew Overholt  <overholt@redhat.com>
+
 	* patches/eclipse-jdt_launch-customBuild.patch: Correct offset.
 	* patches/eclipse-addArchesAnd64bitSWT.patch: Fix end of file.
 	* patches/eclipse-add-archs-executable.patch: Likewise.
