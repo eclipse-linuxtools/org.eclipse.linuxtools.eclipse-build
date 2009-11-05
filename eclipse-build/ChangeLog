@@ -1,3 +1,7 @@
+2009-11-05  Alexander Kurtakov  <akurtako@redhat.com>
+	Fix for bug #294264.
+	* build.xml: Use ${buildWorkspace} instead of $HOME/workspace.
+
 2009-11-03  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #292706

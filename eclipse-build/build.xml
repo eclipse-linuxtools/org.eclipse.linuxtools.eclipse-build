@@ -527,12 +527,15 @@
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
 		<!-- build equinox initializer -->
+		<mkdir dir="${buildDirectory}/home" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
 				<fileset dir="${buildDirectory}/installation/plugins">
 					<include name="org.eclipse.equinox.launcher_*.jar" />
 				</fileset>
 			</classpath>
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-Duser.home=${buildDirectory}/home" />
 			<arg line="-application org.eclipse.ant.core.antRunner" />
 			<arg line="-f build.xml" />
 			<arg line="build.update.jar" />
@@ -543,8 +546,7 @@
 			</fileset>
 		</copy>
 		<!-- build ecf -->
-		<mkdir dir="ecf-src/build" />
-		<mkdir dir="ecf-src/home" />
+		<mkdir dir="${buildDirectory}/ecf-src/build" />
 		<dirset dir="${buildDirectory}/installation/plugins" includes="org.eclipse.pde.build_*" id="pdebuild" />
 		<property name="pdebuildplugin" refid="pdebuild" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/ecf-src" fork="true">
@@ -553,7 +555,8 @@
 					<include name="org.eclipse.equinox.launcher_*.jar" />
 				</fileset>
 			</classpath>
-			<arg line="-Duser.home=${buildDirectory}/ecf-src/home" />
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-Duser.home=${buildDirectory}/home" />
 			<arg line="-application org.eclipse.ant.core.antRunner" />
 			<arg line="-Dtype=feature" />
 			<arg line="-Did=org.eclipse.ecf.filetransfer_feature" />
