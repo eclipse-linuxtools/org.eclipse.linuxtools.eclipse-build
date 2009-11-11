@@ -230,7 +230,7 @@ if [ $debugPlatform -eq 1 ]; then
 fi
 
 if [ "x$orbitDepsDir" != "x" ]; then
-    orbitDeps="-DorbitDepsDir=\"$orbitDepsDir\""
+    orbitDeps="-DorbitDepsDir=$orbitDepsDir"
 fi
 
 if [ "x$zipDeps" != "x" ]; then

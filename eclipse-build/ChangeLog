@@ -1,3 +1,7 @@
+2009-11-11  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* pdebuild/eclipse-pdebuild.sh: Do not escape $orbitDepsDir.
+
 2009-11-05  Alexander Kurtakov  <akurtako@redhat.com>
 	Fix for bug #294264.
 	* build.xml: Use ${buildWorkspace} instead of $HOME/workspace.
