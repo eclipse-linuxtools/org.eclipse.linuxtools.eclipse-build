@@ -8,7 +8,7 @@
 
    <launcherArgs>
       <programArgs>-showsplash org.eclipse.platform --launcher.XXMaxPermSize 256m</programArgs>
-      <vmArgs>-Xms40m -Xmx256m</vmArgs>
+      <vmArgs>-Xms128m -Xmx512m -XX:CompileCommand=exclude${#44}org/eclipse/core/internal/dtree/DataTreeNode${#44}forwardDeltaWith -XX:CompileCommand=exclude${#44}org/eclipse/jdt/internal/compiler/lookup/ParameterizedMethodBinding${#44}&lt;init&gt; -XX:CompileCommand=exclude${#44}org/eclipse/cdt/internal/core/dom/parser/cpp/semantics/CPPTemplates${#44}instantiateTemplate -XX:CompileCommand=exclude${#44}org/eclipse/cdt/internal/core/pdom/dom/cpp/PDOMCPPLinkage${#44}addBinding -XX:CompileCommand=exclude${#44}org/python/pydev/editor/codecompletion/revisited/PythonPathHelper${#44}isValidSourceFile -XX:CompileCommand=exclude${#44}org/python/pydev/ui/filetypes/FileTypesPreferencesPage${#44}getDottedValidSourceFiles</vmArgs>
       <vmArgsMac>-Xdock:icon=../Resources/Eclipse.icns -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 

@@ -1,3 +1,9 @@
+2009-11-11  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #294877
+
+	* productFiles/sdk/sdk.product: Set HotSpot JIT excludes to avoid crashes.
+
 2009-11-03  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #293952 (Matthias Klose)
