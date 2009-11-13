@@ -1,3 +1,7 @@
+2009-11-13  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* productFiles/rcpConfig/build.properties: Remove duplicated root.linux.gtk.ppc line
+
 2009-11-11  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #294877
