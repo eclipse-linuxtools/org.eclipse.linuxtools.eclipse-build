@@ -6,7 +6,7 @@
 	<property file="build.properties" />
 
 	<available file="eclipse-${buildTag}-fetched-src.tar.bz2" property="sdkSourcePresent" value="true" />
-	<available file="eclipse-${testsBuildLabel}/plugins/org.eclipse.equinox.launcher/build.properties" property="extractedSdkSourcePresent" value="true" />
+	<available file="eclipse/plugins/org.eclipse.equinox.launcher/build.properties" property="extractedSdkSourcePresent" value="true" />
 
 	<condition property="onlyExtractedSdkSourcePresent">
 		<and>
@@ -120,11 +120,11 @@
 	</target>
 
 	<target name="copySource" unless="sdkSourcePresent">
-		<echo message="Copy SDK source (cp -rd --not-target-directory eclipse-${testsBuildLabel} ${buildDirectory})" />
+		<echo message="Copy SDK source (cp -rd --not-target-directory eclipse ${buildDirectory})" />
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
 			<arg value="--no-target-directory" />
-			<arg value="eclipse-${testsBuildLabel}" />
+			<arg value="eclipse" />
 			<arg value="${buildDirectory}" />
 		</exec>
 	</target>
