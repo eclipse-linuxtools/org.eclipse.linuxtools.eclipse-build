@@ -255,6 +255,8 @@
 		<patch patchfile="${basedir}/patches/eclipse-help-toolbar.patch" dir="${buildDirectory}" strip="0" />
 		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=287307 -->
 		<patch patchfile="${basedir}/patches/gtk2.18zorder.patch" dir="${buildDirectory}/plugins/org.eclipse.swt" strip="0" />
+		<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=286687 -->
+		<patch patchfile="${basedir}/patches/transformclipping.patch" dir="${buildDirectory}/plugins/org.eclipse.swt" strip="0" />
 		<!-- Only build for one target (bug #293952) -->
 		<copy 
 			file="${buildConfigs}/eclipse-build-config/build.properties.in"

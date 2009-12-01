@@ -1,3 +1,8 @@
+2009-12-01  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Add patch for transform clipping with GTK 2.18 (bug #286687).
+	* patches/transformclipping.patch: Likewise.
+
 2009-11-17  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Remove version string from extracted eclipse tarball when running unpacked. (Benjamin Drung) 
