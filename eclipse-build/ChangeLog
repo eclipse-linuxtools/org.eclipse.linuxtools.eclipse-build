@@ -1,3 +1,7 @@
+2009-12-03  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Fix dropins path in eclipse.ini. (bug #295525 Benjamin Drung)
+
 2009-12-01  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Add patch for transform clipping with GTK 2.18 (bug #286687).
