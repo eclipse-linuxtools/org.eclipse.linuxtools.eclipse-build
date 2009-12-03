@@ -763,6 +763,12 @@
 		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar" resource="plugins/${startupjarpath}" />
 
 		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
+		
+		<!-- Move config file to /etc -->
+		<mkdir dir="${destDir}/etc" />
+		<move file="${destDir}${prefix}/lib/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
+		<symlink link="${destDir}${prefix}/lib/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
+
 	</target>
 
 	<target name="package.extract.swt">

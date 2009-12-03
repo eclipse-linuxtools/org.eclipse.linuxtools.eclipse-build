@@ -1,5 +1,9 @@
 2009-12-03  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* build.xml: Install eclipse.ini in etc/. (bug #295523 Benjamin Drung)
+
+2009-12-03  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* build.xml: Fix dropins path in eclipse.ini. (bug #295525 Benjamin Drung)
 
 2009-12-01  Andrew Overholt  <overholt@redhat.com>
