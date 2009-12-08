@@ -1,0 +1,10 @@
+--- plugins/org.eclipse.ui.tests/Eclipse JFace Tests/org/eclipse/jface/tests/viewers/ListViewerTest.java	2009-12-08 16:19:39.740154009 -0500
++++ plugins/org.eclipse.ui.tests/Eclipse JFace Tests/org/eclipse/jface/tests/viewers/ListViewerTest.java-new	2009-12-08 16:22:14.261155406 -0500
+@@ -87,6 +87,7 @@
+ 			fRootElement = TestElement.createModel(1, i);
+ 			fModel = fRootElement.getModel();
+ 			fViewer.setInput(fRootElement);
++			processEvents();
+ 			for (int j = 30; j < fRootElement.getChildCount(); j++) {
+ 				fViewer.setSelection(new StructuredSelection(fRootElement
+ 						.getFirstChild()), true);

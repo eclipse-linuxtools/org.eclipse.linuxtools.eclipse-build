@@ -1,3 +1,8 @@
+2009-12-08  Roland Grunberg  <rgrunber@redhat.com>
+
+	* patches/tests-BZ295666.patch: New file.
+	* build.xml: Fix for bug #295666
+
 2009-12-03  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Install eclipse.ini in etc/. (bug #295523 Benjamin Drung)
