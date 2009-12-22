@@ -1,3 +1,8 @@
+2009-12-22  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/swtbug291128.patch: Add back-ported patch from bug #291128.
+	* build.xml: Add above patch.
+
 2009-12-08  Roland Grunberg  <rgrunber@redhat.com>
 
 	* patches/tests-BZ295666.patch: New file.
