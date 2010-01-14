@@ -1,0 +1,28 @@
+commit df4ebc73e233404646f70b70c557d034586d061d
+Author: gheorghe <gheorghe>
+Date:   Tue Jan 12 22:18:52 2010 +0000
+
+    290395 - [Widgets] [GTK2.18] Update problem in the Eclipse's "Install new software" dialog.
+
+diff --git a/Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java b/Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java
+index f019a2e..04d48ba 100644
+--- a/Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java	
++++ b/Eclipse SWT/gtk/org/eclipse/swt/widgets/Control.java	
+@@ -3977,10 +3977,17 @@ public void setRedraw (boolean redraw) {
+ 		if (--drawCount == 0) {
+ 			if (redrawWindow != 0) {
+ 				int /*long*/ window = paintWindow ();
++				/*
++				* Bug in GTK. For some reason, the window does not
++				* redraw in versions of GTK greater than 2.18. The fix
++				* is to hide and show it (without changing the z order).
++			    */
++				if (OS.GTK_VERSION >= OS.VERSION (2, 17, 0)) OS.gdk_window_hide(window);
+ 				/* Explicitly hiding the window avoids flicker on GTK+ >= 2.6 */
+ 				OS.gdk_window_hide (redrawWindow);
+ 				OS.gdk_window_destroy (redrawWindow);
+ 				OS.gdk_window_set_events (window, OS.gtk_widget_get_events (paintHandle ()));
++				if (OS.GTK_VERSION >= OS.VERSION (2, 17, 0)) OS.gdk_window_show_unraised(window);
+ 				redrawWindow = 0;
+ 			}
+ 		}
