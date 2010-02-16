@@ -289,6 +289,7 @@
 			<arg line="-Dbuilder=${buildConfig} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
 			<arg line="-consolelog " />
+			<jvmarg value="-Xmx512M" />
 		</java>
 		<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
@@ -465,6 +466,7 @@
 			<arg line="-Dp2.build.repo=file:/${reposource} " />
 			<arg line="-consolelog " />
 			<arg line="publish.bin.parts " />
+			<jvmarg value="-Xmx512M" />
 		</java>
 	</target>
 
@@ -493,6 +495,7 @@
 			<arg line="-DbaseBuildPath=${buildDirectory} " />
 			<arg line="-Declipse.pdebuild.scripts=${eclipse.pdebuild.scripts} " />
 			<arg line="-consolelog " />
+			<jvmarg value="-Xmx512M" />
 		</java>
 
 		<!--
@@ -516,6 +519,7 @@
 			<arg line="-DproductFiles=${productFiles} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
 			<arg line="-consolelog " />
+			<jvmarg value="-Xmx512M" />
 		</java>
 	</target>
 
@@ -545,6 +549,7 @@
 			<arg line="-application org.eclipse.ant.core.antRunner" />
 			<arg line="-f build.xml" />
 			<arg line="build.update.jar" />
+			<jvmarg value="-Xmx512M" />
 		</java>
 		<copy todir="${buildDirectory}/installation/plugins">
 			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
@@ -571,6 +576,7 @@
 			<arg line="-DforceContextQualifier=v20090831-1906" />
 			<arg line="-Dbuilder=${buildDirectory}/installation/plugins/${pdebuildplugin}/templates/package-build" />
 			<arg line="-f ${buildDirectory}/installation/plugins/${pdebuildplugin}/scripts/build.xml" />
+			<jvmarg value="-Xmx512M" />
 		</java>
 		<unzip dest="${buildDirectory}/ecf-src/build/rpmBuild" src="${buildDirectory}/ecf-src/build/rpmBuild/org.eclipse.ecf.filetransfer_feature.zip" />
 		<copy todir="${buildDirectory}/installation/plugins">
@@ -706,6 +712,7 @@
 			<jvmarg value="-XX:MaxPermSize=512M" />
 			-->
 			<jvmarg value="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
+			<jvmarg value="-Xmx512M" />
 		</java>
 		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
 		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
