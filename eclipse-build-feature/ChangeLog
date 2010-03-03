@@ -1,3 +1,15 @@
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* feature.xml: Remove dependency on icu4j source bundle.
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	* feature.xml: Remove com.ibm.icu.base.
+
+2010-02-11  Andrew Overholt  <overholt@redhat.com>
+
+	* feature.xml: Update to 3.5.2.
+
 2009-09-29  Andrew Overholt  <overholt@redhat.com>
 
 	* feature.xml: Update to 3.5.1
