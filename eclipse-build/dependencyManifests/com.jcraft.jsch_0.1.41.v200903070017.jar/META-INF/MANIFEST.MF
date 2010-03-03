@@ -1,0 +1,375 @@
+Manifest-Version: 1.0
+Bundle-ClassPath: .
+Bundle-Vendor: %venderName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-Name: %bundleName
+Bundle-SymbolicName: com.jcraft.jsch
+Created-By: 1.4.0 (Sun Microsystems Inc.)
+Export-Package: com.jcraft.jsch;version="0.1.41",com.jcraft.jsch.jce;v
+ ersion="0.1.41";x-internal:=true,com.jcraft.jsch.jcraft;version="0.1.
+ 41";x-internal:=true,com.jcraft.jsch.jgss;version="0.1.41";x-internal
+ :=true
+Bundle-Version: 0.1.41.v200903070017
+Bundle-ManifestVersion: 2
+
+Name: com/jcraft/jsch/jce/ARCFOUR128.class
+SHA1-Digest: 7QDIqzgSoTLENRdhCIgMovwM5Uk=
+
+Name: com/jcraft/jsch/Request.class
+SHA1-Digest: dsey0oAyJGStClcHM98rcleu8Po=
+
+Name: com/jcraft/jsch/Channel$1.class
+SHA1-Digest: 7GRGfX0nS59j5XHL5VqPoWfkqro=
+
+Name: com/jcraft/jsch/SignatureRSA.class
+SHA1-Digest: jzulmFABJqCW6NuSBHyHOKVslFE=
+
+Name: com/jcraft/jsch/DHGEX.class
+SHA1-Digest: 4JBGUS5bYrf8PAQY5GyOwab3AKo=
+
+Name: com/jcraft/jsch/HostKey.class
+SHA1-Digest: 4nxVUli7ioyVcgkb+mvIIx1Fgh8=
+
+Name: com/jcraft/jsch/RequestSignal.class
+SHA1-Digest: 2IXgG0/Fd9iQzjUF3rVRcEWECIo=
+
+Name: com/jcraft/jsch/SocketFactory.class
+SHA1-Digest: +z3wkl/BLCfqXZDXHi5XYcSzBCw=
+
+Name: com/jcraft/jsch/RequestPtyReq.class
+SHA1-Digest: as3YclrKYiVS3r5vz1acvs+gJI4=
+
+Name: com/jcraft/jsch/ChannelSftp$LsEntry.class
+SHA1-Digest: 1DEldnXw3zPmQ6qJqiqjMDHFpIQ=
+
+Name: com/jcraft/jsch/HASH.class
+SHA1-Digest: i61Ai7qZVztXBZg2MLYT25u7yXc=
+
+Name: com/jcraft/jsch/jce/AES256CTR.class
+SHA1-Digest: DvxpZ2u7w3pLluGHjtVe8GXcTV0=
+
+Name: com/jcraft/jsch/JSchException.class
+SHA1-Digest: wxSNQgjaHdWr0+Ba5CfFpU/bCPs=
+
+Name: com/jcraft/jsch/UserAuthKeyboardInteractive.class
+SHA1-Digest: HO6CWlZNNNuBYgrHPM0jkvVfAzw=
+
+Name: com/jcraft/jsch/jce/ARCFOUR256.class
+SHA1-Digest: 0KzxcxWdMglU7SIn9RNsDW0xsi8=
+
+Name: com/jcraft/jsch/Channel$MyPipedInputStream.class
+SHA1-Digest: fwndgndebZATg5glTRp1JHxaHUA=
+
+Name: com/jcraft/jsch/Proxy.class
+SHA1-Digest: 5zZjb/Vj3uhhI1Mg1fvmoYAdtpU=
+
+Name: com/jcraft/jsch/Util.class
+SHA1-Digest: Gb0ar38XuwpeQdUtk7z6HlMfGlQ=
+
+Name: com/jcraft/jsch/jce/HMACMD596.class
+SHA1-Digest: 817MeHbki4pxUrVY4bAYGzDPX3o=
+
+Name: com/jcraft/jsch/jce/KeyPairGenDSA.class
+SHA1-Digest: OOPlQecN4IEpvNCllU6kTRGZCtg=
+
+Name: com/jcraft/jsch/jce/AES128CBC.class
+SHA1-Digest: NUEs091bkLCjtAOEE9GZAToDGNc=
+
+Name: com/jcraft/jsch/jce/HMACSHA1.class
+SHA1-Digest: d+gj7YXiXf62Ur/PhDeiT9Yix7I=
+
+Name: com/jcraft/jsch/UserAuthGSSAPIWithMIC.class
+SHA1-Digest: aGEyIxgeSOXGOb3IZmi1+YZhH9s=
+
+Name: com/jcraft/jsch/jce/TripleDESCTR.class
+SHA1-Digest: pKRuDrxlKhJVfBZzpdn4XtKUM5w=
+
+Name: com/jcraft/jsch/RequestAgentForwarding.class
+SHA1-Digest: 0b/7WOMiIhCnunqKpJ9xBAm7FC8=
+
+Name: com/jcraft/jsch/jcraft/HMAC.class
+SHA1-Digest: ohhf0p2s2knWmi58jiSwKIE4BOg=
+
+Name: com/jcraft/jsch/SftpException.class
+SHA1-Digest: ijrr386qYQPamYMobTl+xtOdeQQ=
+
+Name: com/jcraft/jsch/jcraft/HMACSHA196.class
+SHA1-Digest: 69tgvy3stTxzld9HxUw8H2paR94=
+
+Name: com/jcraft/jsch/jce/AES192CTR.class
+SHA1-Digest: 1tjAFhrE3M5Ezfb3/6hGzt5yCpE=
+
+Name: com/jcraft/jsch/jce/KeyPairGenRSA.class
+SHA1-Digest: QGGx3Ekb2rGgMNRGujeg8hhvfs0=
+
+Name: com/jcraft/jsch/JSch$1.class
+SHA1-Digest: i+dHlov1IBMbZ60GVIofyt4Hsbg=
+
+Name: com/jcraft/jsch/ChannelAgentForwarding.class
+SHA1-Digest: hkOxvzXM8idMJ+7zbTc5xXgkht4=
+
+Name: com/jcraft/jsch/RequestSubsystem.class
+SHA1-Digest: 5yVL86Q0JcV4WCwCoSPXtz5eMGA=
+
+Name: com/jcraft/jsch/jce/HMACMD5.class
+SHA1-Digest: C6YAyxg7TYLabiGIiqRRiTNCeNI=
+
+Name: com/jcraft/jsch/ForwardedTCPIPDaemon.class
+SHA1-Digest: CpRSIKlX7hhyt6HFZhWUdhgdWKY=
+
+Name: com/jcraft/jsch/ServerSocketFactory.class
+SHA1-Digest: PuY/1pkahCL2E+jMBKGgz0ggh+I=
+
+Name: com/jcraft/jsch/UserAuthNone.class
+SHA1-Digest: H5hKs2T7jG8/vbBG2/TEL8a2WnA=
+
+Name: com/jcraft/jsch/jce/HMACSHA196.class
+SHA1-Digest: LshAuQFNb7KYwnFPjOqQOMzUNrU=
+
+Name: com/jcraft/jsch/ChannelSubsystem.class
+SHA1-Digest: QMGf7zaaEjMn96JDKCwzLGPJ2MM=
+
+Name: com/jcraft/jsch/KnownHosts$HashedHostKey.class
+SHA1-Digest: WU+oH+xQb/ryvvkaLlvjKQFYiKE=
+
+Name: com/jcraft/jsch/DHG1.class
+SHA1-Digest: QnxLk7cfSdVLHDbVetfuXjIcVoA=
+
+Name: com/jcraft/jsch/UserAuthPublicKey.class
+SHA1-Digest: HGO/EfMu1eK5KosBpgNTvg9pPkU=
+
+Name: com/jcraft/jsch/UIKeyboardInteractive.class
+SHA1-Digest: +1tYanrpdqGs0Ra6y43Wlr3K+qE=
+
+Name: com/jcraft/jsch/Buffer.class
+SHA1-Digest: TWCnm5ry0Ox4YyqNCkEtvlAKNfo=
+
+Name: com/jcraft/jsch/RequestWindowChange.class
+SHA1-Digest: /W3B/ImikQdWKYdqw9WxFVUEp+E=
+
+Name: com/jcraft/jsch/ProxySOCKS4.class
+SHA1-Digest: 9XQ3e3yAmzUu/1xMMab4sLBSbjQ=
+
+Name: com/jcraft/jsch/jgss/GSSContextKrb5.class
+SHA1-Digest: tB7kq1Z5RE7s2jDWniR49A04kE4=
+
+Name: com/jcraft/jsch/KnownHosts.class
+SHA1-Digest: 9oZo76NlGar0O7yC8/WrQM3B0q4=
+
+Name: about.html
+SHA1-Digest: N87hfpEXgq5TZuvNcFpP7GhEJr8=
+
+Name: com/jcraft/jsch/JSch.class
+SHA1-Digest: c0g4EvvwHdAEY0KT6oeMWK05pvQ=
+
+Name: com/jcraft/jsch/KeyPairGenDSA.class
+SHA1-Digest: O1lE5dThmh443TE83guKL+JmU4Q=
+
+Name: com/jcraft/jsch/PortWatcher.class
+SHA1-Digest: VjxtxVYDUN/exU9dotQnzFU2Zv8=
+
+Name: com/jcraft/jsch/RequestSftp.class
+SHA1-Digest: oTyAjtlVMMH+5GNGK8+U2L2S7/A=
+
+Name: com/jcraft/jsch/JSchAuthCancelException.class
+SHA1-Digest: jXId8e203lTBX/GhY7sLta0jGHU=
+
+Name: com/jcraft/jsch/UserAuth.class
+SHA1-Digest: oSasKRbMm6tK2rA0MJfHC6R8gxo=
+
+Name: com/jcraft/jsch/RequestExec.class
+SHA1-Digest: 6uk5Kno7PEZEvb8cfWbESb5jRto=
+
+Name: com/jcraft/jsch/Channel.class
+SHA1-Digest: qejgVhGhaeao4iIGapa9H/2vt7A=
+
+Name: com/jcraft/jsch/KeyPairDSA.class
+SHA1-Digest: v8EIhwQAKCthbVVR9cu0fkOJCiA=
+
+Name: com/jcraft/jsch/IdentityFile.class
+SHA1-Digest: l9Z1QdEnsYhrutQFzvNzcFa5ta4=
+
+Name: com/jcraft/jsch/ChannelDirectTCPIP.class
+SHA1-Digest: fSIU5oRHLbZL0WmnKzPOkmL0W8c=
+
+Name: com/jcraft/jsch/KeyPairGenRSA.class
+SHA1-Digest: wXEOurCPw9RRxZnp20GRRCCQNwE=
+
+Name: com/jcraft/jsch/RequestEnv.class
+SHA1-Digest: Wo39kFyPc4l8/JsRu20Yt3JC5Hg=
+
+Name: com/jcraft/jsch/DH.class
+SHA1-Digest: l2Jc5QHNzyBQeGJ4BUFCYey0RJg=
+
+Name: com/jcraft/jsch/jce/Random.class
+SHA1-Digest: iYm+frfAfcP7yePHEgQvfT5k2yo=
+
+Name: com/jcraft/jsch/KeyPairRSA.class
+SHA1-Digest: brWaCOzlj27mCk+w910wOngyFME=
+
+Name: com/jcraft/jsch/jce/SHA1.class
+SHA1-Digest: 2cygYVVn0r2gC34Nrkvs2KxXlNA=
+
+Name: com/jcraft/jsch/jce/AES256CBC.class
+SHA1-Digest: EVC1/HasmKohoXgiLVXWv8+CsEY=
+
+Name: com/jcraft/jsch/SftpProgressMonitor.class
+SHA1-Digest: XFAjku26gqI2GHC7qSMZL+jqCIQ=
+
+Name: com/jcraft/jsch/JSchPartialAuthException.class
+SHA1-Digest: 5bvwzz1hRFD7IN708Ngd1lg1f8M=
+
+Name: com/jcraft/jsch/Session$1.class
+SHA1-Digest: g1edNkFyanvFykmZ1hYx8uL/law=
+
+Name: com/jcraft/jsch/jcraft/HMACSHA1.class
+SHA1-Digest: rvIKrl6Izjr8LrmwhD0zpLqSMYU=
+
+Name: com/jcraft/jsch/Compression.class
+SHA1-Digest: 4zZ9LYvlnSU0/vemnL8Zt8r48Dw=
+
+Name: com/jcraft/jsch/jce/SignatureDSA.class
+SHA1-Digest: UX89S4bsSjsaQ+/2IroesigKptI=
+
+Name: com/jcraft/jsch/jcraft/HMACMD5.class
+SHA1-Digest: XK0DD0fPrt62xBCJNfVbuWKAn+E=
+
+Name: com/jcraft/jsch/Random.class
+SHA1-Digest: c57POxL1e9hQnXqzKqFpOzmAeqg=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: com/jcraft/jsch/IO.class
+SHA1-Digest: 6vfKQ8gdz/xQrxSJh7MHF6qajMs=
+
+Name: com/jcraft/jsch/Packet.class
+SHA1-Digest: aXPfOTpybgkcRd85Ag5ELo/EAaU=
+
+Name: com/jcraft/jsch/ProxySOCKS5.class
+SHA1-Digest: LaottFiSRfcLlmdBeBW2/6YzKmQ=
+
+Name: com/jcraft/jsch/jce/ARCFOUR.class
+SHA1-Digest: XmWkgmd7edUhI0xJJo3DeW0X1jg=
+
+Name: com/jcraft/jsch/ProxyHTTP.class
+SHA1-Digest: kV3NyT9sh5oXN08R6123lsWmHYI=
+
+Name: com/jcraft/jsch/jce/AES128CTR.class
+SHA1-Digest: 1A57gyL5rWyryLhNuai52AeAKXA=
+
+Name: com/jcraft/jsch/jce/SignatureRSA.class
+SHA1-Digest: Xe6OAPt33IY3u941TyJ8sNid8eI=
+
+Name: com/jcraft/jsch/jce/BlowfishCBC.class
+SHA1-Digest: 9h8fbPDaEg1KNqGLJypyGe+yGfk=
+
+Name: com/jcraft/jsch/Logger.class
+SHA1-Digest: gZVksblwQezTfyTV1HXlFdd5tRM=
+
+Name: com/jcraft/jsch/jce/TripleDESCBC.class
+SHA1-Digest: zApPhxtBaUntV9s77LrH2uwlT2s=
+
+Name: com/jcraft/jsch/ChannelSftp$1.class
+SHA1-Digest: VsOa+YEtZY9Q7V0J1kzwTcwj34w=
+
+Name: com/jcraft/jsch/HostKeyRepository.class
+SHA1-Digest: W9fhHievhKPIBCtEehgYFpNI+jM=
+
+Name: com/jcraft/jsch/jce/AES192CBC.class
+SHA1-Digest: 9DGFK+dWsvlg+FbrTY2Zz3GJhVI=
+
+Name: com/jcraft/jsch/ChannelSftp$Header.class
+SHA1-Digest: gmNq5wWrasX0kB4m49htRLczB8U=
+
+Name: com/jcraft/jsch/RequestShell.class
+SHA1-Digest: EZ+wo7IUKLx+qJQGMqN3FiCXwJU=
+
+Name: com/jcraft/jsch/CipherNone.class
+SHA1-Digest: wSopA/3woBNifNGoDsTVBl+pDOw=
+
+Name: com/jcraft/jsch/MAC.class
+SHA1-Digest: wprEI0Ov+Pjt7f/OMRwUxcau68o=
+
+Name: com/jcraft/jsch/Channel$PassiveInputStream.class
+SHA1-Digest: 2VU5L64rpIEH73bdlDUdrTESuo0=
+
+Name: com/jcraft/jsch/SftpATTRS.class
+SHA1-Digest: MzX0kMcwvhydhXV1LQtlbGIJwh8=
+
+Name: com/jcraft/jsch/GSSContext.class
+SHA1-Digest: WAZpgz4zrxXyS8UG/pNP+Wwy8Oo=
+
+Name: com/jcraft/jsch/Session.class
+SHA1-Digest: 4R56ThRguuRVnikCTsO8MNjkHiE=
+
+Name: com/jcraft/jsch/KeyPair.class
+SHA1-Digest: MF/UhYtDvwP1z15OIbJ4p2dcTiM=
+
+Name: com/jcraft/jsch/ChannelShell.class
+SHA1-Digest: sQk1yVlZESgJfCRadDnVUD9Ldf0=
+
+Name: plugin.properties
+SHA1-Digest: lQpUwKiiN/9XBoeo1tfG5Qy4ijM=
+
+Name: com/jcraft/jsch/jce/MD5.class
+SHA1-Digest: iegJNROBI8bUcxzjL67Bz5THeHM=
+
+Name: com/jcraft/jsch/KeyExchange.class
+SHA1-Digest: wCyVABtSMzFogOFNsXIdG/Tz4XA=
+
+Name: com/jcraft/jsch/ChannelForwardedTCPIP.class
+SHA1-Digest: c2GiL5URd23FAR1cd8iaZWKwV/M=
+
+Name: com/jcraft/jsch/Channel$PassiveOutputStream.class
+SHA1-Digest: /XGaINStNZ9n6ilhJdELI/ecVxU=
+
+Name: com/jcraft/jsch/Identity.class
+SHA1-Digest: Rjux+JV7g7FB5Y/usX1EmkLRKcU=
+
+Name: com/jcraft/jsch/ChannelSftp.class
+SHA1-Digest: 5plUhN+ZMSgzzu4dW0XCMd0Xagk=
+
+Name: com/jcraft/jsch/jce/DH.class
+SHA1-Digest: N6KI/KxRYKS2/6lFox3taXMWJQY=
+
+Name: com/jcraft/jsch/ChannelExec.class
+SHA1-Digest: ylRj62Ir4J6qWPI6qK2VXs91oiY=
+
+Name: com/jcraft/jsch/RequestX11.class
+SHA1-Digest: NUwJOAuP0h4B6SUSwk7ZKp06ZEc=
+
+Name: com/jcraft/jsch/Cipher.class
+SHA1-Digest: 48peEfWeG3i/Y7cSsRt0atkr6y4=
+
+Name: com/jcraft/jsch/Session$GlobalRequestReply.class
+SHA1-Digest: bLcqszVP5pcbjalpgf15xlDoXz4=
+
+Name: com/jcraft/jsch/jcraft/Compression.class
+SHA1-Digest: pea8wIclLfcRgIdp7CsRFN1DT/c=
+
+Name: com/jcraft/jsch/UserAuthPassword.class
+SHA1-Digest: 3rn3oMhCjrds4FOOQGO4TCtgCUs=
+
+Name: com/jcraft/jsch/Util$1.class
+SHA1-Digest: uCDlLQFurjRo7O9DEuZ5+0Wq9Vw=
+
+Name: com/jcraft/jsch/ChannelSession.class
+SHA1-Digest: 1likx84O0wggJdJCLnsstfxQFfI=
+
+Name: com/jcraft/jsch/ChannelSftp$2.class
+SHA1-Digest: XvR883TJnVChKejEede8zEesOLk=
+
+Name: com/jcraft/jsch/ChannelX11.class
+SHA1-Digest: FpswTJpqUjqPmg5kl+ChL2+B78o=
+
+Name: com/jcraft/jsch/UserInfo.class
+SHA1-Digest: P23BxkmU7R6rKju+g2EaKJufdTc=
+
+Name: com/jcraft/jsch/SignatureDSA.class
+SHA1-Digest: pQ4p8Ylw9vurPgvxRzTlrPRIIdU=
+
+Name: com/jcraft/jsch/jcraft/HMACMD596.class
+SHA1-Digest: Ts6zdQ7O2YB2RgvQYZECQxmIOC0=
+

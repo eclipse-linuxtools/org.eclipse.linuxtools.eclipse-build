@@ -1,0 +1,88 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.hamcrest.core
+Export-Package: org.hamcrest;version="1.1.0";core=split;mandatory:=cor
+ e,org.hamcrest.core;version="1.1.0",org.hamcrest.internal;version="1.
+ 1.0";x-internal:=true
+Bundle-Version: 1.1.0.v20090501071000
+Bundle-ManifestVersion: 2
+
+Name: org/hamcrest/internal/ArrayIterator.class
+SHA1-Digest: S0kkjHPeuSRhnfyZjzNkwCsXxts=
+
+Name: org/hamcrest/core/IsNot.class
+SHA1-Digest: syvKM/IIe3SDAD3ss5Sb87bGVOE=
+
+Name: org/hamcrest/internal/SelfDescribingValueIterator.class
+SHA1-Digest: L1TC005EydXY7FelJd+j4Cs/XYo=
+
+Name: org/hamcrest/Description.class
+SHA1-Digest: Hx4RDzD9iYXQ7O+66q7r+ZJt+wA=
+
+Name: org/hamcrest/core/IsAnything.class
+SHA1-Digest: M2KXPGl6du+aaKCHO9viCWaulXM=
+
+Name: org/hamcrest/core/DescribedAs.class
+SHA1-Digest: KldxayZqHEv7iF49GqmBdrn1Rtk=
+
+Name: org/hamcrest/core/IsNull.class
+SHA1-Digest: usPeRXsK0XBm6ufRZcNu597faXI=
+
+Name: plugin.properties
+SHA1-Digest: AQJuxQKiCnN3XXbkQHvhO0FhH2M=
+
+Name: org/hamcrest/core/IsInstanceOf.class
+SHA1-Digest: lxstnNFYjGnkXSvHVTvbOG8a2Us=
+
+Name: org/hamcrest/core/AllOf.class
+SHA1-Digest: QrWQeaTSOEAP2/zx1xwuNwbQVhA=
+
+Name: org/hamcrest/Factory.class
+SHA1-Digest: tVJseJ+KStqzuGNls0Oo0g9bMe4=
+
+Name: about_files/LICENSE.txt
+SHA1-Digest: dTF36wNXk3NZRvp51lzE8FW7KYQ=
+
+Name: org/hamcrest/core/AnyOf.class
+SHA1-Digest: /qPPM6unQnrrx8WzigXJd9FHiiQ=
+
+Name: org/hamcrest/SelfDescribing.class
+SHA1-Digest: WcsUm+3fbmO8DvCYRS0D1yIwYqo=
+
+Name: org/hamcrest/core/Is.class
+SHA1-Digest: 2NVE/umGV8podO1QLdHe/Af+U+w=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/hamcrest/core/IsEqual.class
+SHA1-Digest: FVDxHnRnTyUGrTLzqze5JVbJpKU=
+
+Name: org/hamcrest/core/IsSame.class
+SHA1-Digest: ez3xnmwGhJO+NuSZ72Jb/yI9qOk=
+
+Name: org/hamcrest/BaseMatcher.class
+SHA1-Digest: ydDN5s1A/YKl2Cgu6+URCulcSAI=
+
+Name: org/hamcrest/CoreMatchers.class
+SHA1-Digest: AKP67MeB7WGt3MrFZ9vTCAdMg1g=
+
+Name: about.html
+SHA1-Digest: gL/jUAsRjH3ChAp5sSE4yJE3fb4=
+
+Name: org/hamcrest/StringDescription.class
+SHA1-Digest: 6Kti/Wo7Xl4dPNTVQtINKipvf8Y=
+
+Name: org/hamcrest/BaseDescription.class
+SHA1-Digest: u+MV7qH9/44reOY9Ai/0+ZFrkP8=
+
+Name: org/hamcrest/internal/SelfDescribingValue.class
+SHA1-Digest: x0D/8Y3yGaSC4to4l7UPAnlvKms=
+
+Name: org/hamcrest/Matcher.class
+SHA1-Digest: uY73EzuY/pRrMoIhjQJ21C9UJw8=
+

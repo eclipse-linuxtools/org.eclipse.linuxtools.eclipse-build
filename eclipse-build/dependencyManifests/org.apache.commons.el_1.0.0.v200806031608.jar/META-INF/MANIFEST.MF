@@ -1,0 +1,244 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %bundleProvider
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: CDC-1.0/Foundation-1.0,J2SE-1.3
+Bundle-Name: %bundleName
+Bundle-SymbolicName: org.apache.commons.el
+Export-Package: org.apache.commons.el;version="1.0.0",org.apache.commo
+ ns.el.parser;version="1.0.0"
+Bundle-Version: 1.0.0.v200806031608
+Bundle-ManifestVersion: 2
+Import-Package: javax.servlet;version="2.4",javax.servlet.http;version
+ ="2.4",javax.servlet.jsp;version="2.0",javax.servlet.jsp.el;version="
+ 2.0",javax.servlet.jsp.resources;version="2.0",javax.servlet.jsp.tage
+ xt;version="2.0",javax.servlet.resources;version="2.4"
+
+Name: org/apache/commons/el/ImplicitObjects$6.class
+SHA1-Digest: yk3eN531Co8H5mcmuI/jBgzMK7M=
+
+Name: org/apache/commons/el/ImplicitObjects$8.class
+SHA1-Digest: 2zRArPyiXRbBbckQYZl2n/ok1dg=
+
+Name: org/apache/commons/el/parser/ELParser$JJCalls.class
+SHA1-Digest: +F3c0F/BpFfnZwht0fm32JeG/cI=
+
+Name: org/apache/commons/el/IntegerLiteral.class
+SHA1-Digest: XbMrtGsGhESiCWwsB1wUsRxPAkc=
+
+Name: org/apache/commons/el/parser/ELParserTokenManager.class
+SHA1-Digest: Wvt2lk7SKSNx7n+2Xl76iM9hZSE=
+
+Name: org/apache/commons/el/parser/ParseException.class
+SHA1-Digest: WZ9XYN/i5wKhW7OMIvwVswOCkJo=
+
+Name: META-INF/LICENSE.txt
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/apache/commons/el/Constants.class
+SHA1-Digest: WuLFauF6xMElD3KM8l3QUoC8U+s=
+
+Name: org/apache/commons/el/LessThanOperator.class
+SHA1-Digest: bLuYRfj0guAW/K/6tzNf/p/v2cE=
+
+Name: org/apache/commons/el/Coercions.class
+SHA1-Digest: bMWIqZCp+cp+MgLnI9cj9qoKKEU=
+
+Name: org/apache/commons/el/NotOperator.class
+SHA1-Digest: qvcZyrD7lNJx087eSke+6ztjjnU=
+
+Name: org/apache/commons/el/AndOperator.class
+SHA1-Digest: iZwxQTvJRRFfBaC007qqlvN7t6w=
+
+Name: org/apache/commons/el/OrOperator.class
+SHA1-Digest: L6r4TQP084uw7RdLD8WeMEf9i5M=
+
+Name: org/apache/commons/el/ELParser.jj
+SHA1-Digest: B7JwBhgFsve6OKDhZLPogURw2HM=
+
+Name: org/apache/commons/el/GreaterThanOrEqualsOperator.class
+SHA1-Digest: 0hFhIFynKfaYsv3sDAirRXqnQKc=
+
+Name: org/apache/commons/el/ArithmeticOperator.class
+SHA1-Digest: d9+HyAISZMDcnqe2hQ8N8RpNqX8=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/apache/commons/el/Resources_ja.properties
+SHA1-Digest: Tzu2z09ehelbKwRMIxIiv3GSuWs=
+
+Name: org/apache/commons/el/BeanInfoProperty.class
+SHA1-Digest: IgEmp+w7xLCvgpSvEXQds7/GEhs=
+
+Name: org/apache/commons/el/Literal.class
+SHA1-Digest: hMxkBdMuRuWtF8A7ir7EQqvIenI=
+
+Name: org/apache/commons/el/UnaryOperator.class
+SHA1-Digest: J2Ed3ePOrAUfyvN5M9S9umy3Uo4=
+
+Name: org/apache/commons/el/DivideOperator.class
+SHA1-Digest: EYfiApNe7DbNruhOwErTTORkE+8=
+
+Name: org/apache/commons/el/EqualityOperator.class
+SHA1-Digest: sm8I9gQKGBvgQPBNS06GNubv6Vk=
+
+Name: org/apache/commons/el/MinusOperator.class
+SHA1-Digest: Z6FWR/1kh0HAxSFWeXT8xPjMWAg=
+
+Name: org/apache/commons/el/NotEqualsOperator.class
+SHA1-Digest: D0kF3taKj0yzvX82dd+NaapIuLk=
+
+Name: org/apache/commons/el/LessThanOrEqualsOperator.class
+SHA1-Digest: l6bFkjxb4iR4Mwg4T5pqU5i+ld8=
+
+Name: org/apache/commons/el/ExpressionEvaluatorImpl.class
+SHA1-Digest: 7kijuGC03VYjIOosJvOQjiO+SCE=
+
+Name: org/apache/commons/el/parser/SimpleCharStream.class
+SHA1-Digest: C0EtQ01wKdjFQnQn0Yf55nmqxjY=
+
+Name: org/apache/commons/el/UnaryMinusOperator.class
+SHA1-Digest: p5DAU6rW4QxcfgtYiuEsb3ia6a8=
+
+Name: org/apache/commons/el/BinaryOperator.class
+SHA1-Digest: JqntYjDC/78XHD2RyoU/UvjLbBo=
+
+Name: org/apache/commons/el/ModulusOperator.class
+SHA1-Digest: Dd5Vw66I6bD7vP9FFcrTj1DBS9o=
+
+Name: org/apache/commons/el/PropertySuffix.class
+SHA1-Digest: W1QZpI4mxpe5gEmtlOWs0ciBlro=
+
+Name: org/apache/commons/el/ExpressionEvaluatorImpl$JSTLExpression.cla
+ ss
+SHA1-Digest: NejYujN41ozBAtlznH6viMJ8Qow=
+
+Name: org/apache/commons/el/EnumeratedMap.class
+SHA1-Digest: gRPDjOQQyDVv5IAUhU+jwMlKg0Y=
+
+Name: org/apache/commons/el/ImplicitObjects$1.class
+SHA1-Digest: B3PddnTnc19H+65tyxypJcREzR4=
+
+Name: org/apache/commons/el/ConditionalExpression.class
+SHA1-Digest: bX+7me1UZAWqwQBBzmm6QiuZzxw=
+
+Name: org/apache/commons/el/FunctionInvocation.class
+SHA1-Digest: G22mwDJrwZT1YQY/IitVQ3aOR9M=
+
+Name: org/apache/commons/el/ImplicitObjects$3.class
+SHA1-Digest: b5idCx33W4MyT97b/hRBtHG0GGk=
+
+Name: org/apache/commons/el/ImplicitObjects$5.class
+SHA1-Digest: 4929mGlg7/mRxY7Ljfapiplbqxc=
+
+Name: org/apache/commons/el/ImplicitObjects$7.class
+SHA1-Digest: G22aYw1EaZ7z7eV+TmQcWPvvyuM=
+
+Name: org/apache/commons/el/ImplicitObjects$9.class
+SHA1-Digest: Dp+bANi7KnRmeocrW8efou26tcM=
+
+Name: org/apache/commons/el/Logger.class
+SHA1-Digest: kRv2uawntGcubwSjNUJmSQOLkXM=
+
+Name: org/apache/commons/el/Resources.properties
+SHA1-Digest: 93HD587p0KCdUKkjMMyEJRk45bQ=
+
+Name: org/apache/commons/el/BeanInfoIndexedProperty.class
+SHA1-Digest: ijs9cNs3lfJ4FfGfa+KkzMC26QU=
+
+Name: org/apache/commons/el/ArraySuffix.class
+SHA1-Digest: SD3C6xpdKmVAygaLXjZytZL90O8=
+
+Name: org/apache/commons/el/Expression.class
+SHA1-Digest: czt1/UKNMTTdZv48XjC7Xdl+7Sk=
+
+Name: plugin.properties
+SHA1-Digest: q88xebcgKfB8elFkU63rfdgCtII=
+
+Name: org/apache/commons/el/BeanInfoManager.class
+SHA1-Digest: owPJaYmCI+CZ1Z7X2uzlJ/LHCdE=
+
+Name: org/apache/commons/el/EmptyOperator.class
+SHA1-Digest: /zHDzIHFcmdsFose5kMmp++WPsU=
+
+Name: org/apache/commons/el/PlusOperator.class
+SHA1-Digest: 7tmWeuaMKmuyz0WHz9DQ9qmyH5o=
+
+Name: org/apache/commons/el/ComplexValue.class
+SHA1-Digest: qwpRFU1iYILss68014xy+WCllrM=
+
+Name: org/apache/commons/el/VariableResolverImpl.class
+SHA1-Digest: 1qz6XwsyiTsICyclJDkreBKeRhc=
+
+Name: about_files/LICENSE.txt
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/apache/commons/el/FloatingPointLiteral.class
+SHA1-Digest: x1XKsbAzuKS6c1rzJi5EdgwJpJY=
+
+Name: org/apache/commons/el/IntegerDivideOperator.class
+SHA1-Digest: E+v9l7GD9H7vZNCbKseGuavBw8w=
+
+Name: org/apache/commons/el/BooleanLiteral.class
+SHA1-Digest: h7/fPldkasyTns1gwEAmR+9xWT4=
+
+Name: org/apache/commons/el/StringLiteral.class
+SHA1-Digest: fM6Nn06GqE20j4uHq0474AKYyAs=
+
+Name: org/apache/commons/el/MultiplyOperator.class
+SHA1-Digest: 2MUBNuJvQxufwMTq/kgd3OokORI=
+
+Name: org/apache/commons/el/RelationalOperator.class
+SHA1-Digest: 37ZbWTzVRd7aEvTP9AFK10SowBU=
+
+Name: org/apache/commons/el/ValueSuffix.class
+SHA1-Digest: L/GwMbWERhGzd7tFoW8FTusd0Xs=
+
+Name: org/apache/commons/el/PrimitiveObjects.class
+SHA1-Digest: RE9Qrvb2K4AYDyN37GHRvl3Oxhc=
+
+Name: org/apache/commons/el/NullLiteral.class
+SHA1-Digest: QYHfYKyHhuCze+X442CqVR+/P9A=
+
+Name: org/apache/commons/el/UnaryOperatorExpression.class
+SHA1-Digest: YsfgS2KZKeVc/xesT0ivfE09ziE=
+
+Name: about.html
+SHA1-Digest: r8yrTzvsJnigaP0k/eJmKDnfU+k=
+
+Name: org/apache/commons/el/NamedValue.class
+SHA1-Digest: Q8y35D/4TtmB9IMVv3dqUN28XqE=
+
+Name: org/apache/commons/el/parser/TokenMgrError.class
+SHA1-Digest: GwcPiRQqGY9m3L7bg3nejiqKvAs=
+
+Name: org/apache/commons/el/parser/ELParserConstants.class
+SHA1-Digest: 6b9QFX7au19dBxCnhr8h0pTZePQ=
+
+Name: org/apache/commons/el/ImplicitObjects.class
+SHA1-Digest: teQ6upwqEk3NFJ/WLQBuhhwvrLg=
+
+Name: org/apache/commons/el/BinaryOperatorExpression.class
+SHA1-Digest: Gom0bxutAqNKKvSBW8NApp2ku0g=
+
+Name: org/apache/commons/el/parser/ELParser.class
+SHA1-Digest: 43MYALuBsGJQ/2fbKRxE0gp13lU=
+
+Name: org/apache/commons/el/EqualsOperator.class
+SHA1-Digest: +1SowxT4Os5bTVTivpN+7iHI/j4=
+
+Name: org/apache/commons/el/ImplicitObjects$2.class
+SHA1-Digest: KwV7pk3+pow9fie4pujChtMLvjY=
+
+Name: org/apache/commons/el/parser/Token.class
+SHA1-Digest: GLjKdPDjxegjKTWLILZ/CsmJRy0=
+
+Name: org/apache/commons/el/ExpressionString.class
+SHA1-Digest: 2WlNCkmN54ro5+Di20ctLsrQZeU=
+
+Name: org/apache/commons/el/GreaterThanOperator.class
+SHA1-Digest: QALl60dL0vlnLB8ac+GFbkdPlCE=
+
+Name: org/apache/commons/el/ImplicitObjects$4.class
+SHA1-Digest: jnHK9e8BL9UFE8VhZa71hf6lfU8=
+
