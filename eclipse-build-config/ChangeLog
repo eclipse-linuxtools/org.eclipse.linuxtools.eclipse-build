@@ -1,3 +1,8 @@
+2010-02-11  Andrew Overholt  <overholt@redhat.com>
+
+	* productFiles/sdk/sdk.product: Update for 3.5.2.
+	* productFiles/rcp.sdk/rcp.product: Likewise.
+
 2009-11-13  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* productFiles/rcpConfig/build.properties: Remove duplicated root.linux.gtk.ppc line
