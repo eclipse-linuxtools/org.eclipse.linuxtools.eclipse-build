@@ -1,9 +1,240 @@
+2010-03-03  Andrew Overholt  <overholt@redhat.com>
+
+	* Merge symlinkDependencies branch.
+
+2010-03-02  Andrew Overholt  <overholt@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkInstalledOSGiJars.java
+	(importantManifestEntries): Only compare Bundle-SymbolicName when
+	symlinking at install time since we know it will be correct based on
+	build time symlinks.
+
+2010-03-02  Andrew Overholt  <overholt@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java
+	(execute): Correct symlink location.
+
+2010-03-02  Andrew Overholt  <overholt@redhat.com>
+ 
+	* dependencies.properties: Fix up Debian jasper JAR location.
+
+2010-03-02  Andrew Overholt  <overholt@redhat.com>
+
+	* dependencies.properties: 
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java
+	(execute): Continue to next potential system JAR instead of failing if the
+	first one doesn't work.
+
+2010-03-01  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Re-symlink to system JARs after p2 director installation.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkInstalledOSGiJars.java: 
+	New file.  Symlink OSGI bundles again after p2 installation step.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java:
+	Remove unused parts.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* build.properties: Make buildID same as 3.5.2.
+	* pdebuild.properties: Likewise.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSDKSource.sh: Clean up a bit (Benjamin Drung).
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSDKSource.sh: Generate source tarball using upstream srcIncluded
+	drop.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Use new source tarball name and directory structure (no more
+	"-fetched").  Update version number and label.  For now, don't re-symlink
+	in installation directory.
+	* regenerateBootstrapFiles.sh: Likewise.
+	* generateAdditionalPlatforms.xml: Likewise.
+	* pdebuild.xml: Likewise.  Don't reference .source bundles.
+	* build.properties: Set label to 3.5.2. 
+	* pdebuild.properties: Likewise.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/eclipse-nosourcebundlesfordependencies.patch: Don't generate
+	JUnit4 source bundle.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java
+	(execute): Don't assume location of dependency manifests.  Create symlink
+	filenames based on Bundle-SymbolicName_Bundle-Version when keepOrigNames
+	is false (used at installation time).
+	* build.xml: Remove old system JAR files before re-symlinking in
+	installation.
+	* buildSDKSource.sh: Remove more binaries (Benjamin Drung, bug #303447).
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #280688
+
+	* dependencies.properties: Update Debian/Ubuntu locations (Benjamin Drung).
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/eclipse-nosourcebundlesfordependencies.patch: Remove references
+	to dependency source bundles.
+	* build.xml: Apply above patch.
+
+2010-02-26  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #280688
+
+	* dependencies.properties: Add Debian/Ubuntu locations (Benjamin Drung). 
+	* nonosgidependencies.properties: Likewise.
+
+2010-02-26  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/eclipse-use-newer-commons-codec.patch: New file.
+	* build.xml: Apply patch to use whatever commons-codec version is available.
+	* dependencies.properties: Add unversioned jetty jars (needed for Fedora 13).
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Re-symlink in installation directory.
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java
+	(execute): Handle bundle versions with less than 4 components.
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Add debuginfo to ant task .class files.
+
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Only build symlink task and symlink deps once (stamp file).
+	Remove JAR signatures from JUnit and Ant META-INF.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java
+	(execute): Delete symlink target before creating it.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java
+	(execute): Likewise.
+	* dependencies.properties: Fix sat4j versions and qualifiers.
+
+2010-02-25  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #303447
+
+	* buildSDKSource.sh: Delete more unused files (Benjamin Drung).
+
+2010-02-25  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* pdebuild/eclipse-pdebuild.sh: Add exit 1 on unknown option.
+
+2010-02-24  Andrew Overholt  <overholt@redhat.com>
+
+	* dependencyManifests/com.ibm.icu_4.0.1.v20090822.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/com.jcraft.jsch_0.1.41.v200903070017.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/javax.servlet.jsp_2.0.0.v200806031607.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/javax.servlet_2.5.0.v200806031605.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.commons.codec_1.3.0.v20080530-1600.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.commons.el_1.0.0.v200806031608.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.commons.httpclient_3.1.0.v20080605-1935.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.commons.logging_1.0.4.v200904062259.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.jasper_5.5.17.v200903231320.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.lucene.analysis_1.9.1.v20080530-1600.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.apache.lucene_1.9.1.v20080530-1600.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.hamcrest.core_1.1.0.v20090501071000.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.mortbay.jetty.server_6.1.15.v200905151201.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.mortbay.jetty.util_6.1.15.v200905182336.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.objectweb.asm_3.1.0.v200803061910.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.sat4j.core_2.1.1.v20090825.jar/META-INF/MANIFEST.MF: New file.
+	* dependencyManifests/org.sat4j.pb_2.1.1.v20090825.jar/META-INF/MANIFEST.MF: New file.
+
+2010-02-24  Andrew Overholt  <overholt@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkSystemJars.java:
+	Removed.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java:
+	Renamed for clarity.
+	* build.xml: Use new class name for ant task.
+
+2010-02-24  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Build ant task and run it to symlink to dependencies.  
+	* dependencies.properties: New file.  Map between Eclipse-included OSGi
+	dependencies and potential system locations.
+	* nonosgidependencies.properties: New file.  Map between Eclipse-included
+	non-OSGi dependencies and potential system locations.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: New 
+	file.  Ant task for symlinking to all non-OSGi JARs listed in
+	nonosgidependencies.properties.  
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkSystemJars.java: New
+	file.  Ant task for symlinking to all OSGi JARs listed in
+	dependencies.properties.
+
+2010-02-22  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #294557
+
+	* pdebuild/eclipse-pdebuild.sh: Maintain Eclipse's exit code (Niels
+	Thykier). 
+
+2010-02-22  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.sh: Propagate the error code from ant and fix in a call to a
+    dpkg-architecture (Niels Thykier).
+
+2010-02-22  Alexander Kurtakov  <akurtako@redhat.com>
+    Remove jetty5 dependency. (Niels Thykier)
+	* patches/eclipse-no-jetty5.patch: New file.
+	* build.xml: Apply no-jetty5.patch and remove jetty5 bundles.
+	* eclipse-build-generatedScripts.tar.bz2: Regenerated.
+	* pdebuild.xml: Don't build o.e.equinox.http.jetty_1.1.100.
+
+2010-02-19  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* ecf-filetransfer-build.properties: Removed.
+	* ecf-filetransfer-feature.xml: Removed.
+	* build.xml: Reduce the ecf section.
+
+2010-02-18  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* regenerateBootstrapFiles.sh: New file.(Fedora specific but let's at least keep it in the repo)
+	* build.xml: Don't build ecf. It's done in pdebuild now.
+	* eclipse-build-generatedScripts.tar.bz2: Regenerated.
+	* pdebuild.xml: Build ecf.
+
 2010-02-16  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #302256
 
 	* build.xml: Add -Xmx to JVM arguments when forking separate java
 	processes (Matt Whitlock).
+
+2010-02-16  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* pdebuild.properties: Fix properties to match 3.5.2 M-build.
+	* eclipse-build-generatedScripts.tar.bz2: Regenerated.
+
+2010-02-11  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/eclipse-add-archs-executable.patch: Re-generate.
+	* build.xml: Apply eclipse-add-arches-executable.patch in proper location.
+
+2010-02-11  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Remove patches present in 3.5.2.
+	* patches/eclipse-help-toolbar.patch: Removed.
+	* patches/gtk2.18zorder.patch: Removed.
+	* patches/swtbug290395-updatedialog.patch: Removed.
+	* patches/swtbug291128.patch: Removed.
+	* patches/swtbug296284-xulrunner192.patch: Removed.
+	* patches/transformclipping.patch: Removed.
+	* build.properties: Update for build towards 3.5.2.
+	* buildSDKSource.sh: Likewise. 
+	* patches/eclipse-add-archs-executable.patch: Likewise.
 
 2010-01-14  Andrew Overholt  <overholt@redhat.com>
 

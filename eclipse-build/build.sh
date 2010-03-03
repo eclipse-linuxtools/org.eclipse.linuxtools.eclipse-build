@@ -16,7 +16,7 @@ case ${arch} in
 		arch=ia64 ;;
 	mips*)
 		if which dpkg-architecture >/dev/null 2>&1; then
-			arch=`dpkg-architecture -q-qDEB_HOST_ARCH`
+			arch=`dpkg-architecture -qDEB_HOST_ARCH`
 		fi ;;
 	parisc*)
 		arch=PA_RISC ;;
@@ -39,4 +39,6 @@ esac
 DATE=`date +%Y%m%d%H%M%S`
 
 ant -DbuildArch=${arch} 2>&1 | tee build_${DATE}.log
+EXIT_CODE=$?
 echo "Build log is available in build_${DATE}.log"
+exit $?

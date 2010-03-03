@@ -1,7 +1,7 @@
 <project name="Pdebuild bootstrap" default="cleanGenerate" basedir=".">
 	<target name="cleanGenerate" depends="clean, createTarball" />
 	<property name="archsDir" value="additionalArchs" />
-	<property name="sourceDir" value="build/eclipse-R3_5_1-fetched-src" />
+	<property name="sourceDir" value="build/eclipse-3.5.2-src" />
 
 	<macrodef name="copyPlugin">
 		<attribute name="pluginName" />

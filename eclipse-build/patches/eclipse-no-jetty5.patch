@@ -1,0 +1,42 @@
+diff --git a/eclipse/features/master-equinox/feature.xml b/eclipse/features/master-equinox/feature.xml
+index ff7ccf1..d89663d 100644
+--- a/features/master-equinox/feature.xml
++++ b/features/master-equinox/feature.xml
+@@ -39,14 +39,14 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+-         
++         <!--
+     <plugin
+          id="org.eclipse.equinox.http.jetty"
+          download-size="0"
+          install-size="0"
+          version="1.1.100.qualifier" 
+          unpack="false"/>       
+-           
++           -->
+     <plugin
+          id="org.eclipse.equinox.http.jetty"
+          download-size="0"
+diff --git a/eclipse/features/master-jetty/feature.xml b/eclipse/features/master-jetty/feature.xml
+index a23c475..d33099e 100644
+--- a/features/master-jetty/feature.xml
++++ b/features/master-jetty/feature.xml
+@@ -17,14 +17,14 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+-
++<!--
+    <plugin
+          id="org.eclipse.equinox.http.jetty"
+          download-size="0"
+          install-size="0"
+          version="1.1.100.qualifier"
+          unpack="false"/>
+-
++-->
+    <plugin
+          id="org.eclipse.equinox.http.jetty"
+          download-size="0"

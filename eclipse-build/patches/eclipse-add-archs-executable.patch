@@ -1,5 +1,12 @@
---- features/org.eclipse.equinox.executable/target.build.properties.real	2009-10-21 14:21:08.843594049 +0300
-+++ features/org.eclipse.equinox.executable/target.build.properties	2009-10-21 14:22:18.142845083 +0300
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.equinox.executable
+Index: target.build.properties
+===================================================================
+RCS file: /cvsroot/rt/org.eclipse.equinox/framework/bundles/org.eclipse.equinox.executable/target.build.properties,v
+retrieving revision 1.16
+diff -u -r1.16 target.build.properties
+--- target.build.properties	7 May 2009 15:02:06 -0000	1.16
++++ target.build.properties	11 Feb 2010 21:05:52 -0000
 @@ -19,12 +19,48 @@
  root.win32.win32.ia64=file:contributed/win32/win32/ia64/launcher.exe
  root.win32.wpf.x86=file:bin/wpf/win32/x86/launcher.exe
@@ -51,23 +58,25 @@
  root.macosx.carbon.ppc=bin/carbon/macosx/ppc
  root.macosx.carbon.ppc.permissions.755=${launcherName}.app/Contents/MacOS/${launcherName}
  
-@@ -49,9 +85,6 @@
- root.solaris.gtk.x86=bin/gtk/solaris/x86
- root.solaris.gtk.sparc=bin/gtk/solaris/sparc
- 
--root.linux.gtk.x86_64=bin/gtk/linux/x86_64,gtk_root
--root.linux.gtk.x86_64.permissions.755=libcairo-swt.so
--
+@@ -55,4 +91,4 @@
  root.qnx.photon.x86=bin/photon/qnx/x86
  
  root.linux.motif.x86=bin/motif/linux/x86,motif_root
- 
---- features/org.eclipse.equinox.executable/feature.xml.real	2009-10-21 14:35:44.818598403 +0300
-+++ features/org.eclipse.equinox.executable/feature.xml	2009-10-21 14:37:07.063593607 +0300
-@@ -89,6 +89,66 @@
+-root.linux.motif.x86.permissions.755=libXm.so.2,libcairo-swt.so
+\ No newline at end of file
++root.linux.motif.x86.permissions.755=libXm.so.2,libcairo-swt.so
+Index: feature.xml
+===================================================================
+RCS file: /cvsroot/rt/org.eclipse.equinox/framework/bundles/org.eclipse.equinox.executable/feature.xml,v
+retrieving revision 1.15.2.1
+diff -u -r1.15.2.1 feature.xml
+--- feature.xml	29 Sep 2009 20:06:31 -0000	1.15.2.1
++++ feature.xml	11 Feb 2010 21:05:52 -0000
+@@ -88,6 +88,66 @@
+          version="0.0.0"
           fragment="true"/>
  
-    <plugin
++    <plugin
 +         id="org.eclipse.equinox.launcher.gtk.linux.alpha"
 +         os="linux"
 +         ws="gtk"
@@ -127,10 +136,9 @@
 +         version="0.0.0"
 +         fragment="true"/>
 +
-+   <plugin
+    <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.ppc"
           os="linux"
-          ws="gtk"
 @@ -98,6 +158,56 @@
           version="0.0.0"
           fragment="true"/>
@@ -144,7 +152,7 @@
 +         install-size="0"
 +         version="0.0.0"
 +         fragment="true"/>
-+	 
++
 +   <plugin
 +         id="org.eclipse.equinox.launcher.gtk.linux.s390"
 +         os="linux"
@@ -188,7 +196,7 @@
     <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.x86"
           os="linux"
-@@ -198,25 +308,5 @@
+@@ -198,24 +308,4 @@
           version="0.0.0"
           fragment="true"/>
  
@@ -212,5 +220,4 @@
 -         version="0.0.0"
 -         fragment="true"/>
 -
- 
  </feature>

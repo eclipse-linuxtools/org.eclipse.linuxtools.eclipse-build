@@ -1,0 +1,66 @@
+diff -up ./features/org.eclipse.platform/sourceTemplateFeature/build.properties.nosourcebundlesfordependencies ./features/org.eclipse.platform/sourceTemplateFeature/build.properties
+--- ./features/org.eclipse.platform/sourceTemplateFeature/build.properties.nosourcebundlesfordependencies	2010-02-26 13:45:43.000000000 -0500
++++ ./features/org.eclipse.platform/sourceTemplateFeature/build.properties	2010-02-26 13:46:34.000000000 -0500
+@@ -15,7 +15,7 @@ feature.xml,\
+ feature.properties,\
+ license.html
+ 
+-generate.feature@org.eclipse.rcp.source=org.eclipse.rcp,plugin@com.ibm.icu.source;version=4.0.1.qualifier;unpack="false"
++generate.feature@org.eclipse.rcp.source=org.eclipse.rcp
+ generate.feature@org.eclipse.equinox.p2.user.ui.source=org.eclipse.equinox.p2.user.ui,\
+ 	   plugin@org.eclipse.ecf.source;version=3.0.0.qualifier;unpack="false",\
+ 	   plugin@org.eclipse.ecf.ssl.source;version=1.0.0.qualifier;unpack="false",\
+@@ -24,9 +24,7 @@ generate.feature@org.eclipse.equinox.p2.
+ 	   plugin@org.eclipse.ecf.provider.filetransfer.source;version=3.0.0.qualifier;unpack="false",\
+ 	   plugin@org.eclipse.ecf.provider.filetransfer.ssl.source;version=1.0.0.qualifier;unpack="false",\
+ 	   plugin@org.eclipse.ecf.provider.filetransfer.httpclient.source;version=3.0.0.qualifier;unpack="false",\
+-	   plugin@org.eclipse.ecf.provider.filetransfer.httpclient.ssl.source;version=1.0.0.qualifier;unpack="false",\
+-	   plugin@org.apache.commons.codec.source;version=1.3.0.qualifier;unpack="false,\
+-	   plugin@org.apache.commons.httpclient.source;version=3.1.0.qualifier;unpack="false"   
++	   plugin@org.eclipse.ecf.provider.filetransfer.httpclient.ssl.source;version=1.0.0.qualifier;unpack="false"
+    
+ 
+ 
+@@ -35,4 +33,4 @@ generate.feature@org.eclipse.equinox.p2.
+ 
+ 
+ 
+-   
+\ No newline at end of file
++   
+diff -up ./features/org.eclipse.sdk/build.properties.nosourcebundlesfordependencies ./features/org.eclipse.sdk/build.properties
+--- ./features/org.eclipse.sdk/build.properties.nosourcebundlesfordependencies	2010-02-26 13:45:53.000000000 -0500
++++ ./features/org.eclipse.sdk/build.properties	2010-02-26 13:47:39.000000000 -0500
+@@ -11,26 +11,14 @@
+ bin.includes=epl-v10.html,eclipse_update_120.jpg,feature.xml,feature.properties,license.html
+ 
+ generate.feature@org.eclipse.platform.source=org.eclipse.platform,feature@org.eclipse.rcp.source,feature@org.eclipse.equinox.p2.user.ui.source;optional="true",plugin@org.eclipse.platform.doc.isv;unpack="false",\
+-  plugin@org.apache.ant.source;version=1.7.1.qualifier;unpack="false",\
+-  plugin@com.jcraft.jsch.source;version=0.1.41.qualifier;unpack="false",\
+   exclude@org.eclipse.platform.doc.user
+    
+ generate.feature@org.eclipse.jdt.source=org.eclipse.jdt, plugin@org.eclipse.jdt.doc.isv;unpack="false",\
+-plugin@org.junit.source;version=3.8.2.qualifier;unpack="false",\
+-plugin@org.hamcrest.core.source;version=1.1.0.qualifier;unpack="false",\
+-exclude@org.eclipse.jdt.doc.user
+-generate.feature@org.eclipse.pde.source=org.eclipse.pde,plugin@org.objectweb.asm.source;version=3.1.0.qualifier;unpack="false",\exclude@org.eclipse.pde.doc.user
++exclude@org.eclipse.jdt.doc.user,\
++exclude@org.junit4
++generate.feature@org.eclipse.pde.source=org.eclipse.pde,exclude@org.eclipse.pde.doc.user
+ generate.feature@org.eclipse.pde.p2.source=org.eclipse.pde.p2
+ generate.feature@org.eclipse.cvs.source=org.eclipse.cvs
+-generate.feature@org.eclipse.help.source=org.eclipse.help,\
+-  plugin@javax.servlet.source;version=2.5.0.qualifier;unpack="false",\
+-  plugin@javax.servlet.jsp.source;version=2.0.0.qualifier;unpack="false",\
+-  plugin@org.apache.jasper.source;version=5.5.17.qualifier;unpack="false",\
+-  plugin@org.apache.commons.el.source;version=1.0.0.qualifier;unpack="false",\
+-  plugin@org.apache.commons.logging.source;version=1.0.4.qualifier;unpack="false",\
+-  plugin@org.apache.lucene.source;version=1.9.1.qualifier;unpack="false",\
+-  plugin@org.apache.lucene.analysis.source;version=1.9.1.qualifier;unpack="false",\
+-  plugin@org.mortbay.jetty.util.source;version=6.1.15.qualifier;unpack="false",\
+-  plugin@org.mortbay.jetty.server.source;version=6.1.15.qualifier;unpack="false"
++generate.feature@org.eclipse.help.source=org.eclipse.help
+ 
+-generatedVersionLength=45
+\ No newline at end of file
++generatedVersionLength=45

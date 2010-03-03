@@ -1,6 +1,6 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property file="pdebuild.properties" />
-	<property name="sdkSource" value="build/eclipse-${buildTag}-fetched-src" />
+	<property name="sdkSource" value="build/eclipse-${label}-src" />
 	<target name="cleanBuild" depends="clean,zipPlugins2" />
 	<macrodef name="generateBuildScripts">
 		<attribute name="buildDirs" />
@@ -40,6 +40,16 @@
 		<file name="org.eclipse.equinox.frameworkadmin.equinox" />
 		<file name="org.eclipse.equinox.p2.jarprocessor" />
 		<file name="org.eclipse.equinox.security" />
+		<file name="org.eclipse.core.net" />
+		<file name="org.eclipse.equinox.concurrent" />
+		<file name="org.eclipse.ecf.ssl" />
+		<file name="org.eclipse.ecf.identity" />
+		<file name="org.eclipse.ecf" />
+		<file name="org.eclipse.ecf.filetransfer" />
+		<file name="org.eclipse.ecf.provider.filetransfer" />
+		<file name="org.eclipse.ecf.provider.filetransfer.ssl" />
+		<file name="org.eclipse.ecf.provider.filetransfer.httpclient" />
+		<file name="org.eclipse.ecf.provider.filetransfer.httpclient.ssl" />
 		<file name="org.eclipse.equinox.p2.repository" />
 		<file name="org.eclipse.equinox.p2.artifact.repository" />
 		<file name="org.eclipse.equinox.p2.metadata.repository" />
@@ -57,7 +67,6 @@
 		<file name="org.eclipse.osgi.services" />
 		<file name="org.eclipse.equinox.p2.console" />
 		<file name="org.eclipse.equinox.p2.director.app" />
-		<file name="org.eclipse.core.net" />
 		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.garbagecollector" />
 		<file name="org.eclipse.equinox.p2.exemplarysetup" />
@@ -72,7 +81,6 @@
 		-->
 	</filelist>
 	<filelist id="helpDirs" dir="${sdkSource}/plugins">
-		<file name="org.eclipse.equinox.http.jetty_1.1.100" />
 		<file name="org.eclipse.equinox.http.jetty_2.0.0" />
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
@@ -97,7 +105,6 @@
 	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
 		<include name="com.ibm.icu_*" />
-		<include name="org.eclipse.ecf*" />
 		<include name="org.apache.ant_*/**" />
 		<include name="org.mortbay.jetty*" />
 		<include name="org.apache.lucene*" />
@@ -105,7 +112,6 @@
 		<include name="org.hamcrest.core*" />
 		<include name="javax.servlet*" />
 		<include name="org.objectweb.asm*" />
-		<exclude name="*.source*" />
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
@@ -121,16 +127,8 @@
 	<fileset id="depsZips" dir="${sdkSource}/plugins" includes="**/*_*.zip" />
 	<target name="generateScripts">
 		<generateBuildScripts builddirs="depsDirs" rootdir="${sdkSource}" />
-		<!-- FIXME:  don't blindly use /tmp -->
-		<move file="${sdkSource}/plugins/org.eclipse.equinox.http.jetty_1.1.100"
-		      todir="/tmp" />
 		<eclipse.buildScript elements="plugin@org.eclipse.equinox.http.jetty"
 		                     significantVersionDigits="2.0.0"
-		                     builddirectory="${sdkSource}" />
-		<move file="/tmp/org.eclipse.equinox.http.jetty_1.1.100"
-		      todir="${sdkSource}/plugins" />
-		<eclipse.buildScript elements="plugin@org.eclipse.equinox.http.jetty"
-		                     significantVersionDigits="1.1.100"
 		                     builddirectory="${sdkSource}" />
 		<eclipse.buildScript elements="plugin@org.eclipse.help.base"
 		                     builddirectory="${sdkSource}" />

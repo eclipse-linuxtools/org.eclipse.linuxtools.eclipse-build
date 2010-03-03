@@ -178,7 +178,7 @@ do
              ;;
          ?)
              usage
-             exit
+             exit 1
              ;;
      esac
 done
@@ -283,6 +283,7 @@ if [ $testing != true ]; then
     $vmArgs
 
 else
+  echo "\
   java -cp $SDK/startup.jar \
     org.eclipse.core.launcher.Main \
     -application org.eclipse.ant.core.antRunner \
@@ -300,4 +301,7 @@ else
     -vmargs \
     -Duser.home=$homeDir \
     $vmArgs
+  "
 fi
+
+exit $?
