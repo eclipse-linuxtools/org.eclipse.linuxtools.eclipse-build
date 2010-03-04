@@ -109,6 +109,7 @@ find \( -name '*.exe' -o -name '*.dll' \) -delete
 find \( -name '*.jnilib' -o -name '*.sl' \) -delete
 find \( -name '*.a' -o -name '*.so' -o -name '*.so.2' \) -delete
 find features/org.eclipse.equinox.executable -name eclipse -delete
+find \( -name '*.cvsignore' \) -delete
 
 # Remove binary JARs
 find -name '*.jar' -delete

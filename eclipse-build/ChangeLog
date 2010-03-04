@@ -1,3 +1,7 @@
+2010-03-04  Andrew Overholt  <overholt@redhat.com>
+
+	* buildSDKSource.sh: Drop .cvsignore files.
+
 2010-03-03  Andrew Overholt  <overholt@redhat.com>
 
 	* Merge symlinkDependencies branch.
