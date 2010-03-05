@@ -21,6 +21,7 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 fetchTests="no"
+buildTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-upstreamSrcDrop <path to upstream srcIncluded zip>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
@@ -154,11 +155,15 @@ if [ ! -e "${baseBuilder}" ]; then
 fi
 
 # Build must be run from within o.e.r.eclipsebuilder checkout
-cd ${eclipsebuilder}
+cd ${eclipseBuilder}
 
 fetchDirectory="${workDirectory}"/fetch
 mkdir -p "${fetchDirectory}"
 rm -rf "${fetchDirectory}"/*
+
+fi
+
+if [ "${buildTests}" = "yes" ]; then
 
 java -jar \
 "${baseBuilder}"/plugins/org.eclipse.equinox.launcher_*.jar \
@@ -178,25 +183,24 @@ fetchSdkTestsFeature \
 -Duser.home="${homeDirectory}" \
 2>&1 | tee "${workDirectory}"/testsFetch.log
 
-cd "${fetchDirectory}"
-mkdir eclipse-sdktests-${label}-src
-mv * ${workDirectory}/eclipse-sdktests-${label}-src
-tar cjf "${workDirectory}"/eclipse-sdktests-${label}-src.tar.bz2 \
-  ${workDirectory}/eclipse-sdktests-${label}-src
+cd ${workDirectory}
+mkdir ${workDirectory}/eclipse-sdktests-${label}-src
+mv ${fetchDirectory}/* ${workDirectory}/eclipse-sdktests-${label}-src
+tar cjf ${workDirectory}/eclipse-sdktests-${label}-src.tar.bz2 \
+ eclipse-sdktests-${label}-src
 
-# Testing runtests and test.xml scripts which are not in org.eclipse.test
-cvs -d:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse co \
-  -r ${buildID} \
-  org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts
 scriptsDir=org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts
 testScripts=eclipse-sdktests-${label}-scripts
+
+# Testing runtests and test.xml scripts which are not in org.eclipse.test
+rm -rf org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts/*
+cvs -d ${cvsRepo} co -r ${buildID} ${scriptsDir}
+
 mkdir ${testScripts}
 mv ${scriptsDir}/runtests ${testScripts}
 mv ${scriptsDir}/test.xml ${testScripts}
 rm -rf org.eclipse.releng.eclipsebuilder
-tar cjf \
-  "${workDirectory}"/eclipse-sdktests-${label}-fetched-scripts.tar.bz2 \
-  ${testScripts}
+tar cjf ${workDirectory}/eclipse-sdktests-${label}-scripts.tar.bz2 ${testScripts}
 
 fi
 #-------------- / tests / --------------------#

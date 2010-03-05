@@ -1,3 +1,8 @@
+2010-03-05  Roland Grunberg  <rgrunber@redhat.com>
+
+	* buildSDKSource.sh: Clean up script to build tarball of sdk tests
+	for 3.5.2.
+
 2010-03-04  Andrew Overholt  <overholt@redhat.com>
 
 	* buildSDKSource.sh: Drop .cvsignore files.
