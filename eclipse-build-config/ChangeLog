@@ -1,3 +1,7 @@
+2010-03-06  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* productFiles/sdk/sdk.product: Do not break platform provisioning.
+
 2010-02-11  Andrew Overholt  <overholt@redhat.com>
 
 	* productFiles/sdk/sdk.product: Update for 3.5.2.
