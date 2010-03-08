@@ -821,8 +821,8 @@
 
 		<!-- Move config file to /etc -->
 		<mkdir dir="${destDir}/etc" />
-		<move file="${destDir}${prefix}/lib/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
-		<symlink link="${destDir}${prefix}/lib/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
+		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
+		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
 		
 	</target>
 

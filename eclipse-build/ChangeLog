@@ -1,3 +1,7 @@
+2010-03-08  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Fix multilib install.
+
 2010-03-08  Andrew Overholt  <overholt@redhat.com>
 
 	* buildSDKSource.sh: Revert to fetching from CVS ourselves to get
