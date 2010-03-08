@@ -1,3 +1,8 @@
+2010-03-08  Andrew Overholt  <overholt@redhat.com>
+
+	* buildEclipseBuildSource.sh: Remove .settings and .project when creating
+	eclipse-build tarball.
+
 2010-03-05  Roland Grunberg  <rgrunber@redhat.com>
 
 	* buildSDKSource.sh: Clean up script to build tarball of sdk tests

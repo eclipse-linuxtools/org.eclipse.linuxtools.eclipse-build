@@ -34,6 +34,7 @@ cd "${workDirectory}"
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build
 mv eclipse-build eclipse-build-${eclipsebuildTag}
 cd eclipse-build-${eclipsebuildTag}
+rm -rf .project .settings
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-config
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-feature
 cd ..
