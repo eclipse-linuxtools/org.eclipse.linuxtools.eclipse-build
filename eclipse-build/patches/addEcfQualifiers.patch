@@ -1,0 +1,14 @@
+--- pluginVersions.properties.withoutecf	2010-03-10 12:42:28.624335656 -0500
++++ pluginVersions.properties	2010-03-10 12:44:11.032610032 -0500
+@@ -290,3 +290,11 @@
+ org.eclipse.core.filebuffers,0.0.0=v20090526-2000
+ org.eclipse.equinox.ip,0.0.0=R35x_v20090803
+ org.eclipse.jdt,0.0.0=r352_v20100106-0800
++org.eclipse.ecf,0.0.0=v20090831-1906
++org.eclipse.ecf.filetransfer,0.0.0=v20090831-1906
++org.eclipse.ecf.identity,0.0.0=v20090831-1906
++org.eclipse.ecf.provider.filetransfer,0.0.0=v20090831-1906
++org.eclipse.ecf.provider.filetransfer.httpclient,0.0.0=v20090831-1906
++org.eclipse.ecf.provider.filetransfer.httpclient.ssl,0.0.0=v20090831-1906
++org.eclipse.ecf.provider.filetransfer.ssl,0.0.0=v20090831-1906
++org.eclipse.ecf.ssl,0.0.0=v20090831-1906

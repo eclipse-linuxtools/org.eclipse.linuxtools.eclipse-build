@@ -1,3 +1,11 @@
+2010-03-10  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #305002
+
+	* patches/addEcfQualifiers.patch: New file.  Make ECF plugins have
+	qualifiers matching upstream.
+	* build.xml: Apply above patch.
+
 2010-03-08  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Fix multilib install.
