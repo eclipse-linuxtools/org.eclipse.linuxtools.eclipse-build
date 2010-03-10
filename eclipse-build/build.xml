@@ -817,7 +817,13 @@
 		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
 		<property name="startupjarpath" refid="startupjar" />
 		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar" resource="plugins/${startupjarpath}" />
-
+		<!-- Create the "swt.jar" and friends symlinks  -->
+		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.swt.gtk.linux.${buildArch}_*" id="swtjar" />
+		<property name="swtjarpath" refid="swtjar" />
+		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt-gtk-3.5.2.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt-gtk.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt.jar" resource="plugins/${swtjarpath}" />
+		
 		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Move config file to /etc -->

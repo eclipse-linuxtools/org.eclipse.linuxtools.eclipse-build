@@ -1,3 +1,7 @@
+2010-03-10  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Create swt symlinks on install.
+
 2010-03-10  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #305002
