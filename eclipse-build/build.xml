@@ -648,11 +648,6 @@
 			<arg value="-t${timestamp}" />
 		</exec>
 		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
-		<copy failonerror="false" todir="${testResultDir}">
-			<fileset dir="${buildDirectory}/results-${timestamp}">
-				<include name="**/*" />
-			</fileset>
-		</copy>
 		<!-- Copy over the XML to generate a top-level report for all of the tests -->
 		<mkdir dir="${testResultDir}/origXml" />
 		<copy failonerror="false" todir="${testResultDir}/origXml">
@@ -674,7 +669,7 @@
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${buildDirectory}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">

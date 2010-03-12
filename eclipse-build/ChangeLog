@@ -1,5 +1,9 @@
 2010-03-12  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Remove unnecessary copying of test result XML files.
+
+2010-03-12  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Remove provision.tests task; do test provisioning in
 	runtests.sh.
 	* runtests.sh: Re-factor.  Clean test installation between runs of each
