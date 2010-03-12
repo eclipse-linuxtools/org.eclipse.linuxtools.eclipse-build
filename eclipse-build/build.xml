@@ -632,49 +632,7 @@
 		<echo file="provision.sdk-stamp" />
 	</target>
 
-	<target name="provision.tests" depends="buildTests" unless="provision.tests.complete">
-		<mkdir dir="${buildDirectory}/testsInstallation" />
-		<copy todir="${buildDirectory}/testsInstallation/eclipse" overwrite="true">
-			<fileset dir="${buildDirectory}/installation" />
-		</copy>
-		<!-- To prevent contamination for those with test framework installed on their system -->
-		<exec executable="/bin/sed">
-			<arg value="-i" />
-			<arg value="/dropins/d" />
-			<arg value="${buildDirectory}/testsInstallation/eclipse/eclipse.ini" />
-		</exec>
-		<!--
-		<echo message="Installing test framework into:  ${buildDirectory}/testsInstallation"/>
-		<antcall target="run.director">
-			<param name="p2.director.installIU" value="org.eclipse.test.feature.group" />
-			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation" />
-			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
-			<param name="p2.os" value="linux" />
-			<param name="p2.ws" value="gtk" />
-			<param name="p2.arch" value="${buildArch}" />
-			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
-		</antcall>
--->
-		<echo message="Installing SDK tests into:  ${buildDirectory}/testsInstallation" />
-		<antcall target="run.installed.director">
-			<param name="directorToRun" value="${buildDirectory}/testsInstallation/eclipse/eclipse" />
-			<param name="p2.director.installIU" value="org.eclipse.sdk.tests.feature.group" />
-			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path" value="${buildDirectory}/testsInstallation/eclipse" />
-			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
-			<param name="p2.os" value="linux" />
-			<param name="p2.ws" value="gtk" />
-			<param name="p2.arch" value="${buildArch}" />
-			<param name="p2.repo" value="${testsBuildDirectory}/buildRepo" />
-		</antcall>
-		<copy preservelastmodified="true" file="${basedir}/junitHelper.xml" todir="${buildDirectory}/testsInstallation" />
-		<copy preservelastmodified="true" file="${basedir}/runtests.sh" todir="${buildDirectory}/testsInstallation" />
-		<copy preservelastmodified="true" file="${basedir}/eclipse-tests-vncpwd" todir="${buildDirectory}/testsInstallation" />
-		<echo file="provision.tests-stamp" />
-	</target>
-
-	<target name="runTests" depends="provision.tests">
+	<target name="runTests" depends="buildTests">
 		<echo message="###################################################################" />
 		<echo message="#                                                                 #" />
 		<echo message="#             Please post and discuss results here:               #" />
@@ -685,13 +643,13 @@
 		<tstamp>
 			<format property="timestamp" pattern="yyyyMMddHHmmss" />
 		</tstamp>
-		<chmod perm="ugo+rx" file="${buildDirectory}/testsInstallation/runtests.sh" />
-		<exec executable="${buildDirectory}/testsInstallation/runtests.sh" dir="${buildDirectory}/testsInstallation">
+		<chmod perm="ugo+rx" file="${basedir}/runtests.sh" />
+		<exec executable="${basedir}/runtests.sh" dir="${basedir}">
 			<arg value="-t${timestamp}" />
 		</exec>
-		<property name="testResultDir" value="${basedir}/testResults-${timestamp}" />
+		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
 		<copy failonerror="false" todir="${testResultDir}">
-			<fileset dir="${buildDirectory}/testsInstallation/results-${timestamp}">
+			<fileset dir="${buildDirectory}/results-${timestamp}">
 				<include name="**/*" />
 			</fileset>
 		</copy>
@@ -716,7 +674,7 @@
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${buildDirectory}/testsInstallation/eclipse/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		<xslt style="${buildDirectory}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">

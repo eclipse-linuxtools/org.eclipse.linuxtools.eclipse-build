@@ -11,7 +11,6 @@ Run Eclipse SDK tests
 
 Optional arguments:
    -h      Show this help message
-   -e      Eclipse SDK location
    -g      Don't run the tests headless
    -d      Allow remote connection to test runs' JVM
    -t      Timestamp string with which to tag the results
@@ -73,17 +72,28 @@ function init() {
 	# Defaults
 	debugTests=0
 	headless=1
-	eclipseHome=$(pwd)/eclipse
-	cp -rp ${eclipseHome}/configuration{,.knowngood}
 	testFramework=org.eclipse.test_3.2.0
-	libraryXml=${eclipseHome}/plugins/${testFramework}/library.xml
 	if [ -z ${timestamp} ]; then
 		timestamp=$(date "+%Y%m%d%H%M%S")
 	fi
-	results=$(pwd)/results-${timestamp}
-	datadir=$(pwd)/testDataDir
-	homedir=$(pwd)/home
-	testhome=$(pwd)/testhome
+	label=$(grep label build.properties | sed s/label=//)
+	testsRepo=$(pwd)/testsBuild/eclipse-sdktests-${label}-src/buildRepo/
+
+	testsParent=$(pwd)/tests_${timestamp}
+        mkdir -p ${testsParent}
+        cp -rp $(pwd)/build/eclipse-${label}-src/installation ${testsParent}/testsinstallation.clean
+	cleanInstall=${testsParent}/testsinstallation.clean
+        workspace=${testsParent}/workspace
+
+	eclipseHome=${cleanInstall}
+        installTestFramework
+
+	eclipseHome=${testsParent}/installation
+
+	results=${testsParent}/results
+	datadir=${testsParent}/testDataDir
+	homedir=${testsParent}/home
+	testhome=${testsParent}/testhome
 
 	rm -rf $datadir $homedir $testhome
 	mkdir -p $datadir $homedir $testhome $results/{xml,logs,html}
@@ -161,10 +171,12 @@ function setArch() {
 }
 
 function runTestSuite() {
-	$eclipseHome/eclipse \
+	libraryXml=${eclipseHome}/plugins/${testFramework}/library.xml
+
+	${eclipseHome}/eclipse \
 	-application org.eclipse.ant.core.antRunner \
 	-file $testDriver \
-	-Declipse-home=$eclipseHome \
+	-Declipse-home=${eclipseHome} \
 	-Dos=linux \
 	-Dws=gtk \
 	-Darch=${arch} \
@@ -179,8 +191,7 @@ function runTestSuite() {
 }
 
 function cleanAfterTestSuite() {
-	rm -rf ${datadir} ${homedir} ${testhome} ${eclipseHome}/configuration
-	cp -rp ${eclipseHome}/configuration{.knowngood,}
+	rm -rf ${datadir} ${homedir} ${testhome}
 	mkdir -p ${datadir} ${homedir} ${testhome}
 }
 
@@ -208,33 +219,68 @@ function cleanupXvnc() {
 	fi
 }
 
-function findAndRunTestPlugins() {
-	for plugin in $(ls ${eclipseHome}/plugins | grep org.eclipse.*tests); do
-		if [ ! $(echo ${plugin} | grep .source_) ]; then
-			pluginName=$(echo ${plugin} | sed "s/_.*//")
-			pluginVersion=$(echo ${plugin} | sed "s/${pluginName}_//")
-			echo ${testPluginsToRun} | grep -q ${pluginName}
-			if [ $? == 0 ]; then
-				echo "Running ${pluginName} (${pluginVersion})"
-				testDriver="${eclipseHome}/plugins/${pluginName}_${pluginVersion}/test.xml"
-				if [ ${pluginName} == "org.eclipse.swt.tests" ]; then
-					echo "plugin-path=${eclipseHome}/plugins/${pluginName}_${pluginVersion}" >> ${properties}
-				fi
-				runTestSuite
-				cleanAfterTestSuite
-				mv ${results}/*.txt ${results}/logs
-				xmlDir=${results}/tmpXml
-				mkdir -p ${xmlDir}
-				mv ${results}/*.xml ${xmlDir}
-				genHtml
-				mv ${xmlDir}/* ${results}/xml
-				rm -rf ${xmlDir}
-				if [ ${pluginName} == "org.eclipse.swt.tests" ]; then
-					sed -i "/plugin-path/d" ${properties}
-				fi
-			fi
-		fi
+function runTestPlugins() {
+	for plugin in $testPluginsToRun; do
+		cleanAndSetup
+		installTestPlugin
+		rm -rf ${workspace}
+		mkdir -p ${workspace}
+		runTestPlugin
 	done
+}
+
+function cleanAndSetup() {
+  rm -rf ${eclipseHome}
+  rm -rf ${workspace}
+
+  cp -rp ${cleanInstall} ${eclipseHome}
+  workspace=${testsParent}/workspace
+}
+
+function installTestPlugin() {
+  IUtoInstall=${plugin}
+  installIU
+}
+
+function installIU() {
+  pushd ${eclipseHome} > /dev/null
+    ./eclipse \
+      -nosplash \
+      -application org.eclipse.equinox.p2.director \
+      -data ${workspace} \
+      -consoleLog \
+      -flavor tooling \
+      -installIU ${IUtoInstall} \
+      -profileProperties org.eclipse.update.install.features=true \
+      -metadatarepository file:${testsRepo} \
+      -artifactrepository file:${testsRepo}
+  popd > /dev/null
+}
+
+function installTestFramework() {
+  IUtoInstall=org.eclipse.test.feature.group
+  installIU
+}
+
+function runTestPlugin() {
+	pluginVersion=$(ls ${eclipseHome}/plugins | grep ${plugin}_ | sed s/${plugin}_//)
+	echo "Running ${plugin} (${pluginVersion})"
+	testDriver="${eclipseHome}/plugins/${plugin}_${pluginVersion}/test.xml"
+	if [ ${plugin} == "org.eclipse.swt.tests" ]; then
+		echo "plugin-path=${eclipseHome}/plugins/${plugin}_${pluginVersion}" >> ${properties}
+	fi
+	runTestSuite
+	cleanAfterTestSuite
+	mv ${results}/*.txt ${results}/logs
+	xmlDir=${results}/tmpXml
+	mkdir -p ${xmlDir}
+	mv ${results}/*.xml ${xmlDir}
+	genHtml
+	mv ${xmlDir}/* ${results}/xml
+	rm -rf ${xmlDir}
+	if [ ${plugin} == "org.eclipse.swt.tests" ]; then
+		sed -i "/plugin-path/d" ${properties}
+	fi
 }
 
 function genHtml() {
@@ -247,9 +293,6 @@ do
      case $OPTION in
          d)
              debugTests=1
-             ;;
-         e)
-             eclipseHome=$OPTARG
              ;;
          g)
              headless=0
@@ -267,5 +310,5 @@ done
 init
 findXvncAndSetDisplay
 setArch
-findAndRunTestPlugins
+runTestPlugins
 cleanupXvnc

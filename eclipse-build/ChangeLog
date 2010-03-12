@@ -1,3 +1,10 @@
+2010-03-12  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Remove provision.tests task; do test provisioning in
+	runtests.sh.
+	* runtests.sh: Re-factor.  Clean test installation between runs of each
+	test suite. (Roland Grunberg)
+
 2010-03-10  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Create swt symlinks on install.
