@@ -1,3 +1,8 @@
+2010-03-18  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/droppluginversions.patch: New file..
+	* build.xml: Apply patch to match upstream 3.5.2 qualifiers.
+
 2010-03-12  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Remove unnecessary copying of test result XML files.

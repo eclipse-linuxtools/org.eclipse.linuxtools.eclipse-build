@@ -1,0 +1,65 @@
+--- pluginVersions.properties.sav	2010-03-18 13:10:05.000000000 +0200
++++ pluginVersions.properties	2010-03-18 13:14:44.477528467 +0200
+@@ -27,7 +27,7 @@ org.eclipse.equinox.simpleconfigurator.m
+ org.eclipse.pde.api.tools.ui,0.0.0=v20090820
+ org.eclipse.jdt.debug,0.0.0=v20090526
+ org.eclipse.sdk.examples,0.0.0=v20080612
+-org.eclipse.pde,0.0.0=v20090527
++org.eclipse.pde,0.0.0=v201002111343
+ org.eclipse.compare.core,0.0.0=I20090430-0408
+ org.eclipse.equinox.p2.engine,0.0.0=R35x_v20091117
+ org.eclipse.equinox.launcher.motif.hpux.ia64_32,0.0.0=v20090519
+@@ -38,7 +38,7 @@ org.eclipse.equinox.p2.ui.admin,0.0.0=v2
+ org.eclipse.equinox.transforms.xslt,0.0.0=R35x_v20100209
+ org.eclipse.jface.databinding,0.0.0=M20090826-0800
+ org.eclipse.equinox.p2.touchpoint.eclipse,0.0.0=R35x_20090820-1821
+-org.eclipse.help.base,0.0.0=v20090526
++org.eclipse.help.base,0.0.0=v201002111343
+ org.eclipse.ui.presentations.r21,0.0.0=M20091015-0930
+ org.eclipse.equinox.frameworkadmin,0.0.0=v20090520-1905
+ org.eclipse.ui.intro,0.0.0=v20100111_35x
+@@ -76,7 +76,7 @@ org.eclipse.team.ui,0.0.0=I20090430-0408
+ org.eclipse.equinox.p2.metadata,0.0.0=R35x_v20100112
+ org.eclipse.swt.cocoa.macosx.x86_64,0.0.0=v3557f
+ org.eclipse.jdt.compiler.tool,0.0.0=v_981_R35x
+-org.eclipse.platform,0.0.0=R35x_v20100121
++org.eclipse.platform,0.0.0=v201002111343
+ org.eclipse.core.databinding.observable,0.0.0=M20090902-0800
+ org.eclipse.team.examples.filesystem,0.0.0=I20090210-0800
+ org.eclipse.pde.core,0.0.0=v20100104
+@@ -191,7 +191,7 @@ org.eclipse.pde.api.tools.ee.javase16,0.
+ org.eclipse.compare.win32,0.0.0=I20090430-0408
+ org.eclipse.equinox.p2.installer,0.0.0=R35x_v20090717
+ org.eclipse.debug.examples.core,0.0.0=v20090504
+-org.eclipse.rcp,0.0.0=R35x_v20100119
++org.eclipse.rcp,0.0.0=v201002111343
+ org.eclipse.pde.ds.core,0.0.0=v20100118
+ org.eclipse.equinox.registry,0.0.0=v20090520-1800
+ org.eclipse.ui.examples.readmetool,0.0.0=I20090526-2000
+@@ -233,7 +233,7 @@ org.eclipse.update.configurator,0.0.0=v2
+ org.eclipse.core.filesystem.win32.x86,0.0.0=v20080604-1400
+ org.eclipse.equinox.p2.core,0.0.0=R35x_v20090819
+ org.eclipse.swt.examples,0.0.0=v3557f
+-org.eclipse.cvs,0.0.0=R35x_v20100119
++org.eclipse.cvs,0.0.0=v201002111343
+ org.eclipse.swt.gtk.linux.x86,0.0.0=v3557f
+ org.eclipse.equinox.log,0.0.0=v20090520-1800
+ org.eclipse.equinox.jmx.client,0.0.0=v20070515
+@@ -250,7 +250,7 @@ org.eclipse.platform.doc.user,0.0.0=r352
+ org.eclipse.equinox.security.macosx,0.0.0=v20090520-1800
+ org.eclipse.equinox.supplement,0.0.0=v20090518
+ org.eclipse.team.cvs.ssh,0.0.0=I20090508-2000
+-org.eclipse.sdk,0.0.0=R35x_v20100204
++org.eclipse.sdk,0.0.0=v201002111343
+ org.eclipse.jsch.ui,0.0.0=r35x_20100210-1114
+ org.eclipse.core.filesystem.win32.x86_64,0.0.0=v20090316-0910
+ org.eclipse.equinox.security.win32.x86,0.0.0=v20090520-1800
+@@ -289,7 +289,7 @@ org.eclipse.equinox.p2.ui.sdk.scheduler,
+ org.eclipse.ui.editors,0.0.0=v20090527-2000
+ org.eclipse.core.filebuffers,0.0.0=v20090526-2000
+ org.eclipse.equinox.ip,0.0.0=R35x_v20090803
+-org.eclipse.jdt,0.0.0=r352_v20100106-0800
++org.eclipse.jdt,0.0.0=v201002111343
+ org.eclipse.ecf,0.0.0=v20090831-1906
+ org.eclipse.ecf.filetransfer,0.0.0=v20090831-1906
+ org.eclipse.ecf.identity,0.0.0=v20090831-1906
