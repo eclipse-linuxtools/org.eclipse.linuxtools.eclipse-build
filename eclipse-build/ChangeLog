@@ -1,5 +1,9 @@
 2010-03-18  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* buildEclipseBuildSource.sh: Produce bzipped tarballs.
+	
+2010-03-18  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* patches/droppluginversions.patch: New file..
 	* build.xml: Apply patch to match upstream 3.5.2 qualifiers.
 

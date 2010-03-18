@@ -2,9 +2,9 @@
 
 baseDir=$(pwd)
 workDirectory=
-eclipsebuildTag="R0_3_1"
+eclipsebuildTag="0.5.0"
 
-usage="usage:  <eclipse-build tag (ex. R0_3_1)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
+usage="usage:  <eclipse-build tag (ex. 0.5.0)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
 
 while [ $# -gt 0 ]
 do
@@ -38,7 +38,7 @@ rm -rf .project .settings
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-config
 svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-feature
 cd ..
-tar czf eclipse-build-${eclipsebuildTag}.tar.gz eclipse-build-${eclipsebuildTag}
+tar caf eclipse-build-${eclipsebuildTag}.tar.bz2 eclipse-build-${eclipsebuildTag}
 cd "${baseDir}"
 
-echo "Built ${workDirectory}/eclipse-build-${eclipsebuildTag}.tar.gz"
+echo "Built ${workDirectory}/eclipse-build-${eclipsebuildTag}.tar.bz2"
