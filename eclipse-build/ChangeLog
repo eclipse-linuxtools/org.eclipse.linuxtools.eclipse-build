@@ -1,5 +1,12 @@
 2010-04-13  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #308267
+
+	* build.xml: Apply patch to allow specification of another sysconf dir
+	(as opposed to /etc).  /etc is the still the default.
+
+2010-04-13  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #308247
 
 	* pdebuild.properties: Apply patch to allow building against Sun JVM. 

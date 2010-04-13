@@ -54,6 +54,7 @@
 
 	<property name="destDir" value="" />
 	<property name="prefix" value="/usr/local" />
+	<property name="sysconfdir" value="/etc" />
 	<!-- Do we want /usr/lib64 if it's a 64-bit architecture? -->
 	<property name="multilib" value="false" />
 	<condition property="setLib64">
@@ -781,9 +782,9 @@
 		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Move config file to /etc -->
-		<mkdir dir="${destDir}/etc" />
-		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
-		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
+		<mkdir dir="${destDir}${sysconfdir}" />
+		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}${sysconfdir}/eclipse.ini" />
+		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="${sysconfdir}/eclipse.ini" />
 		
 	</target>
 
