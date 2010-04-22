@@ -1,0 +1,20 @@
+--- OptionTests.java	2010-04-21 17:09:43.787530036 -0500
++++ OptionTests-new.java	2010-04-21 17:06:08.739406950 -0500
+@@ -27,7 +27,7 @@
+ 	
+ 	protected static final String UNKNOWN_ARG= "Unknown argument: ";
+ 	protected static final String START_OF_HELP= "ant [options] [target [target2 [target3] ...]]";
+-	protected static final String VERSION= "Apache Ant version 1.7.1 compiled on June 27 2008";
++	protected static final String VERSION= "Apache Ant version 1.7.1";
+ 	protected static final String PLUGIN_VERSION= "org.apache.ant_1.7.1";
+ 	 
+ 	public OptionTests(String name) {
+@@ -58,7 +58,7 @@
+ 	public void testVersion() throws CoreException {
+ 		run("TestForEcho.xml", new String[]{"-version"});
+ 		assertTrue("One message should have been logged", AntTestChecker.getDefault().getMessagesLoggedCount() == 1);
+-		assertTrue("Version is incorrect", VERSION.equals(getLastMessageLogged()));
++		assertTrue("Version is incorrect", getLastMessageLogged().startsWith(VERSION));
+ 	}
+ 	
+ 	/**

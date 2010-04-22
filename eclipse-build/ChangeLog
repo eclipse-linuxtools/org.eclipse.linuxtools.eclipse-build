@@ -1,3 +1,10 @@
+2010-04-22  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #309992
+
+	* build.xml: Apply patch to make ant core tests work with different ant
+	build dates (Chris Aniszczyk).
+
 2010-04-13  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #308267
