@@ -1,9 +1,19 @@
+2010-04-23  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #309993
+
+	* build.xml: Apply patch to make ant ui tests work with different ant
+	build dates.  Fix patch application root for ant core tests patch.
+	* patches/tests-org.eclipse.ant.tests.ui.patch: New file.
+	* patches/tests-org.eclipse.ant.tests.core.patch: Fix patch root.
+
 2010-04-22  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #309992
 
 	* build.xml: Apply patch to make ant core tests work with different ant
 	build dates (Chris Aniszczyk).
+	* patches/tests-org.eclipse.ant.tests.core.patch: New file.
 
 2010-04-13  Andrew Overholt  <overholt@redhat.com>
 

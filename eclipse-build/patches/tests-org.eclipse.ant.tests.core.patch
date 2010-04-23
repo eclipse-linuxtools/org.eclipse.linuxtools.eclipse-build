@@ -1,5 +1,12 @@
---- OptionTests.java	2010-04-21 17:09:43.787530036 -0500
-+++ OptionTests-new.java	2010-04-21 17:06:08.739406950 -0500
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.ant.tests.core
+Index: tests/org/eclipse/ant/tests/core/tests/OptionTests.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.ant.tests.core/tests/org/eclipse/ant/tests/core/tests/OptionTests.java,v
+retrieving revision 1.67.2.2
+diff -u -r1.67.2.2 OptionTests.java
+--- tests/org/eclipse/ant/tests/core/tests/OptionTests.java	9 Nov 2009 17:22:09 -0000	1.67.2.2
++++ tests/org/eclipse/ant/tests/core/tests/OptionTests.java	23 Apr 2010 12:42:41 -0000
 @@ -27,7 +27,7 @@
  	
  	protected static final String UNKNOWN_ARG= "Unknown argument: ";

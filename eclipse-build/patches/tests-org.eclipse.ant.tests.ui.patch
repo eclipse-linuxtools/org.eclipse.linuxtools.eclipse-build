@@ -1,0 +1,42 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.ant.tests.ui
+Index: Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.ant.tests.ui/Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java,v
+retrieving revision 1.12
+diff -u -r1.12 PropertyTests.java
+--- Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	13 Aug 2008 15:32:16 -0000	1.12
++++ Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	23 Apr 2010 12:58:55 -0000
+@@ -24,7 +24,7 @@
+ 
+ public class PropertyTests extends AbstractAntDebugTest {
+ 	
+-	private static final String ANT_VERSION = "Apache Ant version 1.7.1 compiled on June 27 2008";
++	private static final String ANT_VERSION = "Apache Ant version 1.7.1";
+ 
+     public PropertyTests(String name) {
+ 		super(name);
+@@ -91,7 +91,7 @@
+ 			AntProperty property= frame.findProperty("ant.home");
+ 			assertNotNull(property);
+ 			
+-			assertProperty(thread, "ant.version", ANT_VERSION);
++			assertPropertyStartsWith(thread, "ant.version", ANT_VERSION);
+ 			assertProperty(thread, "ant.project.name", "debugEcho");
+ 		} finally {
+ 			terminateAndRemove(thread);
+@@ -149,4 +149,13 @@
+ 		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
+ 		return frame;
+ 	}
++	
++	private AntStackFrame assertPropertyStartsWith(AntThread thread, String propertyName, String propertyValue) throws DebugException {
++		AntStackFrame frame = (AntStackFrame)thread.getTopStackFrame();
++		AntProperty property= frame.findProperty(propertyName);
++		assertNotNull("Did not find property: " + propertyName, property);
++		AntValue value= (AntValue) property.getValue();
++		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), value.getValueString().startsWith(propertyValue));
++		return frame;
++	}
+ }
+\ No newline at end of file
