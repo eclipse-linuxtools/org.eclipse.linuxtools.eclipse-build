@@ -1,3 +1,8 @@
+2010-04-23  Roland Grunberg  <rgrunber@redhat.com>
+
+	* runtests.sh: Extract eclipse-${label}-delta-pack for use by certain
+	tests in org.eclipse.pde.build.tests.
+
 2010-04-23  Andrew Overholt  <overholt@redhat.com>
 
 	* patches/tests-org.eclipse.ant.tests.ui.patch: Better change to only

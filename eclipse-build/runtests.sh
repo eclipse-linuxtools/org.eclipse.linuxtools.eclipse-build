@@ -98,6 +98,20 @@ function init() {
 	rm -rf $datadir $homedir $testhome
 	mkdir -p $datadir $homedir $testhome $results/{xml,logs,html}
 
+	# improves test cases (but not required) for org.eclipse.pde.build.tests
+	echo "${testPluginsToRun}" | grep -q 'org.eclipse.pde.build.tests'
+	if [ $? -eq 0 ]; then
+		deltapackZip=$(pwd)/eclipse-${label}-delta-pack.zip
+		mkdir -p ${testsParent}/deltapack
+		if [ -e ${deltapackZip} ]; then
+			unzip -d ${testsParent}/deltapack ${deltapackZip}
+		else
+			echo "eclipse-${label}-delta-pack was not found at ${deltapackZip}."
+			echo "Some failures should be expected in org.eclipse.pde.build.tests."
+		fi
+	fi
+	
+
 	properties=$(pwd)/sdk-tests.properties
 	rm -f $properties
 	echo "data-dir=$datadir" >> $properties
