@@ -1,5 +1,10 @@
 2010-04-23  Andrew Overholt  <overholt@redhat.com>
 
+	* patches/tests-org.eclipse.ant.tests.ui.patch: Better change to only
+	check start of version string.
+
+2010-04-23  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #309993
 
 	* build.xml: Apply patch to make ant ui tests work with different ant

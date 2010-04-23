@@ -6,7 +6,7 @@ RCS file: /cvsroot/eclipse/org.eclipse.ant.tests.ui/Ant Debug Tests/org/eclipse/
 retrieving revision 1.12
 diff -u -r1.12 PropertyTests.java
 --- Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	13 Aug 2008 15:32:16 -0000	1.12
-+++ Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	23 Apr 2010 12:58:55 -0000
++++ Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	23 Apr 2010 17:22:56 -0000
 @@ -24,7 +24,7 @@
  
  public class PropertyTests extends AbstractAntDebugTest {
@@ -21,22 +21,31 @@ diff -u -r1.12 PropertyTests.java
  			assertNotNull(property);
  			
 -			assertProperty(thread, "ant.version", ANT_VERSION);
-+			assertPropertyStartsWith(thread, "ant.version", ANT_VERSION);
++			assertProperty(thread, "ant.version", ANT_VERSION, false);
  			assertProperty(thread, "ant.project.name", "debugEcho");
  		} finally {
  			terminateAndRemove(thread);
-@@ -149,4 +149,13 @@
- 		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
+@@ -140,13 +140,20 @@
+ 			removeAllBreakpoints();
+ 		}
+ 	}
+-
++	
+ 	private AntStackFrame assertProperty(AntThread thread, String propertyName, String propertyValue) throws DebugException {
++		return assertProperty(thread, propertyName, propertyValue, true);
++	}
++	
++	private AntStackFrame assertProperty(AntThread thread, String propertyName, String propertyValue, boolean checkFullProperty) throws DebugException {
+ 		AntStackFrame frame = (AntStackFrame)thread.getTopStackFrame();
+ 		AntProperty property= frame.findProperty(propertyName);
+ 		assertNotNull("Did not find property: " + propertyName, property);
+ 		AntValue value= (AntValue) property.getValue();
+-		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
++		if (checkFullProperty)
++			assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
++		else
++			assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), value.getValueString().startsWith(propertyValue));
  		return frame;
  	}
-+	
-+	private AntStackFrame assertPropertyStartsWith(AntThread thread, String propertyName, String propertyValue) throws DebugException {
-+		AntStackFrame frame = (AntStackFrame)thread.getTopStackFrame();
-+		AntProperty property= frame.findProperty(propertyName);
-+		assertNotNull("Did not find property: " + propertyName, property);
-+		AntValue value= (AntValue) property.getValue();
-+		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), value.getValueString().startsWith(propertyValue));
-+		return frame;
-+	}
  }
 \ No newline at end of file
