@@ -633,6 +633,9 @@
 		     locations of junit4's system JAR. -->
 		<symlink link="${buildDirectory}/installation/plugins/${junit4jar.path}"
 			resource="/usr/share/java/junit4.jar" />		
+		
+		<!--Remove the duplicate org.junit4 folder keeping the org.junit4_${version}.vYYYYMMDD -->
+		<delete dir="${buildDirectory}/installation/plugins/org.junit4/"/>
 		<echo file="provision.sdk-stamp" />
 	</target>
 

@@ -111,6 +111,17 @@ function init() {
 		fi
 	fi
 	
+	# improves test cases (but not required) for org.eclipse.pde.ui.tests
+	echo "${testPluginsToRun}" | grep -q 'org.eclipse.pde.ui.tests'
+	if [ $? -eq 0 ]; then
+		junitSourceLoc=$(pwd)/org.junit.source_*
+		if [ -e ${junitSourceLoc} ]; then
+			ln -s ${junitSoureLoc} ${eclipseHome}/plugins
+		else
+			echo "org.junit.source was not found at ${junitSourceLoc}."
+			echo "Some failures should be expected in org.eclipse.pde.ui.tests."
+		fi
+	fi
 
 	properties=$(pwd)/sdk-tests.properties
 	rm -f $properties
