@@ -110,18 +110,6 @@ function init() {
 			echo "Some failures should be expected in org.eclipse.pde.build.tests."
 		fi
 	fi
-	
-	# improves test cases (but not required) for org.eclipse.pde.ui.tests
-	echo "${testPluginsToRun}" | grep -q 'org.eclipse.pde.ui.tests'
-	if [ $? -eq 0 ]; then
-		junitSourceLoc=$(pwd)/org.junit.source_*
-		if [ -e ${junitSourceLoc} ]; then
-			ln -s ${junitSourceLoc} ${eclipseHome}/plugins
-		else
-			echo "org.junit.source was not found at ${junitSourceLoc}."
-			echo "Some failures should be expected in org.eclipse.pde.ui.tests."
-		fi
-	fi
 
 	properties=$(pwd)/sdk-tests.properties
 	rm -f $properties
@@ -260,6 +248,17 @@ function cleanAndSetup() {
 
   cp -rp ${cleanInstall} ${eclipseHome}
   workspace=${testsParent}/workspace
+  
+  # improves test cases (but not required) for org.eclipse.pde.ui.tests
+  if [ ${plugin} = 'org.eclipse.pde.ui.tests' ]; then
+      junitSourceLoc=$(pwd)/org.junit.source_*
+      if [ -e ${junitSourceLoc} ]; then
+	      ln -s ${junitSourceLoc} ${eclipseHome}/plugins
+      else
+          echo "org.junit.source was not found at ${junitSourceLoc}."
+          echo "Some failures should be expected in org.eclipse.pde.ui.tests."
+      fi
+  fi
 }
 
 function installTestPlugin() {
