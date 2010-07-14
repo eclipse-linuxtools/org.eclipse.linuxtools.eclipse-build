@@ -1,3 +1,9 @@
+2010-07-14  Andrew Overholt  <overholt@redhat.com>
+
+	* build.properties.in: Remove svn:executable property.
+	* customAssembly.xml: Likewise.
+	* customTargets.xml: Likewise.
+
 2010-03-06  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* productFiles/sdk/sdk.product: Do not break platform provisioning.
