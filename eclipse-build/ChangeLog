@@ -1,5 +1,13 @@
 2010-07-14  Andrew Overholt  <overholt@redhat.com>
 
+	* additionalArchs/rename.sh: Add svn:executable property.
+	* pdebuild/eclipse-copy-platform.sh: Likewise.
+	* regenerateBootstrapFiles.sh: Likewise.
+	* runtests.sh: Likewise.
+	* swt_bundle.sh: Likewise.
+
+2010-07-14  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #319474
 
 	* patches/eclipse-pde.build-add-package-build.patch: Apply patch from
