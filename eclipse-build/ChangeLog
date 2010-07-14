@@ -1,3 +1,10 @@
+2010-07-14  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #319474
+
+	* patches/eclipse-pde.build-add-package-build.patch: Apply patch from
+	Adnan Hodzic to remove bash-isms from prepare-build-dir.sh.
+
 2010-06-09  Roland Grunberg  <rgrunber@redhat.com>
 
 	* build.sh: return the correct exit code.

@@ -53,7 +53,7 @@ diff -N templates/package-build/prepare-build-dir.sh
 +  PROJECTDIR=$(dirname "$f")
 +  inSDK=1
 +  inSDK=$(echo $PROJECTDIR | grep -c $BUILDDIR)
-+  if [ $inSDK == 0 ]; then
++  if [ $inSDK = 0 ]; then
 +    PROJECTNAME=$(ant -Dbasedir="$PROJECTDIR" -f $BUILDDIR/tmp/feature-build.xml 2>&1 | grep echo | cut --delimiter=' ' -f 7)
 +    ERROR=""
 +    if [ -z "$PROJECTNAME" ]; then
@@ -66,7 +66,7 @@ diff -N templates/package-build/prepare-build-dir.sh
 +    fi
 +
 +    if [ "x$ERROR" != "xyes" ]; then
-+      if [[ $TESTING != true || `echo $PROJECTNAME | grep "org.eclipse"` ]]; then
++      if [ $TESTING != true -o `echo $PROJECTNAME | grep "org.eclipse"` ]; then
 +        echo "  making symlink: $BUILDDIR/features/$PROJECTNAME -> $PROJECTDIR"
 +        ln -sfT "$PROJECTDIR" $BUILDDIR/features/"$PROJECTNAME"
 +      fi
@@ -81,7 +81,7 @@ diff -N templates/package-build/prepare-build-dir.sh
 +  ERROR=""
 +  inSDK=1
 +  inSDK=$(echo $dir | grep -c $BUILDDIR)
-+  if [ $inSDK == 0 ]; then
++  if [ $inSDK = 0 ]; then
 +    if [ -e "$dir/META-INF/MANIFEST.MF" ]; then
 +      PROJECTNAME=$(grep Bundle-SymbolicName $dir/META-INF/MANIFEST.MF | cut --delimiter=';' -f 1 | cut --delimiter=' ' -f 2)
 +    elif [ -e "$dir/plugin.xml" ]; then
@@ -100,7 +100,7 @@ diff -N templates/package-build/prepare-build-dir.sh
 +    fi
 +
 +    if [ "x$ERROR" != "xyes" ]; then
-+      if [[ $TESTING != true || `echo $PROJECTNAME | grep "org.eclipse"` ]]; then
++      if [ $TESTING != true -o `echo $PROJECTNAME | grep "org.eclipse"` ]; then
 +        echo "  making symlink: $BUILDDIR/plugins/$PROJECTNAME -> $dir"
 +        ln -sfT "$dir" $BUILDDIR/plugins/"$PROJECTNAME"
 +      fi
