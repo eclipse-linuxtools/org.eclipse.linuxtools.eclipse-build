@@ -1,3 +1,8 @@
+2010-07-14  Andrew Overholt  <overholt@redhat.com>
+
+	* build.properties: Remove svn:executable property.
+	* feature.xml: Likewise.
+
 2010-02-26  Andrew Overholt  <overholt@redhat.com>
 
 	* feature.xml: Remove dependency on icu4j source bundle.
