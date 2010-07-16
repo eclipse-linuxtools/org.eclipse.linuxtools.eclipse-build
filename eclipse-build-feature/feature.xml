@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="eclipse-build-feature"
-      version="3.5.2.qualifier">
+      version="3.6.0.qualifier">
 
    <includes
          id="master-jetty"
@@ -13,12 +13,6 @@
 
    <includes
          id="org.eclipse.equinox.executable"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.swt.tools"
-         download-size="0"
-         install-size="0"
          version="0.0.0"/>
 
    <plugin
