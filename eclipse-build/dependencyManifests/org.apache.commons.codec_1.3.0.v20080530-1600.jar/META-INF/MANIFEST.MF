@@ -1,13 +1,14 @@
 Manifest-Version: 1.0
 Bundle-Vendor: %bundleProvider
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: CDC-1.0/Foundation-1.0,J2SE-1.3
 Bundle-Name: %bundleName
 Bundle-SymbolicName: org.apache.commons.codec
 Export-Package: org.apache.commons.codec;version="1.3.0",org.apache.co
  mmons.codec.binary;version="1.3.0",org.apache.commons.codec.digest;ve
  rsion="1.3.0",org.apache.commons.codec.language;version="1.3.0",org.a
  pache.commons.codec.net;version="1.3.0"
-Bundle-Version: 1.3.0.v20080530-1600
+Bundle-Version: 1.3.0.v20100518-1140
 Bundle-ManifestVersion: 2
 
 Name: org/apache/commons/codec/language/DoubleMetaphone.class
@@ -38,7 +39,7 @@ Name: org/apache/commons/codec/binary/Hex.class
 SHA1-Digest: 3HCzfhHisCVj80SpQp9ocGLzQo0=
 
 Name: plugin.properties
-SHA1-Digest: TPF3gR0+r9XYebyNaf3SbSKDfYY=
+SHA1-Digest: 5MZzEYQvuEeJGsdwKs9rkvRxvis=
 
 Name: org/apache/commons/codec/net/StringEncodings.class
 SHA1-Digest: qf4vuSsKwlYm8Pp74YiPdoYk3Yc=
