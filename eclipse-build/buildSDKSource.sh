@@ -6,13 +6,14 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="R3_5_2"
-baseBuilderTag="R3_5"
+buildID="I20100608-0911"
+baseBuilderTag="R3_5_2"
 eclipseBuilderTag="R3_5_2"
-label="3.5.2"
+label="3.6.0"
 fetchTests="yes"
-equinoxTag="R35x_v20100209"
-ecfTag="v20090831-1453"
+equinoxTag="v20100329"
+ecfTag="I-HEAD-platform_feature-44-2010_05_28"
+concurrentTag="v20100215"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
@@ -121,7 +122,10 @@ fetchMasterFeature \
 
 cd "${fetchDirectory}"
 
-mkdir ecf-src
+# Extract osgi.util src for rebuilding
+pushd plugins/org.eclipse.osgi.util
+  unzip -q -d src src.zip
+popd
 
 # Source for ECF bits that aren't part of SDK map files
 for f in \
@@ -134,7 +138,7 @@ cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/rt \
 export -r ${ecfTag} org.eclipse.ecf/framework/bundles/$f;
 done
 
-mv org.eclipse.ecf/framework/bundles/* ecf-src
+mv org.eclipse.ecf/framework/bundles/* plugins
 rm -fr org.eclipse.ecf/framework
 
 for f in \
@@ -147,14 +151,8 @@ cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/rt \
 export -r ${ecfTag} org.eclipse.ecf/providers/bundles/$f;
 done
 
-mv org.eclipse.ecf/providers/bundles/* ecf-src
+mv org.eclipse.ecf/providers/bundles/* plugins
 rm -fr org.eclipse.ecf
-
-cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/rt \
-export -r ${buildID} org.eclipse.equinox/components/bundles/org.eclipse.equinox.concurrent;
-
-mv org.eclipse.equinox/components/bundles/* ecf-src
-rm -rf org.eclipse.equinox
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
@@ -183,6 +181,9 @@ rm fetch_*
 # Remove unnecessary feature and plugins
 rm -rf features/org.eclipse.sdk.examples
 rm -rf plugins/*.examples*
+
+# Remove temporary files
+find -name '*.orig' -delete
 
 # Remove empty directories
 find -type d -empty -delete

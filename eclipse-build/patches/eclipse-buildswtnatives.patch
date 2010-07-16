@@ -1,8 +1,8 @@
---- ./plugins/org.eclipse.swt.gtk.linux.ppc/build.xml.orig	2009-03-24 18:54:28.000000000 +0100
-+++ ./plugins/org.eclipse.swt.gtk.linux.ppc/build.xml	2009-03-25 10:06:41.000000000 +0100
-@@ -139,6 +139,29 @@
- 		<jar jarfile="${build.result.folder}/${jar.filename}" basedir="${temp.folder}/@dot.bin" />
- 		<delete dir="${temp.folder}/@dot.bin" />
+--- a/plugins/org.eclipse.swt/buildFragment.xml
++++ b/plugins/org.eclipse.swt/buildFragment.xml
+@@ -558,4 +558,28 @@
+ 			extraManifests="${extraManifests}"
+ 			extraSourceLocations="${extraSourceLocations}"/>
  	</target>
 +	
 +	<target name="build.cfiles" depends="init">
@@ -17,6 +17,7 @@
 +			<fileset dir="${plugindir}/Eclipse SWT PI/gtk/library"/>
 +			<fileset dir="${plugindir}/Eclipse SWT Program/cde/library"/>
 +			<fileset dir="${plugindir}/Eclipse SWT Program/gnome/library"/>
++			<fileset dir="${plugindir}/Eclipse SWT WebKit/gtk/library"/>
 +		</copy>
 +	</target>
 +
@@ -27,78 +28,4 @@
 +			<arg line="install"/>
 +		</exec>
 +	</target>
- 
- 	<target name="build.jars" depends="init">
- 		<available property="@dot" file="${build.result.folder}/@dot" />
---- ./plugins/org.eclipse.swt.gtk.linux.s390x/build.xml.orig	2009-03-24 18:54:29.000000000 +0100
-+++ ./plugins/org.eclipse.swt.gtk.linux.s390x/build.xml	2009-03-25 10:08:51.000000000 +0100
-@@ -276,6 +276,11 @@
- 	</target>
- 
- 	<target name="build.cfiles" depends="build.jars">
-+		<!-- delete swttools.jar so that it will be compiled in the build.jars target -->
-+		<ant antfile="build.xml" dir="${toolsplugindir}" inheritAll="false" target="clean"/>
-+		<!--compile swtools.jar in org.eclipse.swt.tools-->
-+		<ant antfile="build.xml" dir="${toolsplugindir}" inheritAll="false" target="build.jars" />
-+
- 		<!-- generate the C code from the (64 bit) SWT PI java classes -->
- 		<!-- assumes the swt.jar has already been built  -->
- 		<java classname="org.eclipse.swt.tools.internal.JNIGeneratorApp" classpath="${toolsplugindir}/bin:${toolsplugindir}/swttools.jar:${basedir}/swt.jar">
-@@ -330,6 +335,7 @@
- 			<fileset dir="${basedir}/src/Eclipse SWT Mozilla/common/library" />
- 			<fileset dir="${basedir}/src/Eclipse SWT OpenGL/glx/library" />
- 			<fileset dir="${basedir}/src/Eclipse SWT PI/cairo/library" />
-+			<fileset dir="${basedir}/src/Eclipse SWT PI/common/library"/>
- 			<fileset dir="${basedir}/src/Eclipse SWT PI/gtk/library" />
- 			<fileset dir="${basedir}/src/Eclipse SWT Program/cde/library" />
- 			<fileset dir="${basedir}/src/Eclipse SWT Program/gnome/library" />
---- ./plugins/org.eclipse.swt.gtk.linux.x86_64/build.xml.orig	2009-03-24 18:54:29.000000000 +0100
-+++ ./plugins/org.eclipse.swt.gtk.linux.x86_64/build.xml	2009-03-25 10:11:05.000000000 +0100
-@@ -175,6 +175,29 @@
- 		<replace dir="${plugindir}" includes="**/*.java" token="long /*int*/" value="int /*long*/" />
- 		<antcall target="refresh" />
- 	</target>
-+	
-+	<target name="build.cfiles" depends="init">
-+		<mkdir dir="${build.result.folder}/library"/>
-+		<copy todir="${build.result.folder}/library">
-+			<fileset dir="${plugindir}/Eclipse SWT/common/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT AWT/gtk/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT Mozilla/common/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT OpenGL/glx/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT PI/cairo/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT PI/common/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT PI/gtk/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT Program/cde/library"/>
-+			<fileset dir="${plugindir}/Eclipse SWT Program/gnome/library"/>
-+		</copy>
-+	</target>
-+
-+	<target name="build.nativeLibraries" depends="build.cfiles">
-+		<exec dir="${build.result.folder}/library" executable="sh">
-+			<env key="OUTPUT_DIR" value="${build.result.folder}"/>
-+			<arg line="${build.result.folder}/library/build.sh"/>
-+			<arg line="install"/>
-+		</exec>
-+	</target>
- 
- 	<target name="src.zip" depends="init" unless="src.zip">
- 		<mkdir dir="${build.result.folder}/" />
---- ./plugins/org.eclipse.swt.gtk.linux.x86/build.xml.orig	2009-03-24 18:54:28.000000000 +0100
-+++ ./plugins/org.eclipse.swt.gtk.linux.x86/build.xml	2009-03-25 10:13:29.000000000 +0100
-@@ -153,13 +153,14 @@
- 			<fileset dir="${plugindir}/Eclipse SWT Mozilla/common/library" />
- 			<fileset dir="${plugindir}/Eclipse SWT OpenGL/glx/library" />
- 			<fileset dir="${plugindir}/Eclipse SWT PI/cairo/library" />
-+			<fileset dir="${plugindir}/Eclipse SWT PI/common/library"/>
- 			<fileset dir="${plugindir}/Eclipse SWT PI/gtk/library" />
- 			<fileset dir="${plugindir}/Eclipse SWT Program/cde/library" />
- 			<fileset dir="${plugindir}/Eclipse SWT Program/gnome/library" />
- 		</copy>
- 	</target>
- 
--	<target name="build.jnilibs" depends="build.cfiles">
-+	<target name="build.nativeLibraries" depends="build.cfiles">
- 		<exec dir="${build.result.folder}/library" executable="sh">
- 			<env key="OUTPUT_DIR" value="${build.result.folder}" />
- 			<arg line="${build.result.folder}/library/build.sh" />
+ </project>

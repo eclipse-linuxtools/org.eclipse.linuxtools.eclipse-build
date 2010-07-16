@@ -1,13 +1,6 @@
---- ./plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh~	2009-10-25 09:34:55.000000000 +0100
-+++ ./plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	2009-10-29 20:40:31.000000000 +0100
-@@ -55,11 +55,24 @@
- if [ "${MODEL}" = "" ]; then
- 	if uname -i > /dev/null 2>&1; then
- 		MODEL=`uname -i`
--	else
-+	fi
-+	if [ "${MODEL}" = "unknown" ]; then
- 		MODEL=`uname -m`
+--- a/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh.orig	2009-12-08 09:00:12.000000000 +0200
++++ b/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	2010-04-13 17:24:11.418047380 +0300
+@@ -63,6 +63,18 @@ if [ "${MODEL}" = "" ]; then
  	fi
  fi
  case $MODEL in
@@ -26,13 +19,12 @@
  	"x86_64")
  		SWT_ARCH=x86_64
  		AWT_ARCH=amd64
-@@ -75,7 +86,7 @@
+@@ -78,7 +90,7 @@ case $MODEL in
  esac
- 
+ echo "Model is ${MODEL}"
  # For 64-bit CPUs, we have a switch
 -if [ ${MODEL} = 'x86_64' -o ${MODEL} = 'ppc64' -o ${MODEL} = 'ia64' -o ${MODEL} = 's390x' ]; then
 +if [ ${MODEL} = 'x86_64' -o ${MODEL} = 'ppc64' -o ${MODEL} = 'ia64' -o ${MODEL} = 's390x' -o ${MODEL} = 'alpha' ]; then
  	SWT_PTR_CFLAGS=-DJNI64
- 	export SWT_PTR_CFLAGS
  	if [ -d /lib64 ]; then
-
+ 		XLIB64=-L/usr/X11R6/lib64

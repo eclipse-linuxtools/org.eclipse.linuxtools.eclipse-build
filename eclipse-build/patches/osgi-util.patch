@@ -1,0 +1,18 @@
+--- a/plugins/org.eclipse.osgi.util/build.properties
++++ b/plugins/org.eclipse.osgi.util/build.properties
+@@ -12,10 +12,10 @@
+                org/,\
+                about.html,\
+                META-INF/,\
++               about_files/,\
++               .
++src.includes = about.html,\
+                about_files/
+-src.includes = src.zip,\
+-               about.html,\
+-               about_files/
+-source.. = .
++source.. = src/
+ output.. = .
+-customBuildCallbacks=customBuildCallbacks.xml
++#customBuildCallbacks=customBuildCallbacks.xml

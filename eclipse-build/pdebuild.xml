@@ -53,9 +53,9 @@
 		<file name="org.eclipse.equinox.p2.repository" />
 		<file name="org.eclipse.equinox.p2.artifact.repository" />
 		<file name="org.eclipse.equinox.p2.metadata.repository" />
-		<file name="org.eclipse.equinox.p2.publisher" />
 		<file name="org.eclipse.equinox.simpleconfigurator" />
 		<file name="org.eclipse.equinox.simpleconfigurator.manipulator" />
+		<file name="org.eclipse.equinox.p2.publisher" />
 		<file name="org.eclipse.update.configurator" />
 		<file name="org.eclipse.core.runtime.compatibility" />
 		<file name="org.eclipse.equinox.p2.engine" />
@@ -69,7 +69,6 @@
 		<file name="org.eclipse.equinox.p2.director.app" />
 		<file name="org.eclipse.update.core" />
 		<file name="org.eclipse.equinox.p2.garbagecollector" />
-		<file name="org.eclipse.equinox.p2.exemplarysetup" />
 		<file name="org.eclipse.core.expressions" />
 		<file name="org.eclipse.equinox.http.servlet" />
 		<file name="org.eclipse.equinox.p2.touchpoint.eclipse" />
@@ -101,6 +100,9 @@
 		<file name="org.eclipse.jdt.launching" />
 		<file name="org.eclipse.pde.core" />
 		<file name="org.eclipse.pde.api.tools" />
+		<file name="org.eclipse.equinox.event" />
+		<file name="org.eclipse.equinox.util" />
+		<file name="org.eclipse.equinox.ds" />
 	</filelist>
 	<fileset dir="${sdkSource}/plugins" id="orbitDeps">
 		<include name="org.junit_*/" />
@@ -108,6 +110,7 @@
 		<include name="org.apache.ant_*/**" />
 		<include name="org.mortbay.jetty*" />
 		<include name="org.apache.lucene*" />
+		<include name="org.apache.commons*" />
 		<include name="org.sat4j*" />
 		<include name="org.hamcrest.core*" />
 		<include name="javax.servlet*" />
@@ -232,6 +235,9 @@
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
 			<fileset refid="depsZips" />
+		</copy>
+		<copy todir="bootstrap/plugins/org.eclipse.swt">
+			<fileset dir="${sdkSource}/plugins/org.eclipse.swt" />
 		</copy>
 		<unzip dest="bootstrap/plugins">
 			<fileset dir="bootstrap/plugins">

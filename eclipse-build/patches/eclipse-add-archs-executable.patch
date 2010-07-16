@@ -1,18 +1,9 @@
-### Eclipse Workspace Patch 1.0
-#P org.eclipse.equinox.executable
-Index: target.build.properties
-===================================================================
-RCS file: /cvsroot/rt/org.eclipse.equinox/framework/bundles/org.eclipse.equinox.executable/target.build.properties,v
-retrieving revision 1.16
-diff -u -r1.16 target.build.properties
---- target.build.properties	7 May 2009 15:02:06 -0000	1.16
-+++ target.build.properties	11 Feb 2010 21:05:52 -0000
-@@ -19,12 +19,48 @@
- root.win32.win32.ia64=file:contributed/win32/win32/ia64/launcher.exe
- root.win32.wpf.x86=file:bin/wpf/win32/x86/launcher.exe
+--- a/features/org.eclipse.equinox.executable/target.build.properties
++++ b/features/org.eclipse.equinox.executable/target.build.properties
+@@ -22,10 +22,47 @@
+ root.linux.gtk.x86=bin/gtk/linux/x86,gtk_root
+ root.linux.gtk.x86.permissions.755=libcairo-swt.so
  
--root.linux.gtk.x86=bin/gtk/linux/x86,gtk_root
--root.linux.gtk.x86.permissions.755=libcairo-swt.so
 +root.linux.gtk.alpha=bin/gtk/linux/alpha,gtk_root
 +root.linux.gtk.alpha.permissions.755=libcairo-swt.so
 +
@@ -30,11 +21,11 @@ diff -u -r1.16 target.build.properties
 +
 +root.linux.gtk.PA_RISC=bin/gtk/linux/PA_RISC,gtk_root
 +root.linux.gtk.PA_RISC.permissions.755=libcairo-swt.so
- 
++
  root.linux.gtk.ppc=bin/gtk/linux/ppc,gtk_root
  root.linux.gtk.ppc.permissions.755=libcairo-swt.so
  
-+root.linux.gtk.ppc64=bin/gtk/linux/ppc64,gtk_root
+ root.linux.gtk.ppc64=bin/gtk/linux/ppc64,gtk_root
 +root.linux.gtk.ppc64.permissions.755=libcairo-swt.so
 +
 +root.linux.gtk.s390=bin/gtk/linux/s390,gtk_root
@@ -54,24 +45,11 @@ diff -u -r1.16 target.build.properties
 +
 +root.linux.gtk.x86_64=bin/gtk/linux/x86_64,gtk_root
 +root.linux.gtk.x86_64.permissions.755=libcairo-swt.so
-+
+ 
  root.macosx.carbon.ppc=bin/carbon/macosx/ppc
  root.macosx.carbon.ppc.permissions.755=${launcherName}.app/Contents/MacOS/${launcherName}
- 
-@@ -55,4 +91,4 @@
- root.qnx.photon.x86=bin/photon/qnx/x86
- 
- root.linux.motif.x86=bin/motif/linux/x86,motif_root
--root.linux.motif.x86.permissions.755=libXm.so.2,libcairo-swt.so
-\ No newline at end of file
-+root.linux.motif.x86.permissions.755=libXm.so.2,libcairo-swt.so
-Index: feature.xml
-===================================================================
-RCS file: /cvsroot/rt/org.eclipse.equinox/framework/bundles/org.eclipse.equinox.executable/feature.xml,v
-retrieving revision 1.15.2.1
-diff -u -r1.15.2.1 feature.xml
---- feature.xml	29 Sep 2009 20:06:31 -0000	1.15.2.1
-+++ feature.xml	11 Feb 2010 21:05:52 -0000
+--- a/features/org.eclipse.equinox.executable/feature.xml
++++ b/features/org.eclipse.equinox.executable/feature.xml
 @@ -88,6 +88,66 @@
           version="0.0.0"
           fragment="true"/>
@@ -194,9 +172,9 @@ diff -u -r1.15.2.1 feature.xml
 +         fragment="true"/>
 +
     <plugin
-          id="org.eclipse.equinox.launcher.gtk.linux.x86"
+          id="org.eclipse.equinox.launcher.gtk.linux.ppc64"
           os="linux"
-@@ -198,24 +308,4 @@
+@@ -198,25 +308,4 @@
           version="0.0.0"
           fragment="true"/>
  
@@ -219,5 +197,6 @@ diff -u -r1.15.2.1 feature.xml
 -         install-size="0"
 -         version="0.0.0"
 -         fragment="true"/>
+-
 -
  </feature>

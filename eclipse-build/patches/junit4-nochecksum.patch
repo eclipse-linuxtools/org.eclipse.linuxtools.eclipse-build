@@ -1,0 +1,22 @@
+--- plugins/org.junit_4.8.1.v4_8_1_v20100427-1100/META-INF/MANIFEST.MF.orig	2010-05-20 01:33:28.000000000 +0300
++++ plugins/org.junit_4.8.1.v4_8_1_v20100427-1100/META-INF/MANIFEST.MF	2010-07-07 13:23:16.258708324 +0300
+@@ -29,18 +29,4 @@ Export-Package: junit.extensions;version
+ Bundle-Version: 4.8.1.v4_8_1_v20100427-1100
+ Bundle-ManifestVersion: 2
+ 
+-Name: META-INF/eclipse.inf
+-SHA1-Digest: u+F8j/GAE8tzrDry9+wT3Cvg81Y=
+-
+-Name: junit.jar
+-SHA1-Digest: zPmrTAyba4ZMLFgf8QAHILhgZ9o=
+-
+-Name: about_files/cpl-v10.html
+-SHA1-Digest: REygXYi+T14Sj1v8XnnKycNjpN4=
+-
+-Name: about.html
+-SHA1-Digest: w3lIEWRkSmgtAui4qxGRJmqgDw4=
+-
+-Name: plugin.properties
+-SHA1-Digest: f1fR+Wdi2X4qLQSIBEgwenAuk2c=
+-
++

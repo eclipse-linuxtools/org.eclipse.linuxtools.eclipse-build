@@ -5,9 +5,9 @@ Index: Eclipse SWT PI/gtk/library/build.sh
 RCS file: /cvsroot/eclipse/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh,v
 retrieving revision 1.54
 diff -u -r1.54 build.sh
---- Eclipse SWT PI/gtk/library/build.sh	29 May 2009 21:30:14 -0000	1.54
-+++ Eclipse SWT PI/gtk/library/build.sh	1 Jun 2009 18:44:43 -0000
-@@ -106,19 +106,19 @@
+--- a/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	29 May 2009 21:30:14 -0000	1.54
++++ b/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	1 Jun 2009 18:44:43 -0000
+@@ -120,19 +120,19 @@
  		MOZILLA_LIBS=`pkg-config --libs mozilla-xpcom`
  		export MOZILLA_INCLUDES
  		export MOZILLA_LIBS

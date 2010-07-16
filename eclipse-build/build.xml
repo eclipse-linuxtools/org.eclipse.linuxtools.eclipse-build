@@ -1,4 +1,9 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
+	<tstamp>
+	    <format property="timestamp" pattern="yyyyMMddHHmmss"/>
+	  </tstamp>
+	<record name="build_${timestamp}.log"/>
+	<echo message="Build log is available in build_${timestamp}.log" />
 	<property name="baseBuilder" value="${basedir}/bootstrap" />
 	<property name="launcher" value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 	<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
@@ -52,9 +57,32 @@
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
 
+	<!-- Determine host architecture -->
+	<exec executable="uname" outputproperty="uname-m">
+		<arg line="-m" />
+	</exec>
+	<condition property="hostArch" value="arm">
+		<matches pattern="^arm.*" string="${uname-m}"/>
+	</condition>
+	<condition property="hostArch" value="x86">
+		<matches pattern="i[0-9]*86" string="${uname-m}"/>
+	</condition>
+	<condition property="hostArch" value="PA_RISC">
+		<matches pattern="^parisc.*" string="${uname-m}"/>
+	</condition>
+	<condition property="hostArch" value="sparc">
+		<matches pattern="sparcv9" string="${uname-m}"/>
+	</condition>
+	<condition property="hostArch" value="${uname-m}">
+		<not><isset property="hostArch" /></not>
+	</condition>
+	<condition property="buildArch" value="${hostArch}">
+		<not><isset property="buildArch" /></not>
+	</condition>
+	<echo message="uname -m: ${uname-m}. Build eclipse on ${hostArch} for ${buildArch}."/>
+
 	<property name="destDir" value="" />
 	<property name="prefix" value="/usr/local" />
-	<property name="sysconfdir" value="/etc" />
 	<!-- Do we want /usr/lib64 if it's a 64-bit architecture? -->
 	<property name="multilib" value="false" />
 	<condition property="setLib64">
@@ -160,6 +188,10 @@
 		<copy todir="${buildDirectory}/features/eclipse-build-feature">
 			<fileset dir="eclipse-build-feature" />
 		</copy>
+		<delete verbose="true">
+			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.SF" />
+			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.RSA" />
+		</delete>
 		<!-- add additional archs -->
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src/plugins" src="${basedir}/eclipse-build-additionalArchs.tar.bz2" />
 		<!-- prepare ecf build tree -->
@@ -168,12 +200,6 @@
 			<fileset dir="${buildDirectory}/plugins" includes="org.mortbay.jetty_5*" />
 		</delete>
 		<delete dir="${buildDirectory}/plugins/org.eclipse.equinox.http.jetty_1.1.100" />
-		<move todir="${buildDirectory}/plugins">
-			<fileset dir="${buildDirectory}/ecf-src">
-				<filename name="org.eclipse*/**" />
-			</fileset>
-		</move>
-
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
 	</target>
@@ -241,23 +267,23 @@
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<!-- eclipse-build-only patches -->
-		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-jdt_launch-customBuild.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="3" />
-		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library" strip="6" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}/features/org.eclipse.equinox.executable" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="3" />
-		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="3" />
-		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}/plugins/org.eclipse.pde.build" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-use-newer-commons-codec.patch" dir="${buildDirectory}"  strip="0" />
-		<patch patchfile="${basedir}/patches/addEcfQualifiers.patch" dir="${buildDirectory}"  strip="0" />
-		<patch patchfile="${basedir}/patches/droppluginversions.patch" dir="${buildDirectory}"  strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-use-newer-commons-codec.patch" dir="${buildDirectory}"  strip="1" />
+		<patch patchfile="${basedir}/patches/junit4-nochecksum.patch" dir="${buildDirectory}"  strip="0" />
+		<patch patchfile="${basedir}/patches/bz318912.patch" dir="${buildDirectory}"  strip="0" />
+		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
@@ -266,6 +292,7 @@
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
+		<patch patchfile="${basedir}/patches/java-home.patch" dir="${buildDirectory}" strip="2" />
 		<echo file="patch-stamp" />
 	</target>
 
@@ -273,8 +300,6 @@
 		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-nostyletask.patch" dir="${testsBuildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-BZ295666.patch" dir="${testsBuildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 
@@ -302,23 +327,11 @@
 		    manifests="${basedir}/dependencyManifests"/>
 	  	<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
 	  		topLevelDir="${buildDirectory}/plugins"/>
-                <!-- If we leave these and symlink the JARs only, we get "you tampered
-                     with the JAR!" exceptions at the p2 director phase -->
-                <delete verbose="true">
-                        <fileset dir="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20090120-1145/META-INF">
-                                <include name="ECLIPSEF.RSA" />
-                                <include name="ECLIPSEF.SF" />
-                        </fileset>
-                        <fileset dir="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF">
-                                <include name="ECLIPSEF.RSA" />
-                                <include name="ECLIPSEF.SF" />
-                        </fileset>
-                </delete>
-                <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20090120-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+        <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
-                <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20090120-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+                <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
@@ -439,7 +452,7 @@
 
 		<!-- build liblocalfile -->
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux" executable="make" failonerror="true" />
-		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/liblocalfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
+		<move file="${buildDirectory}/plugins/org.eclipse.core.filesystem/natives/unix/linux/libunixfile_1_0_0.so" todir="${buildDirectory}/plugins/org.eclipse.core.filesystem.linux.${buildArch}/os/linux/${buildArch}">
 		</move>
 		<!-- build libgnomeproxy -->
 		<antcall target="compile.libgnomeproxy" />
@@ -633,9 +646,6 @@
 		     locations of junit4's system JAR. -->
 		<symlink link="${buildDirectory}/installation/plugins/${junit4jar.path}"
 			resource="/usr/share/java/junit4.jar" />		
-		
-		<!--Remove the duplicate org.junit4 folder keeping the org.junit4_${version}.vYYYYMMDD -->
-		<delete dir="${buildDirectory}/installation/plugins/org.junit4/"/>
 		<echo file="provision.sdk-stamp" />
 	</target>
 
@@ -681,8 +691,6 @@
 
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2" />
-		<echo message="Moving ${baseBuilderConfig} to ${baseBuilderConfig}.bak" />
-		<move failonerror="false" file="${baseBuilderConfig}" tofile="${baseBuilderConfig}.bak" />
 		<!-- FIXME:  When we move to bootstrap by default, investigate using <exec> on the bootstrapped launcher
 		     like in eclipsebuilder's equinox.prov/run.xml -->
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${baseBuilder}" failonerror="true">
@@ -719,8 +727,6 @@
 			<jvmarg value="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
 			<jvmarg value="-Xmx512M" />
 		</java>
-		<delete dir="${baseBuilderConfig}" includeemptydirs="true" failonerror="false" />
-		<move file="${baseBuilderConfig}.bak" tofile="${baseBuilderConfig}" />
 	</target>
 
 	<target name="run.installed.director">
@@ -787,9 +793,9 @@
 		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Move config file to /etc -->
-		<mkdir dir="${destDir}${sysconfdir}" />
-		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}${sysconfdir}/eclipse.ini" />
-		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="${sysconfdir}/eclipse.ini" />
+		<mkdir dir="${destDir}/etc" />
+		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
+		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
 		
 	</target>
 

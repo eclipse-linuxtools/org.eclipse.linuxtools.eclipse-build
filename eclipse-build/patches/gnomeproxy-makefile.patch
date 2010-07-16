@@ -1,14 +1,12 @@
-Index: plugins/org.eclipse.core.net/natives/unix/linux/makefile
-===================================================================
---- a/plugins/org.eclipse.core.net/natives/unix/linux/makefile	2009-10-12 22:36:19.965754808 +0200
-+++ b/plugins/org.eclipse.core.net/natives/unix/linux/makefile	2009-10-12 23:01:39.375006881 +0200
-@@ -18,7 +18,8 @@
- LIB_NAME = gnomeproxy.so
- LIB_NAME_FULL = libgnomeproxy-1.0.0.so
+--- a/plugins/org.eclipse.core.net/natives/unix/linux/makefile
++++ b/plugins/org.eclipse.core.net/natives/unix/linux/makefile
+@@ -20,7 +20,8 @@
  
+ OS_TYPE = linux
+ JDK_INCLUDE = -I${JAVA_HOME}/include -I${JAVA_HOME}/include/${OS_TYPE}
 -INCLUDE = -I/usr/include/gconf/2/ -I/usr/include/orbit-2.0/ -I/usr/include/glib-2.0/ -I/usr/lib/glib-2.0/include/
 +INCLUDE = -I/usr/include/gconf/2/ -I/usr/include/orbit-2.0/ -I/usr/include/glib-2.0/ -I/usr/lib/glib-2.0/include/ \
 +	  -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
- COMPILER_FLAGS= -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m32
+ COMPILER_FLAGS = -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m32
  
  LIBS := -lgconf-2 -lORBit-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0

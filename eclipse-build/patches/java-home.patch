@@ -1,0 +1,15 @@
+Description: Do not overwrite exported JAVA_HOME variable
+Author: Benjamin Drung <bdrung@ubuntu.com>
+Bug: https://bugs.eclipse.org/bugs/show_bug.cgi?id=317634
+
+--- eclipse-3.6.0.orig/eclipse/features/org.eclipse.equinox.executable/library/gtk/build.sh
++++ eclipse-3.6.0/eclipse/features/org.eclipse.equinox.executable/library/gtk/build.sh
+@@ -155,7 +155,7 @@ DEFAULT_OS_ARCH="$defaultOSArch"
+ DEFAULT_WS="$defaultWS"
+ DEFAULT_JAVA=$defaultJava
+ 
+-if [ -n  $javaHome ]; then
++if [ -z "$JAVA_HOME" -a -n  $javaHome ]; then
+ 	JAVA_HOME=$javaHome
+ 	export JAVA_HOME
+ fi

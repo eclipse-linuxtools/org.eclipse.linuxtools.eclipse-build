@@ -1,8 +1,8 @@
---- ./features/org.eclipse.platform/feature.xml.orig	2009-10-29 20:07:20.000000000 +0100
-+++ ./features/org.eclipse.platform/feature.xml	2009-10-29 20:16:08.000000000 +0100
-@@ -432,6 +432,66 @@
+--- a/features/org.eclipse.platform/feature.xml
++++ b/features/org.eclipse.platform/feature.xml
+@@ -441,6 +441,66 @@
           unpack="false"/>
- 
+  
     <plugin
 +         id="org.eclipse.core.filesystem.linux.alpha"
 +         os="linux"
@@ -67,7 +67,7 @@
           id="org.eclipse.core.filesystem.linux.ppc"
           os="linux"
           arch="ppc"
-@@ -440,6 +500,56 @@
+@@ -449,6 +509,56 @@
           version="0.0.0"
           fragment="true"
           unpack="false"/>

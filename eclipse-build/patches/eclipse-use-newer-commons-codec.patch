@@ -1,6 +1,6 @@
---- features/org.eclipse.equinox.p2.user.ui/feature.xml.old	2009-11-06 21:52:00.000000000 +0200
-+++ features/org.eclipse.equinox.p2.user.ui/feature.xml	2010-02-26 12:25:20.754557749 +0200
-@@ -305,7 +305,7 @@
+--- a/features/org.eclipse.equinox.p2.user.ui/feature.xml
++++ b/features/org.eclipse.equinox.p2.user.ui/feature.xml
+@@ -298,21 +298,21 @@
           id="org.apache.commons.codec"
           download-size="0"
           install-size="0"
@@ -9,3 +9,19 @@
           unpack="false"/>
  
     <plugin
+          id="org.apache.commons.httpclient"
+          download-size="0"
+          install-size="0"
+-         version="3.1.0.qualifier"
++         version="0.0.0"
+          unpack="false"/>
+ 
+    <plugin
+          id="org.apache.commons.logging"
+          download-size="0"
+          install-size="0"
+-         version="1.0.4.qualifier"
++         version="0.0.0"
+          unpack="false"/>
+ 
+ 

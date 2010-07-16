@@ -1,5 +1,3 @@
-diff --git a/eclipse/features/master-equinox/feature.xml b/eclipse/features/master-equinox/feature.xml
-index ff7ccf1..d89663d 100644
 --- a/features/master-equinox/feature.xml
 +++ b/features/master-equinox/feature.xml
 @@ -39,14 +39,14 @@
@@ -19,8 +17,6 @@ index ff7ccf1..d89663d 100644
      <plugin
           id="org.eclipse.equinox.http.jetty"
           download-size="0"
-diff --git a/eclipse/features/master-jetty/feature.xml b/eclipse/features/master-jetty/feature.xml
-index a23c475..d33099e 100644
 --- a/features/master-jetty/feature.xml
 +++ b/features/master-jetty/feature.xml
 @@ -17,14 +17,14 @@

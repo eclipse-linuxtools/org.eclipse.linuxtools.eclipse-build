@@ -1,7 +1,6 @@
-diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml
---- debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml	2009-04-28 18:53:02.000000000 +0200
-+++ debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml	2009-08-26 23:13:02.158691612 +0200
-@@ -63,7 +63,7 @@
+--- a/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml
++++ b/plugins/org.eclipse.jdt.core/scripts/ikvm_script.xml
+@@ -64,7 +64,7 @@
  	</target>
  
  	<target name="ecj">
@@ -10,10 +9,9 @@ diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclip
  			<arg line="-out:ecj.exe -main:org.eclipse.jdt.internal.compiler.batch.Main -recurse:./*.class -recurse:./*.properties -recurse:./*.rsc"/>
  		</exec>
  		<copy file="${ikvm_home}/bin/IKVM.Runtime.dll" todir="${dest}" />
-diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml
---- debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml	2007-11-29 15:16:54.000000000 +0100
-+++ debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml	2009-08-26 23:13:03.342691628 +0200
-@@ -74,7 +74,7 @@
+--- a/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml
++++ b/plugins/org.eclipse.jdt.doc.isv/buildDoc.xml
+@@ -65,7 +65,7 @@
  		<delete dir="reference/api"/>
  		<mkdir dir="reference/api"/>
  
@@ -21,8 +19,8 @@ diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclip
 +		<exec dir="." executable="${javadoc}" >
  			<arg line="@${basedir}/${optionsFile} -J-Xmx500M" />
  		</exec>
- 		<antcall target="generateJdtAptJavadoc" />
-@@ -100,7 +100,7 @@
+ 		
+@@ -98,7 +98,7 @@
  		<delete dir="reference/apt" />
  		<mkdir dir="reference/apt" />
  
@@ -30,11 +28,10 @@ diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclip
 +		<exec dir="." executable="${javadoc15}" >
  			<arg line="@${basedir}/${jdtaptoptionsFile} -J-Xmx500M" />
  		</exec>
- 	</target>
-diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.pde.doc.user/buildDoc.xml debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.pde.doc.user/buildDoc.xml
---- debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.pde.doc.user/buildDoc.xml	2009-06-05 16:48:40.000000000 +0200
-+++ debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.pde.doc.user/buildDoc.xml	2009-08-26 23:13:02.194691701 +0200
-@@ -63,7 +63,7 @@
+ 		
+--- a/plugins/org.eclipse.pde.doc.user/buildDoc.xml
++++ b/plugins/org.eclipse.pde.doc.user/buildDoc.xml
+@@ -65,7 +65,7 @@
  		<delete dir="reference/api"/>
  		<mkdir dir="reference/api"/>
  
@@ -42,16 +39,15 @@ diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclip
 +		<exec dir="." executable="${javadoc}" >
  			<arg line="@${basedir}/${optionsFile} -J-Xmx1000M" />
  		</exec>
- 	</target>
-diff -pruN debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.platform.doc.isv/buildDoc.xml debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
---- debian.git/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.platform.doc.isv/buildDoc.xml	2009-01-26 18:12:18.000000000 +0100
-+++ debian.git.new/build/eclipse-I20090611-1540-fetched-src/plugins/org.eclipse.platform.doc.isv/buildDoc.xml	2009-08-26 23:13:02.698691170 +0200
-@@ -118,7 +118,7 @@
+ 		
+--- a/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
++++ b/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
+@@ -119,7 +119,7 @@
  		<delete dir="reference/api"/>
  		<mkdir dir="reference/api"/>
  
--		<exec dir="." executable="${javadoc}" output="doc.bin.log">
-+		<exec dir="." executable="${javadoc}" >
+-		<exec dir="." executable="${javadoc15}" output="doc.bin.log">
++		<exec dir="." executable="${javadoc15}" >
  			<arg line="@${basedir}/${optionsFile} -J-Xmx1000M" />
  		</exec>
  		

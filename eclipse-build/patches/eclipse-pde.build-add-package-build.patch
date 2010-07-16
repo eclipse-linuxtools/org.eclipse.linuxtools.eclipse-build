@@ -1,11 +1,7 @@
 ### Eclipse Workspace Patch 1.0
 #P org.eclipse.pde.build
-Index: templates/package-build/prepare-build-dir.sh
-===================================================================
-RCS file: templates/package-build/prepare-build-dir.sh
-diff -N templates/package-build/prepare-build-dir.sh
---- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ templates/package-build/prepare-build-dir.sh	1 Jan 1970 00:00:00 -0000
+--- /dev/null
++++ b/plugins/org.eclipse.pde.build/templates/package-build/prepare-build-dir.sh
 @@ -0,0 +1,105 @@
 +#!/bin/sh
 +
@@ -112,12 +108,8 @@ diff -N templates/package-build/prepare-build-dir.sh
 +
 +rm -rf $BUILDDIR/tmp
 +echo done
-Index: templates/package-build/customTargets-assemble-target.xml
-===================================================================
-RCS file: templates/package-build/customTargets-assemble-target.xml
-diff -N templates/package-build/customTargets-assemble-target.xml
---- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ templates/package-build/customTargets-assemble-target.xml	1 Jan 1970 00:00:00 -0000
+--- /dev/null
++++ b/plugins/org.eclipse.pde.build/templates/package-build/customTargets-assemble-target.xml
 @@ -0,0 +1,15 @@
 +<project>
 +	<!-- ===================================================================== -->
@@ -134,12 +126,8 @@ diff -N templates/package-build/customTargets-assemble-target.xml
 +		<ant antfile="${assembleScriptName}" dir="${buildDirectory}" />
 +	</target>
 +</project>
-Index: templates/package-build/customTargets.xml
-===================================================================
-RCS file: templates/package-build/customTargets.xml
-diff -N templates/package-build/customTargets.xml
---- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ templates/package-build/customTargets.xml	1 Jan 1970 00:00:00 -0000
+--- /dev/null
++++ b/plugins/org.eclipse.pde.build/templates/package-build/customTargets.xml
 @@ -0,0 +1,154 @@
 +<project name="Build specific targets and properties" default="noDefault">
 +
@@ -295,12 +283,8 @@ diff -N templates/package-build/customTargets.xml
 +	</target>
 +
 +</project>
-Index: templates/package-build/build.properties
-===================================================================
-RCS file: templates/package-build/build.properties
-diff -N templates/package-build/build.properties
---- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ templates/package-build/build.properties	1 Jan 1970 00:00:00 -0000
+--- /dev/null
++++ b/plugins/org.eclipse.pde.build/templates/package-build/build.properties
 @@ -0,0 +1,12 @@
 +buildDirectory=${sourceDirectory}/build
 +buildLabel=rpmBuild

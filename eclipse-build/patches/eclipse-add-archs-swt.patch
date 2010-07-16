@@ -1,6 +1,6 @@
---- ./features/org.eclipse.rcp/feature.xml.orig	2009-10-25 09:34:48.000000000 +0100
-+++ ./features/org.eclipse.rcp/feature.xml	2009-10-29 20:13:44.000000000 +0100
-@@ -217,10 +217,87 @@
+--- a/features/org.eclipse.rcp/feature.xml
++++ b/features/org.eclipse.rcp/feature.xml
+@@ -206,10 +206,87 @@
           unpack="false"/>
  
     <plugin
@@ -90,7 +90,7 @@
           download-size="0"
           install-size="0"
           version="0.0.0"
-@@ -250,8 +327,8 @@
+@@ -239,8 +316,8 @@
           unpack="false"/>
  
     <plugin
@@ -101,7 +101,7 @@
           ws="gtk"
           arch="sparc"
           download-size="0"
-@@ -259,12 +336,12 @@
+@@ -248,12 +325,12 @@
           version="0.0.0"
           fragment="true"
           unpack="false"/>
@@ -118,7 +118,7 @@
           download-size="0"
           install-size="0"
           version="0.0.0"
-@@ -272,10 +349,10 @@
+@@ -261,10 +338,10 @@
           unpack="false"/>
  
     <plugin

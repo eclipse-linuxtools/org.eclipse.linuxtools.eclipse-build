@@ -1,5 +1,5 @@
---- ./plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java.orig	2009-10-25 09:34:49.000000000 +0100
-+++ ./plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java	2009-10-29 20:24:58.000000000 +0100
+--- a/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
++++ b/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
 @@ -48,6 +48,14 @@
  			Platform.ARCH_X86, //
  			Platform.ARCH_AMD64, // 
@@ -15,8 +15,8 @@
  			Platform.ARCH_IA64_32};
  
  	// debug support:  set in loadOptions()
---- ./plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java.orig	2009-10-25 09:34:49.000000000 +0100
-+++ ./plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java	2009-10-29 20:25:41.000000000 +0100
+--- a/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java
++++ b/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java
 @@ -349,6 +349,15 @@
  	 * @since 3.1
  	 */
@@ -33,9 +33,9 @@
  
  	/**
  	 * Constant string (value "win32") indicating the platform is running on a
---- ./plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java.orig	2009-10-25 09:34:54.000000000 +0100
-+++ ./plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java	2009-10-29 20:23:01.000000000 +0100
-@@ -64,7 +64,7 @@
+--- a/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
++++ b/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
+@@ -63,7 +63,7 @@
  	private static final String MANIFEST_VERSION = "Manifest-Version"; //$NON-NLS-1$
  	private static final String PLUGIN_PROPERTIES_FILENAME = "plugin"; //$NON-NLS-1$
  	private static PluginConverterImpl instance;
@@ -44,13 +44,12 @@
  	static public final String FRAGMENT_MANIFEST = "fragment.xml"; //$NON-NLS-1$
  	static public final String GENERATED_FROM = "Generated-from"; //$NON-NLS-1$
  	static public final String MANIFEST_TYPE_ATTRIBUTE = "type"; //$NON-NLS-1$
---- ./plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java.orig	2009-10-25 09:34:54.000000000 +0100
-+++ ./plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java	2009-10-29 20:24:10.000000000 +0100
-@@ -153,6 +153,15 @@
+--- a/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java
++++ b/plugins/org.eclipse.osgi/supplement/src/org/eclipse/osgi/service/environment/Constants.java
+@@ -160,6 +160,14 @@
  	 */
  	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
  
-+	public static final String ARCH_PPC64 = "ppc64";//$NON-NLS-1$
 +	public static final String ARCH_SPARC64 = "sparc64";//$NON-NLS-1$
 +	public static final String ARCH_S390 = "s390";//$NON-NLS-1$
 +	public static final String ARCH_S390X = "s390x";//$NON-NLS-1$
