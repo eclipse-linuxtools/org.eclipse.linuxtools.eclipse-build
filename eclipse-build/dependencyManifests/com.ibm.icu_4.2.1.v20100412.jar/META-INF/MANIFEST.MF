@@ -1,0 +1,4238 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: CDC-1.0/Foundation-1.0,J2SE-1.3
+Bundle-SymbolicName: com.ibm.icu; singleton:=true
+Eclipse-LazyStart: true
+Bundle-Version: 4.2.1.v20100412
+Export-Package: com.ibm.icu.lang;base=true;full=true;version="4.2.1.1"
+ ,com.ibm.icu.math;base=true;full=true;version="4.2.1.1",com.ibm.icu.t
+ ext;base=true;full=true;version="4.2.1.1",com.ibm.icu.util;base=true;
+ full=true;version="4.2.1.1",com.ibm.icu.impl;x-internal:=true,com.ibm
+ .icu.impl.data;x-internal:=true,com.ibm.icu.impl.data.icudt42b;x-inte
+ rnal:=true,com.ibm.icu.impl.data.icudt42b.brkitr;x-internal:=true,com
+ .ibm.icu.impl.data.icudt42b.coll;x-internal:=true,com.ibm.icu.impl.da
+ ta.icudt42b.rbnf;x-internal:=true,com.ibm.icu.impl.data.icudt42b.tran
+ slit;x-internal:=true
+Bundle-ClassPath: icu-jse4.jar,icu-data.jar,.
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Eclipse-ExtensibleAPI: true
+Bundle-Copyright: Licensed Materials - Property of IBM (C) Copyright I
+ BM Corp. 2000, 2010. All Rights Reserved. IBM is a registered tradema
+ rk of IBM Corp.
+Bundle-ManifestVersion: 2
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/is.res
+SHA1-Digest: j2CvJA3Cm/aqqU6CYhr47wtC2L8=
+
+Name: com/ibm/icu/text/EscapeTransliterator.class
+SHA1-Digest: YXPxHZn0uCu6crcG4IqVG3oVBnU=
+
+Name: com/ibm/icu/impl/data/icudt42b/hu.res
+SHA1-Digest: 3JfUzYiRweroYW/plfnvsLDQb1I=
+
+Name: com/ibm/icu/text/NumberFormat$SimpleNumberFormatFactory.class
+SHA1-Digest: E6rM+nNhOSNMheNR4AiKxfCrgSo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar.res
+SHA1-Digest: PwC+9Pf6YSgK3V57C+Sjfqnpr3I=
+
+Name: com/ibm/icu/impl/duration/impl/Utils$ChineseDigits.class
+SHA1-Digest: xbghwuZOvqj0GdC1C/PXv1XcH0I=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/zh.res
+SHA1-Digest: kwZeMD+wckT1m/ZkisNoWScHlHQ=
+
+Name: com/ibm/icu/impl/IllegalIcuArgumentException.class
+SHA1-Digest: 0yNJLTuTzmaf61MWdRlz8OCXFiY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nb.res
+SHA1-Digest: XcezM2Ezj9IKqt2x1dUw8UTqXB8=
+
+Name: com/ibm/icu/text/UnicodeCompressor.class
+SHA1-Digest: MamRaHWdqY/NzE+Pr/pRuFcw/k4=
+
+Name: com/ibm/icu/util/TimeZoneTransition.class
+SHA1-Digest: nsjOT2dDaZctakgY5wlp1Cn+ixY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_IQ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/locale/InternalLocaleBuilder.class
+SHA1-Digest: V7c6Go6aFXvHqvjIGGnfMXDzSp0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/kn_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/UCharacterName$AlgorithmName.class
+SHA1-Digest: PYl6PNBKDsuWCPtMTBAej3qiWEs=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_fr_FR.class
+SHA1-Digest: kukMBLawmMI5NEK5Rr8YN8hdz1g=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/af_ZA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/mk.res
+SHA1-Digest: +16iURHtlT11MXFHeQ5YdVWG9XU=
+
+Name: com/ibm/icu/impl/duration/impl/Utils.class
+SHA1-Digest: gf7gRgQu1u5OgPdlHnExgWFX9Bc=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_de.class
+SHA1-Digest: TeJeBzkTwkAFHb/iKE80Zc0XicI=
+
+Name: com/ibm/icu/text/AbsoluteValueSubstitution.class
+SHA1-Digest: ZolTHiOYyGLQwXWY00LnhUJsdME=
+
+Name: com/ibm/icu/text/RBBIDataWrapper$TrieFoldingFunc.class
+SHA1-Digest: Qf62ZKq9AjB9w31sh/QS1De+vpI=
+
+Name: com/ibm/icu/text/Normalizer$NFDMode.class
+SHA1-Digest: xg6Q8tYy7KxwlfYm+Grf+3XV3fM=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fo.res
+SHA1-Digest: bL+GlmE1Y5OoN/A/uUVVOCpXTKA=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceInt.class
+SHA1-Digest: PK/s8z+DVKB6V/yZ7axygXLKwrs=
+
+Name: com/ibm/icu/util/CopticCalendar.class
+SHA1-Digest: oRNvFtdVo3HZ2IOcg2AjOGhm9I8=
+
+Name: com/ibm/icu/text/RuleBasedBreakIterator.class
+SHA1-Digest: ge0GS1yzlXkRSC/RdBcTRZNf3og=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl_RS.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_ZW.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CharsetRecog_2022.class
+SHA1-Digest: F0nf0CFBMOFv2vrd0mvZ7OY43mY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_BH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sh.res
+SHA1-Digest: 5xIT4uaABWOSZbAPadn5pBVATSA=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EUnitVariant.class
+SHA1-Digest: F2a3jCGNTvPEMDmL8BeOOTEQ1iI=
+
+Name: com/ibm/icu/lang/UCharacter$StringContextIterator.class
+SHA1-Digest: lNpq2qWpIAGB742B0mS87r+hpsQ=
+
+Name: com/ibm/icu/text/NumeratorSubstitution.class
+SHA1-Digest: 7GMpPOT/EuYAKhFUqfg3TQ7pAYA=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_CN.res
+SHA1-Digest: OqOcERNgY90GdftreFDuBO3TG1M=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa_Arab_PK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/DecimalFormat.class
+SHA1-Digest: U33/Ve3RZCN03mBl06HVLRmJtnU=
+
+Name: com/ibm/icu/text/RuleBasedTransliterator.class
+SHA1-Digest: RIDjkJ3ien3vG4tB1vgS4iuRFP8=
+
+Name: com/ibm/icu/text/DigitList.class
+SHA1-Digest: DbK/2LnHbTcnTDiY4krPxVDuMKw=
+
+Name: com/ibm/icu/util/Holiday.class
+SHA1-Digest: lI3HeWyJdOjBOZRCfPDxmf+FDF4=
+
+Name: com/ibm/icu/impl/data/icudt42b/nl.res
+SHA1-Digest: xy35sFvnPSYIBCf0u3kc01UzIHc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ko_KR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/he_IL.res
+SHA1-Digest: xx8x6c6TfbSBUuCgTOFqYfTB9Vs=
+
+Name: com/ibm/icu/lang/UCharacter$EastAsianWidth.class
+SHA1-Digest: BsCL841cISRA8tJI4hy44L/8/XI=
+
+Name: com/ibm/icu/impl/duration/OneOrTwoUnitBuilder.class
+SHA1-Digest: 6vDwEr9CWsHzaKmMdGNTAsFihLM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kn.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/text/Bidi.class
+SHA1-Digest: AgMeGBZRm0TYecerF6aysJ7PT9k=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Latn.res
+SHA1-Digest: njORFhp1f/q+5Iunh8RUfI1YhXs=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr.res
+SHA1-Digest: uLgs0BZfEG5SKg4oCnu7DjddatA=
+
+Name: com/ibm/icu/util/CurrencyServiceShim$CFService.class
+SHA1-Digest: rBBK+/s+rspq0n4MHaBKyH6qgeY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/it_IT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/BreakIterator.class
+SHA1-Digest: 1McPZer5dsYHVvftuxv1mulZJCQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de.res
+SHA1-Digest: udXs6mDgaFlXCDLufyFIaPqL0mA=
+
+Name: com/ibm/icu/impl/data/icudt42b/om.res
+SHA1-Digest: kXlJcOU2EYYVZHUnQgPRoNED2jA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr.res
+SHA1-Digest: tGIJx/BHQmB3/P21GhxRf0tHIck=
+
+Name: com/ibm/icu/impl/data/icudt42b/haw_US.res
+SHA1-Digest: qXwLlsGY/3vEgZHppDA+hTle9kE=
+
+Name: com/ibm/icu/text/BreakCTDictionary$CompactTrieNodeFlags.class
+SHA1-Digest: NHSMsJK1/XaK+qxiN89ct8gnfeM=
+
+Name: com/ibm/icu/impl/TextTrieMap$ResultHandler.class
+SHA1-Digest: NfDOnUJ6MEMaHwTl+N0ovE9ddws=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pt.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorParser$ParseData.class
+SHA1-Digest: qzjqmwgM41enjJzYKlm1GmSsxVo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_TN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/lv.res
+SHA1-Digest: FNsqY1pX+nP5Q5tA0F/KTsIeKQs=
+
+Name: com/ibm/icu/text/BidiRun.class
+SHA1-Digest: NVDG2+p7aEOg0Y7eJMKRrGzcIBM=
+
+Name: com/ibm/icu/impl/data/icudt42b/az_Latn.res
+SHA1-Digest: GuGMZSWyJJqxdmm9EzD7CnSl2IU=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_UY.res
+SHA1-Digest: ctg1v3Q44rmRhqm49FQHKrrmIMA=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/sent.brk
+SHA1-Digest: 5QkJZyN+UYeCLr8NqkrhshFfAcQ=
+
+Name: com/ibm/icu/lang/UScript.class
+SHA1-Digest: 5uNMnkZHEDId9P+L36R63jpUhyI=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/en_US_POSIX.res
+SHA1-Digest: beFWtWkxc9Yvx9alkk9FkhNbb+0=
+
+Name: com/ibm/icu/impl/duration/impl/ResourceBasedPeriodFormatterDataS
+ ervice.class
+SHA1-Digest: JqOOr2sq7TcizCQJs9oL4g6So4I=
+
+Name: com/ibm/icu/text/CharsetRecog_2022$CharsetRecog_2022CN.class
+SHA1-Digest: DbHd1CyG/Msa9UPMr2wH2DF7trc=
+
+Name: com/ibm/icu/impl/PropsVectors$DefaultGetFoldedValue.class
+SHA1-Digest: Lwmpr2KCuPKMqaGtEnlFLz/wuqo=
+
+Name: com/ibm/icu/text/UppercaseTransliterator$1.class
+SHA1-Digest: G0JYUB6wT8GAYj5owWpsz9/Ftw8=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ETimeLimit.class
+SHA1-Digest: 4ZMtPxvIotXIqFOqbPO7ya0XlMY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_DZ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CharsetDetector.class
+SHA1-Digest: gYZx7hbJUm5FKRv7KdQ97H4GweY=
+
+Name: com/ibm/icu/impl/URLHandler.class
+SHA1-Digest: vvqGkYkIa4xQWAeWynhhHrqpw10=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_MC.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/CharsetRecog_UTF8.class
+SHA1-Digest: e0rv0rA2OtgVcjPnmTwV8XCoHvY=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/el.res
+SHA1-Digest: U0c1hk1kb+krIvZR8cJGcxzSWOY=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_sv.class
+SHA1-Digest: E4MDrKpNuLO4thhe8eWFznL4mmk=
+
+Name: com/ibm/icu/lang/UCharacterNameIterator.class
+SHA1-Digest: UOMCEcLCGIcaMeDNVQfP5K8B03k=
+
+Name: com/ibm/icu/text/BreakCTDictionary$CompactTrieVerticalNode.class
+SHA1-Digest: FlLd/KEtCwedIf/Im9rWvJ8pkmE=
+
+Name: com/ibm/icu/text/BidiClassifier.class
+SHA1-Digest: jNruu2s6m5HmirvSejWNh5tTzPg=
+
+Name: com/ibm/icu/impl/ICULocaleService.class
+SHA1-Digest: wgOreXadv+Y6G64zD6iDwr3d/MY=
+
+Name: com/ibm/icu/util/DateRule.class
+SHA1-Digest: 9ppWbONa89XFnzd2NUTKAtIj7gs=
+
+Name: com/ibm/icu/text/RemoveTransliterator.class
+SHA1-Digest: otKJ/1nx4yCw6WLjSuLHwvCL2bc=
+
+Name: com/ibm/icu/impl/data/icudt42b/zoneinfo.res
+SHA1-Digest: lyR8PCY1r2O2fwcPzFCmV+03kek=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_DE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/no_NO.res
+SHA1-Digest: AgYfyOH+DuzgYK7m3vioTfRNJGM=
+
+Name: com/ibm/icu/text/BreakTransliterator.class
+SHA1-Digest: 5j+5ezoVKgpv+cDfcyQp8CkSXHM=
+
+Name: com/ibm/icu/impl/UtilityExtensions.class
+SHA1-Digest: QHfN5QTMSujGJ608wEP4hPhWEF0=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_VI.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/lang/UCharacterEnums$ECharacterDirection.class
+SHA1-Digest: H8qH9/fT9hc7M4JiYaHxEZrAaKY=
+
+Name: com/ibm/icu/impl/ICUData.class
+SHA1-Digest: 3erV0Mc2+xO14bQ2k81EbRknNRw=
+
+Name: com/ibm/icu/impl/data/icudt42b/kw_GB.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/af_NA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/numberingSystems.res
+SHA1-Digest: CwVj0WaVMbqB1Mpxp0Kqbk2gWKc=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_SV.res
+SHA1-Digest: DqUgxafBny6RSK/5q4mvOxc7iio=
+
+Name: com/ibm/icu/text/DateIntervalFormat$BestMatchInfo.class
+SHA1-Digest: sV0Mx7TGY10SraT/jykvrPl7Q5U=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_BE.res
+SHA1-Digest: t5kA5x031c55chPP3IyBYNE2tHA=
+
+Name: com/ibm/icu/text/Normalizer$IsNextBoundary.class
+SHA1-Digest: CKZMxdzbwLro2Z+QmdJ/ciVY2PA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_SD.res
+SHA1-Digest: 8jPOUtil+92lPKtgn16fuUJT/xs=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_CR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/fa.res
+SHA1-Digest: 5Bs2cr+U6j+dypoDNaMPSbsUf0I=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr_FR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/NormalizerImpl$CmpEquivLevel.class
+SHA1-Digest: dQTjAcpSF2DECctfvlbSo0KO1aU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/km.res
+SHA1-Digest: +iJyrhf9PCl28WxihRkDq1Ef6Lw=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/or.res
+SHA1-Digest: InVjaf5clp2rxTeqI9/0JIYSNB8=
+
+Name: com/ibm/icu/text/NameUnicodeTransliterator$1.class
+SHA1-Digest: DpWM8KnhkmbxGZXZFeHCngsH69o=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3920node.spp
+SHA1-Digest: 4IYXUODtnB6gfa7RDUKiacm7TG8=
+
+Name: com/ibm/icu/util/Measure.class
+SHA1-Digest: 9mL4N0Vyl9+I6qKvkwVl14lMQkc=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ETimeDirection.class
+SHA1-Digest: N9UUzovPmIuRsQk9R1s/tDmtyIs=
+
+Name: com/ibm/icu/impl/Grego.class
+SHA1-Digest: ByHxVGjXDj6wtd4aKgZcIkKZqQk=
+
+Name: com/ibm/icu/impl/duration/PeriodBuilder.class
+SHA1-Digest: dV/Szp96Rd+0gIGLoutRicRFViU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fa_AF.res
+SHA1-Digest: GxFG7kSjMBkfuBfHcrlK9JEMIUk=
+
+Name: com/ibm/icu/impl/UCharacterNameChoice.class
+SHA1-Digest: mMAuTd72u2gcqx8i1UYo0FKAc9w=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kk_KZ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/RangeDateRule.class
+SHA1-Digest: msIx2SRP5ec64ZXKKDuwMKIaJuY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/cs.res
+SHA1-Digest: 6ewJaKyRixh1EaHQDrPSPclAH1s=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_PR.res
+SHA1-Digest: XbM/LpRizF51mvHs+PUyZEXY/hQ=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_2_hu.class
+SHA1-Digest: pBbf8rLCbWkUdL2JrvCE8OAp+BQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_CA.res
+SHA1-Digest: Q8VylXqubeMUQ0gbkGBmmW5FoW8=
+
+Name: com/ibm/icu/text/SimpleDateFormat$PatternItem.class
+SHA1-Digest: YAu3YeIk7pw3PNa524tZW2WuBIE=
+
+Name: com/ibm/icu/text/CollationRuleParser$IndirectBoundaries.class
+SHA1-Digest: 0AbZRXsqPif5tIO0chF3JJ4YPDo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/th.res
+SHA1-Digest: h7X9C37HwUru0u4cVd+B3afa9HA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_HK.res
+SHA1-Digest: speOMn/V2KXsedph/5CkSZvBY08=
+
+Name: com/ibm/icu/impl/UCaseProps.class
+SHA1-Digest: uOAVyXrL6DlQ5Sw5t2fW7uXhxDg=
+
+Name: com/ibm/icu/impl/NormalizerImpl$DecomposeArgs.class
+SHA1-Digest: hDKbUGlZBenhxVha4ofAGKYcZvk=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_en.class
+SHA1-Digest: wLcQHijwQPcw+2QLT5p2j7vrFmU=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EGender.class
+SHA1-Digest: J/zw3EDVDp2DIUnLU7Ns1Auk8+s=
+
+Name: com/ibm/icu/text/EscapeTransliterator$1.class
+SHA1-Digest: BmF+vui9JoLsiiWA4fkM9uw0XGw=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa_Arab.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sq.res
+SHA1-Digest: YGEaYRH54BnepCoO05Xr1A89Cjk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hi.res
+SHA1-Digest: YESl1anaFaTG/Cg+h8qp06YkSWc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ps.res
+SHA1-Digest: jcSG2XNQ01J2cSZYHsb3WmuoqpY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/vi_VN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_Latn_NG.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/RelativeDateFormat$URelativeString.class
+SHA1-Digest: 4JcRrl0CkaM/+e6/P6hm+woduY0=
+
+Name: com/ibm/icu/util/TaiwanCalendar.class
+SHA1-Digest: seXD8m1jm3Pi1ii97cHCx0DVb5g=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_5.class
+SHA1-Digest: knuUFp80QD6HqAgIaUwvSZ4e2XI=
+
+Name: com/ibm/icu/impl/data/icudt42b/kw.res
+SHA1-Digest: XhDdKpjngOgIwwhY9wzLH08YYF0=
+
+Name: com/ibm/icu/text/NFSubstitution.class
+SHA1-Digest: Tf3idfc3xXqihVo1OfmhIdhv45U=
+
+Name: com/ibm/icu/util/ChineseCalendar.class
+SHA1-Digest: pJlfi7MLmf32IriffIOhnZKxFqg=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM420_ar_rtl.cl
+ ass
+SHA1-Digest: Pv7T9lB2nfQWV7y6z+DzAU9ztnw=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$Horizon.class
+SHA1-Digest: tqn4oqVKoLNURBeQA94T77HmV80=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_QA.res
+SHA1-Digest: f4UrB2kdWt/+ODJfpHLPtXUcdas=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/om_KE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa_Guru.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/ICUService$CacheEntry.class
+SHA1-Digest: lZ0Rre/AW1WALU0phN0pn/Cb1BI=
+
+Name: com/ibm/icu/impl/data/icudt42b/tr.res
+SHA1-Digest: 76WaJA6WKs5PIRKZtCsS4o72LX0=
+
+Name: com/ibm/icu/impl/data/icudt42b/az_Cyrl_AZ.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/util/Calendar.class
+SHA1-Digest: thvM7e735GDNg3hS2lLIuJRMBV4=
+
+Name: com/ibm/icu/impl/ResourceBundleWrapper.class
+SHA1-Digest: rIKZx1wCuiXfe5QkMHVctB9728E=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sh_BA.res
+SHA1-Digest: vYOnYIQEmwDnRfySDiGCAZETvgI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/el.res
+SHA1-Digest: AGQ9gc90hsqcnPV6yQmFHA/1osQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn.res
+SHA1-Digest: uO1DdkPQdwIhPSDZ+yzcrPCwz88=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_windows_1251.cla
+ ss
+SHA1-Digest: SXkn/Uww9Gzw7b/Un5t7GkFakCE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_AE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_iw_IL.class
+SHA1-Digest: YUizshYwzLdXoy05Q8wxj4mQut0=
+
+Name: com/ibm/icu/impl/data/icudt42b/bn_IN.res
+SHA1-Digest: bv0pDsctpdozqqzI1wej2hasy9c=
+
+Name: com/ibm/icu/impl/NormalizerImpl$PrevArgs.class
+SHA1-Digest: cOomgZl+/yp6SYjdUoYbL7JbQk8=
+
+Name: com/ibm/icu/text/CharsetRecog_2022$CharsetRecog_2022JP.class
+SHA1-Digest: w2BjrE208VvJdVSAPaTr1kLTqvA=
+
+Name: com/ibm/icu/lang/UScriptRun$ParenStackEntry.class
+SHA1-Digest: hjJuPZ/fOXQd2FMPfdIN4fRyuUI=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/ja.res
+SHA1-Digest: JvSF9gjOLJGjbnDwtW+adnCvW0E=
+
+Name: com/ibm/icu/text/FractionalPartSubstitution.class
+SHA1-Digest: Ynmu31KNNJxNN6NJpdaL6yBfREo=
+
+Name: com/ibm/icu/impl/data/icudt42b/hu_HU.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_es.class
+SHA1-Digest: 3SErfzPsT82mvGwkW2uM2+Y+V3g=
+
+Name: com/ibm/icu/impl/data/icudt42b/id.res
+SHA1-Digest: /v6DtD31JMnx4TFGPb1tAs3bJ58=
+
+Name: com/ibm/icu/impl/data/icudt42b/translit/root.res
+SHA1-Digest: W9W31JFWrx9S4rOkkKDBHLnYrmI=
+
+Name: com/ibm/icu/impl/data/icudt42b/el_GR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/NumberFormatServiceShim.class
+SHA1-Digest: 5g5rFy1SGHdAii8w/LXUSFEhh2s=
+
+Name: com/ibm/icu/text/EscapeTransliterator$6.class
+SHA1-Digest: PFEkFXg8eBaBKVeFY55vhS2mLAM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ru.res
+SHA1-Digest: VXbAmZCJZJeWtwmyerLwaGhkQqk=
+
+Name: com/ibm/icu/text/RuleBasedCollator$UCAConstants.class
+SHA1-Digest: s5CcIsUVxym6jbrYS095b8nqJmI=
+
+Name: com/ibm/icu/impl/data/icudt42b/ru_UA.res
+SHA1-Digest: IXZDpxA+m9jyEDvaDLUtuycklI4=
+
+Name: com/ibm/icu/impl/ICUNotifier.class
+SHA1-Digest: lglpVgoxE78xm+dGjGgI1+vH8Go=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$AliasEntry.class
+SHA1-Digest: VVsoRHCiofSdXgz5txKcKInbG98=
+
+Name: com/ibm/icu/impl/data/icudt42b/eo.res
+SHA1-Digest: kBkTnKWiCx/5QFeXkXT2AXgknWE=
+
+Name: com/ibm/icu/text/UnicodeSet$VersionFilter.class
+SHA1-Digest: a9gj5vKVl+/+AHgbAB0gZ7dN8l8=
+
+Name: com/ibm/icu/impl/data/icudt42b/it.res
+SHA1-Digest: WsShTh/aQbQ/ZhxRGg7Ag7CBx7g=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn_YU.res
+SHA1-Digest: 63xXzYBbV2uVP5NlLgeUyp8SVsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hans_HK.res
+SHA1-Digest: wQNfmmf0h/hyQoWk7DLPyxuDo2U=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$3.class
+SHA1-Digest: 0k60My0lEzUBHKhLLnROQxfwBNQ=
+
+Name: com/ibm/icu/impl/LocaleUtility.class
+SHA1-Digest: BX7DKr4qa3fDsh7bKxjRqrIdN1k=
+
+Name: com/ibm/icu/text/BreakIteratorFactory$1$RBBreakIteratorFactory.c
+ lass
+SHA1-Digest: +2C+74R/GkAukYK6BWok4d5+X18=
+
+Name: com/ibm/icu/util/UResourceBundleIterator.class
+SHA1-Digest: IrH/7eAb+2WBO5XParE13Y5/z+k=
+
+Name: com/ibm/icu/impl/data/icudt42b/sk_SK.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/az.res
+SHA1-Digest: ZMWs0VOdiKvJNL4AFWqFkUJSFhs=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc4013.spp
+SHA1-Digest: kRrkLaCSp2+yZ8BOpLlwwoi02PI=
+
+Name: com/ibm/icu/impl/data/icudt42b/ga_IE.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/RBBIRuleScanner$RBBIRuleChar.class
+SHA1-Digest: J0Y4X3G8nAQ2u1NdqdAgiryBeGs=
+
+Name: com/ibm/icu/text/CollatorServiceShim.class
+SHA1-Digest: hAgfcsXlTzaL/w4/gL0N9iCOUYo=
+
+Name: com/ibm/icu/impl/data/HolidayBundle.class
+SHA1-Digest: eped8S2PIpsw0xNnRZ5/97cXdR4=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_PA.res
+SHA1-Digest: nBhqgNbBYXfEOuIJnwG/Q4teyVM=
+
+Name: com/ibm/icu/impl/data/icudt42b/ro.res
+SHA1-Digest: FOBd+W6c9Uszw+S2FdiRgo7ISJo=
+
+Name: com/ibm/icu/util/Calendar$FormatConfiguration.class
+SHA1-Digest: HMfqjsjj92/mRd+LB6GWlX9Rz8A=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM424_he_rtl.cl
+ ass
+SHA1-Digest: J+B9CfPJsTC9wgQE4/ZkMBES4nY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kl.res
+SHA1-Digest: 0jsw6UtoVk4zt3ILXicpfV7biTk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sv.res
+SHA1-Digest: egUhPtCoHrry2yDZn92p5O6n5N8=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/sent_el.brk
+SHA1-Digest: 8i9iN5U7DqUoIo4MK4oyQZS9P3g=
+
+Name: com/ibm/icu/impl/data/icudt42b/ne_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_BW.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorRegistry.class
+SHA1-Digest: A/P7G4aaYuPu5xXL/ZkBbE18hwI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nb_NO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/duration/impl/XMLRecordWriter.class
+SHA1-Digest: PWYSZ4u8g1IfpbLoDoF3ftIAb4Q=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_it.class
+SHA1-Digest: cDFTSttIyUcOXqLd9D2T6tp/HZk=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ECountVariant.class
+SHA1-Digest: aJHVQ300aVD+BmC2P8llIq3pg9c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/et_EE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/CurrencyAmount.class
+SHA1-Digest: PNIjQXIaQ2oYJyUT0ItTyTqEkoU=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_windows_1256.cla
+ ss
+SHA1-Digest: DrTHr4sUWIbklSdEgWU28WoUbhA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ti_ET.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/util/VTimeZone.class
+SHA1-Digest: 1TPDKEs1DSITvWxMUvckjGndB4Q=
+
+Name: com/ibm/icu/impl/DateNumberFormat.class
+SHA1-Digest: cjx+PVDKOUW7D4ujcB6HlUvHvGs=
+
+Name: com/ibm/icu/text/NumberFormatServiceShim$NFService.class
+SHA1-Digest: tbq28jH7lu6i82zGqfz3TzCU2zw=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_PY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/cy.res
+SHA1-Digest: 19rDUBcwJVut4iH/bVmNX3Q7FOI=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_9_tr.class
+SHA1-Digest: L3qSOBh58ZoDcsPpSVwC2ZJVA70=
+
+Name: com/ibm/icu/impl/data/icudt42b/ga.res
+SHA1-Digest: +eLSqa91+kUpqOvCWHDTWpeia+0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fi_FI.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ru_RU.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CollationRuleParser$OptionSet.class
+SHA1-Digest: NQEcyavf02KCzAUy8eUxp2bm0ik=
+
+Name: com/ibm/icu/impl/data/icudt42b/sh_YU.res
+SHA1-Digest: 63xXzYBbV2uVP5NlLgeUyp8SVsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_LB.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CurrencyFormat.class
+SHA1-Digest: BIYocngM/7NiKCWXni1oy8dw6UE=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_no.class
+SHA1-Digest: xv4d+++Lz/qnbkyyhqENFT7eu0k=
+
+Name: com/ibm/icu/lang/UCharacter$HangulSyllableType.class
+SHA1-Digest: FX4QLFcLemKiu2KiOmBPbxuoTgA=
+
+Name: com/ibm/icu/impl/NormalizerImpl$RecomposeArgs.class
+SHA1-Digest: JcTG/vr+4vL+lvoLih+JchLOwys=
+
+Name: com/ibm/icu/impl/duration/BasicDurationFormatter.class
+SHA1-Digest: zh16hEdh2ONzmmsS1JDrmJiNlRk=
+
+Name: com/ibm/icu/impl/PropsVectors.class
+SHA1-Digest: wI4264ILYDdbtojBjMmkuDjmmUY=
+
+Name: com/ibm/icu/impl/data/icudt42b/ja_JP.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_EC.res
+SHA1-Digest: m0kpaMOPvIMFxZxiXL7bN0HH7wk=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/lt.res
+SHA1-Digest: rb4HPjXWqwrgfjBmwldQmaCBJ9c=
+
+Name: com/ibm/icu/text/TransliteratorIDParser$SingleID.class
+SHA1-Digest: Ufnlmb9l7qkXF0nQiTQKfC0SUN4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_PH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CollatorReader$2.class
+SHA1-Digest: VstzQGGxGrBfAGwLsKAmINjoHdE=
+
+Name: com/ibm/icu/impl/data/icudt42b/ta.res
+SHA1-Digest: UIyNBGqa1phd6lRvgnG2rxHojNI=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_6_ar.class
+SHA1-Digest: xn1RXUAMmznOTgrhrUQpwv5QlOQ=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs.class
+SHA1-Digest: QqTdh0CH4Vf7dqv8SgIqkDzUFSU=
+
+Name: com/ibm/icu/impl/data/BreakIteratorRules.class
+SHA1-Digest: gCMOKah34u1kPKbKDFFkZ7q4Yns=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/uk_UA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/SimpleCache.class
+SHA1-Digest: gkYKNngE0GE4oKeUP2E1tXk1jM8=
+
+Name: com/ibm/icu/text/UnicodeNameTransliterator$1.class
+SHA1-Digest: KaMVjn1QaHf34mD7oxjgwJ5ahIQ=
+
+Name: com/ibm/icu/impl/ZoneMeta.class
+SHA1-Digest: r0glyuuqmD6LFhOLNsnp1xng+pU=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_ES.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/ComposedCharIter.class
+SHA1-Digest: rChNG7UYDnRxDj7UbX1y0qWs5dk=
+
+Name: com/ibm/icu/impl/CollectionUtilities$MultiComparator.class
+SHA1-Digest: w+RtoKXIAzU2JSHL2lRzb/vNpkk=
+
+Name: com/ibm/icu/impl/data/icudt42b/pl.res
+SHA1-Digest: ycc7jjxh5sAJ1hGkiVLYLBbGIL4=
+
+Name: com/ibm/icu/impl/ICUBinary.class
+SHA1-Digest: sSY3Nr1xFNDxtMCJmvvgUU8AbJk=
+
+Name: com/ibm/icu/impl/JavaTimeZone.class
+SHA1-Digest: RGmGX6YF1kdSgSbPkP1pPUkdprM=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Cyrl.res
+SHA1-Digest: ofu0p2h5HG++q/Yi5O9ZawldKoI=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EHalfPlacement.class
+SHA1-Digest: hXh33TmrbYTnw55gCgxA0u+L1aU=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/af.res
+SHA1-Digest: 6ZZdsbmX402QmyeJfRkOd0UDHiQ=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_ko.xml
+SHA1-Digest: eOSUSyUSndb5fF2lk9BJK2jpGXo=
+
+Name: com/ibm/icu/text/PluralRules$BinaryConstraint.class
+SHA1-Digest: 1JkBPbgxMsMN5YV/Rcxbgs+kVXU=
+
+Name: com/ibm/icu/impl/data/icudt42b/hr.res
+SHA1-Digest: WMsS49dfMXa65cAp+IQNie57DAU=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$CEGenerator.class
+SHA1-Digest: /DJVLxMf9OcAzOZjQCcQi63elb8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/et.res
+SHA1-Digest: gY9889U6aBhiQd1g82sqQbwkwU4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/vi.res
+SHA1-Digest: fPZhu1BtbXnuJ3eUSAXmbnsSKPk=
+
+Name: com/ibm/icu/text/PluralFormat.class
+SHA1-Digest: rO5A57/apGQ9E2S9YwO746MktFQ=
+
+Name: com/ibm/icu/util/CaseInsensitiveString.class
+SHA1-Digest: rQq82lJnOBEXasFGvZ877r9VDQ4=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_BO.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ja.res
+SHA1-Digest: JU096ryb1j2ZPt0LeW9mREJ8Pkg=
+
+Name: com/ibm/icu/impl/data/icudt42b/az_AZ.res
+SHA1-Digest: /aK65NhD+NN4VpffHy3dVw5HOJA=
+
+Name: com/ibm/icu/impl/data/icudt42b/mr_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/duration/impl/XMLRecordReader.class
+SHA1-Digest: QJMPA09yTVHzesG3SnsuYOZF1gI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_MT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_Arab.res
+SHA1-Digest: V6CBcJq6TVrLkip5q/d1wIChIZA=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_iw.class
+SHA1-Digest: ToeHtdFUCxUdmrVnWpfyfJZK4PI=
+
+Name: com/ibm/icu/impl/data/icudt42b/ur.res
+SHA1-Digest: pxo8RnCdTUGMw6cWnSY8rLlTodw=
+
+Name: com/ibm/icu/util/TimeZone.class
+SHA1-Digest: Hm32xTzR86BFdisNVSy85b+qs8c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/no.res
+SHA1-Digest: QKT2L/mn+LtpRofMA4whD6vFbe0=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$BasicContractionTabl
+ e.class
+SHA1-Digest: jWsjLfFERZXorGeHalRwZJi4O5I=
+
+Name: com/ibm/icu/impl/data/icudt42b/ur_IN.res
+SHA1-Digest: 79kksnJjwoXz04PonmMn5+6V9E4=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_LU.res
+SHA1-Digest: pmLIFVklW+f3qKAzKg4pvCbRRMw=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_SG.res
+SHA1-Digest: 99MTdXPuizTQKIDtoLc37T5PHW0=
+
+Name: com/ibm/icu/impl/locale/BaseLocale.class
+SHA1-Digest: o6PyMobTa1XPoMEYCtn9erCRJfg=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_PK.res
+SHA1-Digest: k8xeatwjEZzFAMf4h66cJnIKCRc=
+
+Name: com/ibm/icu/lang/UCharacter$SentenceBreak.class
+SHA1-Digest: v60WgOObH7LMxSp6BLkx12kbK2o=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/bg.res
+SHA1-Digest: FAjQiRZGQsGv60+ineKz2cfWHhA=
+
+Name: com/ibm/icu/text/UnicodeSet$Filter.class
+SHA1-Digest: NBMNANpxG2nLvO2DvN1HxX60dOA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_AU.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans_SG.xml
+SHA1-Digest: TJYCrJvOY2vR1NyyLtm2gdpw0fs=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn_ME.res
+SHA1-Digest: cYLkZ9Z18u/K8BYFefs2WDDNvII=
+
+Name: com/ibm/icu/impl/data/icudt42b/en.res
+SHA1-Digest: qVsjlL/wvdmhN0kYI0qz0fpJpVQ=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_da.class
+SHA1-Digest: jzjS6XsqunKSZ7YAmPaebKHAeQo=
+
+Name: com/ibm/icu/impl/data/icudt42b/is.res
+SHA1-Digest: 5Ryn6dHXd2TJjS6IoT03GIT+kJ8=
+
+Name: com/ibm/icu/util/IllformedLocaleException.class
+SHA1-Digest: CQ4rkK3nOjNNdiw7Fep5cCnsdNA=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh.res
+SHA1-Digest: wBR2aHtqcWVBRNX06qSePIeEmzw=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_en_GB.class
+SHA1-Digest: HXDh6JDRFbipCxMfi/8pXpp5d1k=
+
+Name: com/ibm/icu/impl/data/icudt42b/sw_KE.res
+SHA1-Digest: LVqZFqGyXHp7aC7dpmH9EzAcg5g=
+
+Name: com/ibm/icu/impl/data/icudt42b/bn_BD.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_JO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_Guru.res
+SHA1-Digest: X24m6J85tpyg/p+Y9+fILCxpvbs=
+
+Name: com/ibm/icu/impl/data/icudt42b/pt_PT.res
+SHA1-Digest: g32vD04+VGf7M8VvrjDhUXPsgbQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sl.res
+SHA1-Digest: f5g+aVg5/3/Hq5zwLSZLz0A6zfM=
+
+Name: com/ibm/icu/text/CollationElementIterator.class
+SHA1-Digest: xIVrdY7/w63ttuNlWyMX4Jc3dRo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ca.res
+SHA1-Digest: /znnLEtvYR7zUSGs2gi6rwMM40s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_BA.res
+SHA1-Digest: 6q0h04Ey+gEIoBcrzyHzzX1kkzA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kk.res
+SHA1-Digest: wjaQf987WfInc+RWdb82wWwvJt0=
+
+Name: com/ibm/icu/text/Normalizer.class
+SHA1-Digest: NjfW4+6zne8UcJXRJ/pLy5XfkA4=
+
+Name: com/ibm/icu/impl/data/icudt42b/metazoneInfo.res
+SHA1-Digest: WrI+gjlkpqmXT7L8kiIFL/2lFfc=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_OM.res
+SHA1-Digest: 8jPOUtil+92lPKtgn16fuUJT/xs=
+
+Name: com/ibm/icu/impl/ICUService$Factory.class
+SHA1-Digest: JjbkqvP4n+0KVYf1xulU5Z4eAl4=
+
+Name: com/ibm/icu/impl/CalendarUtil.class
+SHA1-Digest: mXCxBGek45OV2AToojzS6lWPWwk=
+
+Name: com/ibm/icu/impl/data/icudt42b/sv_SE.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/fo.res
+SHA1-Digest: Gx/55iuk1yQeF8uV3HC9lx8Fawg=
+
+Name: com/ibm/icu/impl/data/icudt42b/om_ET.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fr_CH.res
+SHA1-Digest: w8kmzHDlCJGcUPey8IvdVJrfvQg=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$InverseUCA.class
+SHA1-Digest: rsj7nP8njlED4xOwiB6ZnMbOh1I=
+
+Name: com/ibm/icu/util/ULocale.class
+SHA1-Digest: yFjDW+f2stg60ntA5KZ4Gd7EU70=
+
+Name: com/ibm/icu/text/DecompData.class
+SHA1-Digest: /NZFm0m+Y3ZTpmzhS3cecFVYHhg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_HN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/lang/UCharacter$GraphemeClusterBreak.class
+SHA1-Digest: Bp5r7WDyc/oPgoQ4mDo35RSePh4=
+
+Name: com/ibm/icu/text/UForwardCharacterIterator.class
+SHA1-Digest: GWke+hdTckf+I7Ox5eLwBIW2PDk=
+
+Name: com/ibm/icu/impl/data/icudt42b/so.res
+SHA1-Digest: 1d0UHZi+M76i5kcQHo+keHSdnPc=
+
+Name: com/ibm/icu/impl/ICULocaleService$SimpleLocaleKeyFactory.class
+SHA1-Digest: 5JDiO36tIyr7uFW1suvdDYu9k8U=
+
+Name: com/ibm/icu/text/RuleBasedTransliterator$Data.class
+SHA1-Digest: INjgv979MVyDLH/Ok0DXmTUNICo=
+
+Name: com/ibm/icu/text/CollatorReader.class
+SHA1-Digest: hqzCgrVAzf5eo0v1BfYjejlBWvE=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_Latn_NE.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa_Guru_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Cyrl_ME.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/CECalendar.class
+SHA1-Digest: xHdrfhO2lA5NqpJm9kYkfHRoBIY=
+
+Name: com/ibm/icu/lang/UCharacter$NumericType.class
+SHA1-Digest: wwSYkQeTFo9hTCY2UOHS67woY5Y=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_MO.res
+SHA1-Digest: K0sKinko64INKTDfbkgnrEzo0W4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_TT.res
+SHA1-Digest: Gft7qBQnQOHLgK9veVL4VPW1bLI=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_2_cs.class
+SHA1-Digest: rN+qbASYhwZSvUlobMZ66ntMB8w=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_LY.res
+SHA1-Digest: PlPVnMH+m0uWLvQE+P1Ghs8d0QU=
+
+Name: com/ibm/icu/impl/ICUData$2.class
+SHA1-Digest: dK5G1/f28l6pLwsD3POwMCuv4gg=
+
+Name: com/ibm/icu/impl/TimeZoneAdapter.class
+SHA1-Digest: 8G41pZZL4p+FC/QCOYTOkk8CMJ8=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha.res
+SHA1-Digest: iXuHivvaoOD4e+oDCXA6ydCmtnI=
+
+Name: com/ibm/icu/impl/CharTrie$FriendAgent.class
+SHA1-Digest: RUX1V8Xjj+l9ekbRAoT+rlLyDgU=
+
+Name: com/ibm/icu/impl/ICUService.class
+SHA1-Digest: aUc+r0p341fLp6N8wsDJkzwlSlU=
+
+Name: com/ibm/icu/text/RBBIDataWrapper.class
+SHA1-Digest: Rz1+//cPD5Auu7G0zvWKasM4qkY=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hans_SG.res
+SHA1-Digest: sVTnOyfR0DUfh+/LCStQmRG02Eg=
+
+Name: com/ibm/icu/impl/data/icudt42b/pt_BR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/Normalizer$QuickCheckResult.class
+SHA1-Digest: 4afP7XvgOX4RQMmvMVq4EjWPFhY=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/mt.res
+SHA1-Digest: 2zzk4SVdV+RHOrFH6uqySBZ4kAs=
+
+Name: com/ibm/icu/impl/duration/TimeUnitConstants.class
+SHA1-Digest: 1ialH7qT9mVU7EXDscwlOkAGYEk=
+
+Name: com/ibm/icu/impl/data/icudt42b/lv.res
+SHA1-Digest: MtixZySEwlk+bBmUgDrZeJ6hJFs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es.res
+SHA1-Digest: xm9Nb0xqt7ETfugH1AdIsKD0su0=
+
+Name: com/ibm/icu/text/NormalizationTransliterator$3.class
+SHA1-Digest: KXjxH+Pbhe/oQsKli3FOja0GFZM=
+
+Name: com/ibm/icu/lang/UCharacterEnums.class
+SHA1-Digest: UcwiRTq/PVmX4Q9pROsYy7tIAtA=
+
+Name: com/ibm/icu/impl/TrieIterator.class
+SHA1-Digest: ZF8qBmw9SWQ4xLPigq+ttP0HH5s=
+
+Name: com/ibm/icu/text/SimpleDateFormat.class
+SHA1-Digest: YL3ZxvKdmixMzA5GJ1JYmnyXnH8=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_YU.res
+SHA1-Digest: 2ii6FCYOQG4t2sunNcYMfTFp8rA=
+
+Name: com/ibm/icu/util/BuddhistCalendar.class
+SHA1-Digest: tpxOhBNizv5BVRDFxPSV1yBYa08=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator.class
+SHA1-Digest: SynHDhMaw6OQEXkI/GQyOn4Ry0s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_UZ.res
+SHA1-Digest: I6JdX5ppPd/ts7HMPlhQYE6F6dg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/bg_BG.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nn.res
+SHA1-Digest: XcezM2Ezj9IKqt2x1dUw8UTqXB8=
+
+Name: com/ibm/icu/impl/data/icudt42b/ms_BN.res
+SHA1-Digest: 9OEKuI9x6WgXToTg+xw0rxotDZA=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$Spec.class
+SHA1-Digest: Vy2f3Bml0rf/oH9/y62TnIos89M=
+
+Name: com/ibm/icu/text/LowercaseTransliterator$1.class
+SHA1-Digest: WrihvGS3ytjsiLTN9AGLdG5T98c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kl_GL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/da_DK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/RBBIRuleParseTable.class
+SHA1-Digest: xdkPFmEyodQyRifzCGIsIJUHB6A=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator$DateTimeMatcher.class
+SHA1-Digest: D/0YiLLDTmGNsL98lPRd2ySDzi0=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$3.class
+SHA1-Digest: qnlQ060pQEA1KSYweMl7L+WyYWw=
+
+Name: com/ibm/icu/impl/TrieBuilder$DataManipulate.class
+SHA1-Digest: OCqpw+WLzXMwly6HCsEkd99Kwnc=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_de_AT.class
+SHA1-Digest: mZlLi8ZXE09fTN+C/W91y/Kb70M=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_fr_CA.class
+SHA1-Digest: TFDs6Ohrc//BJh5oVarP/HomTS4=
+
+Name: com/ibm/icu/impl/NormalizerImpl$NextCCArgs.class
+SHA1-Digest: JVR0BDY6pHtaCtJ+yJdL31rn+pQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/gu_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_BE.res
+SHA1-Digest: d6p6QyamvvXx+48Iwc7Atit9vNg=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_SA.res
+SHA1-Digest: JlgFRnI4nJlpLF9wvg2ugwSyEA0=
+
+Name: com/ibm/icu/text/UnicodeSet$IntPropertyFilter.class
+SHA1-Digest: nxEUGXEzCiRAnu8lisd33Fq3DoU=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ESeparatorVariant.clas
+ s
+SHA1-Digest: 7pGgIgI/YrwXlt9D6TxW9wM4nf8=
+
+Name: com/ibm/icu/impl/data/icudt42b/bo_CN.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_CO.res
+SHA1-Digest: JnYWZQ6ke5cRCVbjf8xGaBkF4xQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ka.res
+SHA1-Digest: h6UURuYopfcAy8xyXw2FL3eUQRU=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_GT.res
+SHA1-Digest: ce9Gf1FyWcMT9DFQTVm8ACnzw+c=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc4011.spp
+SHA1-Digest: +ydyHT5jXvaoMiFf+YNzgsQYXno=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sk.res
+SHA1-Digest: cIy+1Q8Sk7iWZHnwFFLM5ijFS2s=
+
+Name: com/ibm/icu/impl/data/icudt42b/unorm.icu
+SHA1-Digest: EiYFJ1deC4G7h7B8izp/B42f6tU=
+
+Name: com/ibm/icu/text/PluralRules$Rule.class
+SHA1-Digest: lnr5ZZiLWyfabx3PfQFUQ4kRXag=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_en.class
+SHA1-Digest: sdmnpOeq6vHUauAbQhnicxzCi1M=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/gu.res
+SHA1-Digest: L++AewHZn8F7ttXBFwV5flJChn4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Cyrl.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/te.res
+SHA1-Digest: 36kvibmsQgAZv0iYQqoLhwXD1K0=
+
+Name: com/ibm/icu/impl/data/icudt42b/ti_ER.res
+SHA1-Digest: KLcLOArdZ8CRPN8SrJMVRiSU8U0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_SY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_TW.res
+SHA1-Digest: FI8SXUxAHIZ4WAdjGjq/j705WQs=
+
+Name: com/ibm/icu/text/RBBISetBuilder$RangeDescriptor.class
+SHA1-Digest: IYaOR5Li53wz+/ew5LMCgHCEOK8=
+
+Name: com/ibm/icu/text/Bidi$Point.class
+SHA1-Digest: WrjHFUDw+BfBg0zVo+hiO51s+rk=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hans_MO.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/CharsetMatch.class
+SHA1-Digest: ON88NxwVmEi9K6MOVo5BKhXlBeE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de__PHONEBOOK.res
+SHA1-Digest: IwSg0o/LpBjuSIHpx4oTw6trYHc=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_KW.res
+SHA1-Digest: 8jPOUtil+92lPKtgn16fuUJT/xs=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_el.class
+SHA1-Digest: FXpaa3HqUKNZXl0Ip10yyAIvKJE=
+
+Name: com/ibm/icu/util/CalendarServiceShim.class
+SHA1-Digest: Ba0xioCD4rnLV4TjtjW/mDMtZoY=
+
+Name: com/ibm/icu/text/NumberingSystem.class
+SHA1-Digest: LHwENSoYEPnE0QgQuTRPQTYT3ZU=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_euc$CharsetRecog
+ _euc_kr.class
+SHA1-Digest: oJ0ItqPy76y7oJBc0o8ujS8uesY=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_NG.res
+SHA1-Digest: /Pw+JNU9+Ymdp0EpFOGKcUwuK4o=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/da.res
+SHA1-Digest: lTZX0wyZxIXjbMXSAs28sY5Mkaw=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_Arab_PK.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/id_ID.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/cy_GB.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/NumberFormat$NumberFormatFactory.class
+SHA1-Digest: sdLRJildSf87YuWQG6Z+Zu5THvw=
+
+Name: com/ibm/icu/util/HebrewCalendar.class
+SHA1-Digest: ZLiKbjSyHovxTVdRTu827rxk9E8=
+
+Name: com/ibm/icu/text/ChineseDateFormatSymbols.class
+SHA1-Digest: 1ALrkiOxWoANjLRxcz45HYxFRK4=
+
+Name: com/ibm/icu/text/DurationFormat.class
+SHA1-Digest: 4/LajaAa+l1ghTwrDguApZUPRRA=
+
+Name: com/ibm/icu/util/LocaleData.class
+SHA1-Digest: iZPzvsWVCXF02iLV3wufQnrAlXg=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EDecimalHandling.class
+SHA1-Digest: 2SOoR+mng47ZN9oI3av7Xv9KiWY=
+
+Name: com/ibm/icu/impl/UCharacterNameReader.class
+SHA1-Digest: 5p7BvE7VGf5aCt90xzrSojTkzwQ=
+
+Name: com/ibm/icu/text/CaseFoldTransliterator$1.class
+SHA1-Digest: my4KH6UvZH61LmQJ9by169BpIsQ=
+
+Name: com/ibm/icu/text/PluralRules$OrConstraint.class
+SHA1-Digest: pK3u/wijq+F9xqRcXY3lqHdSTCM=
+
+Name: com/ibm/icu/impl/data/BreakIteratorRules_th.class
+SHA1-Digest: nwliB5sJL3Z30p35rPoMRZFxgpY=
+
+Name: com/ibm/icu/impl/data/icudt42b/as_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/FunctionReplacer.class
+SHA1-Digest: Y59QnXwARkfmXDY5Kx9F88nCa34=
+
+Name: com/ibm/icu/impl/data/icudt42b/az_Cyrl.res
+SHA1-Digest: ZzI6/TgVFKDdc1kW6Ys5cDDLMUU=
+
+Name: com/ibm/icu/text/PluralRules$2.class
+SHA1-Digest: dyLZMC0oL6LAsBLMZtBpQremE4Q=
+
+Name: com/ibm/icu/text/Transliterator$Factory.class
+SHA1-Digest: HlRT/XtlhZKVGY1Pkx98liTP3Es=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM420_ar_ltr.cl
+ ass
+SHA1-Digest: Zvm4Bvw3w6cly319y6Cb0g8QW/c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hans_CN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ps_AF.res
+SHA1-Digest: Ft7S6n/o3/L7Am77oNmqkNnADP0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ml.res
+SHA1-Digest: FOVr1j2HVkMtmdpGcqpE6FG3ioQ=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_2_pl.class
+SHA1-Digest: xzeBYxtH9Oi6Ympb/AoJpA+r8Xg=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_CH.res
+SHA1-Digest: iWggUFP9iWQM6vz4u4uvosBlSTw=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_MA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_7_el.class
+SHA1-Digest: lwusdP/j7kumOfUmZXcKVWR9ZuY=
+
+Name: com/ibm/icu/impl/URLHandler$FileURLHandler.class
+SHA1-Digest: Nk3C/NyoD1irVs/E83xe3usluFU=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ms.res
+SHA1-Digest: zyhWSB/F90DTVxyce1M1kcFjT3w=
+
+Name: com/ibm/icu/util/IslamicCalendar.class
+SHA1-Digest: HPQc24WncyidJMQA7tU0ltnWnCE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/iw.res
+SHA1-Digest: WZP9bAErSkXNMGcS7Cigt2GwNKw=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_IE.res
+SHA1-Digest: 5T6abhg/OLVnv8VFyHI/P09LHHg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_EG.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/ZoneStringFormat$ZoneStrings.class
+SHA1-Digest: X35OcO7tw/xR4NaU9TTPyAXDMH0=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_es.class
+SHA1-Digest: J8bXijecxdlToXRrGS1GjZlmxzI=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_ME.res
+SHA1-Digest: dcZDvDDLm120rqoRa2rrkl/voxA=
+
+Name: com/ibm/icu/text/StringPrepParseException.class
+SHA1-Digest: 7hwrnIatfmyZ81dOSQRxXm/WgQA=
+
+Name: com/ibm/icu/impl/data/icudt42b/uprops.icu
+SHA1-Digest: 8vLNyqXGunE4QYH2blIKAhRC1JA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/it_CH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/AnyTransliterator$ScriptRunIterator.class
+SHA1-Digest: J7xT4P19qEBaVUL8ReOU7m5Wmhc=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_th.xml
+SHA1-Digest: NP0IwbGJwQJTVPp+VdZ6leVSYjU=
+
+Name: com/ibm/icu/impl/ZoneStringFormat.class
+SHA1-Digest: n3jJDl78ykXRjY9ytbsnH+fUwDA=
+
+Name: com/ibm/icu/text/EscapeTransliterator$4.class
+SHA1-Digest: NOPq/bUbsneMkFbx2hOqAYvNdiw=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/be.res
+SHA1-Digest: EU4hzpM72nJWgBnQtxdAF/Sqvrs=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_hi.xml
+SHA1-Digest: x48QdYWUXtpPWcdQKeU/uQwWBkg=
+
+Name: com/ibm/icu/impl/locale/LocaleExtensions.class
+SHA1-Digest: YEytk8PbUUmLkD5IxZtRfgy8ua8=
+
+Name: com/ibm/icu/impl/data/icudt42b/el.res
+SHA1-Digest: Qfral1uhzYOA18MgSYiOUVffZgI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/bn.res
+SHA1-Digest: cxctNEMzXGKFExa+BKr81cP6bTk=
+
+Name: com/ibm/icu/impl/NormalizerImpl$FCDTrieImpl.class
+SHA1-Digest: mnwJsoHXLlYPybUU9/TYlZBsois=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Latn_BA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_8.class
+SHA1-Digest: 5kkX0Pb1WfSU60ydJwyKCr5ko8c=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fr_BE.res
+SHA1-Digest: PGu/zJ5BoapgXVlTTdEaIZ32IRc=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$1.class
+SHA1-Digest: Vf971NEaFuoVyyRUPsqjQ9QqHts=
+
+Name: com/ibm/icu/text/TitlecaseTransliterator$1.class
+SHA1-Digest: ekTC9gWzv3dYRBtoQqNHqbKkuCc=
+
+Name: com/ibm/icu/impl/data/icudt42b/so_KE.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs.class
+SHA1-Digest: zb96ltRlnZu1B4er1dwcZW9Eeno=
+
+Name: com/ibm/icu/impl/data/icudt42b/so_SO.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_fr.class
+SHA1-Digest: 9O29pqbYd82G8WZDF65YDtjKYYU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pl_PL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/hi_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM424_he_ltr.cl
+ ass
+SHA1-Digest: tVJXdjtBCoXEFZOxSH6FEtwZ3gY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_RS.res
+SHA1-Digest: 2ii6FCYOQG4t2sunNcYMfTFp8rA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/cs_CZ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliterationRule.class
+SHA1-Digest: utxfpe1JXSDmAHVABKr61kRepHo=
+
+Name: com/ibm/icu/impl/data/icudt42b/sq_AL.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/word_POSIX.brk
+SHA1-Digest: H+ArIep4Jx2N4RbYEuTJCwNYzYs=
+
+Name: com/ibm/icu/impl/ICULocaleService$ICUResourceBundleFactory.class
+SHA1-Digest: tQphcQBErAwyMomKnr3pUKqj+Zc=
+
+Name: com/ibm/icu/text/UnicodeReplacer.class
+SHA1-Digest: Y0PfDc+j6xXLIk74hykjzB1JKC4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_GB.res
+SHA1-Digest: ZIcHjRFXCXCsVODe36+7mgA4Vbk=
+
+Name: com/ibm/icu/impl/data/icudt42b/no_NO_NY.res
+SHA1-Digest: 2NYID4Vq+YppdI5emYl/jXROPPs=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/line.brk
+SHA1-Digest: ZVQKdnj8YFefqEk0OYpqSafj4NY=
+
+Name: com/ibm/icu/text/TransliteratorParser$RuleHalf.class
+SHA1-Digest: uSw9Oxx+Uh9GJR8BTp4E/cqeF5A=
+
+Name: com/ibm/icu/text/LowercaseTransliterator.class
+SHA1-Digest: u+1+BuvXsLbtGmHL1x9ql9YS2eA=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM424_he.class
+SHA1-Digest: DxswcWySGwwfX1xRpMeBtysMgms=
+
+Name: com/ibm/icu/impl/locale/LanguageTag.class
+SHA1-Digest: n1pLB+RCZsWN6sqpa1jkFKt3xVU=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_DO.res
+SHA1-Digest: DqUgxafBny6RSK/5q4mvOxc7iio=
+
+Name: com/ibm/icu/impl/data/icudt42b/mt_MT.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/TransliteratorIDParser$Specs.class
+SHA1-Digest: z/LW93onXArAMvnRSrRW2DAb8FQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/he.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/util/SimpleDateRule.class
+SHA1-Digest: myCDNTkS4hL2rfFvE1xyost/B2c=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$Equatorial.class
+SHA1-Digest: 5Vz1H3GN/CL7MoCyC4MwaiglnEM=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_ru.xml
+SHA1-Digest: +MhXs1pUJCowfzBjMIxV5Y7SOd0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hu.res
+SHA1-Digest: 1CzulnzZCBDXuQhyvA3QUmTBzKU=
+
+Name: com/ibm/icu/text/StringTransform.class
+SHA1-Digest: 87UqNV3vGCvS/7/a4HFvPbzqBx0=
+
+Name: com/ibm/icu/text/CollatorServiceShim$1$CollatorFactory.class
+SHA1-Digest: G9MKwe3Z6MWx5EgeoOjvxQzJzsA=
+
+Name: com/ibm/icu/impl/ZoneMeta$OlsonToMetaMappingEntry.class
+SHA1-Digest: hTd2gMHlAkWuHlqds37sqFpn75s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/iw_IL.res
+SHA1-Digest: Ndcrw5xpVXzCNkJpNiv+lI2hixc=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_en_CA.class
+SHA1-Digest: JDt2Epln27M6w0EISNH/fPRsNUA=
+
+Name: com/ibm/icu/util/EasterHoliday.class
+SHA1-Digest: gU3zJqbUJQ0nepfR/f0MSnuGU5Y=
+
+Name: com/ibm/icu/text/CollationRuleParser.class
+SHA1-Digest: QOwn/ESmdLXciNhbTTbM9Z9oyUo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_HK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/cy.res
+SHA1-Digest: IjwvDB8dPSFSrF+1EmdSfxUkbQw=
+
+Name: com/ibm/icu/text/CompoundTransliterator.class
+SHA1-Digest: 5OVDmXwjxdOHAtd2CYFA+uBa9B4=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$6.class
+SHA1-Digest: i9ZJrC+QqcKPKdQWsfHcPqq+Vig=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_gb_18030.class
+SHA1-Digest: iC854J7dr3cHe4KoWoNTPy9TBe8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr_LU.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/IndianCalendar.class
+SHA1-Digest: 3XPNa9IES+iIV8QeLY7IhVDwa94=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_VE.res
+SHA1-Digest: 4VOwBf/mE6cdbFyqhsrKCRr/XOo=
+
+Name: com/ibm/icu/impl/duration/SingleUnitBuilder.class
+SHA1-Digest: 7Lbd45pTs05yTZT6LHsAVLwrDUk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mk.res
+SHA1-Digest: NK/D6puvIc4L5KgtFCBg8xnqYgU=
+
+Name: com/ibm/icu/text/NumberFormatServiceShim$1$RBNumberFormatFactory
+ .class
+SHA1-Digest: KWv7WM8vztOPnESv5qbk99bAZIU=
+
+Name: com/ibm/icu/text/PluralRules$RuleChain.class
+SHA1-Digest: xY33n67OiMo6cmfx7GzC+Nxam70=
+
+Name: com/ibm/icu/impl/data/icudt42b/lt.res
+SHA1-Digest: RCVCO7vMMVR7mU3BXzP2jYRCrcg=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodBuilderFactory.class
+SHA1-Digest: N8R3x3V8zFVPD8VcvNKR+AaxYfE=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl.res
+SHA1-Digest: ofu0p2h5HG++q/Yi5O9ZawldKoI=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceTable.class
+SHA1-Digest: I6khLCo2DaxntrU0S6DIrA+yfWg=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$CombinClassTable.cla
+ ss
+SHA1-Digest: 62or7OA9Pd50cK/U9LRAwN+8qfc=
+
+Name: com/ibm/icu/util/BasicTimeZone.class
+SHA1-Digest: IZl/327nYe0DJhVM90gOKrGT8Js=
+
+Name: com/ibm/icu/impl/ICULocaleService$LocaleKeyFactory.class
+SHA1-Digest: TGAXraAIjv/MY/Qk5GpoVe6jtYw=
+
+Name: com/ibm/icu/lang/UCharacter.class
+SHA1-Digest: yl1/93oXbkl3h1CO6QPdj6BsQB4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_US.res
+SHA1-Digest: qXwLlsGY/3vEgZHppDA+hTle9kE=
+
+Name: com/ibm/icu/impl/ImplicitCEGenerator.class
+SHA1-Digest: mDdS1NF/0Pa0Skz4/d5y0u6v/W0=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/res_index.res
+SHA1-Digest: bL+dIdb2KUnRa93fXxewvMLJI2I=
+
+Name: com/ibm/icu/text/RBBISymbolTable$RBBISymbolTableEntry.class
+SHA1-Digest: h641TWqk5EPYgd6C7RW3Gr+tqdg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/in_ID.res
+SHA1-Digest: 8zlBXCvSDwjZG5pjJeRB/oOjkYQ=
+
+Name: com/ibm/icu/util/JapaneseCalendar.class
+SHA1-Digest: DoUUa2voWgbgoPWcSB/MgDkeYMU=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$iteratedChar.class
+SHA1-Digest: nsKXKdueSf7brr92FCIhz1Qsm3I=
+
+Name: com/ibm/icu/text/CollationRuleParser$ParsedToken.class
+SHA1-Digest: 7qAThOKZIWiUm2sHRH0bGr5atnY=
+
+Name: com/ibm/icu/impl/data/icudt42b/ro_RO.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sl_SI.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_ZA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nl.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/duration/MultiUnitBuilder.class
+SHA1-Digest: pjtW/QoFrwOxa/rvRgfkavI1GTQ=
+
+Name: com/ibm/icu/impl/ICUNotifier$NotifyThread.class
+SHA1-Digest: 0r/5F6NJvmNs1rsa4kEJrpfpDd8=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_da.class
+SHA1-Digest: 1AUxaJOgwtqynl88sHyX8dyqaMI=
+
+Name: com/ibm/icu/impl/data/icudt42b/si_LK.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/thaidict.ctd
+SHA1-Digest: HlyfpuQK4BpjbhSyj4gjqbruK+s=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fi.res
+SHA1-Digest: npbQkpd8AZHPoLRmfuzowEfTFzc=
+
+Name: com/ibm/icu/impl/locale/AsciiUtil.class
+SHA1-Digest: 3b1TgQKu1k/RPxuKUd3w6/zig7A=
+
+Name: com/ibm/icu/impl/data/icudt42b/af.res
+SHA1-Digest: 52DLxOkAYfg0y4pBFgFNe3IQyxg=
+
+Name: com/ibm/icu/impl/data/icudt42b/el_CY.res
+SHA1-Digest: 8jQYdbnXrngEdw2KPXMdGZG6DyA=
+
+Name: com/ibm/icu/util/GregorianCalendar.class
+SHA1-Digest: hZTv4c+Oq9tB7TFdrSEav8ryhNQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr.res
+SHA1-Digest: oJNZ0c5MEQBKMUWuJvOmIDoeLmI=
+
+Name: com/ibm/icu/util/TimeUnitAmount.class
+SHA1-Digest: pu+pMpTaGhmoBMq6unPA0qA2BA0=
+
+Name: com/ibm/icu/impl/ICURWLock.class
+SHA1-Digest: rfmo0U2aNAWxwkb5eqhh/tH4YIo=
+
+Name: com/ibm/icu/impl/UPropertyAliases$Builder.class
+SHA1-Digest: k9NaPB5XdTlDku/+HPGL7fC6Gm4=
+
+Name: com/ibm/icu/impl/ICUService$SimpleFactory.class
+SHA1-Digest: 40JBDsy4Y4/ocfF1VsvWDCiXbeA=
+
+Name: com/ibm/icu/impl/data/icudt42b/eu_ES.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/ja.res
+SHA1-Digest: Cbc5IhZH1+duwYviZZEpgIFYZoE=
+
+Name: com/ibm/icu/impl/data/icudt42b/lt_LT.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/util/TimeZoneRule.class
+SHA1-Digest: CVj+0zrNL5CgUOnjhErAPxD+Qew=
+
+Name: com/ibm/icu/impl/data/icudt42b/zu.res
+SHA1-Digest: W4VI0r+O7mZMeiYpDq0vxwobosM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/om.res
+SHA1-Digest: fajgkySjDcJyt/T3YaC1+UuLCTI=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode$CharsetRecog_UTF_16_BE.cla
+ ss
+SHA1-Digest: I9kxMzXZX9R/Bv0nFXJfzDaoVNQ=
+
+Name: com/ibm/icu/impl/ICUResourceBundle$2.class
+SHA1-Digest: ZIsBMVavHvGZF9ZX1DYO/P56qpU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr.res
+SHA1-Digest: NK/D6puvIc4L5KgtFCBg8xnqYgU=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_NZ.res
+SHA1-Digest: jCgI1jet1172J3Hh2GIFozz94S4=
+
+Name: com/ibm/icu/util/InitialTimeZoneRule.class
+SHA1-Digest: mp5EGBn+TXpMfmVdHm8bpsRyC/Y=
+
+Name: com/ibm/icu/text/TimeUnitFormat.class
+SHA1-Digest: ViP9oKJVDmPPCKcmLxc6ZeyoGl4=
+
+Name: com/ibm/icu/impl/duration/DurationFormatter.class
+SHA1-Digest: 7rl/7uxutvms1EpNIkEwbDLA8dk=
+
+Name: com/ibm/icu/impl/PropsVectors$DefaultGetFoldingOffset.class
+SHA1-Digest: 86s/fZUL0lJFgEsOlUHS5f95Uv8=
+
+Name: com/ibm/icu/text/DateIntervalFormat$SkeletonAndItsBestMatch.clas
+ s
+SHA1-Digest: 6wwt+Vn3RzhR7U9CnMWVzVP9DLQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_PE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/CharacterIteratorWrapper.class
+SHA1-Digest: quQ/R+xXqDAhzjuDqhIFhHv2obo=
+
+Name: com/ibm/icu/impl/data/icudt42b/bg.res
+SHA1-Digest: tNkdCAZjNp729CWY3Sryb1QYBtY=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ko.res
+SHA1-Digest: evbr5I+KAhPVScEH+fkA3JSA8/I=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_AT.res
+SHA1-Digest: 5pyTTAp1eNGel5widQkojp7s/BU=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_CA.res
+SHA1-Digest: c+Rn5vM/x0zcQS45Lxndnn6EitQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/te_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/util/UResourceBundle$ResourceCacheKey.class
+SHA1-Digest: GqXyodIg+d1ra8syzVxhyeATfP8=
+
+Name: com/ibm/icu/impl/ByteBuffer.class
+SHA1-Digest: DSdhbgYfq3wv3eGhF781djGuoNQ=
+
+Name: com/ibm/icu/impl/ICUResourceBundleReader.class
+SHA1-Digest: hcTMaVt1ZwyR3u8r5PKnJGdAA1E=
+
+Name: com/ibm/icu/text/NullTransliterator.class
+SHA1-Digest: vK7McK9EiV3VXgWmey860vIG26U=
+
+Name: com/ibm/icu/impl/ICUService$LocaleRef.class
+SHA1-Digest: D8+zmtHUjnAaTkgfBK27ykkjH+E=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_NE.res
+SHA1-Digest: 4952wbbl9STSZr19VAGXk33hPag=
+
+Name: com/ibm/icu/impl/data/icudt42b/sl.res
+SHA1-Digest: XnoEYlBTMvQ2fq/7rNoqSzA+ops=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$MoonAge.class
+SHA1-Digest: vqyfPuE8UInzHXP7zsDHkL/+0jY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/invuca.icu
+SHA1-Digest: nV2nXv49GlRcOAAkPjQ+2jd2Pyg=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_BE.res
+SHA1-Digest: csz++MM2eyh0NxqWiki+7CJowF4=
+
+Name: com/ibm/icu/impl/duration/Period.class
+SHA1-Digest: ru7kTkDzjLIia6nozhpZsvwQYmE=
+
+Name: com/ibm/icu/text/Normalizer$NFKCMode.class
+SHA1-Digest: TWOmWft4uNIwIw/VnhPk2RWCIeg=
+
+Name: com/ibm/icu/impl/data/icudt42b/ne_NP.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_pt.class
+SHA1-Digest: O1Ekqzlef6BbkYYhHKYFTuXZaZI=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Arab.res
+SHA1-Digest: KmaUQEJGKBgyBCSQZqT0GbCojcc=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_US.res
+SHA1-Digest: NbniVg0+hlwZgs9vL21zvZKZ8ZY=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc4518ci.spp
+SHA1-Digest: jwS5uyK3B8J+UxFK0NWKcqWhWuQ=
+
+Name: com/ibm/icu/text/BreakCTDictionary$CompactTrieNodes.class
+SHA1-Digest: WxDBuCTnfcAYbQPXgF1zvrAkLyU=
+
+Name: com/ibm/icu/impl/data/icudt42b/be_BY.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/ICUResourceBundle.class
+SHA1-Digest: z9RbTjSpZ57D2J3yOMhnscmHC/0=
+
+Name: com/ibm/icu/impl/CalendarData.class
+SHA1-Digest: oKetVzyIxB1uqfYeKJcCRe00iCo=
+
+Name: com/ibm/icu/math/BigDecimal.class
+SHA1-Digest: bmlV5Au0e6B9r/dnfVMTXXrdnKE=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator$VariableField.class
+SHA1-Digest: 7NVd830iC3dxssfuPtPgddVNpsw=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EPluralization.class
+SHA1-Digest: QAZDpJnhDQNiCMJAw3YezWa1OFU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_US_POSIX.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/uk.res
+SHA1-Digest: m1LMujAxbn500RtZ2EOHgHrtZFE=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_8_he.class
+SHA1-Digest: NrYU4M6ztrXzPGifXzmNojF6CwE=
+
+Name: com/ibm/icu/util/AnnualTimeZoneRule.class
+SHA1-Digest: KS0yZPziZiVKPTAtBKFClJu/iiU=
+
+Name: com/ibm/icu/impl/data/icudt42b/mk_MK.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/util/UniversalTimeScale$TimeScaleData.class
+SHA1-Digest: Go0JjviIig8ojaJuujyCC7l68A0=
+
+Name: com/ibm/icu/text/RBNFPostProcessor.class
+SHA1-Digest: q/ZhdtLQ26/YmVXQIltghNEEnR0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ur_PK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/locale/LocaleObjectCache.class
+SHA1-Digest: Rs3T4xei1iQRxNEvWL2gpUbSR64=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Latn_UZ.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nl_NL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/tr_TR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/nl_BE.res
+SHA1-Digest: e3Jm+rsG7JODkDrlMvj2AKGDp0U=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_AR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ms_MY.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$WeightRange.class
+SHA1-Digest: 7IwnBaT3SvD2aSO6KJcD8ska5Vo=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_el_GR.class
+SHA1-Digest: 6Du4+mKi2hTN7hFK2dVFi+jEGhs=
+
+Name: com/ibm/icu/text/RuleBasedCollator$contContext.class
+SHA1-Digest: DiHfrfKH4NQKbzm6WgPo0oG+3VA=
+
+Name: com/ibm/icu/text/RuleBasedCollator$ContractionInfo.class
+SHA1-Digest: c9vy2P2kVLvYjvx+whU6+tmThIM=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl_YU.res
+SHA1-Digest: 2ii6FCYOQG4t2sunNcYMfTFp8rA=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_MH.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/NormalizationTransliterator$1.class
+SHA1-Digest: cZMNujQoi0deKyrTfzaAbqu4xBM=
+
+Name: com/ibm/icu/text/CollatorServiceShim$1$CFactory.class
+SHA1-Digest: gBfd+RD2EyDVs8x+UvpPSNkqlHs=
+
+Name: com/ibm/icu/impl/data/icudt42b/res_index.res
+SHA1-Digest: j/Y5C0w9IN1smPiYvtAALi7EP1I=
+
+Name: com/ibm/icu/impl/CollectionUtilities.class
+SHA1-Digest: bnviw1N7SbN1CA9YpbdHFo0i34c=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ar.res
+SHA1-Digest: mxn+DOdoFnY8cE6VINsu1sWF6k8=
+
+Name: com/ibm/icu/text/StringSearch.class
+SHA1-Digest: 2/qKN8gDomjJplfZWowovT9UiWc=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/nb.res
+SHA1-Digest: pC1VnSBS4uAHkkfeBfRT14btvFc=
+
+Name: com/ibm/icu/util/Currency.class
+SHA1-Digest: Vd+sQ7K38RWwBzmQDfPjZymtDgM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fa.res
+SHA1-Digest: lP6J92JPZzTjZeQqTriXh3t7pwc=
+
+Name: com/ibm/icu/text/UTF16.class
+SHA1-Digest: Q4h4K07luaFe7fKxRKOTAJkrdGI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fo_FO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/TextTrieMap$LongestMatchHandler.class
+SHA1-Digest: X2PVGUt63YZq67tVXXkc1NhcBOE=
+
+Name: com/ibm/icu/impl/data/icudt42b/mt.res
+SHA1-Digest: f6x9Y8U63J6N4ZfylHTnFiUrpt4=
+
+Name: com/ibm/icu/util/SimpleHoliday.class
+SHA1-Digest: fnGw7XmpwBT8phMTJdA9jyQHhD4=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$1.class
+SHA1-Digest: a5usj8Vu8lcl6yCFt3nQYfGh6Is=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$MaxExpansionTable.cl
+ ass
+SHA1-Digest: LG8DbaGsK2TfOuSxhSzlNE8uGNA=
+
+Name: com/ibm/icu/impl/duration/PeriodBuilderFactory.class
+SHA1-Digest: enn/L+fRJf2sKmAFxTbtz3YDP1A=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Latn_RS.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3530csci.spp
+SHA1-Digest: hT8tQfqBYuaf33sYa1GreAYgtv0=
+
+Name: com/ibm/icu/impl/UCharacterPropertyReader.class
+SHA1-Digest: LVkg/Qc9VbHmjBZ1icn4Ig+BrrQ=
+
+Name: com/ibm/icu/impl/PropsVectors$1.class
+SHA1-Digest: 5FqEUvWVuM7lLyDsjCUgEe9FjZo=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_CL.res
+SHA1-Digest: obu9OW7kMF1Nx3L0IM98PGbHXeo=
+
+Name: com/ibm/icu/impl/data/icudt42b/ne.res
+SHA1-Digest: duMJizZp8RorX2N+3+Zjso72SfI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/pt_PT.res
+SHA1-Digest: kCSqbmr0loDY9alATTUHZXexntk=
+
+Name: com/ibm/icu/impl/data/icudt42b/th_TH.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/ucase.icu
+SHA1-Digest: NbsONvF25QGxx3Uj+0gDMZjJwUs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sq.res
+SHA1-Digest: ZciRWcJ84VGX656FvAxiXm1eMRM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sv_FI.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nn_NO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/duration/impl/PeriodFormatterData.class
+SHA1-Digest: QHSkfrspxJbAlPznfeeS/ZL3KY4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_SG.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/fa_IR.res
+SHA1-Digest: Ft7S6n/o3/L7Am77oNmqkNnADP0=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_BZ.res
+SHA1-Digest: gNiSAh8b/u1Z0rqHV3hhBfBfN3g=
+
+Name: com/ibm/icu/impl/data/icudt42b/ca_ES.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: about_files/license.html
+SHA1-Digest: qgmm4hdKqgmltFsQdToOx+7jQq4=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_IN.res
+SHA1-Digest: aABsNcBcPMaMcFhBGb0doQYhb68=
+
+Name: com/ibm/icu/text/AnyTransliterator.class
+SHA1-Digest: vtTVdzD2QPGEGb0k2+llmPwTDoM=
+
+Name: com/ibm/icu/text/UnicodeMatcher.class
+SHA1-Digest: FT3g8JBh7zBjeL0/HM+DZ5NKiS8=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$BuildTable.class
+SHA1-Digest: j0lpHNvFTFZ5kI2HSuuOmOUaLnI=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/th.res
+SHA1-Digest: PrgXwx6kvPd60L7cLcZM/Q2JxO0=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_es.xml
+SHA1-Digest: MwvLXsR3TbSMZUVdFeyCStptuqE=
+
+Name: com/ibm/icu/text/CollationRuleParser$TokenListHeader.class
+SHA1-Digest: zmfkMc1gnmRjkVm1DPXnpDrjaFc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ta_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr_CH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ka.res
+SHA1-Digest: IkWJQAKvj+7KlPqpDS7It99krKk=
+
+Name: com/ibm/icu/text/ArabicShapingException.class
+SHA1-Digest: aXkH6QCASAmw0W1Yryw5kjrwtmY=
+
+Name: com/ibm/icu/text/MultiplierSubstitution.class
+SHA1-Digest: m2h61dS2htdkYl1Vz01v6HsmrWU=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_sjis.class
+SHA1-Digest: n60qSSB7U+3PM5pNZ4wiPRV2y/k=
+
+Name: com/ibm/icu/impl/data/icudt42b/sk.res
+SHA1-Digest: 8VrUr5n/mwDmSvfsNJT3z93GLG0=
+
+Name: com/ibm/icu/impl/NormalizerDataReader.class
+SHA1-Digest: P3mxrBlY1iY4G5WbZubfkQTbcjg=
+
+Name: com/ibm/icu/text/DateIntervalInfo.class
+SHA1-Digest: qfnul6lLpgX/VCWKk/J7uy85KM8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/tr.res
+SHA1-Digest: GfEOcunXuaSfRHU0te0gfJt0pkI=
+
+Name: com/ibm/icu/util/GlobalizationPreferences.class
+SHA1-Digest: LWxbbuIZxeJxmE+lpITnkWw4LMQ=
+
+Name: com/ibm/icu/impl/duration/impl/RecordWriter.class
+SHA1-Digest: v/lue5U+YnhX5R+ax7Lkrub9gbs=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/de.res
+SHA1-Digest: 0x3/6f5+CvSAa9mRWPvA62HPxKY=
+
+Name: com/ibm/icu/text/PluralRules.class
+SHA1-Digest: hHCiObLK9UFKzwKst1WWs3zt/QA=
+
+Name: com/ibm/icu/impl/data/icudt42b/so_DJ.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/impl/UBiDiProps$IsAcceptable.class
+SHA1-Digest: 1ur4xU6L4zqknyOmC8MbBZC6ljk=
+
+Name: com/ibm/icu/impl/data/icudt42b/gl.res
+SHA1-Digest: cD6A+WwrV1sCc9Q66vd6zzqw5DE=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/pt.res
+SHA1-Digest: ZUY8ahQ/8zCngGEBaPCKQdmtBb0=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1.class
+SHA1-Digest: Jrl1xlYN8m4PHJ0Rg3ZRATbFmGw=
+
+Name: com/ibm/icu/text/PluralRules$Constraint.class
+SHA1-Digest: rJu0vOah/TG2QnsK0fyVM3oMlQc=
+
+Name: com/ibm/icu/impl/UCaseProps$IsAcceptable.class
+SHA1-Digest: XLBgMJUK+hW8gwWAPk6GJb5ZEac=
+
+Name: com/ibm/icu/text/UnicodeNameTransliterator.class
+SHA1-Digest: eqMuvZwA/4Wp1OxCC8BiAZ64Wqc=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_PK.res
+SHA1-Digest: 4TV69vD1W7j1+XOtCT7MJ3bMN4k=
+
+Name: com/ibm/icu/impl/NormalizerImpl.class
+SHA1-Digest: rNltEt8QQ+yHyIbAJdq/ikmt5fI=
+
+Name: com/ibm/icu/text/MessageFormat.class
+SHA1-Digest: Xiw7CkMW5rwz2Yio5gZnLrxNK4w=
+
+Name: com/ibm/icu/impl/NormalizerImpl$NextCombiningArgs.class
+SHA1-Digest: YXiOb8g3mw7ovg7aVwC2WPly75U=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hant_HK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/SimpleTimeZone.class
+SHA1-Digest: i6ayoQBb7deeWACvzugp6qhZ8tM=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/title.brk
+SHA1-Digest: 3DcL4WBfEzn6DVCGWNU8f+H7wD4=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode$CharsetRecog_UTF_16_LE.cla
+ ss
+SHA1-Digest: ii9bW2z/WhsUtyQfhc5yIR27ZXI=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodFormatterFactory$Customizat
+ ions.class
+SHA1-Digest: uwx71FwrVlYiNlMCHBsf/Pcfb2U=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_YE.res
+SHA1-Digest: JlgFRnI4nJlpLF9wvg2ugwSyEA0=
+
+Name: com/ibm/icu/text/BreakCTDictionary.class
+SHA1-Digest: pn7slJgjKRKLtEMgior12sDz1ak=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_MX.res
+SHA1-Digest: av934CdFdzvgow13hWU6wmuLg1w=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/id.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/hr_HR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/lv_LV.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/is_IS.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/ZoneStringFormat$ZoneStringInfo.class
+SHA1-Digest: pbsSMUYtHO4Id/0apErFc7LK2xs=
+
+Name: com/ibm/icu/impl/ICUConfig.class
+SHA1-Digest: i6brhWFD1e9foqBetYHQjtW99Fg=
+
+Name: com/ibm/icu/lang/UCharacterEnums$ECharacterCategory.class
+SHA1-Digest: kq95RgOd7C81QGqvQ9TDGG7vGus=
+
+Name: com/ibm/icu/impl/Trie.class
+SHA1-Digest: faI/WsgoUlZyHaMpB9pbgiXR8jQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/ka_GE.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/Normalizer$FCDMode.class
+SHA1-Digest: cxxYxkX9o5W0IvoRzvKlbNaztGk=
+
+Name: com/ibm/icu/text/BreakDictionary.class
+SHA1-Digest: UP8ASYdqL29Glsr8/OQKevINEb4=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa_Guru_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$Elements.class
+SHA1-Digest: f4elhHsP3zglY0Jy2yfnI9kTrSs=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_NI.res
+SHA1-Digest: DqUgxafBny6RSK/5q4mvOxc7iio=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$ContractionTable.cla
+ ss
+SHA1-Digest: 8fuUD6JzPWZqtbTsPDfOVKtHiws=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl_ME.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/eo.res
+SHA1-Digest: +oVARzO29K91tHbe3FnahinyelY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/it.res
+SHA1-Digest: Y1cpTHeoNVfdEXGVZ93BmxkHEHM=
+
+Name: com/ibm/icu/text/DictionaryBasedBreakIterator.class
+SHA1-Digest: KeNnKYC6BsmOvho5Y6DchAtPgCA=
+
+Name: com/ibm/icu/text/Transliterator$Position.class
+SHA1-Digest: Jkv3rNTZsJ+xkVJJUBpOaTT76s8=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_Latn_GH.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/DecimalFormatSymbols.class
+SHA1-Digest: 0mxMIxZUhCv/Q2ygAhwk0UEP9a8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_IQ.res
+SHA1-Digest: PlPVnMH+m0uWLvQE+P1Ghs8d0QU=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/en_US.res
+SHA1-Digest: +/LVRKi4A8LFr24NwK7dKO0oWpw=
+
+Name: com/ibm/icu/util/CompactByteArray.class
+SHA1-Digest: cc6CYflTyn7tNMxUw4ASBITqJMY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/az.res
+SHA1-Digest: H2uhvCqKkzlwlK8rnknx1A78Q/E=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_KOI8_R.class
+SHA1-Digest: riRX0XvAPQb+UDxa7TzhQ5BTOhA=
+
+Name: com/ibm/icu/util/Calendar$PatternData.class
+SHA1-Digest: QvNuOomKswixg40xWPLtLjJ7Tx4=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_es_MX.class
+SHA1-Digest: aJj0AuIV6cPRpCUHraAMoiitYAE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ro.res
+SHA1-Digest: l9Mio86mPE7IXVIwDYesBpvvuaY=
+
+Name: com/ibm/icu/text/EscapeTransliterator$2.class
+SHA1-Digest: 7pXr2tZ5BIPS54TSTMYnCxzJ9ds=
+
+Name: com/ibm/icu/impl/data/icudt42b/af_ZA.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EFractionHandling.clas
+ s
+SHA1-Digest: w8RJoRmgHZR1YWbZyKBeT/G8z2I=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kn_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/DecimalFormat$AffixForCurrency.class
+SHA1-Digest: YM0iVPOvosSdWPkdTjvpaFgBaG8=
+
+Name: com/ibm/icu/text/TransliteratorParser$RuleArray.class
+SHA1-Digest: 9+5ONRBkEMeDc+pM08gGAlFKUPM=
+
+Name: com/ibm/icu/impl/duration/BasicDurationFormat.class
+SHA1-Digest: udccTJD6aKauWEMAQrpFdBqZbE8=
+
+Name: com/ibm/icu/impl/data/icudt42b/in.res
+SHA1-Digest: 4yHeO3OZURAGnQ+2Akh1AsFcJ6M=
+
+Name: com/ibm/icu/text/UnescapeTransliterator.class
+SHA1-Digest: HSvMH1HFNAHlDiIhMPqbMqRlkc0=
+
+Name: com/ibm/icu/impl/data/icudt42b/ms.res
+SHA1-Digest: gDIEZDP6L8ZZEta2qRcYp4hWuOk=
+
+Name: com/ibm/icu/text/StringReplacer.class
+SHA1-Digest: 7NR3/R3qL7pu/FLsNhafHAXzpRE=
+
+Name: com/ibm/icu/text/CollationRuleParser$Token.class
+SHA1-Digest: 2pGTO1X0k52exJqKxvbIByhLPzQ=
+
+Name: com/ibm/icu/util/UResourceBundle.class
+SHA1-Digest: GZeE/aPMAyoTiFXvkI4KS+TWO7M=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_6.class
+SHA1-Digest: 7DtfuirDtGTVCrV0L0bnydon7G4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_ZW.res
+SHA1-Digest: FgBSoPD44rFUuOLPQRCrOHAc3tk=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_fr.class
+SHA1-Digest: q3zdWAt/DWCYaQCMAZ1T2gEJAK0=
+
+Name: com/ibm/icu/impl/PropsVectors$CompactHandler.class
+SHA1-Digest: ggK2FbvQCDVeXFFIwoX/ew6A1+E=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_BH.res
+SHA1-Digest: PlPVnMH+m0uWLvQE+P1Ghs8d0QU=
+
+Name: com/ibm/icu/impl/duration/impl/RecordReader.class
+SHA1-Digest: otdlfBIBwfQJI/LpPGORqmfxHAY=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ScopeData.class
+SHA1-Digest: CUN2vXzRoglrcSJRSshk6n63o0s=
+
+Name: com/ibm/icu/impl/data/icudt42b/hy_AM.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/BreakIteratorFactory.class
+SHA1-Digest: C9b/3h/+ymneQJsc7NRtmTZidrE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ga.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_CN.res
+SHA1-Digest: OqOcERNgY90GdftreFDuBO3TG1M=
+
+Name: com/ibm/icu/util/DateTimeRule.class
+SHA1-Digest: 6Y2wXwNKzW42QtQFndLjZ5eA2Vs=
+
+Name: com/ibm/icu/text/BreakCTDictionary$CompactTrieHeader.class
+SHA1-Digest: Lvk8zfGOkbWKdXgHfCdB/5w8qhg=
+
+Name: com/ibm/icu/lang/UCharacterDirection.class
+SHA1-Digest: mzsqJB3oC2e9hT9G3B+QQ8lNOvo=
+
+Name: com/ibm/icu/impl/data/icudt42b/ko_KR.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$SolarLongitude.class
+SHA1-Digest: C+U0AZa67vUwMns4qF4TRna4Qw0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/root.res
+SHA1-Digest: AckNe2H2q3g8FCoDvSBSbO+kme4=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3722.spp
+SHA1-Digest: O+oXDpXLu3SpyBxRnC5bJn+JZKc=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode$CharsetRecog_UTF_32_BE.cla
+ ss
+SHA1-Digest: TwM3Y0RU/24b0vY2ND6aAzh5IOU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/he_IL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/be.res
+SHA1-Digest: 52+8V1switFgz1JwlTRd9TU5AY0=
+
+Name: com/ibm/icu/impl/data/icudt42b/zu_ZA.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/TransliteratorIDParser.class
+SHA1-Digest: gIkT1ALBXArAjCoC5O6xiugzImo=
+
+Name: com/ibm/icu/text/BreakIterator$BreakIteratorCache.class
+SHA1-Digest: phLZKKu4L32+t3q5BhoPs59gUSM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ta.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/impl/locale/LanguageTag$Extension.class
+SHA1-Digest: hP1cjTyvX4J0MRjxpyyrEDzCJQ4=
+
+Name: com/ibm/icu/impl/OlsonTimeZone.class
+SHA1-Digest: 79gXZSUmqX9nyoCpNAVgO+DWdZE=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/cs.res
+SHA1-Digest: uSebe78HXFnRtd479ROo8v36RzU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ucadata.icu
+SHA1-Digest: Q0NSXQYbhwdZrWPlvg7mwKfQqzM=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/th.res
+SHA1-Digest: E5WgEa5K8Jv2uSWGq8c6bmuy7RA=
+
+Name: com/ibm/icu/impl/RelativeDateFormat.class
+SHA1-Digest: oMXqzEz0mVQhGcIkNs9yjZBB+rc=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodFormatter.class
+SHA1-Digest: YQxVtZg5JGrmmU+2ORW4dsAnhhY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pl.res
+SHA1-Digest: M0bmX8ggP1RA4n9g+mfeuf4w2vI=
+
+Name: com/ibm/icu/impl/data/icudt42b/it_IT.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/UPropertyAliases$NameToEnum.class
+SHA1-Digest: 1UWDuuszFPV1T89n2Vlmt+eGCmc=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder.class
+SHA1-Digest: SybX4sTXAEHaYJdYogcpBmeDHFE=
+
+Name: com/ibm/icu/impl/duration/PeriodFormatterFactory.class
+SHA1-Digest: Gz2jDCMozbAi0EtSygOfpwiDEaU=
+
+Name: com/ibm/icu/impl/data/icudt42b/ml_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/EscapeTransliterator$7.class
+SHA1-Digest: Z7n+wBbeA8TUZHsmYBlqk13sMzY=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_TN.res
+SHA1-Digest: 9ITuE03Z0uIKcoax3BwbvIc/tT0=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/hi.res
+SHA1-Digest: zbX53lArZJM2PBtNDPSPxrjs/Y0=
+
+Name: com/ibm/icu/lang/UScriptRun.class
+SHA1-Digest: w95JD/6qCUnxRZfmQTKPmPKrvWM=
+
+Name: com/ibm/icu/util/MeasureUnit.class
+SHA1-Digest: Lm2xF6VH+OjPTxITaAOlgBpG12k=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hr.res
+SHA1-Digest: XuzR5SbWs2nW9osDEAfha6cGa2M=
+
+Name: com/ibm/icu/text/RuleBasedCollator$shiftValues.class
+SHA1-Digest: iqFJFznuvJ8QiNSRh8boK5ca34c=
+
+Name: com/ibm/icu/util/ULocale$Builder.class
+SHA1-Digest: aCQyYl7o/IWttOB6d9NmA+DJhQA=
+
+Name: com/ibm/icu/impl/data/icudt42b/unames.icu
+SHA1-Digest: E/oDzXc4m34RIDn+MkqvTruEPkM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_UY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/hy.res
+SHA1-Digest: VIG9x5xgEQ9Whs1CREdMyHneEdc=
+
+Name: com/ibm/icu/text/CharsetRecog_2022$CharsetRecog_2022KR.class
+SHA1-Digest: uIlFjt23o0muOFs/AzAwDT/30n8=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$4.class
+SHA1-Digest: VbbBBBlf7X8KBWgLvQAzkycRwTM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ur.res
+SHA1-Digest: M3vpShSeTW+pZKWO1dTIOU1PiQM=
+
+Name: com/ibm/icu/text/Collator.class
+SHA1-Digest: LRS6CYoxVdosNtHhOcqxwUunut0=
+
+Name: com/ibm/icu/text/CurrencyPluralInfo.class
+SHA1-Digest: mI9XG4Gzqdj+U1kyn6hVFIT1GmI=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_DZ.res
+SHA1-Digest: IDE7op9Yf3rbmNaFIehSXw7XkZ4=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn_CS.res
+SHA1-Digest: 63xXzYBbV2uVP5NlLgeUyp8SVsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/az_Latn_AZ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3920res.spp
+SHA1-Digest: FOk27XPxxzqY/o7PdaVE9NkudcM=
+
+Name: com/ibm/icu/text/UnicodeFilter.class
+SHA1-Digest: my9i+rgEySYx94ptWNTO7DEK0CI=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_euc.class
+SHA1-Digest: JyXQVNCIPLJ3ETcNa/dGzQw07Jg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en.res
+SHA1-Digest: Y1cpTHeoNVfdEXGVZ93BmxkHEHM=
+
+Name: com/ibm/icu/impl/UCharacterName.class
+SHA1-Digest: juBrLaL8p8sCuOOVHQ1TnJMsUlY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/is.res
+SHA1-Digest: 6hK47oZwKTuGT9iPhseedM8jlF8=
+
+Name: com/ibm/icu/text/ReplaceableContextIterator.class
+SHA1-Digest: uh1kGQxSFFvCdOfvwtMV/RFp+eM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh.res
+SHA1-Digest: 6jCCDw85GO2YKFjyVbmJrz3CiPA=
+
+Name: com/ibm/icu/impl/PatternTokenizer.class
+SHA1-Digest: gs1cCTRtoRWvrb+oFfectqAAqKM=
+
+Name: com/ibm/icu/text/UnicodeDecompressor.class
+SHA1-Digest: P0CxO6PopQd9eYsRcbgFjhhJAAo=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord.class
+SHA1-Digest: yQwxbsPMAMJZtW92px2Azs09o+k=
+
+Name: com/ibm/icu/util/DateInterval.class
+SHA1-Digest: +yUQ3agmmyHDT5HONUXlJWwUCug=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_DE.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/no_NO.res
+SHA1-Digest: AgYfyOH+DuzgYK7m3vioTfRNJGM=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hans_CN.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/UCharacterUtility.class
+SHA1-Digest: RYgGg5aVfygChVLyTQtG7xXr5wE=
+
+Name: com/ibm/icu/text/RemoveTransliterator$1.class
+SHA1-Digest: adHlF+kCdJ8Wpc4GRnP5ZOoybWY=
+
+Name: com/ibm/icu/lang/UCharacter$WordBreak.class
+SHA1-Digest: zJGbZhxPqMpVRK0/corQLR+o4dY=
+
+Name: com/ibm/icu/text/RuleBasedCollator$Attribute.class
+SHA1-Digest: 8sK3ftAAk+yvM8ElgkX7lH50YuU=
+
+Name: com/ibm/icu/impl/data/icudt42b/root.res
+SHA1-Digest: /jAvBLb66EQZJz5i6Gq4tq6HSvI=
+
+Name: com/ibm/icu/impl/data/icudt42b/translit/en.res
+SHA1-Digest: lOD2KZjZY+4pQnEyWvgj0DI4RDk=
+
+Name: com/ibm/icu/util/CurrencyServiceShim$1$CurrencyFactory.class
+SHA1-Digest: BKDqfNuidFYkbVc2arHWlh4IrPg=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ru.res
+SHA1-Digest: iRI+TvON4CitbxJC2tml5Gwbm24=
+
+Name: com/ibm/icu/impl/data/icudt42b/mr.res
+SHA1-Digest: UHvxkZBfSMdipoSIt5zozq5bjl0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fo.res
+SHA1-Digest: vbVaz1xXlVn5yEQRlonKgJvyGWM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_VI.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/af_NA.res
+SHA1-Digest: ZJhpBjdCUjCGufR3nIYX3msnGzU=
+
+Name: com/ibm/icu/text/RuleBasedCollator$DataManipulate.class
+SHA1-Digest: hn7tPwffVpqHMlzCJTK0MvHPNu4=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator$FormatParser.class
+SHA1-Digest: vMY8S4QsTo3/NkiuMAfJlS/FmHY=
+
+Name: com/ibm/icu/text/RawCollationKey.class
+SHA1-Digest: 3p8QSf4RMy7FWuzJxVK0vTyzxm8=
+
+Name: com/ibm/icu/impl/data/icudt42b/ja_JP_TRADITIONAL.res
+SHA1-Digest: DCIG4K+9A5S+ggUNe8mClIrukoo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_SV.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/as.res
+SHA1-Digest: kNF0lmyepvyJY1OATWVPOyN5cuQ=
+
+Name: com/ibm/icu/impl/StringPrepDataReader.class
+SHA1-Digest: 5+x+D/q2Tfss85/OnRNjggZLa+8=
+
+Name: com/ibm/icu/text/PluralRules$AndConstraint.class
+SHA1-Digest: 7JpT5jTip4AmnvLsoq0vkCgsH2U=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr_BE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/ULocale$Type.class
+SHA1-Digest: NsX83h5T3oxdnE9NRCaf11wzYAw=
+
+Name: com/ibm/icu/impl/data/icudt42b/sh_CS.res
+SHA1-Digest: 63xXzYBbV2uVP5NlLgeUyp8SVsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_FR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodFormatterFactory.class
+SHA1-Digest: 93Ha1HovBfFi0sXu/RlW024g4qQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_SD.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_CR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/kl.res
+SHA1-Digest: +XCe59JTx811cO0BnIbor0pY4oU=
+
+Name: com/ibm/icu/impl/data/icudt42b/fa_AF.res
+SHA1-Digest: MCUzt2dbZquysJJ9Wyftv1v2Aw0=
+
+Name: com/ibm/icu/impl/data/icudt42b/fi.res
+SHA1-Digest: egnljVIZU7/PrmmGTn7xPIB5vYQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sv.res
+SHA1-Digest: 1GxvJ+dugNpfnkBvZhyhTVjIhz8=
+
+Name: com/ibm/icu/impl/PVecToTrieCompactHandler.class
+SHA1-Digest: jagBKk3dAK8PALAgc9WB+CemdWU=
+
+Name: com/ibm/icu/impl/data/icudt42b/kk_KZ.res
+SHA1-Digest: Pv1X4jlPvVlxVZcgVveM6ghr16s=
+
+Name: com/ibm/icu/text/RuleBasedCollator.class
+SHA1-Digest: 2HzBICFjeZ8/8lk1GXdwZU41tlU=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml.escaped
+SHA1-Digest: 89IJ4u72v6STQ+GkOaiPXvgvl4s=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_HK.res
+SHA1-Digest: speOMn/V2KXsedph/5CkSZvBY08=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn_BA.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_PR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$IDEnumeration.class
+SHA1-Digest: 74amdxMNJNhmTUp/bulLHwa6i2c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_CA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/si.res
+SHA1-Digest: 6M3GODokvo4JZ45IPc4pyGHIYEY=
+
+Name: com/ibm/icu/text/BidiLine.class
+SHA1-Digest: jKOX3AurU/M65CYpHs3YvYETEek=
+
+Name: com/ibm/icu/impl/StringUCharacterIterator.class
+SHA1-Digest: ekMX227GRJphyERiR/umNms9kM4=
+
+Name: com/ibm/icu/impl/data/icudt42b/sw_TZ.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/util/ValueIterator$Element.class
+SHA1-Digest: Z/T9wKiHNB+APS2ppz/rMGcZNDM=
+
+Name: com/ibm/icu/impl/data/icudt42b/vi_VN.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/ICUDebug.class
+SHA1-Digest: SspfDg59S2oDuGoH8+SkpBx8s90=
+
+Name: com/ibm/icu/impl/ZoneStringFormat$ZoneStringSearchResultHandler.
+ class
+SHA1-Digest: BYPDhs+w8cmo9wAbabRKm1NFmC0=
+
+Name: com/ibm/icu/util/ULocale$1.class
+SHA1-Digest: L5DCd7IW6ovpmPR11P7CCnuArHo=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_5_ru.class
+SHA1-Digest: a/FsoaP2fh5J5wU2qkxQBUWJb/4=
+
+Name: com/ibm/icu/impl/data/icudt42b/ko.res
+SHA1-Digest: tOu85iYUlfDaTDxuuVMYkyJYoHk=
+
+Name: com/ibm/icu/impl/CalendarCache.class
+SHA1-Digest: 978G+98m5Rh9L1p42o178Ly9eKs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/lv.res
+SHA1-Digest: 4SzArVsgHZrdCIIUzut2PY4nrj8=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceTable32.class
+SHA1-Digest: WPNlKMDc2Tuy/gugJ/bvNQR8L0w=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_fr.xml
+SHA1-Digest: q6GC/B2UeKvgMaDcH227hHVFGZY=
+
+Name: com/ibm/icu/text/DateIntervalInfo$PatternInfo.class
+SHA1-Digest: 4/oklHbdHf13PMYRQkAzk38U1tk=
+
+Name: com/ibm/icu/impl/data/icudt42b/om_KE.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/text/RBBIRuleBuilder.class
+SHA1-Digest: lg7MPOym9rNtMJUUA8ulzJGlDS8=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode$CharsetRecog_UTF_32_LE.cla
+ ss
+SHA1-Digest: X95uQTiQ2wmoXpevIRmZTrG3YRQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_QA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorParser$RuleBody.class
+SHA1-Digest: Xong52pzaxRFJy7oUm3qakdrrWU=
+
+Name: com/ibm/icu/impl/data/icudt42b/sh_BA.res
+SHA1-Digest: vYOnYIQEmwDnRfySDiGCAZETvgI=
+
+Name: com/ibm/icu/util/CompactCharArray.class
+SHA1-Digest: HTvkUkdGiggb8cA8jgTTErrJDKY=
+
+Name: com/ibm/icu/lang/UCharacter$JoiningGroup.class
+SHA1-Digest: RFbRF6cgexKGY8nzvWunz1c+lRs=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_ja_JP.class
+SHA1-Digest: 94Q//J7nEmgNgIHchnp3upyZK80=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Cyrl_BA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3530cs.spp
+SHA1-Digest: X/hcRTFL9xucSczvJdQ5nhEtyjY=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_AE.res
+SHA1-Digest: xB4LS1AXeLApkNRYIagiSn8fWm8=
+
+Name: com/ibm/icu/text/TransformTransliterator.class
+SHA1-Digest: Bp5EzBliTjSPluXDEnQ2DTLVlSY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hant_MO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/et.res
+SHA1-Digest: 5sefqgiyK6TsRUJsBZNq6rdoSFo=
+
+Name: com/ibm/icu/text/PluralRules$ConstrainedRule.class
+SHA1-Digest: mwS5RQX34YK/F18R/1DjGO5s3yk=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/vi.res
+SHA1-Digest: SKKBSmXiXjkfCso9m0wB8fcRO0k=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/bn_IN.res
+SHA1-Digest: cxctNEMzXGKFExa+BKr81cP6bTk=
+
+Name: com/ibm/icu/text/IntegralPartSubstitution.class
+SHA1-Digest: TpSmcVNsIPtTQutvMY/1h5r0QF8=
+
+Name: com/ibm/icu/impl/data/icudt42b/uk.res
+SHA1-Digest: t0VnKz31Xa+/q0TbAqWqkzNO0ek=
+
+Name: com/ibm/icu/text/RBBIRuleScanner.class
+SHA1-Digest: OE2CMGT9R6AY2Vy88H38N3iSw38=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hu_HU.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/RBBIRuleScanner$RBBISetTableEl.class
+SHA1-Digest: rEFw4whXXbI9r6JfLgXUytOyvv4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/el_GR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/translit/res_index.txt
+SHA1-Digest: ccDO61RRoZeVanV00Bh3R8N3sAM=
+
+Name: com/ibm/icu/impl/UCharArrayIterator.class
+SHA1-Digest: fD55q09R46pQmMVkSx1qnl6ZwK4=
+
+Name: com/ibm/icu/impl/Punycode.class
+SHA1-Digest: 33Cw/TgF+Vpe0qFLg9EfQzF/TqE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ru_UA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/kk_Cyrl.res
+SHA1-Digest: ofu0p2h5HG++q/Yi5O9ZawldKoI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/zh_Hant.res
+SHA1-Digest: BUFDOhxml2zt0sarXan2QbEgDVI=
+
+Name: com/ibm/icu/text/TitlecaseTransliterator.class
+SHA1-Digest: tXpjeR9ROFwNlV9dZ/7tyGMxxzE=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_8_I_he.clas
+ s
+SHA1-Digest: HwGee4XXYIs8h31ApYcJg+M2AGg=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/char.brk
+SHA1-Digest: 24ckRQ8bFjANmi7CJB+e3SdfxOo=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl.class
+SHA1-Digest: eY4eVJw+5MgftU/m31xLoSUdVEo=
+
+Name: com/ibm/icu/impl/UPropertyAliases$ContiguousEnumToShort.class
+SHA1-Digest: sJi+BMHZTNNTiJrR7+adqFkrbK4=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_en_US.class
+SHA1-Digest: mfCx2hYc8gNROIoHOAWQvReUKBk=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar.res
+SHA1-Digest: kdMpoz4d3X5Q0VX7vpBMTpahZHo=
+
+Name: com/ibm/icu/impl/locale/BaseLocale$BaseLocaleKey.class
+SHA1-Digest: y3N56aqGeOurXb25ANv5Lpv+JZM=
+
+Name: com/ibm/icu/impl/data/icudt42b/nb.res
+SHA1-Digest: P1WTbgYJCRRiiqBeiKzVSgyfN+M=
+
+Name: com/ibm/icu/util/RuleBasedTimeZone.class
+SHA1-Digest: Hz3GJvEjL+DaZg4d7cV1ykMvJCU=
+
+Name: com/ibm/icu/text/BreakCTDictionary$CompactTrieHorizontalNode.cla
+ ss
+SHA1-Digest: 8ubK2FFiCZ8rL211dzKm7vhqZw4=
+
+Name: com/ibm/icu/impl/duration/PeriodFormatter.class
+SHA1-Digest: fgmgm7tQREqM8kA9uECAJQvWXcA=
+
+Name: com/ibm/icu/impl/ICUData$3.class
+SHA1-Digest: SNoX0DZtpC0NoTAfFC8Skxnk19c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sk_SK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$CompoundRBTEntry.class
+SHA1-Digest: EPnpi9TAxVaO3NeV1adWIdFgrYk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ga_IE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_PA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ca.res
+SHA1-Digest: NttIT6YBvTg34r7iqmE6HXsLm2Y=
+
+Name: com/ibm/icu/impl/ICUBinary$Authenticate.class
+SHA1-Digest: L3EQHZn7xcd114K4mUWT1FJmgiM=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_BW.res
+SHA1-Digest: yPOqHpP+lfKjwqoLwMj9q+MFsh4=
+
+Name: com/ibm/icu/impl/data/icudt42b/nb_NO.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/InvalidFormatException.class
+SHA1-Digest: KQj97EUEqC/UjllyMtFzgCozy9s=
+
+Name: about_files/ucdterms.txt
+SHA1-Digest: VSl7MUMAroQl6WS17r4Mov82WGE=
+
+Name: com/ibm/icu/impl/data/icudt42b/et_EE.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/SCSU.class
+SHA1-Digest: gtL+Jw2NeLaYqamDE4o+5Mj8fwI=
+
+Name: com/ibm/icu/text/NormalizationTransliterator$4.class
+SHA1-Digest: zxwhI6zKlhVTIwG+EoxHm5GuwsI=
+
+Name: com/ibm/icu/impl/duration/TimeUnit.class
+SHA1-Digest: +J6ylhxAa9t5D3hJsleaDIcefRo=
+
+Name: com/ibm/icu/impl/UCharacterProperty.class
+SHA1-Digest: wkAjE+pktFKGcDpWVWaZJkrTEaA=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant.xml
+SHA1-Digest: oqiUHHJv27k8wMntxWNJWm5cuyU=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_PY.res
+SHA1-Digest: 2ELEXjaQo8G5C0a6Hy/Hkz7rMSU=
+
+Name: com/ibm/icu/impl/data/icudt42b/sh.res
+SHA1-Digest: 5xIT4uaABWOSZbAPadn5pBVATSA=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceArray.class
+SHA1-Digest: n20Yw5n5uQ+BIumrifw1rJ+ib4Y=
+
+Name: com/ibm/icu/util/OverlayBundle.class
+SHA1-Digest: VA09j//ouBzZfRljhs43EWH1UWg=
+
+Name: com/ibm/icu/impl/UPropertyAliases$EnumToShort.class
+SHA1-Digest: qCCoaX1zSCkCReWgxReTup/2G44=
+
+Name: com/ibm/icu/impl/data/icudt42b/ru_RU.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/fi_FI.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/res_index.txt
+SHA1-Digest: zMIWnk6WM/vR2hqXFYMQNXNgZOA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_LB.res
+SHA1-Digest: y01P6EzYLLwoVlSjXJeuBgiLjCM=
+
+Name: com/ibm/icu/util/Range.class
+SHA1-Digest: Gdt1lwgw36pXsWkU5+00HqS3QIg=
+
+Name: com/ibm/icu/impl/data/icudt42b/gl_ES.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sh_YU.res
+SHA1-Digest: 63xXzYBbV2uVP5NlLgeUyp8SVsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/kn.res
+SHA1-Digest: SVYFAxtKC+g1SO17ypdtiXirQ+U=
+
+Name: com/ibm/icu/text/CollationParsedRuleBuilder$MaxJamoExpansionTabl
+ e.class
+SHA1-Digest: Eok++JuBprd94P5XKo5qwmWXWrU=
+
+Name: com/ibm/icu/impl/duration/DateFormatter.class
+SHA1-Digest: oJjB/+u4BmY6gz/1nLFC/kPqZwk=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_PH.res
+SHA1-Digest: 6BW6lipgAJqQsAKKGoMdtSasfBY=
+
+Name: com/ibm/icu/text/Normalizer$NFCMode.class
+SHA1-Digest: WfCJwh7saeRB031INtF1nyrY/eA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_CS.res
+SHA1-Digest: aduEqkdKeplfC5eiWemPKHmW34A=
+
+Name: com/ibm/icu/text/TransliteratorParser.class
+SHA1-Digest: uTVZldbPwZNIfoTa/80LFyt47jg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ja_JP.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_EC.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/IntTrie.class
+SHA1-Digest: Emz1DpkrwDLpkWJrLwen4ogwy38=
+
+Name: com/ibm/icu/impl/data/icudt42b/uk_UA.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$4.class
+SHA1-Digest: TWFpivaDmTZyNPWR0TZvAtsI/nQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hant_TW.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3530mixp.spp
+SHA1-Digest: k7n909A1REAMmV/8LzfjYnuVV9E=
+
+Name: com/ibm/icu/util/LocaleData$MeasurementSystem.class
+SHA1-Digest: dTfJgF/KG451ruH4/XBUID8h6vI=
+
+Name: com/ibm/icu/impl/data/icudt42b/ro_MD.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/UppercaseTransliterator.class
+SHA1-Digest: K65rOhkHFPPJvTXVS2GDDskDrTw=
+
+Name: com/ibm/icu/lang/UCharacter$LineBreak.class
+SHA1-Digest: WedFMmAGGCS+5uNafKaQHQNgmb4=
+
+Name: com/ibm/icu/impl/data/icudt42b/ti.res
+SHA1-Digest: WLeTLbxjrlBE8fDMGACkk1zylsk=
+
+Name: com/ibm/icu/util/TimeUnit.class
+SHA1-Digest: YYv+j0u/3WBB/3MsB5Up+pODuoU=
+
+Name: about.html
+SHA1-Digest: rVxS5BfocAAiJOoDz/y0EGBqWJQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_ES.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/th_TH_TRADITIONAL.res
+SHA1-Digest: dm/VvqW10ZR3pUBSFUpvtHbOtyM=
+
+Name: com/ibm/icu/impl/data/icudt42b/de.res
+SHA1-Digest: r2YFTqYDh43kuN8P+52svTSa2QM=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_GH.res
+SHA1-Digest: UpQPUoCUtlF8gu6zJzaxTmrcrd4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/el.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/impl/data/icudt42b/pt.res
+SHA1-Digest: PIlKrQuWNHvwerC93IMwogMB2w8=
+
+Name: com/ibm/icu/util/TimeArrayTimeZoneRule.class
+SHA1-Digest: JrMCVEvM6EXDzfMLF4hLxx/UTu8=
+
+Name: com/ibm/icu/impl/BOCU.class
+SHA1-Digest: 5zGkejToe99lZmFfgN60Aw1CGLg=
+
+Name: com/ibm/icu/util/RangeValueIterator.class
+SHA1-Digest: C7gsvse8Hi7kFuiOsp6IH6N6LZs=
+
+Name: com/ibm/icu/impl/duration/impl/YMDDateFormatter.class
+SHA1-Digest: 04ea5xJyxIHWp8noFNHjcF8WY/M=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$ResourceEntry.class
+SHA1-Digest: enFBOMFozjzH7zQDyyzk5JQMSyI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/es.res
+SHA1-Digest: 2+qJ2wsZOqcH8UavAC/5OT+BWN0=
+
+Name: com/ibm/icu/impl/data/icudt42b/ubidi.icu
+SHA1-Digest: 8PG8LlE9FD31PSbCFlqH8ikBN/E=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_MT.res
+SHA1-Digest: Pcke7lFGpfc23L9mplirDz06oEU=
+
+Name: com/ibm/icu/impl/NormalizerImpl$NormTrieImpl.class
+SHA1-Digest: GBex0A5HCO3NbnOqR1hsq7uCKdM=
+
+Name: com/ibm/icu/text/PluralRules$RangeConstraint.class
+SHA1-Digest: q40jS31nQeUuwXHCU/LJExfrtBQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_BO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mr_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CaseFoldTransliterator.class
+SHA1-Digest: SZ9RH9iVqmQKyXe+4EodLH2yFJE=
+
+Name: com/ibm/icu/text/NFRuleSet.class
+SHA1-Digest: YOae4QHYvx66WmYCpkPIjpXAgSE=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_SG.res
+SHA1-Digest: 99MTdXPuizTQKIDtoLc37T5PHW0=
+
+Name: com/ibm/icu/impl/ICUBinaryStream.class
+SHA1-Digest: hwmYmhWRwl1SLll0fs1fViSKoKk=
+
+Name: com/ibm/icu/impl/data/icudt42b/translit/el.res
+SHA1-Digest: 8pcLhZA5frBXKUIf3AD59p6DT2o=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/nn.res
+SHA1-Digest: 3MUK/nZAIdYhsFmqdH72FN13NGo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_LU.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ur_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_AU.res
+SHA1-Digest: RyQf0wElkKbRCCBLJXA8u2TsY50=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz.res
+SHA1-Digest: N3L5iQmIl1raILWLrrGf95ussYk=
+
+Name: com/ibm/icu/lang/UCharacterCategory.class
+SHA1-Digest: DKoDFXBwKD0rTGW0gmri0Gv1V1M=
+
+Name: com/ibm/icu/text/Transliterator.class
+SHA1-Digest: qEg4h7YGt0qhMDM74Imk2Wxc7ik=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_JO.res
+SHA1-Digest: NNqZL3oR7R1bDqOqiHpw7PObhUw=
+
+Name: com/ibm/icu/impl/Assert.class
+SHA1-Digest: 7EflTLK1aav09w+8J9byWrzxwJ8=
+
+Name: com/ibm/icu/impl/data/icudt42b/supplementalData.res
+SHA1-Digest: iHFo2qpbPrI0GGNg8gDE+iognNA=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EHalfSupport.class
+SHA1-Digest: xaZ+Li5POYKVmpZR06xzhQbgAYA=
+
+Name: com/ibm/icu/text/SearchIterator.class
+SHA1-Digest: eSteDarFySmrnoW7QrhHbfS2eiU=
+
+Name: com/ibm/icu/impl/duration/DurationFormatterFactory.class
+SHA1-Digest: e6pCRwBCGl1NmEZzElE0lt+Tf5Q=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_US_POSIX.res
+SHA1-Digest: uhAY7D8tk/T13H2LeMxceizSn2M=
+
+Name: com/ibm/icu/text/NameUnicodeTransliterator.class
+SHA1-Digest: xKXUkrHKrAt4N+ALLEuv/LRumKw=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_ar_EG.xml
+SHA1-Digest: oIUIfYHf6QfubBGuBMOOiC8BhKo=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_zh_Hant_HK.xml
+SHA1-Digest: CC3kTS07LVUlBxSGdrmbKrxeHT4=
+
+Name: com/ibm/icu/impl/TextTrieMap.class
+SHA1-Digest: i01hKmZ+v9n2opn7bBp8Ekh4DmI=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_BA.res
+SHA1-Digest: 6q0h04Ey+gEIoBcrzyHzzX1kkzA=
+
+Name: com/ibm/icu/impl/data/ResourceReader.class
+SHA1-Digest: KvaIhFKr51gH4b5+O0z6jeVOxKQ=
+
+Name: com/ibm/icu/lang/UProperty.class
+SHA1-Digest: twc3qgeSyXtpY7eshpN6PrAr9Eo=
+
+Name: com/ibm/icu/text/Bidi$LevState.class
+SHA1-Digest: 0UyGHDenyloCdjPmWuzEhGzlGaY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pt_PT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$Ecliptic.class
+SHA1-Digest: fpxm9HdwYfU8XsM2YRX/Ez8LqHU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_OM.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/plurals.res
+SHA1-Digest: AMk9el/59ihFhiQR5IwA4pDu4YA=
+
+Name: com/ibm/icu/impl/duration/PeriodFormatterService.class
+SHA1-Digest: AMUsoC/LowGM8ijioxYAKxEAi7c=
+
+Name: com/ibm/icu/impl/NormalizerImpl$ComposePartArgs.class
+SHA1-Digest: JECwXa9jCR5hR94sygRyPH+MfiY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sv_SE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/Freezable.class
+SHA1-Digest: Nett7+AkkXCiNnrJnxflPvqpmL8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/om_ET.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_it.xml
+SHA1-Digest: 7xCHchUQRlpLbS/+eVSne7fiYyA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Latn_RS.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_HN.res
+SHA1-Digest: hbFcqJVXRt+6y3H4Ur0GA+QDhkA=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_zh_Hans.xml
+SHA1-Digest: BIlCGllGabqtfsLAKABjzjniGb0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/cy.res
+SHA1-Digest: cxctNEMzXGKFExa+BKr81cP6bTk=
+
+Name: com/ibm/icu/impl/URLHandler$JarURLHandler.class
+SHA1-Digest: 0VxcRVI+Vxl9YOEnZcJsyz8HxkM=
+
+Name: com/ibm/icu/text/BreakTransliterator$ReplaceableCharacterIterato
+ r.class
+SHA1-Digest: cwcoXguflrDaGjAiatJfM62U/So=
+
+Name: com/ibm/icu/text/Normalizer$IsNextNFDSafe.class
+SHA1-Digest: HjqQUnj1PZDJ6LWbo4bH4Dy/Nmc=
+
+Name: com/ibm/icu/text/StringPrep.class
+SHA1-Digest: r2/v9NTIfI7t6heL+JGrJrnGlX8=
+
+Name: com/ibm/icu/text/SameValueSubstitution.class
+SHA1-Digest: I0Yb/iaWoL/Q9SmDdVKSI2PDow8=
+
+Name: com/ibm/icu/text/BidiWriter.class
+SHA1-Digest: A55m2XvTflUUWjb06MWmUIQZ/r4=
+
+Name: com/ibm/icu/util/CalendarServiceShim$1$RBCalendarFactory.class
+SHA1-Digest: 2YX6s5iEVSM09fEEo9af6TIxI8w=
+
+Name: com/ibm/icu/text/NumberFormat.class
+SHA1-Digest: r4oRPG04+89iIchE/IRijGjG3Hg=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Cyrl_UZ.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/Replaceable.class
+SHA1-Digest: P9D/42FBm3mI1gq3AcY65zHa1Z0=
+
+Name: com/ibm/icu/text/NullSubstitution.class
+SHA1-Digest: GYmVmxF/d4gycD7IaPPH3ue7oW8=
+
+Name: com/ibm/icu/text/EscapeTransliterator$5.class
+SHA1-Digest: hgNOnYM6NClu2fcKurTQsExqArw=
+
+Name: com/ibm/icu/impl/RuleCharacterIterator.class
+SHA1-Digest: sBDGFbddtrFMZ+nuE/bOogHcYGo=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/da.res
+SHA1-Digest: SQhrgOFBLruGpF1nEAx0nghlEPE=
+
+Name: com/ibm/icu/impl/data/icudt42b/kk_Cyrl_KZ.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/util/CurrencyServiceShim.class
+SHA1-Digest: Ryy1dcxGmbqQSMzOmlzsIwBwo8Q=
+
+Name: com/ibm/icu/impl/data/icudt42b/km.res
+SHA1-Digest: scC5i45GluFETfMFwK1q6dVLqJA=
+
+Name: com/ibm/icu/impl/ICUResourceBundle$AvailEntry.class
+SHA1-Digest: tceD5Z5nfKTPImhuz0s3aCBQlRM=
+
+Name: com/ibm/icu/impl/data/icudt42b/or.res
+SHA1-Digest: NZx4uyUBm4F3N8JBtgqNShVHVwA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sw.res
+SHA1-Digest: bCl8PqEwPU6p4brWqdea4WicFAI=
+
+Name: com/ibm/icu/impl/TrieBuilder.class
+SHA1-Digest: swpyE6nI4Sr7KpJbd42Y0cERBzs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/lt.res
+SHA1-Digest: U6Kwjj5lfZ28Tt7BX0tmcXZ4E+s=
+
+Name: com/ibm/icu/impl/data/icudt42b/gsw.res
+SHA1-Digest: GL/X7TK/JJbVmM9jS3+u2HYHpjU=
+
+Name: com/ibm/icu/impl/locale/InternalLocaleBuilder$FieldHandler.class
+SHA1-Digest: ssy5lCqgMOaIKIYOIYrXDrURwNU=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_MO.res
+SHA1-Digest: K0sKinko64INKTDfbkgnrEzo0W4=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_9.class
+SHA1-Digest: qoKPPirLpeq2ZK0FxFiMzSfPAxE=
+
+Name: com/ibm/icu/impl/data/icudt42b/likelySubtags.res
+SHA1-Digest: 9YPzb4vut3wWJCZNsmHTdNra3IM=
+
+Name: com/ibm/icu/impl/data/icudt42b/cs.res
+SHA1-Digest: 1JJ0+mG6GvYpDOZx8HrpvRXc9Lo=
+
+Name: com/ibm/icu/impl/data/icudt42b/bo_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/RBBINode.class
+SHA1-Digest: oR1BJYBbEC9i1uC84s7oLN237ZU=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$2.class
+SHA1-Digest: bo4DZ9p24LQ5XQYJVaZxkWr/JJ0=
+
+Name: com/ibm/icu/impl/data/icudt42b/th.res
+SHA1-Digest: MTUh6AsBSzgZqIBn4ktBHyNSRSc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_LY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/haw.res
+SHA1-Digest: NP6/LJllJv4b3gO3iY93kXOjiTo=
+
+Name: com/ibm/icu/text/CollationRuleParser$TokenOption.class
+SHA1-Digest: X5GQBJR2uKMv0v6z9Ni79EHUiZ0=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_2_ro.class
+SHA1-Digest: 5qkdYEq4AOVDGPc5TWqPRUyNw8g=
+
+Name: com/ibm/icu/lang/UProperty$NameChoice.class
+SHA1-Digest: yFtZ9Irist4OxZVIo2vlmVFMR+o=
+
+Name: com/ibm/icu/impl/data/icudt42b/hi.res
+SHA1-Digest: X4CpJX4+Li9pyDS8x9tzZmCPCLg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/af.res
+SHA1-Digest: oR99rVvv+PeTWvs0iCiGEd0dFV0=
+
+Name: com/ibm/icu/impl/data/icudt42b/ps.res
+SHA1-Digest: 2/K9VtxxLDzS0u3szgd5VtFR7Dc=
+
+Name: com/ibm/icu/impl/data/icudt42b/ii_CN.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pt_BR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/TokenIterator.class
+SHA1-Digest: aVl9NEiavWU3YjMYXsmRqECSMcA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/res_index.res
+SHA1-Digest: uHnJT3lzNstJ+buwWlS+sOdWFSA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Cyrl_RS.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/am.res
+SHA1-Digest: kfAb0g/do/S4zkVbGOq95YiBdAc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/res_index.res
+SHA1-Digest: 1qlBKagoG9eeh1jKNQ+iO9OTzgM=
+
+Name: com/ibm/icu/impl/data/icudt42b/hy.res
+SHA1-Digest: NOel2U/i+2WvxpGEd3vzPQlspgY=
+
+Name: com/ibm/icu/text/CanonicalIterator.class
+SHA1-Digest: xnw2H+5eqcNRKWtbdizobk+l3cw=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hant_HK.res
+SHA1-Digest: tDBSVpaxCAkm5VCMjAMGx7lKjsQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ja.res
+SHA1-Digest: nYn3Ybdhw+lhVbLhXx5qDlUiCj4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_IN.res
+SHA1-Digest: ypWKEdk5Rt3Nr8XEnGYHLR8Yjlo=
+
+Name: com/ibm/icu/impl/data/icudt42b/bg_BG.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/IntTrieBuilder.class
+SHA1-Digest: ZR3vLaX/II6ocmZnF1dab3EX7jo=
+
+Name: com/ibm/icu/impl/data/icudt42b/kl_GL.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/text/CharsetRecognizer.class
+SHA1-Digest: ULmVva2M/Asi4KaInjapEMNfMvg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/bg.res
+SHA1-Digest: NK/D6puvIc4L5KgtFCBg8xnqYgU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ms_BN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/RBBITableBuilder$RBBIStateDescriptor.class
+SHA1-Digest: 5CbyXkVPOCRgvm43RVB1fSE8vdk=
+
+Name: com/ibm/icu/text/Normalizer$NFKDMode.class
+SHA1-Digest: hGcahPb4PoOii4Nm7MUVXKgV3Pg=
+
+Name: com/ibm/icu/impl/data/icudt42b/da_DK.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/BreakIteratorFactory$BFService.class
+SHA1-Digest: trG7yIeZRtCmuuC+oW1rJ3ILKi8=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/word_ja.brk
+SHA1-Digest: tceghqHRl7z9Gx4ul5FP7AtQCys=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodFormatterService.class
+SHA1-Digest: /IhFZk0vqWB/qEymixjz0UUB6XU=
+
+Name: com/ibm/icu/text/TransliterationRuleSet.class
+SHA1-Digest: z9OCJccykmEAzuzoAQwJy/ZwmTE=
+
+Name: com/ibm/icu/util/Calendar$CalendarFactory.class
+SHA1-Digest: hAO3/qAyMaCOjNMsf/1xDvyDlxw=
+
+Name: com/ibm/icu/text/CollatorReader$1.class
+SHA1-Digest: XfneLo+da605Z0T7kr87N0IzpzM=
+
+Name: com/ibm/icu/ICUConfig.properties
+SHA1-Digest: SCRFZaOrbKPIS/W7+VFVzS5d3nQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hant.res
+SHA1-Digest: Vzijs9UOpZ0iyXvC+RIPDtTey2E=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$ENumberSystem.class
+SHA1-Digest: fnqsq9Lfsiorohk0u/wBJwmRCVM=
+
+Name: com/ibm/icu/impl/data/icudt42b/eu.res
+SHA1-Digest: yE58IZubFCmb2mUi71FPTddERCo=
+
+Name: com/ibm/icu/impl/data/icudt42b/gu_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_BE.res
+SHA1-Digest: zof7Bj2xRNFP0GiZuuIlf4V020s=
+
+Name: com/ibm/icu/text/CollationElementIterator$Backup.class
+SHA1-Digest: QTiFlEWotNTTMe1M31LxBytjQ8s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sl.res
+SHA1-Digest: xWu0zgcmdp3t9avBdcWj8WpO0VA=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Arab_AF.res
+SHA1-Digest: Ft7S6n/o3/L7Am77oNmqkNnADP0=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$7.class
+SHA1-Digest: 1COLbKa0Athi2T/UgjA7hFrBhfs=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator$DistanceInfo.class
+SHA1-Digest: wjoYmQEQ09veIvhZYWHApPNDtNA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_SA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_CO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_GT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/RBBISetBuilder$RBBIDataManipulate.class
+SHA1-Digest: Po1bvO+0klNcFrP5dy8s3h307p8=
+
+Name: com/ibm/icu/impl/TextTrieMap$CharacterNode.class
+SHA1-Digest: s1XpJZR+JPGA7ecglSnL42531qo=
+
+Name: com/ibm/icu/impl/duration/FixedUnitBuilder.class
+SHA1-Digest: HSbqvtuBILCgbZTCDtUgG5WDFeg=
+
+Name: com/ibm/icu/impl/data/icudt42b/ru.res
+SHA1-Digest: 2tpiQqm9vibO03vrWglGYayiVfs=
+
+Name: com/ibm/icu/text/Collator$ServiceShim.class
+SHA1-Digest: VBfc7pG0uiVRhlFmGqm+C7kR4eQ=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_big5.class
+SHA1-Digest: z/Onqges6+n2jM8mPFe65NmKmU8=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_en.xml
+SHA1-Digest: yhRPJdLgfaPae0/Oq7Pnf/JEu+4=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_TW.res
+SHA1-Digest: FI8SXUxAHIZ4WAdjGjq/j705WQs=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_SY.res
+SHA1-Digest: 84JDwhg4qOWQWIAPO46GEkV0i64=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es__TRADITIONAL.res
+SHA1-Digest: FmpAb3TmF+UYaintHRcBMM2MgOc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_KW.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/id_ID.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/kok_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/UPropertyAliases$NonContiguousEnumToShort.class
+SHA1-Digest: syk6fjKZM2e9hx/QajWdR9zWcbk=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/he.res
+SHA1-Digest: 5g/JP/rIqxKTtDBuAn7T9oKOJBQ=
+
+Name: com/ibm/icu/util/Currency$ServiceShim.class
+SHA1-Digest: ZLvnyC+Wx1tf5IkKTyW6cTGag9U=
+
+Name: com/ibm/icu/impl/data/icudt42b/kl.res
+SHA1-Digest: qEj3QAIRkho3t0RhL0CPP1RJY74=
+
+Name: com/ibm/icu/impl/data/icudt42b/kok.res
+SHA1-Digest: 0Cq49xx+kBa1hTzjtrV5Ml3qEhA=
+
+Name: com/ibm/icu/util/Currency$CurrencyNameResultHandler.class
+SHA1-Digest: P+l9cS7yf4SjldSpTgQrZbqIk5c=
+
+Name: com/ibm/icu/impl/data/icudt42b/sv.res
+SHA1-Digest: t7f2hjU7Bu0g5ZvKa/TDCURG4Ts=
+
+Name: com/ibm/icu/text/ModulusSubstitution.class
+SHA1-Digest: ejqkE7UO4iF3YILImA3/n3UKwPY=
+
+Name: com/ibm/icu/text/DateIntervalFormat.class
+SHA1-Digest: hQsyM1rFuioogc6Dr9YOB7rELdc=
+
+Name: com/ibm/icu/text/UnicodeSet$GeneralCategoryMaskFilter.class
+SHA1-Digest: csLBiNOv8bCRCxNEY4c82QWb3Bs=
+
+Name: com/ibm/icu/impl/RelativeDateFormat$1.class
+SHA1-Digest: c6NqvKh9OBRUelKlq4M5mpxy/co=
+
+Name: com/ibm/icu/text/DateFormatSymbols.class
+SHA1-Digest: To1yZxWJc+Z4aax1Nj00KjMZUq0=
+
+Name: com/ibm/icu/impl/locale/InternalLocaleBuilder$FieldType.class
+SHA1-Digest: aefyDKK0a/KKJ+zqgrAGcH//F0E=
+
+Name: com/ibm/icu/text/NumberFormat$NumberFormatShim.class
+SHA1-Digest: k/tLYkRBt9Uh0ohxoe1VGXZR6XU=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/hu.res
+SHA1-Digest: o2xBye9kIqHcld2KlMZVqRy1Nko=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/as_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/Trie$DataManipulate.class
+SHA1-Digest: NjCImLHFdiP4sIuw4t+T3gauSsY=
+
+Name: com/ibm/icu/impl/ReplaceableUCharacterIterator.class
+SHA1-Digest: SCfl0/ZO54BfqdOBp++1QT4rfpI=
+
+Name: com/ibm/icu/util/CalendarServiceShim$CalFactory.class
+SHA1-Digest: BLNj+HZvoR2oJ1GngEFz2M+5/dc=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_MA.res
+SHA1-Digest: MFQlFcLk5eSGKWIWSDw3N8mg35Q=
+
+Name: com/ibm/icu/impl/UPropertyAliases$ValueMap.class
+SHA1-Digest: i9yakyznF+uxdpcjA324oR7y9tQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ps_AF.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/mk.res
+SHA1-Digest: FAjQiRZGQsGv60+ineKz2cfWHhA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_CH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/cnvalias.icu
+SHA1-Digest: MQcDdLr4J2MXhjRPlVmJxHtaqNg=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_TW_STROKE.res
+SHA1-Digest: nTng09tRvciGRT5csduFwNCuFMw=
+
+Name: com/ibm/icu/util/Calendar$CalendarShim.class
+SHA1-Digest: fnvc55VsYKwsxpqvv6JBeX6/cVo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mt.res
+SHA1-Digest: FtyaJu5NPuKD6jpdEs08AbHnvgI=
+
+Name: com/ibm/icu/impl/duration/PeriodBuilderImpl.class
+SHA1-Digest: AqUSShdrzMMa6z7Un+uub3tI4R0=
+
+Name: com/ibm/icu/util/Currency$CurrencyStringInfo.class
+SHA1-Digest: g9WFvoeBrb7FGiGOdzUItwknUMU=
+
+Name: com/ibm/icu/text/RBBISetBuilder.class
+SHA1-Digest: hOwxqGfQ9WZ+C+1viKYFlquVJ6Y=
+
+Name: com/ibm/icu/impl/data/icudt42b/ar_EG.res
+SHA1-Digest: CGs2xVIS8J7/2gE7N9P/54X0p7A=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_IBM420_ar.class
+SHA1-Digest: AOyK/U3m5/aFbRqi1LDp2saonus=
+
+Name: com/ibm/icu/impl/UCaseProps$ContextIterator.class
+SHA1-Digest: +nY8j0+ipna4v+xfK1dGRgOkPps=
+
+Name: com/ibm/icu/impl/URLHandler$URLVisitor.class
+SHA1-Digest: M6++xkYESTi5/TwYg71K8EXraas=
+
+Name: com/ibm/icu/util/EthiopicCalendar.class
+SHA1-Digest: cZlXcHpU7yDDQrivFoycnC++BFo=
+
+Name: com/ibm/icu/text/ReplaceableString.class
+SHA1-Digest: UxYu+CpdztHGbYqnZGrVLnZl12Y=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_IE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceBinary.class
+SHA1-Digest: f3nrmF+ItqGshFfYle9KMXxQVsU=
+
+Name: com/ibm/icu/util/LocaleData$PaperSize.class
+SHA1-Digest: EEQ1lZiV9UtR4+v4CHhD4oSr6uE=
+
+Name: com/ibm/icu/impl/UCharacterProperty$BinaryProperties.class
+SHA1-Digest: 88MTxoOMUU86d/+Rc+zp/hlpn90=
+
+Name: com/ibm/icu/impl/data/icudt42b/it_CH.res
+SHA1-Digest: VZ5J7mHHX7dBZ/OyTYm/qSJ4rfQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_ME.res
+SHA1-Digest: oXaqBhMExiV5rKnE2flXWVVHyzM=
+
+Name: com/ibm/icu/text/Normalizer$IsPrevNFDSafe.class
+SHA1-Digest: FEvTne7AOYLR7yBDdbToaG5OzNs=
+
+Name: com/ibm/icu/impl/duration/impl/PeriodFormatterDataService.class
+SHA1-Digest: NlLuVww7FdYnMgZsWlql28eWh+E=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceString.class
+SHA1-Digest: NyTmwv3AMT6t/Sdgv0HU1yhA47g=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/nl.res
+SHA1-Digest: kF6Z/y1F/oCaBRK2OFjLSCKoce0=
+
+Name: com/ibm/icu/impl/data/icudt42b/ii.res
+SHA1-Digest: UBcD2E0maByd3NeIqAsFZSv6EIY=
+
+Name: com/ibm/icu/text/ChineseDateFormat.class
+SHA1-Digest: yAfgPqcBendEMrN5CAkQhg+5Mbg=
+
+Name: com/ibm/icu/impl/data/icudt42b/az_Latn_AZ.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_RH.res
+SHA1-Digest: hX7gbcKf4kxMliOSk1FTXIZlq6o=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hans.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fr.res
+SHA1-Digest: MGwC1Tjcpsv7MdNJwx1cF5yqU+g=
+
+Name: com/ibm/icu/text/NFRule.class
+SHA1-Digest: Rx9mug/qARQn0CQx6EgEv3p9sXY=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_de.class
+SHA1-Digest: ygZcTpEeS+fUbX2LmGkujQog71U=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 6mDW8kS/T9pK7w1by/wcxy21Z20=
+
+Name: com/ibm/icu/impl/data/icudt42b/et.res
+SHA1-Digest: N67CbxU4QoG5hjGVdgzrhPwDM2U=
+
+Name: com/ibm/icu/text/StringMatcher.class
+SHA1-Digest: xITSJP51+Xr6DNo/i7rkfcjYb5M=
+
+Name: com/ibm/icu/impl/data/icudt42b/vi.res
+SHA1-Digest: IvGtt5n71/Q5+lcboUp9t20/jg4=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode.class
+SHA1-Digest: TEkDt3CyBmLK35HAONcI0Z4Oq0M=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$CoordFunc.class
+SHA1-Digest: sDrz6H27/DjBw7a5xhBZ5SnIung=
+
+Name: com/ibm/icu/impl/UCharacterIteratorWrapper.class
+SHA1-Digest: BHZVRNGt4elX2sQxXvP4T0j31Sk=
+
+Name: com/ibm/icu/impl/ICUData$1.class
+SHA1-Digest: PvBDMlt+QLDywoMQsAuPVV2o0OU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sk.res
+SHA1-Digest: kipbhMMMAsrPAg578s6fieZ/kT4=
+
+Name: com/ibm/icu/impl/data/icudt42b/pl_PL.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_RS.res
+SHA1-Digest: 2ii6FCYOQG4t2sunNcYMfTFp8rA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/haw.res
+SHA1-Digest: bzZfFLhZ0XFaoPpbkBhyr5xxIr8=
+
+Name: com/ibm/icu/text/UCharacterIterator.class
+SHA1-Digest: 7eshEISwTUGWA0M1JbdxsxvKOjg=
+
+Name: com/ibm/icu/impl/duration/impl/data/index.txt
+SHA1-Digest: MNpQEGeqnTio7sP8urAKSdbCCDA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hi_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/cs_CZ.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sr.res
+SHA1-Digest: 5q4QgJkmNbD3r8nJxAw9e2fb5iY=
+
+Name: com/ibm/icu/impl/data/icudt42b/no.res
+SHA1-Digest: QKT2L/mn+LtpRofMA4whD6vFbe0=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fa_AF.res
+SHA1-Digest: egzqOqtIj9Z4IANVn7nmOPmrOTA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/root.res
+SHA1-Digest: usraVU9nl82Tjj7gaVTZGlt2WiM=
+
+Name: com/ibm/icu/text/Bidi$InsertPoints.class
+SHA1-Digest: U4tvL3b5yD6lGG7VqbG9pdd4YlY=
+
+Name: com/ibm/icu/impl/SortedSetRelation.class
+SHA1-Digest: hJ7h15Rga71Xh6ytr9ebvNoujrc=
+
+Name: com/ibm/icu/text/MeasureFormat.class
+SHA1-Digest: G+oN8QPH7T64tfQ/PzVyNIkuMI0=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_SN.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sq_AL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/NormalizationTransliterator$2.class
+SHA1-Digest: QZdmY3bzdbLEBYzqdo7YflZk3D4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_GB.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/ICUResourceBundleImpl$ResourceIntVector.class
+SHA1-Digest: 0rFrR7ZGQyhwiGAo8HUbmBl8sEg=
+
+Name: com/ibm/icu/impl/ICUCache.class
+SHA1-Digest: jro2JA35cDczsxETdBk2XDQbGs8=
+
+Name: com/ibm/icu/text/CollationKey.class
+SHA1-Digest: wkX8AB6BlSkkeVbdYd2rqCecDQw=
+
+Name: com/ibm/icu/impl/data/icudt42b/pnames.icu
+SHA1-Digest: gyIxR5pJTCsfhNix+jeZk17v24M=
+
+Name: com/ibm/icu/text/StringPrep$Values.class
+SHA1-Digest: VoXm2UjTrNPtQCTomlkmDgo4c/8=
+
+Name: plugin.properties
+SHA1-Digest: TOPBr3CgISdwU5nKSIJc674x0oY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_DO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/RBBIDataWrapper$RBBIDataHeader.class
+SHA1-Digest: s2SFgLptUnyHVB4j6qLUvpCVLHQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mt_MT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/ca.res
+SHA1-Digest: Y1b8+7d7xRxE0/4BvMsJ0ROnlVw=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl_CS.res
+SHA1-Digest: 2ii6FCYOQG4t2sunNcYMfTFp8rA=
+
+Name: com/ibm/icu/impl/data/icudt42b/kk.res
+SHA1-Digest: ZeMQZ0ZpJ9wpELJbCXgVCkxeKT4=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/word.brk
+SHA1-Digest: 4Qm9wAWKejtKem4xRAJwpzpim+o=
+
+Name: com/ibm/icu/text/SymbolTable.class
+SHA1-Digest: 0PXEovA8ijSuu464CTlOg2PiB9E=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hant.res
+SHA1-Digest: 4a6oYxgReRIfuwClplCK/M3LeY8=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$2.class
+SHA1-Digest: oEcFAH9NQgt9Z7aF8UWcLS4MS20=
+
+Name: com/ibm/icu/impl/data/icudt42b/iw_IL.res
+SHA1-Digest: Ndcrw5xpVXzCNkJpNiv+lI2hixc=
+
+Name: com/ibm/icu/impl/data/icudt42b/gv.res
+SHA1-Digest: 2rOn4o47ACz+j6XYLqt0C+MXTFM=
+
+Name: com/ibm/icu/impl/data/icudt42b/pa.res
+SHA1-Digest: x7pO0zURQuIhsuA/yVI4yuI3Q9A=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_HK.res
+SHA1-Digest: tmRVbpRLOdnIjYsMrH4S9Ez8IQI=
+
+Name: com/ibm/icu/lang/UCharacterTypeIterator.class
+SHA1-Digest: F3yCHVIRgN27D/vKNqVvRmrf+qY=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_LU.res
+SHA1-Digest: 73jNcohlNN3z53Gm4lMn64LoR8k=
+
+Name: com/ibm/icu/text/CharsetRecog_mbcs$CharsetRecog_euc$CharsetRecog
+ _euc_jp.class
+SHA1-Digest: nuKNP2brqweBc9DnIoDug0H4sYs=
+
+Name: com/ibm/icu/impl/CharTrie.class
+SHA1-Digest: o1fM6Qeko2xGz/44ni7MO/fjnsI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_VE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/util/HebrewHoliday.class
+SHA1-Digest: 9plTcLM/MHJX1jTdVZ+N2JNniRs=
+
+Name: com/ibm/icu/text/UnicodeSet.class
+SHA1-Digest: /I6RzJ+st33nq/itiDGvBbi3QKc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/in.res
+SHA1-Digest: 4yHeO3OZURAGnQ+2Akh1AsFcJ6M=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ms.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc4518.spp
+SHA1-Digest: bqdXrbNNNrdbz/hbrFTh9vv0QmY=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_da_DK.class
+SHA1-Digest: Z8EQ9WVNleLLPUzQl8VVuq7qWZw=
+
+Name: com/ibm/icu/impl/ICURWLock$Stats.class
+SHA1-Digest: ex/PVbI1KYmkp/ut40s2yE7A/gI=
+
+Name: com/ibm/icu/util/VersionInfo.class
+SHA1-Digest: 1AZUnfjAsd39Pm7SfAkIh8nphUs=
+
+Name: com/ibm/icu/text/UnicodeSetIterator.class
+SHA1-Digest: 6Yk5bfw7+mwdkskhZOJpZ63pebo=
+
+Name: com/ibm/icu/impl/duration/BasicDurationFormatterFactory.class
+SHA1-Digest: D9izOXoz72xnd0nFgm6gR68YR5Y=
+
+Name: com/ibm/icu/impl/data/icudt42b/in_ID.res
+SHA1-Digest: 8zlBXCvSDwjZG5pjJeRB/oOjkYQ=
+
+Name: com/ibm/icu/lang/UCharacter$UnicodeBlock.class
+SHA1-Digest: PckbIWeAkjlzTlI1d7wfxFOrbpY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_US.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/BreakIterator$BreakIteratorServiceShim.class
+SHA1-Digest: 5eN/bw4J8zmQ8FofuCoTNWqhqwY=
+
+Name: com/ibm/icu/impl/CalendarAstronomer$AngleFunc.class
+SHA1-Digest: rVdjYM+4RcFjXlXZUO1mGuF27OQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/char_th.brk
+SHA1-Digest: F33yOBJlUAalrd9ZWRXhvmhdgsU=
+
+Name: com/ibm/icu/impl/data/icudt42b/sl_SI.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_ZA.res
+SHA1-Digest: layRKBnE4SCKRdgDL9oXO0wk8SQ=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EMilliSupport.class
+SHA1-Digest: tHYpjRBpYkW31F2S300nGvCtDPs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ro_RO.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/fa.res
+SHA1-Digest: eaVRU4NKYc2t26hjrI20QFR+HCg=
+
+Name: com/ibm/icu/text/Normalizer$IsNextTrueStarter.class
+SHA1-Digest: JJyfbs5ohjCnNyKqCGbQmeau1ZI=
+
+Name: com/ibm/icu/text/Collator$CollatorFactory.class
+SHA1-Digest: rZ0lb5hRMGSFoEX1r4A+7i0xDrk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/be.res
+SHA1-Digest: NK/D6puvIc4L5KgtFCBg8xnqYgU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/kok.res
+SHA1-Digest: cxctNEMzXGKFExa+BKr81cP6bTk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/si_LK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hi__DIRECT.res
+SHA1-Digest: MSzM/HDeF/P11vq8UxQLYalDeoo=
+
+Name: com/ibm/icu/text/ThaiBreakIterator$PossibleWord.class
+SHA1-Digest: wRfuI08KGbivEoAkKDjOwaAyXsI=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_2.class
+SHA1-Digest: ewwtpG9RmVUT4ermxD6Lr54k/os=
+
+Name: com/ibm/icu/impl/ICULocaleService$LocaleKey.class
+SHA1-Digest: rtnL7+tkntl4p4b+lMDlqJ1bzL8=
+
+Name: com/ibm/icu/text/CharsetRecog_Unicode$CharsetRecog_UTF_32.class
+SHA1-Digest: ZDq8dtsVIcaonxiUBRmdxF4B7jc=
+
+Name: com/ibm/icu/text/UnicodeSet$NumericValueFilter.class
+SHA1-Digest: m+azrsC1VjWHpLoit1Rl0xcF7oE=
+
+Name: com/ibm/icu/util/STZInfo.class
+SHA1-Digest: XsJezh5Etql7hjL6GCfZwp0r1hc=
+
+Name: com/ibm/icu/impl/locale/LocaleObjectCache$WeakValueRef.class
+SHA1-Digest: LasoYp/1je+O3xMGvD9QiraiAJY=
+
+Name: com/ibm/icu/impl/data/icudt42b/sr_Cyrl_BA.res
+SHA1-Digest: gfZbK6gGbnv2WGwmT9G5nQ0kvR4=
+
+Name: com/ibm/icu/impl/data/icudt42b/es.res
+SHA1-Digest: hjABJWCM10eYZ22psOFsL0XZG0U=
+
+Name: com/ibm/icu/util/ULocale$1$ULocaleAcceptLanguageQ.class
+SHA1-Digest: 319gxxl65USHkgzy55fh+IyQNOc=
+
+Name: com/ibm/icu/text/Quantifier.class
+SHA1-Digest: AUgzA371mdcIosAD/wJDlI0QPmM=
+
+Name: com/ibm/icu/text/PluralRules$1.class
+SHA1-Digest: CZKMS2w946JZMZvLui0l7aHObIE=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hant_MO.res
+SHA1-Digest: Ad5HFg6bkw7I9xN38HtDOY3lZes=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_JM.res
+SHA1-Digest: KfuFrcCWLYbRLAnUqTrJRbq6tXM=
+
+Name: com/ibm/icu/util/UniversalTimeScale.class
+SHA1-Digest: MGfU9oOVqd37uvK6hN3Z+jIBLqM=
+
+Name: com/ibm/icu/text/UTF16$StringComparator.class
+SHA1-Digest: gJ11UGOVR5t9/WQJPS9XJei+NM4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/lt_LT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/NormalizationTransliterator.class
+SHA1-Digest: ffPUES6DbpwiMALn5Cs1HUgIXQk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/en_NZ.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/root.res
+SHA1-Digest: paZntOH7lwqnm4ngkmma5eBXYqs=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sq.res
+SHA1-Digest: 5rzM45UdCmsolf7m4jjmMZPruh8=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_PE.res
+SHA1-Digest: cWoAMJRdJUPrsVkh6oOUl2Vn4/w=
+
+Name: com/ibm/icu/impl/data/icudt42b/nn.res
+SHA1-Digest: J/5BC/ijGvdPFXzC02frRPSuFwc=
+
+Name: com/ibm/icu/impl/duration/impl/DataRecord$EZeroHandling.class
+SHA1-Digest: KA1jBtQJdKV5Lx+5fOCRDAjIVSg=
+
+Name: com/ibm/icu/text/RBBIRuleParseTable$RBBIRuleTableElement.class
+SHA1-Digest: uy3Kqj72GGl03zzgGLDnj4+75Nw=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/sr_Latn.res
+SHA1-Digest: Vpk/OA4qSNayFgrZpomjWEZymAg=
+
+Name: com/ibm/icu/impl/PluralRulesLoader.class
+SHA1-Digest: ceOZDqspRg5TuJ18WiU7VCsiRwc=
+
+Name: com/ibm/icu/util/EasterRule.class
+SHA1-Digest: ekwooe0stj5lYCyIKQSfFnDc9ms=
+
+Name: com/ibm/icu/impl/data/icudt42b/bo.res
+SHA1-Digest: hfuL5b5bB3UDf65XjgurbrhPWsE=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fr_CA.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_AT.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/te_IN.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/Normalizer$Mode.class
+SHA1-Digest: dY9mIdzi0rOgMGZeH459HuJvVrQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc3491.spp
+SHA1-Digest: tqFgaA9mZKzEeyVBJHP3C3fLH5w=
+
+Name: com/ibm/icu/impl/UBiDiProps.class
+SHA1-Digest: /G+eUk2x84zjN580BezPQmrQWIA=
+
+Name: com/ibm/icu/text/EscapeTransliterator$3.class
+SHA1-Digest: jK9CaWfYl+SP8pxqsfoOhg4zVlc=
+
+Name: com/ibm/icu/impl/ICUService$Key.class
+SHA1-Digest: U0MKQCZGOZoIrEzDrP4hJ8+iNtk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/de_BE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/StringSearch$Pattern.class
+SHA1-Digest: HSW2Lzu4JdDg9c2c8JMprLBkFis=
+
+Name: com/ibm/icu/impl/CalendarAstronomer.class
+SHA1-Digest: FblwZDonS/4z+RAlvXI72Y7ppAM=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/tr.res
+SHA1-Digest: p0GdQBs8tCYpyEPEMfpEarAxfAg=
+
+Name: com/ibm/icu/text/CollatorServiceShim$CService.class
+SHA1-Digest: Ra7UApcf6HkIRW2eQjAkdvYL+kY=
+
+Name: com/ibm/icu/impl/locale/LocaleSyntaxException.class
+SHA1-Digest: ON+fieCZRXGgMeeQo+eaoS2hWzg=
+
+Name: com/ibm/icu/impl/NormalizerImpl$AuxTrieImpl.class
+SHA1-Digest: LBKL8Eh9I/jq5YmSou5JFNUu+PU=
+
+Name: com/ibm/icu/util/UResourceTypeMismatchException.class
+SHA1-Digest: xOMv05bQxowTViXu5xAHut1jm8Q=
+
+Name: com/ibm/icu/util/Calendar$WeekData.class
+SHA1-Digest: BQEs7Sf+cjEPvf/VnjyCHik1Kw8=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_he_IL.xml
+SHA1-Digest: zELCMUyNNl4RO9SlMdqwBaDlUZQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hans.res
+SHA1-Digest: R8wwL8X3XtJKhsKArcmfuZsjt4U=
+
+Name: com/ibm/icu/util/StringTokenizer.class
+SHA1-Digest: UPYT3yD30H3/E28l/qTiVVS06lg=
+
+Name: com/ibm/icu/lang/UCharacter$DecompositionType.class
+SHA1-Digest: euqzd0lb9CphqzkruwZwZuFLra8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_US.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_7.class
+SHA1-Digest: G/9IaxKk9myd90vftVBa6QfX12U=
+
+Name: com/ibm/icu/impl/data/icudt42b/gu.res
+SHA1-Digest: MidOcLpsKiTWmzxP0lyKQqZtqEk=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/be_BY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/te.res
+SHA1-Digest: ul4UuJ0VZj6SHZeVet3JTN2pTJQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/km_KH.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/ur_PK.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/tr_TR.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/nl_NL.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mk_MK.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/es_AR.res
+SHA1-Digest: rMqZU2Hdymr8o4Uys7XNvdwq0/8=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/id.res
+SHA1-Digest: c8WvrfkePrOoWwGwNSrTz97NqGU=
+
+Name: com/ibm/icu/impl/data/icudt42b/da.res
+SHA1-Digest: XjFoTQRV7RGgYA439j7U7tXbVlU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/nl_BE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/mr.res
+SHA1-Digest: m20WWXMhMf9Jguc91WRlhm7fov0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ms_MY.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_Latn.res
+SHA1-Digest: aQm/BzP4r1t4WUuWQd832zW1CAI=
+
+Name: com/ibm/icu/text/PluralRules$RuleList.class
+SHA1-Digest: macoH+mfZLvQ9L4VCb1xPOWT75c=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/sr_Latn_ME.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/brkitr/en.res
+SHA1-Digest: +/LVRKi4A8LFr24NwK7dKO0oWpw=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/eo.res
+SHA1-Digest: eo5kYmGw83lHMVAq9bnVf+k51C8=
+
+Name: com/ibm/icu/impl/data/icudt42b/so_ET.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/it.res
+SHA1-Digest: iTRdh/vkBMgOPp2DXDXSDZW9oRY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/as.res
+SHA1-Digest: 9NRwXg3YwS7RznQrHB4Ev20w3ZU=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$NGramParser.class
+SHA1-Digest: Jvlt1Yg4aigxvvrUN+VLovmImfY=
+
+Name: com/ibm/icu/impl/data/icudt42b/zh_Hant_TW.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/ResourceBundleWrapper$1.class
+SHA1-Digest: kCsDjJuZOKWBBdcjq1EL7cRJ6TQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh__PINYIN.res
+SHA1-Digest: UxTeb9sqoN5EU+1Sec5WMwnCfNA=
+
+Name: com/ibm/icu/impl/data/icudt42b/de_LI.res
+SHA1-Digest: f5YAC+BLQHRMdRQW9Z41LfU46nE=
+
+Name: com/ibm/icu/impl/data/icudt42b/uz_AF.res
+SHA1-Digest: 3kSYT3BSkfVCuxqLdPwlECtg5XA=
+
+Name: com/ibm/icu/impl/data/icudt42b/fo_FO.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/data/icudt42b/gsw_CH.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/RuleBasedCollator$AttributeValue.class
+SHA1-Digest: p/R33glIBQNiZM4jz/a2dwFPdxk=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/az.res
+SHA1-Digest: ZXg9H4iW+xC+iLzF4uLY7bNY/qM=
+
+Name: com/ibm/icu/lang/UCharacter$JoiningType.class
+SHA1-Digest: j4VycQg9ZS1LiXpE9k5QyO67S8s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hi_.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/UPropertyAliases.class
+SHA1-Digest: Kar/z1VDskzA6mFIGaJLR3CPe3c=
+
+Name: com/ibm/icu/impl/data/icudt42b/or_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/text/UFormat.class
+SHA1-Digest: zBnM/5aT4hYiJW62XsmCv2f4f+U=
+
+Name: com/ibm/icu/text/RBBITableBuilder.class
+SHA1-Digest: JLRKP3X5o6AhLZ3hKTpisqonWTI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ro.res
+SHA1-Digest: 3HwDNE8cqTvVBlwJk03kNJOZ/eg=
+
+Name: com/ibm/icu/impl/data/icudt42b/ml.res
+SHA1-Digest: OC5hDnqlCQJyZq9SkmhhfpJIbm0=
+
+Name: com/ibm/icu/text/CharsetRecog_sbcs$CharsetRecog_8859_1_nl.class
+SHA1-Digest: 784pJZ3/LPRarW7umQ2WmURh6+0=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fi.res
+SHA1-Digest: JjSueyJ2R6YL3OPfZ3gjbiCmsSQ=
+
+Name: com/ibm/icu/text/ThaiBreakIterator.class
+SHA1-Digest: 4uoicVPzfT9RZueI6JhB2wtnPX0=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_NA.res
+SHA1-Digest: GjW9A44EB13F1Q3P5nlS02U5AEY=
+
+Name: com/ibm/icu/util/ValueIterator.class
+SHA1-Digest: Szw1uZNxy/0e7SH/zkTJofhQrFo=
+
+Name: com/ibm/icu/text/RuleBasedNumberFormat.class
+SHA1-Digest: RPWy9pa6wgfdPiotqqYrCumgiYI=
+
+Name: com/ibm/icu/text/IDNA.class
+SHA1-Digest: p+yyMwf8VbEuiBTiIYmS2507xNI=
+
+Name: com/ibm/icu/impl/data/icudt42b/am.res
+SHA1-Digest: CsWaIrKfED9xWRbpmw3hksrKjoo=
+
+Name: com/ibm/icu/text/UnicodeSet$XSymbolTable.class
+SHA1-Digest: zADve81mpe9lI1D/iMHpggNB54k=
+
+Name: com/ibm/icu/impl/data/icudt42b/iw.res
+SHA1-Digest: WZP9bAErSkXNMGcS7Cigt2GwNKw=
+
+Name: com/ibm/icu/impl/data/icudt42b/ha_Latn.res
+SHA1-Digest: GuGMZSWyJJqxdmm9EzD7CnSl2IU=
+
+Name: com/ibm/icu/text/DateTimePatternGenerator$PatternInfo.class
+SHA1-Digest: nASsxWb5tR5jQDzIry/ep3HPvf0=
+
+Name: com/ibm/icu/math/MathContext.class
+SHA1-Digest: h8rJ4mm+Brut7OkxEQd1s364ks8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/az_Latn.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/si.res
+SHA1-Digest: mt7l6JWbY0adEfwsfBz1tGz/qB4=
+
+Name: com/ibm/icu/text/UnescapeTransliterator$5.class
+SHA1-Digest: 8623ohgLqGOBZAm9/nGxM2W4dWI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_CL.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/sv_FI.res
+SHA1-Digest: EI2GVWEnzehzEvkpFlQJ+eJdN3w=
+
+Name: com/ibm/icu/impl/data/icudt42b/nn_NO.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ga.res
+SHA1-Digest: yxKFFNoEoM6o+wZMx7ZpFw8ERxU=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_it_IT.class
+SHA1-Digest: YEn8aLHR6KvomlHHNjAtWP3vtwA=
+
+Name: com/ibm/icu/impl/data/icudt42b/am_ET.res
+SHA1-Digest: vLe6xnVtFOY1XQsLbWAyg++v4R8=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/th_TH.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/TransliteratorRegistry$LocaleEntry.class
+SHA1-Digest: 3f73aUODZzYwa/TNAVoZMf5oQkg=
+
+Name: com/ibm/icu/util/RangeValueIterator$Element.class
+SHA1-Digest: 0mSf5xDlhcy2OMrOuhwQYFSuhMI=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ko.res
+SHA1-Digest: S8mHQ8DFrNEUyRtewLid8Yn89xQ=
+
+Name: com/ibm/icu/impl/data/icudt42b/hy_AM_REVISED.res
+SHA1-Digest: lm7DmdHMLEkr9zC2PWR1fkLDaJ4=
+
+Name: com/ibm/icu/impl/data/icudt42b/en_SG.res
+SHA1-Digest: ZAwUZU8vXFPu1hfLcvD7Y3YautA=
+
+Name: com/ibm/icu/impl/data/icudt42b/gv_GB.res
+SHA1-Digest: vqZaev/jL0MbnAu0zgdP7py0gng=
+
+Name: com/ibm/icu/text/RBNFChinesePostProcessor.class
+SHA1-Digest: WgnI0I67l+vetDYBGLSTp5umIBc=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/fa_IR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ca_ES.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/bn.res
+SHA1-Digest: sWgBOeggQMgNfyEhTT4wVx57d50=
+
+Name: com/ibm/icu/text/CollationKey$BoundMode.class
+SHA1-Digest: dHIdMHMrCLK+OKR3yTl5uq7EQYI=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/ta.res
+SHA1-Digest: Wu0FVc6oWUdNse9LmU5JYc6gHTQ=
+
+Name: com/ibm/icu/text/RBBISymbolTable.class
+SHA1-Digest: petb00eGDCm6DASsXqEnEwQdXeo=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/pa_IN.res
+SHA1-Digest: aABsNcBcPMaMcFhBGb0doQYhb68=
+
+Name: com/ibm/icu/impl/data/icudt42b/ta_IN.res
+SHA1-Digest: CrX+t/3l7qQ+Iu1abDKV2D7/ZDk=
+
+Name: com/ibm/icu/impl/data/icudt42b/fr_CH.res
+SHA1-Digest: IldwcfKtl7UR9+npadXkIc9MS/c=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_it.class
+SHA1-Digest: qg5xRQpUKRpo+/D+hBCn72ZllJ4=
+
+Name: com/ibm/icu/impl/duration/impl/data/pfd_ja.xml
+SHA1-Digest: qh+Yqa1vTI+OXIkNGUpSsPd0gPI=
+
+Name: com/ibm/icu/impl/Trie$DefaultGetFoldingOffset.class
+SHA1-Digest: Vsf8DJGMroq9xMLyeGulHzkntoU=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/res_index.txt
+SHA1-Digest: 0TAI7vdTd1uyMm6olP7g9gLNlsg=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/pl.res
+SHA1-Digest: Ad/7wwraaDLUa78yiU1lUPzLkkc=
+
+Name: com/ibm/icu/text/Normalizer$IsPrevTrueStarter.class
+SHA1-Digest: DTUl+dkJai1Yq1ApIspI756Oaz0=
+
+Name: com/ibm/icu/util/CalendarServiceShim$CalService.class
+SHA1-Digest: 6oWTNuffqEEvVsd3WO+sreuPZQs=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/res_index.txt
+SHA1-Digest: wkQnar8Thb5Bt07mzBSVvEE2OqY=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/zh_Hans_SG.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/text/ArabicShaping.class
+SHA1-Digest: XZ637UBwbDJxDqnmrFiEZWHzXXM=
+
+Name: com/ibm/icu/impl/data/icudt42b/rfc4505.spp
+SHA1-Digest: lced9aQC6CKcBNAOUdswjJV5a3o=
+
+Name: com/ibm/icu/util/ByteArrayWrapper.class
+SHA1-Digest: ZVPa0b5L3JXdi2ciMfStGq8GxCE=
+
+Name: com/ibm/icu/impl/duration/BasicPeriodBuilderFactory$Settings.cla
+ ss
+SHA1-Digest: wFb1STxQpexvv9kY98DOJ6pLcas=
+
+Name: com/ibm/icu/text/Bidi$ImpTabPair.class
+SHA1-Digest: JtJVWt+BIGkanGetL2Gy3tBYpIc=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/hr.res
+SHA1-Digest: zqFkwdSPOIWYVmNwaGrje8EPrEw=
+
+Name: com/ibm/icu/text/NumberFormatServiceShim$NFFactory.class
+SHA1-Digest: 5AuziSUiCTjGZgz2iYJ2kxS67RE=
+
+Name: com/ibm/icu/impl/ZoneMeta$MetaToOlsonMappingEntry.class
+SHA1-Digest: uuyCy9JX3+tbs+0dxZoqB9LlyRM=
+
+Name: com/ibm/icu/impl/Utility.class
+SHA1-Digest: lIuCLUW7/AO3EOWjrcN/5/jsoA8=
+
+Name: com/ibm/icu/impl/USerializedSet.class
+SHA1-Digest: YVXfT+4kECAxhhBblpeLPbs7r/E=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/uk.res
+SHA1-Digest: 4bMeR4aqC2oC52qXHLjKto3XRcU=
+
+Name: com/ibm/icu/util/ULocale$IDParser.class
+SHA1-Digest: mHlXMwt76mZ0TRLLKNgk8DhPzdc=
+
+Name: com/ibm/icu/text/StringCharacterIterator.class
+SHA1-Digest: FX1SK52aDgBrcnluC7wnMDSpmPo=
+
+Name: com/ibm/icu/text/Normalizer$IsPrevBoundary.class
+SHA1-Digest: sNtIavcqXEl7v91qG5y1zkLKI2s=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/ar_YE.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_MX.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/is_IS.res
+SHA1-Digest: WJudThz/FQIC6MeClH53YjyURrM=
+
+Name: com/ibm/icu/impl/ICUResourceBundle$1.class
+SHA1-Digest: u9NgLyd+lX4ZbAXONIfOE+S34/U=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/hr_HR.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/HolidayBundle_de_DE.class
+SHA1-Digest: VWQHfSEyMLKcSvN5ziecgQLn7U4=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/lv_LV.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/he.res
+SHA1-Digest: aaZFRs5PYKUa91qL/ii/KXbrSYY=
+
+Name: com/ibm/icu/text/DateFormat.class
+SHA1-Digest: xbpnpqFm/gb1+B3C+NVJc6sHjVo=
+
+Name: com/ibm/icu/impl/ICUService$ServiceListener.class
+SHA1-Digest: 4WpmZStQ2bjgfg3tSpEaxW2muNU=
+
+Name: com/ibm/icu/impl/data/icudt42b/coll/es_NI.res
+SHA1-Digest: sToAZL21NCHxRINlvBFxo19BefA=
+
+Name: com/ibm/icu/impl/data/icudt42b/rbnf/en.res
+SHA1-Digest: Qnn0ucolCR9FEek9/220U2OiUHg=
+
