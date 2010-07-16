@@ -1,0 +1,544 @@
+Manifest-Version: 1.0
+Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+Bundle-Localization: plugin
+Main-Class: org.sat4j.BasicLauncher
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: Daniel Le Berre
+Bundle-SymbolicName: org.sat4j.core
+Bundle-Version: 2.2.0.v20100429
+Export-Package: org.sat4j;version="2.2.0.v20100429",org.sat4j.core;ver
+ sion="2.2.0.v20100429",org.sat4j.minisat;version="2.2.0.v20100429",or
+ g.sat4j.minisat.constraints;version="2.2.0.v20100429",org.sat4j.minis
+ at.constraints.card;version="2.2.0.v20100429",org.sat4j.minisat.const
+ raints.cnf;version="2.2.0.v20100429",org.sat4j.minisat.core;version="
+ 2.2.0.v20100429",org.sat4j.minisat.learning;version="2.2.0.v20100429"
+ ,org.sat4j.minisat.orders;version="2.2.0.v20100429",org.sat4j.minisat
+ .restarts;version="2.2.0.v20100429",org.sat4j.minisat.uip;version="2.
+ 2.0.v20100429",org.sat4j.opt;version="2.2.0.v20100429",org.sat4j.read
+ er;version="2.2.0.v20100429",org.sat4j.specs;version="2.2.0.v20100429
+ ",org.sat4j.tools;version="2.2.0.v20100429",org.sat4j.tools.xplain;ve
+ rsion="2.2.0.v20100429"
+Specification-Version: NA
+Specification-Title: SAT4J
+Specification-Vendor: Daniel Le Berre
+Ant-Version: Apache Ant 1.7.1
+Bundle-Vendor: %providerName
+Bundle-Name: %bundleName
+Created-By: 14.0-b16 (Sun Microsystems Inc.)
+Implementation-Version: 2.2.0.v20100429 
+Implementation-Title: SAT4J
+Bundle-ManifestVersion: 2
+
+Name: overview.html
+SHA1-Digest: dn/2qZIKrR/o7110Zst9XnBMJQs=
+
+Name: org/sat4j/tools/GateTranslator.class
+SHA1-Digest: Yh6sCzxURtlx8qrFaI+xhO7taJM=
+
+Name: org/sat4j/minisat/core/IOrder.class
+SHA1-Digest: X18Zt59LqRUfn0D/p7+Yulvx6A4=
+
+Name: org/sat4j/minisat/core/Solver$6.class
+SHA1-Digest: A9NaKDVPCX8avbQtiIcVsSUi0AQ=
+
+Name: org/sat4j/tools/SingleSolutionDetector.class
+SHA1-Digest: xRDSLeA8py9/4oqlAOAZCB5FuBo=
+
+Name: org/sat4j/minisat/constraints/AbstractDataStructureFactory.class
+SHA1-Digest: QC7DJMLxn40aJ6PtPaZzka0do/4=
+
+Name: sat4j.version
+SHA1-Digest: NZ/fetT1tL14CPqc4oXVd0YSLH4=
+
+Name: org/sat4j/minisat/core/VoidTracing.class
+SHA1-Digest: qab4ylcy9igxerjR3oNVShe7oUg=
+
+Name: org/sat4j/tools/xplain/Xplain.class
+SHA1-Digest: 1jX6dpnW8uoWTkXC5s16bjMuF0I=
+
+Name: org/sat4j/minisat/constraints/CardinalityDataStructureYanMin.cla
+ ss
+SHA1-Digest: XvPtjZJs9rA05nolsi/QNsXXlvU=
+
+Name: org/sat4j/minisat/orders/VarOrderHeap.class
+SHA1-Digest: IfBRX8A9zzfGV1SbWEpHN2hyqmA=
+
+Name: org/sat4j/minisat/constraints/cnf/OriginalWLClause.class
+SHA1-Digest: e5hXI5VqiNVDnFSAf3+N9cWe+2c=
+
+Name: org/sat4j/minisat/core/ConflictTimerContainer.class
+SHA1-Digest: WZnSTl/i/51xiYxIutjbXSBBrzM=
+
+Name: org/sat4j/minisat/core/Solver$4$1.class
+SHA1-Digest: NkmAx0lapXofeVNwuxwX8QdoNsU=
+
+Name: org/sat4j/minisat/core/Solver$5$1.class
+SHA1-Digest: 8wcs6u5RIDbL8/R64JGfFlClLWk=
+
+Name: org/sat4j/minisat/learning/LimitedLearning.class
+SHA1-Digest: ErjN2ShX727XdTOXJhv363hP9bI=
+
+Name: org/sat4j/minisat/restarts/MiniSATRestarts.class
+SHA1-Digest: k/KhiR/OfC034e0ZPySapkgveAE=
+
+Name: org/sat4j/Messages.class
+SHA1-Digest: N9cs+sh8DpqhA5oV0QFAVAIY91w=
+
+Name: org/sat4j/tools/DecisionLevelTracing.class
+SHA1-Digest: bqc7u8t12qSXuXrIo9Vr5G8s56I=
+
+Name: org/sat4j/minisat/core/ConflictTimerAdapter.class
+SHA1-Digest: EOpIpvS+DhOiAnF4CKrEjlJIDpo=
+
+Name: org/sat4j/minisat/core/RestartStrategy.class
+SHA1-Digest: SV48tRost4rdjsXHcfllFOHsNXE=
+
+Name: org/sat4j/minisat/restarts/LubyRestarts.class
+SHA1-Digest: EEerNSUBAlbld5M7LP7mN2zs9Ts=
+
+Name: org/sat4j/minisat/orders/NegativeLiteralSelectionStrategy.class
+SHA1-Digest: gB+OVkgcdZHx1JonmB7tnCO7Oyc=
+
+Name: org/sat4j/minisat/constraints/ClausalDataStructureCBWL.class
+SHA1-Digest: rP/p+6+pYZiKHSfrrQIRemLWE0w=
+
+Name: org/sat4j/minisat/constraints/AbstractCardinalityDataStructure.c
+ lass
+SHA1-Digest: GSCvrYhJoXJ3OrNG6+VkuyfThuY=
+
+Name: org/sat4j/minisat/constraints/cnf/LearntHTClause.class
+SHA1-Digest: MFUNHhZuO01qFAkEy0swU0CfF3w=
+
+Name: org/sat4j/minisat/orders/PhaseCachingAutoEraseStrategy.class
+SHA1-Digest: vaZ7i3+fm0kWgbsdpPmyV9++was=
+
+Name: org/sat4j/tools/ConstrGroup.class
+SHA1-Digest: 8dJf1rUYdJ5D/5q7CzmA3Mzc/jw=
+
+Name: org/sat4j/specs/IOptimizationProblem.class
+SHA1-Digest: BzbKf8Uu0CXX6Z7/80WgezxoyJ0=
+
+Name: org/sat4j/minisat/orders/RandomLiteralSelectionStrategy.class
+SHA1-Digest: tropHGTOmwv8DbIEqkHbW8cVJ28=
+
+Name: org/sat4j/minisat/core/Learner.class
+SHA1-Digest: zZl+IKIJohUSLCPKiPsh54DbG74=
+
+Name: org/sat4j/AbstractLauncher.class
+SHA1-Digest: BTH8yMwC7xiwd2oHaXS2kaEy3CM=
+
+Name: org/sat4j/minisat/orders/UserFixedPhaseSelectionStrategy.class
+SHA1-Digest: IKCHFMe/zjI/CRjw2fDR7EzNwnQ=
+
+Name: org/sat4j/minisat/constraints/card/MaxWatchCard.class
+SHA1-Digest: owfh9LqCYYiwpXaQFVQYe3jM+5k=
+
+Name: org/sat4j/minisat/core/Solver.class
+SHA1-Digest: tWS14McPuDt+bdAm8dWQcbpZzhM=
+
+Name: org/sat4j/specs/ISolver.class
+SHA1-Digest: 7JoFkvIfa9MiC/Uv2a8Conam6DU=
+
+Name: org/sat4j/minisat/constraints/cnf/LearntBinaryClause.class
+SHA1-Digest: BEa+zhrRDpf0D2PK3lHs+m1I0CM=
+
+Name: org/sat4j/minisat/core/Pair.class
+SHA1-Digest: 2CR/EMVg/UZQzmTptUlYTxZTiJw=
+
+Name: org/sat4j/messages.properties
+SHA1-Digest: DkI1sg89OFvS+e7y3E13YjlTmXU=
+
+Name: org/sat4j/AbstractLauncher$2.class
+SHA1-Digest: bcjQuEMkF58of3TUdhfOwxn8i/A=
+
+Name: org/sat4j/core/ReadOnlyVecInt.class
+SHA1-Digest: +v4PIGKi0soP5B90qdmwq8T57hA=
+
+Name: org/sat4j/minisat/core/Solver$3.class
+SHA1-Digest: Kn8DQvvP9QTKo92sfjycbOI2cPM=
+
+Name: org/sat4j/tools/SolverDecorator.class
+SHA1-Digest: VKG/qEQRDQF05dukzLzJJbQpaJI=
+
+Name: org/sat4j/minisat/learning/NoLearningButHeuristics.class
+SHA1-Digest: AQZggH2/k1qVmdC5jvHIAsCJk2I=
+
+Name: org/sat4j/minisat/constraints/MixedDataStructureDanielCBWL.class
+SHA1-Digest: SkYz32iGpeD0D1DoqaHSN8dIE6g=
+
+Name: org/sat4j/minisat/core/Solver$7.class
+SHA1-Digest: Qz0RkGh3arqLFVZjAsEZ7S0FALs=
+
+Name: org/sat4j/minisat/constraints/cnf/Clauses.class
+SHA1-Digest: PGKpp8V5ZSPDszbstf1rYyuIlaw=
+
+Name: org/sat4j/core/VecInt$1.class
+SHA1-Digest: MOlk3IOOGQOh+ItwyuWZfbLV5vE=
+
+Name: org/sat4j/minisat/core/SolverStats.class
+SHA1-Digest: aG5C74srGKadm2/55hkoqZmlfco=
+
+Name: org/sat4j/core/LiteralsUtils.class
+SHA1-Digest: X7TVqVeRHM0IPsg3VV6Llla0xl4=
+
+Name: org/sat4j/minisat/uip/FirstUIP.class
+SHA1-Digest: DT6VUSPEPccVmQsslUxhocuq03g=
+
+Name: org/sat4j/minisat/core/ConstrActivityListener.class
+SHA1-Digest: MZT8g6wjSOyxwYxQPbIFqUOzrDw=
+
+Name: org/sat4j/tools/xplain/Pair.class
+SHA1-Digest: P1Tkq8qH5itdUzZdfBCbm0/KyUE=
+
+Name: org/sat4j/tools/OptToSatAdapter.class
+SHA1-Digest: 9094OVY04hay9fCU8Zkj+xLajWY=
+
+Name: org/sat4j/core/DefaultComparator.class
+SHA1-Digest: Oc+iZAlu+B3SwdOkkvXhrC66xMA=
+
+Name: org/sat4j/tools/ExtendedDimacsArrayReader.class
+SHA1-Digest: iUP8Szu2/7qXIpD5LCC0yclTsnE=
+
+Name: org/sat4j/core/ASolverFactory.class
+SHA1-Digest: r8lJPwCRTvP8SJrsNz3GbM/D1Iw=
+
+Name: org/sat4j/minisat/constraints/cnf/OriginalBinaryClause.class
+SHA1-Digest: HwwUr0wePfbLsvgrQU6bC698E9c=
+
+Name: org/sat4j/tools/xplain/XplainStrategy.class
+SHA1-Digest: KcQau9GPcW2R6Fjyqp5jaeWTdWk=
+
+Name: org/sat4j/minisat/core/Solver$ISimplifier.class
+SHA1-Digest: 4tVyB/nROzHJWlVqmRwOtuVc5ws=
+
+Name: org/sat4j/minisat/constraints/CardinalityDataStructure.class
+SHA1-Digest: wTFZUhwJuPgfIpOUZqzt4BtHZtI=
+
+Name: target/META-INF/MANIFEST.MF
+SHA1-Digest: HUftYWvUbxYRZEc5UfTrflINdHA=
+
+Name: org/sat4j/minisat/orders/PhaseInLastLearnedClauseSelectionStrate
+ gy.class
+SHA1-Digest: K97bk3JNYx0tk7Bi157aRr69gn0=
+
+Name: org/sat4j/minisat/constraints/cnf/CBClause.class
+SHA1-Digest: aL8ef8Q6JhWndr8w29VH4i/RTaI=
+
+Name: org/sat4j/minisat/SolverFactory.class
+SHA1-Digest: Z+80DpzGQVxhYxrSHdy/834VjY0=
+
+Name: org/sat4j/minisat/orders/AbstractPhaserecordingSelectionStrategy
+ .class
+SHA1-Digest: Ku63mzSsCDrWuploozqcRdmkuko=
+
+Name: org/sat4j/minisat/learning/NoLearningNoHeuristics.class
+SHA1-Digest: ee/1IsqLwl8UIMDFY3B5ByoXC5M=
+
+Name: org/sat4j/minisat/constraints/cnf/UnitClause.class
+SHA1-Digest: QYp29Pf3B+TII1c5QtZ5nUGtxh4=
+
+Name: org/sat4j/minisat/constraints/cnf/LearntWLClause.class
+SHA1-Digest: iXDeBwTa2tEbw4qyfYAuajPahvg=
+
+Name: org/sat4j/core/ReadOnlyVec.class
+SHA1-Digest: 6rMIHJ0cX0CVpomOamEselGaXTQ=
+
+Name: about.html
+SHA1-Digest: ohuwRciYYMwr4+zXRG6vJTiqjlg=
+
+Name: org/sat4j/tools/DotSearchTracing.class
+SHA1-Digest: wzcwTGIxcUVRgOo9wBN2d7TSVQ0=
+
+Name: org/sat4j/minisat/orders/RandomWalkDecorator.class
+SHA1-Digest: bp+eWwcuxZZhZfm6yhziLeyFqTw=
+
+Name: org/sat4j/minisat/orders/RSATPhaseSelectionStrategy.class
+SHA1-Digest: Z9qkW17407uDjMbfkzO9y8QMZiY=
+
+Name: org/sat4j/minisat/learning/FixedLengthLearning.class
+SHA1-Digest: jvMhRyshWO+UGPAB6YkECmjSTdY=
+
+Name: org/sat4j/tools/xplain/QuickXplainStrategy.class
+SHA1-Digest: SjaqwyoYqMxlQmO/nabGhNYSTng=
+
+Name: org/sat4j/minisat/core/Propagatable.class
+SHA1-Digest: O0oTleJry9VDLuyD5aAfUnszVP0=
+
+Name: org/sat4j/minisat/core/UnitPropagationListener.class
+SHA1-Digest: p1znVXCjplcP6DuzMM12Mvlha4Q=
+
+Name: org/sat4j/reader/EfficientScanner.class
+SHA1-Digest: wHkLMQUCF1oW7I4gqgQzcizjpyQ=
+
+Name: org/sat4j/BasicLauncher.class
+SHA1-Digest: p7Jqj9M9ZpUavYfBUPG4VToj5Ks=
+
+Name: org/sat4j/tools/Minimal4InclusionModel.class
+SHA1-Digest: BCd89TeXxrwPQFfIhb759bR8rtU=
+
+Name: org/sat4j/reader/LecteurDimacs.class
+SHA1-Digest: 4Lc66LfuY3q/XiwdUTCGytBQOLk=
+
+Name: org/sat4j/minisat/core/ILits.class
+SHA1-Digest: VjUNRaTLDHQugxPBDHitvhH+wG8=
+
+Name: org/sat4j/minisat/constraints/ClausalDataStructureWL.class
+SHA1-Digest: ffoF+WFZBin6+8QH/GgAykHIS0w=
+
+Name: org/sat4j/minisat/constraints/card/MinWatchCard.class
+SHA1-Digest: q7dA0RILYtAqoS5G8VDWwJ8B+zc=
+
+Name: org/sat4j/minisat/core/ActivityListener.class
+SHA1-Digest: ZroatMN6iWIhRyiEJ/ZmdFq9JAc=
+
+Name: org/sat4j/minisat/core/Solver$4.class
+SHA1-Digest: 17HruTEcxPRso7T0xjA3SdDZcrM=
+
+Name: org/sat4j/minisat/learning/PercentLengthLearning.class
+SHA1-Digest: stM1IxYEvXcwY67YJKkLdu5FdXU=
+
+Name: org/sat4j/minisat/learning/ActiveLearning.class
+SHA1-Digest: /UKTVjAZgSr0gd3NW5liJQhzVXY=
+
+Name: org/sat4j/minisat/core/AssertingClauseGenerator.class
+SHA1-Digest: n1TtEGxXGTmCNtlOmrDJywmVZX4=
+
+Name: org/sat4j/core/VecInt$2.class
+SHA1-Digest: nqKZ6/mfZoAu5eUzuCoFfcN8X0Y=
+
+Name: org/sat4j/minisat/constraints/ClausalDataStructureCB.class
+SHA1-Digest: DQ+WOVB9VKsC6plLm6AHIjvLTuc=
+
+Name: org/sat4j/tools/Minimal4CardinalityModel.class
+SHA1-Digest: vA1Z9OaXi5zi6CXITzmuee9OSn4=
+
+Name: org/sat4j/minisat/core/Constr.class
+SHA1-Digest: gI2BzvdyzWDWZbIJXhhybvGyzmk=
+
+Name: org/sat4j/tools/ConflictLevelTracing.class
+SHA1-Digest: AsJ3xdPG/+T5p+PPRDrmIDnYtNs=
+
+Name: org/sat4j/specs/TimeoutException.class
+SHA1-Digest: l3TRwZEfDOxtce6QQ6UxlC23zXQ=
+
+Name: org/sat4j/specs/IConstr.class
+SHA1-Digest: fcsTeyTUhjLxclDuPNheWb60Nik=
+
+Name: org/sat4j/minisat/constraints/cnf/HTClause.class
+SHA1-Digest: BITYwr9toXIK4fOH5GkdD+LoN8Y=
+
+Name: org/sat4j/minisat/constraints/cnf/Lits.class
+SHA1-Digest: rlweU4B5vm9zh2s859Qo2Npuxjw=
+
+Name: org/sat4j/core/VecInt$1$1.class
+SHA1-Digest: 52axwE4a/5xaCBBiBW7sPOAHd3o=
+
+Name: org/sat4j/specs/IProblem.class
+SHA1-Digest: jEM7LkKzd591iLMZyg4EggQngu4=
+
+Name: org/sat4j/minisat/constraints/card/AtLeast.class
+SHA1-Digest: 5t2/PBFWiSW2fePcSdxhjAA7Kk4=
+
+Name: org/sat4j/minisat/uip/DecisionUIP.class
+SHA1-Digest: 08gofaQpbrVsVfAJ54ZRJn5VXig=
+
+Name: org/sat4j/minisat/constraints/CardinalityDataStructureYanMax.cla
+ ss
+SHA1-Digest: y4OYLw+8K76jFI9FBrscL4nfFr8=
+
+Name: org/sat4j/minisat/core/Undoable.class
+SHA1-Digest: JlBAZdp2+IV3L38pKFCjKE0XbVA=
+
+Name: org/sat4j/reader/Reader.class
+SHA1-Digest: G1FxrKF1uWVL2FRlKyCB+OtfjbU=
+
+Name: org/sat4j/specs/ContradictionException.class
+SHA1-Digest: r1UYadzl/slay7uG5fgp2wNba3c=
+
+Name: org/sat4j/tools/DecisionTracing.class
+SHA1-Digest: Bot9owQNrQt/OYGdWJM0wXEmFBE=
+
+Name: org/sat4j/reader/AIGReader.class
+SHA1-Digest: UE5/U2zDJmqF+WoaYvaLlEogfyg=
+
+Name: org/sat4j/minisat/constraints/cnf/UnitClauses.class
+SHA1-Digest: P+j5C5cmNPQXQodvVnPXOhFC30U=
+
+Name: org/sat4j/tools/xplain/ReplayXplainStrategy.class
+SHA1-Digest: sL+4Coo1SK3Mglx2xB1V7jrktu4=
+
+Name: org/sat4j/minisat/core/VarActivityListener.class
+SHA1-Digest: n4xDxXyrKcY2NTF3EG5Td2eGKuk=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 6mDW8kS/T9pK7w1by/wcxy21Z20=
+
+Name: org/sat4j/minisat/constraints/cnf/BinaryClause.class
+SHA1-Digest: XsywFiKmf/+/N5R1FaKtqRgUf/w=
+
+Name: org/sat4j/reader/AAGReader.class
+SHA1-Digest: trW8fG34QnCclxbTvL7j9N5b1+8=
+
+Name: org/sat4j/minisat/core/SearchParams.class
+SHA1-Digest: Obh/FcMTRJ1sNs9nmKxnMIA/CKI=
+
+Name: org/sat4j/tools/LearnedClauseSizeTracing.class
+SHA1-Digest: 7eIqj9Lxk9dkEt4wEy+7T22kg2I=
+
+Name: org/sat4j/tools/TextOutputTracing.class
+SHA1-Digest: UCrX0HDxtr/vopL3ZgEFXveuKds=
+
+Name: org/sat4j/core/Vec.class
+SHA1-Digest: lE23BQ58AXB3uzpLEGx1XjF6o3o=
+
+Name: org/sat4j/ExitCode.class
+SHA1-Digest: V5DfojXDofFKw5jKg2UlW44ID1k=
+
+Name: org/sat4j/specs/IteratorInt.class
+SHA1-Digest: 1Qw+nLBznA9xfE1k0NrCk1ZL12U=
+
+Name: org/sat4j/core/VecInt.class
+SHA1-Digest: 20p4G5/a9+z16EKfMnEpBfdBU04=
+
+Name: org/sat4j/tools/RemiUtils.class
+SHA1-Digest: FOYt8rXW11SzMi1XWT+zrLooXmo=
+
+Name: org/sat4j/minisat/restarts/NoRestarts.class
+SHA1-Digest: ZJt2YbQAK0pH0rahOGmBGxcD0iY=
+
+Name: org/sat4j/minisat/core/Solver$1.class
+SHA1-Digest: Har1eRgn67d9nkWdXEB76785ABY=
+
+Name: org/sat4j/reader/ParseFormatException.class
+SHA1-Digest: r+ff4ZThrCgnOr3nHx/9TwYYQPo=
+
+Name: org/sat4j/minisat/core/IntQueue.class
+SHA1-Digest: rA0Ji2sWaNzFPNWmQIoiWB8vaDw=
+
+Name: org/sat4j/minisat/core/Solver$5.class
+SHA1-Digest: 4S9CfrpO0dreVFpmCVv5Ge7YRZg=
+
+Name: org/sat4j/minisat/constraints/cnf/OriginalHTClause.class
+SHA1-Digest: yyLzkGGZmajG9BlwV+uplq4AxP0=
+
+Name: org/sat4j/minisat/restarts/ArminRestarts.class
+SHA1-Digest: P0Cnayj1WSNFLwVQfahcFcQ3/G8=
+
+Name: org/sat4j/minisat/orders/ValuedLit.class
+SHA1-Digest: nJs3StPJtLykgfQ1RAM9auCOTWY=
+
+Name: org/sat4j/minisat/constraints/cnf/MixableCBClause.class
+SHA1-Digest: Y3rGogVleu8GyMCiVL/Kpg/0owY=
+
+Name: org/sat4j/reader/DimacsReader.class
+SHA1-Digest: QTAdRnvX9GYGQGpgXTS4JLgSdvA=
+
+Name: org/sat4j/minisat/learning/MiniSATLearning.class
+SHA1-Digest: zKTO0CcnZQGRkMveUBuAXZJauW8=
+
+Name: org/sat4j/minisat/core/Heap.class
+SHA1-Digest: NfjIWQkaul6hYWtfsCftt1B+zuc=
+
+Name: org/sat4j/specs/IVec.class
+SHA1-Digest: ViymudVBXcOLO3BSJL2o1ejW3xg=
+
+Name: org/sat4j/tools/DimacsArrayReader.class
+SHA1-Digest: MQJ5QjAj+eb9gkW+Dq1ltLpYlc8=
+
+Name: org/sat4j/minisat/core/ConflictTimer.class
+SHA1-Digest: wBGYIZwmGm5yU49qu7QyJ2qXuG8=
+
+Name: org/sat4j/minisat/core/LearningStrategy.class
+SHA1-Digest: KOVMl4sz6I11jK2OXRUF46XxKoo=
+
+Name: plugin.properties
+SHA1-Digest: t0bd67OgJQf7Vs75aUOH2ysVGf4=
+
+Name: org/sat4j/tools/ModelIterator.class
+SHA1-Digest: gbZ+AxzpF5uOc4dUthOALy9rPmY=
+
+Name: org/sat4j/reader/InstanceReader.class
+SHA1-Digest: 8sjRko3rsU7XeZsQxycrAOcYjf0=
+
+Name: org/sat4j/opt/MinOneDecorator.class
+SHA1-Digest: FZpFT9loWBkBR+eVjVbc5MUYXYM=
+
+Name: org/sat4j/tools/DimacsOutputSolver.class
+SHA1-Digest: 1bM6Jq6L+XRXGuaYgTd9PBt5pNg=
+
+Name: org/sat4j/specs/IVecInt.class
+SHA1-Digest: s8rPWLP40S8PSFlm1S+fXu2i908=
+
+Name: org/sat4j/minisat/constraints/cnf/WLClause.class
+SHA1-Digest: /azcSLRSN7iKmvwoOk1a21MyEkE=
+
+Name: org/sat4j/minisat/constraints/MixedDataStructureDanielHT.class
+SHA1-Digest: X3AOESzN+Ai0088Po83JgsYf3IA=
+
+Name: org/sat4j/tools/SolutionCounter.class
+SHA1-Digest: c6y7VipHT+iHQkJnjRZOzJOxVCM=
+
+Name: org/sat4j/specs/SearchListener.class
+SHA1-Digest: dE+pqRw9CHWEYw9HPGm/PL1MS3w=
+
+Name: org/sat4j/LightFactory.class
+SHA1-Digest: y3vlDHbXmiThTEdaCClNtKhbBUk=
+
+Name: org/sat4j/minisat/core/Solver$LearnedConstraintsDeletionStrategy
+ .class
+SHA1-Digest: RmLTVjBWD8y95SwnJ6/erR6iNDg=
+
+Name: org/sat4j/minisat/learning/AbstractLearning.class
+SHA1-Digest: S13vJv++vfR80BGDLi8imFCndiQ=
+
+Name: org/sat4j/minisat/orders/PositiveLiteralSelectionStrategy.class
+SHA1-Digest: 20jMN1A+acBGM1F51N+IlCRCuCY=
+
+Name: org/sat4j/minisat/core/ActivityComparator.class
+SHA1-Digest: YOQ17ebH2Qn6Fm2wT8e0RC/QOOQ=
+
+Name: org/sat4j/minisat/constraints/MixedDataStructureDanielWL.class
+SHA1-Digest: FaMTZx802nGMGk5F4CPwkpQizk4=
+
+Name: org/sat4j/minisat/core/IPhaseSelectionStrategy.class
+SHA1-Digest: rDjzB1H+97Ak1X7IvTAhhrJzu9Y=
+
+Name: org/sat4j/tools/DimacsStringSolver.class
+SHA1-Digest: 4aybBXJd0kpsio0qkMaDzv+4mtU=
+
+Name: org/sat4j/opt/MaxSatDecorator.class
+SHA1-Digest: sL9aW1K32uO0EzwpF4n0MNsDPgU=
+
+Name: org/sat4j/opt/AbstractSelectorVariablesDecorator.class
+SHA1-Digest: sXVhRd7oT84ewBW0tV3P8sz1OSE=
+
+Name: org/sat4j/specs/Lbool.class
+SHA1-Digest: NvK9fv0aVpTWlIHuMRBxgMDHGPM=
+
+Name: org/sat4j/minisat/orders/PureOrder.class
+SHA1-Digest: XXadIuZAlvYKyov44IWn12jTyEE=
+
+Name: org/sat4j/minisat/core/Counter.class
+SHA1-Digest: w5M/JC6k2IzZvkXiDMJmy9yHT3Q=
+
+Name: org/sat4j/minisat/learning/ClauseOnlyLearning.class
+SHA1-Digest: OhALcZTHlmXDBrgx5FPPIIiCY9k=
+
+Name: org/sat4j/AbstractOptimizationLauncher.class
+SHA1-Digest: yJSczPYnz6oI60x2qyvUeOLGnao=
+
+Name: org/sat4j/AbstractLauncher$1.class
+SHA1-Digest: Fex2k4SAbvtlf17yuFWNOHW6DiM=
+
+Name: org/sat4j/core/Vec$1.class
+SHA1-Digest: ws7WosmOOr7ItmXAq4dmuFDStbs=
+
+Name: org/sat4j/MoreThanSAT.class
+SHA1-Digest: zcZWXGo/kZbMlsfsgm/hqMvKaKI=
+
+Name: org/sat4j/minisat/core/DataStructureFactory.class
+SHA1-Digest: 5dnenVHIhwUvoRdLPk2jm+ZDZIc=
+
+Name: org/sat4j/minisat/core/Solver$2.class
+SHA1-Digest: tSYoi7MLi0qIXv6NdEQNPTALFVE=
+

@@ -1,0 +1,367 @@
+Manifest-Version: 1.0
+Bundle-DocURL: http://jetty.mortbay.org
+mode: development
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: jesse
+package: org.mortbay
+Bundle-SymbolicName: org.mortbay.jetty.util
+Ignore-Package: org.mortbay.log,org.mortbay.util.ajax,org.mortbay.serv
+ let,org.mortbay.thread,org.mortbay.util,org.mortbay.component
+Originally-Created-By: 1.6.0_16 (Sun Microsystems Inc.)
+Export-Package: org.mortbay.log;uses:="org.mortbay.util,org.slf4j";ver
+ sion="6.1.23",org.mortbay.util.ajax;uses:="org.mortbay.log,javax.serv
+ let,org.mortbay.util,javax.servlet.http";version="6.1.23",org.mortbay
+ .servlet;uses:="org.mortbay.log,javax.servlet,org.mortbay.util.ajax,o
+ rg.mortbay.util,javax.servlet.http";version="6.1.23",org.mortbay.thre
+ ad;uses:="org.mortbay.log,org.mortbay.component";version="6.1.23",org
+ .mortbay.util;uses:="org.mortbay.log,org.mortbay.thread";version="6.1
+ .23",org.mortbay.component;uses:="org.mortbay.log,org.mortbay.util";v
+ ersion="6.1.23"
+Bundle-Version: 6.1.23.v201004211559
+url: http://www.eclipse.org/jetty/jetty-parent/project/modules/jetty-u
+ til
+Bundle-Description: Utility classes for Jetty
+Build-Jdk: 1.6.0_16
+Bundle-Vendor: Mort Bay Consulting
+Bnd-LastModified: 1270506691374
+Bundle-Name: Jetty Utilities
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Tool: Bnd-0.0.238
+Archiver-Version: Plexus Archiver
+Created-By: 1.6.0_16 (Sun Microsystems Inc.)
+implementation-version: 6.1.23
+Import-Package: javax.servlet,javax.servlet.http,org.slf4j;resolution:
+ =optional;version="1.3"
+Bundle-ManifestVersion: 2
+
+Name: org/mortbay/servlet/MultiPartFilter.class
+SHA1-Digest: /7D1u8vQSfh/9WZlrsHLO6jpiGE=
+
+Name: org/mortbay/util/ajax/JSON$1.class
+SHA1-Digest: giSeGVZIjbDkQ4S/M90/KZJo3pA=
+
+Name: org/mortbay/util/StringUtil.class
+SHA1-Digest: fgMbIUEqRGhBfYIliXeXYVrzt74=
+
+Name: org/mortbay/util/ajax/JSON$Generator.class
+SHA1-Digest: 9v8sUxj+JzC7OIbbog4Oa277wFg=
+
+Name: org/mortbay/util/Scanner$Listener.class
+SHA1-Digest: dphFM3+xc+BkvnHmDqH34YhECR4=
+
+Name: org/mortbay/util/ajax/JSONEnumConvertor.class
+SHA1-Digest: ftpQZLJC1YTuUKVs1Vcq3kTaGjA=
+
+Name: org/mortbay/util/Utf8StringBuffer.class
+SHA1-Digest: 0FONfUjzuTCgCdImWzk3YtQzRxA=
+
+Name: org/mortbay/servlet/WelcomeFilter.class
+SHA1-Digest: ZqlL5wEmF5SW/uvgFSnQwVSdOfM=
+
+Name: org/mortbay/servlet/NoJspServlet.class
+SHA1-Digest: a7XoUxkKTtyX+3bQ1/UK6tlx3U4=
+
+Name: org/mortbay/util/IO.class
+SHA1-Digest: 5yW8jIbvg+ixofGyDQD1MX5Iegs=
+
+Name: org/mortbay/component/AbstractLifeCycle.class
+SHA1-Digest: qkjyaBrTnXLYaaqfjmoR50lK8Os=
+
+Name: org/mortbay/log/Log.class
+SHA1-Digest: 8+II4ETtU9TZ2PEuBLKhO7th7cg=
+
+Name: org/mortbay/util/ajax/JSON$Output.class
+SHA1-Digest: G/JSpoe5+s7YPo3yy2bZjtUAJlI=
+
+Name: org/mortbay/thread/QueuedThreadPool.class
+SHA1-Digest: xnf0ubfvFDvmKITKHsDWh+NMbQU=
+
+Name: org/mortbay/util/IO$1.class
+SHA1-Digest: 4UchuVj3PbWrH/eSJPRQ/OeQrNM=
+
+Name: org/mortbay/servlet/GzipFilter$GzipStream.class
+SHA1-Digest: IfFXYdfg5mX//xlWTOC66o7nCrE=
+
+Name: org/mortbay/util/ajax/AjaxFilter.class
+SHA1-Digest: IqcLGUkpr2JEph5RHhfA2LHUii4=
+
+Name: org/mortbay/log/Logger.class
+SHA1-Digest: RjJsF4iqUOBtku9BIAr1VQ7NJHg=
+
+Name: org/mortbay/servlet/GzipFilter.class
+SHA1-Digest: 8bu1Y7qhtmMWe9thcktOkkivQrQ=
+
+Name: org/mortbay/util/Scanner$1.class
+SHA1-Digest: jnk2FHmiQJ5ouY4lBBnZmgZOMco=
+
+Name: org/mortbay/util/IO$NullWrite.class
+SHA1-Digest: IkALK0nc6WToQWCOs/To0g8m9Eg=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor.class
+SHA1-Digest: y3ImpdNH83jrSabzW58GgwpUz4g=
+
+Name: org/mortbay/servlet/UserAgentFilter.class
+SHA1-Digest: s738bUCXbjuguwJfKHg7Au0cCEs=
+
+Name: org/mortbay/util/TypeUtil.class
+SHA1-Digest: MtItcY5xlMlUb+PBfwExc18GuEo=
+
+Name: org/mortbay/util/URIUtil.class
+SHA1-Digest: l52yT3vEhLOsiPcwISqgz19ZYSE=
+
+Name: org/mortbay/util/IO$ClosedIS.class
+SHA1-Digest: 6OHLJnyK/DBEmRVtIzdaeQW0fHg=
+
+Name: org/mortbay/servlet/ThrottlingFilter.class
+SHA1-Digest: v8pLDLO45cWv6jcrMmms79dblyE=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$2.class
+SHA1-Digest: JAcv4ZuPMqy5PcvHrOx3LEM6X5s=
+
+Name: org/mortbay/log/StdErrLog.class
+SHA1-Digest: 8byz8+sVBzoPPPBQ+k1db7MDink=
+
+Name: org/mortbay/util/Scanner$BulkListener.class
+SHA1-Digest: wEJ4s9e5P7+Hz/XIKzajCYsU8ok=
+
+Name: org/mortbay/util/MultiPartWriter.class
+SHA1-Digest: i6HP+mTqsipLmzfwIOuml97SE4M=
+
+Name: org/mortbay/util/ajax/JSON$2.class
+SHA1-Digest: jAaAKg3gvcOBgU/9C7fUBC0+Zmc=
+
+Name: org/mortbay/thread/ThreadPool.class
+SHA1-Digest: 2t4QBtw+8slaDUgZuhe6nIKxdCw=
+
+Name: org/mortbay/thread/Timeout$Task.class
+SHA1-Digest: y7EAPHq2SBTr7mQeEQf4/fBcPvw=
+
+Name: org/mortbay/util/StringMap$NullEntry.class
+SHA1-Digest: k1cKx9H36e1yXoADBwfl/QR0FFM=
+
+Name: about_files/LICENSE.txt
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/mortbay/thread/QueuedThreadPool$Lock.class
+SHA1-Digest: ISHQoKisSjmRhAApOGEqCn5T5Tk=
+
+Name: org/mortbay/util/IO$Singleton.class
+SHA1-Digest: 2l+ck6rj4ozQmmdPMbZETNTc2J0=
+
+Name: org/mortbay/servlet/CGI.class
+SHA1-Digest: JNf50BhIFJVsvijZMBe0hLBdHKg=
+
+Name: org/mortbay/util/ajax/JSON$Literal.class
+SHA1-Digest: wkNP1EZCy5CxzPZBBdxLOE2+YfA=
+
+Name: about_files/NOTICE.txt
+SHA1-Digest: S2mLpZqjAF/cOLO7xor4ncakiKA=
+
+Name: org/mortbay/util/Scanner$DiscreteListener.class
+SHA1-Digest: FxKt/gjoL5hwJEGH4BZdpcvEX40=
+
+Name: org/mortbay/util/SingletonList.class
+SHA1-Digest: F6yXNk8w5Obg4Vbx8ItE4dVcAIg=
+
+Name: about.html
+SHA1-Digest: xyqgUGPZ8YrXXQWVL0E/PlqJtRw=
+
+Name: org/mortbay/servlet/CGI$1.class
+SHA1-Digest: dnt1qsXID63oG6GO2d/NndeeRB4=
+
+Name: org/mortbay/util/StringMap$Node.class
+SHA1-Digest: W1WyQLTzFoXNg5TaAW99Elwxyug=
+
+Name: org/mortbay/servlet/ProxyServlet.class
+SHA1-Digest: MLQ6PSDIk8B7OXJ9+SbJPz3nRuQ=
+
+Name: org/mortbay/thread/QueuedThreadPool$1.class
+SHA1-Digest: aZa69reSgyF7reYqhQo1UqI0tg8=
+
+Name: org/mortbay/util/ajax/AjaxFilter$1.class
+SHA1-Digest: 3afyNlC34YoglDiEQVR3NGjxya0=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$3.class
+SHA1-Digest: PON1RqRnzG1SQ708aCo7MROp5vk=
+
+Name: org/mortbay/util/LazyList.class
+SHA1-Digest: 3GOVzQK04rXCWYyvWdj/hJ2IrRk=
+
+Name: org/mortbay/util/ajax/WaitingContinuation.class
+SHA1-Digest: 4VI4ytFJS+FdB9TJwaKBJqHxWN4=
+
+Name: org/mortbay/servlet/CGI$EnvList.class
+SHA1-Digest: VXZw7MYeFVZaim7kJ9s2ql5WVdc=
+
+Name: META-INF/p2.inf
+SHA1-Digest: DpuFsRinmO5PqRyIWyTMgUWJ+98=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$NumberType.class
+SHA1-Digest: HBg9vrxT9WHKQNVZZH2x4e/PkAg=
+
+Name: org/mortbay/servlet/MultiPartFilter$Wrapper.class
+SHA1-Digest: /74w/qZoABbjrTQrb+/AyOISHM4=
+
+Name: org/mortbay/util/ajax/JSONObjectConvertor.class
+SHA1-Digest: Q+n61SqhHI2Kc4hBkcqcczVLFbE=
+
+Name: org/mortbay/component/Container.class
+SHA1-Digest: xwv2IobdI0434hn75jb4F0xXX0M=
+
+Name: org/mortbay/util/RolloverFileOutputStream$RollTask.class
+SHA1-Digest: kQwbmBlQVlZvUw4/C0bO+ERB8xc=
+
+Name: org/mortbay/util/ByteArrayISO8859Writer.class
+SHA1-Digest: NSK21QslS/tjGwUVmJrF8zCKk6c=
+
+Name: org/mortbay/component/LifeCycle.class
+SHA1-Digest: a+Y+aSGqB7I3xei+2as2kb6OK6E=
+
+Name: org/mortbay/util/ajax/JSON$ReaderSource.class
+SHA1-Digest: djwcc6KGzyoBUOhfk1Q6lAHECRg=
+
+Name: org/mortbay/util/Scanner.class
+SHA1-Digest: PqLtJeojDx4ZgaSBkmJBrqgW//w=
+
+Name: org/mortbay/component/Container$1.class
+SHA1-Digest: HdgJxH+45j1d9XhC6yXzyMcF6PY=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/mortbay/servlet/RestFilter.class
+SHA1-Digest: eN0fUgTJmAPiZ2hkAv8m5QBAGAA=
+
+Name: org/mortbay/util/AttributesMap.class
+SHA1-Digest: 2FmL5G5t4F4QEWkAHGmjz1Gwsp0=
+
+Name: org/mortbay/util/MultiException.class
+SHA1-Digest: SdGd2v2vfxA+qmF5nbhlWJAh/Ec=
+
+Name: org/mortbay/util/Attributes.class
+SHA1-Digest: /24Xti5PMlWOuyYzuIpre2N0oTE=
+
+Name: org/mortbay/log/Log$1.class
+SHA1-Digest: 6ABMXS6GqATRkMaSIYgMMT2X0dE=
+
+Name: org/mortbay/util/StringMap.class
+SHA1-Digest: ItCzFPCKZADHgNOkWW4CzCBPuSs=
+
+Name: org/mortbay/util/ajax/AjaxFilter$AjaxResponse.class
+SHA1-Digest: SErndTUx65ix0gZLZgwVa0yCfSk=
+
+Name: org/mortbay/util/ajax/JSON.class
+SHA1-Digest: q0QmoTrSaezl8zxN96qj27/9S5I=
+
+Name: org/mortbay/util/ajax/JSON$Convertible.class
+SHA1-Digest: ypfKpkxFnms8zQxMS8RZniZYwME=
+
+Name: org/mortbay/thread/QueuedThreadPool$PoolThread.class
+SHA1-Digest: 0vQZKZImpCuj4FSFRFdfvymypoo=
+
+Name: org/mortbay/log/Slf4jLog.class
+SHA1-Digest: 67yw8ds7MSii3g7WD8Ll+7o95oo=
+
+Name: org/mortbay/util/ajax/JSON$Source.class
+SHA1-Digest: u17LoVtqQKsv5FIRFtYk+soy0O4=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$4.class
+SHA1-Digest: H/1PjuqJbla85f6YmfuP/p/J6Sw=
+
+Name: org/mortbay/util/RolloverFileOutputStream.class
+SHA1-Digest: pOP2Yiy7HDHNddNjvEqBGF4EmSw=
+
+Name: org/mortbay/util/ajax/JSONDateConvertor.class
+SHA1-Digest: DcvaRsnit3tJ0XxN0mUiKw9QaHE=
+
+Name: org/mortbay/thread/Timeout.class
+SHA1-Digest: 8XGVdLejHbLkwcdNXXtYzGpjapE=
+
+Name: org/mortbay/util/IO$NullOS.class
+SHA1-Digest: Cf0t/kmjgA6qFk3Tp9VYVquaoGg=
+
+Name: org/mortbay/util/ajax/JSON$Convertor.class
+SHA1-Digest: 1KLq3uUz5kS2UEPMw/2DpvP/T+4=
+
+Name: org/mortbay/util/RolloverFileOutputStream$1.class
+SHA1-Digest: XIoJcJTHjcJzBe6EOAZOLR/lenQ=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertorFactory.class
+SHA1-Digest: HOtThBnlSoDR6gIqFaSABgYzqsg=
+
+Name: org/mortbay/util/IO$Job.class
+SHA1-Digest: qHPvnu8mHWk1bVFXuyNTCJ0QTr4=
+
+Name: org/mortbay/util/ByteArrayOutputStream2.class
+SHA1-Digest: J26S5E4zrmIrvy/lKQQNY2wx8lE=
+
+Name: org/mortbay/util/DateCache.class
+SHA1-Digest: jRpyBcLp0sJ11WXB65ZXIGrvjjY=
+
+Name: org/mortbay/component/Container$Listener.class
+SHA1-Digest: WROMJCf2yfWUYJM2xUZDny22oqc=
+
+Name: org/mortbay/component/Container$Relationship.class
+SHA1-Digest: srBf3tzEsabpOu8rCeZ15/peqg8=
+
+Name: org/mortbay/servlet/GzipFilter$GZIPResponseWrapper.class
+SHA1-Digest: R76w8voWYqfEKK3i/ijEvVrDUDM=
+
+Name: org/mortbay/util/QuotedStringTokenizer.class
+SHA1-Digest: cKfJi2FomuGrRu+i1ZfO21YSD5w=
+
+Name: org/mortbay/util/Loader.class
+SHA1-Digest: X4QQVs+XJ58IdgZ9jPXNSRnuAcc=
+
+Name: org/mortbay/util/SingletonList$SIterator.class
+SHA1-Digest: VYbj4iKsu4CRoYUrMiBpmTsEz0k=
+
+Name: org/mortbay/util/ajax/Continuation.class
+SHA1-Digest: LnpOvdnWyK7aWv1UtiCFLpIqYsw=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$Setter.class
+SHA1-Digest: JizvreKAkxgr/ekNBP3EkULzJVE=
+
+Name: org/mortbay/thread/BoundedThreadPool.class
+SHA1-Digest: w3ihPOThqSAiKRVN40krku8nCwA=
+
+Name: org/mortbay/util/ajax/JSON$StringSource.class
+SHA1-Digest: 54Rtah0hj1oJWxLrkMeBRC0eqTI=
+
+Name: org/mortbay/servlet/ConcatServlet.class
+SHA1-Digest: 4Zej8juhXUfobJ9jyEAApLi/8nI=
+
+Name: org/mortbay/component/LifeCycle$Listener.class
+SHA1-Digest: 1J5RoCQKTK9L9Mhmpp7jdAFS+q4=
+
+Name: org/mortbay/util/MultiPartOutputStream.class
+SHA1-Digest: VAuK3duPHlUGo+0MmqSltrgdOzU=
+
+Name: org/mortbay/thread/BoundedThreadPool$PoolThread.class
+SHA1-Digest: bCajlkpk0J9AIHgajyL7UhJQPwU=
+
+Name: org/mortbay/util/UrlEncoded.class
+SHA1-Digest: xe7Jcm/Ir/jI13SYxx2rRvYSI30=
+
+Name: org/mortbay/util/MultiMap.class
+SHA1-Digest: bgpAtpuF9Ae5MxKV2St4lPOrcaA=
+
+Name: org/mortbay/util/StringMap$1.class
+SHA1-Digest: 2O2VDt9X13+m6GDsH0Lxh5WDOkE=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$1.class
+SHA1-Digest: XOaFnZO4SPJ+EFe2IP9DIwTPt+I=
+
+Name: org/mortbay/util/ajax/ContinuationSupport.class
+SHA1-Digest: l7BTUOBIVURAvjocWmUiSB0MrC0=
+
+Name: org/mortbay/servlet/ProxyServlet$Transparent.class
+SHA1-Digest: zn672lNFU5ocULHk5zgsn7gpeaM=
+
+Name: org/mortbay/util/IntrospectionUtil.class
+SHA1-Digest: PpLGbS5Rkjl8iw1QM9n9o8UgNWA=
+
+Name: org/mortbay/util/ajax/JSONPojoConvertor$5.class
+SHA1-Digest: tSoTUe8VaMGRyGpBt+N6c9HqH3g=
+

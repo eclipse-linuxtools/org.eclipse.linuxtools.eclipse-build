@@ -1,0 +1,304 @@
+Manifest-Version: 1.0
+Implementation-Vendor: CRIL CNRS UMR 8188 - Universite d'Artois
+Main-Class: org.sat4j.pb.LanceurPseudo2007
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Built-By: Daniel Le Berre
+Bundle-SymbolicName: org.sat4j.pb
+Require-Bundle: org.sat4j.core
+Bundle-Version: 2.2.0.v20100429
+Export-Package: org.sat4j.pb;version="2.2.0.v20100429",org.sat4j.pb.co
+ nstraints;version="2.2.0.v20100429",org.sat4j.pb.constraints.pb;versi
+ on="2.2.0.v20100429",org.sat4j.pb.core;version="2.2.0.v20100429",org.
+ sat4j.pb.orders;version="2.2.0.v20100429",org.sat4j.pb.reader;version
+ ="2.2.0.v20100429",org.sat4j.pb.tools;version="2.2.0.v20100429"
+Specification-Version: NA
+Specification-Title: SAT4J
+Specification-Vendor: Daniel Le Berre
+Ant-Version: Apache Ant 1.7.1
+Bundle-Vendor: %providerName
+Bundle-Name: %bundleName
+Class-Path: org.sat4j.core.jar
+Created-By: 14.0-b16 (Sun Microsystems Inc.)
+Implementation-Version: 2.2.0.v20100429 
+Implementation-Title: SAT4J
+Bundle-ManifestVersion: 2
+
+Name: overview.html
+SHA1-Digest: dn/2qZIKrR/o7110Zst9XnBMJQs=
+
+Name: org/sat4j/pb/core/PBSolverCautious.class
+SHA1-Digest: G6PE+jY5a6fBYlvCCJ80DIRQttg=
+
+Name: org/sat4j/pb/constraints/pb/IDataStructurePB.class
+SHA1-Digest: K8hIGafz38gYco1roO+km+62nUI=
+
+Name: org/sat4j/pb/constraints/pb/OriginalBinaryClausePB.class
+SHA1-Digest: 2u9IrZTRMP8k/+Pgirz48qiZ7/0=
+
+Name: org/sat4j/pb/UserFriendlyPBStringSolver$1.class
+SHA1-Digest: gKdki2AgPWZsKfQrO3rcO8Xdsp8=
+
+Name: org/sat4j/pb/reader/OPBReader2006.class
+SHA1-Digest: Za8OEzrefdDt2z98j51EBX3xj3A=
+
+Name: org/sat4j/pb/tools/ImplicationNamer.class
+SHA1-Digest: uaNnc29kUvqltyMLCZ6SEoetrnc=
+
+Name: org/sat4j/pb/core/PBSolverMerging.class
+SHA1-Digest: djmzlzPZAInJVw6wMQ7MCGQT6F4=
+
+Name: org/sat4j/pb/constraints/CompetResolutionPBMixedWLClauseCardCons
+ trDataStructure.class
+SHA1-Digest: nloc0/mY93BZDB4uTWIOeP1WHY4=
+
+Name: org/sat4j/pb/constraints/CompetMinHTmixedClauseCardConstrDataStr
+ uctureFactory.class
+SHA1-Digest: GO7p5Za7oIPox69KRZ053C99kLg=
+
+Name: org/sat4j/pb/constraints/PBMaxCBClauseCardConstrDataStructure.cl
+ ass
+SHA1-Digest: 8B4zKn975+9WwnkxYqODzGgNMtA=
+
+Name: org/sat4j/pb/core/PBSolverCP.class
+SHA1-Digest: +Qc17V3GJ6vqbTiGdEC/NiVaSRE=
+
+Name: org/sat4j/pb/constraints/pb/AtLeastPB.class
+SHA1-Digest: NasfzFaI5jhvxcIXI67cTVOg124=
+
+Name: org/sat4j/pb/constraints/pb/ConflictMapSwitchToClause.class
+SHA1-Digest: mx8XOflLPBSXnWWc3bXlHIYyj6A=
+
+Name: org/sat4j/pb/constraints/pb/MinWatchCardPB.class
+SHA1-Digest: crONz2vRhajI5wwzRVtND9P37RI=
+
+Name: org/sat4j/pb/constraints/pb/ConflictMap.class
+SHA1-Digest: y16ySy2IGCLtsK0U50yhENNC6W0=
+
+Name: org/sat4j/pb/constraints/pb/MapPb.class
+SHA1-Digest: NXbo9EEw7HqKORoEXNbOk2hCeq8=
+
+Name: org/sat4j/pb/constraints/pb/UnitClausePB.class
+SHA1-Digest: 4n3MLmHlk2tAJbg1EgAp8mQf64o=
+
+Name: org/sat4j/pb/LanceurPseudo2007Eclipse.class
+SHA1-Digest: +QTEdsoG7bzmL/YI28W57v47CAk=
+
+Name: org/sat4j/pb/tools/DependencyHelper.class
+SHA1-Digest: OMY1u4aMLJ3UoL+za68NnMiocyY=
+
+Name: org/sat4j/pb/tools/ImplicationAnd.class
+SHA1-Digest: +k7ETPN3t0C+UZAnZcW8u7eFomw=
+
+Name: org/sat4j/pb/constraints/PBMaxDataStructure.class
+SHA1-Digest: w0Xjba3ddTPxB2dVW1HvWpfGIq4=
+
+Name: org/sat4j/pb/constraints/pb/Pseudos.class
+SHA1-Digest: ose+x3/CGsc7AjXEunLkqmNm63I=
+
+Name: org/sat4j/pb/constraints/PBMinClauseCardConstrDataStructure.clas
+ s
+SHA1-Digest: 3x3BBKrLLuA5SCj3X+IH41yAsr8=
+
+Name: org/sat4j/pb/constraints/pb/ConflictMapClause.class
+SHA1-Digest: dSLvmwcCiD9ZFlvFrTw8bneJCI4=
+
+Name: org/sat4j/pb/constraints/PuebloPBMinClauseAtLeastConstrDataStruc
+ ture.class
+SHA1-Digest: w309O/LZInrUh++d8phGpdJEZtA=
+
+Name: org/sat4j/pb/core/PBSolverResCP.class
+SHA1-Digest: zCdBCthIUAVA6/i4k1D5o9Te7e8=
+
+Name: org/sat4j/pb/constraints/PBContainer.class
+SHA1-Digest: kcNv1+UXugI/PV/+sSoMgLAIftU=
+
+Name: org/sat4j/pb/PBSolverDecorator.class
+SHA1-Digest: GD0qkZZprzxUHS2LGjSka/FTl+0=
+
+Name: org/sat4j/pb/constraints/pb/LearntBinaryClausePB.class
+SHA1-Digest: QL6nsPydh+z3nKNQYe7jwE1CgHo=
+
+Name: org/sat4j/pb/SolverFactory.class
+SHA1-Digest: NBohv7locQ+NEAky27a7fek+8SY=
+
+Name: org/sat4j/pb/constraints/PuebloPBMinClauseCardConstrDataStructur
+ e.class
+SHA1-Digest: ZT86iNkY8IXjLjUr72UiFPplKLw=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 6mDW8kS/T9pK7w1by/wcxy21Z20=
+
+Name: org/sat4j/pb/tools/DependencyHelper$2.class
+SHA1-Digest: aLYin0QkwOIijO/rXnY0UmXqTpc=
+
+Name: org/sat4j/pb/orders/VarOrderHeapObjective.class
+SHA1-Digest: 2FsAP/pICHcMCNdPadbMBG7y/do=
+
+Name: org/sat4j/pb/core/PBSolverWithImpliedClause.class
+SHA1-Digest: xue1+JX1bmghjnwSZpBO+vz1WMI=
+
+Name: org/sat4j/pb/constraints/AbstractPBDataStructureFactory$2.class
+SHA1-Digest: rKuP05A+NpTct21Ak6zGVQ7vAHc=
+
+Name: org/sat4j/pb/core/PBSolverResolution.class
+SHA1-Digest: SRfvQmnFA/QRlfyWvt9nqRR/lns=
+
+Name: org/sat4j/pb/constraints/pb/MaxWatchPb.class
+SHA1-Digest: jwNLXKfu0MZJqHvWUU87nuz9r1Q=
+
+Name: org/sat4j/pb/constraints/pb/OriginalHTClausePB.class
+SHA1-Digest: +TRdmilQ15C9Xic9IlZeDbLBMM0=
+
+Name: org/sat4j/pb/core/PBSolverClause.class
+SHA1-Digest: trpkB4UWxuGDFj3J+dGk8DIKFtI=
+
+Name: org/sat4j/pb/constraints/pb/PBConstr.class
+SHA1-Digest: qaZnIWUyx9dxXNAti4MebxloBjE=
+
+Name: org/sat4j/pb/OPBStringSolver.class
+SHA1-Digest: gdLAcb+mUTxzOM6kk/5p88mp0qY=
+
+Name: org/sat4j/pb/constraints/pb/InternalMapPBStructure.class
+SHA1-Digest: W+CVWLpOBzqKrTm71l0sCPWuZyc=
+
+Name: org/sat4j/pb/core/PBSolverStats.class
+SHA1-Digest: i1V3lr1ohpwMObvUCO6yu3+jNlY=
+
+Name: org/sat4j/pb/tools/DisjunctionRHS.class
+SHA1-Digest: MqBHzo9QkDUG85zHorqZaUHoDoU=
+
+Name: org/sat4j/pb/constraints/AbstractPBClauseCardConstrDataStructure
+ .class
+SHA1-Digest: QXWQslhjncOBuirq/A6ldLhfOdE=
+
+Name: org/sat4j/pb/PseudoIteratorDecorator.class
+SHA1-Digest: K3JFS3H4wD0Net76iHilpaP/ijA=
+
+Name: org/sat4j/pb/tools/ImplicationRHS.class
+SHA1-Digest: 6N5qhFgu8eCcUJgR/nyZnm9QAO0=
+
+Name: org/sat4j/pb/constraints/pb/IConflict.class
+SHA1-Digest: PHI0OOz1wRQfxXGh8PLGIidS1zg=
+
+Name: org/sat4j/pb/tools/XplainPB.class
+SHA1-Digest: DRGrsuFqXjYIrNN5TreQyylIxKo=
+
+Name: org/sat4j/pb/constraints/pb/PuebloMinWatchPb.class
+SHA1-Digest: 1ALpLOsAU3mfsrmmAVrk5duTFbM=
+
+Name: org/sat4j/pb/reader/OPBReader2005.class
+SHA1-Digest: pKJb39oplIXV3JlrwxWrZBcMk6g=
+
+Name: org/sat4j/pb/reader/OPBEclipseReader2007.class
+SHA1-Digest: cNvV2IRw/CmiGv9Xcp7GkZmMhyg=
+
+Name: org/sat4j/pb/reader/OPBReader2007.class
+SHA1-Digest: bHOST+J41ibjBKz0b7FSbOsyKlY=
+
+Name: org/sat4j/pb/constraints/pb/WatchPb.class
+SHA1-Digest: Wl9nlz4WzhuGaXqZBA8eyw8yzg8=
+
+Name: org/sat4j/pb/tools/ConflictTracing.class
+SHA1-Digest: bNwGBc0F0AQRb65r+fYJ83nYdfs=
+
+Name: org/sat4j/pb/constraints/PBMaxClauseCardConstrDataStructure.clas
+ s
+SHA1-Digest: vXE4DWIWLt9Xmnhfq5IB4dIhav0=
+
+Name: org/sat4j/pb/tools/StringNegator.class
+SHA1-Digest: k0hKqdrMlxYBJhCJ8S1QmhrOLJE=
+
+Name: org/sat4j/pb/constraints/pb/LearntHTClausePB.class
+SHA1-Digest: aJhiQFddE3ZDaXaeX/23LeHN1g8=
+
+Name: plugin.properties
+SHA1-Digest: jH6bKyeXDNDTAFPXOMVz3/1taug=
+
+Name: org/sat4j/pb/constraints/pb/ConflictMapCardinality.class
+SHA1-Digest: kYQEQKAQns7W6rY6Y+ZYX9bBpWk=
+
+Name: org/sat4j/pb/OptToPBSATAdapter.class
+SHA1-Digest: MXj/pFl1iZd0sYLMBIrF/1agANM=
+
+Name: org/sat4j/pb/constraints/AbstractPBDataStructureFactory.class
+SHA1-Digest: tPyl3mGH0TFhhdNVWHTDSKj9o3s=
+
+Name: org/sat4j/pb/constraints/PBMaxClauseAtLeastConstrDataStructure.c
+ lass
+SHA1-Digest: uKBmKVPD6QYIT3RVFqCUC6kD9qA=
+
+Name: org/sat4j/pb/ObjectiveFunction.class
+SHA1-Digest: F3NAF2DIaLsJAGzMLGIvo97AWeY=
+
+Name: target/META-INF/MANIFEST.MF
+SHA1-Digest: hQv/s0DLOeak/5OqsUcxm3guLeU=
+
+Name: org/sat4j/pb/core/PBSolver.class
+SHA1-Digest: gxJCEd2FqXuZuDpUXEc9kGdprNY=
+
+Name: org/sat4j/pb/reader/PBInstanceReader.class
+SHA1-Digest: J9s9zvTyMXHShX1KupSLAqns3Hw=
+
+Name: org/sat4j/pb/constraints/AbstractPBDataStructureFactory$INormali
+ zer.class
+SHA1-Digest: 2iRa3YBib1gXCgoE57DR3NF6x+I=
+
+Name: org/sat4j/pb/tools/DependencyHelper$1.class
+SHA1-Digest: 7fORyR0FINvIRM6pfII4nQmLLhk=
+
+Name: org/sat4j/pb/constraints/AbstractPBDataStructureFactory$1.class
+SHA1-Digest: Ko42eIS8RwhywU09NkfV1pawdlI=
+
+Name: org/sat4j/pb/LanceurPseudo2005.class
+SHA1-Digest: Ka03bnbg7X84LZly4Ncsg/HuWys=
+
+Name: org/sat4j/pb/LanceurPseudo2007.class
+SHA1-Digest: ed4pLqCMTL1Yc4W9hkerdqO6YiQ=
+
+Name: org/sat4j/pb/tools/DependencyHelper$Negation.class
+SHA1-Digest: Rw1JeScc9GREEsMFgDyL7Ebok68=
+
+Name: org/sat4j/pb/constraints/PBMinDataStructure.class
+SHA1-Digest: sKRfSps0qSzK9KigQwTOxj2WagU=
+
+Name: about.html
+SHA1-Digest: GrW2Mel5Q31SWUprDqfCckmZlc8=
+
+Name: org/sat4j/pb/core/PBDataStructureFactory.class
+SHA1-Digest: H8EuqbIE5W7Tphq3qKi7sH6qn/M=
+
+Name: org/sat4j/pb/PseudoOptDecorator.class
+SHA1-Digest: z65sDBvX3JjybTNhUe4IHGtJTcg=
+
+Name: org/sat4j/pb/constraints/PuebloPBMinDataStructure.class
+SHA1-Digest: SM8ErxquNZp0yqPAkjtxKEce+lo=
+
+Name: org/sat4j/pb/constraints/CompetResolutionPBMixedHTClauseCardCons
+ trDataStructure.class
+SHA1-Digest: m0yfuYuZXnykAZA/7AUKQXAH21E=
+
+Name: org/sat4j/pb/tools/WeightedObject.class
+SHA1-Digest: 0Ftz4Xdwv6BlICjIiLtQmqig+Fc=
+
+Name: org/sat4j/pb/UserFriendlyPBStringSolver.class
+SHA1-Digest: alT+ejzhY34Amp3w9ibn2W9Pxzw=
+
+Name: org/sat4j/pb/IPBSolver.class
+SHA1-Digest: fYQnDxuLMJKMVYHfvWwgAQFPamk=
+
+Name: org/sat4j/pb/tools/INegator.class
+SHA1-Digest: wcPOwhE1FJYCkyldqzJ4L5++ksM=
+
+Name: org/sat4j/pb/constraints/pb/ConflictMapMerging.class
+SHA1-Digest: F0BQSKqM/+RWB3eVBD/l6Zg6TEw=
+
+Name: org/sat4j/pb/constraints/pb/MixableCBClausePB.class
+SHA1-Digest: kQR6fpZJWXeRbyTtDqVfNuUyMKY=
+
+Name: org/sat4j/pb/OPBStringSolver$1.class
+SHA1-Digest: 5AYRMJJhrIzA0BjEjRSf4DQbeYo=
+
+Name: org/sat4j/pb/constraints/pb/MinWatchPb.class
+SHA1-Digest: USLVxnCfcv8nQNOf627OseH5DIM=
+
