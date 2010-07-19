@@ -1,3 +1,11 @@
+2010-07-19  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #319473
+
+	* build.xml: Apply patch from Benjamin Drung to extract SWT .so files.
+	* extract_patterns.txt: New file.  Filename patterns to extract
+	("initialize") from bundle JARs. 
+
 2010-07-14  Andrew Overholt  <overholt@redhat.com>
 
 	* additionalArchs/rename.sh: Add svn:executable property.
