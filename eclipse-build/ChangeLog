@@ -1,5 +1,12 @@
 2010-07-19  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #319110
+
+	* build.xml: Apply patch from Benjamin Drung to rename some ant targets
+	(distclean -> clean, clean -> clean-sdk).  "distclean" now removes *.log.
+
+2010-07-19  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #319473
 
 	* build.xml: Apply patch from Benjamin Drung to extract SWT .so files.

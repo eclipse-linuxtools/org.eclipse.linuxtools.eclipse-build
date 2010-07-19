@@ -231,7 +231,7 @@
 		<echo file="testsunpack-stamp" />
 	</target>
 
-	<target name="clean">
+	<target name="clean-sdk">
 		<delete dir="${homeDir}" />
 		<delete dir="${baseworkspace}" />
 		<delete dir="${buildworkspace}" />
@@ -246,13 +246,19 @@
 		</delete>
 	</target>
 
-	<target name="distclean" depends="clean">
+	<target name="clean" depends="clean-sdk">
 		<delete dir="bootstrap/configuration/org.eclipse.core.runtime" />
 		<delete dir="bootstrap/configuration/org.eclipse.equinox.app" />
 		<delete dir="bootstrap/configuration/org.eclipse.osgi" />
 		<delete dir="bootstrap/p2" />
 		<delete dir="bootstrap/plugins" />
 		<delete dir="bootstrap/workspace" />
+	</target>
+
+	<target name="distclean" depends="clean">
+		<delete>
+			<fileset dir="." includes="*.log" />
+		</delete>
 	</target>
 
 	<target name="insertBuildId" depends="unpack" unless="buildId.complete">
