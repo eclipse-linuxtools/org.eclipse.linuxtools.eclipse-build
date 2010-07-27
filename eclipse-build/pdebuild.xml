@@ -351,9 +351,9 @@
 		</delete>
 		<!-- osgi can only be found if _ is in name -->
 		<symlink action="delete"
-		         link="bootstrap/plugins/org.eclipse.osgi_3.5.0.jar"
+		         link="bootstrap/plugins/org.eclipse.osgi_${label}.jar"
 		         failonerror="false" />
-		<symlink link="bootstrap/plugins/org.eclipse.osgi_3.5.0.jar"
+		<symlink link="bootstrap/plugins/org.eclipse.osgi_${label}.jar"
 		         resource="org.eclipse.osgi.jar"
 		         overwrite="true" />
 	</target>

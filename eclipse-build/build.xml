@@ -395,12 +395,22 @@
 	-->
 
 	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
+		<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
+		
+		<path id="pdebuilddir.id">
+		    <dirset dir="${buildDirectory}/installation/plugins">
+		        <include name="org.eclipse.pde.build_*"/>
+		     </dirset>
+		</path>
+
+		<property name="pdebuilddir" refid="pdebuilddir.id"/>
+		
 		<!-- Test framework -->
 		<exec executable="${buildDirectory}/installation/eclipse">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
+			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
 			<arg line="-Dtype=feature -Did=org.eclipse.test " />
@@ -413,7 +423,7 @@
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
+			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
 			<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
