@@ -306,6 +306,7 @@
 		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-nostyletask.patch" dir="${testsBuildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-BZ295666.patch" dir="${testsBuildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/org.eclipse.pde.ui.tests-LocalTargetDefinitonTests.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.pde.ui.tests" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 

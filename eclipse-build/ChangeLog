@@ -1,9 +1,21 @@
 2010-07-27  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #295098
+
+	* patches/org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch: New
+	file.  Patch out checking for source bundles not likely to be present in
+	distros.
+	* build.xml: Apply above patch to tests.
+	* symlinks-stamp: Add to svn:ignore.
+	* task-bin: Likewise.
+
+2010-07-27  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #320328
 
 	* pdebuild.xml: Use ${label} instead of hard-coding "3.5.0".
 	* build.xml: Use PDE Build of built SDK to build SDK tests.
+	
 
 2010-07-19  Andrew Overholt  <overholt@redhat.com>
 
