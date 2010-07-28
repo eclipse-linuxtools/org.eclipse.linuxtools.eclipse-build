@@ -79,28 +79,14 @@ function init() {
 	testframework=$(grep ^testframework build.properties | sed s/testframework=//)
 	
 	# Make directories absolute
-	case ${testsBuildDirectory} in
-    	/*)
-    		# testsBuildDirectory is absolute
-    		;;
-    	*)
-    		# testsBuildDirectory is not absolute so assume pwd prefix
-    		testsBuildDirectory=$(pwd)/${testsBuildDirectory}
-	esac
-	case ${provisionDir} in
-    	/*)
-    		# provisionDir is absolute
-    		;;
-    	*)
-    		# provisionDir is not absolute so assume pwd prefix
-    		provisionDir=$(pwd)/${provisionDir}
-	esac
+	testsBuildDirectory=$(readlink -f ${testsBuildDirectory})
+	provisionDir=$(readlink -f ${provisionDir})
 	
 	testsRepo=${testsBuildDirectory}/buildRepo/
 
 	testsParent=$(pwd)/tests_${timestamp}
-        mkdir -p ${testsParent}
-        cp -rp ${provisionDir} ${testsParent}/testsinstallation.clean
+    mkdir -p ${testsParent}
+    cp -rp ${provisionDir} ${testsParent}/testsinstallation.clean
 	cleanInstall=${testsParent}/testsinstallation.clean
         workspace=${testsParent}/workspace
 

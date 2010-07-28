@@ -1,5 +1,10 @@
 2010-07-28  Andrew Overholt  <overholt@redhat.com>
 
+	* runtests.sh: Properly canonicalize test build and installation
+	directories.
+
+2010-07-28  Andrew Overholt  <overholt@redhat.com>
+
 	* build.properties: Property-ify test framework.
 	* build.xml: Use variables for provision and installation directories.
 	Build Equinox Initializer application in build target and not in
