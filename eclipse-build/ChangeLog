@@ -1,5 +1,16 @@
 2010-07-28  Andrew Overholt  <overholt@redhat.com>
 
+	* build.properties: Property-ify test framework.
+	* build.xml: Use variables for provision and installation directories.
+	Build Equinox Initializer application in build target and not in
+	provision.sdk target.  Pass tests build directory and provisioned SDK
+	directory to runtests.sh.
+	* runtests.sh: Take passed-in tests build directory and provisioned SDK
+	directory.  Pass testframework variable to runtests.sh.
+	* junitHelper.xml: Use property of testframework.
+
+2010-07-28  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Fix version of org.eclipse.test (3.2.0 -> 3.3.0).
 	* junitHelper.xml: Likewise.
 	* runtests.sh: Likewise.

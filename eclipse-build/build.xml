@@ -56,6 +56,8 @@
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
+	<property name="provisionDir" value="${buildDirectory}/installation" />
+	<property name="installationDir" value="${destDir}${prefix}/${libDir}/eclipse" />
 
 	<!-- Determine host architecture -->
 	<exec executable="uname" outputproperty="uname-m">
@@ -370,6 +372,21 @@
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />
 		</java>
+		<!-- build equinox initializer -->
+		<mkdir dir="${buildDirectory}/home" />
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
+			<classpath>
+				<fileset dir="${provisionDir}/plugins">
+					<include name="org.eclipse.equinox.launcher_*.jar" />
+				</fileset>
+			</classpath>
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-Duser.home=${buildDirectory}/home" />
+			<arg line="-application org.eclipse.ant.core.antRunner" />
+			<arg line="-f build.xml" />
+			<arg line="build.update.jar" />
+			<jvmarg value="-Xmx512M" />
+		</java>
 		<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
 			<property name="arch" value="${buildArch}"/>
@@ -398,7 +415,7 @@
 	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
 			
 		<path id="pdebuilddir.id">
-		    <dirset dir="${buildDirectory}/installation/plugins">
+		    <dirset dir="${provisionDir}/plugins">
 		        <include name="org.eclipse.pde.build_*"/>
 		     </dirset>
 		</path>
@@ -406,7 +423,7 @@
 		<property name="pdebuilddir" refid="pdebuilddir.id"/>
 		
 		<!-- Test framework -->
-		<exec executable="${buildDirectory}/installation/eclipse">
+		<exec executable="${provisionDir}/eclipse">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -414,12 +431,12 @@
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
 			<arg line="-Dtype=feature -Did=org.eclipse.test " />
-			<arg line="-DbaseLocation=${buildDirectory}/installation " />
+			<arg line="-DbaseLocation=${provisionDir} " />
 			<arg line="-DbuildLabel=${testsBuildLabel} " />
 			<arg line="-data ${buildworkspace} " />
 		</exec>
 		<!-- SDK tests -->
-		<exec executable="${buildDirectory}/installation/eclipse">
+		<exec executable="${provisionDir}/eclipse">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -427,7 +444,7 @@
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
 			<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
-			<arg line="-DbaseLocation=${buildDirectory}/installation " />
+			<arg line="-DbaseLocation=${provisionDir} " />
 			<arg line="-DbuildLabel=${testsBuildLabel} " />
 			<arg line="-data ${buildworkspace} " />
 		</exec>
@@ -612,34 +629,20 @@
 	</target>
 
 	<target name="provision.sdk" depends="p2prep" unless="provision.sdk.complete">
-		<echo message="Installing into:  ${buildDirectory}/installation" />
+		<echo message="Installing into:  ${provisionDir}" />
 		<antcall target="run.director">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
 			<param name="p2.director.version" value="${p2.director.version}" />
 			<param name="p2.director.profile" value="SDKProfile" />
-			<param name="p2.director.install.path" value="${buildDirectory}/installation" />
+			<param name="p2.director.install.path" value="${provisionDir}" />
 			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
-		<!-- build equinox initializer -->
-		<mkdir dir="${buildDirectory}/home" />
-		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
-			<classpath>
-				<fileset dir="${buildDirectory}/installation/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
-			</classpath>
-			<arg line="-data ${buildworkspace} " />
-			<arg line="-Duser.home=${buildDirectory}/home" />
-			<arg line="-application org.eclipse.ant.core.antRunner" />
-			<arg line="-f build.xml" />
-			<arg line="build.update.jar" />
-			<jvmarg value="-Xmx512M" />
-		</java>
-		<copy todir="${buildDirectory}/installation/plugins">
+		
+		<copy todir="${provisionDir}/plugins">
 			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
 				<include name="org.eclipse.equinox.initializer*.jar" />
 			</fileset>
@@ -647,21 +650,21 @@
 
 		<!-- Re-symlink system JARs -->
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" 
-			topLevelDir="${buildDirectory}/installation/plugins"/>
+			topLevelDir="${provisionDir}/plugins"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
-			topLevelDir="${buildDirectory}/installation/plugins"/>
+			topLevelDir="${provisionDir}/plugins"/>
 
-		<fileset id="junit4.jar" dir="${buildDirectory}/installation/plugins">
+		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
 		  	<include name="**/org.junit4_**/junit.jar"/>
-	  	</fileset>
-	  	<property name="junit4jar.path" refid="junit4.jar"/>
-	  	
-		<delete file="${buildDirectory}/installation/plugins/${junit4jar.path}" />
-
+		</fileset>
+		<property name="junit4jar.path" refid="junit4.jar"/>
+		
+		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
 		<!-- FIXME:  Watch out for other distros with different
-		     locations of junit4's system JAR. -->
-		<symlink link="${buildDirectory}/installation/plugins/${junit4jar.path}"
-			resource="/usr/share/java/junit4.jar" />		
+				     locations of junit4's system JAR. -->
+		<symlink link="${provisionDir}/plugins/${junit4jar.path}"
+			resource="/usr/share/java/junit4.jar" />
+
 		<echo file="provision.sdk-stamp" />
 	</target>
 
@@ -679,6 +682,8 @@
 		<chmod perm="ugo+rx" file="${basedir}/runtests.sh" />
 		<exec executable="${basedir}/runtests.sh" dir="${basedir}">
 			<arg value="-t${timestamp}" />
+			<arg value="-b ${testsBuildDirectory}" />
+			<arg value="-p ${provisionDir}" />
 		</exec>
 		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
 		<!-- Copy over the XML to generate a top-level report for all of the tests -->
@@ -702,7 +707,7 @@
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.3.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/${testframework}/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">
@@ -775,13 +780,14 @@
 	</target>
 
 	<target name="install" depends="provision.sdk">
-		<mkdir dir="${destDir}${prefix}/${libDir}/eclipse" />
+		<mkdir dir="${installationDir}" />
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
 			<arg value="--no-target-directory" />
-			<arg value="${buildDirectory}/installation" />
-			<arg value="${destDir}${prefix}/${libDir}/eclipse" />
+			<arg value="${provisionDir}" />
+			<arg value="${installationDir}" />
 		</exec>
+		
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install icons -->
@@ -790,28 +796,29 @@
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png" tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
 		<mkdir dir="${destDir}${prefix}/share/pixmaps" />
 		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" />
-		<!--shared dropins folder-->
+		<!--shared dropins folder for architecture-independent plugins-->
 		<mkdir dir="${destDir}${prefix}/share/eclipse/dropins" />
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
 		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />
+		<!-- FIXME:  we really shouldn't need this anymore but at least pdebuild.sh will need to be updated --> 
 		<!-- Create the "startup.jar" symlink -->
-		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
+		<fileset dir="${installationDir}/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
 		<property name="startupjarpath" refid="startupjar" />
-		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/startup.jar" resource="plugins/${startupjarpath}" />
+		<symlink link="${installationDir}/startup.jar" resource="plugins/${startupjarpath}" />
 		<!-- Create the "swt.jar" and friends symlinks  -->
-		<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins" includes="org.eclipse.swt.gtk.linux.${buildArch}_*" id="swtjar" />
+		<fileset dir="${installationDir}/plugins" includes="org.eclipse.swt.gtk.linux.${buildArch}_*" id="swtjar" />
 		<property name="swtjarpath" refid="swtjar" />
-		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt-gtk-3.5.2.jar" resource="plugins/${swtjarpath}" />
-		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt-gtk.jar" resource="plugins/${swtjarpath}" />
-		<symlink link="${destDir}/${prefix}/${libDir}/eclipse/swt.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${installationDir}/swt-gtk-3.5.2.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${installationDir}/swt-gtk.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${installationDir}/swt.jar" resource="plugins/${swtjarpath}" />
 		
-		<echo append="true" file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
+		<echo append="true" file="${installationDir}/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Extract SWT JNI .so files -->
 		<java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true" dir="${destDir}">
 			<classpath>
-				<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/plugins">
+				<fileset dir="${installationDir}/plugins">
 					<include name="org.eclipse.equinox.launcher_*.jar" />
 				</fileset>
 			</classpath>
@@ -820,28 +827,28 @@
 			<arg value="-debug" />
 			<arg value="-consolelog" />
 			<arg value="-metadataRepository" />
-			<arg value="file:${destDir}/${prefix}/${libDir}/eclipse/metadata/" />
+			<arg value="file:${installationDir}/metadata/" />
 			<arg value="-artifactRepository" />
-			<arg value="file:${destDir}/${prefix}/${libDir}/eclipse/metadata/" />
+			<arg value="file:${installationDir}/metadata/" />
 			<arg value="-data" />
 			<arg value="${buildworkspace}" />
 			<arg value="-fileInitializer" />
 			<arg value="${basedir}/extract_patterns.txt" />
-			<jvmarg value="-Dosgi.sharedConfiguration.area=${destDir}/${prefix}/${libDir}/eclipse/configuration"/>
+			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration"/>
 		</java>
 
 		<!-- Remove unnecessary configuration data -->
-		<delete dir="${destDir}/${prefix}/${libDir}/eclipse/configuration/org.eclipse.core.runtime" />
-		<delete dir="${destDir}/${prefix}/${libDir}/eclipse/configuration/org.eclipse.equinox.app" />
+		<delete dir="${installationDir}/configuration/org.eclipse.core.runtime" />
+		<delete dir="${installationDir}/configuration/org.eclipse.equinox.app" />
 		<delete includeemptydirs="true" verbose="true">
-			<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/configuration" includes="*.log" />
-			<fileset dir="${destDir}/${prefix}/${libDir}/eclipse/configuration" includes="**/data/**" />
+			<fileset dir="${installationDir}/configuration" includes="*.log" />
+			<fileset dir="${installationDir}/configuration" includes="**/data/**" />
 		</delete>
 
 		<!-- Move config file to /etc -->
 		<mkdir dir="${destDir}/etc" />
-		<move file="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
-		<symlink link="${destDir}${prefix}/${libDir}/eclipse/eclipse.ini" resource="/etc/eclipse.ini" />
+		<move file="${installationDir}/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
+		<symlink link="${installationDir}/eclipse.ini" resource="/etc/eclipse.ini" />
 		
 	</target>
 

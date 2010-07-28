@@ -13,6 +13,8 @@ Optional arguments:
    -h      Show this help message
    -g      Don't run the tests headless
    -d      Allow remote connection to test runs' JVM
+   -b      Tests build directory
+   -p      Clean installation directory to copy for running test suites
    -t      Timestamp string with which to tag the results
 _EOF_
 }
@@ -72,16 +74,33 @@ function init() {
 	# Defaults
 	debugTests=0
 	headless=1
-	testFramework=org.eclipse.test_3.3.0
-	if [ -z ${timestamp} ]; then
-		timestamp=$(date "+%Y%m%d%H%M%S")
-	fi
+
 	label=$(grep label build.properties | sed s/label=//)
-	testsRepo=$(pwd)/testsBuild/eclipse-sdktests-${label}-src/buildRepo/
+	testframework=$(grep ^testframework build.properties | sed s/testframework=//)
+	
+	# Make directories absolute
+	case ${testsBuildDirectory} in
+    	/*)
+    		# testsBuildDirectory is absolute
+    		;;
+    	*)
+    		# testsBuildDirectory is not absolute so assume pwd prefix
+    		testsBuildDirectory=$(pwd)/${testsBuildDirectory}
+	esac
+	case ${provisionDir} in
+    	/*)
+    		# provisionDir is absolute
+    		;;
+    	*)
+    		# provisionDir is not absolute so assume pwd prefix
+    		provisionDir=$(pwd)/${provisionDir}
+	esac
+	
+	testsRepo=${testsBuildDirectory}/buildRepo/
 
 	testsParent=$(pwd)/tests_${timestamp}
         mkdir -p ${testsParent}
-        cp -rp $(pwd)/build/eclipse-${label}-src/installation ${testsParent}/testsinstallation.clean
+        cp -rp ${provisionDir} ${testsParent}/testsinstallation.clean
 	cleanInstall=${testsParent}/testsinstallation.clean
         workspace=${testsParent}/workspace
 
@@ -184,7 +203,7 @@ function setArch() {
 }
 
 function runTestSuite() {
-	libraryXml=${eclipseHome}/plugins/${testFramework}/library.xml
+	libraryXml=${eclipseHome}/plugins/${testframework}/library.xml
 
 	${eclipseHome}/eclipse \
 	-application org.eclipse.ant.core.antRunner \
@@ -308,11 +327,11 @@ function runTestPlugin() {
 }
 
 function genHtml() {
-	ant -Declipse-home=${eclipseHome} -Dresults=${results} -DxmlDir=${xmlDir} -f junitHelper.xml
+	ant -Declipse-home=${eclipseHome} -Dresults=${results} -DxmlDir=${xmlDir} -Dtestframework=${testframework} -f junitHelper.xml
 }
 
 # Command-line arguments
-while getopts "de:gt:h" OPTION
+while getopts "de:gb:p:t:h" OPTION
 do
      case $OPTION in
          d)
@@ -324,12 +343,30 @@ do
          t)
              timestamp=$OPTARG
              ;;
+         b)
+             testsBuildDirectory=$OPTARG
+             ;;
+         p)
+             provisionDir=$OPTARG
+             ;;
          h)
              usage
              exit 1
              ;;
      esac
 done
+
+if [ -z ${timestamp} ]; then
+	timestamp=$(date "+%Y%m%d%H%M%S")
+fi
+if [ -z ${testsBuildDirectory} ]; then
+	echo "Tests build directory must be specified (-b)";
+	exit 1;
+fi
+if [ -z ${provisionDir} ]; then
+    echo "Directory containing clean provisioned SDK must be specified (-p)";
+	exit 1;
+fi
 
 init
 findXvncAndSetDisplay

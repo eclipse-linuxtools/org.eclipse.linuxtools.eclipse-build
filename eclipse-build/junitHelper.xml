@@ -7,6 +7,10 @@
 	<condition property="eclipseHomeSet">
 		<isset property="eclipse-home"/>
 	</condition>
+	
+	<condition property="testframeworkSet">
+		<isset property="testframework"/>
+	</condition>
 
 	<property name="htmlDir" value="${results}/html"/>
 	<property name="xmlDir" value="${results}/xml"/>
@@ -16,8 +20,10 @@
 	      unless="resultsDefined"/>
 		<fail message="Eclipse installation directory not set"
 	      unless="eclipseHomeSet"/>
+		<fail message="Test framework directory not set"
+	      unless="testframeworkSet"/>
 		<echo message="Generating results in ${htmlDir}"/>
-		<xslt style="${eclipse-home}/plugins/org.eclipse.test_3.3.0/JUNIT.XSL" basedir="${xmlDir}" destdir="${htmlDir}" />
+		<xslt style="${eclipse-home}/plugins/${testframework}/JUNIT.XSL" basedir="${xmlDir}" destdir="${htmlDir}" />
 	</target>
 
 </project>
