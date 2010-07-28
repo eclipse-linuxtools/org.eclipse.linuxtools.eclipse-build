@@ -376,9 +376,7 @@
 		<mkdir dir="${buildDirectory}/home" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
-				<fileset dir="${provisionDir}/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
 			<arg line="-data ${buildworkspace} " />
 			<arg line="-Duser.home=${buildDirectory}/home" />
