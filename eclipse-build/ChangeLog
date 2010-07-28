@@ -1,5 +1,16 @@
 2010-07-28  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Fix version of org.eclipse.test (3.2.0 -> 3.3.0).
+	* junitHelper.xml: Likewise.
+	* runtests.sh: Likewise.
+	* sdk-tests.properties: Add to svn:ignore.
+	* tests_*: Add to svn:ignore.
+
+2010-07-23  Andrew Overholt  <overholt@redhat.com>
+
+	* dependencies.properties: 
+	* junitHelper.xml: 
+	* runtests.sh: 
 	* patches/tests-nop2discoverytests.patch: New file.  Don't build the p2
 	discovery tests since that feature isn't part of the SDK.
 	* patches/org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch: Removed.

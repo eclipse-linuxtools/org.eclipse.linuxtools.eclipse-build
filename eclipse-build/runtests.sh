@@ -72,7 +72,7 @@ function init() {
 	# Defaults
 	debugTests=0
 	headless=1
-	testFramework=org.eclipse.test_3.2.0
+	testFramework=org.eclipse.test_3.3.0
 	if [ -z ${timestamp} ]; then
 		timestamp=$(date "+%Y%m%d%H%M%S")
 	fi

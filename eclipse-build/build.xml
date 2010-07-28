@@ -396,8 +396,7 @@
 	-->
 
 	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
-		<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
-		
+			
 		<path id="pdebuilddir.id">
 		    <dirset dir="${buildDirectory}/installation/plugins">
 		        <include name="org.eclipse.pde.build_*"/>
@@ -703,7 +702,7 @@
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.2.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/org.eclipse.test_3.3.0/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">
