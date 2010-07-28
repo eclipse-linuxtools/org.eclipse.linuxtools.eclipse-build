@@ -1,3 +1,12 @@
+2010-07-28  Andrew Overholt  <overholt@redhat.com>
+
+	* patches/tests-nop2discoverytests.patch: New file.  Don't build the p2
+	discovery tests since that feature isn't part of the SDK.
+	* patches/org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch: Removed.
+	* patches/tests-org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch:
+	Renamed to clarify that it's a patch for the tests. 
+	* build.xml: Correct typo with LocationTargetDefinitionTests patch name.
+	
 2010-07-27  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #295098

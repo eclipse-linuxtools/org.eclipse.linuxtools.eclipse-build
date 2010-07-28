@@ -1,0 +1,21 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.pde.ui.tests
+Index: src/org/eclipse/pde/ui/tests/target/LocalTargetDefinitionTests.java
+===================================================================
+RCS file: /cvsroot/eclipse/pde/ui/org.eclipse.pde.ui.tests/src/org/eclipse/pde/ui/tests/target/LocalTargetDefinitionTests.java,v
+retrieving revision 1.24
+diff -u -r1.24 LocalTargetDefinitionTests.java
+--- src/org/eclipse/pde/ui/tests/target/LocalTargetDefinitionTests.java	12 May 2010 21:14:39 -0000	1.24
++++ src/org/eclipse/pde/ui/tests/target/LocalTargetDefinitionTests.java	28 Jul 2010 14:13:04 -0000
+@@ -679,8 +679,9 @@
+ 		expected.add("org.eclipse.jdt.source");
+ 		expected.add("org.eclipse.jdt.launching.source");
+ 		// There are two versions of junit available, each with source
+-		expected.add("org.junit.source");
+-		expected.add("org.junit.source");
++		// Most distros don't have .source bundles for 3rd party components
++		//expected.add("org.junit.source");
++		//expected.add("org.junit.source");
+ 		if (Platform.getOS().equals(Platform.OS_MACOSX)) {
+ 			expected.add("org.eclipse.jdt.launching.macosx.source");
+ 		}

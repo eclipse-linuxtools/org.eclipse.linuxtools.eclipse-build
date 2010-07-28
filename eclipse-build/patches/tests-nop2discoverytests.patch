@@ -1,0 +1,25 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.sdk.tests-feature
+Index: feature.xml
+===================================================================
+RCS file: /cvsroot/eclipse/org.eclipse.sdk.tests-feature/features/org.eclipse.sdk.tests/feature.xml,v
+retrieving revision 1.67
+diff -u -r1.67 feature.xml
+--- feature.xml	22 Apr 2010 21:18:14 -0000	1.67
++++ feature.xml	28 Jul 2010 13:22:07 -0000
+@@ -375,12 +375,14 @@
+          download-size="0"
+          install-size="0"
+          version="0.0.0"/>
+-         
++
++<!--     
+    <plugin
+          id="org.eclipse.equinox.p2.tests.discovery"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"/>
++-->
+ 
+    <plugin
+          id="org.eclipse.equinox.p2.tests.ui"
