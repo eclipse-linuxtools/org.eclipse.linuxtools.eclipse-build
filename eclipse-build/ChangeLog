@@ -1,3 +1,11 @@
+2010-07-29  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #319479
+
+	* patches/eclipse-swt-compile-xpt.patch: New file.  Patch from Benjamin
+	Drung to build .xpt file for SWT.
+	* build.xml: Apply above patch.
+
 2010-07-28  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Use bootstrap JARs to build Equinox Initializer.
