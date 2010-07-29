@@ -1,5 +1,9 @@
 2010-07-28  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Use bootstrap JARs to build Equinox Initializer.
+
+2010-07-28  Andrew Overholt  <overholt@redhat.com>
+
 	* runtests.sh: Properly canonicalize test build and installation
 	directories.
 
