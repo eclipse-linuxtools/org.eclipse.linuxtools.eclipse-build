@@ -1,3 +1,9 @@
+2010-08-03  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #321284
+
+	* build.xml: Set installation directory after resolving libdir.
+
 2010-07-29  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #319479

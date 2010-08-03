@@ -57,7 +57,6 @@
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="provisionDir" value="${buildDirectory}/installation" />
-	<property name="installationDir" value="${destDir}${prefix}/${libDir}/eclipse" />
 
 	<!-- Determine host architecture -->
 	<exec executable="uname" outputproperty="uname-m">
@@ -107,6 +106,7 @@
 
 	<target name="setLibDir" depends="setLib64Dir">
 		<property name="libDir" value="lib" />
+		<property name="installationDir" value="${destDir}${prefix}/${libDir}/eclipse" />
 	</target>
 
 	<target name="getInstallationDir" depends="setLibDir">
