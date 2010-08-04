@@ -1,7 +1,7 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
 	<tstamp>
-	    <format property="timestamp" pattern="yyyyMMddHHmmss"/>
-	  </tstamp>
+		<format property="timestamp" pattern="yyyyMMddHHmmss"/>
+	</tstamp>
 	<record name="build_${timestamp}.log"/>
 	<echo message="Build log is available in build_${timestamp}.log" />
 	<property name="baseBuilder" value="${basedir}/bootstrap" />
@@ -75,10 +75,14 @@
 		<matches pattern="sparcv9" string="${uname-m}"/>
 	</condition>
 	<condition property="hostArch" value="${uname-m}">
-		<not><isset property="hostArch" /></not>
+		<not>
+			<isset property="hostArch" />
+		</not>
 	</condition>
 	<condition property="buildArch" value="${hostArch}">
-		<not><isset property="buildArch" /></not>
+		<not>
+			<isset property="buildArch" />
+		</not>
 	</condition>
 	<echo message="uname -m: ${uname-m}. Build eclipse on ${hostArch} for ${buildArch}."/>
 
@@ -246,6 +250,7 @@
 		<delete>
 			<fileset dir="." includes="*-stamp" />
 		</delete>
+		<delete file="sdk-tests.properties" />
 	</target>
 
 	<target name="clean" depends="clean-sdk">
@@ -260,6 +265,9 @@
 	<target name="distclean" depends="clean">
 		<delete>
 			<fileset dir="." includes="*.log" />
+		</delete>
+		<delete includeemptydirs="true">
+			<fileset dir="." includes="tests_*/**" />
 		</delete>
 	</target>
 
@@ -330,26 +338,26 @@
 			classname="org.eclipse.linuxtools.eclipsebuild.SymlinkNonOSGiJars"
 			classpath="${basedir}/task-bin" />
 	</target>
-	
+
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
-	  	<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" 
+		<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" 
 	  		topLevelDir="${buildDirectory}/plugins"
 		    manifests="${basedir}/dependencyManifests"/>
-	  	<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
 	  		topLevelDir="${buildDirectory}/plugins"/>
-        <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
-                <replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
-                <replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
-                <replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*"/>
 			<substitution expression=""/>
 		</replaceregexp>
@@ -412,15 +420,15 @@
 	-->
 
 	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
-			
+
 		<path id="pdebuilddir.id">
-		    <dirset dir="${provisionDir}/plugins">
-		        <include name="org.eclipse.pde.build_*"/>
-		     </dirset>
+			<dirset dir="${provisionDir}/plugins">
+				<include name="org.eclipse.pde.build_*"/>
+			</dirset>
 		</path>
 
 		<property name="pdebuilddir" refid="pdebuilddir.id"/>
-		
+
 		<!-- Test framework -->
 		<exec executable="${provisionDir}/eclipse">
 			<arg line="-nosplash " />
@@ -640,7 +648,7 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
-		
+
 		<copy todir="${provisionDir}/plugins">
 			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
 				<include name="org.eclipse.equinox.initializer*.jar" />
@@ -654,10 +662,10 @@
 			topLevelDir="${provisionDir}/plugins"/>
 
 		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
-		  	<include name="**/org.junit4_**/junit.jar"/>
+			<include name="**/org.junit4_**/junit.jar"/>
 		</fileset>
 		<property name="junit4jar.path" refid="junit4.jar"/>
-		
+
 		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
 		<!-- FIXME:  Watch out for other distros with different
 				     locations of junit4's system JAR. -->
@@ -786,7 +794,7 @@
 			<arg value="${provisionDir}" />
 			<arg value="${installationDir}" />
 		</exec>
-		
+
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install icons -->
@@ -800,7 +808,7 @@
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
 		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />
-		<!-- FIXME:  we really shouldn't need this anymore but at least pdebuild.sh will need to be updated --> 
+		<!-- FIXME:  we really shouldn't need this anymore but at least pdebuild.sh will need to be updated -->
 		<!-- Create the "startup.jar" symlink -->
 		<fileset dir="${installationDir}/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
 		<property name="startupjarpath" refid="startupjar" />
@@ -811,7 +819,7 @@
 		<symlink link="${installationDir}/swt-gtk-3.5.2.jar" resource="plugins/${swtjarpath}" />
 		<symlink link="${installationDir}/swt-gtk.jar" resource="plugins/${swtjarpath}" />
 		<symlink link="${installationDir}/swt.jar" resource="plugins/${swtjarpath}" />
-		
+
 		<echo append="true" file="${installationDir}/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Extract SWT JNI .so files -->
@@ -848,7 +856,7 @@
 		<mkdir dir="${destDir}/etc" />
 		<move file="${installationDir}/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
 		<symlink link="${installationDir}/eclipse.ini" resource="/etc/eclipse.ini" />
-		
+
 	</target>
 
 	<target name="package.extract.swt">

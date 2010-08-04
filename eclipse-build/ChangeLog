@@ -1,3 +1,10 @@
+2010-08-04  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #321660
+
+	* build.xml: Remove sdk-tests.properties in clean-sdk task and tests_* in
+	distclean task.  Clean up formatting a bit. 
+
 2010-08-03  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #321284
