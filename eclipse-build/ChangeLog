@@ -1,5 +1,13 @@
 2010-08-04  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #321612
+
+	* build.xml: Add ability to pass through -v and -d flags to runtests.sh.
+	Use -DdebugTests=true or -DverboseTests=true.
+	* runtests.sh: Add verbose option (-v).  Pass -data option to test runs.
+
+2010-08-04  Andrew Overholt  <overholt@redhat.com>
+ 
 	Bug #321660
 
 	* build.xml: Remove sdk-tests.properties in clean-sdk task and tests_* in

@@ -12,10 +12,11 @@ Run Eclipse SDK tests
 Optional arguments:
    -h      Show this help message
    -g      Don't run the tests headless
-   -d      Allow remote connection to test runs' JVM
+   -d      Debug tests (allow remote connection to test runs' JVM)
    -b      Tests build directory
    -p      Clean installation directory to copy for running test suites
    -t      Timestamp string with which to tag the results
+   -v      Make test runs output to the console
 _EOF_
 }
 
@@ -72,8 +73,15 @@ function init() {
 	#	org.eclipse.jdt.compiler.tool.tests \
 
 	# Defaults
-	debugTests=0
-	headless=1
+	if [ -z ${verbose} ]; then
+		verbose=0
+	fi
+	if [ -z ${debugTests} ]; then
+		debugTests=0
+	fi
+	if [ -z ${headless} ]; then
+		headless=1
+	fi
 
 	label=$(grep label build.properties | sed s/label=//)
 	testframework=$(grep ^testframework build.properties | sed s/testframework=//)
@@ -191,21 +199,42 @@ function setArch() {
 function runTestSuite() {
 	libraryXml=${eclipseHome}/plugins/${testframework}/library.xml
 
-	${eclipseHome}/eclipse \
-	-application org.eclipse.ant.core.antRunner \
-	-file $testDriver \
-	-Declipse-home=${eclipseHome} \
-	-Dos=linux \
-	-Dws=gtk \
-	-Darch=${arch} \
-	-Dlibrary-file=$libraryXml \
-	-propertyfile $properties \
-	-logger org.apache.tools.ant.DefaultLogger \
-	-vmargs \
-	-Duser.home=${homedir} \
-	-Dosgi.os=linux \
-	-Dosgi.ws=gtk \
-	-Dosgi.arch=${arch}
+	if [ $verbose -eq 1 ]; then
+		${eclipseHome}/eclipse \
+		-debug -consolelog \
+		-data ${datadir} \
+		-application org.eclipse.ant.core.antRunner \
+		-file $testDriver \
+		-Declipse-home=${eclipseHome} \
+		-Dos=linux \
+		-Dws=gtk \
+		-Darch=${arch} \
+		-Dlibrary-file=$libraryXml \
+		-propertyfile $properties \
+		-logger org.apache.tools.ant.DefaultLogger \
+		-vmargs \
+		-Duser.home=${homedir} \
+		-Dosgi.os=linux \
+		-Dosgi.ws=gtk \
+		-Dosgi.arch=${arch}
+	else
+		${eclipseHome}/eclipse \
+		-data ${datadir} \
+		-application org.eclipse.ant.core.antRunner \
+		-file $testDriver \
+		-Declipse-home=${eclipseHome} \
+		-Dos=linux \
+		-Dws=gtk \
+		-Darch=${arch} \
+		-Dlibrary-file=$libraryXml \
+		-propertyfile $properties \
+		-logger org.apache.tools.ant.DefaultLogger \
+		-vmargs \
+		-Duser.home=${homedir} \
+		-Dosgi.os=linux \
+		-Dosgi.ws=gtk \
+		-Dosgi.arch=${arch}
+	fi
 }
 
 function cleanAfterTestSuite() {
@@ -317,7 +346,7 @@ function genHtml() {
 }
 
 # Command-line arguments
-while getopts "de:gb:p:t:h" OPTION
+while getopts "vde:gb:p:t:h" OPTION
 do
      case $OPTION in
          d)
@@ -338,6 +367,9 @@ do
          h)
              usage
              exit 1
+             ;;
+         v)
+             verbose=1
              ;;
      esac
 done

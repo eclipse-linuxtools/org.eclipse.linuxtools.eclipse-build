@@ -674,8 +674,35 @@
 
 		<echo file="provision.sdk-stamp" />
 	</target>
+	
+	<target name="checkDebugAndVerbose">
+		<condition property="bothDebugAndVerbose.set">
+			<and>
+				<isset property="debugTests"/>
+				<isset property="verboseTests"/>
+			</and>
+		</condition>
+	</target>
+	
+	<target name="setDebugAndVerbose" depends="checkDebugAndVerbose" if="bothDebugAndVerbose.set">
+		<property name="testSwitches" value="-dv"/>
+	</target>
+	
+	<target name="setDebugTests" if="debugTests">
+		<property name="testSwitches" value="-d"/>
+	</target>
 
-	<target name="runTests" depends="buildTests">
+	<target name="setVerboseTests" if="verboseTests">
+		<property name="testSwitches" value="-v"/>
+	</target>
+	
+	<target name="setDebugAndVerboseArgs" depends="setDebugAndVerbose,setDebugTests,setVerboseTests"/>
+	
+	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs">
+		<!-- These two next calls just set the properties to an empty string if they are not previously set -->
+		<property name="debugTestsSwitch" value="" />
+		<property name="verboseTestsSwitch" value="" />
+
 		<echo message="###################################################################" />
 		<echo message="#                                                                 #" />
 		<echo message="#             Please post and discuss results here:               #" />
@@ -687,10 +714,14 @@
 			<format property="timestamp" pattern="yyyyMMddHHmmss" />
 		</tstamp>
 		<chmod perm="ugo+rx" file="${basedir}/runtests.sh" />
+		<!--
+		<echo message="Calling runtests with (debug, verbose) = (${testSwitches})" />
+		-->
 		<exec executable="${basedir}/runtests.sh" dir="${basedir}">
 			<arg value="-t${timestamp}" />
 			<arg value="-b ${testsBuildDirectory}" />
 			<arg value="-p ${provisionDir}" />
+			<arg value="${testSwitches}" />
 		</exec>
 		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
 		<!-- Copy over the XML to generate a top-level report for all of the tests -->
