@@ -318,6 +318,8 @@
 		<patch patchfile="${basedir}/patches/tests-BZ295666.patch" dir="${testsBuildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.pde.ui.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 
