@@ -1,5 +1,10 @@
 2010-08-11  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Make symlink to eclipse.ini absolute again to
+	please our Debian friends.
+
+2010-08-11  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #293731
 
 	* build.xml: Add ability to provision just the platform or just the
