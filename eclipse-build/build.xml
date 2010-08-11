@@ -1,8 +1,8 @@
 <project name="Eclipse SDK build" default="provision.sdk" basedir=".">
 	<tstamp>
-		<format property="timestamp" pattern="yyyyMMddHHmmss"/>
+		<format property="timestamp" pattern="yyyyMMddHHmmss" />
 	</tstamp>
-	<record name="build_${timestamp}.log"/>
+	<record name="build_${timestamp}.log" />
 	<echo message="Build log is available in build_${timestamp}.log" />
 	<property name="baseBuilder" value="${basedir}/bootstrap" />
 	<property name="launcher" value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
@@ -63,22 +63,22 @@
 	<!-- Distros with alternative JUnit 4 JAR locations should pass this
 	     parameter in to ant -->
 	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
-	
+
 	<!-- Determine host architecture -->
 	<exec executable="uname" outputproperty="uname-m">
 		<arg line="-m" />
 	</exec>
 	<condition property="hostArch" value="arm">
-		<matches pattern="^arm.*" string="${uname-m}"/>
+		<matches pattern="^arm.*" string="${uname-m}" />
 	</condition>
 	<condition property="hostArch" value="x86">
-		<matches pattern="i[0-9]*86" string="${uname-m}"/>
+		<matches pattern="i[0-9]*86" string="${uname-m}" />
 	</condition>
 	<condition property="hostArch" value="PA_RISC">
-		<matches pattern="^parisc.*" string="${uname-m}"/>
+		<matches pattern="^parisc.*" string="${uname-m}" />
 	</condition>
 	<condition property="hostArch" value="sparc">
-		<matches pattern="sparcv9" string="${uname-m}"/>
+		<matches pattern="sparcv9" string="${uname-m}" />
 	</condition>
 	<condition property="hostArch" value="${uname-m}">
 		<not>
@@ -90,7 +90,7 @@
 			<isset property="buildArch" />
 		</not>
 	</condition>
-	<echo message="uname -m: ${uname-m}. Build eclipse on ${hostArch} for ${buildArch}."/>
+	<echo message="uname -m: ${uname-m}. Build eclipse on ${hostArch} for ${buildArch}." />
 
 	<property name="destDir" value="" />
 	<property name="prefix" value="/usr/local" />
@@ -302,11 +302,11 @@
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-use-newer-commons-codec.patch" dir="${buildDirectory}"  strip="1" />
-		<patch patchfile="${basedir}/patches/junit4-nochecksum.patch" dir="${buildDirectory}"  strip="0" />
-		<patch patchfile="${basedir}/patches/bz318912.patch" dir="${buildDirectory}"  strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-use-newer-commons-codec.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/junit4-nochecksum.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/bz318912.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-swt-compile-xpt.patch" dir="${buildDirectory}"  strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-swt-compile-xpt.patch" dir="${buildDirectory}" strip="1" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
@@ -330,49 +330,36 @@
 	</target>
 
 	<target name="buildHelperTask">
-		<mkdir dir="task-bin"/>
-		<javac compiler="modern" target="1.5" source="1.5" debug="true"
-		       srcdir="${basedir}/task-src" destdir="${basedir}/task-bin"/>
+		<mkdir dir="task-bin" />
+		<javac compiler="modern" target="1.5" source="1.5" debug="true" srcdir="${basedir}/task-src" destdir="${basedir}/task-bin" />
 	</target>
 
 	<target name="defineTasks" depends="buildHelperTask">
-		<taskdef name="symlinkOSGiJars"
-			classname="org.eclipse.linuxtools.eclipsebuild.SymlinkOSGiJars"
-			classpath="${basedir}/task-bin" />
-		<taskdef name="symlinkInstalledOSGiJars"
-			classname="org.eclipse.linuxtools.eclipsebuild.SymlinkInstalledOSGiJars"
-			classpath="${basedir}/task-bin" />
-		<taskdef name="symlinkNonOSGiJars"
-			classname="org.eclipse.linuxtools.eclipsebuild.SymlinkNonOSGiJars"
-			classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkInstalledOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkInstalledOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkNonOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkNonOSGiJars" classpath="${basedir}/task-bin" />
 	</target>
 
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
-		<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" 
-	  		topLevelDir="${buildDirectory}/plugins"
-		    manifests="${basedir}/dependencyManifests"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
-	  		topLevelDir="${buildDirectory}/plugins"/>
-		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" 
-			topLevelDir="${buildDirectory}/plugins"
-			manifests="${basedir}/dependencyManifests"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties"
-		  	topLevelDir="${buildDirectory}/plugins"/>
+		<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
+		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
+		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
 		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^Name.*"/>
-			<substitution expression=""/>
+			<regexp pattern="^Name.*" />
+			<substitution expression="" />
 		</replaceregexp>
 		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^SHA1-Digest.*"/>
-			<substitution expression=""/>
+			<regexp pattern="^SHA1-Digest.*" />
+			<substitution expression="" />
 		</replaceregexp>
 		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^Name.*"/>
-			<substitution expression=""/>
+			<regexp pattern="^Name.*" />
+			<substitution expression="" />
 		</replaceregexp>
 		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^SHA1-Digest.*"/>
-			<substitution expression=""/>
+			<regexp pattern="^SHA1-Digest.*" />
+			<substitution expression="" />
 		</replaceregexp>
 
 		<!-- Create a stamp file -->
@@ -436,11 +423,11 @@
 
 		<path id="pdebuilddir.id">
 			<dirset dir="${provisionDir}/plugins">
-				<include name="org.eclipse.pde.build_*"/>
+				<include name="org.eclipse.pde.build_*" />
 			</dirset>
 		</path>
 
-		<property name="pdebuilddir" refid="pdebuilddir.id"/>
+		<property name="pdebuilddir" refid="pdebuilddir.id" />
 
 		<!-- Test framework -->
 		<exec executable="${provisionDir}/eclipse">
@@ -618,7 +605,7 @@
 		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
 		-->
 	</target>
-	
+
 	<target name="publishPlatform">
 		<antcall target="publishProduct">
 			<param name="productFile" value="${productFiles}/platform/platform.product" />
@@ -670,17 +657,17 @@
 		</java>
 		-->
 	</target>
-	
+
 	<target name="provision.platform" depends="p2prep" unless="provision.platform.complete">
 		<echo message="Installing into:  ${provisionDir}" />
 		<antcall target="provision">
 			<param name="p2.director.installIU" value="org.eclipse.platform.ide" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
-	
+
 		<echo file="provision.platform-stamp" />
 	</target>
-	
+
 	<!-- This is here as a convenience task for distributions which want
 	     CVS functionality to be present in "platform" installations. -->
 	<target name="provision.cvs" depends="p2prep" unless="provision.cvs.complete">
@@ -689,7 +676,7 @@
 			<param name="p2.director.installIU" value="org.eclipse.platform.ide,org.eclipse.cvs.feature.group" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
-	
+
 		<echo file="provision.cvs-stamp" />
 	</target>
 
@@ -701,20 +688,17 @@
 		</antcall>
 
 		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
-			<include name="**/org.junit4_**/junit.jar"/>
+			<include name="**/org.junit4_**/junit.jar" />
 		</fileset>
-		<property name="junit4jar.path" refid="junit4.jar"/>
-		
+		<property name="junit4jar.path" refid="junit4.jar" />
+
 		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
-		<symlink link="${provisionDir}/plugins/${junit4jar.path}"
-			resource="${junit4JarLocation}" />
-		
+		<symlink link="${provisionDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
+
 		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" 
-			topLevelDir="${provisionDir}/plugins"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties"
-			topLevelDir="${provisionDir}/plugins"/>
-		
+		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+
 		<echo file="provision.sdk-stamp" />
 	</target>
 
@@ -739,35 +723,33 @@
 		</copy>
 
 		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" 
-			topLevelDir="${provisionDir}/plugins"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
-			topLevelDir="${provisionDir}/plugins"/>
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 	</target>
-	
+
 	<target name="checkDebugAndVerbose">
 		<condition property="bothDebugAndVerbose.set">
 			<and>
-				<isset property="debugTests"/>
-				<isset property="verboseTests"/>
+				<isset property="debugTests" />
+				<isset property="verboseTests" />
 			</and>
 		</condition>
 	</target>
-	
+
 	<target name="setDebugAndVerbose" depends="checkDebugAndVerbose" if="bothDebugAndVerbose.set">
-		<property name="testSwitches" value="-dv"/>
+		<property name="testSwitches" value="-dv" />
 	</target>
-	
+
 	<target name="setDebugTests" if="debugTests">
-		<property name="testSwitches" value="-d"/>
+		<property name="testSwitches" value="-d" />
 	</target>
 
 	<target name="setVerboseTests" if="verboseTests">
-		<property name="testSwitches" value="-v"/>
+		<property name="testSwitches" value="-v" />
 	</target>
-	
-	<target name="setDebugAndVerboseArgs" depends="setDebugAndVerbose,setDebugTests,setVerboseTests"/>
-	
+
+	<target name="setDebugAndVerboseArgs" depends="setDebugAndVerbose,setDebugTests,setVerboseTests" />
+
 	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs">
 		<!-- These two next calls just set the properties to an empty string if they are not previously set -->
 		<property name="debugTestsSwitch" value="" />
@@ -942,7 +924,7 @@
 			<arg value="${buildworkspace}" />
 			<arg value="-fileInitializer" />
 			<arg value="${basedir}/extract_patterns.txt" />
-			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration"/>
+			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
 		</java>
 
 		<!-- Remove unnecessary configuration data -->
@@ -961,13 +943,13 @@
 	</target>
 
 	<target name="installPlatform" depends="provision.platform,install">
-		<echo message="Installing Eclipse Platform"/>
+		<echo message="Installing Eclipse Platform" />
 	</target>
 
 	<target name="installPlatformAndCVS" depends="provision.cvs,install">
-		<echo message="Installing Eclipse Platform and CVS feature"/>
+		<echo message="Installing Eclipse Platform and CVS feature" />
 	</target>
-			
+
 	<target name="package.extract.swt">
 		<exec executable="./swt_bundle.sh" failOnError="true">
 			<arg value="${eclipse.rcp.package.root}" />
