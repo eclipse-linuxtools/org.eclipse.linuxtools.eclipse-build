@@ -41,6 +41,8 @@
 	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
 	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
+	<uptodate property="provision.platform.complete" srcfile="build-stamp" targetfile="provision.platform-stamp" />
+	<uptodate property="provision.cvs.complete" srcfile="build-stamp" targetfile="provision.cvs-stamp" />
 	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
 	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
@@ -58,6 +60,10 @@
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="provisionDir" value="${buildDirectory}/installation" />
 
+	<!-- Distros with alternative JUnit 4 JAR locations should pass this
+	     parameter in to ant -->
+	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
+	
 	<!-- Determine host architecture -->
 	<exec executable="uname" outputproperty="uname-m">
 		<arg line="-m" />
@@ -347,6 +353,11 @@
 		    manifests="${basedir}/dependencyManifests"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
 	  		topLevelDir="${buildDirectory}/plugins"/>
+		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" 
+			topLevelDir="${buildDirectory}/plugins"
+			manifests="${basedir}/dependencyManifests"/>
+		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties"
+		  	topLevelDir="${buildDirectory}/plugins"/>
 		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*"/>
 			<substitution expression=""/>
@@ -511,24 +522,15 @@
 		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip" />
 		<!--<property name="builtZip" value="${basedir}/eclipse-SDK-${buildId}.zip"/>-->
 		<replace token="@qualifier@" file="${productFiles}/sdk/sdk.product" value="${buildId}" />
+		<replace token="@qualifier@" file="${productFiles}/platform/platform.product" value="${buildId}" />
 		<property name="tempexec" value="${buildDirectory}/tempexec" />
 
 		<antcall target="createRepo" />
-
-		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.orig" failonerror="false" />
-
 		<antcall target="extractLauncher" />
 		<antcall target="publishLauncher" />
-
-		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterlauncher" failonerror="false" />
-		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterlauncher" failonerror="false" />
-
 		<antcall target="createAndPublishLauncherFeature" />
-
-		<copy file="${reposource}/content.xml" tofile="${reposource}/content.xml.afterrcpConfig" failonerror="false" />
-		<copy file="${reposource}/content.jar" tofile="${reposource}/content.jar.afterrcpConfig" failonerror="false" />
-
 		<antcall target="publishSDK" />
+		<antcall target="publishPlatform" />
 
 		<echo file="p2prep-stamp" />
 	</target>
@@ -616,12 +618,24 @@
 		<ant target="main" antfile="buildConfiguration.xml" dir="${productFiles}/rcpConfig" />
 		-->
 	</target>
+	
+	<target name="publishPlatform">
+		<antcall target="publishProduct">
+			<param name="productFile" value="${productFiles}/platform/platform.product" />
+		</antcall>
+	</target>
 
 	<target name="publishSDK">
-		<!-- This next part publishes the entire SDK -->
+		<antcall target="publishProduct">
+			<param name="productFile" value="${productFiles}/sdk/sdk.product" />
+		</antcall>
+	</target>
+
+	<target name="publishProduct">
+		<!-- http://wiki.eclipse.org/Equinox/p2/Publisher -->
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
-				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+				<pathelement path="${launcher}" />
 			</classpath>
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -630,19 +644,86 @@
 			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-Dreposource=${reposource} " />
 			<arg line="-DbuildConfig=${buildConfig} " />
-			<arg line="-DproductFiles=${productFiles} " />
+			<arg line="-DproductFile=${productFile} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />
 		</java>
+		<!-- The following (using the app. instead of the ant task) doesn't work
+		     as of 2010-08-11 -->
+		<!--
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-configuration configuration " />
+		                 <arg line="-consoleLog" />
+			<arg line="-application org.eclipse.equinox.p2.publisher.ProductPublisher " />
+		                 <arg line="-flavor tooling" />
+		                 <arg line="-configs gtk.linux.${buildArch}" />
+		                 <arg line="-productFile ${productFile}" />
+		                 <arg line="-metadataRepository file:${reposource}" />
+		                 <arg line="-artifactRepository file:${reposource}" />
+		                 <arg line="-compress" />
+			<arg line="-featureVersions ${buildDirectory}/finalFeaturesVersions.properties" />
+		                 <arg line="-pluginVersions ${buildDirectory}/finalPluginsVersions.properties" />
+		</java>
+		-->
+	</target>
+	
+	<target name="provision.platform" depends="p2prep" unless="provision.platform.complete">
+		<echo message="Installing into:  ${provisionDir}" />
+		<antcall target="provision">
+			<param name="p2.director.installIU" value="org.eclipse.platform.ide" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+	
+		<echo file="provision.platform-stamp" />
+	</target>
+	
+	<!-- This is here as a convenience task for distributions which want
+	     CVS functionality to be present in "platform" installations. -->
+	<target name="provision.cvs" depends="p2prep" unless="provision.cvs.complete">
+		<echo message="Installing into:  ${provisionDir}" />
+		<antcall target="provision">
+			<param name="p2.director.installIU" value="org.eclipse.platform.ide,org.eclipse.cvs.feature.group" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+	
+		<echo file="provision.cvs-stamp" />
 	</target>
 
 	<target name="provision.sdk" depends="p2prep" unless="provision.sdk.complete">
 		<echo message="Installing into:  ${provisionDir}" />
-		<antcall target="run.director">
+		<antcall target="provision">
 			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
+			<param name="profileName" value="SDKProfile" />
+		</antcall>
+
+		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
+			<include name="**/org.junit4_**/junit.jar"/>
+		</fileset>
+		<property name="junit4jar.path" refid="junit4.jar"/>
+		
+		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
+		<symlink link="${provisionDir}/plugins/${junit4jar.path}"
+			resource="${junit4JarLocation}" />
+		
+		<!-- Re-symlink system JARs -->
+		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" 
+			topLevelDir="${provisionDir}/plugins"/>
+		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties"
+			topLevelDir="${provisionDir}/plugins"/>
+		
+		<echo file="provision.sdk-stamp" />
+	</target>
+
+	<target name="provision" depends="p2prep">
+		<echo message="Installing into:  ${provisionDir}" />
+		<antcall target="run.director">
+			<param name="p2.director.installIU" value="${p2.director.installIU}" />
 			<param name="p2.director.version" value="${p2.director.version}" />
-			<param name="p2.director.profile" value="SDKProfile" />
+			<param name="p2.director.profile" value="${profileName}" />
 			<param name="p2.director.install.path" value="${provisionDir}" />
 			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
 			<param name="p2.os" value="linux" />
@@ -662,19 +743,6 @@
 			topLevelDir="${provisionDir}/plugins"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties"
 			topLevelDir="${provisionDir}/plugins"/>
-
-		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
-			<include name="**/org.junit4_**/junit.jar"/>
-		</fileset>
-		<property name="junit4jar.path" refid="junit4.jar"/>
-
-		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
-		<!-- FIXME:  Watch out for other distros with different
-				     locations of junit4's system JAR. -->
-		<symlink link="${provisionDir}/plugins/${junit4jar.path}"
-			resource="/usr/share/java/junit4.jar" />
-
-		<echo file="provision.sdk-stamp" />
 	</target>
 	
 	<target name="checkDebugAndVerbose">
@@ -892,6 +960,14 @@
 
 	</target>
 
+	<target name="installPlatform" depends="provision.platform,install">
+		<echo message="Installing Eclipse Platform"/>
+	</target>
+
+	<target name="installPlatformAndCVS" depends="provision.cvs,install">
+		<echo message="Installing Eclipse Platform and CVS feature"/>
+	</target>
+			
 	<target name="package.extract.swt">
 		<exec executable="./swt_bundle.sh" failOnError="true">
 			<arg value="${eclipse.rcp.package.root}" />

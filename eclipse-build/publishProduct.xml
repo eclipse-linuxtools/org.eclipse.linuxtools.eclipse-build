@@ -1,7 +1,6 @@
 <project name="Eclipse SDK build" default="publish" basedir=".">
 	<target name="publish">
-	        <echo message="Calling p2.publish.product with repository=${reposource} and productFile=${productFiles}/sdk/sdk.product"/>
-		<p2.publish.product flavor="tooling" repository="file:${reposource}" productFile="${productFiles}/sdk/sdk.product" compress="true">
+		<p2.publish.product flavor="tooling" repository="file:${reposource}" productFile="${productFile}" compress="true">
 			<config os="linux" ws="gtk" arch="${buildArch}" />
 			<advice kind="featureVersions" file="${buildDirectory}/finalFeaturesVersions.properties" />
 			<advice kind="pluginVersions" file="${buildDirectory}/finalPluginsVersions.properties" />

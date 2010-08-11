@@ -1,5 +1,25 @@
 2010-08-11  Andrew Overholt  <overholt@redhat.com>
 
+	Bug #293731
+
+	* build.xml: Add ability to provision just the platform or just the
+	platform and the CVS feature (default is still entire SDK).  Parametrize
+	JUnit4 JAR location.  Replace @qualifier@ also in platform.product since
+	we're using it now.  No longer copy content.{xml,jar} over for debugging
+	during publishing.  Extract publishing of SDK into a common target that
+	can be used by other publishing tasks.  Extract provisioning of SDK into
+	common target.  Add installPlatform/installPlatformAndCVS targets for
+	installing just the platform/platform+CVS.
+	* publishProduct.xml: Parametrize the product file to use.
+	* sdknonosgidependencies.properties: New file.  Non-OSGi dependencies
+	present in the SDK but not the platform.
+	* sdkdependencies.properties: New file.  OSGi dependencies present in the
+	SDK but not the platform.
+	* nonosgidependencies.properties: Strip SDK-only dependencies.
+	* dependencies.properties: Likewise.
+
+2010-08-11  Andrew Overholt  <overholt@redhat.com>
+
 	* build.xml: Make symlink to eclipse.ini relative.
 	* Xvnc.cfg: Add to svn:ignore.
 
