@@ -1,3 +1,8 @@
+2010-08-11  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Make symlink to eclipse.ini relative.
+	* Xvnc.cfg: Add to svn:ignore.
+
 2010-08-09  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Apply ant core and UI test patch to not be so strict with
