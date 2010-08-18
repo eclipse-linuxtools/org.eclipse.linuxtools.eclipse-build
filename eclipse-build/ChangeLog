@@ -1,3 +1,19 @@
+2010-08-17  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #294114
+
+	* build.xml: New target 'provisionSDKinDropins' which copies JDT
+	and SDK into the dropins directory of the installation.  New
+	target 'installPlatformAndCVS' which wraps provision.cvs and
+	install.
+	* jdtnonosgidependencies.properties: Re-name from
+	sdknonosgidependencies.properties.
+	* sdknonosgidependencies.properties: Renamed.
+	* jdtdependencies.properties: New file.  OSGi dependencies
+	present in the JDT but not the Platform.
+	* sdkdependencies.properties: Move JDT bits to
+	jdtdependencies.properties.
+
 2010-08-11  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Make symlink to eclipse.ini absolute again to

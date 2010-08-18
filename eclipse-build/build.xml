@@ -343,8 +343,9 @@
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
 		<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
 		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
+		<symlinkOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
+		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
 		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
-		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
 		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
@@ -665,6 +666,9 @@
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
 
+		<!-- Re-symlink system JARs -->
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<echo file="provision.platform-stamp" />
 	</target>
 
@@ -677,6 +681,9 @@
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
 
+		<!-- Re-symlink system JARs -->
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<echo file="provision.cvs-stamp" />
 	</target>
 
@@ -696,8 +703,11 @@
 		<symlink link="${provisionDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
 
 		<!-- Re-symlink system JARs -->
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/sdknonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 
 		<echo file="provision.sdk-stamp" />
 	</target>
@@ -721,10 +731,28 @@
 				<include name="org.eclipse.equinox.initializer*.jar" />
 			</fileset>
 		</copy>
+	</target>
 
-		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+	<target name="provision.installed" depends="p2prep">
+		<echo message="Installing into:  ${provisionDir}" />
+		<property name="directorToRun" value="${provisionDir}/eclipse" />
+		<antcall target="run.installed.director">
+			<param name="p2.director.installIU" value="${p2.director.installIU}" />
+			<param name="p2.director.version" value="${p2.director.version}" />
+			<param name="p2.director.profile" value="${profileName}" />
+			<param name="p2.director.install.path" value="${provisionDir}" />
+			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.os" value="linux" />
+			<param name="p2.ws" value="gtk" />
+			<param name="p2.arch" value="${buildArch}" />
+			<param name="p2.repo" value="${reposource}" />
+		</antcall>
+
+		<copy todir="${provisionDir}/plugins">
+			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
+				<include name="org.eclipse.equinox.initializer*.jar" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="checkDebugAndVerbose">
@@ -844,28 +872,14 @@
 		<chmod perm="ugo+rx" file="${directorToRun}" />
 		<exec executable="${directorToRun}">
 			<arg line="-nosplash " />
-			<arg line="-application org.eclipse.equinox.p2.director " />
-			<arg line="-data ${buildworkspace} " />
 			<arg line="-consoleLog" />
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-application org.eclipse.equinox.p2.director " />
 			<arg line="-flavor ${p2.flavor}" />
 			<arg line="-installIU ${p2.director.installIU}" />
-			<arg line="-p2.os ${p2.os}" />
-			<arg line="-p2.ws ${p2.ws}" />
-			<arg line="-p2.arch ${p2.arch}" />
-			<arg line="-roaming" />
-			<arg line="-profile ${p2.director.profile}" />
 			<arg line="${p2.director.extraArgs}" />
 			<arg line="-metadatarepository file:${p2.repo}" />
 			<arg line="-artifactrepository file:${p2.repo}" />
-			<arg line="-destination ${p2.director.install.path}" />
-			<arg line="-bundlepool ${p2.director.install.path}" />
-			<arg line="-vmargs" />
-			<arg line="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
-			<arg line="-Declipse.p2.MD5Check=false" />
-			<arg line="-Declipse.p2.profile=@none" />
-			<arg line="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=" />
-			<arg line="-Declipse.p2.data.area=${p2.director.install.path}/p2" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
 		</exec>
 	</target>
 
@@ -948,6 +962,211 @@
 
 	<target name="installPlatformAndCVS" depends="provision.cvs,install">
 		<echo message="Installing Eclipse Platform and CVS feature" />
+	</target>
+
+	<target name="provisionSDKinDropins" depends="provision.cvs">
+		<property name="platformAndCVSInstallation" value="${provisionDir}.cvs"/>
+		
+		<property name="jdtDropinsName" value="jdt"/>
+		<property name="sdkDropinsName" value="sdk"/>
+
+		<property name="jdtDropinsDir" value="${provisionDir}/dropins/${jdtDropinsName}"/>
+		<property name="sdkDropinsDir" value="${provisionDir}/dropins/${sdkDropinsName}"/>
+
+		<!-- make a copy of the clean platform+CVS installation -->
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="${provisionDir}" />
+			<arg value="${platformAndCVSInstallation}" />
+		</exec>
+		
+		<!-- Install SDK -->
+		<property name="sdkInstallation" value="${provisionDir}.sdk"/>
+		<antcall target="provision.installed">
+			<param name="p2.director.installIU" value="org.eclipse.sdk.feature.group" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+		<!-- make a copy of the entire SDK installation -->
+		<move file="${provisionDir}"
+			tofile="${sdkInstallation}"/>
+		<!-- restore clean platform+CVS installation -->
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="${platformAndCVSInstallation}" />
+			<arg value="${provisionDir}" />
+		</exec>
+		
+		<!-- Install JDT -->
+		<property name="jdtInstallation" value="${provisionDir}.jdt"/>
+		<antcall target="provision.installed">
+			<param name="p2.director.installIU" value="org.eclipse.jdt.feature.group" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+		<!-- rename JDT installation directory -->
+		<move file="${provisionDir}"
+			tofile="${jdtInstallation}"/>
+		<!-- make a copy of the JDT installation -->
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="${jdtInstallation}" />
+			<arg value="${jdtInstallation}.orig" />
+		</exec>
+		
+		<!-- restore clean platform+CVS installation -->
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="${platformAndCVSInstallation}" />
+			<arg value="${provisionDir}" />
+		</exec>
+		
+		<!-- diff of platform+CVS and JDT goes into platform+CVS/dropins/jdt -->
+		<antcall target="moveNewStuffToDropins">
+			<param name="orig" value="${provisionDir}" />
+			<param name="new" value="${jdtInstallation}" />
+			<param name="dropinsDir" value="${jdtDropinsName}" />
+		</antcall>
+		
+		<!-- restore clean JDT installation -->
+		<delete dir="${jdtInstallation}" />
+		<move file="${jdtInstallation}.orig"
+			tofile="${jdtInstallation}"/>
+		
+		<!-- diff of JDT and SDK ... -->
+		<antcall target="moveNewStuffToDropins">
+			<param name="orig" value="${jdtInstallation}" />
+			<param name="new" value="${sdkInstallation}" />
+			<param name="dropinsDir" value="${sdkDropinsName}" />
+		</antcall>
+		<!-- ... goes into platform+CVS/dropins/pde -->
+		<move file="${jdtInstallation}/dropins/${sdkDropinsName}"
+			todir="${provisionDir}/dropins"/>
+		
+		<!-- Re-symlink system JARs -->
+		<fileset id="junit4.jar" dir="${jdtDropinsDir}/plugins">
+			<include name="**/org.junit4_**/junit.jar" />
+		</fileset>
+		<property name="junit4jar.path" refid="junit4.jar" />
+
+		<delete file="${jdtDropinsDir}/plugins/${junit4jar.path}" />
+		<symlink link="${jdtDropinsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
+
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		
+		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
+		
+		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${sdkDropinsDir}/plugins" />
+		
+		<delete dir="${platformAndCVSInstallation}" />
+		<delete dir="${jdtInstallation}" />
+		<delete dir="${sdkInstallation}" />
+	</target>
+
+	<target name="moveNewStuffToDropins">
+		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />
+		<property name="filesToMove" value="${topBuildDir}/filesToMove"/>
+		<property name="dirsToMove" value="${topBuildDir}/dirsToMove"/>
+
+		<property name="origFeaturesFile" value="${topBuildDir}/origFeatures"/>
+		<property name="newFeaturesFile" value="${topBuildDir}/newFeatures"/>
+		<property name="featureDifferencesFile" value="${topBuildDir}/featuresToMove.diff"/>
+		<property name="featuresToMoveFile" value="${topBuildDir}/featuresToMove"/>
+
+		<property name="origPluginsFile" value="${topBuildDir}/origPlugins"/>
+		<property name="newPluginsFile" value="${topBuildDir}/newPlugins"/>
+		<property name="pluginDifferencesFile" value="${topBuildDir}/pluginsToMove.diff"/>
+		<property name="pluginsToMoveFile" value="${topBuildDir}/pluginsToMove"/>
+		
+		<!-- features -->
+		<exec executable="ls" output="${origFeaturesFile}">
+			<arg line="-1 ${orig}/features" />
+		</exec>
+		<exec executable="ls" output="${newFeaturesFile}">
+			<arg line="-1 ${new}/features" />
+		</exec>
+		<exec executable="diff" output="${featureDifferencesFile}">
+			<arg line="-u ${origFeaturesFile} ${newFeaturesFile}" />
+		</exec>
+		<exec executable="sed" output="${featuresToMoveFile}">
+			<arg line="-n '/^+o/p' ${featureDifferencesFile}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i 's/^+//' ${featuresToMoveFile}" />
+		</exec>
+		
+		<!-- FIXME:  this assumes all features are directories -->
+		<copy file="${featuresToMoveFile}" tofile="${filesToMove}"/>
+		<copy file="${featuresToMoveFile}" tofile="${dirsToMove}"/>
+		<exec executable="sed">
+			<arg line="-i '/.jar$/d' ${dirsToMove}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i 's/$/\/**/' ${dirsToMove}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i '/.jar$/!d' ${filesToMove}" />
+		</exec>
+
+		<mkdir dir="${dropinsDirectory}/features" />
+		<move todir="${dropinsDirectory}/features">
+			<fileset dir="${new}/features" includesfile="${dirsToMove}"/>
+		</move>
+
+		<delete file="${origFeaturesFile}"/>
+		<delete file="${newFeaturesFile}"/>
+		<delete file="${featuresToMoveFile}"/>
+		<delete file="${featureDifferencesFile}"/>
+		<delete file="${filesToMove}"/>
+		<delete file="${dirsToMove}"/>		
+
+		<!-- plugins -->
+		<exec executable="ls" output="${origPluginsFile}">
+			<arg line="-1 ${orig}/plugins" />
+		</exec>
+		<exec executable="ls" output="${newPluginsFile}">
+			<arg line="-1 ${new}/plugins" />
+		</exec>
+		<exec executable="diff" output="${pluginDifferencesFile}">
+			<arg line="-u ${origPluginsFile} ${newPluginsFile}" />
+		</exec>
+		<exec executable="sed" output="${pluginsToMoveFile}">
+			<arg line="-n '/^+o/p' ${pluginDifferencesFile}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i 's/^+//' ${pluginsToMoveFile}" />
+		</exec>
+		
+		<copy file="${pluginsToMoveFile}" tofile="${filesToMove}"/>
+		<copy file="${pluginsToMoveFile}" tofile="${dirsToMove}"/>
+		<exec executable="sed">
+			<arg line="-i '/.jar$/d' ${dirsToMove}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i 's/$/\/**/' ${dirsToMove}" />
+		</exec>
+		<exec executable="sed">
+			<arg line="-i '/.jar$/!d' ${filesToMove}" />
+		</exec>
+		
+		<mkdir dir="${dropinsDirectory}/plugins" />
+		<move todir="${dropinsDirectory}/plugins">
+			<fileset dir="${new}/plugins" includesfile="${dirsToMove}"/>
+		</move>
+		<move todir="${dropinsDirectory}/plugins">
+			<fileset dir="${new}/plugins" includesfile="${filesToMove}"/>
+		</move>
+
+		<delete file="${origPluginsFile}"/>
+		<delete file="${newPluginsFile}"/>
+		<delete file="${pluginsToMoveFile}"/>
+		<delete file="${pluginDifferencesFile}"/>
+		<delete file="${filesToMove}"/>
+		<delete file="${dirsToMove}"/>
 	</target>
 
 	<target name="package.extract.swt">
