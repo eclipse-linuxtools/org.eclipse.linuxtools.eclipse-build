@@ -1,5 +1,13 @@
 2010-08-17  Andrew Overholt  <overholt@redhat.com>
 
+	* build.xml: Use ${label} instead of "3.5.2" for SWT JAR
+	symlinks.  Pass in profile to use when installing.  Further
+	clean installation of build path references.  Apply patch from
+	Benjamin Drung to clean up some of these references (bug
+	#322283).
+
+2010-08-17  Andrew Overholt  <overholt@redhat.com>
+
 	Bug #294114
 
 	* build.xml: New target 'provisionSDKinDropins' which copies JDT

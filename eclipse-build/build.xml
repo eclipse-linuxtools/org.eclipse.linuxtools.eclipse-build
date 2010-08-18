@@ -884,10 +884,16 @@
 		</exec>
 	</target>
 
-	<target name="install" depends="provision.sdk,installIntoDestDir">
+	<target name="install" depends="provision.sdk">
+		<antcall target="installIntoDestDir">
+			<param name="profile" value="SDKProfile" />
+		</antcall>
 	</target>
 
-	<target name="installSDKinDropins" depends="provisionSDKinDropins,installIntoDestDir">
+	<target name="installSDKinDropins" depends="provisionSDKinDropins">
+		<antcall target="installIntoDestDir">
+			<param name="profile" value="PlatformProfile" />
+		</antcall>
 	</target>
 
 	<target name="installIntoDestDir">
@@ -920,7 +926,7 @@
 		<!-- Create the "swt.jar" and friends symlinks  -->
 		<fileset dir="${installationDir}/plugins" includes="org.eclipse.swt.gtk.linux.${buildArch}_*" id="swtjar" />
 		<property name="swtjarpath" refid="swtjar" />
-		<symlink link="${installationDir}/swt-gtk-3.5.2.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${installationDir}/swt-gtk-${label}.jar" resource="plugins/${swtjarpath}" />
 		<symlink link="${installationDir}/swt-gtk.jar" resource="plugins/${swtjarpath}" />
 		<symlink link="${installationDir}/swt.jar" resource="plugins/${swtjarpath}" />
 
@@ -954,8 +960,64 @@
 		<delete includeemptydirs="true" verbose="true">
 			<fileset dir="${installationDir}/configuration" includes="*.log" />
 			<fileset dir="${installationDir}/configuration" includes="**/data/**" />
+			<fileset dir="${installationDir}/configuration" includes="org.eclipse.update/**" />
+		</delete>
+		
+		<!-- Fix paths in p2 data -->
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${installationDir}/p2/org.eclipse.equinox.p2.core" includes="cache/**" />
 		</delete>
 
+		<property name="profileDir" value="p2/org.eclipse.equinox.p2.engine/profileRegistry/${profile}.profile" />
+		
+		<!-- Strip some build artifacts from installation -->
+		<exec executable="sed" inputstring="${destDir}" outputproperty="destDirWithUnderscores" failonerror="true">
+			<arg value="s@/@_@g" />
+		</exec>
+
+		<exec executable="sed" inputstring="${reposource}" outputproperty="reposourceWithUnderscores" failonerror="true">
+			<arg value="s@/@_@g" />
+		</exec>
+		<exec executable="sed" inputstring="${provisionDir}" outputproperty="provisionDirWithUnderscores" failonerror="true">
+			<arg value="s@/@_@g" />
+		</exec>
+		<apply executable="sed" failonerror="true" verbose="true">
+			<arg value="-i" />
+			<arg value="\@${destDir}@d;\@${destDirWithUnderscores}@d;\@${reposourceWithUnderscores}@d;\@${provisionDirWithUnderscores}@d" />
+			<srcfile />
+			<fileset dir="${installationDir}">
+				<include name="metadata/content.xml" />
+				<include name="p2/org.eclipse.equinox.p2.engine/.settings/org.eclipse.equinox.p2.metadata.repository.prefs" />
+				<include name="p2/org.eclipse.equinox.p2.engine/.settings/org.eclipse.equinox.p2.artifact.repository.prefs" />
+				<include name="${profileDir}/.data/.settings/org.eclipse.equinox.p2.metadata.repository.prefs" />
+				<include name="${profileDir}/.data/.settings/org.eclipse.equinox.p2.artifact.repository.prefs" />
+				<include name="eclipse.ini" />
+			</fileset>
+		</apply>
+
+		<!-- Clean up profile files -->
+		<echo message="${provisionDir}"/>
+		<apply executable="gunzip" failonerror="true" verbose="true">
+			<srcfile />
+			<fileset dir="${installationDir}/${profileDir}">
+				<include name="*.gz" />
+			</fileset>
+		</apply>
+		<apply executable="sed" failonerror="true" verbose="true">
+			<arg value="-i" />
+			<arg value="s@${provisionDir}@${installationDir}@g;s@${installationDir}@${prefix}/${libDir}/eclipse@g" />
+			<srcfile />
+			<fileset dir="${installationDir}/${profileDir}">
+				<include name="*.profile" />
+			</fileset>
+		</apply>
+		<apply executable="gzip" failonerror="true" verbose="true">
+			<srcfile />
+			<fileset dir="${installationDir}/${profileDir}">
+				<include name="*.profile" />
+			</fileset>
+		</apply>
+		
 		<!-- Move config file to /etc -->
 		<mkdir dir="${destDir}/etc" />
 		<move file="${installationDir}/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
