@@ -45,6 +45,7 @@
 	<uptodate property="provision.cvs.complete" srcfile="build-stamp" targetfile="provision.cvs-stamp" />
 	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
 	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
+	<uptodate property="provisionSDKinDropins.complete" srcfile="build-stamp" targetfile="provisionSDKinDropins-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build" />
@@ -883,7 +884,13 @@
 		</exec>
 	</target>
 
-	<target name="install" depends="provision.sdk">
+	<target name="install" depends="provision.sdk,installIntoDestDir">
+	</target>
+
+	<target name="installSDKinDropins" depends="provisionSDKinDropins,installIntoDestDir">
+	</target>
+
+	<target name="installIntoDestDir">
 		<mkdir dir="${installationDir}" />
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
@@ -964,7 +971,7 @@
 		<echo message="Installing Eclipse Platform and CVS feature" />
 	</target>
 
-	<target name="provisionSDKinDropins" depends="provision.cvs">
+	<target name="provisionSDKinDropins" depends="provision.cvs" unless="provisionSDKinDropins.complete">
 		<property name="platformAndCVSInstallation" value="${provisionDir}.cvs"/>
 		
 		<property name="jdtDropinsName" value="jdt"/>
@@ -1065,6 +1072,8 @@
 		<delete dir="${platformAndCVSInstallation}" />
 		<delete dir="${jdtInstallation}" />
 		<delete dir="${sdkInstallation}" />
+
+		<echo file="provisionSDKinDropins-stamp" />
 	</target>
 
 	<target name="moveNewStuffToDropins">
