@@ -1139,105 +1139,17 @@
 	</target>
 
 	<target name="moveNewStuffToDropins">
-		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />
-		<property name="filesToMove" value="${topBuildDir}/filesToMove"/>
-		<property name="dirsToMove" value="${topBuildDir}/dirsToMove"/>
-
-		<property name="origFeaturesFile" value="${topBuildDir}/origFeatures"/>
-		<property name="newFeaturesFile" value="${topBuildDir}/newFeatures"/>
-		<property name="featureDifferencesFile" value="${topBuildDir}/featuresToMove.diff"/>
-		<property name="featuresToMoveFile" value="${topBuildDir}/featuresToMove"/>
-
-		<property name="origPluginsFile" value="${topBuildDir}/origPlugins"/>
-		<property name="newPluginsFile" value="${topBuildDir}/newPlugins"/>
-		<property name="pluginDifferencesFile" value="${topBuildDir}/pluginsToMove.diff"/>
-		<property name="pluginsToMoveFile" value="${topBuildDir}/pluginsToMove"/>
-		
-		<!-- features -->
-		<exec executable="ls" output="${origFeaturesFile}">
-			<arg line="-1 ${orig}/features" />
-		</exec>
-		<exec executable="ls" output="${newFeaturesFile}">
-			<arg line="-1 ${new}/features" />
-		</exec>
-		<exec executable="diff" output="${featureDifferencesFile}">
-			<arg line="-u ${origFeaturesFile} ${newFeaturesFile}" />
-		</exec>
-		<exec executable="sed" output="${featuresToMoveFile}">
-			<arg line="-n '/^+o/p' ${featureDifferencesFile}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i 's/^+//' ${featuresToMoveFile}" />
-		</exec>
-		
-		<!-- FIXME:  this assumes all features are directories -->
-		<copy file="${featuresToMoveFile}" tofile="${filesToMove}"/>
-		<copy file="${featuresToMoveFile}" tofile="${dirsToMove}"/>
-		<exec executable="sed">
-			<arg line="-i '/.jar$/d' ${dirsToMove}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i 's/$/\/**/' ${dirsToMove}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i '/.jar$/!d' ${filesToMove}" />
-		</exec>
-
-		<mkdir dir="${dropinsDirectory}/features" />
-		<move todir="${dropinsDirectory}/features">
-			<fileset dir="${new}/features" includesfile="${dirsToMove}"/>
+		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />		
+		<move todir="${dropinsDirectory}/features" includeemptydirs="true">
+			<fileset dir="${new}/features" id="newFeatures.fileset">
+				<present present="srconly" targetdir="${orig}/features"/>
+			</fileset>
 		</move>
-
-		<delete file="${origFeaturesFile}"/>
-		<delete file="${newFeaturesFile}"/>
-		<delete file="${featuresToMoveFile}"/>
-		<delete file="${featureDifferencesFile}"/>
-		<delete file="${filesToMove}"/>
-		<delete file="${dirsToMove}"/>		
-
-		<!-- plugins -->
-		<exec executable="ls" output="${origPluginsFile}">
-			<arg line="-1 ${orig}/plugins" />
-		</exec>
-		<exec executable="ls" output="${newPluginsFile}">
-			<arg line="-1 ${new}/plugins" />
-		</exec>
-		<exec executable="diff" output="${pluginDifferencesFile}">
-			<arg line="-u ${origPluginsFile} ${newPluginsFile}" />
-		</exec>
-		<exec executable="sed" output="${pluginsToMoveFile}">
-			<arg line="-n '/^+o/p' ${pluginDifferencesFile}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i 's/^+//' ${pluginsToMoveFile}" />
-		</exec>
-		
-		<copy file="${pluginsToMoveFile}" tofile="${filesToMove}"/>
-		<copy file="${pluginsToMoveFile}" tofile="${dirsToMove}"/>
-		<exec executable="sed">
-			<arg line="-i '/.jar$/d' ${dirsToMove}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i 's/$/\/**/' ${dirsToMove}" />
-		</exec>
-		<exec executable="sed">
-			<arg line="-i '/.jar$/!d' ${filesToMove}" />
-		</exec>
-		
-		<mkdir dir="${dropinsDirectory}/plugins" />
-		<move todir="${dropinsDirectory}/plugins">
-			<fileset dir="${new}/plugins" includesfile="${dirsToMove}"/>
+		<move todir="${dropinsDirectory}/plugins" includeemptydirs="true">
+			<fileset dir="${new}/plugins" id="newPlugins.fileset">
+				<present present="srconly" targetdir="${orig}/plugins"/>
+			</fileset>
 		</move>
-		<move todir="${dropinsDirectory}/plugins">
-			<fileset dir="${new}/plugins" includesfile="${filesToMove}"/>
-		</move>
-
-		<delete file="${origPluginsFile}"/>
-		<delete file="${newPluginsFile}"/>
-		<delete file="${pluginsToMoveFile}"/>
-		<delete file="${pluginDifferencesFile}"/>
-		<delete file="${filesToMove}"/>
-		<delete file="${dirsToMove}"/>
 	</target>
 
 	<target name="package.extract.swt">
