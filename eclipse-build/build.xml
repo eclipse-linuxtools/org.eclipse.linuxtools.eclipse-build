@@ -1049,16 +1049,24 @@
 			<arg value="${provisionDir}" />
 			<arg value="${platformAndCVSInstallation}" />
 		</exec>
-		
-		<!-- Install SDK -->
-		<property name="sdkInstallation" value="${provisionDir}.sdk"/>
+
+		<!-- Install JDT -->
+		<property name="jdtInstallation" value="${provisionDir}.jdt"/>
 		<antcall target="provision.installed">
-			<param name="p2.director.installIU" value="org.eclipse.sdk.feature.group" />
+			<param name="p2.director.installIU" value="org.eclipse.jdt.feature.group" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
-		<!-- make a copy of the entire SDK installation -->
+		<!-- rename the JDT installation -->
 		<move file="${provisionDir}"
-			tofile="${sdkInstallation}"/>
+			tofile="${jdtInstallation}"/>
+		<!-- make a second copy of the clean JDT installation -->
+		<exec executable="cp" failonerror="true">
+			<arg value="-rd" />
+			<arg value="--no-target-directory" />
+			<arg value="${jdtInstallation}" />
+			<arg value="${jdtInstallation}.orig" />
+		</exec>
+		
 		<!-- restore clean platform+CVS installation -->
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
@@ -1067,22 +1075,15 @@
 			<arg value="${provisionDir}" />
 		</exec>
 		
-		<!-- Install JDT -->
-		<property name="jdtInstallation" value="${provisionDir}.jdt"/>
+		<!-- Install SDK -->
+		<property name="sdkInstallation" value="${provisionDir}.sdk"/>
 		<antcall target="provision.installed">
-			<param name="p2.director.installIU" value="org.eclipse.jdt.feature.group" />
+			<param name="p2.director.installIU" value="org.eclipse.sdk.feature.group" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
-		<!-- rename JDT installation directory -->
+		<!-- rename the entire SDK installation -->
 		<move file="${provisionDir}"
-			tofile="${jdtInstallation}"/>
-		<!-- make a copy of the JDT installation -->
-		<exec executable="cp" failonerror="true">
-			<arg value="-rd" />
-			<arg value="--no-target-directory" />
-			<arg value="${jdtInstallation}" />
-			<arg value="${jdtInstallation}.orig" />
-		</exec>
+			tofile="${sdkInstallation}"/>
 		
 		<!-- restore clean platform+CVS installation -->
 		<exec executable="cp" failonerror="true">
@@ -1099,7 +1100,7 @@
 			<param name="dropinsDir" value="${jdtDropinsName}" />
 		</antcall>
 		
-		<!-- restore clean JDT installation -->
+		<!-- restore clean JDT installation for comparison -->
 		<delete dir="${jdtInstallation}" />
 		<move file="${jdtInstallation}.orig"
 			tofile="${jdtInstallation}"/>
