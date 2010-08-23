@@ -292,6 +292,8 @@ function cleanAndSetup() {
           echo "org.junit.source was not found at ${junitSourceLoc}."
           echo "Some failures should be expected in org.eclipse.pde.ui.tests."
       fi
+      # these 2 plugins are not being recognized as bundles
+      rm -rf ${eclipseHome}/plugins/org.junit4 ${eclipseHome}/plugins/junit4.jar
   fi
 }
 

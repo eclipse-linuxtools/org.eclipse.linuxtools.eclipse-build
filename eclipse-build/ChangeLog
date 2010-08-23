@@ -1,3 +1,9 @@
+2010-08-23  Roland Grunberg  <rgrunber@redhat.com>
+
+	* runtests.sh: Remove org.junit4/ and junit4.jar during the launch of the
+	o.e.pde.ui.tests. They are recognized as plugins but not as bundles.
+	This causes some failures.
+
 2010-08-17  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Use ${label} instead of "3.5.2" for SWT JAR
