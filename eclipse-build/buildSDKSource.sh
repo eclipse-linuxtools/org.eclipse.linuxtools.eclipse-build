@@ -6,14 +6,12 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="I20100608-0911"
-baseBuilderTag="R3_5_2"
-eclipseBuilderTag="R3_5_2"
-label="3.6.0"
+buildID="R3_6_1"
+baseBuilderTag="R3_6_1"
+eclipseBuilderTag="R3_6_1"
+label="3.6.1"
 fetchTests="yes"
-equinoxTag="v20100329"
-ecfTag="I-HEAD-platform_feature-44-2010_05_28"
-concurrentTag="v20100215"
+ecfTag="R-Release_3_3-sdk_feature-22-2010_09_13"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
@@ -84,6 +82,7 @@ if [ ! -e ${eclipseBuilder} ]; then
   cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
   patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
+  patch -p0 < "${baseDir}"/patches/eclipse-removeSkipMapsCheck.patch
   cd "${baseDir}"
 fi
 
@@ -207,6 +206,7 @@ java -jar \
 fetchSdkTestsFeature \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
+-Dhuson=true \
 -DmapsRepo=${cvsRepo} \
 -DmapCvsRoot=${cvsRepo} \
 -DmapsCvsRoot=${cvsRepo} \

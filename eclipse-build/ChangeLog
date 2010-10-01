@@ -1,3 +1,8 @@
+2010-10-01  Alexander Kurtakov  <akurtako@redhat.com>
+    Update buildSDKSource.sh for 3.6.1 release. (Chris Aniszczyk bz#326597)
+	* patches/eclipse-removeSkipMapsCheck.patch: New file.
+	* buildSDKSource.sh: Update to 3.6.1.
+
 2010-08-23  Roland Grunberg  <rgrunber@redhat.com>
 
 	* runtests.sh: Remove org.junit4/ and junit4.jar during the launch of the
