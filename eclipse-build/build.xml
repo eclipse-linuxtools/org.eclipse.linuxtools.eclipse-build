@@ -139,15 +139,15 @@
 	</target>
 
 	<target name="fetch" unless="sdkSourceTarballPresent">
-		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-I20090611-1540-fetched-src.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
+		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-3.6.1-src.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
 	</target>
 
 	<target name="fetchTestSources" unless="testsSourcePresent">
-		<fail message="SDK tests source tarball is not present.  Please either download a file such as eclipse-sdktests-I20090611-1540-fetched-src.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
+		<fail message="SDK tests source tarball is not present.  Please either download a file such as eclipse-sdktests-3.6.1-sources.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
 	</target>
 
 	<target name="fetchTestScripts" unless="testsScriptsPresent">
-		<fail message="Scripts for the SDK tests tarball is not present.  Please either download a file such as eclipse-sdktests-I20090611-1540-fetched-scripts.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
+		<fail message="Scripts for the SDK tests tarball is not present.  Please either download a file such as eclipse-sdktests-3.6.1-scripts.tar.bz2 from http://www.eclipse.org/downloads/download.php?file=/technology/linuxtools/eclipse-build or generate one by running ./buildSDKSource.sh." />
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">

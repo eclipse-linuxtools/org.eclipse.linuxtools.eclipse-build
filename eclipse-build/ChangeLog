@@ -1,3 +1,9 @@
+2010-10-02  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.properties: Update for 3.6.1.
+	* build.xml: Better fail messages.
+	* pdebuild.properties: Update for 3.6.1
+
 2010-10-01  Alexander Kurtakov  <akurtako@redhat.com>
     Update buildSDKSource.sh for 3.6.1 release. (Chris Aniszczyk bz#326597)
 	* patches/eclipse-removeSkipMapsCheck.patch: New file.
