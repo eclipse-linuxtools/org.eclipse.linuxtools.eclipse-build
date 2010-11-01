@@ -62,7 +62,7 @@
 +    fi
 +
 +    if [ "x$ERROR" != "xyes" ]; then
-+      if [ $TESTING != true -o `echo $PROJECTNAME | grep "org.eclipse"` ]; then
++      if [ $TESTING != true ] || `echo "$PROJECTNAME" | grep "org.eclipse"`; then
 +        echo "  making symlink: $BUILDDIR/features/$PROJECTNAME -> $PROJECTDIR"
 +        ln -sfT "$PROJECTDIR" $BUILDDIR/features/"$PROJECTNAME"
 +      fi
@@ -96,7 +96,7 @@
 +    fi
 +
 +    if [ "x$ERROR" != "xyes" ]; then
-+      if [ $TESTING != true -o `echo $PROJECTNAME | grep "org.eclipse"` ]; then
++      if [ $TESTING != true ] || `echo "$PROJECTNAME" | grep "org.eclipse"`; then
 +        echo "  making symlink: $BUILDDIR/plugins/$PROJECTNAME -> $dir"
 +        ln -sfT "$dir" $BUILDDIR/plugins/"$PROJECTNAME"
 +      fi
