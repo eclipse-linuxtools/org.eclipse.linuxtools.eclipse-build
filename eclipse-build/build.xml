@@ -312,6 +312,7 @@
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
 		<!-- back-ported patches -->
+		<patch patchfile="${basedir}/patches/eclipse-help-webapps-xss-BZ329582.patch" dir="${buildDirectory}" strip="0" />
 		<!-- end back-ported patches -->
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />

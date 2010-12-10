@@ -1,0 +1,25 @@
+# Backport patch for upstream Eclipse BZ: 329582 (XSS attack)
+--- plugins/org.eclipse.help.webapp/advanced/content.jsp.orig	2010-04-21 14:00:16.000000000 -0400
++++ plugins/org.eclipse.help.webapp/advanced/content.jsp	2010-12-10 09:41:14.642196217 -0500
+@@ -45,7 +45,7 @@
+ 
+ </head>
+     <frameset id="contentFrameset" rows="<%=frameData.getContentAreaFrameSizes()%>" frameborder=0" framespacing="0" border="0" spacing="0">
+-	<frame name="ContentToolbarFrame" title="<%=ServletResources.getString("topicViewToolbar", request)%>" src='<%="contentToolbar.jsp"+data.getQuery()%>'  marginwidth="0" marginheight="0" scrolling="no" frameborder="0" >
++	<frame name="ContentToolbarFrame" title="<%=ServletResources.getString("topicViewToolbar", request)%>" src='<%="contentToolbar.jsp"+UrlUtil.htmlEncode(data.getQuery())%>'  marginwidth="0" marginheight="0" scrolling="no" frameborder="0" >
+ 	<frame ACCESSKEY="K" name="ContentViewFrame" title="<%=ServletResources.getString("topicView", request)%>" src='<%=UrlUtil.htmlEncode(data.getContentURL())%>'  marginwidth="10"<%=(data.isIE() && "6.0".compareTo(data.getIEVersion()) <=0)?"scrolling=\"yes\"":""%> marginheight="0" frameborder="0" >
+ 	<%
+ 	    AbstractFrame[] frames = frameData.getFrames(AbstractFrame.BELOW_CONTENT);
+--- plugins/org.eclipse.help.webapp/basic/index.jsp.orig	2010-04-21 14:00:17.000000000 -0400
++++ plugins/org.eclipse.help.webapp/basic/index.jsp	2010-12-10 09:42:58.516317455 -0500
+@@ -29,8 +29,8 @@
+ <%
+ 	}
+ %>
+-	<frame name="TabsFrame" title="<%=ServletResources.getString("helpToolbarFrame", request)%>" src='<%="basic/tabs.jsp"+data.getQuery()%>' marginwidth="5" marginheight="5" scrolling="no">
+-	<frame name="HelpFrame" title="<%=ServletResources.getString("ignore", "HelpFrame", request)%>" src='<%="basic/help.jsp"+data.getQuery()%>' frameborder="no" marginwidth="0" marginheight="0" scrolling="no">
++	<frame name="TabsFrame" title="<%=ServletResources.getString("helpToolbarFrame", request)%>" src='<%="basic/tabs.jsp"+UrlUtil.htmlEncode(data.getQuery())%>' marginwidth="5" marginheight="5" scrolling="no">
++	<frame name="HelpFrame" title="<%=ServletResources.getString("ignore", "HelpFrame", request)%>" src='<%="basic/help.jsp"+UrlUtil.htmlEncode(data.getQuery())%>' frameborder="no" marginwidth="0" marginheight="0" scrolling="no">
+ <%
+ 	if(!("0".equals(data.getFooterHeight()))){
+ %>
