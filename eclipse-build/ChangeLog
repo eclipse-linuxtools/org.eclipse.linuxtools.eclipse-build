@@ -1,3 +1,11 @@
+2011-01-11  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #319476
+
+	* patches/bz319476-compile-jar-in-jar-loader.patch: Backport patch to
+	build jar-in-jar-loader in JDT UI (bz324794).
+	* build.xml: Add patch to build jar-in-jar-loader.
+
 2010-12-10  Severin Gehwolf <sgehwolf@redhat.com>
 
 	* patches/eclipse-help-webapps-xss-BZ329582.patch: Backport patch for XSS vulnerability
