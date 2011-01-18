@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #### Please post any and all results and analysis here:
 #### http://wiki.eclipse.org/Linux_Tools_Project/Eclipse_Build/Tests
