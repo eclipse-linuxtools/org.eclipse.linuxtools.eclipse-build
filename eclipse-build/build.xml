@@ -60,6 +60,7 @@
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="provisionDir" value="${buildDirectory}/installation" />
+	<property name="provisionWithTestsDir" value="${buildDirectory}/installationWithTests" />
 
 	<!-- Distros with alternative JUnit 4 JAR locations should pass this
 	     parameter in to ant -->
@@ -786,6 +787,36 @@
 		<property name="debugTestsSwitch" value="" />
 		<property name="verboseTestsSwitch" value="" />
 
+		<!-- Install a clean SDK for testing -->
+		<antcall target="provision">
+			<param name="provisionDir" value="${provisionWithTestsDir}"/>
+			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
+			<param name="profileName" value="SDKProfile" />
+		</antcall>
+
+		<fileset id="junit4.jar" dir="${provisionWithTestsDir}/plugins">
+			<include name="**/org.junit4_**/junit.jar" />
+		</fileset>
+		<property name="junit4jar.path" refid="junit4.jar" />
+
+		<delete file="${provisionWithTestsDir}/plugins/${junit4jar.path}" />
+		<symlink link="${provisionWithTestsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
+
+		<!-- Re-symlink system JARs -->
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		
+		<!-- Install test framework -->
+		<antcall target="provision">
+			<param name="provisionDir" value="${provisionWithTestsDir}"/>
+			<param name="reposource" value="${testsBuildDirectory}/buildRepo" />
+			<param name="p2.director.installIU" value="org.eclipse.test.feature.group" />
+			<param name="profileName" value="SDKProfile" />
+		</antcall>
+		
 		<echo message="###################################################################" />
 		<echo message="#                                                                 #" />
 		<echo message="#             Please post and discuss results here:               #" />
@@ -803,7 +834,7 @@
 		<exec executable="${basedir}/runtests.sh" dir="${basedir}">
 			<arg value="-t${timestamp}" />
 			<arg value="-b ${testsBuildDirectory}" />
-			<arg value="-p ${provisionDir}" />
+			<arg value="-p ${provisionWithTestsDir}" />
 			<arg value="${testSwitches}" />
 		</exec>
 		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />

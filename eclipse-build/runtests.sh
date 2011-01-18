@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #### Please post any and all results and analysis here:
 #### http://wiki.eclipse.org/Linux_Tools_Project/Eclipse_Build/Tests
@@ -94,14 +94,11 @@ function init() {
 
 	testsParent=$(pwd)/tests_${timestamp}
     mkdir -p ${testsParent}
-    cp -rp ${provisionDir} ${testsParent}/testsinstallation.clean
-	cleanInstall=${testsParent}/testsinstallation.clean
-        workspace=${testsParent}/workspace
+    cp -rp ${provisionDir} ${testsParent}/installationWithTests.clean
+	cleanInstall=${testsParent}/installationWithTests.clean
+    workspace=${testsParent}/workspace
 
-	eclipseHome=${cleanInstall}
-        installTestFramework
-
-	eclipseHome=${testsParent}/installation
+	eclipseHome=${provisionDir}
 
 	results=${testsParent}/results
 	datadir=${testsParent}/testDataDir

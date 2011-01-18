@@ -1,3 +1,10 @@
+2011-01-18  Andrew Overholt  <overholt@redhat.com>
+
+	Bug #334716
+
+	* build.xml: Provision SDK and test framework for use by tests.
+	* runtests.sh: Use SDK and test framework provisioned by build.xml.
+
 2011-01-11  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #319476
