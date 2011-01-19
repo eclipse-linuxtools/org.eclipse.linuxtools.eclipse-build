@@ -859,7 +859,7 @@
 			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
 		</junitreport>
 		<!-- Generate top-level HTML report -->
-		<xslt style="${basedir}/tests_${timestamp}/installation/plugins/${testframework}/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		<xslt style="${provisionWithTestsDir}/plugins/${testframework}/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
 	</target>
 
 	<target name="run.director">

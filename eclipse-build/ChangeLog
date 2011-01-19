@@ -1,3 +1,7 @@
+2011-01-19  Andrew Overholt  <overholt@redhat.com>
+
+	* build.xml: Aggregate test results with proper JUNIT.XSL.
+
 2011-01-18  Andrew Overholt  <overholt@redhat.com>
 
 	Bug #334716
