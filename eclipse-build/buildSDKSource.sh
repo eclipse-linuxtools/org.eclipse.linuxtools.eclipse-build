@@ -6,10 +6,10 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="R3_6_1"
+buildID="R3_6_2"
 baseBuilderTag="R3_6_1"
 eclipseBuilderTag="R3_6_1"
-label="3.6.1"
+label="3.6.2"
 fetchTests="yes"
 ecfTag="R-Release_3_3-sdk_feature-22-2010_09_13"
 
@@ -126,19 +126,25 @@ pushd plugins/org.eclipse.osgi.util
   unzip -q -d src src.zip
 popd
 
-# Source for ECF bits that aren't part of SDK map files
+git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
+cd org.eclipse.ecf
+git archive --format=tar --prefix=ecf-3.4.0/ R-Release_3_4-sdk_feature-8_2010-10-29_09-13-51 | gzip >ecf-3.4.0.tar.gz
+cp ecf-3.4.0.tar.gz ../
+cd ..
+rm -fr org.eclipse.ecf
+tar -xf ecf-3.4.0.tar.gz
+
+cd ecf-3.4.0
+
+# Source for ECF bthat aren't part of SDK map files
 for f in \
     org.eclipse.ecf \
     org.eclipse.ecf.filetransfer \
     org.eclipse.ecf.identity \
     org.eclipse.ecf.ssl \
 ; do
-cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/rt \
-export -r ${ecfTag} org.eclipse.ecf/framework/bundles/$f;
+mv framework/bundles/$f ../plugins;
 done
-
-mv org.eclipse.ecf/framework/bundles/* plugins
-rm -fr org.eclipse.ecf/framework
 
 for f in \
     org.eclipse.ecf.provider.filetransfer \
@@ -146,12 +152,10 @@ for f in \
     org.eclipse.ecf.provider.filetransfer.httpclient.ssl \
     org.eclipse.ecf.provider.filetransfer.ssl \
 ; do
-cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/rt \
-export -r ${ecfTag} org.eclipse.ecf/providers/bundles/$f;
+mv  providers/bundles/$f ../plugins;
 done
 
-mv org.eclipse.ecf/providers/bundles/* plugins
-rm -fr org.eclipse.ecf
+rm -fr ecf-3.4.0
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
