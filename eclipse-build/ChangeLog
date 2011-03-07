@@ -1,3 +1,7 @@
+2011-03-07 Alexander Kurtakov  <akurtako@redhat.com>
+
+	* buildSDKSource.sh: Cleanup temp resources.
+
 2011-01-19  Andrew Overholt  <overholt@redhat.com>
 
 	* build.xml: Aggregate test results with proper JUNIT.XSL.

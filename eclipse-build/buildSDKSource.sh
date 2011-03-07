@@ -133,7 +133,7 @@ cp ecf-3.4.0.tar.gz ../
 cd ..
 rm -fr org.eclipse.ecf
 tar -xf ecf-3.4.0.tar.gz
-
+rm -fr ecf-3.4.0.tar.gz
 cd ecf-3.4.0
 
 # Source for ECF bthat aren't part of SDK map files
@@ -154,7 +154,7 @@ for f in \
 ; do
 mv  providers/bundles/$f ../plugins;
 done
-
+cd ..
 rm -fr ecf-3.4.0
 
 cd "${fetchDirectory}"
