@@ -4,7 +4,7 @@ Bug: https://bugs.eclipse.org/bugs/show_bug.cgi?id=317634
 
 --- eclipse-3.6.0.orig/eclipse/features/org.eclipse.equinox.executable/library/gtk/build.sh
 +++ eclipse-3.6.0/eclipse/features/org.eclipse.equinox.executable/library/gtk/build.sh
-@@ -155,7 +155,7 @@ DEFAULT_OS_ARCH="$defaultOSArch"
+@@ -161,7 +161,7 @@ DEFAULT_OS_ARCH="$defaultOSArch"
  DEFAULT_WS="$defaultWS"
  DEFAULT_JAVA=$defaultJava
  

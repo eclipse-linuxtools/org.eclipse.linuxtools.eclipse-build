@@ -174,7 +174,7 @@
     <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.ppc64"
           os="linux"
-@@ -198,25 +308,4 @@
+@@ -208,25 +318,4 @@
           version="0.0.0"
           fragment="true"/>
  
