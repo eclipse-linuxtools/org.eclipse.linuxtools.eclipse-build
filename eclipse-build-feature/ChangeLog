@@ -1,3 +1,7 @@
+2011-03-09  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* feature.xml: Update to 3.6.2.
+
 2010-07-14  Andrew Overholt  <overholt@redhat.com>
 
 	* build.properties: Remove svn:executable property.
