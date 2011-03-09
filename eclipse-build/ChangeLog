@@ -1,3 +1,7 @@
+2011-03-09  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* build.xml: Override files when symlinking.
+
 2011-03-07 Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildSDKSource.sh: Cleanup temp resources.

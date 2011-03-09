@@ -945,23 +945,23 @@
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png" tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png" tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
 		<mkdir dir="${destDir}${prefix}/share/pixmaps" />
-		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" />
+		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" overwrite="true"/>
 		<!--shared dropins folder for architecture-independent plugins-->
 		<mkdir dir="${destDir}${prefix}/share/eclipse/dropins" />
 		<!-- eclipse binary -->
 		<mkdir dir="${destDir}${prefix}/bin" />
-		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" />
+		<symlink link="${destDir}${prefix}/bin/eclipse" resource="../${libDir}/eclipse/eclipse" overwrite="true"/>
 		<!-- FIXME:  we really shouldn't need this anymore but at least pdebuild.sh will need to be updated -->
 		<!-- Create the "startup.jar" symlink -->
 		<fileset dir="${installationDir}/plugins" includes="org.eclipse.equinox.launcher_*" id="startupjar" />
 		<property name="startupjarpath" refid="startupjar" />
-		<symlink link="${installationDir}/startup.jar" resource="plugins/${startupjarpath}" />
+		<symlink link="${installationDir}/startup.jar" resource="plugins/${startupjarpath}" overwrite="true"/>
 		<!-- Create the "swt.jar" and friends symlinks  -->
 		<fileset dir="${installationDir}/plugins" includes="org.eclipse.swt.gtk.linux.${buildArch}_*" id="swtjar" />
 		<property name="swtjarpath" refid="swtjar" />
-		<symlink link="${installationDir}/swt-gtk-${label}.jar" resource="plugins/${swtjarpath}" />
-		<symlink link="${installationDir}/swt-gtk.jar" resource="plugins/${swtjarpath}" />
-		<symlink link="${installationDir}/swt.jar" resource="plugins/${swtjarpath}" />
+		<symlink link="${installationDir}/swt-gtk-${label}.jar" resource="plugins/${swtjarpath}" overwrite="true"/>
+		<symlink link="${installationDir}/swt-gtk.jar" resource="plugins/${swtjarpath}" overwrite="true"/>
+		<symlink link="${installationDir}/swt.jar" resource="plugins/${swtjarpath}" overwrite="true"/>
 
 		<echo append="true" file="${installationDir}/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
@@ -1054,7 +1054,7 @@
 		<!-- Move config file to /etc -->
 		<mkdir dir="${destDir}/etc" />
 		<move file="${installationDir}/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
-		<symlink link="${installationDir}/eclipse.ini" resource="/etc/eclipse.ini" />
+		<symlink link="${installationDir}/eclipse.ini" resource="/etc/eclipse.ini" overwrite="true"/>
 
 	</target>
 
