@@ -2,9 +2,9 @@
 
 baseDir=$(pwd)
 workDirectory=
-eclipsebuildTag="0.5.0"
+eclipsebuildTag="master"
 
-usage="usage:  <eclipse-build tag (ex. 0.5.0)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
+usage="usage:  <eclipse-build tag (ex. 0.7.0)> [-workdir <working directory>] [-eclipseBuildTag <eclipse-build tag to check out>]"
 
 while [ $# -gt 0 ]
 do
@@ -29,15 +29,22 @@ fi
 
 echo "Going to create source tarball for eclipse-build ${eclipsebuildTag}."
 
-mkdir -p "${workDirectory}"
+mkdir "${workDirectory}"
 cd "${workDirectory}"
-svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build
-mv eclipse-build eclipse-build-${eclipsebuildTag}
+git clone git://git.eclipse.org/gitroot/linuxtools/org.eclipse.linuxtools.eclipse-build.git .
+cd "${workDirectory}"
+git archive --format=tar --prefix=eclipse-build-${eclipsebuildTag}/ ${eclipsebuildTag} | gzip >eclipse-build-${eclipsebuildTag}-tmp.tar.gz 
+tar -xf eclipse-build-${eclipsebuildTag}-tmp.tar.gz
 cd eclipse-build-${eclipsebuildTag}
+mv eclipse-build eclipse-build-${eclipsebuildTag}
 rm -rf .project .settings
-svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-config
-svn export svn://dev.eclipse.org/svnroot/technology/org.eclipse.linuxtools/eclipse-build/tags/${eclipsebuildTag}/eclipse-build-feature
+mv -f eclipse-build-config eclipse-build-${eclipsebuildTag}
+mv -f eclipse-build-feature eclipse-build-${eclipsebuildTag}
+mv -f eclipse-build-${eclipsebuildTag}/* .
+rm -fr eclipse-build-${eclipsebuildTag}
 cd ..
+
+
 tar caf eclipse-build-${eclipsebuildTag}.tar.bz2 eclipse-build-${eclipsebuildTag}
 cd "${baseDir}"
 

@@ -1,3 +1,7 @@
+2011-03-11  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* buildEclipseBuildSource.sh: Adapt for the move to git.
+
 2011-03-09  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* build.xml: Override files when symlinking.
