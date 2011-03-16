@@ -3,6 +3,12 @@
 	* patches/no-gnome-vfs.patch: New file.
 	* build.xml: Apply patch to fix working without gnome-vfs.
 
+2011-03-16  Stephen Shaw <sshaw@decriptor.com>
+
+	* build.properties:
+	* pdebuild.properties: accounts for jvm being in
+	/usr/lib64 on 64bit machines
+
 2011-03-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildEclipseBuildSource.sh: Adapt for the move to git.
