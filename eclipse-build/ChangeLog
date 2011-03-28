@@ -1,5 +1,9 @@
 2011-03-28  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* patches/webkitgtk.patch: Change patch to use pkg-config instead of hardcoding options.
+	
+2011-03-28  Alexander Kurtakov  <akurtako@redhat.com>
+
 	* patches/no-gnome-vfs.patch: New file.
 	* build.xml: Apply patch to fix working without gnome-vfs.
 
