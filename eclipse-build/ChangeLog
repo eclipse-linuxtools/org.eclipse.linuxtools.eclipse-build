@@ -1,3 +1,8 @@
+2011-03-28  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/no-gnome-vfs.patch: New file.
+	* build.xml: Apply patch to fix working without gnome-vfs.
+
 2011-03-11  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildEclipseBuildSource.sh: Adapt for the move to git.
