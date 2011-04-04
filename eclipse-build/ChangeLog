@@ -1,3 +1,7 @@
+2011-04-04  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* nonosgidependencies.properties: Drop ant-trax and ant-nodeps - they are gone since Ant 1.8.2.
+
 2011-03-28  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/webkitgtk.patch: Change patch to use pkg-config instead of hardcoding options.
