@@ -1,5 +1,6 @@
 2011-04-04  Alexander Kurtakov  <akurtako@redhat.com>
 
+	* dependencies.properties: Use jsp-api from tomcat6.
 	* nonosgidependencies.properties: Drop ant-trax and ant-nodeps - they are gone since Ant 1.8.2.
 
 2011-03-28  Alexander Kurtakov  <akurtako@redhat.com>
