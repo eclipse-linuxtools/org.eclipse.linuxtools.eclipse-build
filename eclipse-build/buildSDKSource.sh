@@ -124,6 +124,8 @@ cd "${fetchDirectory}"
 # Extract osgi.util src for rebuilding
 pushd plugins/org.eclipse.osgi.util
   unzip -q -d src src.zip
+  # Remove pre-compiled class files and the source.zip
+  rm -r org/ src.zip
 popd
 
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
