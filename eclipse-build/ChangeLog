@@ -1,3 +1,8 @@
+2011-04-05  Alexander Kurtakov  <akurtako@redhat.com>
+	Fix for webkit crash. Thanks to Sami Wagiaalla (bz#341640).
+	* patches/webkit-missing-hearder.patch: New file.
+	* build.xml: Apply new patch to fix webkit crash.
+
 2011-04-04  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* dependencies.properties: Use jsp-api from tomcat6.
