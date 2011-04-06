@@ -39,7 +39,6 @@ configs=\
 archivesFormat =group,group,group-zip
 javacFailOnError=false
 javacDebugInfo=on
-javacVerbose=true
 compilerArg=-inlineJSR -enableJavadoc -encoding ISO-8859-1
 
 zipargs=
