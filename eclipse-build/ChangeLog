@@ -1,3 +1,8 @@
+2011-04-06  Chris Aniszczyk <zx@redhat.com>
+
+        * patches/eclipse-relax-sat4j-deps.patch: New file.
+        * build.xml: Apply patch to relax sat4j deps.
+
 2011-04-06  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* buildEclipseBuildSource.sh: Make the tarball use xz compression.
