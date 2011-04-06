@@ -45,7 +45,7 @@ rm -fr eclipse-build-${eclipsebuildTag}
 cd ..
 
 
-tar caf eclipse-build-${eclipsebuildTag}.tar.bz2 eclipse-build-${eclipsebuildTag}
+tar caf eclipse-build-${eclipsebuildTag}.tar.xz eclipse-build-${eclipsebuildTag}
 cd "${baseDir}"
 
-echo "Built ${workDirectory}/eclipse-build-${eclipsebuildTag}.tar.bz2"
+echo "Built ${workDirectory}/eclipse-build-${eclipsebuildTag}.tar.xz"

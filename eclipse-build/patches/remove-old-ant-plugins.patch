@@ -1,0 +1,14 @@
+--- plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF.sav	2010-05-20 01:14:14.000000000 +0300
++++ plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF	2011-04-06 10:54:32.654401348 +0300
+@@ -4,9 +4,8 @@ Bundle-ClassPath: lib/ant.jar,lib/ant-an
+  jar,lib/ant-apache-regexp.jar,lib/ant-apache-resolver.jar,lib/ant-com
+  mons-logging.jar,lib/ant-commons-net.jar,lib/ant-jai.jar,lib/ant-java
+  mail.jar,lib/ant-jdepend.jar,lib/ant-jmf.jar,lib/ant-jsch.jar,lib/ant
+- -junit.jar,lib/ant-launcher.jar,lib/ant-netrexx.jar,lib/ant-nodeps.ja
+- r,lib/ant-starteam.jar,lib/ant-stylebook.jar,lib/ant-swing.jar,lib/an
+- t-trax.jar,lib/ant-weblogic.jar
++ -junit.jar,lib/ant-launcher.jar,lib/ant-netrexx.jar,lib/ant-starteam.
++ jar,lib/ant-stylebook.jar,lib/ant-swing.jar,lib/ant-weblogic.jar
+ Bundle-Vendor: %providerName
+ Bundle-Localization: plugin
+ Bundle-RequiredExecutionEnvironment: J2SE-1.2

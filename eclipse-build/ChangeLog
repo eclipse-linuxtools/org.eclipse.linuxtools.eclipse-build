@@ -1,3 +1,9 @@
+2011-04-06  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* buildEclipseBuildSource.sh: Make the tarball use xz compression.
+    * patches/remove-old-ant-plugins.patch: New file.
+	* build.xml: Apply patch to remove old ant plugins from ant bundle manifest.
+
 2011-04-05  Alexander Kurtakov  <akurtako@redhat.com>
 	Fix for webkit crash. Thanks to Sami Wagiaalla (bz#341640).
 	* patches/webkit-missing-hearder.patch: New file.
