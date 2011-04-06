@@ -1,7 +1,5 @@
-diff --git a/plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h b/plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h
-index 05b9a2e..75e8ea0 100755
---- a/plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h
-+++ b/plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h
+--- plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h.sav	2011-04-05 16:50:36.553635440 +0300
++++ plugins/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/webkitgtk.h	2011-04-05 16:50:01.343072638 +0300
 @@ -24,6 +24,7 @@
  #include <libsoup/soup-cookie-jar.h>
  #include <libsoup/soup-session-feature.h>
