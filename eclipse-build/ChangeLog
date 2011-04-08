@@ -1,3 +1,7 @@
+2011-04-08  Alexander Kurtakov  <akurtako@redhat.com>
+
+	* patches/no-gnome-vfs.patch: Fix Program.launch(executable) when libswt-gnome is missing.
+
 2011-04-06  Chris Aniszczyk <zx@redhat.com>
 
         * patches/eclipse-relax-sat4j-deps.patch: New file.
