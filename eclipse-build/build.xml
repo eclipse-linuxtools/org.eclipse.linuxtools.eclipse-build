@@ -915,6 +915,8 @@
 			<arg line="-application org.eclipse.equinox.p2.director " />
 			<arg line="-flavor ${p2.flavor}" />
 			<arg line="-installIU ${p2.director.installIU}" />
+			<arg line="-profile ${p2.director.profile}" />
+			<arg line="-destination ${p2.director.install.path}" />
 			<arg line="${p2.director.extraArgs}" />
 			<arg line="-metadatarepository file:${p2.repo}" />
 			<arg line="-artifactrepository file:${p2.repo}" />
@@ -935,12 +937,12 @@
 
 	<target name="installIntoDestDir">
 		<mkdir dir="${installationDir}" />
-		<exec executable="cp" failonerror="true">
-			<arg value="-rd" />
-			<arg value="--no-target-directory" />
-			<arg value="${provisionDir}" />
-			<arg value="${installationDir}" />
-		</exec>
+                <exec executable="rsync" failonerror="true">
+                       <arg value="-vrpl" />
+                       <arg value="--exclude=dropins" />
+                       <arg value="${provisionDir}/" />
+                       <arg value="${installationDir}/" />
+                </exec>
 
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
@@ -990,6 +992,12 @@
 			<arg value="${basedir}/extract_patterns.txt" />
 			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
 		</java>
+
+                <exec executable="rsync" failonerror="true">
+                       <arg value="-vrpl" />
+                       <arg value="${provisionDir}/dropins" />
+                       <arg value="${installationDir}/dropins" />
+                </exec>
 
 		<!-- Remove unnecessary configuration data -->
 		<delete dir="${installationDir}/configuration/org.eclipse.core.runtime" />
