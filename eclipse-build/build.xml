@@ -995,8 +995,8 @@
 
                 <exec executable="rsync" failonerror="true">
                        <arg value="-vrpl" />
-                       <arg value="${provisionDir}/dropins" />
-                       <arg value="${installationDir}/dropins" />
+                       <arg value="${provisionDir}/dropins/" />
+                       <arg value="${installationDir}/dropins/" />
                 </exec>
 
 		<!-- Remove unnecessary configuration data -->
