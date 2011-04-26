@@ -917,6 +917,9 @@
 			<arg line="-installIU ${p2.director.installIU}" />
 			<arg line="-profile ${p2.director.profile}" />
 			<arg line="-destination ${p2.director.install.path}" />
+			<arg line="-p2.os ${p2.os}" />
+			<arg line="-p2.ws ${p2.ws}" />
+			<arg line="-p2.arch ${p2.arch}" />
 			<arg line="${p2.director.extraArgs}" />
 			<arg line="-metadatarepository file:${p2.repo}" />
 			<arg line="-artifactrepository file:${p2.repo}" />
