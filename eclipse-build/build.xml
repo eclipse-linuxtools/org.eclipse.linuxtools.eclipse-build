@@ -685,7 +685,7 @@
 	<target name="provision.cvs" depends="p2prep" unless="provision.cvs.complete">
 		<echo message="Installing into:  ${provisionDir}" />
 		<antcall target="provision">
-			<param name="p2.director.installIU" value="org.eclipse.platform.ide,org.eclipse.cvs.feature.group" />
+			<param name="p2.director.installIU" value="org.eclipse.platform.ide,org.eclipse.cvs.feature.group,org.eclipse.equinox.initializer" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
 
@@ -733,12 +733,6 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
-
-		<copy todir="${provisionDir}/plugins">
-			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
-				<include name="org.eclipse.equinox.initializer*.jar" />
-			</fileset>
-		</copy>
 	</target>
 
 	<target name="provision.installed" depends="p2prep">
@@ -755,12 +749,6 @@
 			<param name="p2.arch" value="${buildArch}" />
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
-
-		<copy todir="${provisionDir}/plugins">
-			<fileset dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer">
-				<include name="org.eclipse.equinox.initializer*.jar" />
-			</fileset>
-		</copy>
 	</target>
 
 	<target name="checkDebugAndVerbose">
@@ -996,6 +984,7 @@
 			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
 		</java>
 
+		<!-- copy PDE and JDT to dropins -->
                 <exec executable="rsync" failonerror="true">
                        <arg value="-vrpl" />
                        <arg value="${provisionDir}/dropins/" />
