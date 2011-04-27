@@ -914,6 +914,27 @@
 		</exec>
 	</target>
 
+	<target name="run.installed.director.uninstall">
+                <chmod perm="ugo+rx" file="${directorToRun}" />
+                <exec executable="${directorToRun}">
+                        <arg line="-nosplash " />
+                        <arg line="-consoleLog" />
+                        <arg line="-data ${buildworkspace} " />
+                        <arg line="-application org.eclipse.equinox.p2.director " />
+                        <arg line="-flavor ${p2.flavor}" />
+                        <arg line="-uninstallIU ${p2.director.uninstallIU}" />
+                        <arg line="-profile ${p2.director.profile}" />
+                       	<arg line="-destination ${p2.director.install.path}" />
+                        <arg line="-p2.os ${p2.os}" />
+                        <arg line="-p2.ws ${p2.ws}" />
+                        <arg line="-p2.arch ${p2.arch}" />
+                        <arg line="${p2.director.extraArgs}" />
+                        <arg line="-metadatarepository file:${p2.repo}" />
+                        <arg line="-artifactrepository file:${p2.repo}" />
+                </exec>
+        </target>
+
+
 	<target name="install" depends="provision.sdk">
 		<antcall target="installIntoDestDir">
 			<param name="profile" value="SDKProfile" />
@@ -983,6 +1004,19 @@
 			<arg value="${basedir}/extract_patterns.txt" />
 			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
 		</java>
+
+		<!-- remove the initializer -->
+		<property name="directorToRun" value="${installationDir}/eclipse" />
+                <antcall target="run.installed.director.uninstall">
+                        <param name="p2.director.uninstallIU" value="org.eclipse.equinox.initializer" />
+                        <param name="p2.director.profile" value="PlatformProfile" />
+                        <param name="p2.director.install.path" value="${installationDir}" />
+                        <param name="p2.director.extraArgs" value="-purgeHistory" />
+			<param name="p2.os" value="linux" />
+                        <param name="p2.ws" value="gtk" />
+                        <param name="p2.arch" value="${buildArch}" />
+                        <param name="p2.repo" value="${installationDir}" />
+                </antcall>
 
 		<!-- copy PDE and JDT to dropins -->
                 <exec executable="rsync" failonerror="true">
