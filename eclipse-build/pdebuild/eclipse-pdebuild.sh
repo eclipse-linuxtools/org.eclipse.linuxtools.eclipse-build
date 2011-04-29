@@ -263,8 +263,10 @@ fi
 
 echo "Starting build:"
 
+launcherJar=$(ls $SDK/plugins | grep "org.eclipse.equinox.launcher_")
+
 if [ $testing != true ]; then
-  java -cp $SDK/startup.jar \
+  java -cp $SDK/plugins/${launcherJar} \
     org.eclipse.core.launcher.Main \
     -application org.eclipse.ant.core.antRunner \
     $debugPlatformArgs \
@@ -284,7 +286,7 @@ if [ $testing != true ]; then
 
 else
   echo "\
-  java -cp $SDK/startup.jar \
+  java -cp $SDK/plugins/${launcherJar} \
     org.eclipse.core.launcher.Main \
     -application org.eclipse.ant.core.antRunner \
     $debugPlatformArgs \
