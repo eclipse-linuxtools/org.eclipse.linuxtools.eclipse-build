@@ -12,11 +12,12 @@ fi
 
 java -jar \
 $launcherDir/org.eclipse.equinox.launcher_*.jar \
+-debug \
 -consolelog \
--data build/eclipse-3.6.0-src \
+-data /home/zx/eclipses/eclipse \
 -application org.eclipse.ant.core.antRunner \
 -f pdebuild.xml generateScripts \
--DbuildDirectory=build/eclipse-3.6.0-src \
+-DbuildDirectory=build/eclipse-3.7.0-I20110510-0800-src \
 -DskipBase=true \
--DsdkSource=build/eclipse-3.6.0-src \
+-DsdkSource=build/eclipse-3.7.0-I20110510-0800-src \
 2>&1 | tee ./generatePdeBuildScripts.log

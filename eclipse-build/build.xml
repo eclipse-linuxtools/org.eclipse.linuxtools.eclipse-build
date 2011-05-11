@@ -292,38 +292,30 @@
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<!-- eclipse-build-only patches -->
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
+		<!--
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
+                -->
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-use-newer-commons-codec.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/junit4-nochecksum.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/bz318912.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-compile-xpt.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/no-gnome-vfs.patch" dir="${buildDirectory}" strip="0" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
-		<!-- back-ported patches -->
-		<patch patchfile="${basedir}/patches/bz319476-compile-jar-in-jar-loader.patch" dir="${buildDirectory}/plugins/org.eclipse.jdt.ui" strip="0" />
-		<!-- end back-ported patches -->
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
-		<patch patchfile="${basedir}/patches/java-home.patch" dir="${buildDirectory}" strip="2" />
-		<patch patchfile="${basedir}/patches/webkitgtk.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/webkit-missing-hearder.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/remove-old-ant-plugins.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-relax-sat4j-deps.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
@@ -354,19 +346,19 @@
 		<symlinkOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
 		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" />
 		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" />
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20110505-1300/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.7.1.v20100518-1145/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20110505-1300/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*" />
 			<substitution expression="" />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v20090203-1005/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*" />
 			<substitution expression="" />
 		</replaceregexp>
@@ -605,6 +597,7 @@
 			<arg line="-Dbasedir=${productFiles}/rcpConfig" />
 			<arg line="-DbuildId=${buildId} " />
 			<arg line="-DbaseBuildPath=${buildDirectory} " />
+			<arg line="-DbaseLocation=${buildDirectory} " />
 			<arg line="-Declipse.pdebuild.scripts=${eclipse.pdebuild.scripts} " />
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />

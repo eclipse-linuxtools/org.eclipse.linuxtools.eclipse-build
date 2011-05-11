@@ -6,12 +6,11 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="R3_6_2"
-baseBuilderTag="R3_6_1"
-eclipseBuilderTag="R3_6_1"
-label="3.6.2"
-fetchTests="yes"
-ecfTag="R-Release_3_3-sdk_feature-22-2010_09_13"
+buildID="I20110510-0800"
+baseBuilderTag="vI20110510-0800"
+eclipseBuilderTag="vI20110510-0800"
+label="3.7.0-I20110510-0800"
+fetchTests="no"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
@@ -130,13 +129,13 @@ popd
 
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
 cd org.eclipse.ecf
-git archive --format=tar --prefix=ecf-3.4.0/ R-Release_3_4-sdk_feature-8_2010-10-29_09-13-51 | gzip >ecf-3.4.0.tar.gz
-cp ecf-3.4.0.tar.gz ../
+git archive --format=tar --prefix=ecf-3.5.0/ R-Release_HEAD-sdk_feature-19_2011-03-13_18-40-16 | gzip >ecf-3.5.0.tar.gz
+cp ecf-3.5.0.tar.gz ../
 cd ..
 rm -fr org.eclipse.ecf
-tar -xf ecf-3.4.0.tar.gz
-rm -fr ecf-3.4.0.tar.gz
-cd ecf-3.4.0
+tar -xf ecf-3.5.0.tar.gz
+rm -fr ecf-3.5.0.tar.gz
+cd ecf-3.5.0
 
 # Source for ECF bthat aren't part of SDK map files
 for f in \
@@ -157,7 +156,7 @@ for f in \
 mv  providers/bundles/$f ../plugins;
 done
 cd ..
-rm -fr ecf-3.4.0
+rm -fr ecf-3.5.0
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be

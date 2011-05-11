@@ -20,15 +20,6 @@
  			<arg line="@${basedir}/${optionsFile} -J-Xmx500M" />
  		</exec>
  		
-@@ -98,7 +98,7 @@
- 		<delete dir="reference/apt" />
- 		<mkdir dir="reference/apt" />
- 
--		<exec dir="." executable="${javadoc15}" output="jdtapt.doc.bin.log">
-+		<exec dir="." executable="${javadoc15}" >
- 			<arg line="@${basedir}/${jdtaptoptionsFile} -J-Xmx500M" />
- 		</exec>
- 		
 --- a/plugins/org.eclipse.pde.doc.user/buildDoc.xml
 +++ b/plugins/org.eclipse.pde.doc.user/buildDoc.xml
 @@ -65,7 +65,7 @@

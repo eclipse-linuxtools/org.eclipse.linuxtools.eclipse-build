@@ -1,0 +1,2348 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %provider.name
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-Name: %bundle.name
+Bundle-SymbolicName: org.apache.lucene.core
+Bundle-Version: 2.9.1.v201101211721
+Export-Package: org.apache.lucene;core=split;version="2.9.1";mandatory
+ :=core,org.apache.lucene.analysis;core=split;version="2.9.1";mandator
+ y:=core,org.apache.lucene.analysis.standard;core=split;version="2.9.1
+ ";mandatory:=core,org.apache.lucene.analysis.tokenattributes;version=
+ "2.9.1";mandatory:=core,org.apache.lucene.document;core=split;version
+ ="2.9.1";mandatory:=core,org.apache.lucene.index;core=split;version="
+ 2.9.1";mandatory:=core,org.apache.lucene.messages;version="2.9.1";man
+ datory:=core,org.apache.lucene.queryParser;core=split;version="2.9.1"
+ ;mandatory:=core,org.apache.lucene.search;core=split;version="2.9.1";
+ mandatory:=core,org.apache.lucene.search.function;core=split;version=
+ "2.9.1";mandatory:=core,org.apache.lucene.search.payloads;core=split;
+ version="2.9.1";mandatory:=core,org.apache.lucene.search.spans;core=s
+ plit;version="2.9.1";mandatory:=core,org.apache.lucene.store;core=spl
+ it;version="2.9.1";mandatory:=core,org.apache.lucene.util;core=split;
+ version="2.9.1";mandatory:=core,org.apache.lucene.util.cache;core=spl
+ it;version="2.9.1";mandatory:=core
+Bundle-ManifestVersion: 2
+
+Name: org/apache/lucene/index/CorruptIndexException.class
+SHA1-Digest: /iaLQYVv5BXorRKcprwXnJSRl6I=
+
+Name: org/apache/lucene/analysis/CharArraySet$CharArraySetIterator.cla
+ ss
+SHA1-Digest: 1YBwei985C5LHmEfYsZLfQvMZlU=
+
+Name: org/apache/lucene/util/PriorityQueue.class
+SHA1-Digest: euBXS1po24JWJeUass84gfbi7Ks=
+
+Name: org/apache/lucene/document/Document.class
+SHA1-Digest: 9jIcOX/u6f8/ToIvV9kK+ybu8m0=
+
+Name: org/apache/lucene/util/ReaderUtil.class
+SHA1-Digest: Trdlq7BaFe6LdhjVeCLPTMzHSh4=
+
+Name: org/apache/lucene/search/function/OrdFieldSource.class
+SHA1-Digest: 9dqr5eyWydXVd6msybzIGP6u16I=
+
+Name: org/apache/lucene/index/CompoundFileWriter$1.class
+SHA1-Digest: /LT+jHUDDY1dj38fOrFbelj2ZrU=
+
+Name: org/apache/lucene/search/TopFieldCollector$OneComparatorScoringM
+ axScoreCollector.class
+SHA1-Digest: phRu2mGEs2MTq0OzfjPYrsZRQxg=
+
+Name: org/apache/lucene/index/ReadOnlySegmentReader.class
+SHA1-Digest: nLudgKwmJF1/KE2LU5eFFtPbK74=
+
+Name: org/apache/lucene/search/spans/SpanNotQuery$1.class
+SHA1-Digest: 6ntX1PmirCzV5z6sWHV+nVyiwT4=
+
+Name: org/apache/lucene/analysis/LowerCaseTokenizer.class
+SHA1-Digest: KWxOscV1PLdzLvI/FOx2tKYyCQQ=
+
+Name: org/apache/lucene/analysis/standard/StandardTokenizer.class
+SHA1-Digest: gPlMuHG82Ldd22YFTOvq6daQIh4=
+
+Name: org/apache/lucene/index/TermVectorMapper.class
+SHA1-Digest: pZu/lb/TtnJGx315bMOuMBzuWL8=
+
+Name: org/apache/lucene/search/spans/SpanOrQuery$SpanQueue.class
+SHA1-Digest: 6PAf/5DsQFUCXzl+GqTGdDg9vb8=
+
+Name: org/apache/lucene/search/function/OrdFieldSource$1.class
+SHA1-Digest: GdmNWeWbNe/qNQKV2N9IfXFUzT8=
+
+Name: org/apache/lucene/search/TopFieldCollector$MultiComparatorNonSco
+ ringCollector.class
+SHA1-Digest: TqAKl9oXNjR4si6bI3lr/H1Ye8U=
+
+Name: org/apache/lucene/search/BooleanScorer2$2.class
+SHA1-Digest: dEId+wRdcFxBeW0vyUrtl06R/Yc=
+
+Name: org/apache/lucene/analysis/tokenattributes/PayloadAttributeImpl.
+ class
+SHA1-Digest: BuTvh8IRCMrxbCc/3kCnxirv96Y=
+
+Name: org/apache/lucene/util/SortedVIntList.class
+SHA1-Digest: kYwxtRQ+D22frp+BWBFF2wKQYr0=
+
+Name: org/apache/lucene/document/SetBasedFieldSelector.class
+SHA1-Digest: rkTiiAC8rHRXcVXn9T49NHI2wIM=
+
+Name: org/apache/lucene/store/FSDirectory$FSIndexInput.class
+SHA1-Digest: OAZMlVrsEh3l14DBkD/HUWdrW7o=
+
+Name: org/apache/lucene/index/IndexFileNames.class
+SHA1-Digest: 0jfTQBSgbkEceOltK2PWT3etBPk=
+
+Name: org/apache/lucene/search/SpanFilterResult.class
+SHA1-Digest: FbUE1bbTkZPG53jYjSOL1hHVHT4=
+
+Name: org/apache/lucene/index/MultiLevelSkipListWriter.class
+SHA1-Digest: b6p60wPgG40epiJV8b5R/JDwsnk=
+
+Name: org/apache/lucene/index/SegmentReader$1.class
+SHA1-Digest: tgnflaN+f3pHryL5j7seo08cHHE=
+
+Name: org/apache/lucene/index/TermVectorEntry.class
+SHA1-Digest: pOR9q8D4LDopWqxWCnTGwGL17Ik=
+
+Name: org/apache/lucene/index/LogByteSizeMergePolicy.class
+SHA1-Digest: hU9Lx3bBNJxLF3c7SVWQ0F0j0Kc=
+
+Name: org/apache/lucene/util/OpenBitSet.class
+SHA1-Digest: cjQWcuZGvV+Il1IMgZTDXa5ovqk=
+
+Name: org/apache/lucene/util/SimpleStringInterner.class
+SHA1-Digest: i+32adobkUm1pHzRzEj5c4LanM4=
+
+Name: org/apache/lucene/search/FieldCacheImpl.class
+SHA1-Digest: RfjvCY6jT0VPT/sonXGaNrkeda8=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$8.class
+SHA1-Digest: CJVPCd3uqJTjmjecwmZuy2xL+g4=
+
+Name: org/apache/lucene/store/RAMOutputStream.class
+SHA1-Digest: ijccT1peMrd9LVDBVvg3dA6ra08=
+
+Name: org/apache/lucene/search/function/FloatFieldSource.class
+SHA1-Digest: IJ85u0ltw5BO8NKLbJb3B1nEscc=
+
+Name: org/apache/lucene/index/SortedTermVectorMapper.class
+SHA1-Digest: FE1fTbTc4hTl18wTHZSZK4Z+1CU=
+
+Name: org/apache/lucene/search/FilteredDocIdSet$1.class
+SHA1-Digest: nLVwxC8uxsacNZl30rjrl+Cte1k=
+
+Name: org/apache/lucene/index/TermVectorOffsetInfo.class
+SHA1-Digest: L5S4I7LLefoLr4anRF1TMLDCt8I=
+
+Name: org/apache/lucene/search/RangeFilter.class
+SHA1-Digest: RVUw9CjmQn0DzIl/XP/bkqvy8o4=
+
+Name: org/apache/lucene/index/DocumentsWriter$DocState.class
+SHA1-Digest: s/1heH2yBuMdx2lXLQZTSpDqFIU=
+
+Name: org/apache/lucene/search/FieldCache$CreationPlaceholder.class
+SHA1-Digest: h6GPiWaCnsJ8OF54vanwg5FNOtk=
+
+Name: org/apache/lucene/search/Explanation.class
+SHA1-Digest: YXHmC6jR95jNFRQkTKwh3p6h98E=
+
+Name: org/apache/lucene/search/ReqExclScorer.class
+SHA1-Digest: ge5EJLL67cFLxsUoQprGGrBK4Go=
+
+Name: org/apache/lucene/analysis/CharFilter.class
+SHA1-Digest: HIm3AqD2iuHzZON1381+mwqgEuI=
+
+Name: org/apache/lucene/search/FieldCacheImpl$StringIndexCache.class
+SHA1-Digest: wtEc49gNHW42RodT0TeB7XFGwxg=
+
+Name: org/apache/lucene/index/IndexFileDeleter.class
+SHA1-Digest: pktI1f8pM+hw8zBsztszoFsvc0s=
+
+Name: org/apache/lucene/LucenePackage.class
+SHA1-Digest: 4cn1tkbP9448M7LA8WQpBc4a1JI=
+
+Name: org/apache/lucene/search/ConjunctionScorer$1.class
+SHA1-Digest: wQmehoog4bnan3zubtKlOSZX+NY=
+
+Name: org/apache/lucene/search/BooleanScorer$BucketScorer.class
+SHA1-Digest: CQQPMF9p3Szz3s/BirslYjs/39o=
+
+Name: org/apache/lucene/search/TopFieldCollector.class
+SHA1-Digest: My3eSec/6FjjJlMvQqbY5GwhCMA=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$3$1.class
+SHA1-Digest: xatZI02pJOB82woO76wqbg7nKb4=
+
+Name: org/apache/lucene/search/function/IntFieldSource$1.class
+SHA1-Digest: vVIc6O5f/xO/UnI1pEXoFR/Cwew=
+
+Name: org/apache/lucene/search/TermQuery$TermWeight.class
+SHA1-Digest: +/nm06hsAFbWtmFZREay+b7AVyU=
+
+Name: org/apache/lucene/search/TopScoreDocCollector$OutOfOrderTopScore
+ DocCollector.class
+SHA1-Digest: JxGH7cqVySvcGbsybB4u2sFMxY4=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$7$1.class
+SHA1-Digest: XzoI1T/aO0hjNMgmjVf8rFcPS4I=
+
+Name: org/apache/lucene/index/CheckIndex.class
+SHA1-Digest: /h/XQBJ8jbLDHg4w90TEzsj8kJk=
+
+Name: org/apache/lucene/search/SortComparatorSource.class
+SHA1-Digest: Nrgn929sX6CPt36nDW/LDOShl4k=
+
+Name: org/apache/lucene/analysis/WhitespaceAnalyzer.class
+SHA1-Digest: niQ+6xEtNtN9g5HJQ6wYNx6ceMs=
+
+Name: org/apache/lucene/index/TermInfosReader$ThreadResources.class
+SHA1-Digest: F/VpunJmD9mzF2pGM/TjI/MCn6M=
+
+Name: org/apache/lucene/index/FilterIndexReader$FilterTermEnum.class
+SHA1-Digest: Y7vUP4+DDgnUQmQ+gv+h5JX+Dkk=
+
+Name: org/apache/lucene/search/FieldComparator$StringValComparator.cla
+ ss
+SHA1-Digest: G6xjvksipqhWwhZyum/p5Pe0rCU=
+
+Name: org/apache/lucene/index/TermVectorsWriter.class
+SHA1-Digest: DhLUwL6rYiBwzV/R8i3mN92OW9Q=
+
+Name: org/apache/lucene/index/FormatPostingsPositionsConsumer.class
+SHA1-Digest: ZR2aqi53nLPfPJf7psBa6RhiQfM=
+
+Name: org/apache/lucene/analysis/standard/StandardTokenizerImpl.class
+SHA1-Digest: 7TtKn2UBLKXFnnCcqEqbyaBRJIc=
+
+Name: org/apache/lucene/search/FieldComparator$StringComparatorLocale.
+ class
+SHA1-Digest: EtqH0Qs+lqBRe8Wq5Ug2GSjxeys=
+
+Name: org/apache/lucene/analysis/TeeSinkTokenFilter.class
+SHA1-Digest: 15yRrMrh6gIng3xlbjjhTPAqDks=
+
+Name: org/apache/lucene/analysis/TeeSinkTokenFilter$SinkTokenStream.cl
+ ass
+SHA1-Digest: KhYvgtD3bPXfHeZ4rbmP7KFImDE=
+
+Name: org/apache/lucene/search/FuzzyQuery$ScoreTermQueue.class
+SHA1-Digest: 6dsoLlJ5NLnwAYE7EPncRfe09Xg=
+
+Name: org/apache/lucene/util/IndexableBinaryStringTools$CodingCase.cla
+ ss
+SHA1-Digest: Ape2BBx0ggPe7ajyCT1KWkS7FDo=
+
+Name: org/apache/lucene/search/FieldComparator$RelevanceComparator.cla
+ ss
+SHA1-Digest: Z8GEygz7pkbNqKGPJ0fXeeDLskg=
+
+Name: org/apache/lucene/index/FilterIndexReader$FilterTermPositions.cl
+ ass
+SHA1-Digest: R8u02M1oo93BEJ4UfOQOOCD/zDI=
+
+Name: org/apache/lucene/index/CompoundFileReader$1.class
+SHA1-Digest: M2By0aR15OV2q1PCiIIkzkF+v9Y=
+
+Name: org/apache/lucene/index/MultipleTermPositions$IntQueue.class
+SHA1-Digest: e855MfMQjDFOj0r51U2FIuANkQI=
+
+Name: org/apache/lucene/search/Sort.class
+SHA1-Digest: NtnpB55jjSsEmdi9OqjsqqYowaw=
+
+Name: org/apache/lucene/analysis/CachingTokenFilter.class
+SHA1-Digest: MISnUgkwHBuZDnxUtB9JViyUHKU=
+
+Name: org/apache/lucene/analysis/tokenattributes/OffsetAttributeImpl.c
+ lass
+SHA1-Digest: +jNWvY7Xw8Hw2LGgbmi3+6jZKhE=
+
+Name: org/apache/lucene/store/RAMInputStream.class
+SHA1-Digest: v+lVx3tvcpcMgdn5hZSfmWPqjg0=
+
+Name: org/apache/lucene/index/IndexWriter$ReaderPool.class
+SHA1-Digest: G8Uob+wiCXIjblXAtqzPuTdM04M=
+
+Name: org/apache/lucene/util/IndexableBinaryStringTools.class
+SHA1-Digest: pZvm5ZMnFD2NAcwcWbEz+JLJExU=
+
+Name: org/apache/lucene/search/BooleanScorer2$SingleMatchScorer.class
+SHA1-Digest: b2///rMUC3KvWXPz4xMVND3EbP4=
+
+Name: org/apache/lucene/index/FieldInvertState.class
+SHA1-Digest: Hwa2saOwBnaCVstw+wqznMOr6qw=
+
+Name: org/apache/lucene/index/TermVectorsTermsWriter$PerDoc.class
+SHA1-Digest: mdJgtFnZeSpc1Avd6GmWk4LbXjo=
+
+Name: org/apache/lucene/search/PhraseQuery$PhraseWeight.class
+SHA1-Digest: HEKeVg1Dl1YolIyQUakLwdqbhMo=
+
+Name: org/apache/lucene/util/SortedVIntList$1.class
+SHA1-Digest: w77Q96vfgdPqLPazoOO9Ji3zGEM=
+
+Name: org/apache/lucene/index/DirectoryReader$MultiTermDocs.class
+SHA1-Digest: O3XnLJhqJ+mtwSsaMgl8X70yxRc=
+
+Name: org/apache/lucene/analysis/standard/StandardAnalyzer.class
+SHA1-Digest: KhNlWD4j2FOEzAiXYEJiCc+awrQ=
+
+Name: org/apache/lucene/index/MultiLevelSkipListReader.class
+SHA1-Digest: DbAlo9fNchEs58wBG+MBjbJSBnc=
+
+Name: org/apache/lucene/store/ChecksumIndexInput.class
+SHA1-Digest: UzmbZAgBbtVxV18SmrHEOjFhz1o=
+
+Name: org/apache/lucene/document/DateTools$Resolution.class
+SHA1-Digest: VXA9L5bLCbT2dATeTyCjJ5ZOCrU=
+
+Name: org/apache/lucene/search/spans/SpanOrQuery.class
+SHA1-Digest: d++kXo+8VVV2XBfH6+sbxA7yJSk=
+
+Name: org/apache/lucene/search/FieldValueHitQueue.class
+SHA1-Digest: 1gfco0exXS2Fb3fAEr+gk1+Mlqc=
+
+Name: org/apache/lucene/search/BooleanQuery$TooManyClauses.class
+SHA1-Digest: CwgNsun1Wf5BjlmyPNRDG2ZHphc=
+
+Name: org/apache/lucene/search/FieldCache$4.class
+SHA1-Digest: Pqs+iPymeU/BnLZKtnKUYsI3BXo=
+
+Name: org/apache/lucene/messages/NLS.class
+SHA1-Digest: E4FRU4agFVHMX/hP6g+tIFrufPg=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$3.class
+SHA1-Digest: 7DZTXkniTse0ksQ8fTKMW0x2tGk=
+
+Name: org/apache/lucene/index/TermPositionVector.class
+SHA1-Digest: PtDf5XWR/rEqvEE7wKI1qcTftkg=
+
+Name: org/apache/lucene/search/SpanFilterResult$StartEnd.class
+SHA1-Digest: an0U1CsKKrmZWoIHAqDn2lavgbQ=
+
+Name: org/apache/lucene/search/Hits.class
+SHA1-Digest: T6W0GfrIr258wWk0VuUlFbSoex8=
+
+Name: org/apache/lucene/index/DocumentsWriterThreadState.class
+SHA1-Digest: DQemnfx3sU3Rxb1nkAm7oUloUPo=
+
+Name: org/apache/lucene/index/FieldsReader$FieldForMerge.class
+SHA1-Digest: xZiTYbVs7BdXu3PI5yoRu+bRVjs=
+
+Name: org/apache/lucene/search/BooleanScorer$Bucket.class
+SHA1-Digest: pFjWH4G9GA5Fv5FvG3qywsy9bP4=
+
+Name: org/apache/lucene/search/PositiveScoresOnlyCollector.class
+SHA1-Digest: Yxum75Ud/vdziv2rVkJFJ0mwmPM=
+
+Name: org/apache/lucene/index/TermsHashConsumer.class
+SHA1-Digest: lMuPqsf3+wnFhsFS/MuqaMHsZqo=
+
+Name: org/apache/lucene/search/FieldValueHitQueue$MultiComparatorsFiel
+ dValueHitQueue.class
+SHA1-Digest: xxV6IHbCgVSsqkVMIjf8Imy91os=
+
+Name: org/apache/lucene/search/FieldCacheTermsFilter$FieldCacheTermsFi
+ lterDocIdSet$FieldCacheTermsFilterDocIdSetIterator.class
+SHA1-Digest: U4rT8PmVXyHVHD7iA9dMOgEQZOQ=
+
+Name: org/apache/lucene/index/MergePolicy$MergeSpecification.class
+SHA1-Digest: UJA9deBV6CRpmj/7bJWqjF7dFHQ=
+
+Name: org/apache/lucene/queryParser/QueryParser$JJCalls.class
+SHA1-Digest: 2hiSu2SFivb1uIARyBJTRmqltmI=
+
+Name: org/apache/lucene/index/Payload.class
+SHA1-Digest: T61OU4oXGNgI3V+NiVqbdlgSKCM=
+
+Name: org/apache/lucene/index/TermVectorEntryFreqSortedComparator.clas
+ s
+SHA1-Digest: /tgSvFDxxx0q1krGZE1kg5qD874=
+
+Name: org/apache/lucene/search/BooleanScorer2.class
+SHA1-Digest: ZwdhCqlIP/EFv96oxV6wjYQOp5E=
+
+Name: org/apache/lucene/index/DocumentsWriter$DocWriter.class
+SHA1-Digest: 3sF5kLIkZLf5xOGfRGXf7ns46lI=
+
+Name: org/apache/lucene/index/DocInverterPerThread.class
+SHA1-Digest: 35VEIntxlQk8DAb2uKwtJs++W48=
+
+Name: org/apache/lucene/util/DocIdBitSet$DocIdBitSetIterator.class
+SHA1-Digest: wBdZ0RbGupHc9WflIi5OEL3/mcE=
+
+Name: org/apache/lucene/queryParser/TokenMgrError.class
+SHA1-Digest: q+jeR1ly9yLjiX2W2sp1+UTd/s8=
+
+Name: org/apache/lucene/search/spans/FieldMaskingSpanQuery.class
+SHA1-Digest: 2aioOjab3FY9hoJo2rp6HjQf84c=
+
+Name: org/apache/lucene/util/AttributeSource$1.class
+SHA1-Digest: A5MyeVoPVUUl0S3qI5da10axpPY=
+
+Name: org/apache/lucene/search/FieldDoc.class
+SHA1-Digest: nml5oEl9VQDazQHGuuDFR+fQY28=
+
+Name: org/apache/lucene/index/DocumentsWriter$WaitQueue.class
+SHA1-Digest: a7Z6BKeiskCmxLclwq5DycVe/7Y=
+
+Name: org/apache/lucene/search/spans/NearSpansUnordered$SpansCell.clas
+ s
+SHA1-Digest: mc83nxsfPTC2yKY0tZqyKeNsOx4=
+
+Name: org/apache/lucene/analysis/tokenattributes/PositionIncrementAttr
+ ibuteImpl.class
+SHA1-Digest: KMEOQPnVsQvNrljcW5uEpyLUnQQ=
+
+Name: org/apache/lucene/search/CachingSpanFilter.class
+SHA1-Digest: TKXkSlbs4YJj2M5KIzO3d2S1tTE=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$2.class
+SHA1-Digest: Wg5jkei9JyqCITGpvgDpqgkkrU4=
+
+Name: org/apache/lucene/index/FieldSortedTermVectorMapper.class
+SHA1-Digest: d1OnLXtCPCBZseN/1/oF12h4nes=
+
+Name: org/apache/lucene/index/TermVectorsReader.class
+SHA1-Digest: E+HecRuUJ4pxBDd+herFYC5hyRY=
+
+Name: org/apache/lucene/search/FieldCache$StringIndex.class
+SHA1-Digest: PY90nqywIgE1bw/oT+G0/LZAPEg=
+
+Name: org/apache/lucene/search/ScoreCachingWrappingScorer.class
+SHA1-Digest: v3EBUk0N9FIrf/hZbl3GGTVd5NU=
+
+Name: org/apache/lucene/store/SimpleFSLockFactory.class
+SHA1-Digest: iXdTSxt6vNWkKGBGHqSm7VUpjAE=
+
+Name: org/apache/lucene/search/CachingWrapperFilter.class
+SHA1-Digest: Fkm6GjDJVVhAtIP3wB88MYVfh7Q=
+
+Name: org/apache/lucene/index/IndexFileNameFilter.class
+SHA1-Digest: /qxM91vqcLgwwmNK03nGRYdqv9Q=
+
+Name: org/apache/lucene/search/FieldCacheImpl$StopFillCacheException.c
+ lass
+SHA1-Digest: ggimzsxy4vX7eUtRgMh44LRKtGA=
+
+Name: org/apache/lucene/search/spans/SpanScorer.class
+SHA1-Digest: qYfEe1xdXGytM4IFmFBqx6SzDO4=
+
+Name: org/apache/lucene/index/FormatPostingsTermsConsumer.class
+SHA1-Digest: oXZ8UPnbffYmf7bAXCj5644NSyk=
+
+Name: org/apache/lucene/search/spans/NearSpansOrdered.class
+SHA1-Digest: Qms023w0Qb/ZOzjTQi9v2fw3UaY=
+
+Name: org/apache/lucene/search/function/CustomScoreQuery$CustomScorer.
+ class
+SHA1-Digest: ags85Bqrb/QL9tLN/JBsA0+bwUA=
+
+Name: org/apache/lucene/search/PhraseQueue.class
+SHA1-Digest: 19uJxCu3jmUjRv2cSEJumMI0AOA=
+
+Name: org/apache/lucene/search/DisjunctionMaxQuery$DisjunctionMaxWeigh
+ t.class
+SHA1-Digest: QuyBZp2fcn5y4+Nk8EufCSiBv5E=
+
+Name: org/apache/lucene/store/VerifyingLockFactory$CheckedLock.class
+SHA1-Digest: nE6sUuEfzhZprHijx0nm6NV9B2E=
+
+Name: org/apache/lucene/search/function/MultiValueSource$MultiDocValue
+ s.class
+SHA1-Digest: 25mPmVz4+I8qtJcnB5OgshCP02A=
+
+Name: org/apache/lucene/search/BooleanQuery$BooleanWeight.class
+SHA1-Digest: /p9G7C6qG7uR9iACoWUtmxZrU1A=
+
+Name: org/apache/lucene/search/function/IntFieldSource.class
+SHA1-Digest: IdMXyK/q38hhEJEk3cXvx7LFKCo=
+
+Name: org/apache/lucene/search/TopDocsCollector.class
+SHA1-Digest: bQ2yOVMNqHL30BLrUJcHm8MLAqk=
+
+Name: org/apache/lucene/index/DirectoryReader$MultiTermPositions.class
+SHA1-Digest: EhEjSGhOBCWr85RUt1+OBX5dOf8=
+
+Name: org/apache/lucene/search/FieldCache$9.class
+SHA1-Digest: M+SGyYo2cpypCHN9g/fgbBNjj9Y=
+
+Name: org/apache/lucene/index/CompoundFileWriter.class
+SHA1-Digest: W6t8KLq/AUU/mQz093UBgTzsVXU=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderMultiCompar
+ atorNonScoringCollector.class
+SHA1-Digest: pMveuaRbo0f8bgKIaX374uBQTUU=
+
+Name: org/apache/lucene/index/SegmentMerger$CheckAbort.class
+SHA1-Digest: Mtt7g2PQW45e+0mYi9pn5OFt4A8=
+
+Name: org/apache/lucene/analysis/SimpleAnalyzer.class
+SHA1-Digest: xdIs/v230GXpA0CwuZD9DmuW0j8=
+
+Name: org/apache/lucene/search/function/FieldScoreQuery$Type.class
+SHA1-Digest: n8QItH2w+2eRpjZgy7VJBdgqJS8=
+
+Name: org/apache/lucene/index/SegmentMergeQueue.class
+SHA1-Digest: 7jVpNP8CFKIu+cgS8lCxkZQXMS0=
+
+Name: org/apache/lucene/document/FieldSelectorResult.class
+SHA1-Digest: qb3T5f+wG+NQCdyL866jNIbk+fc=
+
+Name: org/apache/lucene/analysis/LengthFilter.class
+SHA1-Digest: jiZ8xzhPrOwaPVeaufl2o0DPoqo=
+
+Name: org/apache/lucene/search/MultiTermQueryWrapperFilter$TermGenerat
+ or.class
+SHA1-Digest: eq4VAsXteAFRA0fYrYE6U/Qj/BM=
+
+Name: org/apache/lucene/index/FreqProxFieldMergeState.class
+SHA1-Digest: jcbPltx6XjCV7H5bz+N8nAvWbKM=
+
+Name: org/apache/lucene/search/TopFieldCollector$OneComparatorScoringN
+ oMaxScoreCollector.class
+SHA1-Digest: lARAlvrf+qZVRKaE/kjOddhV7Is=
+
+Name: org/apache/lucene/index/InvertedDocEndConsumerPerField.class
+SHA1-Digest: sn1pvyex0CVfpshVOjq//NUkHSc=
+
+Name: org/apache/lucene/search/TopScoreDocCollector.class
+SHA1-Digest: nP1eLTIfTgIqwre77mxzBxJoKlo=
+
+Name: org/apache/lucene/index/IndexFileDeleter$CommitPoint.class
+SHA1-Digest: fxkIYTvPFVFiyou8vcJuVZyLT5o=
+
+Name: org/apache/lucene/index/DocInverterPerField.class
+SHA1-Digest: BpYGGT+F26d1UK4FVheC7O0pxnA=
+
+Name: org/apache/lucene/document/Document$1.class
+SHA1-Digest: tpJNJQ/B2bVFeUKB3t6CAEAzLkE=
+
+Name: org/apache/lucene/search/spans/TermSpans.class
+SHA1-Digest: ZpRUTkEJWybjFwVY4JDab8j+JXA=
+
+Name: org/apache/lucene/analysis/tokenattributes/TypeAttribute.class
+SHA1-Digest: IlQijCNowR/VGjEuFa31SFdRJTA=
+
+Name: org/apache/lucene/search/BooleanScorer2$1.class
+SHA1-Digest: lwpIPisqvxWk/ExcuD8YVwdeGVU=
+
+Name: org/apache/lucene/analysis/NumericTokenStream.class
+SHA1-Digest: ce44+3r/3vRAOhLUfjPohmkEbro=
+
+Name: org/apache/lucene/search/TimeLimitingCollector.class
+SHA1-Digest: IpE2jpMryVl/cMuxiNw44tURBgg=
+
+Name: org/apache/lucene/document/NumericField.class
+SHA1-Digest: I97COQx/qxR/1K7oe5nfOOcjZ8w=
+
+Name: about_files/APACHE-LICENSE-2.0.txt
+SHA1-Digest: D82944NkT7+XDZGL4X9K5EbJ6/g=
+
+Name: org/apache/lucene/index/RawPostingList.class
+SHA1-Digest: 2WlDwepN2Ww1FiO5nbJjxKwuMek=
+
+Name: org/apache/lucene/search/function/ShortFieldSource$1.class
+SHA1-Digest: IUcoCEbq0K4IVxRqpyiPwmN+6fI=
+
+Name: org/apache/lucene/store/NoSuchDirectoryException.class
+SHA1-Digest: TQDXTkCLEsJzL81KJ+E/VBS/FJY=
+
+Name: org/apache/lucene/search/FieldValueHitQueue$Entry.class
+SHA1-Digest: z8nupF18Eil12mRSLjpT2Svsodg=
+
+Name: org/apache/lucene/store/NativeFSLock.class
+SHA1-Digest: Qxgr8z7PCTPWAC/FgGd41iu+6nk=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$7.class
+SHA1-Digest: d6LidfJ5w33+0wdasE8dmz2jwE0=
+
+Name: org/apache/lucene/search/function/MultiValueSource.class
+SHA1-Digest: biCDQgSHklFR2Irxa6Ke6tpQva0=
+
+Name: org/apache/lucene/search/TimeLimitedCollector$TimerThread.class
+SHA1-Digest: ggI5BvHMmjHgKUR/X8MGvw5j000=
+
+Name: org/apache/lucene/util/FieldCacheSanityChecker$ReaderField.class
+SHA1-Digest: keAngHRRX7Cr0hSCyVsnad8gPOQ=
+
+Name: org/apache/lucene/util/AttributeSource$AttributeFactory$DefaultA
+ ttributeFactory.class
+SHA1-Digest: LJiCJVjvcoTCbM+e/Bg6UTwF3Gs=
+
+Name: org/apache/lucene/analysis/WhitespaceTokenizer.class
+SHA1-Digest: BeaXm4dQME3lgNdYT/6zzbfxShg=
+
+Name: org/apache/lucene/search/DocIdSet.class
+SHA1-Digest: oJSN2UuFNPfeXJWBy3+pCZzNvS8=
+
+Name: org/apache/lucene/search/payloads/BoostingTermQuery.class
+SHA1-Digest: 5cj/EKX94mUb0rn39h+oegzNPn4=
+
+Name: org/apache/lucene/util/SimpleStringInterner$1.class
+SHA1-Digest: uK8FYTMPQ9QswrXCJ/7aKnYvk0g=
+
+Name: org/apache/lucene/search/ReqOptSumScorer.class
+SHA1-Digest: lmtdE4Z7J2JzDHqxmNVyCbTv9Zw=
+
+Name: org/apache/lucene/analysis/standard/StandardAnalyzer$1.class
+SHA1-Digest: epwbno5/y1OlmRhZYeMY4A7eN+w=
+
+Name: org/apache/lucene/search/BooleanScorer2$Coordinator.class
+SHA1-Digest: 1jJMkP7xdK2WQbzxTnvwwDl7srY=
+
+Name: org/apache/lucene/search/NumericRangeQuery$NumericRangeTermEnum$
+ 2.class
+SHA1-Digest: jHfU0AZzhIyYUda+3zprYeYjAWI=
+
+Name: org/apache/lucene/index/DocFieldConsumers.class
+SHA1-Digest: 97u3LMtmU3r+BHk3ZFklOQ6MU/Q=
+
+Name: org/apache/lucene/index/SegmentMergeInfo.class
+SHA1-Digest: a3NlZTTF6oUeSEO/YBV5ISHMS9I=
+
+Name: org/apache/lucene/search/FieldCache$LongParser.class
+SHA1-Digest: cgmqh25tYfcoJ2qJ5lwDM5uXnlk=
+
+Name: org/apache/lucene/search/FuzzyQuery$ScoreTerm.class
+SHA1-Digest: 3EiTOYciWCwhQIPrpQxAoTdKAKY=
+
+Name: org/apache/lucene/util/UnicodeUtil$UTF16Result.class
+SHA1-Digest: Cayq8KCkJHjnKNrAmMwBRZtDCgM=
+
+Name: org/apache/lucene/store/NIOFSDirectory.class
+SHA1-Digest: aHHyJg4zjEC55h4/X/f8nKk8tlA=
+
+Name: org/apache/lucene/search/QueryWrapperFilter.class
+SHA1-Digest: thS2ZR5SonXP9775LgPzaHirp9Q=
+
+Name: org/apache/lucene/search/TimeLimitingCollector$TimeExceededExcep
+ tion.class
+SHA1-Digest: UxcKVzSkbXc/AsDv3pWXZef4kuo=
+
+Name: org/apache/lucene/search/FilteredTermEnum.class
+SHA1-Digest: p5BujsZzWr9Tl4CTSOIBb5VgDBY=
+
+Name: org/apache/lucene/search/BooleanScorer$SubScorer.class
+SHA1-Digest: 4TIU5BfetKZCxUkFm37dyB+6U/s=
+
+Name: org/apache/lucene/index/BufferedDeletes.class
+SHA1-Digest: 1RmMCVMRl2TI7+nVfjiBgtxF9gM=
+
+Name: org/apache/lucene/messages/NLS$1.class
+SHA1-Digest: Pw6RufPRSBCskQnlgKs2nmaUBks=
+
+Name: org/apache/lucene/search/spans/SpanWeight.class
+SHA1-Digest: EKi0kveJnwT6RXzTpiTF2y/jMWw=
+
+Name: org/apache/lucene/search/NumericRangeFilter.class
+SHA1-Digest: awK38skC7mWhKLdCsozPgrazfww=
+
+Name: org/apache/lucene/index/DirectoryOwningReader.class
+SHA1-Digest: wx/iEL5m2gz85cY2bUJNUWCBSkk=
+
+Name: org/apache/lucene/search/DisjunctionSumScorer.class
+SHA1-Digest: 65T7OHfGDwBCOvDL8Tq90nnWSMM=
+
+Name: org/apache/lucene/store/VerifyingLockFactory.class
+SHA1-Digest: VBbt/c8Ekiu1T3lWlIgVs/Dl11U=
+
+Name: org/apache/lucene/store/LockReleaseFailedException.class
+SHA1-Digest: Z3hp+t3u2qb498L0hv6sIRd1OjQ=
+
+Name: org/apache/lucene/store/BufferedIndexInput.class
+SHA1-Digest: uNWJN80SlkFgMaEvNG+RR/Ya6nk=
+
+Name: org/apache/lucene/store/FSDirectory$FSIndexOutput.class
+SHA1-Digest: z2RL3qFDc0RleJVjD5wJofsmeyM=
+
+Name: org/apache/lucene/search/TimeLimitedCollector$1.class
+SHA1-Digest: FrghtodvW5ikWutBYzaELZfVnkM=
+
+Name: org/apache/lucene/index/CompoundFileReader.class
+SHA1-Digest: Qvff8irbnjvWs7gW1z3FWjjfW5w=
+
+Name: org/apache/lucene/search/function/CustomScoreQuery$CustomWeight.
+ class
+SHA1-Digest: Xp2UFJn5DRh1lU6tFy6V0u1dTts=
+
+Name: org/apache/lucene/search/spans/SpanNearQuery.class
+SHA1-Digest: 0pXfU/LpWUwQEn3HmMU8H0e6Y4I=
+
+Name: org/apache/lucene/search/FilteredQuery.class
+SHA1-Digest: oSnr3pDxjlRQMYL+najzWLtYhPM=
+
+Name: org/apache/lucene/index/FreqProxTermsWriter.class
+SHA1-Digest: kYP+GTciHeN/JjBzmLYzQ6cZw5Y=
+
+Name: org/apache/lucene/search/ExtendedFieldCache$DoubleParser.class
+SHA1-Digest: LKewhBhkhWPqk9IYsOZJgvMTAOE=
+
+Name: org/apache/lucene/search/payloads/BoostingTermQuery$BoostingTerm
+ Weight.class
+SHA1-Digest: /wp8KaBL0pRj5XqKtiyzrms7Cn0=
+
+Name: org/apache/lucene/search/TopFieldCollector$1.class
+SHA1-Digest: 7AkCmZm1YMnxy4mL9Uw42d5g+to=
+
+Name: org/apache/lucene/search/SpanQueryFilter.class
+SHA1-Digest: 1m5TglO+qy8PZ9NJ3352/ZBVARU=
+
+Name: org/apache/lucene/index/PositionBasedTermVectorMapper.class
+SHA1-Digest: DnMTk8BrgWaSonY3k2z9GZkF89w=
+
+Name: org/apache/lucene/search/payloads/PayloadTermQuery.class
+SHA1-Digest: 6RrLFhZ0JTBOray8Q8OC5qZauIY=
+
+Name: org/apache/lucene/analysis/SinkTokenizer.class
+SHA1-Digest: +8Fw6ysi9hQRZD0zIzoynwyv9Zs=
+
+Name: org/apache/lucene/analysis/tokenattributes/OffsetAttribute.class
+SHA1-Digest: FVKit2bZgo1phiF19asKdVTB9fk=
+
+Name: org/apache/lucene/search/SortComparator$1.class
+SHA1-Digest: rYwXG0gJVO38O1ZTacUSfHbTjJ0=
+
+Name: org/apache/lucene/search/FieldCacheImpl$ShortCache.class
+SHA1-Digest: CSXWY6/1s+0qw9UDvnfnLWdGz5I=
+
+Name: org/apache/lucene/search/function/ByteFieldSource$1.class
+SHA1-Digest: 6I6u3knG6H7NeAX1zD5Vaj9tEtU=
+
+Name: org/apache/lucene/analysis/tokenattributes/TermAttributeImpl.cla
+ ss
+SHA1-Digest: xtz+8tz7DZZ4ht+O/dYOpWlGaUk=
+
+Name: org/apache/lucene/search/TermRangeFilter.class
+SHA1-Digest: wUk85Rc6Ak8lRrl+rSrHwKZlevc=
+
+Name: org/apache/lucene/search/NumericRangeQuery$NumericRangeTermEnum.
+ class
+SHA1-Digest: gu5OJB+0mMxIf02H/oY/RF8Dn94=
+
+Name: org/apache/lucene/store/SingleInstanceLockFactory.class
+SHA1-Digest: rlVcikfh1PSrjfY8gr4S7vE7s5E=
+
+Name: org/apache/lucene/index/TermsHashPerField.class
+SHA1-Digest: b3AmWfRJXRB3cMTKVphg8AeLJcE=
+
+Name: org/apache/lucene/search/ConstantScoreQuery$ConstantScorer.class
+SHA1-Digest: 4Xhvaa99OKK7aq6wT7QP8DQJ4sM=
+
+Name: org/apache/lucene/analysis/MappingCharFilter.class
+SHA1-Digest: 3Oh5XyDWkuU5sEz+gAaJ5CGG5HA=
+
+Name: org/apache/lucene/search/MatchAllDocsQuery.class
+SHA1-Digest: RfEXapa10Q0fpPPyyi7Imot1NjU=
+
+Name: org/apache/lucene/util/OpenBitSetIterator.class
+SHA1-Digest: Tx2D5OwXf/06Yt+UaFpi635qdr4=
+
+Name: org/apache/lucene/search/FieldCache$3.class
+SHA1-Digest: ViambF8fQyGyViMKOM1FjOLch7A=
+
+Name: org/apache/lucene/store/Directory.class
+SHA1-Digest: VTrgqMhO/42DWYGxkM8bXvr0OYo=
+
+Name: org/apache/lucene/search/TopFieldDocCollector.class
+SHA1-Digest: 7rb/7s7zrpmWTt1xJdKHrsgoNys=
+
+Name: org/apache/lucene/search/FieldComparator$DocComparator.class
+SHA1-Digest: 3Dq/f5HtySUIUpgJ/8zJLynrv8g=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$2.class
+SHA1-Digest: eiRy4oQNuMqiCb0ocCifqCEAfUI=
+
+Name: org/apache/lucene/index/DocFieldProcessorPerThread.class
+SHA1-Digest: j5QBNcsZ8H6WoqxJQw+0TDyhfLQ=
+
+Name: org/apache/lucene/index/SegmentInfo.class
+SHA1-Digest: yyNcIRdB7/hgmsJbQLEOKJ/VrFo=
+
+Name: org/apache/lucene/index/SegmentReader$FieldsReaderLocal.class
+SHA1-Digest: 5X4hqLWlfMwVG16oLvaRLsb40Q8=
+
+Name: org/apache/lucene/util/MapOfSets.class
+SHA1-Digest: 7o5iFlkvvpYA6IJQ3HXl9abXF24=
+
+Name: org/apache/lucene/search/TermRangeTermEnum.class
+SHA1-Digest: QWbwypbCrpHVuP6IdyORpYb/t1Y=
+
+Name: org/apache/lucene/search/FieldCacheImpl$ByteCache.class
+SHA1-Digest: NOSaO2//aQ5lLP8ypT5OcTNcwKQ=
+
+Name: org/apache/lucene/analysis/tokenattributes/FlagsAttributeImpl.cl
+ ass
+SHA1-Digest: dhk+Af/6eS/Vttw6CE78f4NEPGE=
+
+Name: org/apache/lucene/search/HitIterator.class
+SHA1-Digest: BkIn+GspL+1Q5eky8hJeYq1uVKA=
+
+Name: org/apache/lucene/search/ExtendedFieldCache.class
+SHA1-Digest: +ytIihTwDDCRfOqyXkRrZEkm98A=
+
+Name: org/apache/lucene/index/SegmentInfos$FindSegmentsFile.class
+SHA1-Digest: DuA7qM7ihC+K4p3hy1wGUYfkyg0=
+
+Name: org/apache/lucene/index/FieldInfo.class
+SHA1-Digest: qOYDDdk96TOP+XaHC1uVL65Tx0g=
+
+Name: org/apache/lucene/analysis/CharReader.class
+SHA1-Digest: FfxYWGf9FoxnqoKRwSRC1d4qMlg=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$2$1.class
+SHA1-Digest: NYEbIfxlHUT606+i8gsazzFnoq4=
+
+Name: org/apache/lucene/search/BooleanScorer.class
+SHA1-Digest: RVoSP0Czw3VHCKu3cNzVsL4jDo8=
+
+Name: org/apache/lucene/index/IndexCommitPoint.class
+SHA1-Digest: IyCX56xmu4UhjEsQ+mYLY8cuzj8=
+
+Name: org/apache/lucene/search/MultiTermQuery$RewriteMethod.class
+SHA1-Digest: aK67uWAddBxToEf9hc+x9ePEkJo=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$6$1.class
+SHA1-Digest: QmIXGkMqkKTtfensA9oWdzfmC0w=
+
+Name: org/apache/lucene/store/NIOFSDirectory$NIOFSIndexInput.class
+SHA1-Digest: 2Cr7MruRBGZu52kPO1UV4eixxJQ=
+
+Name: org/apache/lucene/index/TermVectorsTermsWriter.class
+SHA1-Digest: /PN0eMDap69lVv2uM3075+aHt5U=
+
+Name: org/apache/lucene/search/FieldComparator$DoubleComparator.class
+SHA1-Digest: UMfA/JzwMwjJWG4OrEq7YF96Mio=
+
+Name: org/apache/lucene/search/FilterManager$FilterCleaner$1.class
+SHA1-Digest: SKImf/c3WpbyeJ5XWyt3vm9ffyk=
+
+Name: org/apache/lucene/index/SegmentTermEnum.class
+SHA1-Digest: MQSEzgv8bYloCpUTVx8lQmbnKhI=
+
+Name: org/apache/lucene/index/SegmentTermVector.class
+SHA1-Digest: eRCJjKIdINnTpRMABNRE0GErZnU=
+
+Name: org/apache/lucene/search/Scorer.class
+SHA1-Digest: dfPBlK2O22EozriTCZDiPDcjjQw=
+
+Name: org/apache/lucene/search/BooleanScorer$BooleanScorerCollector.cl
+ ass
+SHA1-Digest: WCD6VHQOHLGma62YHx+sM27dm+4=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$1.class
+SHA1-Digest: jC5jUNzkjdddFW/kxPCpi5TZ+Vg=
+
+Name: org/apache/lucene/index/DocFieldProcessorPerThread$PerDoc.class
+SHA1-Digest: kWX7nrEQRZQUC/ExhMQmOLBwfdo=
+
+Name: org/apache/lucene/util/cache/SimpleMapCache$SynchronizedSimpleMa
+ pCache.class
+SHA1-Digest: tTiZMjdUjjTyejmLrquJOFKojTg=
+
+Name: org/apache/lucene/index/IndexCommit.class
+SHA1-Digest: 37Y6YdzFR4aplt8lAysMSHENidU=
+
+Name: org/apache/lucene/analysis/TokenFilter.class
+SHA1-Digest: 4FVy/9pIcbFqKhv0bLFrXtNAKck=
+
+Name: org/apache/lucene/analysis/CharacterCache.class
+SHA1-Digest: 5NxEeAKU98EWJmPaT6CcMrtuetM=
+
+Name: org/apache/lucene/analysis/tokenattributes/TermAttribute.class
+SHA1-Digest: bnsZqTeCMrLinUTUAW2TF1hDRlU=
+
+Name: org/apache/lucene/search/TimeLimitingCollector$1.class
+SHA1-Digest: OTd6592QDtVOB1GZQBf/BTDFkJA=
+
+Name: org/apache/lucene/search/FieldCacheImpl$Cache.class
+SHA1-Digest: UDYen/847iBn/1Eq8Uo7oG7wM5I=
+
+Name: org/apache/lucene/store/NoLockFactory.class
+SHA1-Digest: 02/Zw0DKIgEN5KpnNtQI52oXQr4=
+
+Name: org/apache/lucene/search/function/ReverseOrdFieldSource$1.class
+SHA1-Digest: 6vM+dDg33ZbVyBnpmUVPF40/NDs=
+
+Name: org/apache/lucene/search/WildcardQuery.class
+SHA1-Digest: nD9bL9t+Yr8ZR+KNeuD0B1Xb76k=
+
+Name: org/apache/lucene/util/cache/Cache.class
+SHA1-Digest: TOIRZxt5qhZH9VHxNyd+eX3iEkk=
+
+Name: about.html
+SHA1-Digest: GwK0vDvqOaXjK8MPJXjQ8rkuhTQ=
+
+Name: org/apache/lucene/queryParser/QueryParser.class
+SHA1-Digest: YNJZrJVlQZHwjea8DofEmkGHNtE=
+
+Name: org/apache/lucene/util/UnicodeUtil$UTF8Result.class
+SHA1-Digest: fRRAbTaplprTWNR1FNc2NIQes0k=
+
+Name: org/apache/lucene/util/FieldCacheSanityChecker.class
+SHA1-Digest: /vlkp3cJsAauvVnP+HDv5nAT4sE=
+
+Name: org/apache/lucene/search/spans/NearSpansUnordered.class
+SHA1-Digest: 2S9mTKF5hE3goxwsq3O/ccRCWUw=
+
+Name: org/apache/lucene/index/IndexReader$FieldOption.class
+SHA1-Digest: JoofrjBDaJOOwqxcX9GHsymsX74=
+
+Name: org/apache/lucene/search/FieldCache$11.class
+SHA1-Digest: PFJJs53TClwn7E8ag56inxytlgE=
+
+Name: org/apache/lucene/search/FieldCache$8.class
+SHA1-Digest: bbXJ0HqQ+nGkuMP81h9P96GffLI=
+
+Name: org/apache/lucene/search/FieldComparator$ShortComparator.class
+SHA1-Digest: pM8hNAgdusHRGp7i2feGuaj5oBk=
+
+Name: org/apache/lucene/document/DateField.class
+SHA1-Digest: MRK+8357yEPkd5F47XYUPD31gGM=
+
+Name: org/apache/lucene/search/function/ValueSourceQuery$1.class
+SHA1-Digest: yi+M3NJxXSCVlBv9nxZFXPWnn3U=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$7.class
+SHA1-Digest: wJIIQiXrDOyp+2Me8nYFy382I6E=
+
+Name: org/apache/lucene/index/NormsWriterPerThread.class
+SHA1-Digest: fJoI83YtAIiSbiZhlXBnFZ7RuCs=
+
+Name: org/apache/lucene/search/MultiTermQuery.class
+SHA1-Digest: 7Iy5Mf7v/CPkfFaiSSCau6vViLw=
+
+Name: org/apache/lucene/search/FieldCache$ByteParser.class
+SHA1-Digest: NrdMGYjzEdde+Wl+8LhCx5a7Tv8=
+
+Name: org/apache/lucene/search/ConstantScoreQuery$ConstantWeight.class
+SHA1-Digest: IZYwyCZln3mKxkRty70PvSG9zYE=
+
+Name: org/apache/lucene/search/ParallelMultiSearcher.class
+SHA1-Digest: W3IG3bYgeV1y8ptpjP+8z2UB+/w=
+
+Name: org/apache/lucene/util/AverageGuessMemoryModel.class
+SHA1-Digest: UeowZ4qflUCk/Z82UUkGihkRHMQ=
+
+Name: org/apache/lucene/store/FileSwitchDirectory.class
+SHA1-Digest: w7v21s4N7thVA8nXkJXAnTq93EI=
+
+Name: org/apache/lucene/util/NumericUtils.class
+SHA1-Digest: VjE+bb67JhAR9BAX9M86kTfmeTo=
+
+Name: org/apache/lucene/search/TopDocCollector.class
+SHA1-Digest: TfX050BFavXAiotNgImbjJZ0Xhg=
+
+Name: org/apache/lucene/index/ParallelReader$ParallelTermEnum.class
+SHA1-Digest: Bk/uNbIFUa3auUeGSx64lcnoPKs=
+
+Name: org/apache/lucene/search/FieldCache$CacheEntry.class
+SHA1-Digest: TnGdMAcMEFYfAvHirKWXqnwMfkc=
+
+Name: org/apache/lucene/analysis/Token.class
+SHA1-Digest: f/kGXqmR9xlDSSwF6b3HKAXqML8=
+
+Name: org/apache/lucene/search/BooleanQuery$1.class
+SHA1-Digest: KnxB77fdmw8Qro/s+dNpEbBaxmE=
+
+Name: org/apache/lucene/index/SegmentReader$Norm.class
+SHA1-Digest: tmyKCV6a8YtR+TfCeJ+4LOqRRok=
+
+Name: org/apache/lucene/index/Term.class
+SHA1-Digest: lWT5KTNodaEeJmv1BSUQIsMJ/II=
+
+Name: org/apache/lucene/store/SimpleFSDirectory$SimpleFSIndexInput$Des
+ criptor.class
+SHA1-Digest: V1gV5Y/FYx06xBY0rBewAdWbCSY=
+
+Name: org/apache/lucene/search/FieldComparator$ByteComparator.class
+SHA1-Digest: ZR5g+PQwD6lUYR61V/Ew7EBoylY=
+
+Name: org/apache/lucene/index/LogDocMergePolicy.class
+SHA1-Digest: +IX4wdshMTpRKOHuerQqcdpVs04=
+
+Name: org/apache/lucene/search/FieldCache$IntParser.class
+SHA1-Digest: CXIB62dOSRU2819uNLzY1SZXuNk=
+
+Name: org/apache/lucene/index/DocumentsWriter$IndexingChain.class
+SHA1-Digest: 5f9yfshJrul3p50g+gBXxUedjk0=
+
+Name: org/apache/lucene/analysis/ASCIIFoldingFilter.class
+SHA1-Digest: 7BYFpJVtDcK0CLaJtmK3DdTLd1o=
+
+Name: org/apache/lucene/search/FieldCacheImpl$StringCache.class
+SHA1-Digest: vpR11TrRQVbeBpiXro+v/4pv3LM=
+
+Name: org/apache/lucene/index/TermVectorsTermsWriter$PostingList.class
+SHA1-Digest: frItS2cmIyA0vazMYHFwnbVqyV0=
+
+Name: org/apache/lucene/queryParser/QueryParserConstants.class
+SHA1-Digest: IxWIZpRVRM/7x3FfEyER3zA+j2Q=
+
+Name: org/apache/lucene/search/SloppyPhraseScorer.class
+SHA1-Digest: XcmmIf3zP3TggYHFGrTwdWXKI7g=
+
+Name: org/apache/lucene/index/ConcurrentMergeScheduler.class
+SHA1-Digest: BvimNTbfGbj+5ucOgIWwnTjJ0co=
+
+Name: org/apache/lucene/util/ScorerDocQueue.class
+SHA1-Digest: n6nndvJo0SKQBAci690UrGPAn5o=
+
+Name: org/apache/lucene/search/FieldCache$ShortParser.class
+SHA1-Digest: iPbyEsyVVMJzM5FN1uVSlfdsZv8=
+
+Name: org/apache/lucene/document/DateTools.class
+SHA1-Digest: cSu+jAxfTRszaDM1VU1LV1Ba8Zo=
+
+Name: org/apache/lucene/index/TermsHashConsumerPerThread.class
+SHA1-Digest: 1ksopnNvdQeEIGzUDfXpvps4vV8=
+
+Name: org/apache/lucene/search/MatchAllDocsQuery$MatchAllDocsWeight.cl
+ ass
+SHA1-Digest: Dlb7AeJ9dpoNYL0pTp88/R9kQ0c=
+
+Name: org/apache/lucene/analysis/TeeSinkTokenFilter$1.class
+SHA1-Digest: 0Zjou0zm55q+ohnRdVHay1ZGakE=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$6.class
+SHA1-Digest: 1INI20nhyFELUD0K7Lf/pI+wn+o=
+
+Name: org/apache/lucene/search/TopScoreDocCollector$InOrderTopScoreDoc
+ Collector.class
+SHA1-Digest: 7PZODNIsknhN2bZtT6lcOiMl1fc=
+
+Name: org/apache/lucene/util/BitVector.class
+SHA1-Digest: lCe38XgE5YYTDY9SHeDLr+G4mIY=
+
+Name: org/apache/lucene/search/payloads/PayloadSpanUtil.class
+SHA1-Digest: XOmDJVVcChN+6vCqF0MRESCQNhQ=
+
+Name: org/apache/lucene/index/FieldsWriter.class
+SHA1-Digest: +3QoWPjOxlSUrO2Kju4a6NWPuMA=
+
+Name: org/apache/lucene/search/Similarity$4.class
+SHA1-Digest: wYytHximLepHxMgh1TLMYmt3Nzo=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderOneComparat
+ orNonScoringCollector.class
+SHA1-Digest: Eo+NxNixwFHXkQ7+swWtoBcaBrw=
+
+Name: org/apache/lucene/search/PrefixQuery.class
+SHA1-Digest: y52nBKcjVE7Mkk+FwNMJh2/EUBQ=
+
+Name: org/apache/lucene/search/NumericRangeQuery$NumericRangeTermEnum$
+ 1.class
+SHA1-Digest: H61/3CxhOfh90ss1Pkr1R/FexuI=
+
+Name: org/apache/lucene/analysis/PorterStemmer.class
+SHA1-Digest: bAqUO+//9EfVqug/ePlN31jFrnE=
+
+Name: org/apache/lucene/search/Weight.class
+SHA1-Digest: i0XlVk5b4AabUHfONQPYxpGqcTI=
+
+Name: org/apache/lucene/index/IntBlockPool.class
+SHA1-Digest: YyZFhVOqa4uTJQZ4fUhOeRSb24o=
+
+Name: org/apache/lucene/index/SegmentReader$CoreReaders.class
+SHA1-Digest: o9wqtBvWuIf24UGbbSN3X0wy3xQ=
+
+Name: org/apache/lucene/search/TopFieldDocs.class
+SHA1-Digest: gcU/uHhb05ZPT8ufiuZ7AEGW/0k=
+
+Name: org/apache/lucene/util/AttributeSource$AttributeFactory.class
+SHA1-Digest: qw/YCDy5kJave/w0DTQ5BrXvkaE=
+
+Name: org/apache/lucene/search/function/DocValues.class
+SHA1-Digest: aXD1EzRdVcRW7HasgZKxMNW5Wa4=
+
+Name: org/apache/lucene/index/NormsWriterPerField.class
+SHA1-Digest: i9AWz8peT7VnQoJfyrr2Q+UjbX4=
+
+Name: org/apache/lucene/index/TermsHashConsumerPerField.class
+SHA1-Digest: 5+r2sdv736UC3k1u7afR/+wCenA=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderOneComparat
+ orScoringNoMaxScoreCollector.class
+SHA1-Digest: zuPfvpFpoWLTf9CUcFOYTYvYszA=
+
+Name: org/apache/lucene/index/BufferedDeletes$Num.class
+SHA1-Digest: XC6JReH+4ESxmP6fdkfFkFMciW8=
+
+Name: org/apache/lucene/util/ScorerDocQueue$HeapedScorerDoc.class
+SHA1-Digest: KiksksWaYCe6iQohgOp/XMwRqlc=
+
+Name: org/apache/lucene/search/ComplexExplanation.class
+SHA1-Digest: VJC2SNmdy0VA4v5x5eeKCqm3aOY=
+
+Name: org/apache/lucene/index/ReadOnlyDirectoryReader.class
+SHA1-Digest: buZRt74PFpxYWYix7A9tt1Ncpeo=
+
+Name: org/apache/lucene/store/LockObtainFailedException.class
+SHA1-Digest: a3ihgQ6J3iGcDWtmg/eMEj3lNig=
+
+Name: org/apache/lucene/index/CharBlockPool.class
+SHA1-Digest: dN3FVp+GB+AOF+kwteNzTvb4d5A=
+
+Name: org/apache/lucene/search/PhrasePositions.class
+SHA1-Digest: MCxYxp8GUu/82CWAyLY5L1iuwvo=
+
+Name: org/apache/lucene/index/SegmentReader.class
+SHA1-Digest: kDptZz151kr5bOGL4PYhspBMX+c=
+
+Name: org/apache/lucene/search/Searcher.class
+SHA1-Digest: VkWSMuHOYaYVRRw01+hUC8PepnA=
+
+Name: org/apache/lucene/index/MergePolicy$MergeException.class
+SHA1-Digest: /eqf7b1txf+dlGd+TLl8urKJmgk=
+
+Name: org/apache/lucene/search/FieldCacheImpl$DoubleCache.class
+SHA1-Digest: vTlD+302mVjf+fPUCSEQF8s1TcE=
+
+Name: org/apache/lucene/util/AttributeImpl.class
+SHA1-Digest: gBd2ND9MUnGeThxUr6zcXB3nACs=
+
+Name: org/apache/lucene/util/RamUsageEstimator.class
+SHA1-Digest: TyuQkIAcaYUF0fiD9uXzApRy4iE=
+
+Name: org/apache/lucene/index/StaleReaderException.class
+SHA1-Digest: GznFFuZyGYGIQjnfhevjrmTyruA=
+
+Name: org/apache/lucene/index/MultiReader.class
+SHA1-Digest: xliUOa4jgHsiRNXpJftvLpHYWQM=
+
+Name: org/apache/lucene/search/ConstantScoreQuery.class
+SHA1-Digest: 7iA3xZVBXq9DZ/Ufd55Zc/6cvp4=
+
+Name: org/apache/lucene/search/SortField.class
+SHA1-Digest: 4bQe/PneNnE4AvGMrMgPBbM/5aY=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$FieldCacheDocIdSe
+ t$2.class
+SHA1-Digest: 1ATnQxa1NRJSF6Y7sEbHBWIOXFI=
+
+Name: org/apache/lucene/index/ByteBlockPool.class
+SHA1-Digest: hlyhp0ElMq3CvPttiY2vVadElCc=
+
+Name: org/apache/lucene/search/MultiTermQuery$ScoringBooleanQueryRewri
+ te.class
+SHA1-Digest: ojT/CvtsUEWPtOfgMU5dcfTEve0=
+
+Name: org/apache/lucene/util/ToStringUtils.class
+SHA1-Digest: puL7RlFWPFQ1pCmYnPleRX5f6Iw=
+
+Name: org/apache/lucene/store/BufferedIndexOutput.class
+SHA1-Digest: wX+mVzc4y5POw2cUqzESe96KJuo=
+
+Name: org/apache/lucene/search/FieldValueHitQueue$OneComparatorFieldVa
+ lueHitQueue.class
+SHA1-Digest: t1Ygkb5tsjdxaQAR1zILICTuXk0=
+
+Name: org/apache/lucene/util/Parameter.class
+SHA1-Digest: pU7pRxPS51V6P4nb+ao19uYNhJ0=
+
+Name: org/apache/lucene/search/spans/Spans.class
+SHA1-Digest: JyYbwMB3kWCsw3VPrS5vZqzrts8=
+
+Name: org/apache/lucene/search/Similarity.class
+SHA1-Digest: 1j+trFEXW5X7zj4tlBkANXZ2dTA=
+
+Name: org/apache/lucene/index/IndexWriter$IndexReaderWarmer.class
+SHA1-Digest: VktjXTwm7qIysCtxpojD76/1kTs=
+
+Name: org/apache/lucene/search/DefaultSimilarity.class
+SHA1-Digest: awTuyRK6vnk/5As/mxIF6c3AyXw=
+
+Name: org/apache/lucene/search/FieldCache.class
+SHA1-Digest: 3Za8uEEVzA8kPpYd2j5WPUvrMbs=
+
+Name: org/apache/lucene/store/SimpleFSDirectory$SimpleFSIndexOutput.cl
+ ass
+SHA1-Digest: DTa8Rk9fp//9VtA7FIhSHLaLvok=
+
+Name: org/apache/lucene/index/DefaultSkipListWriter.class
+SHA1-Digest: yNwIKvzsxaJ1h8mtQCkS3FQKovI=
+
+Name: org/apache/lucene/index/TermBuffer.class
+SHA1-Digest: cX/sLcMiNxEUMUHR2TIf5u1tw34=
+
+Name: org/apache/lucene/search/FieldComparator$IntComparator.class
+SHA1-Digest: ixlIvcXRyN9mklWuK/m982tQgJw=
+
+Name: org/apache/lucene/index/TermEnum.class
+SHA1-Digest: PWslx726TRtzfG5tAS/qjmw1m20=
+
+Name: org/apache/lucene/index/TermsHash.class
+SHA1-Digest: l3QElCFJISnWor2vrRA8oJwJIac=
+
+Name: org/apache/lucene/index/MultiLevelSkipListReader$SkipBuffer.clas
+ s
+SHA1-Digest: 6OQ7ETcIRDEa+Al0Bi+xhRLVOvI=
+
+Name: org/apache/lucene/analysis/CharTokenizer.class
+SHA1-Digest: Z72FsDpatfLSliVnqejhPh28sDA=
+
+Name: org/apache/lucene/search/FieldCache$2.class
+SHA1-Digest: k4QWV4tVMwDUtX881WJ1ZyHPRJE=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$1.class
+SHA1-Digest: d4b2nLm9QozdPDhX1el3EXql5pI=
+
+Name: org/apache/lucene/util/FieldCacheSanityChecker$Insanity.class
+SHA1-Digest: rDUC1a2o67drJonJExGMByMSsgg=
+
+Name: org/apache/lucene/store/SimpleFSLock.class
+SHA1-Digest: 48CNg9s9on4bp/+TF2pHV+lNKdc=
+
+Name: org/apache/lucene/search/SimilarityDelegator.class
+SHA1-Digest: Q92NISKZp0ZHmiaWSmZkGQTLaL8=
+
+Name: org/apache/lucene/index/FieldsReader.class
+SHA1-Digest: v2WW4lHOZl09M0ib16cq4i5q45g=
+
+Name: org/apache/lucene/search/spans/SpanOrQuery$1.class
+SHA1-Digest: 4HlLRkb+CLBu3Da0ChkVBP/o7oY=
+
+Name: org/apache/lucene/search/FieldValueHitQueue$1.class
+SHA1-Digest: ReAKB3mQgZTqm8VqEOmrtbg2EJc=
+
+Name: org/apache/lucene/search/TimeLimitingCollector$TimerThread.class
+SHA1-Digest: m34Djg1XSgG0t3cX070Rzk1pDwQ=
+
+Name: org/apache/lucene/search/ScoreDoc.class
+SHA1-Digest: xeUn/D7fsMqHuuiJQHh20ttlPbE=
+
+Name: org/apache/lucene/store/MMapDirectory.class
+SHA1-Digest: lBi7pxqpjWO3awMgguu8PXBcNvY=
+
+Name: org/apache/lucene/store/Lock$With.class
+SHA1-Digest: OSWDEQaHMsspQmBhFmgNpOiXBQI=
+
+Name: org/apache/lucene/search/ScoreDocComparator$2.class
+SHA1-Digest: CjVc4xpH6eMeM0jUkT9D/zIW7zg=
+
+Name: org/apache/lucene/index/FilterIndexReader$FilterTermDocs.class
+SHA1-Digest: BljNC0AZrvt/KHomdkmKbarCUUo=
+
+Name: org/apache/lucene/util/SorterTemplate.class
+SHA1-Digest: piJzx64iBcjtKRd7LLwYU353Bmc=
+
+Name: org/apache/lucene/store/FSDirectory.class
+SHA1-Digest: 60yClJ3rRW3bigaC5VggXTQKbWg=
+
+Name: org/apache/lucene/queryParser/QueryParserTokenManager.class
+SHA1-Digest: bBveVoVjSeH5upTVZBQux3R8lGw=
+
+Name: org/apache/lucene/index/IndexDeletionPolicy.class
+SHA1-Digest: 0j8umXQ3mGZnVKHLhI3GLGTdnHc=
+
+Name: org/apache/lucene/search/function/ShortFieldSource.class
+SHA1-Digest: ztb6e6mM0aQiS2v6gv2jr33QV8k=
+
+Name: org/apache/lucene/search/TopDocs.class
+SHA1-Digest: VjnlvZEuAe2mUMEL8Q4B/sCOK6g=
+
+Name: org/apache/lucene/util/AttributeSource.class
+SHA1-Digest: 8HCHJBagsyW/wKGpsv19lA8Dkec=
+
+Name: org/apache/lucene/index/InvertedDocConsumerPerThread.class
+SHA1-Digest: WcVYEnx8XyiQqJc4a5TlTaSaS0k=
+
+Name: org/apache/lucene/analysis/StopAnalyzer.class
+SHA1-Digest: qMBKegvGcx5bZ3iTZedd816TO3Q=
+
+Name: org/apache/lucene/store/FSDirectory$1.class
+SHA1-Digest: T+wYcMFOlx5TlpSXjETLj0Wt03U=
+
+Name: org/apache/lucene/index/SegmentMerger$3.class
+SHA1-Digest: gp1SXi1H+l6DRhx9/a6/bOyczGU=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderMultiCompar
+ atorScoringNoMaxScoreCollector.class
+SHA1-Digest: mKMAA20p4sEVDtVCNQ6KQEqGewg=
+
+Name: org/apache/lucene/index/DirectoryReader$2.class
+SHA1-Digest: MgyXvQw5QbgkgBHA4jQFXbCoD40=
+
+Name: org/apache/lucene/search/payloads/PayloadFunction.class
+SHA1-Digest: ZJmlrdFsrvnPuO9mWZoZsMwh+IU=
+
+Name: org/apache/lucene/index/IndexWriter$MaxFieldLength.class
+SHA1-Digest: CXPmeapbXg0JZ9NWUSipIZSKjQk=
+
+Name: about_files/LUCENE-NOTICE.txt
+SHA1-Digest: E3YznOp1ECpwzjYiqu+zPJZoG1E=
+
+Name: org/apache/lucene/search/HitDoc.class
+SHA1-Digest: UVFs+i+Evk5fUuK3UHFUUVW5zoc=
+
+Name: org/apache/lucene/analysis/LetterTokenizer.class
+SHA1-Digest: c+h9inRDE4rfygPaXXCNSs5jmy4=
+
+Name: org/apache/lucene/store/NativeFSLockFactory.class
+SHA1-Digest: ltZ/YQcNYCUUeWEkm+7glgkwsXg=
+
+Name: org/apache/lucene/analysis/TokenWrapper.class
+SHA1-Digest: 0UtkEiCsSBvwLwTLs33WVmet9UI=
+
+Name: org/apache/lucene/search/DisjunctionMaxQuery.class
+SHA1-Digest: AcArSjPgV8aChrpf89NooeKcd7E=
+
+Name: org/apache/lucene/index/SegmentTermPositionVector.class
+SHA1-Digest: gybluoLe4ERo1MxVv5sJkqrZ288=
+
+Name: org/apache/lucene/index/DocFieldConsumers$PerDoc.class
+SHA1-Digest: KlLSDD93oEyCng8nJBYcUKwNOdA=
+
+Name: org/apache/lucene/analysis/Tokenizer.class
+SHA1-Digest: /tlHeYgSZ5owq6UzdOLudOJG7G0=
+
+Name: org/apache/lucene/index/TermVectorsTermsWriterPerThread.class
+SHA1-Digest: IcUZyR9wD+cU8xPxPEEohYL9LOA=
+
+Name: org/apache/lucene/index/FormatPostingsTermsWriter.class
+SHA1-Digest: AM45NdU1pneOrNspTYtNGq60YhE=
+
+Name: org/apache/lucene/index/DirectoryReader$ReaderCommit.class
+SHA1-Digest: 2scM8ITOos7586UR2g53yRkg1do=
+
+Name: org/apache/lucene/search/Hit.class
+SHA1-Digest: 2TSH811DuctiGWIGbioykLSoTwY=
+
+Name: org/apache/lucene/index/MergeDocIDRemapper.class
+SHA1-Digest: BfQvCj6uPK9BNj5Yjj+XUzbuBhU=
+
+Name: org/apache/lucene/index/DocFieldConsumersPerField.class
+SHA1-Digest: aoTDhLPb1MS7FwUBJf92tIYV2eU=
+
+Name: org/apache/lucene/search/FilterManager.class
+SHA1-Digest: Vm49ya9+LwjT4oKberoI8oBURyc=
+
+Name: org/apache/lucene/search/FieldCacheImpl$CustomCache.class
+SHA1-Digest: 8K0A/Jn0y4GR20NvGqOO2OYLyS4=
+
+Name: org/apache/lucene/search/FieldCacheImpl$AutoCache.class
+SHA1-Digest: lwo0OuoSPaVe/7W1iHFuOA15CqQ=
+
+Name: org/apache/lucene/store/SimpleFSDirectory.class
+SHA1-Digest: 7Nr9X/kkScyEWGoxVxQc1agkhxk=
+
+Name: org/apache/lucene/index/ByteSliceWriter.class
+SHA1-Digest: hkobQ/11lWmf0uSTk0Yz20KZkB8=
+
+Name: org/apache/lucene/util/SmallFloat.class
+SHA1-Digest: /7Cccwm+8EfFFYii+0w/EbEV8+M=
+
+Name: org/apache/lucene/search/FieldCache$10.class
+SHA1-Digest: 5o6Pbf0MASfIABtKLP5UtuF6PIs=
+
+Name: org/apache/lucene/search/FieldCache$7.class
+SHA1-Digest: d6PaiqWG9DKZ0Xhn4EsobefarVY=
+
+Name: org/apache/lucene/index/DefaultSkipListReader.class
+SHA1-Digest: mi5rmrP6N6GubgOECxCJmyTJO7o=
+
+Name: org/apache/lucene/search/PrefixTermEnum.class
+SHA1-Digest: 69AsrQ0Kx0tTnEFJQn+cM501C1E=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$6.class
+SHA1-Digest: aDsYxILJE/FTgaafMw+gDwmYK8I=
+
+Name: org/apache/lucene/search/BooleanClause$Occur.class
+SHA1-Digest: KSQCGmD4bc/nHiH5lEWQ74Qpzk8=
+
+Name: org/apache/lucene/search/TimeLimitedCollector.class
+SHA1-Digest: 999JGTLNjfueCiXV5GeXePerefM=
+
+Name: org/apache/lucene/index/SegmentWriteState.class
+SHA1-Digest: BS31LKmYuI2N2uauQGrnB3H8MFw=
+
+Name: org/apache/lucene/analysis/CharStream.class
+SHA1-Digest: hB38UAM+HNY3w6+UHi+lJVWcDA8=
+
+Name: org/apache/lucene/queryParser/CharStream.class
+SHA1-Digest: lz7SB3wtE0rAVwTZ9Tcl9YSarlA=
+
+Name: org/apache/lucene/queryParser/QueryParser$1.class
+SHA1-Digest: jEBkXmXluLYTqApsLdanR/jeZ9M=
+
+Name: org/apache/lucene/document/Field$TermVector.class
+SHA1-Digest: 29JeI4ExweLtnhZcx7f0buzz968=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$1$1.class
+SHA1-Digest: a8Majz3RQeDiDiIf4QdkV3jvhOE=
+
+Name: org/apache/lucene/index/MergeScheduler.class
+SHA1-Digest: bQyK/AhyQ+WzfsuSPZKNHk9Q0SQ=
+
+Name: org/apache/lucene/index/DocConsumer.class
+SHA1-Digest: O+oVWqrlL0DCh2C8jEfVIJ2HXuk=
+
+Name: org/apache/lucene/index/LogMergePolicy.class
+SHA1-Digest: QSv4IYtUrv6sBHqjxP5si2mCBfo=
+
+Name: org/apache/lucene/search/FieldComparatorSource.class
+SHA1-Digest: ucz3lg57jH7sB8yD1s+Ahc5lyrQ=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$5$1.class
+SHA1-Digest: uH4HlM8KnTgsDabFoSyeaJurcZc=
+
+Name: org/apache/lucene/search/spans/SpanTermQuery.class
+SHA1-Digest: 5cRdgca/6iuzlfUCsW4EXlV0zVM=
+
+Name: org/apache/lucene/search/FilterManager$FilterCleaner.class
+SHA1-Digest: 3p3Sw4J69pfuDxyFgJTSDdAjVso=
+
+Name: org/apache/lucene/search/FieldComparator.class
+SHA1-Digest: YZQn2bUd2ZkJnlBVTuxfWG4i14s=
+
+Name: org/apache/lucene/index/FreqProxTermsWriterPerField.class
+SHA1-Digest: tvV9ZD/7HpNrZNn6dyaeA7iHLvQ=
+
+Name: org/apache/lucene/index/CompoundFileWriter$FileEntry.class
+SHA1-Digest: lYkX4i5tcYkpmA/ZS/CsWykixDM=
+
+Name: org/apache/lucene/search/QueryWrapperFilter$2.class
+SHA1-Digest: a8bOl8Y20CiuUecobSvjsLXN0n8=
+
+Name: org/apache/lucene/util/Version.class
+SHA1-Digest: cLPza1z69gWlJru5ku6uAK8zKtE=
+
+Name: org/apache/lucene/util/AverageGuessMemoryModel$1.class
+SHA1-Digest: X1kUzn3IaVQZ88ietYYr8I2YgIk=
+
+Name: org/apache/lucene/util/SimpleStringInterner$Entry.class
+SHA1-Digest: nS8VS/I3GkYKd9YGoAyfBvC3fD0=
+
+Name: org/apache/lucene/search/FieldCacheImpl$Entry.class
+SHA1-Digest: zH5yd0DkxIcdWe4QvbTMyA+9dmI=
+
+Name: org/apache/lucene/search/spans/SpanQuery.class
+SHA1-Digest: pSROJYgAfJoJu8HX25AIYdvyPFo=
+
+Name: org/apache/lucene/search/FieldCacheTermsFilter$FieldCacheTermsFi
+ lterDocIdSet.class
+SHA1-Digest: jreOQbg5jW8cfUGZydwkVo19uHI=
+
+Name: org/apache/lucene/index/FilterIndexReader.class
+SHA1-Digest: XRYdBzPBuhqugJVR5Wli6Zo4/UA=
+
+Name: org/apache/lucene/analysis/tokenattributes/PayloadAttribute.clas
+ s
+SHA1-Digest: xkgLRTcOp8Zfh6FJcLnxlpHXDzI=
+
+Name: org/apache/lucene/search/MultiSearcher$1.class
+SHA1-Digest: EWh2miHc5yJc/T2RNeK84eO9xmU=
+
+Name: org/apache/lucene/document/Field$Index.class
+SHA1-Digest: 5ZhEQnEFLB7KimfK6cgsIjWx7t4=
+
+Name: org/apache/lucene/search/FieldCache$Parser.class
+SHA1-Digest: 86GIz8OIHRvWduMv19k9D76u/UA=
+
+Name: org/apache/lucene/index/CheckIndex$Status$TermIndexStatus.class
+SHA1-Digest: hcal9yUFrL5NdkuhrzaJqSNLYGQ=
+
+Name: org/apache/lucene/index/FormatPostingsDocsConsumer.class
+SHA1-Digest: kdmxscCKx1kC/gSZz6seHWAJLAM=
+
+Name: org/apache/lucene/util/AttributeSource$State.class
+SHA1-Digest: yTSBAg1oTezYBzl6LK1/udpWa7o=
+
+Name: org/apache/lucene/search/function/ReverseOrdFieldSource.class
+SHA1-Digest: yM9oLnmhYlEKiuL4lX/uYIZwuqw=
+
+Name: org/apache/lucene/analysis/TokenStream$TokenWrapperAttributeFact
+ ory.class
+SHA1-Digest: E4Jn2wWrICxxrHcs05IUIktr3a8=
+
+Name: org/apache/lucene/store/RAMDirectory.class
+SHA1-Digest: RjOZjA4yNta6RqN4heQ3bYvOfxs=
+
+Name: org/apache/lucene/document/NumberTools.class
+SHA1-Digest: P7Zsxj9rxEKFYJ51gGRBwczDzak=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$5.class
+SHA1-Digest: OP89aXKnqio+gmsjFS8Zp7Pt5ko=
+
+Name: org/apache/lucene/search/PrefixFilter.class
+SHA1-Digest: EchwT/OFRgg7hBiojfbio/9FS1U=
+
+Name: org/apache/lucene/index/CheckIndex$Status$FieldNormStatus.class
+SHA1-Digest: +HS8rPyE0HFIZIJzXHWW+po2gyc=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter.class
+SHA1-Digest: ziLrsSXJSdC+LskXPuU2W13nw+w=
+
+Name: org/apache/lucene/index/SnapshotDeletionPolicy$MyCommitPoint.cla
+ ss
+SHA1-Digest: aUZZ8RqDGwNSZx9RZb8YiUIRl4g=
+
+Name: org/apache/lucene/search/Similarity$3.class
+SHA1-Digest: BLU6cToCH2LsNsuQWElBmsV0ExY=
+
+Name: org/apache/lucene/util/CloseableThreadLocal.class
+SHA1-Digest: 34M4UKg+VnFkHR3pXt/wYgL7rVA=
+
+Name: org/apache/lucene/search/function/ValueSource.class
+SHA1-Digest: dkkcunFrxf8nZL6iudgA45/Dx70=
+
+Name: org/apache/lucene/util/cache/SimpleLRUCache.class
+SHA1-Digest: i/HwlOiegRoECTtkwijiKIwsJIo=
+
+Name: org/apache/lucene/search/FieldComparator$StringOrdValComparator.
+ class
+SHA1-Digest: dGSpZga5EvrLiruHIxxBAjpm6fE=
+
+Name: org/apache/lucene/analysis/standard/StandardFilter.class
+SHA1-Digest: tm3xZruZBhf+6cFTzb5KFEVvdM0=
+
+Name: org/apache/lucene/index/CheckIndex$Status$TermVectorStatus.class
+SHA1-Digest: EcbVM+jsi6DOtoQzBqTjbaPyhX8=
+
+Name: org/apache/lucene/index/IndexReader$1.class
+SHA1-Digest: MPjvR+ne+zhMlgGaabakzEyuTXg=
+
+Name: org/apache/lucene/document/CompressionTools.class
+SHA1-Digest: LKD98xXfBqZmtirDuUFypEFIL90=
+
+Name: org/apache/lucene/store/RAMFile.class
+SHA1-Digest: rFttuBBFw5N78WfIHbLRMER4Jgc=
+
+Name: org/apache/lucene/store/MMapDirectory$MultiMMapIndexInput.class
+SHA1-Digest: QhgEydWhes9PDvhwUo1eyXQl/MQ=
+
+Name: org/apache/lucene/search/spans/SpanNotQuery.class
+SHA1-Digest: pNCfkazmz7S8V4VZCXmrj6HGJPU=
+
+Name: org/apache/lucene/index/DocumentsWriter.class
+SHA1-Digest: BhvGQdhgV0nGivMxhWbSpPScFsQ=
+
+Name: org/apache/lucene/search/spans/SpanFirstQuery.class
+SHA1-Digest: wJc9hFFY33vgEaWhpnyXb+51IV8=
+
+Name: org/apache/lucene/search/BooleanScorer$BucketTable.class
+SHA1-Digest: qOeuZmdUIEr8mWTkW5XNqnyaRW0=
+
+Name: org/apache/lucene/index/ByteSliceReader.class
+SHA1-Digest: wRKvBS/yG3EmUYdgVSHR51FHBHo=
+
+Name: org/apache/lucene/search/RangeQuery.class
+SHA1-Digest: GpygrDB2VBIhENQONVtLbhCXhN4=
+
+Name: org/apache/lucene/messages/Message.class
+SHA1-Digest: FoP1SoeelKS9AayTeDpSmB6qyEk=
+
+Name: org/apache/lucene/index/DocFieldProcessor.class
+SHA1-Digest: JAcgdMMucT9XqHr9K/Ts1eiXs/8=
+
+Name: org/apache/lucene/index/MergePolicy$OneMerge.class
+SHA1-Digest: 8TOYUkyXSikpa5WvoNlEiI+Crq8=
+
+Name: org/apache/lucene/queryParser/QueryParser$Operator.class
+SHA1-Digest: RwUsVy/B2YemeWG2TTiSv/nWvOg=
+
+Name: org/apache/lucene/index/FormatPostingsPositionsWriter.class
+SHA1-Digest: a9E9ZO6HQVPBFzZ4Y3XecpVjHM0=
+
+Name: org/apache/lucene/index/InvertedDocEndConsumer.class
+SHA1-Digest: RvLeRN8KBy6ViZj39IiWe+LQAvg=
+
+Name: org/apache/lucene/search/ParallelMultiSearcher$1.class
+SHA1-Digest: F5VNuT4MMm37QSpMcTZXLcNSpbs=
+
+Name: org/apache/lucene/index/FreqProxTermsWriterPerThread.class
+SHA1-Digest: y/MWit7PE8keBLsLvy4NdMlVcc0=
+
+Name: org/apache/lucene/util/Attribute.class
+SHA1-Digest: UX/nKw9ByWHPrw2fOQslFMcpQEE=
+
+Name: org/apache/lucene/store/MMapDirectory$1.class
+SHA1-Digest: Q3V5o6b1NaxNGpTekgC6gscCQZM=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$FieldCacheDocIdSe
+ t$1.class
+SHA1-Digest: 0K/37/4MP8FldHcU55kZkzsKPww=
+
+Name: org/apache/lucene/index/CompoundFileReader$FileEntry.class
+SHA1-Digest: Bfjfz+kXwNfQKEzK82ztRytzPbY=
+
+Name: org/apache/lucene/index/FieldsReader$LazyField.class
+SHA1-Digest: CeXFGbm/pn/CoEBYDgkcD+yBMhI=
+
+Name: org/apache/lucene/search/DisjunctionMaxScorer.class
+SHA1-Digest: 6N5UbZOnpfm6ArxUTU53/B7BJnk=
+
+Name: org/apache/lucene/index/ByteBlockPool$Allocator.class
+SHA1-Digest: C7Z6hMJO2uF3pZ2s7QD598EuGCY=
+
+Name: org/apache/lucene/analysis/TeeTokenFilter.class
+SHA1-Digest: OCUdJ3ccDb5OdOPwKVejK1XswXA=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/apache/lucene/util/cache/SimpleMapCache.class
+SHA1-Digest: ODiZkHFeF1nBKzdKenBgPoyRQVM=
+
+Name: org/apache/lucene/queryParser/ParseException.class
+SHA1-Digest: dtxSc6APDq9h769wjN9CID/uOMw=
+
+Name: org/apache/lucene/index/DirectoryReader$MultiTermEnum.class
+SHA1-Digest: fkhDPS90YKhz5nRYmrl8/o1gimk=
+
+Name: org/apache/lucene/search/MultiTermQuery$ConstantScoreAutoRewrite
+ .class
+SHA1-Digest: XOt6rYn/h2k01A2Ck9ZgZ0B/lDE=
+
+Name: org/apache/lucene/util/ArrayUtil.class
+SHA1-Digest: /K5d5RXL+i+m9qNDqSAq1grMX9U=
+
+Name: org/apache/lucene/search/FieldCache$1.class
+SHA1-Digest: /QTrT+h5GS357MldUdSBc6zhtBI=
+
+Name: org/apache/lucene/index/SegmentInfos.class
+SHA1-Digest: PparlxU/GRufM2opWj9Nku4H+ig=
+
+Name: org/apache/lucene/messages/NLSException.class
+SHA1-Digest: ggBRY8iwTV9QfGthWEVIfO38d6s=
+
+Name: org/apache/lucene/search/Filter.class
+SHA1-Digest: x8ZUpEL4BAZtiiV2imKn6Z0ycPA=
+
+Name: org/apache/lucene/search/PhraseScorer.class
+SHA1-Digest: uf7uk7zr5LwaVN9hbBpj1q3o08c=
+
+Name: org/apache/lucene/search/BooleanQuery.class
+SHA1-Digest: MbXmx+y5+PAUnVMw2UHCn7HeRcE=
+
+Name: org/apache/lucene/search/Searchable.class
+SHA1-Digest: bZr5aWUPv5vuLQUFOEJSLk4L1so=
+
+Name: org/apache/lucene/analysis/PerFieldAnalyzerWrapper.class
+SHA1-Digest: WCj3im4zyY0zpMQQSL2HnQE/L98=
+
+Name: org/apache/lucene/util/StringHelper.class
+SHA1-Digest: rlhvwvdLHf3Uh/XTS/FGc4fAtOw=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderOneComparat
+ orScoringMaxScoreCollector.class
+SHA1-Digest: Yl67PtFXlQklgFzl3140fEErE8w=
+
+Name: org/apache/lucene/search/MultiTermQuery$ConstantScoreFilterRewri
+ te.class
+SHA1-Digest: gNfoz/Ox/in3K6xK0/H5ixLb0CE=
+
+Name: org/apache/lucene/index/PositionBasedTermVectorMapper$TVPosition
+ Info.class
+SHA1-Digest: ritGIS0TbSxvt8bzdAN5VsOLg2g=
+
+Name: org/apache/lucene/index/CheckIndex$Status.class
+SHA1-Digest: ewAcEiDK9Um4dEV4EPFYAHZivbU=
+
+Name: org/apache/lucene/index/TermInfosWriter.class
+SHA1-Digest: 9I9H+HDdfCmHQxRofYTlI8aLDWQ=
+
+Name: org/apache/lucene/search/ScoreDocComparator$1.class
+SHA1-Digest: I9bkHCkKL/XSGkE0W2TO/K28qtE=
+
+Name: org/apache/lucene/index/DocFieldProcessorPerField.class
+SHA1-Digest: tvZEjaFBKGOIaBjyQToY5xvMRd0=
+
+Name: org/apache/lucene/search/TopFieldCollector$OneComparatorNonScori
+ ngCollector.class
+SHA1-Digest: giBQMAzPRWADb+irnUm7hLtA3Hc=
+
+Name: org/apache/lucene/analysis/CharArraySet.class
+SHA1-Digest: QRtpY/0zLl0rxQTJJDxZIVbgZeg=
+
+Name: org/apache/lucene/search/FieldCacheImpl$IntCache.class
+SHA1-Digest: /ECVjhl1Q5BQixcZ8aUwwVYyaQE=
+
+Name: org/apache/lucene/index/SegmentTermPositions.class
+SHA1-Digest: iP3Ri5HYkaD9VQY4g/w9rwU/yQU=
+
+Name: plugin.properties
+SHA1-Digest: kub9Xshua34cYFPiPXfcJPEfIGQ=
+
+Name: org/apache/lucene/search/MultiSearcher$CachedDfSource.class
+SHA1-Digest: fE7XClmFBV79L2wnRGKiuuGLSOQ=
+
+Name: org/apache/lucene/index/SegmentMerger$2.class
+SHA1-Digest: ISI/KH/x11BuiEvyvXzniIxyMxw=
+
+Name: org/apache/lucene/util/FieldCacheSanityChecker$InsanityType.clas
+ s
+SHA1-Digest: QHHLyo6RpKUdMmpg4bSyF68i7L0=
+
+Name: org/apache/lucene/analysis/CharArraySet$1.class
+SHA1-Digest: iKtMnMGcZZjR/SyewfWrpgPcPqQ=
+
+Name: org/apache/lucene/index/DirectoryReader$1.class
+SHA1-Digest: DjcUp620EJ0eD9kfzIoKDktFkYg=
+
+Name: org/apache/lucene/index/FormatPostingsDocsWriter.class
+SHA1-Digest: g5zhhxHHkWEFdWwzF4PT/Gvp+/o=
+
+Name: org/apache/lucene/index/DocFieldConsumer.class
+SHA1-Digest: SqW0jSpy9jq/2h7c71BjB9VYx+w=
+
+Name: org/apache/lucene/document/LoadFirstFieldSelector.class
+SHA1-Digest: KDJB31slBSsvm2bqqbe114TEPnE=
+
+Name: org/apache/lucene/analysis/tokenattributes/PositionIncrementAttr
+ ibute.class
+SHA1-Digest: MVmglekKu8kXz7uzvlFkL8aAEW8=
+
+Name: org/apache/lucene/util/DocIdBitSet.class
+SHA1-Digest: SaDlF4n6l70X14pkzu1XcmyiGJc=
+
+Name: org/apache/lucene/search/TopFieldCollector$MultiComparatorScorin
+ gNoMaxScoreCollector.class
+SHA1-Digest: GSbbXktiJKGbgnIa5+RfVysibIQ=
+
+Name: org/apache/lucene/search/TopFieldCollector$MultiComparatorScorin
+ gMaxScoreCollector.class
+SHA1-Digest: RN4w/JZu6TiWIFszznwV9KzIvSY=
+
+Name: org/apache/lucene/analysis/NormalizeCharMap.class
+SHA1-Digest: BP5/h2WF7FgSboS1vTVSzdxpmO0=
+
+Name: org/apache/lucene/search/FilteredDocIdSet.class
+SHA1-Digest: OpF8A3MWNvAkK18WEfh9sbSMZRc=
+
+Name: org/apache/lucene/analysis/StopFilter.class
+SHA1-Digest: j37j1cC8ni+MK7nsvFyx6ZXP1rQ=
+
+Name: org/apache/lucene/search/IndexSearcher.class
+SHA1-Digest: b5MP15PXiRRhEvgefNgu2/zdu/g=
+
+Name: org/apache/lucene/analysis/WordlistLoader.class
+SHA1-Digest: jTAF8yCcGdHOehRlkiM9sc14408=
+
+Name: org/apache/lucene/document/Fieldable.class
+SHA1-Digest: sZ5IlhYUX0V0BMwQIApf4h9co5s=
+
+Name: org/apache/lucene/util/BitUtil.class
+SHA1-Digest: WSJNmK4qU6HAsQ4RV169afPev+Y=
+
+Name: org/apache/lucene/search/function/CustomScoreQuery$1.class
+SHA1-Digest: dsIkGeQYDCcbjBERb0x+m4bvBMM=
+
+Name: org/apache/lucene/search/FilteredQuery$1$1.class
+SHA1-Digest: yj6PqAyMiKQFexFIJ5EIWI9jEQI=
+
+Name: org/apache/lucene/index/DocFieldConsumerPerThread.class
+SHA1-Digest: tCwjl0W7XcwU43nIuEPC++niPs8=
+
+Name: org/apache/lucene/search/MatchAllDocsQuery$MatchAllScorer.class
+SHA1-Digest: VsmqNELkitS33ZrT0Wx3yyrIP8o=
+
+Name: org/apache/lucene/search/FilteredDocIdSetIterator.class
+SHA1-Digest: AuQnmk8mPcpL4FXxgWu7aVm3fTE=
+
+Name: org/apache/lucene/search/ConjunctionScorer.class
+SHA1-Digest: CITNnTEk5ecWLGnD2vjAb1AdLcY=
+
+Name: org/apache/lucene/queryParser/MultiFieldQueryParser.class
+SHA1-Digest: S5fIToD7p+jCyyRN8x3ftXD08y8=
+
+Name: org/apache/lucene/search/Explanation$IDFExplanation.class
+SHA1-Digest: yuhxKPt0hiPfdRwN1n07tcUtioA=
+
+Name: org/apache/lucene/analysis/TokenStream$1.class
+SHA1-Digest: fMBMaA3OEJw1pvI5eqJZfEhivz0=
+
+Name: org/apache/lucene/search/FieldCache$6.class
+SHA1-Digest: gTKVqmRVtHwy/m34/fF8Vdk/Or4=
+
+Name: org/apache/lucene/store/ChecksumIndexOutput.class
+SHA1-Digest: idx11vU02e5nxKFxNJ+Dt2FyRFk=
+
+Name: org/apache/lucene/search/ScoreDocComparator.class
+SHA1-Digest: XILwIkBDa/r6PWq4QlwHMmtqZ/U=
+
+Name: org/apache/lucene/search/function/FloatFieldSource$1.class
+SHA1-Digest: EXmZpucD3yZeBpaq6MmMnBcIJ4s=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$5.class
+SHA1-Digest: BRUQNNe0bz2RVN3Lsh6qH7lz11s=
+
+Name: org/apache/lucene/search/spans/NearSpansOrdered$1.class
+SHA1-Digest: PsAOZeWHj19MlrWOQfGKwtJG6mg=
+
+Name: org/apache/lucene/util/OpenBitSetDISI.class
+SHA1-Digest: UIVFOU94xgoeJtcJAnBeHp2kFuk=
+
+Name: org/apache/lucene/analysis/tokenattributes/FlagsAttribute.class
+SHA1-Digest: LrbvWDMUAFWSkpMhoVdcR4zRduM=
+
+Name: org/apache/lucene/store/NoLock.class
+SHA1-Digest: FvLbeQZXlkZvo9Sw8ZVtKbNOqsE=
+
+Name: org/apache/lucene/index/KeepOnlyLastCommitDeletionPolicy.class
+SHA1-Digest: XPJ7snM/wbR1zvaXWFSp8t8MkFc=
+
+Name: org/apache/lucene/index/IndexFileDeleter$RefCount.class
+SHA1-Digest: zYF3v7npbM6QOdDVksP5C02RBOk=
+
+Name: org/apache/lucene/search/spans/NearSpansUnordered$CellQueue.clas
+ s
+SHA1-Digest: O/c9RM3FYSTHNrGS+YXplBkXHV4=
+
+Name: org/apache/lucene/index/AllTermDocs.class
+SHA1-Digest: z4Pt7WaQXbkdvnXth8vOGSesP7g=
+
+Name: org/apache/lucene/search/payloads/PayloadTermQuery$PayloadTermWe
+ ight.class
+SHA1-Digest: YOffotQG+slcfoMZGoaDN7S9Yc8=
+
+Name: org/apache/lucene/search/FieldComparator$LongComparator.class
+SHA1-Digest: N70eHSD+C4PFkV3bA6nmTHPsacE=
+
+Name: org/apache/lucene/analysis/standard/StandardAnalyzer$SavedStream
+ s.class
+SHA1-Digest: pXshWXMocVCOozT5jonupwn7MFw=
+
+Name: org/apache/lucene/search/MultiTermQueryWrapperFilter.class
+SHA1-Digest: 8aCiYAQnf3+JWNOEDYFJuj7vLFc=
+
+Name: org/apache/lucene/util/Constants.class
+SHA1-Digest: fbDRPVLu6rsh92wAAy/pyZeObDs=
+
+Name: org/apache/lucene/index/SegmentMerger.class
+SHA1-Digest: DpLQfJv3UC+LkB/Fog9C4HPjQic=
+
+Name: org/apache/lucene/document/AbstractField.class
+SHA1-Digest: q45H3zKu0KbzIYLpO/5fpZmKl8M=
+
+Name: org/apache/lucene/index/DirectoryReader.class
+SHA1-Digest: 6qgc5BMPooG6cFnKSVSPFmPX2Ng=
+
+Name: org/apache/lucene/store/IndexInput.class
+SHA1-Digest: f7bn07ouYB80gHkK8GgQlaLxoy4=
+
+Name: org/apache/lucene/search/Similarity$MethodSupport.class
+SHA1-Digest: KlcvfGiHJ9JETWTDlg3F2/dP2IA=
+
+Name: org/apache/lucene/index/MultipleTermPositions$TermPositionsQueue
+ .class
+SHA1-Digest: qo9hepry4fHeFmLuiYubvc3AX14=
+
+Name: org/apache/lucene/search/MultiSearcher.class
+SHA1-Digest: 3HacSTr9NuhxRwLyv/mddQzH4E0=
+
+Name: org/apache/lucene/search/QueryWrapperFilter$1.class
+SHA1-Digest: dCW/hKoMYJIMtjP4LxXx2MRmG+s=
+
+Name: org/apache/lucene/index/InvertedDocConsumerPerField.class
+SHA1-Digest: 2aLvWx9ak1bNYNO0G4ib2NJDkGk=
+
+Name: org/apache/lucene/search/MultiTermQueryWrapperFilter$2.class
+SHA1-Digest: evS7CJtWJEhar3O02qupZrceP/0=
+
+Name: org/apache/lucene/index/FieldReaderException.class
+SHA1-Digest: jYGOpTNv1IG4fNTiDb4KcV64CQM=
+
+Name: org/apache/lucene/index/SegmentTermDocs.class
+SHA1-Digest: ++hcIOjICuxae0z4wfh2QRmPBqM=
+
+Name: org/apache/lucene/search/TermRangeQuery.class
+SHA1-Digest: O1rPogQXrD3hPkJ7ztmX4856Rd4=
+
+Name: org/apache/lucene/analysis/TokenStream$MethodSupport.class
+SHA1-Digest: SvWwYTkr3qVf7bYLjUnQ8e+uPXc=
+
+Name: org/apache/lucene/index/TermInfosReader.class
+SHA1-Digest: mLyl5EAuMsdZsAJmjvyT017Sqg0=
+
+Name: org/apache/lucene/search/HitCollectorWrapper.class
+SHA1-Digest: anBdH4TeAyLFoY1eLlhPm4ty1cA=
+
+Name: org/apache/lucene/search/FieldDocSortedHitQueue.class
+SHA1-Digest: RIpjAoBpKxvdxgMHkfm+MqmgBek=
+
+Name: org/apache/lucene/index/DocFieldConsumerPerField.class
+SHA1-Digest: Z6+QqpcIwXZFirtO5VW9qBC/YyY=
+
+Name: org/apache/lucene/search/function/ValueSourceQuery$ValueSourceSc
+ orer.class
+SHA1-Digest: 7TF0+dfuulTqz5jDMh/o6eYFxDc=
+
+Name: org/apache/lucene/search/payloads/MinPayloadFunction.class
+SHA1-Digest: 9AgsBwR28i1sL9a1TEny3vkj6f4=
+
+Name: org/apache/lucene/search/TopScoreDocCollector$1.class
+SHA1-Digest: Z7HB8v6QzBz+h9VoXhLXlm9USGc=
+
+Name: org/apache/lucene/util/MemoryModel.class
+SHA1-Digest: OtRwh3dWSxQpu+5m3f+GUKaif54=
+
+Name: org/apache/lucene/store/MMapDirectory$MMapIndexInput.class
+SHA1-Digest: 0rAs3FQbHu6fsOXieKTOI6cSy9Q=
+
+Name: org/apache/lucene/search/SpanFilter.class
+SHA1-Digest: kLX83Dew/3+rkt2uPxN7nyOZxOg=
+
+Name: org/apache/lucene/index/DocumentsWriter$ByteBlockAllocator.class
+SHA1-Digest: upAyw3hl5DYyPRyOqryPdHlCuFU=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$4.class
+SHA1-Digest: hdz9WqunoW6IMfa31sRPirOAl1I=
+
+Name: org/apache/lucene/document/Field$Store.class
+SHA1-Digest: NX3QlQ0awn+CEqCAp6IoZ3odTuw=
+
+Name: org/apache/lucene/index/MultipleTermPositions.class
+SHA1-Digest: t0PeDgLZD+Z+VvIE2RJSeHnitqg=
+
+Name: org/apache/lucene/search/TimeLimitedCollector$TimeExceededExcept
+ ion.class
+SHA1-Digest: dXWbZJRCaQJE4ffyIKGJsSA/rh0=
+
+Name: org/apache/lucene/analysis/BaseCharFilter.class
+SHA1-Digest: rQqjUhRkOPiYTWZFo82WyqeFCDk=
+
+Name: org/apache/lucene/index/CheckIndex$Status$StoredFieldStatus.clas
+ s
+SHA1-Digest: mGmn+MXT4HJTPriPKrkWii5SgYA=
+
+Name: org/apache/lucene/search/PhraseQuery.class
+SHA1-Digest: KPfLZHnEuORSv4AVfszLDPOC46I=
+
+Name: org/apache/lucene/index/DocFieldConsumersPerThread.class
+SHA1-Digest: la1rV71MTQ+r63bKH7E0HRnmeZ4=
+
+Name: org/apache/lucene/search/Similarity$2.class
+SHA1-Digest: CuQypQGhdb3si5Ea1tIEs/LxsiE=
+
+Name: org/apache/lucene/util/NumericUtils$IntRangeBuilder.class
+SHA1-Digest: oa7Jxl55bIr7z+8rqgnyRPW9R4U=
+
+Name: org/apache/lucene/search/payloads/AveragePayloadFunction.class
+SHA1-Digest: SJoFySEKIpLaW+c6IILLNtQtnv0=
+
+Name: org/apache/lucene/search/MultiSearcherThread.class
+SHA1-Digest: bDzhONzF46ZDWgJdqN1toM7hR2o=
+
+Name: org/apache/lucene/util/cache/Cache$SynchronizedCache.class
+SHA1-Digest: aulm1p7kgu/GvlvBE16l4ML3cHY=
+
+Name: org/apache/lucene/analysis/PorterStemFilter.class
+SHA1-Digest: SKZyZ2OcRcyvP2X7ywioDZ/mMHI=
+
+Name: org/apache/lucene/analysis/StopAnalyzer$SavedStreams.class
+SHA1-Digest: 5AdwA/YOs1Ofaq5Tf4RCesiHQO8=
+
+Name: org/apache/lucene/index/DocConsumerPerThread.class
+SHA1-Digest: Yri1t5wxJjWWW8APMAT45s9jDYw=
+
+Name: org/apache/lucene/analysis/LowerCaseFilter.class
+SHA1-Digest: O5HkON5HPrvJX+JFv0/n7kr3u7Q=
+
+Name: org/apache/lucene/search/QueryFilter.class
+SHA1-Digest: 2AMwinGBdrpLQkYpCPCGIDc9DZs=
+
+Name: org/apache/lucene/queryParser/FastCharStream.class
+SHA1-Digest: ljbm+P3Gbewj1DvzYKX9AxRmjHk=
+
+Name: org/apache/lucene/search/FieldCacheImpl$FloatCache.class
+SHA1-Digest: YmQLpjzM0moaqSA68VkzT2C+/Yo=
+
+Name: org/apache/lucene/index/ParallelReader$ParallelTermDocs.class
+SHA1-Digest: Qc61WI50vbrYuGbgCxtnqKdMCLo=
+
+Name: org/apache/lucene/index/SegmentInfos$2.class
+SHA1-Digest: p/XP2r66jyShLZwmTfS2hXkexxM=
+
+Name: org/apache/lucene/util/cache/SimpleLRUCache$1.class
+SHA1-Digest: n6nmBM2K4vGsjvd9rTKUE1RRsV8=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$4$1.class
+SHA1-Digest: TjzlvyIOGZRq0XCc0eu6Va5++Ao=
+
+Name: org/apache/lucene/search/FieldCacheImpl$LongCache.class
+SHA1-Digest: AJpGop8S3rXQoYstcD67DSUwnVs=
+
+Name: org/apache/lucene/index/TermFreqVector.class
+SHA1-Digest: 1zzNq6ebHY3/8Vfu0QChVc5Ohpc=
+
+Name: org/apache/lucene/messages/MessageImpl.class
+SHA1-Digest: PhKtujcvc35GyjEInkSpXlqcx/4=
+
+Name: org/apache/lucene/search/payloads/MaxPayloadFunction.class
+SHA1-Digest: DRayGWwEACcVsOSRIflX//3rTBk=
+
+Name: org/apache/lucene/document/FieldSelector.class
+SHA1-Digest: nN1PDY9vPCojvqqiU0UFre0Zo/I=
+
+Name: org/apache/lucene/queryParser/QueryParser$LookaheadSuccess.class
+SHA1-Digest: vLFdXoigR220WFtoRWQ/6zFhfPM=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$FieldCacheDocIdSe
+ t.class
+SHA1-Digest: YKaErRBxeN/jzftrfB9VYo5d7/g=
+
+Name: org/apache/lucene/index/ParallelReader.class
+SHA1-Digest: s0hdOkrDEwXXj23zqRcS46Yi0EU=
+
+Name: org/apache/lucene/search/SortComparator.class
+SHA1-Digest: Mi8FYYqvN0dPNhRyr00ngPW1F1E=
+
+Name: org/apache/lucene/search/spans/SpanFirstQuery$1.class
+SHA1-Digest: slu4cDV14M11qzvsEm2B1YYEnJU=
+
+Name: org/apache/lucene/search/MultiPhraseQuery.class
+SHA1-Digest: 3saSdff5J10u5w339YoSoev+dqY=
+
+Name: org/apache/lucene/search/QueryTermVector.class
+SHA1-Digest: yeElYZ/FWbL1RviMygBfFf3TEVc=
+
+Name: org/apache/lucene/search/FuzzyTermEnum.class
+SHA1-Digest: Fn5Px5I7nJ7WE8JNOj13OK9oiDY=
+
+Name: org/apache/lucene/search/BooleanClause.class
+SHA1-Digest: ib/oHCr4hGKauiExOiq53u2KoV0=
+
+Name: org/apache/lucene/search/NumericRangeQuery.class
+SHA1-Digest: k1HfiCPahsG+IcW8mfL0KLuJI9A=
+
+Name: org/apache/lucene/index/FormatPostingsFieldsWriter.class
+SHA1-Digest: Wm8t2Ac5CIYs+pzLHImMe3ewdeM=
+
+Name: org/apache/lucene/index/CheckIndex$MySegmentTermDocs.class
+SHA1-Digest: Le2qj+wbXjsbKSGXnbH2v6hC5es=
+
+Name: org/apache/lucene/index/TermPositions.class
+SHA1-Digest: 1f0YdpeiSmiBikZyJeQQ2nKIOn4=
+
+Name: org/apache/lucene/index/FormatPostingsFieldsConsumer.class
+SHA1-Digest: qOm9HJ8zTGyDDrJLEu51hKIB5Gw=
+
+Name: org/apache/lucene/index/SerialMergeScheduler.class
+SHA1-Digest: R5Rm4hzltMCCFqIZODOoee80KKg=
+
+Name: org/apache/lucene/index/DocInverterPerThread$SingleTokenTokenStr
+ eam.class
+SHA1-Digest: 7C1oDXJU9UC6wdchSXtP3h/RqpY=
+
+Name: org/apache/lucene/search/FieldComparator$FloatComparator.class
+SHA1-Digest: nKJKd2J4Cjqf/8yr78SNCJIQYBI=
+
+Name: org/apache/lucene/index/ParallelReader$ParallelTermPositions.cla
+ ss
+SHA1-Digest: qu80cL1g3E3W9C4nvWfYg7wmSIY=
+
+Name: org/apache/lucene/index/SegmentReader$Ref.class
+SHA1-Digest: HFNaxppQgeqbAfq0UVo/efnylCE=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$9.class
+SHA1-Digest: CyolvFm0DQ5P1++PgzVZLM9ojLI=
+
+Name: org/apache/lucene/document/MapFieldSelector.class
+SHA1-Digest: KTp/imUXN+GlmpXhGgdHTsO+8Ss=
+
+Name: org/apache/lucene/analysis/TokenStream.class
+SHA1-Digest: MqWeS1efE0fyCQtFNDvaZWXXBh8=
+
+Name: org/apache/lucene/analysis/Analyzer.class
+SHA1-Digest: CzYcwzOCDxPTS4aEn3SlEL1i2MA=
+
+Name: org/apache/lucene/search/function/ValueSourceQuery.class
+SHA1-Digest: HxtgUakRXVYPGAgW908YjgHxpLk=
+
+Name: org/apache/lucene/search/function/ValueSourceQuery$ValueSourceWe
+ ight.class
+SHA1-Digest: qhkVhlJBdGN5+K/o+e7V/TiGwd0=
+
+Name: org/apache/lucene/index/TermsHashPerThread.class
+SHA1-Digest: /cg4jO2t3DzMIs1O+za6s5e2DB0=
+
+Name: org/apache/lucene/index/MultipleTermPositions$1.class
+SHA1-Digest: y3nf3/nCRu8yi+EgkI5Ho/LGB0A=
+
+Name: org/apache/lucene/search/FilterManager$FilterItem.class
+SHA1-Digest: ihQGV9f321FBp9YZKpCqnk4nE+k=
+
+Name: org/apache/lucene/search/MultiTermQuery$ConstantScoreBooleanQuer
+ yRewrite.class
+SHA1-Digest: cNLwJ9y7PpFaGJQm1kJRu4+nmK0=
+
+Name: org/apache/lucene/search/FieldCache$FloatParser.class
+SHA1-Digest: 0QkJN3lzwFvlNgcYaBbvSIcZbUk=
+
+Name: org/apache/lucene/index/IndexModifier.class
+SHA1-Digest: 4Tf8E6amotBLEH5pXEDCyDk8e9o=
+
+Name: org/apache/lucene/search/payloads/PayloadTermQuery$PayloadTermWe
+ ight$PayloadTermSpanScorer.class
+SHA1-Digest: LsUz8dRTk0gRlKk56UA2G+gOK/0=
+
+Name: org/apache/lucene/index/MergePolicy.class
+SHA1-Digest: icfPewqZGtKkjxphc6IlGqBWIKo=
+
+Name: org/apache/lucene/index/NormsWriter.class
+SHA1-Digest: FB8FpCvF5xIqQguCP61w1SqqPdQ=
+
+Name: org/apache/lucene/search/WildcardTermEnum.class
+SHA1-Digest: FXWtE+sSs5PAx7nlqgnlmCi+xJg=
+
+Name: org/apache/lucene/search/FieldCacheImpl$CacheEntryImpl.class
+SHA1-Digest: AYVPCvAwR0CES1yWKOLndLvxkyQ=
+
+Name: org/apache/lucene/document/Field.class
+SHA1-Digest: nq7g/zzyqLaj+2o9mrmzgULXs+s=
+
+Name: org/apache/lucene/index/FieldInfos.class
+SHA1-Digest: DQZWCRmt0ghLWhCajJuVibmEmEw=
+
+Name: org/apache/lucene/index/DocumentsWriter$SkipDocWriter.class
+SHA1-Digest: dstudjO3oCT+Rp/ESz8xB5oHqNY=
+
+Name: org/apache/lucene/search/MultiTermQuery$1.class
+SHA1-Digest: L6OvK/Ed88a4qz5fdmqG58vxez8=
+
+Name: org/apache/lucene/index/DocumentsWriter$1.class
+SHA1-Digest: 0NgSxzJ0uGO/0wNLkuVR8SNjnik=
+
+Name: org/apache/lucene/index/SegmentMerger$1.class
+SHA1-Digest: I6n/VurgEoj76yaFjEeWibFIwCA=
+
+Name: org/apache/lucene/index/DocInverter.class
+SHA1-Digest: HcrcmG3L6p5ATSOLW9yBHuJ32/o=
+
+Name: org/apache/lucene/index/CheckIndex$Status$SegmentInfoStatus.clas
+ s
+SHA1-Digest: ih2p7WV4w7bGh1g2yYgXPTo0sm4=
+
+Name: org/apache/lucene/analysis/tokenattributes/TypeAttributeImpl.cla
+ ss
+SHA1-Digest: QMAdK/l2FRywI8vgIJviOBPmI6M=
+
+Name: org/apache/lucene/index/TermVectorsTermsWriterPerField.class
+SHA1-Digest: rMPAZbF9mvUsC4raZulu9UkeOjU=
+
+Name: org/apache/lucene/search/payloads/PayloadNearQuery$PayloadNearSp
+ anScorer.class
+SHA1-Digest: wvxBeggp5KWWMJR1rmZgU5xNiWw=
+
+Name: org/apache/lucene/search/ConstantScoreRangeQuery.class
+SHA1-Digest: a0rSEYyzl/QPA4mf98rRveU4h9o=
+
+Name: org/apache/lucene/search/TermQuery.class
+SHA1-Digest: Ll3UafO93rPu6VjOEuOsozB0zVY=
+
+Name: org/apache/lucene/search/function/CustomScoreQuery.class
+SHA1-Digest: 9SrN5AJr3RfDvemwvEgYzkoacZI=
+
+Name: org/apache/lucene/search/FuzzyQuery.class
+SHA1-Digest: h25Z/RRz3ics4plVwyXM0BhHiQU=
+
+Name: org/apache/lucene/search/FilteredQuery$1.class
+SHA1-Digest: BocAAQoT1RN/1CMj/MaBMW6AiVs=
+
+Name: org/apache/lucene/index/CompoundFileReader$CSIndexInput.class
+SHA1-Digest: xVUzdnJ1Ho3Pa/MmiSFea0XRqIQ=
+
+Name: org/apache/lucene/index/ParallelArrayTermVectorMapper.class
+SHA1-Digest: 9FVPSs//q9wpvPQTC6Sq7meoqy0=
+
+Name: org/apache/lucene/store/Lock.class
+SHA1-Digest: 9OHFVRu0ciNqkNyETx1hiW+qT3Q=
+
+Name: org/apache/lucene/index/IndexWriter.class
+SHA1-Digest: tcEicLIT//b9P8Nenc9OWDWJbIc=
+
+Name: org/apache/lucene/index/ReusableStringReader.class
+SHA1-Digest: IyYaDxxQ3BVMijnbefnMIifYbLk=
+
+Name: org/apache/lucene/store/LockStressTest.class
+SHA1-Digest: 6t2tlh170cItsk63vaAsGB3POKY=
+
+Name: org/apache/lucene/search/Query.class
+SHA1-Digest: Yh2NDhB6NW4D5zUuDYa+MUoRQUY=
+
+Name: org/apache/lucene/index/SnapshotDeletionPolicy.class
+SHA1-Digest: rigQHVDBPffjpmmS/uupT2NF6Js=
+
+Name: org/apache/lucene/queryParser/Token.class
+SHA1-Digest: 24/jqNshPjBoUevnXMh2tkM4PoA=
+
+Name: org/apache/lucene/index/TermDocs.class
+SHA1-Digest: I96Q4NkmiSHu9usQUa5XOFODAMc=
+
+Name: org/apache/lucene/search/Collector.class
+SHA1-Digest: 4ylYA7sSevqoWbxkbRRtDmu+HYI=
+
+Name: org/apache/lucene/index/StoredFieldsWriter.class
+SHA1-Digest: BUh5DDMQGD2iqxiYHzDwND5vAZw=
+
+Name: org/apache/lucene/store/FSDirectory$FSIndexInput$Descriptor.clas
+ s
+SHA1-Digest: AzPxlMOYeI3uRwYbf5dx+3pZA54=
+
+Name: org/apache/lucene/analysis/CharArraySet$UnmodifiableCharArraySet
+ .class
+SHA1-Digest: YVHHiQ8yjzYCsrryyd2xj2WBMWM=
+
+Name: org/apache/lucene/search/FieldCacheTermsFilter.class
+SHA1-Digest: DsFBTJNERPQX2IHHWAtDGlXfaYA=
+
+Name: org/apache/lucene/search/ExactPhraseScorer.class
+SHA1-Digest: nL7Mt0M3n0tAZFQCCvBJJMB6KgA=
+
+Name: org/apache/lucene/util/UnicodeUtil.class
+SHA1-Digest: HjjrkJlaX+cv6RGzsCljP4fflfc=
+
+Name: org/apache/lucene/search/FieldCache$5.class
+SHA1-Digest: fKuZ8sezmie5hozfkEak9KXdHmA=
+
+Name: org/apache/lucene/index/ConcurrentMergeScheduler$MergeThread.cla
+ ss
+SHA1-Digest: DQu64IDbI216/ecNwPAiSvfhX+M=
+
+Name: org/apache/lucene/store/SingleInstanceLock.class
+SHA1-Digest: +2Ej80JEe26Vywn25/tvrDg2L8Y=
+
+Name: org/apache/lucene/search/FieldCacheRangeFilter$4.class
+SHA1-Digest: dVmzLBhB/hWiCxNb+OzYE1oTTGs=
+
+Name: org/apache/lucene/store/SimpleFSDirectory$SimpleFSIndexInput.cla
+ ss
+SHA1-Digest: AYbW3PL2jni7iKJBwJzCY2xIjRs=
+
+Name: org/apache/lucene/analysis/KeywordAnalyzer.class
+SHA1-Digest: 6bbBdp1ZTKOvzLbUBPpFavTC4c8=
+
+Name: org/apache/lucene/analysis/BaseCharFilter$OffCorrectMap.class
+SHA1-Digest: 5lh1BbOXEn5G9H8YI+/9AuBFS9M=
+
+Name: org/apache/lucene/search/DocIdSet$1$1.class
+SHA1-Digest: 18PcLAcm3ei7H1zCBN5xNdJuTy8=
+
+Name: org/apache/lucene/search/FieldCache$DoubleParser.class
+SHA1-Digest: 89QGQIzXg3CpzQUmxQ9SILNPgq4=
+
+Name: org/apache/lucene/index/FreqProxTermsWriter$PostingList.class
+SHA1-Digest: PRp7CKHICaPRJmgMfpXroy6MEi4=
+
+Name: org/apache/lucene/util/NumericUtils$LongRangeBuilder.class
+SHA1-Digest: 1DvaNmHyEscanhdHJWLzT6ewS1w=
+
+Name: org/apache/lucene/search/MultiTermQueryWrapperFilter$1.class
+SHA1-Digest: 1ZQVxJK/3vAKjP4OUFicY88zPlI=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue.class
+SHA1-Digest: F99sysCPoyYm3gjGANr0n+yvfXo=
+
+Name: org/apache/lucene/index/InvertedDocConsumer.class
+SHA1-Digest: n7eVuNGbmMe8UgqKiVSv+qC76EU=
+
+Name: org/apache/lucene/util/StringInterner.class
+SHA1-Digest: wOt2q2EKip0vh2Upoao4LeE9S1Q=
+
+Name: org/apache/lucene/search/function/ByteFieldSource.class
+SHA1-Digest: K5IBFkMbOcdTR9X188tmairl7II=
+
+Name: org/apache/lucene/search/function/FieldCacheSource.class
+SHA1-Digest: xmPJzm1yfJX3rIIYQVL/Ch7m3jU=
+
+Name: org/apache/lucene/search/TopFieldCollector$OutOfOrderMultiCompar
+ atorScoringMaxScoreCollector.class
+SHA1-Digest: +MgWdJkLfrYYadVWqO2cfoFoXKs=
+
+Name: org/apache/lucene/index/MergePolicy$MergeAbortedException.class
+SHA1-Digest: 4oYUivySm1fLeXTIF9X3c4AYl08=
+
+Name: org/apache/lucene/store/LockVerifyServer.class
+SHA1-Digest: Q/lwjhWC6e+NJbatu6010JXgQ4w=
+
+Name: org/apache/lucene/search/payloads/PayloadNearQuery.class
+SHA1-Digest: j/0JxXqV8jfACzsg9RLUswalKfk=
+
+Name: org/apache/lucene/search/SpanFilterResult$PositionInfo.class
+SHA1-Digest: Q9v55N8cuABAQxL6rvEM7aSFc78=
+
+Name: org/apache/lucene/util/SortedVIntList$SortedVIntListBuilder.clas
+ s
+SHA1-Digest: HWiY1+bV7nBF0e1N1MTmUVlAD3w=
+
+Name: org/apache/lucene/index/TermInfo.class
+SHA1-Digest: pIvz5GUFlcgcCXVR7pNQBCwMc2w=
+
+Name: org/apache/lucene/analysis/StopAnalyzer$1.class
+SHA1-Digest: tm7ycbXIGfKNP+kR8jlCQ2ZZDJM=
+
+Name: org/apache/lucene/search/FieldSortedHitQueue$3.class
+SHA1-Digest: 7V7gu/UXBuf29s+phXhJ2MQunvY=
+
+Name: org/apache/lucene/index/TermInfosReader$1.class
+SHA1-Digest: TB4lWKB5DLmt877m00/FTHtAUek=
+
+Name: org/apache/lucene/analysis/ISOLatin1AccentFilter.class
+SHA1-Digest: bhpIWaowaPbiwWXJTw2jR/nAwE8=
+
+Name: org/apache/lucene/store/LockFactory.class
+SHA1-Digest: gOCh0eJz92DlR4qYgrugumHRsq8=
+
+Name: org/apache/lucene/search/TermScorer.class
+SHA1-Digest: StS2msY+NewT1jRIKLE5Kq9mdPY=
+
+Name: org/apache/lucene/index/StoredFieldsWriter$PerDoc.class
+SHA1-Digest: AfR/SnEHccGY+geMONhq8eG/Z7w=
+
+Name: org/apache/lucene/search/payloads/PayloadNearQuery$PayloadNearSp
+ anWeight.class
+SHA1-Digest: UUQq0pidrpgnjW6zYtdofY2Cg+k=
+
+Name: org/apache/lucene/search/Similarity$1.class
+SHA1-Digest: 9h5aKKP2IQiogP4S3aLiE38X6ao=
+
+Name: org/apache/lucene/index/IndexReader.class
+SHA1-Digest: yJ+DFdZ/0m+Iit2Di16jvwtAlNY=
+
+Name: org/apache/lucene/index/StoredFieldsWriterPerThread.class
+SHA1-Digest: 0muvRldVE2dUc7IT7aDsoJo+3TM=
+
+Name: org/apache/lucene/index/InvertedDocEndConsumerPerThread.class
+SHA1-Digest: AZSwNuf26ktbpzhs3oIvNekkBPI=
+
+Name: org/apache/lucene/search/function/FieldScoreQuery.class
+SHA1-Digest: qUqmAw/v0P6uaKiOOLwRQ4XzDmc=
+
+Name: org/apache/lucene/analysis/TeeSinkTokenFilter$SinkFilter.class
+SHA1-Digest: 9SF0Z9VZ3eCLWrUGZrxdn3Q44aU=
+
+Name: org/apache/lucene/search/HitCollector.class
+SHA1-Digest: gUHl9KpiDJY8zkVgJkeJMpV7sBg=
+
+Name: org/apache/lucene/analysis/KeywordTokenizer.class
+SHA1-Digest: 9CChOF0pFjNtycivA4UFzub1TfY=
+
+Name: org/apache/lucene/search/MultiPhraseQuery$MultiPhraseWeight.clas
+ s
+SHA1-Digest: 3rJVwX0Wkon88Y/JGruQu/kkoXM=
+
+Name: org/apache/lucene/search/DocIdSet$1.class
+SHA1-Digest: +HhEpb/usnrUbsNCAmehFF1GHNY=
+
+Name: org/apache/lucene/store/FSLockFactory.class
+SHA1-Digest: tiLGepNDYqsYS5s9qZee5kf/Rkk=
+
+Name: org/apache/lucene/search/DocIdSetIterator.class
+SHA1-Digest: 92YvH1HLJHVv/7tHew5IUQt9GbI=
+
+Name: org/apache/lucene/store/IndexOutput.class
+SHA1-Digest: JQMUUHdyb/udUbcimyNfGIGJP0w=
+
+Name: org/apache/lucene/search/HitQueue.class
+SHA1-Digest: pc6gLLx/VWnzqKrFJTVKL0g1dw4=
+
+Name: org/apache/lucene/search/ExtendedFieldCache$LongParser.class
+SHA1-Digest: kHVdyvKwc4Q7dNEsfDqR10PRET4=
+
+Name: org/apache/lucene/store/AlreadyClosedException.class
+SHA1-Digest: 26zeKgyS39BsgsCKZq7vv+5VKv4=
+
+Name: org/apache/lucene/index/SegmentInfos$1.class
+SHA1-Digest: 8pnlgx0Wu0d4eNFaFERlzGWOBM8=
+

@@ -1,0 +1,462 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.apache.lucene.analysis
+Require-Bundle: org.apache.lucene.core;bundle-version="[2.9.1,3.0.0)"
+Bundle-Version: 2.9.1.v201101211721
+Export-Package: org.apache.lucene.analysis.ar;version="2.9.1",org.apac
+ he.lucene.analysis.br;version="2.9.1",org.apache.lucene.analysis.cjk;
+ version="2.9.1",org.apache.lucene.analysis.cn;version="2.9.1",org.apa
+ che.lucene.analysis.compound;version="2.9.1",org.apache.lucene.analys
+ is.compound.hyphenation;version="2.9.1",org.apache.lucene.analysis.cz
+ ;version="2.9.1",org.apache.lucene.analysis.de;version="2.9.1",org.ap
+ ache.lucene.analysis.el;version="2.9.1",org.apache.lucene.analysis.fa
+ ;version="2.9.1",org.apache.lucene.analysis.fr;version="2.9.1",org.ap
+ ache.lucene.analysis.miscellaneous;version="2.9.1",org.apache.lucene.
+ analysis.ngram;version="2.9.1",org.apache.lucene.analysis.nl;version=
+ "2.9.1",org.apache.lucene.analysis.payloads;version="2.9.1",org.apach
+ e.lucene.analysis.position;version="2.9.1",org.apache.lucene.analysis
+ .query;version="2.9.1",org.apache.lucene.analysis.reverse;version="2.
+ 9.1",org.apache.lucene.analysis.ru;version="2.9.1",org.apache.lucene.
+ analysis.shingle;version="2.9.1",org.apache.lucene.analysis.sinks;ver
+ sion="2.9.1",org.apache.lucene.analysis.th;version="2.9.1"
+Bundle-ManifestVersion: 2
+
+Name: org/apache/lucene/analysis/sinks/TokenRangeSinkFilter.class
+SHA1-Digest: IYSkXIoY7RqtDtYwhYejJMA0ldw=
+
+Name: org/apache/lucene/analysis/br/BrazilianAnalyzer$1.class
+SHA1-Digest: ZCE9jyHJdetmn6rWv5DQkGeSn/M=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$TwoDimens
+ ionalNonWeightedSynonymTokenSettingsCodec.class
+SHA1-Digest: QkciOjnjWf1mbzPQQZ4bVYcgUig=
+
+Name: org/apache/lucene/analysis/reverse/ReverseStringFilter.class
+SHA1-Digest: DH5TCSkJ+WBQ3WrpSVeB6Rc2Ie4=
+
+Name: org/apache/lucene/analysis/cjk/CJKAnalyzer.class
+SHA1-Digest: hPJVLUqol3n2ZK+kDH7qK/CBtO8=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$Matrix$Co
+ lumn$Row.class
+SHA1-Digest: ZMxlC8iHE2lEEBkxRbL7OBIzO9M=
+
+Name: org/apache/lucene/analysis/compound/CompoundWordTokenFilterBase.
+ class
+SHA1-Digest: v3DL9TODz/8SUdM3hV11KXlXJfI=
+
+Name: org/apache/lucene/analysis/ru/RussianCharsets.class
+SHA1-Digest: JrjbD9uKcNmfKU2ePN0nqlcHMcg=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/HyphenationTree.
+ class
+SHA1-Digest: fZ1UlL3uU0MhSbTPLuVldYnXoLU=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/HyphenationDTDGe
+ nerator.class
+SHA1-Digest: xpI6VdJ5cQm8xr12iTirGnhvKMs=
+
+Name: org/apache/lucene/analysis/cjk/CJKAnalyzer$1.class
+SHA1-Digest: ELe7faKQtE+1A0J3TlYImzEo1HU=
+
+Name: org/apache/lucene/analysis/payloads/IdentityEncoder.class
+SHA1-Digest: 7XfC/VT65eHFTOFNACgsOsEREBg=
+
+Name: org/apache/lucene/analysis/nl/DutchStemFilter.class
+SHA1-Digest: Mah+5WkEZRPB0xjv1tpCpeDt6Sw=
+
+Name: org/apache/lucene/analysis/sinks/TokenRangeSinkTokenizer.class
+SHA1-Digest: dWCqf6pNvv/IUDLeFAJbvJdxAAQ=
+
+Name: org/apache/lucene/analysis/el/GreekAnalyzer$SavedStreams.class
+SHA1-Digest: Jk41r3LRD6naJ8Zd6Whfo1WzgTI=
+
+Name: org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapper$1.clas
+ s
+SHA1-Digest: x8SfHrhLleJ0+sxeDfbqKiC7uyM=
+
+Name: org/apache/lucene/analysis/nl/DutchAnalyzer.class
+SHA1-Digest: T2t8EmS9ieIVMDtpxiGOVJiyvmI=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/PatternParser.cl
+ ass
+SHA1-Digest: c3/hKEGIcCqEBXfOwDsQlYQW9ec=
+
+Name: org/apache/lucene/analysis/el/GreekCharsets.class
+SHA1-Digest: olzjpRQ0+vUrdfdBO5R7JI/cTJc=
+
+Name: org/apache/lucene/analysis/cz/CzechAnalyzer.class
+SHA1-Digest: WFVEsFkdHyK3xjGimTW9Mge9xzQ=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/ByteVector.class
+SHA1-Digest: Txh72kt0IICr/kNva2xu6sokP00=
+
+Name: org/apache/lucene/analysis/el/GreekAnalyzer$1.class
+SHA1-Digest: YXmR2Zf8ISy3uyFf58uLH58pPWc=
+
+Name: org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter$Side.class
+SHA1-Digest: nAXETQAuK7/dOEpOgtT92UmHLZs=
+
+Name: org/apache/lucene/analysis/payloads/AbstractEncoder.class
+SHA1-Digest: 83eOWbG2sVroAYSNGqAlajVUMUE=
+
+Name: org/apache/lucene/analysis/payloads/IntegerEncoder.class
+SHA1-Digest: 2iOuv/C6TNL5r4QKO/4NrSULmTw=
+
+Name: org/apache/lucene/analysis/ar/ArabicNormalizer.class
+SHA1-Digest: T0FKq6wo1I4HlVxuw9fwGU3EJWw=
+
+Name: org/apache/lucene/analysis/query/QueryAutoStopWordAnalyzer$1.cla
+ ss
+SHA1-Digest: c0uwz7WlAD57r/SwMwuBWTXBKYs=
+
+Name: org/apache/lucene/analysis/nl/DutchAnalyzer$SavedStreams.class
+SHA1-Digest: 91dTXXetrCmexcI/3/OS8JgvRw0=
+
+Name: org/apache/lucene/analysis/de/GermanStemmer.class
+SHA1-Digest: OgRnkpGtKBm7W40F9PODI86hkog=
+
+Name: org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTok
+ enFilter$1.class
+SHA1-Digest: /6CGnicPo85s7bhQMvy7vaKH0zY=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter.class
+SHA1-Digest: jOHs3Rm2Muk4c2Qyt/JVl6Z3H18=
+
+Name: org/apache/lucene/analysis/miscellaneous/PrefixAwareTokenFilter.
+ class
+SHA1-Digest: tUfKpgCxzenLGA7aGKjHt8sMI8I=
+
+Name: org/apache/lucene/analysis/miscellaneous/SingleTokenTokenStream.
+ class
+SHA1-Digest: /s7ZQ1NYGxQaNVwRN2yNT7Di/jI=
+
+Name: org/apache/lucene/analysis/fr/FrenchAnalyzer.class
+SHA1-Digest: DIk4cprwmHwjsXMWRCiafMd1frA=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/TernaryTree$Iter
+ ator$Item.class
+SHA1-Digest: KYXK6tUGspYQh2GaZqtV9jgBn9M=
+
+Name: org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapper.class
+SHA1-Digest: GGPPur1aepME7VKr/HJXnJGVjuc=
+
+Name: org/apache/lucene/analysis/fa/PersianNormalizationFilter.class
+SHA1-Digest: Hgk9JkUk+kwmqbo3hzDRTBFW7xg=
+
+Name: org/apache/lucene/analysis/payloads/DelimitedPayloadTokenFilter.
+ class
+SHA1-Digest: NQ61hQTVn2j2A2RNhRzIe/YVwIk=
+
+Name: org/apache/lucene/analysis/payloads/FloatEncoder.class
+SHA1-Digest: sBDFxwzxbNJvagtYuDNWPAO+1Ec=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/Hyphenation.clas
+ s
+SHA1-Digest: WN6itUN7eYkyBuj41Q10Or9NZFw=
+
+Name: org/apache/lucene/analysis/fr/FrenchAnalyzer$1.class
+SHA1-Digest: ACKWhhpKSBsgNEFrDlOfgwdSn7Q=
+
+Name: org/apache/lucene/analysis/ru/RussianAnalyzer$1.class
+SHA1-Digest: Fr5RQD5JaBS9xNjRzHH/RhmbWM4=
+
+Name: org/apache/lucene/analysis/de/GermanStemFilter.class
+SHA1-Digest: 1nxH9T4IjNfAs2s7uQuFqJ5UDAs=
+
+Name: org/apache/lucene/analysis/cn/ChineseFilter.class
+SHA1-Digest: DNJgaPL3HL749Mn+z6w8hCo7skA=
+
+Name: org/apache/lucene/analysis/nl/DutchStemmer.class
+SHA1-Digest: 5s5JnVm8Pg4AukJufk7VS9YhdaU=
+
+Name: org/apache/lucene/analysis/compound/HyphenationCompoundWordToken
+ Filter.class
+SHA1-Digest: T7Bb2WPP5jCKGG7D6K3CG2klhyI=
+
+Name: org/apache/lucene/analysis/ar/ArabicAnalyzer$1.class
+SHA1-Digest: VK94y6lLWuu1yeT/TfIqIe9AkFE=
+
+Name: about.html
+SHA1-Digest: OmsDvddzBqB/aRJ4557xqfUKSt4=
+
+Name: org/apache/lucene/analysis/br/BrazilianAnalyzer$SavedStreams.cla
+ ss
+SHA1-Digest: X1BAYKEaeHl6TBuIuTpgXzLDZFU=
+
+Name: org/apache/lucene/analysis/br/BrazilianStemFilter.class
+SHA1-Digest: K6qZY3Yh3wFWXxxUfeYIaWYgGmg=
+
+Name: org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTok
+ enFilter.class
+SHA1-Digest: 4jD7Sbl0lTU5aNPo11FjeMcwwGo=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/CharVector.class
+SHA1-Digest: VMkZ6DjGE7Ewknhed1fzjcZzNc0=
+
+Name: org/apache/lucene/analysis/br/BrazilianAnalyzer.class
+SHA1-Digest: G6bRxqwiWGGXkN/4IY08Oe6VdXY=
+
+Name: org/apache/lucene/analysis/th/ThaiAnalyzer$1.class
+SHA1-Digest: 0inCcNf8E3Wie7Vc9OBa5ARDc2U=
+
+Name: org/apache/lucene/analysis/payloads/PayloadHelper.class
+SHA1-Digest: b+3cHsQZ+THsMMI/kpO6xzPf6PE=
+
+Name: org/apache/lucene/analysis/th/ThaiAnalyzer$SavedStreams.class
+SHA1-Digest: oRZYLkylr1jiPV5C5U2sjQb8Q4I=
+
+Name: org/apache/lucene/analysis/fr/FrenchStemmer.class
+SHA1-Digest: RK8/beJfAA+ANX2lcoAgmQAuJKI=
+
+Name: org/apache/lucene/analysis/ngram/NGramTokenFilter.class
+SHA1-Digest: XWIarBCEvBL8BCiEfzHvIhiLimo=
+
+Name: org/apache/lucene/analysis/ngram/NGramTokenizer.class
+SHA1-Digest: 8NQ0zBnoCCRjhxIGK7XkHoDpzkU=
+
+Name: org/apache/lucene/analysis/miscellaneous/PrefixAndSuffixAwareTok
+ enFilter$2.class
+SHA1-Digest: /pkFY6I5h/R7jsCP29LmGiKEzYY=
+
+Name: org/apache/lucene/analysis/payloads/TypeAsPayloadTokenFilter.cla
+ ss
+SHA1-Digest: 6nOZbl9Aq5Ze0mrzydLzYwuNoSs=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/HyphenationExcep
+ tion.class
+SHA1-Digest: JhBqCL/EKWMTdS5eWat8CZquk4M=
+
+Name: org/apache/lucene/analysis/ar/ArabicStemmer.class
+SHA1-Digest: YMf7Vxs74NtXenMlNS/aNUOftqQ=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$TokenSett
+ ingsCodec.class
+SHA1-Digest: HYWP1Cq6lfUwcpn+wgMtsqtzHok=
+
+Name: org/apache/lucene/analysis/ru/RussianAnalyzer$SavedStreams.class
+SHA1-Digest: 7gqUIYq4xaJX95Si6yj58LA6GVw=
+
+Name: org/apache/lucene/analysis/ar/ArabicNormalizationFilter.class
+SHA1-Digest: tGtq4dfrbSJuSp4WgfJnsE+fBlg=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$SimpleThr
+ eeDimensionalTokenSettingsCodec.class
+SHA1-Digest: belbSLkLQEKtppgr8vQ1xhQz/v4=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$OneDimens
+ ionalNonWeightedTokenSettingsCodec.class
+SHA1-Digest: UmlGMpsArjtjX1Bf9BpFHFjApAE=
+
+Name: org/apache/lucene/analysis/query/QueryAutoStopWordAnalyzer$Saved
+ Streams.class
+SHA1-Digest: /R7KqmDgF03fTBOSaUBFCAm+zP4=
+
+Name: org/apache/lucene/analysis/br/BrazilianStemmer.class
+SHA1-Digest: B1R7/h4XiszneHz04ZtNo4QzKEI=
+
+Name: org/apache/lucene/analysis/cjk/CJKAnalyzer$SavedStreams.class
+SHA1-Digest: QSC2Bzg7JeivSvyzi6K825YiIkU=
+
+Name: org/apache/lucene/analysis/fa/PersianAnalyzer.class
+SHA1-Digest: qz0ZNSd3Cv3NFRyjrhMlFVmnwEE=
+
+Name: about_files/asl-v20.txt
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter.class
+SHA1-Digest: Jq1mMhgXOxepjcc8Y7LlUwmqswM=
+
+Name: org/apache/lucene/analysis/ar/ArabicAnalyzer.class
+SHA1-Digest: VDR2nmQRgzI9FPfcDQ4BCcxWiew=
+
+Name: org/apache/lucene/analysis/shingle/ShingleFilter.class
+SHA1-Digest: 2QAVAuw3+6HmYOPcbfGBFmtw0mg=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/apache/lucene/analysis/cjk/CJKTokenizer.class
+SHA1-Digest: 1Y4wJ7K/1TyMUL+k3cP/8V8ObWk=
+
+Name: org/apache/lucene/analysis/sinks/TokenTypeSinkTokenizer.class
+SHA1-Digest: QrRT5SSc3DN5cX6uBx7GSJz5X5w=
+
+Name: org/apache/lucene/analysis/ar/ArabicAnalyzer$SavedStreams.class
+SHA1-Digest: OLAiMM6daX7EwRDCJZ0c0zJuojE=
+
+Name: org/apache/lucene/analysis/th/ThaiWordFilter.class
+SHA1-Digest: JGxzIFLeT0WSsogoWOvErtpnlFY=
+
+Name: org/apache/lucene/analysis/ar/stopwords.txt
+SHA1-Digest: 3aAgsrbzdtxNWmYmnrNiE/+KllA=
+
+Name: org/apache/lucene/analysis/de/GermanAnalyzer.class
+SHA1-Digest: 8pK6yBj2b6NGQWJnAi3ZOtT2Qk4=
+
+Name: org/apache/lucene/analysis/ar/ArabicLetterTokenizer.class
+SHA1-Digest: EaeKbQgc0VKa8uZo92uJfm1EP6Q=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$TokenPosi
+ tioner.class
+SHA1-Digest: hXIXojkuz5AbYnKjBuFcAC6mhLE=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/Hyphen.class
+SHA1-Digest: WRVgdB51p6aNpZMkuH3MfnW2iAs=
+
+Name: org/apache/lucene/analysis/ngram/EdgeNGramTokenizer$Side.class
+SHA1-Digest: arLwy7hiIF77nKQtdZ+6RdE6e1M=
+
+Name: org/apache/lucene/analysis/nl/DutchAnalyzer$1.class
+SHA1-Digest: o/32PCe9xnvmCE/VgaRgKI0/kUM=
+
+Name: org/apache/lucene/analysis/sinks/DateRecognizerSinkTokenizer.cla
+ ss
+SHA1-Digest: wXTxUAAnxuspQ5aFQN9qzFCrjdI=
+
+Name: org/apache/lucene/analysis/fa/stopwords.txt
+SHA1-Digest: Of9BFZTvbIdzO+d4+9CyAsvh2xE=
+
+Name: org/apache/lucene/analysis/sinks/DateRecognizerSinkFilter.class
+SHA1-Digest: Vtp+IutLdFwkxuE44LfEQrYreYs=
+
+Name: org/apache/lucene/analysis/fr/ElisionFilter.class
+SHA1-Digest: 5DZ5sPt3HXF3wdhy/+krcoTrLTw=
+
+Name: org/apache/lucene/analysis/cz/CzechAnalyzer$1.class
+SHA1-Digest: 6X8bXvCWO5naDJsNkU01QLCrDTw=
+
+Name: org/apache/lucene/analysis/fa/PersianNormalizer.class
+SHA1-Digest: 8JvERHY98oR4MzmDlSuYg0dvuHk=
+
+Name: org/apache/lucene/analysis/ru/RussianStemmer.class
+SHA1-Digest: qyMwGzaWIqaLh89c1awUCuaRgY4=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/PatternConsumer.
+ class
+SHA1-Digest: UqzmH17oepqIPI3aUyskZEXIqj8=
+
+Name: org/apache/lucene/analysis/cz/CzechAnalyzer$SavedStreams.class
+SHA1-Digest: nCGiEWUYUwcAx9v3tsK4AvUW9KY=
+
+Name: org/apache/lucene/analysis/el/GreekLowerCaseFilter.class
+SHA1-Digest: /6Ze8iiaTA+yYM5SYuyI6LfulFo=
+
+Name: org/apache/lucene/analysis/payloads/TokenOffsetPayloadTokenFilte
+ r.class
+SHA1-Digest: rSDJh1JmZGVlVWOFGFTl3BCFFQ4=
+
+Name: org/apache/lucene/analysis/fr/FrenchStemFilter.class
+SHA1-Digest: GVKuAMqe4ROFrS/+AaDonRpQWwE=
+
+Name: plugin.properties
+SHA1-Digest: he49LYXfrPXWS2rjzfaroeTNG0U=
+
+Name: org/apache/lucene/analysis/ru/RussianStemFilter.class
+SHA1-Digest: WPTS7x+rJgzxz0KwWUBowkmVrNE=
+
+Name: org/apache/lucene/analysis/cn/ChineseAnalyzer$SavedStreams.class
+SHA1-Digest: hSpi4JsdNBq9aFXJJwxh+udJjSg=
+
+Name: org/apache/lucene/analysis/ru/RussianAnalyzer.class
+SHA1-Digest: 9btkA8tyXV89eCTybHLeno/Y50k=
+
+Name: org/apache/lucene/analysis/fr/FrenchAnalyzer$SavedStreams.class
+SHA1-Digest: BW0tQxwxXjkg+TreSnM1fHlqx90=
+
+Name: org/apache/lucene/analysis/miscellaneous/EmptyTokenStream.class
+SHA1-Digest: 9a2RP9+NfvVyhkkLut0jC3SPWRI=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$Matrix.cl
+ ass
+SHA1-Digest: Q8woa+V1+PcNQBFk7boJcV8GNb0=
+
+Name: org/apache/lucene/analysis/cn/ChineseAnalyzer.class
+SHA1-Digest: 2mdwKzHBw2FQorCvhwQgjU+FY4U=
+
+Name: org/apache/lucene/analysis/ru/RussianLetterTokenizer.class
+SHA1-Digest: q5XQYHr4RwTNGcHLh1EJHM7FZEQ=
+
+Name: org/apache/lucene/analysis/ar/ArabicStemFilter.class
+SHA1-Digest: QQqF4dGIVHfcLt2+orrRWIy4Oso=
+
+Name: org/apache/lucene/analysis/nl/WordlistLoader.class
+SHA1-Digest: SpmNPaUd8O8IvXjsmZ1rOmh3jc0=
+
+Name: org/apache/lucene/analysis/de/GermanAnalyzer$SavedStreams.class
+SHA1-Digest: XIboLCF3DWL/sf6X3Dbj+jnx7Uw=
+
+Name: org/apache/lucene/analysis/cn/ChineseTokenizer.class
+SHA1-Digest: PB8JaO61Zt/ObmuYEWjtMXdib8Q=
+
+Name: org/apache/lucene/analysis/miscellaneous/SingleTokenTokenStream$
+ 1.class
+SHA1-Digest: NuPvnpsgrSQry7GzVn6k6wC0S9U=
+
+Name: org/apache/lucene/analysis/sinks/TokenTypeSinkFilter.class
+SHA1-Digest: D6tHjWhRHVuixfAZ+6Qi/g0zoPE=
+
+Name: org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.class
+SHA1-Digest: aIRq20difhY7zIUR1WJt/W5jCsw=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$Matrix$1.
+ class
+SHA1-Digest: Ma9F48hryo4BFY60ywxoXPboPGk=
+
+Name: org/apache/lucene/analysis/cn/ChineseAnalyzer$1.class
+SHA1-Digest: PQFNt/Qr/ykIUMUEmmZNxOhgoBs=
+
+Name: org/apache/lucene/analysis/el/GreekAnalyzer.class
+SHA1-Digest: O0rg1AGFUN4X+bQRUaCEsppTBEs=
+
+Name: org/apache/lucene/analysis/fa/PersianAnalyzer$1.class
+SHA1-Digest: znNuCwhYzjWKMQRlq6VDMs529O4=
+
+Name: org/apache/lucene/analysis/payloads/PayloadEncoder.class
+SHA1-Digest: HKgu6Xrq+my3W0gGfH5Eph9t0X8=
+
+Name: org/apache/lucene/analysis/compound/DictionaryCompoundWordTokenF
+ ilter.class
+SHA1-Digest: ofS8Rzy/ltf2vidGPB1yiMTMfaY=
+
+Name: org/apache/lucene/analysis/th/ThaiAnalyzer.class
+SHA1-Digest: 0sv8+9b2xC1D813Uj4I0dZUSyRE=
+
+Name: org/apache/lucene/analysis/fa/PersianAnalyzer$SavedStreams.class
+SHA1-Digest: TZrtG+Ri1Ua19bCaxkW0l5ultSw=
+
+Name: org/apache/lucene/analysis/payloads/NumericPayloadTokenFilter.cl
+ ass
+SHA1-Digest: DHAq3eGgOQZJwsGUWOfO88vhBTY=
+
+Name: org/apache/lucene/analysis/shingle/ShingleAnalyzerWrapper$SavedS
+ treams.class
+SHA1-Digest: WF9L6IiYgCnMZw9WvAe6JRYJVHY=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/TernaryTree.clas
+ s
+SHA1-Digest: IlSP+bUtWddkj25ETWx7oCLOvnE=
+
+Name: org/apache/lucene/analysis/ru/RussianLowerCaseFilter.class
+SHA1-Digest: XBQd1wMqVbT+R3pdVvje51sQs0Y=
+
+Name: org/apache/lucene/analysis/query/QueryAutoStopWordAnalyzer.class
+SHA1-Digest: acqakXcSghDl38hUI+K3DB+yfVE=
+
+Name: org/apache/lucene/analysis/de/GermanAnalyzer$1.class
+SHA1-Digest: DTtscFZ7bhW7/xWbmYPfe9l/Uao=
+
+Name: org/apache/lucene/analysis/position/PositionFilter.class
+SHA1-Digest: gXKOe+vAuNOw/5fEMzSLedsTzY0=
+
+Name: org/apache/lucene/analysis/compound/hyphenation/TernaryTree$Iter
+ ator.class
+SHA1-Digest: h3ns4YBmn5AT8rbL8/VSLO7XCr0=
+
+Name: org/apache/lucene/analysis/shingle/ShingleMatrixFilter$Matrix$Co
+ lumn.class
+SHA1-Digest: bcp6sdeQc8hLrYRaNtSHpH8gukI=
+

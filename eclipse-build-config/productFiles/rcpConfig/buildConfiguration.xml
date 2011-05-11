@@ -24,6 +24,7 @@
 
 		<!-- generate a feature based on our .product file -->
 		<ant antfile="${eclipse.pdebuild.scripts}/productBuild/productBuild.xml" target="generateFeature" >
+			<property name="nestedInclusions" value="false" />
 			<property name="buildDirectory" value="${basedir}/temp"/>
 		</ant>
 		<!-- generate product build scripts for the generated feature -->

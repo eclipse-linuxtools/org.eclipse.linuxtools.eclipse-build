@@ -60,6 +60,7 @@
 		<file name="org.eclipse.core.runtime.compatibility" />
 		<file name="org.eclipse.equinox.p2.engine" />
 		<file name="org.eclipse.equinox.p2.director" />
+		<file name="org.eclipse.equinox.p2.publisher.eclipse" />
 		<file name="org.eclipse.equinox.p2.repository.tools" />
 		<file name="org.eclipse.equinox.p2.updatesite" />
 		<file name="org.eclipse.pde.build" />
@@ -73,7 +74,7 @@
 		<file name="org.eclipse.equinox.http.servlet" />
 		<file name="org.eclipse.equinox.p2.touchpoint.eclipse" />
 		<file name="org.eclipse.equinox.p2.touchpoint.natives" />
-		<!--<file name="org.eclipse.equinox.http.jetty_2.0.0" />-->
+		<file name="org.apache.lucene" />
 		<!--
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
@@ -197,7 +198,7 @@
 			<arg line="-buildfile ../pdebuild.xml generateScripts2" />
 			<arg line="-DbuildArch=${buildArch} " />
 			<arg line="-DbuildId=${buildId} " />
-			<arg line="-debug -consolelog " />
+			<arg line="-debug -consolelog" />
 		</java>
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
