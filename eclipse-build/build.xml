@@ -306,7 +306,6 @@
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/junit4-nochecksum.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-swt-compile-xpt.patch" dir="${buildDirectory}" strip="1" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
@@ -359,6 +358,14 @@
 			<substitution expression="" />
 		</replaceregexp>
 		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
+			<regexp pattern="^SHA1-Digest.*" />
+			<substitution expression="" />
+		</replaceregexp>
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF" flags="m,g,s">
+			<regexp pattern="^Name.*" />
+			<substitution expression="" />
+		</replaceregexp>
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*" />
 			<substitution expression="" />
 		</replaceregexp>
