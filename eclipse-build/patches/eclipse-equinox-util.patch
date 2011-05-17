@@ -1,0 +1,9 @@
+--- plugins/org.eclipse.equinox.util/build.properties.orig	2011-05-17 11:47:07.428374923 -0500
++++ plugins/org.eclipse.equinox.util/build.properties	2011-05-17 14:36:32.199701620 -0500
+@@ -16,3 +16,6 @@
+                about.html,\
+                plugin.properties
+ src.includes = about.html
++javacSource=1.5
++javacTarget=jsr14
++

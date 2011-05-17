@@ -315,6 +315,7 @@
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 		<patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
