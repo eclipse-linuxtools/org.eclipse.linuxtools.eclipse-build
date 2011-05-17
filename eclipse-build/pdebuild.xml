@@ -153,6 +153,10 @@
 			<fileset dir="${sdkSource}/plugins/"
 			         includes="${generatedBuildXmls}" />
 		</copy>
+                <replace dir="generatedScripts" token="../../../../../../../../../usr/lib/eclipse/plugins/" />
+                <replace dir="generatedScripts" token="../../../../../../../../../usr/lib64/eclipse/plugins/" />
+                <replace dir="generatedScripts" token="../../../../../../../../../usr/share/eclipse/plugins/" />
+                <replace dir="generatedScripts" token="../../../../../../../../../.." />
 		<tar destfile="eclipse-build-generatedScripts.tar.bz2"
 		     compression="bzip2"
 		     basedir="generatedScripts"

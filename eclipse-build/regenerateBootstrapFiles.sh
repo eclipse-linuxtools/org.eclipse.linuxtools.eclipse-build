@@ -17,7 +17,6 @@ $launcherDir/org.eclipse.equinox.launcher_*.jar \
 -data /home/zx/eclipses/eclipse \
 -application org.eclipse.ant.core.antRunner \
 -f pdebuild.xml generateScripts \
--DbuildDirectory=build/eclipse-3.7.0-I20110512-2000-src \
 -DskipBase=true \
 -DsdkSource=build/eclipse-3.7.0-I20110512-2000-src \
 2>&1 | tee ./generatePdeBuildScripts.log
