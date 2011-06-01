@@ -727,7 +727,7 @@
 			<param name="p2.director.version" value="${p2.director.version}" />
 			<param name="p2.director.profile" value="${profileName}" />
 			<param name="p2.director.install.path" value="${provisionDir}" />
-			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.director.extraArgs" value="" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
@@ -743,7 +743,7 @@
 			<param name="p2.director.version" value="${p2.director.version}" />
 			<param name="p2.director.profile" value="${profileName}" />
 			<param name="p2.director.install.path" value="${provisionDir}" />
-			<param name="p2.director.extraArgs" value="-profileProperties org.eclipse.update.install.features=true" />
+			<param name="p2.director.extraArgs" value="" />
 			<param name="p2.os" value="linux" />
 			<param name="p2.ws" value="gtk" />
 			<param name="p2.arch" value="${buildArch}" />
