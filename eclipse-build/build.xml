@@ -1215,11 +1215,6 @@
 
 	<target name="moveNewStuffToDropins">
 		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />		
-		<move todir="${dropinsDirectory}/features" includeemptydirs="true">
-			<fileset dir="${new}/features" id="newFeatures.fileset">
-				<present present="srconly" targetdir="${orig}/features"/>
-			</fileset>
-		</move>
 		<move todir="${dropinsDirectory}/plugins" includeemptydirs="true">
 			<fileset dir="${new}/plugins" id="newPlugins.fileset">
 				<present present="srconly" targetdir="${orig}/plugins"/>
