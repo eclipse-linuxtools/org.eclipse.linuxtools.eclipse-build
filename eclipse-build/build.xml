@@ -965,7 +965,7 @@
 	      <include name="org.eclipse.equinox.launcher_*.jar" />
 	    </fileset>
 	    <property name="launcherJar" refid="equinoxLauncher"/>
-		<replace file="${efj}" token="@LAUNCHER@" value="${launcherJar}"/>
+		<replace file="${efj}/efj.sh" token="@LAUNCHER@" value="${launcherJar}"/>
 		<!-- install icons -->
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png" tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png" tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
