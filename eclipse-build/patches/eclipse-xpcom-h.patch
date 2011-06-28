@@ -1,0 +1,14 @@
+diff -up ./xpcom.h.fix ./xpcom.h
+--- ./xpcom.h.fix	2010-09-17 11:31:46.317620889 -0400
++++ ./xpcom.h	2010-09-17 11:33:58.558646774 -0400
+@@ -36,6 +36,10 @@
+ #ifdef __APPLE__
+ #define NO__1NS_1InitXPCOM2
+ #endif /* __APPLE__ */
++#ifdef __linux__
++#define NO__1Call__IIIIII
++#define NO__1Call__JJJJJI
++#endif /* __linux__ */
+ #endif /* _WIN32 */
+ 
+ #define SWT_XREInitEmbedding nsresult (*)(nsILocalFile *,nsILocalFile *,nsIDirectoryServiceProvider *,nsStaticModuleInfo const *,PRUint32)
