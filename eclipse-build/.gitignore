@@ -1,6 +1,8 @@
 /eclipse-build-config
 /eclipse-build-feature
 /eclipse-*-src.tar.bz2
+/eclipse-sdktests-*.tar.bz2
+/eclipse-sdktests-*-scripts
 home
 build_*.log
 *Fetch.log
