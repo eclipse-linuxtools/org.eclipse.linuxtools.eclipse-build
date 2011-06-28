@@ -20,3 +20,7 @@ p2
 bootstrap
 configuration
 generatedScripts
+testsBuild
+Xvnc.log
+sdk-tests.properties
+tests_*
