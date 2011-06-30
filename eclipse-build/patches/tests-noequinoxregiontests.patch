@@ -1,0 +1,16 @@
+--- feature.xml.fewerEquinoxTests	2011-06-28 11:37:42.175073433 -0400
++++ feature.xml	2011-06-28 11:37:56.250256555 -0400
+@@ -365,11 +365,13 @@
+          install-size="0"
+          version="0.0.0"/>
+          
++<!--
+    <plugin
+          id="org.eclipse.equinox.region.tests"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"/>
++-->
+ 
+    <plugin
+          id="org.eclipse.equinox.security.tests"
