@@ -3,24 +3,24 @@
 Index: tests/org/eclipse/ant/tests/core/tests/OptionTests.java
 ===================================================================
 RCS file: /cvsroot/eclipse/org.eclipse.ant.tests.core/tests/org/eclipse/ant/tests/core/tests/OptionTests.java,v
-retrieving revision 1.67.2.2
-diff -u -r1.67.2.2 OptionTests.java
---- tests/org/eclipse/ant/tests/core/tests/OptionTests.java	9 Nov 2009 17:22:09 -0000	1.67.2.2
-+++ tests/org/eclipse/ant/tests/core/tests/OptionTests.java	23 Apr 2010 12:42:41 -0000
+retrieving revision 1.71
+diff -u -r1.71 OptionTests.java
+--- tests/org/eclipse/ant/tests/core/tests/OptionTests.java	1 Feb 2011 17:14:13 -0000	1.71
++++ tests/org/eclipse/ant/tests/core/tests/OptionTests.java	30 Jun 2011 19:30:21 -0000
 @@ -27,7 +27,7 @@
  	
- 	protected static final String UNKNOWN_ARG= "Unknown argument: ";
- 	protected static final String START_OF_HELP= "ant [options] [target [target2 [target3] ...]]";
--	protected static final String VERSION= "Apache Ant version 1.7.1 compiled on June 27 2008";
-+	protected static final String VERSION= "Apache Ant version 1.7.1";
- 	protected static final String PLUGIN_VERSION= "org.apache.ant_1.7.1";
+ 	protected static final String UNKNOWN_ARG = "Unknown argument: ";
+ 	protected static final String START_OF_HELP = "ant [options] [target [target2 [target3] ...]]";
+-	protected static final String VERSION = "Apache Ant(TM) version 1.8.2 compiled on December 20 2010";
++	protected static final String VERSION = "Apache Ant(TM) version 1.8.2";
+ 	protected static final String PLUGIN_VERSION = "org.apache.ant_1.8.2";
  	 
  	public OptionTests(String name) {
 @@ -58,7 +58,7 @@
  	public void testVersion() throws CoreException {
  		run("TestForEcho.xml", new String[]{"-version"});
  		assertTrue("One message should have been logged", AntTestChecker.getDefault().getMessagesLoggedCount() == 1);
--		assertTrue("Version is incorrect", VERSION.equals(getLastMessageLogged()));
+-		assertEquals("Version is incorrect: ", VERSION, getLastMessageLogged());
 +		assertTrue("Version is incorrect", getLastMessageLogged().startsWith(VERSION));
  	}
  	

@@ -3,16 +3,16 @@
 Index: Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java
 ===================================================================
 RCS file: /cvsroot/eclipse/org.eclipse.ant.tests.ui/Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java,v
-retrieving revision 1.12
-diff -u -r1.12 PropertyTests.java
---- Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	13 Aug 2008 15:32:16 -0000	1.12
-+++ Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	23 Apr 2010 17:22:56 -0000
+retrieving revision 1.16
+diff -u -r1.16 PropertyTests.java
+--- Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	1 Feb 2011 17:14:14 -0000	1.16
++++ Ant Debug Tests/org/eclipse/ant/tests/ui/debug/PropertyTests.java	30 Jun 2011 19:28:06 -0000
 @@ -24,7 +24,7 @@
  
  public class PropertyTests extends AbstractAntDebugTest {
  	
--	private static final String ANT_VERSION = "Apache Ant version 1.7.1 compiled on June 27 2008";
-+	private static final String ANT_VERSION = "Apache Ant version 1.7.1";
+-	private static final String ANT_VERSION = "Apache Ant(TM) version 1.8.2 compiled on December 20 2010";
++	private static final String ANT_VERSION = "Apache Ant(TM) version 1.8.2";
  
      public PropertyTests(String name) {
  		super(name);
@@ -25,12 +25,9 @@ diff -u -r1.12 PropertyTests.java
  			assertProperty(thread, "ant.project.name", "debugEcho");
  		} finally {
  			terminateAndRemove(thread);
-@@ -140,13 +140,20 @@
- 			removeAllBreakpoints();
- 		}
+@@ -142,11 +142,18 @@
  	}
--
-+	
+ 
  	private AntStackFrame assertProperty(AntThread thread, String propertyName, String propertyValue) throws DebugException {
 +		return assertProperty(thread, propertyName, propertyValue, true);
 +	}
@@ -40,7 +37,7 @@ diff -u -r1.12 PropertyTests.java
  		AntProperty property= frame.findProperty(propertyName);
  		assertNotNull("Did not find property: " + propertyName, property);
  		AntValue value= (AntValue) property.getValue();
--		assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
+-		assertEquals("Value of property "+propertyName+ " incorrect", propertyValue, value.getValueString());
 +		if (checkFullProperty)
 +			assertTrue("Value of property" + propertyName + " incorrect: " + value.getValueString(), propertyValue.equals(value.getValueString()));
 +		else
