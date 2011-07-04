@@ -126,6 +126,7 @@ function init() {
 	echo "data-dir=$datadir" >> $properties
 	echo "useEclipseExe=true" >> $properties
 	echo "junit-report-output=$results" >> $properties
+	echo "junit-stylesheet=${eclipseHome}/plugins/${testframework}/JUNIT.XSL" >> $properties
 	echo "results=$results" >> $properties
 	echo "tmpresults=$tmpresults" >> $properties
 	echo "testhome=$testhome" >> $properties
