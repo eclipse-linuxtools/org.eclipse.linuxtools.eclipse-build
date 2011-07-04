@@ -133,6 +133,8 @@ function init() {
 
 	if [ $debugTests -eq 1 ]; then
 	    echo "extraVMargs=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=40000" >> $properties
+	else
+	    echo "extraVMargs=" >> $properties
 	fi
 }
 
