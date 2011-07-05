@@ -39,7 +39,7 @@ if [ $# -gt 0 ]; then
       while read f; do
          [ ! -e $f ] && ln -s $eclipse/$f $f
       done
-      (cd $eclipse/dropins; ls -d *"$optional"*) |
+      (cd $eclipse/dropins; ls -d "$optional") |
       while read f; do
 	  if [ -e $eclipse/dropins/$f/eclipse ]; then
 	      (cd $eclipse/dropins/$f/eclipse; ls -d plugins/* features/*) |
@@ -55,7 +55,7 @@ if [ $# -gt 0 ]; then
 	      done
           fi
       done
-      (cd $datadir/dropins; ls -d *"$optional"*) |
+      (cd $datadir/dropins; ls -d "$optional") |
       while read f; do
 	  if [ -e $datadir/dropins/$f/eclipse ]; then
 	      (cd $datadir/dropins/$f/eclipse; ls -d plugins/* features/*) |
