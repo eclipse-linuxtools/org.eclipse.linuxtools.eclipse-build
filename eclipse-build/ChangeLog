@@ -1,3 +1,10 @@
+2011-07-18  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkInstalledOSGiJars.java (execute):
+	Trim file names before constructing file objects.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java (execute): Ditto.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java (execute): Ditto.
+
 2011-04-08  Alexander Kurtakov  <akurtako@redhat.com>
 
 	* patches/no-gnome-vfs.patch: Fix Program.launch(executable) when libswt-gnome is missing.

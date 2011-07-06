@@ -52,7 +52,7 @@ public class SymlinkOSGiJars extends Task {
 			File matchedJar = null;
 
 			for (int i = 0; i < systemLocationList.length; i++) {
-				File systemFile = new File(systemLocationList[i]);
+				File systemFile = new File(systemLocationList[i].trim());
 				if (!systemFile.exists())
 					continue;
 				log("Seeing if " + systemFile + " is a suitable match for " + origLocation, Project.MSG_DEBUG);

@@ -49,7 +49,7 @@ public class SymlinkNonOSGiJars extends Task {
 			}
 			boolean matched = false;
 			for (int i = 0; i < systemLocationList.length; i++) {
-				File systemFile = new File(systemLocationList[i]);
+				File systemFile = new File(systemLocationList[i].trim());
 				if (systemFile.exists()) {
 					matched = true;
 					// FIXME:  do symlinking
