@@ -1,3 +1,8 @@
+2011-07-22  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* build.xml: Automatically create symbolic links in the build directory
+	to  eclipse-build-config eclipse-build-feature
+
 2011-07-18  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkInstalledOSGiJars.java (execute):

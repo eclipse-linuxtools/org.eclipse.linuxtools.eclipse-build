@@ -194,10 +194,17 @@
 		<delete dir="${buildDirectory}/buildConfigs" />
 		<mkdir dir="${buildDirectory}/buildConfigs" />
 
+		<echo message="creating link to config dir (../eclipse-build-config) from ${buildConfigs}" />
+		<symlink link="${basedir}/eclipse-build-config" resource="${basedir}/../eclipse-build-config"/>
+		
 		<echo message="Copying eclipse-build main feature source" />
 		<copy todir="${buildConfigs}/eclipse-build-config">
 			<fileset dir="eclipse-build-config" />
 		</copy>
+
+		<echo message="creating link to feature dir (../eclipse-build-feature)" />
+		<symlink link="${basedir}/eclipse-build-feature" resource="${basedir}/../eclipse-build-feature"/>
+
 		<echo message="Copying eclipse-build builder" />
 		<copy todir="${buildDirectory}/features/eclipse-build-feature">
 			<fileset dir="eclipse-build-feature" />
