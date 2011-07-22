@@ -1,0 +1,24 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.e4.builder
+Index: scripts/buildAll.xml
+===================================================================
+RCS file: /cvsroot/eclipse/e4/releng/org.eclipse.e4.builder/scripts/buildAll.xml,v
+retrieving revision 1.2
+diff -u -r1.2 buildAll.xml
+--- scripts/buildAll.xml	27 Jul 2010 16:33:49 -0000	1.2
++++ scripts/buildAll.xml	20 Jul 2011 19:00:29 -0000
+@@ -46,5 +46,14 @@
+ 		</ant>
+ 	</target>
+ 	
++	<target name="fetchMasterFeature" depends="initProperties">
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
++			<property name="builder" value="${basedir}/../builder/general" />
++		</ant>
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
++			<property name="builder" value="${basedir}/../builder/general" />
++		</ant>
++	</target>
++	
+ </project>
+ 

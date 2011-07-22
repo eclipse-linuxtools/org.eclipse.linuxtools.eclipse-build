@@ -1,0 +1,70 @@
+### Eclipse Workspace Patch 1.0
+#P org.eclipse.e4.builder
+Index: builder/general/customTargets.xml
+===================================================================
+RCS file: /cvsroot/eclipse/e4/releng/org.eclipse.e4.builder/builder/general/customTargets.xml,v
+retrieving revision 1.98
+diff -u -r1.98 customTargets.xml
+--- builder/general/customTargets.xml	28 Jun 2011 14:01:43 -0000	1.98
++++ builder/general/customTargets.xml	21 Jul 2011 14:56:22 -0000
+@@ -108,60 +108,6 @@
+ 	<!-- Steps to do after setup but before starting the build proper -->
+ 	<!-- ===================================================================== -->
+ 	<target name="postSetup" depends="initLocations">
+-		<antcall target="getBaseComponents" />
+-		
+-		<echo message="Mirror from ${eclipseRepoURL-latest} to ${repoBaseLocation}/eclipseSDK" />
+-		<p2.mirror destination="file:${repoBaseLocation}/eclipseSDK" ignoreerrors="true">
+-			<source location="${eclipseRepoURL-latest}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" latestVersionOnly="true"/>
+-			<iu id="org.eclipse.sdk.ide" />
+-			<!--<iu id="org.eclipse.equinox.core.sdk.feature.group" /> -->
+-		</p2.mirror>
+-		
+-		<echo message="Mirror from ${orbitRepoURL} to ${repoBaseLocation}/orbit" />
+-		<p2.mirror destination="file:${repoBaseLocation}/orbit" ignoreerrors="true">
+-			<source location="${orbitRepoURL}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" />
+-			<iu id="org.apache.commons.beanutils" />
+-			<iu id="org.apache.commons.lang" />
+-			<iu id="org.junit" version="0.0.0" />
+-			<iu id="org.junit.source" version="0.0.0" />
+-			<iu id="javax.el" />
+-		</p2.mirror>
+-		
+-		<echo message="Mirror from ${emfRepoURL} to ${repoBaseLocation}/emf" />
+-		<p2.mirror destination="file:${repoBaseLocation}/emf" ignoreerrors="true">
+-			<source location="${emfRepoURL}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" latestVersionOnly="true" />
+-			<iu id="org.eclipse.emf.sdk.feature.group" />
+-			<iu id="org.eclipse.xsd.edit.feature.group" />
+-		</p2.mirror>
+-		
+-		<echo message="Mirror from ${gefRepoURL} to ${repoBaseLocation}/gef" />
+-		<p2.mirror destination="file:${repoBaseLocation}/gef" ignoreerrors="true">
+-			<source location="${gefRepoURL}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" />
+-			<iu id="org.eclipse.gef.feature.group" />
+-		</p2.mirror>
+-		
+-		<echo message="Mirror from ${wtpRepoURL} to ${repoBaseLocation}/wtp" />
+-		<p2.mirror destination="file:${repoBaseLocation}/wtp" ignoreerrors="true">
+-			<source location="${wtpRepoURL}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" />
+-			<iu id="org.eclipse.wst.xml_ui.feature.feature.group" />
+-			<iu id="org.eclipse.wst.web_core.feature.feature.group" />
+-		</p2.mirror>
+-		
+-		<!--<p2.remove.iu>
+-			<repository location="file:${targetDir}/${targetDownloadId}-p2" />
+-			<iu id="org.eclipse.rap.jface" />
+-			<iu id="org.eclipse.rap.rwt" />
+-			<iu id="org.eclipse.rap.ui.forms" />
+-		</p2.remove.iu>-->
+-	
+-		<p2.repo2runnable destination="${transformedRepoLocation}" failOnError="false">
+-			<source dir="${repoBaseLocation}" includes="*" excludes="${repoBaseLocation.excludes}"/>
+-		</p2.repo2runnable>
+ 	</target>	
+ 
+ 	<!-- ===================================================================== -->
