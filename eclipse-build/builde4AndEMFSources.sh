@@ -12,8 +12,14 @@ e4BuilderTag="HEAD"
 label="4.1.0"
 fetchTests="yes"
 
+EMFversion=2.7.0
+emfTag="R2_7_0"
+
 cvsRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse"
 mapsRoot="org.eclipse.releng/maps"
+emfCVSRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling"
+emfCVSdir="org.eclipse.emf/org.eclipse.emf/"
+mapIncludingEMF="${baseDir}"/org.eclipse.e4.sdk/maps/e4.map
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-e4Builder <path to org.eclipse.releng.e4Builder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
 
@@ -199,3 +205,29 @@ cd "${e4Builder}"
 #fi
 
 cd "${baseDir}"
+
+quiet="-q"
+
+mkdir -p emfFore4-${EMFversion}-src
+pushd emfFore4-${EMFversion}-src >/dev/null
+mkdir -p features plugins
+
+for f in $(grep emf ${mapIncludingEMF} | sed s/=.*//); do
+  if [[ $f == feature* ]]; then
+    element=$(echo $f | sed s/feature@//);
+    fetchDir="features/$element";
+    element="${emfCVSdir}/features/${element}-feature";
+  else
+    element=$(echo $f | sed s/plugin@//);
+    fetchDir="plugins/$element";
+    element="${emfCVSdir}/plugins/${element}";
+  fi
+  cvs -d ${emfCVSRepo} ${quiet} \
+    export -r ${emfTag} -d ${fetchDir} ${element}
+done
+cvs -d ${emfCVSRepo} export -r ${emfTag} -d \
+ features/org.eclipse.emf.license \
+ ${emfCVSdir}/features/org.eclipse.emf.license-feature
+popd
+
+tar cjf emfFore4-${EMFversion}-src.tar.bz2 emfFore4-${EMFversion}-src
