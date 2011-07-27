@@ -469,8 +469,18 @@
 		</condition>
 	</target>
 	-->
+	
+	<target name="setPDEBuildPath" depends="provision.sdk">
+		<path id="pdebuilddir.id">
+			<dirset dir="${provisionDir}/plugins">
+				<include name="org.eclipse.pde.build_*" />
+			</dirset>
+		</path>
 
-	<target name="buildEMF" depends="unpackEMF" unless="buildEMF.complete">
+		<property name="pdebuilddir" refid="pdebuilddir.id" />
+	</target>
+
+	<target name="buildEMF" depends="unpackEMF,setPDEBuildPath" unless="buildEMF.complete">
 
 		<exec executable="${provisionDir}/eclipse">
 			<arg line="-nosplash " />
@@ -501,15 +511,7 @@
 		<echo file="buildEMF-stamp" />
 	</target>
 
-	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
-
-		<path id="pdebuilddir.id">
-			<dirset dir="${provisionDir}/plugins">
-				<include name="org.eclipse.pde.build_*" />
-			</dirset>
-		</path>
-
-		<property name="pdebuilddir" refid="pdebuilddir.id" />
+	<target name="buildTests" depends="provision.sdk,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
 
 		<!-- Test framework -->
 		<exec executable="${provisionDir}/eclipse">
