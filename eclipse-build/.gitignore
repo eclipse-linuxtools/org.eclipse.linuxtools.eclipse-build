@@ -3,6 +3,7 @@
 /eclipse-*-src.tar.bz2
 /eclipse-sdktests-*.tar.bz2
 /eclipse-sdktests-*-scripts
+/emfFore4-2.7.0-src.tar.bz2
 home
 build_*.log
 *Fetch.log
@@ -24,3 +25,4 @@ testsBuild
 Xvnc.log
 sdk-tests.properties
 tests_*
+EMFbuildworkspace
