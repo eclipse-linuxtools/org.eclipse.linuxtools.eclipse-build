@@ -12,6 +12,9 @@
 
 	<available file="eclipse-${label}-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse/plugins/org.eclipse.equinox.launcher/build.properties" property="extractedSdkSourcePresent" value="true" />
+	<property name="emfSourceDir" value="emfFore4-${EMFlabel}-src" />
+	<property name="emfTarball" value="${emfSourceDir}.tar.bz2" />
+	<available file="${emfTarball}" property="emfSourceTarballPresent" value="true" />
 
 	<condition property="onlyExtractedSdkSourcePresent">
 		<and>
@@ -32,6 +35,7 @@
 
 	<!-- Check what has already been done -->
 	<available property="unpack.complete" file="unpack-stamp" value="true" />
+	<available property="unpackEMF.complete" file="unpackEMF-stamp" value="true" />
 	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
@@ -39,6 +43,7 @@
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
 	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
 	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
+	<uptodate property="buildEMF.complete" srcfile="unpackEMF-stamp" targetfile="buildEMF-stamp" />
 	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<uptodate property="provision.platform.complete" srcfile="build-stamp" targetfile="provision.platform-stamp" />
@@ -53,8 +58,10 @@
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
+	<property name="EMFbuildworkspace" value="${basedir}/EMFbuildworkspace" />
 	<property name="buildDirectory" value="${topBuildDir}/eclipse-${label}-src" />
 	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
+	<property name="emfBuildDirectory" value="${topBuildDir}/${emfSourceDir}" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
@@ -151,6 +158,10 @@
 		<fail message="Scripts for the SDK tests tarball is not present.  Please either download a file such as eclipse-sdktests-3.6.1-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh." />
 	</target>
 
+	<target name="fetchEMF" unless="emfSourceTarballPresent">
+		<fail message="EMF source tarball is not present.  Please either download a file such as emfFore4-2.7.0-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./builde4AndEMFSources.sh." />
+	</target>
+
 	<target name="extractBuildXmls" if="scriptsPresent">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src" src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
 		<!--
@@ -229,6 +240,17 @@
 		<delete dir="${buildDirectory}/plugins/org.eclipse.equinox.http.jetty_1.1.100" />
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
+	</target>
+
+	<target name="unpackEMF" depends="fetchEMF,provision.sdk" unless="unpackEMF.complete">
+		<delete dir="${topBuildDir}/${emfSourceDir}" />
+		<mkdir dir="${topBuildDir}/${emfSourceDir}" />
+
+		<delete dir="${EMFbuildworkspace}" />
+		<mkdir dir="${EMFbuildworkspace}" />
+
+		<untar dest="${topBuildDir}" src="${basedir}/${emfTarball}" compression="bzip2" />
+		<echo file="unpackEMF-stamp" />
 	</target>
 
 	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
@@ -447,6 +469,37 @@
 		</condition>
 	</target>
 	-->
+
+	<target name="buildEMF" depends="unpackEMF" unless="buildEMF.complete">
+
+		<exec executable="${provisionDir}/eclipse">
+			<arg line="-nosplash " />
+			<arg line="-consolelog " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
+			<arg line="-Dtype=feature -Did=org.eclipse.emf.common " />
+			<arg line="-DbaseLocation=${provisionDir} " />
+			<arg line="-DbuildLabel=${EMFLabel} " />
+			<arg line="-data ${EMFbuildworkspace} " />
+		</exec>
+		
+		<exec executable="${provisionDir}/eclipse">
+			<arg line="-nosplash " />
+			<arg line="-consolelog " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
+			<arg line="-Dtype=feature -Did=org.eclipse.emf.ecore " />
+			<arg line="-DbaseLocation=${provisionDir} " />
+			<arg line="-DbuildLabel=${EMFLabel} " />
+			<arg line="-data ${EMFbuildworkspace} " />
+		</exec>
+
+		<echo file="buildEMF-stamp" />
+	</target>
 
 	<target name="buildTests" depends="provision.sdk,applyTestPatches" unless="testsbuild.complete">
 
