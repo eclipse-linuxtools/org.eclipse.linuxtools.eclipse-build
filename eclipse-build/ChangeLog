@@ -1,3 +1,8 @@
+2011-08-02  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* build.xml: Check if eclipse-build-config and eclipse-build-feature are present
+	before creating symlinks.
+
 2011-07-22  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* build.xml: Automatically create symbolic links in the build directory
