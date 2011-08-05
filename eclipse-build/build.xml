@@ -307,12 +307,12 @@
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
 		<!--
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}" strip="1" />
+		-->
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
-                -->
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />

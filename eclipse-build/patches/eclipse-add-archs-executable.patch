@@ -50,7 +50,7 @@
  root.macosx.carbon.ppc.permissions.755=${launcherName}.app/Contents/MacOS/${launcherName}
 --- a/features/org.eclipse.equinox.executable/feature.xml
 +++ b/features/org.eclipse.equinox.executable/feature.xml
-@@ -88,6 +88,66 @@
+@@ -90,6 +90,66 @@
           version="0.0.0"
           fragment="true"/>
  
@@ -117,7 +117,7 @@
     <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.ppc"
           os="linux"
-@@ -98,6 +158,56 @@
+@@ -100,6 +160,56 @@
           version="0.0.0"
           fragment="true"/>
  
@@ -174,7 +174,7 @@
     <plugin
           id="org.eclipse.equinox.launcher.gtk.linux.ppc64"
           os="linux"
-@@ -208,25 +318,4 @@
+@@ -230,24 +340,4 @@
           version="0.0.0"
           fragment="true"/>
  
@@ -197,6 +197,5 @@
 -         install-size="0"
 -         version="0.0.0"
 -         fragment="true"/>
--
 -
  </feature>

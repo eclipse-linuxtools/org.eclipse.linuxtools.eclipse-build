@@ -44,7 +44,7 @@
  		
 --- a/plugins/org.eclipse.swt/tasks/build.xml	2010-08-06 19:35:21.199817105 +0200
 +++ b/plugins/org.eclipse.swt/tasks/build.xml	2010-08-06 19:36:32.704372712 +0200
-@@ -1121,7 +1121,7 @@
+@@ -1379,7 +1379,7 @@
  				<argument value="${tasks}"/>
  			</commandline>
  		</cvs>

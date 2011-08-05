@@ -1,3 +1,17 @@
+2011-08-05  Niels Thykier  <niels@thykier.net>
+
+	* build.xml: Re-enabled four patches for adding extra architectures to eclipse.
+	* patches/donotstorebuildlogsinfiles.patch: Refreshed to apply cleanly.
+	* patches/eclipse-add-archs-executable.patch: Ditto
+	* patches/eclipse-add-archs-filesystem.patch: Ditto
+	* patches/eclipse-add-archs-swt.patch: Ditto
+	* patches/eclipse-add-ppc64-sparc64-s390-s390x.patch: Ditto
+	* patches/eclipse-addArchesAnd64bitSWT.patch: Ditto
+	* patches/eclipse-buildswtnatives.patch: Ditto
+	* patches/eclipse-no-jetty5.patch: Ditto
+	* patches/eclipse-swt-buildagainstxulrunner.patch: Ditto, though this patch
+	was not re-enabled.
+
 2011-08-02  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* build.xml: Check if eclipse-build-config and eclipse-build-feature are present

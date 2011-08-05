@@ -1,6 +1,6 @@
 --- a/features/org.eclipse.rcp/feature.xml
 +++ b/features/org.eclipse.rcp/feature.xml
-@@ -205,10 +205,87 @@
+@@ -208,10 +208,87 @@
           unpack="false"/>
  
     <plugin
@@ -90,7 +90,7 @@
           download-size="0"
           install-size="0"
           version="0.0.0"
-@@ -238,8 +315,8 @@
+@@ -241,8 +318,8 @@
           unpack="false"/>
  
     <plugin
@@ -101,40 +101,50 @@
           ws="gtk"
           arch="sparc"
           download-size="0"
-@@ -247,12 +324,12 @@
-          version="0.0.0"
-          fragment="true"
+@@ -252,6 +329,17 @@
           unpack="false"/>
--         
-+
+ 
     <plugin
--         id="org.eclipse.swt.gtk.solaris.x86"
--         os="solaris"
 +         id="org.eclipse.swt.gtk.linux.sparc64"
 +         os="linux"
-          ws="gtk"
--         arch="x86"
++         ws="gtk"
 +         arch="sparc64"
-          download-size="0"
-          install-size="0"
-          version="0.0.0"
-@@ -260,10 +337,10 @@
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
+          id="org.eclipse.swt.gtk.solaris.x86"
+          os="solaris"
+          ws="gtk"
+@@ -274,6 +362,17 @@
           unpack="false"/>
  
     <plugin
--         id="org.eclipse.swt.gtk.linux.ppc"
 +         id="org.eclipse.swt.gtk.linux.x86"
++         os="linux"
++         ws="gtk"
++         arch="x86"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
+          id="org.eclipse.swt.gtk.linux.x86_64"
           os="linux"
           ws="gtk"
--         arch="ppc"
-+         arch="x86"
+@@ -292,6 +391,28 @@
           download-size="0"
           install-size="0"
           version="0.0.0"
-@@ -293,6 +370,28 @@
-          unpack="false"/>
- 
-    <plugin
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
 +         id="org.eclipse.swt.gtk.solaris.sparc"
 +         os="solaris"
 +         ws="gtk"
@@ -153,10 +163,6 @@
 +         download-size="0"
 +         install-size="0"
 +         version="0.0.0"
-+         fragment="true"
-+         unpack="false"/>
-+
-+   <plugin
-          id="org.eclipse.swt.carbon.macosx"
-          os="macosx"
-          ws="carbon"
+          fragment="true"
+          unpack="false"/>
+ 

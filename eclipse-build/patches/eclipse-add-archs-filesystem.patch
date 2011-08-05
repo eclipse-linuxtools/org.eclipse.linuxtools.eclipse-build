@@ -1,9 +1,11 @@
 --- a/features/org.eclipse.platform/feature.xml
 +++ b/features/org.eclipse.platform/feature.xml
-@@ -441,6 +441,66 @@
+@@ -445,6 +445,116 @@
+          version="0.0.0"
+          fragment="true"
           unpack="false"/>
-  
-    <plugin
++	 
++   <plugin
 +         id="org.eclipse.core.filesystem.linux.alpha"
 +         os="linux"
 +         arch="alpha"
@@ -64,18 +66,9 @@
 +         unpack="false"/>
 +
 +   <plugin
-          id="org.eclipse.core.filesystem.linux.ppc"
-          os="linux"
-          arch="ppc"
-@@ -449,6 +509,56 @@
-          version="0.0.0"
-          fragment="true"
-          unpack="false"/>
-+	 
-+   <plugin
-+         id="org.eclipse.core.filesystem.linux.ppc64"
++         id="org.eclipse.core.filesystem.linux.ppc"
 +         os="linux"
-+         arch="ppc64"
++         arch="ppc"
 +         download-size="0"
 +         install-size="0"
 +         version="0.0.0"
@@ -123,4 +116,4 @@
 +         unpack="false"/>
  
     <plugin
-          id="org.eclipse.core.filesystem.linux.x86"
+          id="org.eclipse.core.filesystem.linux.x86_64"

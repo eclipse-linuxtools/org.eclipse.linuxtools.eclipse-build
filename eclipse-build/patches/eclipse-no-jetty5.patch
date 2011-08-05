@@ -1,6 +1,6 @@
 --- a/features/master-equinox/feature.xml
 +++ b/features/master-equinox/feature.xml
-@@ -39,14 +39,14 @@
+@@ -28,14 +28,14 @@
           install-size="0"
           version="0.0.0"
           unpack="false"/>

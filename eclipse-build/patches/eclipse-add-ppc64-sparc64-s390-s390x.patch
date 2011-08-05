@@ -1,6 +1,6 @@
 --- a/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
 +++ b/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
-@@ -48,6 +48,14 @@
+@@ -49,6 +49,14 @@
  			Platform.ARCH_X86, //
  			Platform.ARCH_AMD64, // 
  			Platform.ARCH_IA64, //
@@ -35,10 +35,10 @@
  	 * Constant string (value "win32") indicating the platform is running on a
 --- a/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
 +++ b/plugins/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/internal/adaptor/PluginConverterImpl.java
-@@ -63,7 +63,7 @@
- 	private static final String MANIFEST_VERSION = "Manifest-Version"; //$NON-NLS-1$
+@@ -64,7 +64,7 @@
  	private static final String PLUGIN_PROPERTIES_FILENAME = "plugin"; //$NON-NLS-1$
  	private static PluginConverterImpl instance;
+ 	@SuppressWarnings("deprecation")
 -	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64};
 +	private static final String[] ARCH_LIST = {org.eclipse.osgi.service.environment.Constants.ARCH_PA_RISC, org.eclipse.osgi.service.environment.Constants.ARCH_PPC, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC, org.eclipse.osgi.service.environment.Constants.ARCH_X86, org.eclipse.osgi.service.environment.Constants.ARCH_AMD64, org.eclipse.osgi.service.environment.Constants.ARCH_IA64, org.eclipse.osgi.service.environment.Constants.ARCH_PPC64, org.eclipse.osgi.service.environment.Constants.ARCH_SPARC64, org.eclipse.osgi.service.environment.Constants.ARCH_S390, org.eclipse.osgi.service.environment.Constants.ARCH_S390X, org.eclipse.osgi.service.environment.Constants.ARCH_ALPHA, org.eclipse.osgi.service.environment.Constants.ARCH_ARM, org.eclipse.osgi.service.environment.Constants.ARCH_MIPS, org.eclipse.osgi.service.environment.Constants.ARCH_MIPSEL};
  	static public final String FRAGMENT_MANIFEST = "fragment.xml"; //$NON-NLS-1$
