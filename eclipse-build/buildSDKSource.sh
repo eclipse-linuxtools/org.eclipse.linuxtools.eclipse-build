@@ -7,8 +7,8 @@ baseBuilder=
 eclipseBuilder=
 
 buildID="R3_7"
-baseBuilderTag="R3_7"
-eclipseBuilderTag="R3_7"
+baseBuilderTag="v20110711"
+eclipseBuilderTag="v20110711"
 label="3.7.0"
 fetchTests="yes"
 
@@ -168,7 +168,7 @@ find -depth -name CVS -exec rm -rf {} \;
 
 # Remove prebuilt binaries
 find \( -name '*.exe' -o -name '*.dll' \) -delete
-find \( -name '*.so' -o -name '*.so.2' -o -name '*.a' \) -delete
+find -type f \( -name '*.so' -o -name '*.so.2' -o -name '*.a' \) -delete
 find \( -name '*.sl' -o -name '*.jnilib' \) -delete
 find features/org.eclipse.equinox.executable -name eclipse -delete
 find \( -name '*.cvsignore' \) -delete
