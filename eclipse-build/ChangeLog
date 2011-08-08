@@ -20,6 +20,12 @@
 	* pdebuild/eclipse-pdebuild.sh: Pass JVM arguments directly to the VM and
 	pass -data to avoid using the user's real workspace.
 
+2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
+	Patch provided by Niels Thykier.
+	* build.xml: Move org.eclipse.osgi.services up in the build order.
+	Add a patch to build org.eclipse.osgi.services from source.
+	* buildSDKSource.sh: Unzip org.eclipse.osgi.services src.zip.
+
 2011-08-08  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* buildSDKSource.sh: Update baseBuilderTag and eclipseBuilderTag.

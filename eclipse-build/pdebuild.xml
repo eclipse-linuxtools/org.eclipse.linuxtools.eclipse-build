@@ -30,6 +30,7 @@
 		       org.eclipse.equinox.preferences
 		       org.eclipse.core.runtime.compatibility.auth
 		       org.eclipse.core.contenttype
+		       org.eclipse.osgi.services
 		       org.eclipse.equinox.app
 		       org.eclipse.core.runtime
 		       org.eclipse.core.variables
@@ -65,7 +66,6 @@
 		       org.eclipse.equinox.p2.updatesite
 		       org.eclipse.pde.build
 		       org.eclipse.equinox.launcher
-		       org.eclipse.osgi.services
 		       org.eclipse.equinox.p2.console
 		       org.eclipse.equinox.p2.director.app
 		       org.eclipse.update.core

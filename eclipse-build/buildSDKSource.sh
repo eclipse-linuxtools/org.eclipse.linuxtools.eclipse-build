@@ -127,6 +127,13 @@ pushd plugins/org.eclipse.osgi.util
   rm -r org/ src.zip
 popd
 
+# Extract osgi.services src for rebuilding
+pushd plugins/org.eclipse.osgi.services
+  unzip -q -d src src.zip
+  # Remove pre-compiled class files and the source.zip
+  rm -r org/ src.zip
+popd
+
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
 cd org.eclipse.ecf
 git archive --format=tar --prefix=ecf-3.5.0/ R-Release_HEAD-sdk_feature-19_2011-03-13_18-40-16 | gzip >ecf-3.5.0.tar.gz
