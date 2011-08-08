@@ -20,6 +20,11 @@
 	* pdebuild/eclipse-pdebuild.sh: Pass JVM arguments directly to the VM and
 	pass -data to avoid using the user's real workspace.
 
+2011-08-08  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* buildSDKSource.sh: Update baseBuilderTag and eclipseBuilderTag.
+	Prevent 'find' statements from matching diretories.
+
 2011-08-05  Niels Thykier  <niels@thykier.net>
 
 	* build.xml: Re-enabled four patches for adding extra architectures to eclipse.
