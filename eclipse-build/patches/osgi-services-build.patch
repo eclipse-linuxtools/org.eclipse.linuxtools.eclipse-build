@@ -1,0 +1,22 @@
+diff --git a/eclipse/plugins/org.eclipse.osgi.services/build.properties b/eclipse/plugins/org.eclipse.osgi.services/build.properties
+index 7962dc5..ca55afb 100644
+--- a/plugins/org.eclipse.osgi.services/build.properties
++++ b/plugins/org.eclipse.osgi.services/build.properties
+@@ -11,10 +11,12 @@
+ bin.includes = plugin.properties,\
+                about.html,\
+                META-INF/,\
+-               org/,\
++               bin/,\
++               about_files/,\
++               .
++src.includes = about.html,\
+                about_files/
+-src.includes = src.zip,\
+-               about.html,\
+-               about_files/
+-source.. = .
++source.. = src/
++javacSource=1.5
++javacTarget=1.5
+ output.. = .
