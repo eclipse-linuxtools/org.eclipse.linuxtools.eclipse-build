@@ -123,6 +123,7 @@ sourceDir=$PWD
 buildDir=$PWD/build
 SDK=$buildDir/SDK
 homeDir=$buildDir/home
+workspaceDir=$homeDir/workspace
 datadir=`rpm --eval "%{_libdir}"`
 pdeBuildDir=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@
 
@@ -193,6 +194,11 @@ fi
 echo "mkdir -p $homeDir"
 if [ $dryRun -ne 1 ]; then
     mkdir -p $homeDir
+fi
+
+echo "mkdir -p $workspaceDir"
+if [ $dryRun -ne 1 ]; then
+    mkdir -p $workspaceDir
 fi
 
 if [ -z $featureId ]; then
@@ -267,7 +273,10 @@ launcherJar=$(ls $SDK/plugins | grep "org.eclipse.equinox.launcher_")
 
 if [ $testing != true ]; then
   java -cp $SDK/plugins/${launcherJar} \
+    -Duser.home=$homeDir \
+    $vmArgs \
     org.eclipse.core.launcher.Main \
+    -data $workspaceDir \
     -application org.eclipse.ant.core.antRunner \
     $debugPlatformArgs \
     -Dtype=feature \
@@ -279,15 +288,14 @@ if [ $testing != true ]; then
     $orbitDeps \
     -Dtesting="$testing" \
     $additionalArgs \
-    -f $pdeBuildDir/scripts/build.xml \
-    -vmargs \
-    -Duser.home=$homeDir \
-    $vmArgs
-
+    -f $pdeBuildDir/scripts/build.xml
 else
   echo "\
   java -cp $SDK/plugins/${launcherJar} \
+    -Duser.home=$homeDir \
+    $vmArgs \
     org.eclipse.core.launcher.Main \
+    -data $workspaceDir \
     -application org.eclipse.ant.core.antRunner \
     $debugPlatformArgs \
     -Dtype=feature \
@@ -297,12 +305,9 @@ else
     -DbuildDirectory=$buildDir \
     -Dbuilder=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@/templates/package-build \
     $orbitDeps \
-    -Dtesting="$testing" \
+    -Dtesting=\"$testing\" \
     $additionalArgs \
-    -f $pdeBuildDir/scripts/build.xml \
-    -vmargs \
-    -Duser.home=$homeDir \
-    $vmArgs
+    -f $pdeBuildDir/scripts/build.xml
   "
 fi
 

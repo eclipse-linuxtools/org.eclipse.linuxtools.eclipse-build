@@ -1,3 +1,10 @@
+2011-08-09  Niels Thykier  <niels@thykier.net>
+
+	Bug #322271
+
+	* pdebuild/eclipse-pdebuild.sh: Pass JVM arguments directly to the VM and
+	pass -data to avoid using the user's real workspace.
+
 2011-08-05  Niels Thykier  <niels@thykier.net>
 
 	* build.xml: Re-enabled four patches for adding extra architectures to eclipse.
