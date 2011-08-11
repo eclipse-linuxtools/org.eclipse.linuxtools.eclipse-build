@@ -344,6 +344,8 @@
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-xpcom-h.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT Mozilla/common/library"/>
 		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/addDontFetchBinaries-launcher.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/addDontFetchBinaries-executable.patch" dir="${buildDirectory}" strip="1" />
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
@@ -430,6 +432,7 @@
 			<arg line="-propertyfile ${basedir}/build.properties " />
 			<arg line="-Dbuilder=${buildConfig} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<arg line="-DdontFetchBinaries=true" />
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />
 		</java>

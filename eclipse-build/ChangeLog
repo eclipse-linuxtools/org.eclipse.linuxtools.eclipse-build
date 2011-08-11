@@ -22,6 +22,12 @@
 
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
 
+	* build.xml: Apply addDontFetchBinaries-executable.patch and
+	addDontFetchBinaries-launcher.patch.
+	Pass dontFetchBinaries=true to build.
+
+2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
+
 	* buildSDKSource.sh: Prevent 'find' statement from matching diretories.
 
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
