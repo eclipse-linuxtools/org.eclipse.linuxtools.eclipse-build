@@ -184,7 +184,7 @@ find \( -name '*.cvsignore' \) -delete
 rm -rf tempSite
 
 # Remove binary JARs
-find -name '*.jar' -delete
+find -type f -name '*.jar' -delete
 
 # Remove fetch logs
 rm fetch_*

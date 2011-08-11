@@ -21,6 +21,9 @@
 	pass -data to avoid using the user's real workspace.
 
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* buildSDKSource.sh: Prevent 'find' statement from matching diretories.
+
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* regenerateBootstrapFiles.sh: Correct data path.
