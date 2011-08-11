@@ -21,6 +21,12 @@
 	pass -data to avoid using the user's real workspace.
 
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
+2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* regenerateBootstrapFiles.sh: Correct data path.
+	Correct src path.
+
+2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
 	Patch provided by Niels Thykier.
 	* build.xml: Move org.eclipse.osgi.services up in the build order.
 	Add a patch to build org.eclipse.osgi.services from source.
