@@ -74,8 +74,8 @@
 		<file name="org.eclipse.equinox.http.servlet" />
 		<file name="org.eclipse.equinox.p2.touchpoint.eclipse" />
 		<file name="org.eclipse.equinox.p2.touchpoint.natives" />
-		<file name="org.apache.lucene" />
 		<!--
+		<file name="org.apache.lucene" />
 		<file name="org.eclipse.help" />
 		<file name="org.eclipse.help.base" />
 		-->

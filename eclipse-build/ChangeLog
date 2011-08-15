@@ -1,3 +1,7 @@
+2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com> 
+
+	* pdebuild.xml: Remove org.apache.lucene from build list.
+
 2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* pdebuild.xml: Use new taks to correct jar paths.
