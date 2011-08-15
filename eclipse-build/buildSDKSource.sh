@@ -8,7 +8,7 @@ eclipseBuilder=
 
 buildID="R3_7"
 baseBuilderTag="v20110711"
-eclipseBuilderTag="v20110711"
+eclipseBuilderTag=""
 label="3.7.0"
 fetchTests="yes"
 
@@ -53,6 +53,9 @@ fi
 if [ "x${eclipseBuilder}x" = "xx" ]; then
   eclipseBuilder="${workDirectory}"/org.eclipse.releng.eclipsebuilder
   echo "Eclipsebuilder checkout not specified; will check out into ${eclipseBuilder}."
+fi
+if [ "x${eclipseBuilderTag}x" = "xx" ]; then
+  eclipseBuilderTag="v${buildID}"
 fi
 
 fetchDirectory="${workDirectory}"/fetch
