@@ -9,7 +9,7 @@ eclipseBuilder=
 buildID="R3_7"
 baseBuilderTag="v20110711"
 eclipseBuilderTag=""
-label="3.7.0"
+label="3.8.0"
 fetchTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"

@@ -13,6 +13,10 @@
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java: Ditto.
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: Ditto.
 
+2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com> 
+
+	* buildSDKSource.sh: update build label to 3.8.
+
 2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* buildSDKSource.sh: Use buildID for eclipseBuilderTag.
