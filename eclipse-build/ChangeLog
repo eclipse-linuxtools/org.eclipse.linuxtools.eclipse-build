@@ -13,6 +13,12 @@
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java: Ditto.
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: Ditto.
 
+2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* pdebuild.xml: Use new taks to correct jar paths.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/CorrectJarPaths.java:
+	New.
+
 2011-08-09  Niels Thykier  <niels@thykier.net>
 
 	Bug #322271
