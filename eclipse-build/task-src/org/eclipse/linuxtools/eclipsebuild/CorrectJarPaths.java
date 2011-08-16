@@ -53,12 +53,12 @@ public class CorrectJarPaths extends Task {
 		String line = input.readLine();
 		while (line != null) {
 		    // We want to replace things like this: ../../../../../../../../../usr/lib/eclipse/plugins/
-		    // with ../plugins
+		    // with ../ (plugins directory)
 		    if (line.contains("../usr") && line.contains("/plugins/")){
 			line = line.replaceAll("\\.\\./","");
-			line = line.replaceAll("usr/lib/eclipse/plugins/","../plugins/");
-			line = line.replaceAll("usr/lib64/eclipse/plugins/","../plugins/");
-			line = line.replaceAll("usr/share/eclipse/plugins/","../plugins/");
+			line = line.replaceAll("usr/lib/eclipse/plugins/","../");
+			line = line.replaceAll("usr/lib64/eclipse/plugins/","../");
+			line = line.replaceAll("usr/share/eclipse/plugins/","../");
 		    }
 		    output.writeBytes(line+"\n");
 		    line = input.readLine();
