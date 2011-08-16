@@ -13,6 +13,12 @@
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java: Ditto.
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: Ditto.
 
+2011-08-16  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* build.properties: Update build tags and ID's.
+	* pdebuild.properties: Ditto.
+	* regenerateBootstrapFiles.sh: Correct data path.
+
 2011-08-15  Sami Wagiaalla  <swagiaal@redhat.com> 
 
 	* buildSDKSource.sh: update build label to 3.8.
