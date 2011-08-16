@@ -13,6 +13,10 @@
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java: Ditto.
 	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: Ditto.
 
+2011-08-16  Sami Wagiaalla  <swagiaal@redhat.com> 
+
+	* dependencies.properties: Remove incorrect path for org.apache.lucene.
+
 2011-08-16  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* build.properties: Update build tags and ID's.
