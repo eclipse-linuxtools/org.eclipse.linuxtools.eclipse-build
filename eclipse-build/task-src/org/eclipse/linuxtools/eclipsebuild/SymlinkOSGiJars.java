@@ -23,16 +23,12 @@ import java.util.jar.Manifest;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-import org.apache.tools.ant.Task;
-import org.apache.tools.ant.taskdefs.Delete;
-import org.apache.tools.ant.taskdefs.optional.unix.Symlink;
 
-public class SymlinkOSGiJars extends Task {
+public class SymlinkOSGiJars extends SymlinkJars {
 
 	private String[] importantManifestEntries = { "Bundle-SymbolicName", "Bundle-Version", "Export-Package" };
 
 	private Properties dependencies;
-	private String topLevelDir;
 	private String manifestsDir;
 	
 	// Main method for ant task
@@ -88,19 +84,7 @@ public class SymlinkOSGiJars extends Task {
 				throw new BuildException(noSystemJarMsg);
 			}
 			
-			// First, delete any existing symlink
-			Delete d = new Delete();
-			d.init();
-			
-			d.setFile(new File(topLevelDir + "/" + origLocation));
-			d.execute();
-
-			// Then make the actual symlink
-			Symlink s = new Symlink();
-			s.init();
-			s.setLink(topLevelDir + "/" + origLocation);
-			s.setResource(matchedJar.getAbsolutePath());
-			s.execute();
+			symlinkJar (new File(topLevelDir + "/" + origLocation), topLevelDir + "/" + origLocation, matchedJar);
 		}
     }
 
@@ -202,10 +186,6 @@ public class SymlinkOSGiJars extends Task {
 		}
 	}
 
-	public void setTopleveldir(String topLevelDir) {
-		this.topLevelDir = topLevelDir;
-	}
-	
 	public void setManifests(String manifests) {
 		this.manifestsDir = manifests;
 	}
