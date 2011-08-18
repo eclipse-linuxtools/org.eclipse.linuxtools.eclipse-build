@@ -3,6 +3,12 @@
 	* pdebuild.xml: Do not uninstall the initializer.
 	Remove all empty metadata directories.
 
+2011-08-18  Sami Wagiaalla  <swagiaal@redhat.com> 
+
+	* pdebuild.xml: Remove CorrectJarPaths.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/CorrectJarPaths.java:
+	Deleted.
+
 2011-08-18  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* pdebuild.xml: Created new target copyDeps.
