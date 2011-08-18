@@ -23,16 +23,12 @@ import java.util.jar.Manifest;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-import org.apache.tools.ant.Task;
-import org.apache.tools.ant.taskdefs.Delete;
-import org.apache.tools.ant.taskdefs.optional.unix.Symlink;
 
-public class SymlinkInstalledOSGiJars extends Task {
+public class SymlinkInstalledOSGiJars extends SymlinkJars {
 
 	private String[] importantManifestEntries = { "Bundle-SymbolicName" };
 
 	private Properties dependencies;
-	private String topLevelDir;
 	
 	// Main method for ant task
     public void execute() throws BuildException {
@@ -104,16 +100,7 @@ public class SymlinkInstalledOSGiJars extends Task {
 			// them and not over-write with what the source drop originally
 			// had.
 			
-			Delete d = new Delete();
-			d.init();
-			d.setFile(fileToSymlink);
-			d.execute();
-			
-			Symlink s = new Symlink();
-			s.init();
-			s.setLink(topLevelDir + "/" + fileToSymlink.getName());
-			s.setResource(matchedJar.getAbsolutePath());
-			s.execute();
+			symlinkJar (fileToSymlink, topLevelDir + "/" + fileToSymlink.getName(), matchedJar);
     	}
     }
 
@@ -215,7 +202,4 @@ public class SymlinkInstalledOSGiJars extends Task {
 		}
 	}
 
-	public void setTopleveldir(String topLevelDir) {
-		this.topLevelDir = topLevelDir;
-	}
 }

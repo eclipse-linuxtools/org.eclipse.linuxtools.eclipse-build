@@ -1,3 +1,13 @@
+2011-08-18  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* pdebuild.xml: Created new target copyDeps.
+	Pass property copyfiles to Symlink tasks.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkJars.java: New.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkInstalledOSGiJars.java:
+	Extend SymlinkJars.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkOSGiJars.java: Ditto.
+	* task-src/org/eclipse/linuxtools/eclipsebuild/SymlinkNonOSGiJars.java: Ditto.
+
 2011-08-09  Niels Thykier  <niels@thykier.net>
 
 	Bug #322271
