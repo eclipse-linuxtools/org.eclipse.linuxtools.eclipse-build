@@ -3,6 +3,13 @@
 	* pdebuild.xml: Do not uninstall the initializer.
 	Remove all empty metadata directories.
 
+2011-08-22  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* buildSDKSource.sh: update build label to 3.8-M1.
+	* build.properties: Ditto.
+	* pdebuild.properties: Ditto.
+	* regenerateBootstrapFiles.sh: Correct data path.
+
 2011-08-18  Sami Wagiaalla  <swagiaal@redhat.com> 
 
 	* pdebuild.xml: Remove CorrectJarPaths.
