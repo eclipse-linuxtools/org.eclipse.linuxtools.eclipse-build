@@ -138,6 +138,7 @@
 		<ant inheritall="false" antfile="pdebuild.xml">
 			<property name="buildId" value="${buildId}" />
 			<property name="buildArch" value="${buildArch}" />
+			<property name="buildDirectory" value="../../" />
 		</ant>
 	</target>
 
