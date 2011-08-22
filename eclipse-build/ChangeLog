@@ -1,3 +1,7 @@
+2011-08-22  Sami Wagiaalla  <swagiaal@redhat.com> 
+
+	* build.xml: Set buildDirectory relative to plugins directory.
+
 2011-08-22  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* buildSDKSource.sh: update build label to 3.8-M1.
