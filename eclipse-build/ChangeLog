@@ -5,6 +5,10 @@
 
 2011-08-23  Sami Wagiaalla  <swagiaal@redhat.com>
 
+	* buildSDKSource.sh: Remove directory scmCache.
+
+2011-08-23  Sami Wagiaalla  <swagiaal@redhat.com>
+
 	* dependencies.properties: Remove org.apache.lucene entry.
 	* build.xml: apply remove-lucene-dependency.patch patch.
 
