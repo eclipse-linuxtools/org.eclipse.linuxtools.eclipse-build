@@ -1,7 +1,7 @@
 <project name="Pdebuild bootstrap" default="cleanBuild" basedir=".">
 	<property file="pdebuild.properties" />
 	<property name="sdkSource" value="build/eclipse-${label}-src" />
-	<target name="cleanBuild" depends="clean,zipPlugins2" />
+	<target name="cleanBuild" depends="clean,removeGeneratedBuildXMLs" />
 	<macrodef name="generateBuildScripts">
 		<attribute name="buildDirs" />
 		<attribute name="rootDir" />
@@ -280,6 +280,29 @@
 		</subant>
 		<antcall target="collectBootstrapPlugins" />
 	</target>
+
+	<target name="removeGeneratedBuildXMLs" depends="zipPlugins2">
+		<fileset id="buildXMLsToKeep" dir="${sdkSource}/plugins"
+			excludes="**/org.eclipse.swt.gtk.*/*,
+			**/org.eclipse.update.core.linux/**/*,
+			**/org.eclipse.pde.build/scripts/*,
+			**/org.eclipse.jdt.core/scripts/*,
+			**/org.eclipse.update.core.linux/src/*,
+			**/org.eclipse.jdt.doc.isv/*,
+			**/org.eclipse.swt/*,
+			**/org.eclipse.jdt.doc.user/*"
+		/>
+
+		<delete>
+			<intersect>
+				<fileset refid="depsDirsBuildXMLs"/>
+				<fileset refid="helpDirsBuildXMLs"/>
+				<fileset refid="depsDirs2BuildXMLs"/>
+				<fileset refid="buildXMLsToKeep" />
+			</intersect>
+		</delete>
+	</target>
+
 	<target name="collectBootstrapPlugins">
 		<mkdir dir="bootstrap/plugins" />
 		<copy todir="bootstrap/plugins" flatten="true">
