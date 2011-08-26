@@ -74,11 +74,6 @@
 		       org.eclipse.equinox.http.servlet
 		       org.eclipse.equinox.p2.touchpoint.eclipse
 		       org.eclipse.equinox.p2.touchpoint.natives" />
-		<!--
-		<file name="org.apache.lucene" />
-		<file name="org.eclipse.help" />
-		<file name="org.eclipse.help.base" />
-		-->
 	<filelist id="depsDirs" dir="${sdkSource}/plugins" files="${depsDirsProperty}"/>
 	
 	<property name="helpDirsProperty"
