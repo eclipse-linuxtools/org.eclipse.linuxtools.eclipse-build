@@ -168,7 +168,48 @@
 	<target name="generateScripts2">
 		<generateBuildScripts builddirs="depsDirs2" rootdir="../${sdkSource}" />
 	</target>
-	<target name="bootstrap">
+
+	<!-- Java 7 changed the jsr14 javac target so bootstrap to 1.5 -->
+	<target name="jsr14To15ForBootstrap">
+		<!-- Set up a fileset for depsDirs build.xml files -->
+		<pathconvert pathsep="/**/*," refid="depsDirs" property="depsDirsFiles">
+		    <filtermapper>
+		        <replacestring from="${sdkSource}/plugins" to="" />
+		    </filtermapper>
+		</pathconvert>
+		<fileset dir="${sdkSource}/plugins" id="depsDirsBuildXMLs" includes="${depsDirsFiles}/**/*">
+			<include name="**/build.xml" />
+		</fileset>
+
+		<!-- Set up a fileset for helpDirs build.xml files -->
+		<pathconvert pathsep="/**/*," refid="helpDirs" property="helpDirsFiles">
+		    <filtermapper>
+		        <replacestring from="${sdkSource}/plugins" to="" />
+		    </filtermapper>
+		</pathconvert>
+		<fileset dir="${sdkSource}/plugins" id="helpDirsBuildXMLs" includes="${helpDirsFiles}/**/*">
+			<include name="**/build.xml" />
+		</fileset>
+
+		<!-- Set up a fileset for depsDirs2 build.xml files -->
+		<pathconvert pathsep="/**/*," refid="depsDirs2" property="depsDirs2Files">
+		    <filtermapper>
+		        <replacestring from="${sdkSource}/plugins" to="" />
+		    </filtermapper>
+		</pathconvert>
+		<fileset dir="${sdkSource}/plugins" id="depsDirs2BuildXMLs" includes="${depsDirs2Files}/**/*">
+			<include name="**/build.xml" />
+		</fileset>
+
+		<replace token="name=&quot;bundleJavacTarget&quot; value=&quot;jsr14&quot;"
+			value="name=&quot;bundleJavacTarget&quot; value=&quot;1.5&quot;"
+			summary="true">
+			<fileset refid="depsDirsBuildXMLs"/>
+			<fileset refid="helpDirsBuildXMLs"/>
+			<fileset refid="depsDirs2BuildXMLs"/>
+		</replace>
+	</target>
+	<target name="bootstrap" depends="jsr14To15ForBootstrap">
 		<echo message="bootclasspath=${CDC-1.1/Foundation-1.1}" />
 		<subant>
 			<property name="buildId" value="${buildId}" />
