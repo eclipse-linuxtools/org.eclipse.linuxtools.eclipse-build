@@ -20,15 +20,11 @@ import java.util.Set;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-import org.apache.tools.ant.Task;
-import org.apache.tools.ant.taskdefs.Delete;
 import org.apache.tools.ant.taskdefs.Mkdir;
-import org.apache.tools.ant.taskdefs.optional.unix.Symlink;
 
-public class SymlinkNonOSGiJars extends Task {
+public class SymlinkNonOSGiJars extends SymlinkJars {
 
 	private Properties dependencies;
-	private String topLevelDir;
 
 	// Main method for ant task
     public void execute() throws BuildException {
@@ -60,18 +56,7 @@ public class SymlinkNonOSGiJars extends Task {
 					m.setDir(new File(topLevelDir + "/" + origLocation).getParentFile());
 					m.execute();
 					
-					// First, delete any existing symlink
-					Delete d = new Delete();
-					d.init();
-					d.setFile(new File(topLevelDir + "/" + origLocation));
-					d.execute();
-					
-					// Then make the actual symlink
-					Symlink s = new Symlink();
-					s.init();
-					s.setLink(topLevelDir + "/" + origLocation);
-					s.setResource(systemFile.getAbsolutePath());
-					s.execute();
+					symlinkJar (new File(topLevelDir + "/" + origLocation), topLevelDir + "/" + origLocation, systemFile);
 				}
 			}
 			if (!matched) {
@@ -99,7 +84,4 @@ public class SymlinkNonOSGiJars extends Task {
 		}
 	}
 
-	public void setTopleveldir(String topLevelDir) {
-		this.topLevelDir = topLevelDir;
-	}
 }

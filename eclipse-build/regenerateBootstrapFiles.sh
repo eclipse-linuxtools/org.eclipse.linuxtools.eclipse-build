@@ -11,12 +11,12 @@ if [ "x$launcherDir"x = 'xx' ]; then
 fi
 
 java -jar \
-$launcherDir/org.eclipse.equinox.launcher_*.jar \
+$launcherDir/plugins/org.eclipse.equinox.launcher_*.jar \
 -debug \
 -consolelog \
--data /home/zx/eclipses/eclipse \
+-data $launcherDir \
 -application org.eclipse.ant.core.antRunner \
 -f pdebuild.xml generateScripts \
 -DskipBase=true \
--DsdkSource=build/eclipse-3.7.0-I20110613-1736-src \
+-DsdkSource=build/eclipse-3.7.0-src \
 2>&1 | tee ./generatePdeBuildScripts.log
