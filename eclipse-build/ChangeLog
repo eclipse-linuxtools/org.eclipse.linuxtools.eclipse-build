@@ -1,3 +1,36 @@
+2011-11-08  Roland Grunberg  <rgrunber@redhat.com>
+
+	* build.xml : Add new patches, and modify conents of pre-generated
+	build scripts.
+	* patches/eclipse-equinox-http-jetty.patch:
+	Update dependency versions.
+	* patches/eclipse-equinox-http-servlet.patch:
+	Update dependency versions, and API.
+	* patches/eclipse-equinox-jsp-jasper.patch:
+	Update depenency versions, and API.
+	* patches/eclipse-help-feature.patch:
+	Add/Update dependency versions for this feature.
+	* patches/eclipse-ua.patch:
+	Update API.
+	* dependencies.properties: Update jar versions for Tomcat 7 Jasper
+	and specify system location.
+	* jasper7.sh : Make the following changes to the contents of
+	eclipse-build-generatedScripts.tar.bz2.
+	java.servlet_2.5.0.qualifier => javax.servlet_3.0.0
+	java.servlet.jsp_2.0.0.qualifier => javax.servlet.jsp_2.2.0
+	org.apache.jasper_5.5.17.qualifier => org.apache.jasper_7.0.21
+
+	Rename.
+	* dependencyManifests/javax.servlet.jsp_{2.0.0.v201101211617,2.2.0}.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/javax.servlet_{2.5.0.v201103041518,3.0.0}.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.jasper_{5.5.17.v200903231320,7.0.21}.jar/META-INF/MANIFEST.MF
+
+	New.
+	* dependencyManifests/javax.el_2.2.0.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.juli_7.0.21.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.tomcat_7.0.21.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.el_7.0.21.jar/META-INF/MANIFEST.MF
+
 2011-10-31  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* build.xml: Move running of the initializer to its own
