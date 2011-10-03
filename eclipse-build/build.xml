@@ -1029,19 +1029,6 @@
 			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
 		</java>
 
-		<!-- remove the initializer -->
-		<property name="directorToRun" value="${installationDir}/eclipse" />
-                <antcall target="run.installed.director.uninstall">
-                        <param name="p2.director.uninstallIU" value="org.eclipse.equinox.initializer" />
-                        <param name="p2.director.profile" value="PlatformProfile" />
-                        <param name="p2.director.install.path" value="${installationDir}" />
-                        <param name="p2.director.extraArgs" value="-purgeHistory" />
-			<param name="p2.os" value="linux" />
-                        <param name="p2.ws" value="gtk" />
-                        <param name="p2.arch" value="${buildArch}" />
-                        <param name="p2.repo" value="${installationDir}" />
-                </antcall>
-
 		<!-- copy PDE and JDT to dropins -->
                 <exec executable="rsync" failonerror="true">
                        <arg value="-vrpl" />
@@ -1054,7 +1041,7 @@
 		<delete dir="${installationDir}/configuration/org.eclipse.equinox.app" />
 		<delete includeemptydirs="true" verbose="true">
 			<fileset dir="${installationDir}/configuration" includes="*.log" />
-			<fileset dir="${installationDir}/configuration" includes="**/data/**" />
+			<fileset dir="${installationDir}/configuration/org.eclipse.osgi" excludes="**/*.so" />
 			<fileset dir="${installationDir}/configuration" includes="org.eclipse.update/**" />
 		</delete>
 		

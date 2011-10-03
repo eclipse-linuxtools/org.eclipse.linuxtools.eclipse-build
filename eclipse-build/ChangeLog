@@ -1,3 +1,8 @@
+2011-10-03  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* pdebuild.xml: Do not uninstall the initializer.
+	Remove all empty metadata directories.
+
 2011-08-18  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* pdebuild.xml: Created new target copyDeps.
