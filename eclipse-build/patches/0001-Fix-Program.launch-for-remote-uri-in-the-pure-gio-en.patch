@@ -1,0 +1,143 @@
+From ebc8e071798ee7cd579c9494bc1c1cd61f3bda50 Mon Sep 17 00:00:00 2001
+From: Alexander Kurtakov <akurtako@redhat.com>
+Date: Fri, 28 Oct 2011 00:51:15 +0300
+Subject: [PATCH] Fix Program.launch for remote uri in the pure gio
+ environment.
+
+Currently gio_launch uses g_file_new_for_path function but it works for
+local paths only and fails for remote (http://, ftp:// and etc.(. The
+correct function to use is g_file_new_for_commandline_arg which handles
+both local and remote paths/uris.
+This can't be reproduced on systems that have gnome_vfs because launch
+function will fallback to gnome_24_launch.
+Conflicts:
+
+	bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c
+---
+ .../Eclipse SWT PI/gtk/library/os.c                |   24 ++++++++++++++++++++
+ .../Eclipse SWT PI/gtk/library/os_custom.h         |    1 +
+ .../Eclipse SWT PI/gtk/library/os_stats.c          |    5 ++-
+ .../Eclipse SWT PI/gtk/library/os_stats.h          |    1 +
+ .../gtk/org/eclipse/swt/internal/gtk/OS.java       |   10 ++++++++
+ .../gtk/org/eclipse/swt/program/Program.java       |    2 +-
+ 6 files changed, 40 insertions(+), 3 deletions(-)
+
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c
+index b852989..f077a6a 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c	
++++ b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os.c	
+@@ -3035,6 +3035,30 @@ fail:
+ }
+ #endif
+ 
++#ifndef NO__1g_1file_1new_1for_1commandline_1arg
++JNIEXPORT jintLong JNICALL OS_NATIVE(_1g_1file_1new_1for_1commandline_1arg)
++	(JNIEnv *env, jclass that, jbyteArray arg0)
++{
++	jbyte *lparg0=NULL;
++	jintLong rc = 0;
++	OS_NATIVE_ENTER(env, that, _1g_1file_1new_1for_1commandline_1arg_FUNC);
++	if (arg0) if ((lparg0 = (*env)->GetByteArrayElements(env, arg0, NULL)) == NULL) goto fail;
++/*
++	rc = (jintLong)g_file_new_for_commandline_arg(lparg0);
++*/
++	{
++		LOAD_FUNCTION(fp, g_file_new_for_commandline_arg);
++		if (fp) {
++			rc = (jintLong)((jintLong (CALLING_CONVENTION*)(jbyte *))fp)(lparg0);
++		}
++	}
++fail:
++	if (arg0 && lparg0) (*env)->ReleaseByteArrayElements(env, arg0, lparg0, 0);
++	OS_NATIVE_EXIT(env, that, _1g_1file_1new_1for_1commandline_1arg_FUNC);
++	return rc;
++}
++#endif
++
+ #ifndef NO__1g_1file_1new_1for_1path
+ JNIEXPORT jintLong JNICALL OS_NATIVE(_1g_1file_1new_1for_1path)
+ 	(JNIEnv *env, jclass that, jbyteArray arg0)
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h
+index ecf7d7b..e12081e 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h	
++++ b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_custom.h	
+@@ -279,6 +279,7 @@
+ #define g_file_icon_get_file_LIB LIB_GIO
+ #define g_file_info_get_content_type_LIB LIB_GIO
+ #define g_file_info_get_modification_time_LIB LIB_GIO
++#define g_file_new_for_commandline_arg_LIB LIB_GIO
+ #define g_file_new_for_path_LIB LIB_GIO
+ #define g_file_new_for_uri_LIB LIB_GIO
+ #define g_file_read_LIB LIB_GIO
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c
+index a835169..3b34a5f 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c	
++++ b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.c	
+@@ -18,8 +18,8 @@
+ 
+ #ifdef NATIVE_STATS
+ 
+-int OS_nativeFunctionCount = 1393;
+-int OS_nativeFunctionCallCount[1393];
++int OS_nativeFunctionCount = 1394;
++int OS_nativeFunctionCallCount[1394];
+ char * OS_nativeFunctionNames[] = {
+ #ifndef JNI64
+ 	"Call__IIII",
+@@ -248,6 +248,7 @@ char * OS_nativeFunctionNames[] = {
+ 	"_1g_1file_1icon_1get_1file",
+ 	"_1g_1file_1info_1get_1content_1type",
+ 	"_1g_1file_1info_1get_1modification_1time",
++	"_1g_1file_1new_1for_1commandline_1arg",
+ 	"_1g_1file_1new_1for_1path",
+ 	"_1g_1file_1new_1for_1uri",
+ 	"_1g_1file_1query_1info",
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.h b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.h
+index 4f42ff4..a16bc7d 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.h	
++++ b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/os_stats.h	
+@@ -256,6 +256,7 @@ typedef enum {
+ 	_1g_1file_1icon_1get_1file_FUNC,
+ 	_1g_1file_1info_1get_1content_1type_FUNC,
+ 	_1g_1file_1info_1get_1modification_1time_FUNC,
++	_1g_1file_1new_1for_1commandline_1arg_FUNC,
+ 	_1g_1file_1new_1for_1path_FUNC,
+ 	_1g_1file_1new_1for_1uri_FUNC,
+ 	_1g_1file_1query_1info_FUNC,
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java
+index 9c3db9f..79e0ca7 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java	
++++ b/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/org/eclipse/swt/internal/gtk/OS.java	
+@@ -2095,6 +2095,16 @@ public static final int /*long*/ g_file_new_for_path(byte[] fileName) {
+ 	}
+ }
+ /** @method flags=dynamic */
++public static final native int /*long*/ _g_file_new_for_commandline_arg(byte[] fileName);
++public static final int /*long*/ g_file_new_for_commandline_arg(byte[] fileName) {
++	lock.lock();
++	try {
++		return _g_file_new_for_commandline_arg(fileName);
++	} finally {
++		lock.unlock();
++	}
++}
++/** @method flags=dynamic */
+ public static final native int /*long*/ _g_file_new_for_uri(byte[] fileName);
+ public static final int /*long*/ g_file_new_for_uri(byte[] fileName) {
+ 	lock.lock();
+diff --git a/bundles/org.eclipse.swt/Eclipse SWT Program/gtk/org/eclipse/swt/program/Program.java b/bundles/org.eclipse.swt/Eclipse SWT Program/gtk/org/eclipse/swt/program/Program.java
+index 80efc65..1c67940 100644
+--- a/bundles/org.eclipse.swt/Eclipse SWT Program/gtk/org/eclipse/swt/program/Program.java	
++++ b/bundles/org.eclipse.swt/Eclipse SWT Program/gtk/org/eclipse/swt/program/Program.java	
+@@ -954,7 +954,7 @@ static boolean gio_isExecutable(String fileName) {
+ static boolean gio_launch(String fileName) {
+ 	boolean result = false;
+ 	byte[] fileNameBuffer = Converter.wcsToMbcs (null, fileName, true);
+-	int /*long*/ file = OS.g_file_new_for_path (fileNameBuffer);
++	int /*long*/ file = OS.g_file_new_for_commandline_arg (fileNameBuffer);
+ 	if (file != 0) {
+ 		int /*long*/ uri = OS.g_file_get_uri (file);
+ 		if (uri != 0) {
+-- 
+1.7.6.4
+
