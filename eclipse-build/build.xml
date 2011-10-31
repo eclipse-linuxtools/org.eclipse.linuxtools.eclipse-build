@@ -1030,6 +1030,29 @@
 		</antcall>
 	</target>
 
+	<target name="extractSos" unless="dontExtractSos">
+	  <java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true" dir="${destDir}">
+	    <classpath>
+	      <fileset dir="${installationDir}/plugins">
+		<include name="org.eclipse.equinox.launcher_*.jar" />
+	      </fileset>
+	    </classpath>
+	    <arg value="-application" />
+	    <arg value="org.eclipse.equinox.initializer.configInitializer" />
+	    <arg value="-debug" />
+	    <arg value="-consolelog" />
+	    <arg value="-metadataRepository" />
+	    <arg value="file:${installationDir}/metadata/" />
+	    <arg value="-artifactRepository" />
+	    <arg value="file:${installationDir}/metadata/" />
+	    <arg value="-data" />
+	    <arg value="${buildworkspace}" />
+	    <arg value="-fileInitializer" />
+	    <arg value="${basedir}/extract_patterns.txt" />
+	    <jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
+	  </java>
+	</target>
+
 	<target name="installIntoDestDir">
 		<mkdir dir="${installationDir}" />
                 <exec executable="rsync" failonerror="true">
@@ -1070,26 +1093,8 @@
 		<echo append="true" file="${installationDir}/eclipse.ini" message="-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=${prefix}/share/eclipse/dropins" />
 
 		<!-- Extract SWT JNI .so files -->
-		<java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true" dir="${destDir}">
-			<classpath>
-				<fileset dir="${installationDir}/plugins">
-					<include name="org.eclipse.equinox.launcher_*.jar" />
-				</fileset>
-			</classpath>
-			<arg value="-application" />
-			<arg value="org.eclipse.equinox.initializer.configInitializer" />
-			<arg value="-debug" />
-			<arg value="-consolelog" />
-			<arg value="-metadataRepository" />
-			<arg value="file:${installationDir}/metadata/" />
-			<arg value="-artifactRepository" />
-			<arg value="file:${installationDir}/metadata/" />
-			<arg value="-data" />
-			<arg value="${buildworkspace}" />
-			<arg value="-fileInitializer" />
-			<arg value="${basedir}/extract_patterns.txt" />
-			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
-		</java>
+		<antcall target="extractSos">
+		</antcall>
 
 		<!-- copy PDE and JDT to dropins -->
                 <exec executable="rsync" failonerror="true">

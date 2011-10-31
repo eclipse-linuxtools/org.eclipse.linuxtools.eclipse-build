@@ -1,3 +1,8 @@
+2011-10-31  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* build.xml: Move running of the initializer to its own
+	target, and add a property to prevent running it.
+
 2011-10-03  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* pdebuild.xml: Do not uninstall the initializer.
