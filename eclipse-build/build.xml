@@ -165,9 +165,6 @@
 
 	<target name="extractBuildXmls" if="scriptsPresent">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src" src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
-	<exec executable="${basedir}/jasper7.sh">
-		<arg value="${label}"/>
-	</exec>
 		<!--
 		<fail message="Build scripts to bootstrap PDE Build must be generated and present in eclipse-build-generatedScripts.tar.bz2.  See pdebuild.xml for details."/>
 		-->
@@ -360,10 +357,6 @@
 		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/remove-lucene-dependency.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/0001-Fix-Program.launch-for-remote-uri-in-the-pure-gio-en.patch" dir="${buildDirectory}/plugins" strip="2" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-http-jetty.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-http-servlet.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-help-feature.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
@@ -375,7 +368,6 @@
 		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-ua.patch" dir="${testsBuildDirectory}/plugins" strip="1" />
 		<echo file="testspatch-stamp" />
 	</target>
 
