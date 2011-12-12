@@ -364,6 +364,7 @@
 		<patch patchfile="${basedir}/patches/eclipse-equinox-http-jetty.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-equinox-http-servlet.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-help-feature.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
@@ -1248,7 +1249,7 @@
 		<!-- Install SDK -->
 		<property name="sdkInstallation" value="${provisionDir}.sdk"/>
 		<antcall target="provision.installed">
-			<param name="p2.director.installIU" value="org.eclipse.sdk.feature.group" />
+			<param name="p2.director.installIU" value="org.eclipse.sdk.feature.group,org.eclipse.license.feature.group" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
 		<!-- rename the entire SDK installation -->
