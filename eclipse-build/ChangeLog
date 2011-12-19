@@ -1,3 +1,8 @@
+2011-12-19  Roland Grunberg  <rgrunber@redhat.com>
+
+	* jdtnonosgidependencies.properties:
+		Use the junit 4 system jar for junit 3 dependencies.
+
 2011-11-08  Roland Grunberg  <rgrunber@redhat.com>
 
 	* build.xml : Add new patches, and modify conents of pre-generated
