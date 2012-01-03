@@ -4,6 +4,16 @@
 	</tstamp>
 	<record name="build_${timestamp}.log" />
 	<echo message="Build log is available in build_${timestamp}.log" />
+	
+	<property environment="env"/>
+	<property name="jhome" value="${env.JAVA_HOME}"/>
+	<condition property="javaHomeDoesNotExists">
+		<resourceexists>
+			<file file="${jhome}"/>
+		</resourceexists>
+	</condition>
+	<fail unless="javaHomeDoesNotExists" message="JAVA_HOME is not set properly"/>
+
 	<property name="baseBuilder" value="${basedir}/bootstrap" />
 	<property name="launcher" value="${basedir}/bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 	<property name="eclipse.pdebuild.scripts" value="${basedir}/bootstrap/plugins/org.eclipse.pde.build/scripts" />
