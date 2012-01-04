@@ -1,4 +1,4 @@
-<project name="Eclipse SDK build" default="provision.sdk" basedir=".">
+<project name="Eclipse SDK build" default="provisionSDKinDropins" basedir=".">
 	<tstamp>
 		<format property="timestamp" pattern="yyyyMMddHHmmss" />
 	</tstamp>
@@ -256,7 +256,7 @@
 		<echo file="unpack-stamp" />
 	</target>
 
-	<target name="unpackEMF" depends="fetchEMF,provision.sdk" unless="unpackEMF.complete">
+	<target name="unpackEMF" depends="fetchEMF, provisionSDKinDropins" unless="unpackEMF.complete">
 		<delete dir="${topBuildDir}/${emfSourceDir}" />
 		<mkdir dir="${topBuildDir}/${emfSourceDir}" />
 
@@ -496,7 +496,7 @@
 	</target>
 	-->
 	
-	<target name="setPDEBuildPath" depends="provision.sdk">
+	<target name="setPDEBuildPath" depends="provisionSDKinDropins">
 		<path id="pdebuilddir.id">
 			<dirset dir="${provisionDir}/plugins">
 				<include name="org.eclipse.pde.build_*" />
@@ -537,7 +537,7 @@
 		<echo file="buildEMF-stamp" />
 	</target>
 
-	<target name="buildTests" depends="provision.sdk,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
+	<target name="buildTests" depends="provisionSDKinDropins,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
 
 		<!-- Test framework -->
 		<exec executable="${provisionDir}/eclipse">
@@ -797,31 +797,6 @@
 		<echo file="provision.cvs-stamp" />
 	</target>
 
-	<target name="provision.sdk" depends="p2prep" unless="provision.sdk.complete">
-		<echo message="Installing into:  ${provisionDir}" />
-		<antcall target="provision">
-			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
-			<param name="profileName" value="SDKProfile" />
-		</antcall>
-
-		<fileset id="junit4.jar" dir="${provisionDir}/plugins">
-			<include name="**/org.junit4_**/junit.jar" />
-		</fileset>
-		<property name="junit4jar.path" refid="junit4.jar" />
-
-		<delete file="${provisionDir}/plugins/${junit4jar.path}" />
-		<symlink link="${provisionDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
-
-		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${provisionDir}/plugins" />
-
-		<echo file="provision.sdk-stamp" />
-	</target>
-
 	<target name="provision" depends="p2prep">
 		<echo message="Installing into:  ${provisionDir}" />
 		<antcall target="run.director">
@@ -1036,13 +1011,6 @@
                 </exec>
         </target>
 
-
-	<target name="install" depends="provision.sdk">
-		<antcall target="installIntoDestDir">
-			<param name="profile" value="SDKProfile" />
-		</antcall>
-	</target>
-
 	<target name="installSDKinDropins" depends="provisionSDKinDropins">
 		<antcall target="installIntoDestDir">
 			<param name="profile" value="PlatformProfile" />
@@ -1206,15 +1174,7 @@
 
 	</target>
 
-	<target name="installPlatform" depends="provision.platform,install">
-		<echo message="Installing Eclipse Platform" />
-	</target>
-
-	<target name="installPlatformAndCVS" depends="provision.cvs,install">
-		<echo message="Installing Eclipse Platform and CVS feature" />
-	</target>
-
-	<target name="provisionSDKinDropins" depends="provision.cvs" unless="provisionSDKinDropins.complete">
+	<target name="provisionSDKinDropins" depends="provision.cvs" unless="provisionSDKinDropins.complete" >
 		<property name="platformAndCVSInstallation" value="${provisionDir}.cvs"/>
 		
 		<property name="jdtDropinsName" value="jdt"/>
