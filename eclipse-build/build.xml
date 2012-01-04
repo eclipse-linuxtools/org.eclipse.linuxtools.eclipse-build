@@ -158,19 +158,19 @@
 	</target>
 
 	<target name="fetch" unless="sdkSourceTarballPresent">
-		<fail message="SDK source tarball is not present.  Please either download a file such as eclipse-3.6.1-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh." />
+		<fail message="SDK source tarball eclipse-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or update build.properties file to reflect your tarball version." />
 	</target>
 
 	<target name="fetchTestSources" unless="testsSourcePresent">
-		<fail message="SDK tests source tarball is not present.  Please either download a file such as eclipse-sdktests-3.6.1-sources.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh." />
+		<fail message="SDK tests source tarball eclipse-sdktests-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
 	</target>
 
 	<target name="fetchTestScripts" unless="testsScriptsPresent">
-		<fail message="Scripts for the SDK tests tarball is not present.  Please either download a file such as eclipse-sdktests-3.6.1-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./buildSDKSource.sh." />
+		<fail message="Scripts for the SDK tests tarball eclipse-sdktests-${label}-scripts.tar.bz2 are not present.  Please either download a file such as eclipse-sdktests-${label}-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
 	</target>
 
 	<target name="fetchEMF" unless="emfSourceTarballPresent">
-		<fail message="EMF source tarball is not present.  Please either download a file such as emfFore4-2.7.0-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/ or generate one by running ./builde4AndEMFSources.sh." />
+		<fail message="EMF source tarball ${emfTarball} is not present.  Please either download a file such as emfFore4-2.7.0-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./builde4AndEMFSources.sh or correct the build.properties file to reflect your EMF source tarball version." />
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">
