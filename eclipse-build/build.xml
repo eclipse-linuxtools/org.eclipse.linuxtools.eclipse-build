@@ -58,7 +58,6 @@
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<uptodate property="provision.platform.complete" srcfile="build-stamp" targetfile="provision.platform-stamp" />
 	<uptodate property="provision.cvs.complete" srcfile="build-stamp" targetfile="provision.cvs-stamp" />
-	<uptodate property="provision.sdk.complete" srcfile="build-stamp" targetfile="provision.sdk-stamp" />
 	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
 	<uptodate property="provisionSDKinDropins.complete" srcfile="build-stamp" targetfile="provisionSDKinDropins-stamp" />
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
