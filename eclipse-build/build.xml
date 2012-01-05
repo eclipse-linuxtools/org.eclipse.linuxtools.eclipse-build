@@ -507,7 +507,7 @@
 
 	<target name="buildEMF" depends="unpackEMF,setPDEBuildPath" unless="buildEMF.complete">
 
-		<exec executable="${provisionDir}/eclipse">
+		<exec executable="${provisionDir}/eclipse" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -520,7 +520,7 @@
 			<arg line="-data ${EMFbuildworkspace} " />
 		</exec>
 		
-		<exec executable="${provisionDir}/eclipse">
+		<exec executable="${provisionDir}/eclipse" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -539,7 +539,7 @@
 	<target name="buildTests" depends="provisionSDKinDropins,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
 
 		<!-- Test framework -->
-		<exec executable="${provisionDir}/eclipse">
+		<exec executable="${provisionDir}/eclipse" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -552,7 +552,7 @@
 			<arg line="-data ${buildworkspace} " />
 		</exec>
 		<!-- SDK tests -->
-		<exec executable="${provisionDir}/eclipse">
+		<exec executable="${provisionDir}/eclipse" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -972,7 +972,7 @@
 
 	<target name="run.installed.director">
 		<chmod perm="ugo+rx" file="${directorToRun}" />
-		<exec executable="${directorToRun}">
+		<exec executable="${directorToRun}" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consoleLog" />
 			<arg line="-data ${buildworkspace} " />
@@ -992,7 +992,7 @@
 
 	<target name="run.installed.director.uninstall">
                 <chmod perm="ugo+rx" file="${directorToRun}" />
-                <exec executable="${directorToRun}">
+                <exec executable="${directorToRun}" failonerror="true">
                         <arg line="-nosplash " />
                         <arg line="-consoleLog" />
                         <arg line="-data ${buildworkspace} " />
