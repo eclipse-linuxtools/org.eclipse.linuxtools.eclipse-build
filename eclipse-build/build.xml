@@ -497,7 +497,7 @@
 	
 	<target name="setPDEBuildPath" depends="provisionSDKinDropins">
 		<path id="pdebuilddir.id">
-			<dirset dir="${provisionDir}/plugins">
+			<dirset dir="${provisionDir}/dropins/sdk/plugins">
 				<include name="org.eclipse.pde.build_*" />
 			</dirset>
 		</path>
