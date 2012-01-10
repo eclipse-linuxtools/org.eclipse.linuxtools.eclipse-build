@@ -248,9 +248,9 @@
 		<!-- prepare ecf build tree -->
 		<delete>
 			<fileset dir="${buildDirectory}/plugins" includes="org.eclipse.ecf*" />
-			<fileset dir="${buildDirectory}/plugins" includes="org.mortbay.jetty_5*" />
+			<fileset dir="${buildDirectory}/plugins" includes="org.eclipse.jetty*" />
 		</delete>
-		<delete dir="${buildDirectory}/plugins/org.eclipse.equinox.http.jetty_1.1.100" />
+		<!--delete dir="${buildDirectory}/plugins/org.eclipse.equinox.http.jetty_1.1.100" /-->
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
 	</target>
@@ -343,6 +343,7 @@
 		<!--
 		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}" strip="1" />
 		-->
+		<!--patch patchfile="${basedir}/patches/reversedisablementofwebkitbuild.patch" dir="${buildDirectory}" strip="0" /-->
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
@@ -352,7 +353,7 @@
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" />
+		<!--patch patchfile="${basedir}/patches/eclipse-no-jetty5.patch" dir="${buildDirectory}" strip="1" /-->
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-xpcom-h.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT Mozilla/common/library"/>
@@ -367,13 +368,19 @@
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 		<patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/remove-lucene-dependency.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/0001-Fix-Program.launch-for-remote-uri-in-the-pure-gio-en.patch" dir="${buildDirectory}/plugins" strip="2" />
+		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
+		<!--patch patchfile="${basedir}/patches/0001-Fix-Program.launch-for-remote-uri-in-the-pure-gio-en.patch" dir="${buildDirectory}/plugins" strip="2" /-->
 		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-http-jetty.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-http-servlet.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-help-feature.patch" dir="${buildDirectory}" strip="0" />
+		<!--patch patchfile="${basedir}/patches/eclipse-equinox-http-jetty.patch" dir="${buildDirectory}" strip="0" /-->
+		<!--patch patchfile="${basedir}/patches/eclipse-equinox-http-servlet.patch" dir="${buildDirectory}" strip="0" /-->
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-ecf-ssl-remove-conflicting-imports.patch" dir="${buildDirectory}" strip="0" /> 
+		<patch patchfile="${basedir}/patches/eclipse-ecf-provider-filetransfer-ssl-remove-conflicting-imports.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/eclipse-swt-remove-deprecated.patch" dir="${buildDirectory}" strip="0" />
+		<!--patch patchfile="${basedir}/patches/jdt-launching-add-el-imports.patch" dir="${buildDirectory}" strip="0"  reverse="true" /-->
+		<patch patchfile="${basedir}/patches/jdt-feature-add-el-imports.patch" dir="${buildDirectory}" strip="0"/>
+		<patch patchfile="${basedir}/patches/webkit.patch" dir="${buildDirectory}" strip="0"/>
 		<echo file="patch-stamp" />
 	</target>
 
@@ -463,6 +470,13 @@
 	</target>
 
 	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
+		
+
+
+
+		<!-- build equinox initializer -->
+		<echo message="build.xml: building equinox initializer"/>
+
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
@@ -478,7 +492,7 @@
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />
 		</java>
-		<!-- build equinox initializer -->
+
 		<mkdir dir="${buildDirectory}/home" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
@@ -491,6 +505,7 @@
 			<arg line="build.update.jar" />
 			<jvmarg value="-Xmx512M" />
 		</java>
+
 		<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
 			<property name="arch" value="${buildArch}"/>

@@ -1,0 +1,175 @@
+Manifest-Version: 1.0
+Bundle-DocURL: http://www.eclipse.org/jetty
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: jesse
+Bundle-SymbolicName: org.eclipse.jetty.http
+Bundle-Version: 8.1.0.RC1
+Export-Package: org.eclipse.jetty.http.ssl;uses:="org.eclipse.jetty.ut
+ il.ssl";version="8.1.0",org.eclipse.jetty.http;uses:="org.eclipse.jet
+ ty.io,org.eclipse.jetty.util.log,org.eclipse.jetty.util,org.eclipse.j
+ etty.util.component,org.eclipse.jetty.util.resource,org.eclipse.jetty
+ .io.bio";version="8.1.0",org.eclipse.jetty.http.gzip;uses:="javax.ser
+ vlet,org.eclipse.jetty.util,javax.servlet.http";version="8.1.0"
+url: http://www.eclipse.org/jetty
+Bundle-Description: Administrative parent pom for Jetty modules
+Build-Jdk: 1.6.0_26
+Bundle-Classpath: .
+Bundle-Vendor: Eclipse Jetty Project
+Bnd-LastModified: 1323207998032
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Name: Jetty :: Http Utility
+Tool: Bnd-1.15.0
+Archiver-Version: Plexus Archiver
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Created-By: Apache Maven Bundle Plugin
+Implementation-Version: 8.1.0.RC1
+Import-Package: javax.servlet;version="2.6.0",javax.servlet.http;versi
+ on="2.6.0",org.eclipse.jetty.io;version="[8.1,9)",org.eclipse.jetty.i
+ o.bio;version="[8.1,9)",org.eclipse.jetty.util;version="[8.1,9)",org.
+ eclipse.jetty.util.component;version="[8.1,9)",org.eclipse.jetty.util
+ .log;version="[8.1,9)",org.eclipse.jetty.util.resource;version="[8.1,
+ 9)",org.eclipse.jetty.util.ssl;version="[8.1,9)"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/jetty/http/EncodedHttpURI.class
+SHA1-Digest: 9o5m6cs6x6mCr9ruOFYURtqvz5M=
+
+Name: org/eclipse/jetty/http/HttpFields$Field.class
+SHA1-Digest: SRCQE36BQPHS97JoI6oaCWoKM98=
+
+Name: org/eclipse/jetty/http/HttpStatus.class
+SHA1-Digest: 6II52DPPGYl1UcOpZKs9sDZ4RN4=
+
+Name: org/eclipse/jetty/http/mime.properties
+SHA1-Digest: bdDh5c9prVi3DKjdY2VQNrlNygo=
+
+Name: org/eclipse/jetty/http/ssl/SslContextFactory.class
+SHA1-Digest: yPIdXa/KSgxDV0uO4vKB67dQ4iw=
+
+Name: org/eclipse/jetty/http/encoding.properties
+SHA1-Digest: 1gRUAXJhtlQf2yI0+f2AzXSO3Go=
+
+Name: org/eclipse/jetty/http/HttpURI.class
+SHA1-Digest: pVQ+D9Yz5SR7EV73oS2nDmFzMW8=
+
+Name: org/eclipse/jetty/http/Parser.class
+SHA1-Digest: ixYkQVHo29rAaiEAyPJrQMzcYYk=
+
+Name: org/eclipse/jetty/http/HttpSchemes.class
+SHA1-Digest: c4oeDGz87HpiANJdozrxIEGQl+8=
+
+Name: org/eclipse/jetty/http/HttpFields.class
+SHA1-Digest: zTEDl9PIBHxhzGHRxpJCmbtf37I=
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-http/pom.properties
+SHA1-Digest: lCD+FoyqtayFSYKrvdnaGVJQybk=
+
+Name: org/eclipse/jetty/http/HttpFields$DateGenerator.class
+SHA1-Digest: uaafay64Wh75hvr08fSifyfG2v0=
+
+Name: org/eclipse/jetty/http/gzip/GzipResponseWrapper.class
+SHA1-Digest: b/uRjLwFLV0O1LF4rKKN33Kujas=
+
+Name: org/eclipse/jetty/http/HttpMethods.class
+SHA1-Digest: tz5aDllPPxTDBcEyJCDAn2FebJI=
+
+Name: org/eclipse/jetty/http/HttpBuffers.class
+SHA1-Digest: Rva9JaDMTyWaQ8v0uot/ICtXK48=
+
+Name: org/eclipse/jetty/http/gzip/GzipStream.class
+SHA1-Digest: 8Yi7jY/UH27z16vaVTsCo1FqS6Q=
+
+Name: org/eclipse/jetty/http/HttpContent.class
+SHA1-Digest: iwY51TpZmMPcNejtTJ/mdUmsX6g=
+
+Name: org/eclipse/jetty/http/HttpGenerator$Status.class
+SHA1-Digest: JPO+h7PYexTx+cXpojn0llF83UU=
+
+Name: org/eclipse/jetty/http/AbstractGenerator.class
+SHA1-Digest: YEf9FZKwMRXJ//38RnzswnEQWX0=
+
+Name: org/eclipse/jetty/http/Generator.class
+SHA1-Digest: 2Z6fZ6aYnTqSReXmcab4+uIqKOg=
+
+Name: org/eclipse/jetty/http/HttpFields$1.class
+SHA1-Digest: iVxjziFHzCaA7wGYOUoW/nQijzs=
+
+Name: org/eclipse/jetty/http/HttpFields$2.class
+SHA1-Digest: nUArrl14Gicgyn89UPZPB1zy8a0=
+
+Name: org/eclipse/jetty/http/useragents
+SHA1-Digest: 2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+
+Name: org/eclipse/jetty/http/HttpFields$3.class
+SHA1-Digest: VJkzuwcGMAsRANLEjzICpaUMVr0=
+
+Name: org/eclipse/jetty/http/HttpStatus$Code.class
+SHA1-Digest: kJqXNuH+BndrGoOOsAf6GxUe+NA=
+
+Name: org/eclipse/jetty/http/HttpFields$4.class
+SHA1-Digest: PIY0l2OXg/iCgv1esvT8NMnIdsM=
+
+Name: org/eclipse/jetty/http/HttpFields$5.class
+SHA1-Digest: NSY2XqCw/DmK7+46XhOE4AqkIC8=
+
+Name: org/eclipse/jetty/http/HttpFields$6.class
+SHA1-Digest: vcIUgbiJgdHnobyJPXmvpo5pQl8=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: org/eclipse/jetty/http/HttpHeaderValues.class
+SHA1-Digest: JsUdE1eIaxqZKYpvyFeE3J3JkaA=
+
+Name: org/eclipse/jetty/http/HttpHeaders.class
+SHA1-Digest: ZmzpxjiSPH3KH4VEqHsIJgF/PWs=
+
+Name: org/eclipse/jetty/http/HttpContent$ResourceAsHttpContent.class
+SHA1-Digest: ZXLmw5NNB5MjtDYlJ/bX6XSWjaA=
+
+Name: about.html
+SHA1-Digest: bN8wMjgI189rPX05Pg8epneJ6CI=
+
+Name: org/eclipse/jetty/http/MimeTypes.class
+SHA1-Digest: W9zJasJmaG3p1YVXvx02bacQDMo=
+
+Name: org/eclipse/jetty/http/PathMap$Entry.class
+SHA1-Digest: VHYQIIvZOGWaIRerE4/gUxzO2GA=
+
+Name: org/eclipse/jetty/http/HttpException.class
+SHA1-Digest: JdJDw2RTY5sSUjLKmbgBBOj7uRc=
+
+Name: org/eclipse/jetty/http/HttpTokens.class
+SHA1-Digest: t78ygrBBED2yGQkHfEOcA0KmBkc=
+
+Name: org/eclipse/jetty/http/HttpVersions.class
+SHA1-Digest: P6J6nLaG/VRhXVkDGSG2D/mW2U0=
+
+Name: org/eclipse/jetty/http/HttpGenerator.class
+SHA1-Digest: JGwciuZUITEvvLMahu8HS+eA+dc=
+
+Name: org/eclipse/jetty/http/HttpParser.class
+SHA1-Digest: kv7y7+02FQHcHyZxgsuGv17atDg=
+
+Name: org/eclipse/jetty/http/HttpParser$EventHandler.class
+SHA1-Digest: TwjYd5X6IGXEgmQVtd3y3T/brVU=
+
+Name: org/eclipse/jetty/http/HttpFields$DateParser.class
+SHA1-Digest: EULxB2JZX2/1UeJGiwb6r6j80Gs=
+
+Name: org/eclipse/jetty/http/HttpCookie.class
+SHA1-Digest: UYBPzJq0hGGfXwBDsxsQOJ6KkdM=
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-http/pom.xml
+SHA1-Digest: LcBuVyJd8Crith4OkrP4HwKW594=
+
+Name: org/eclipse/jetty/http/PathMap.class
+SHA1-Digest: xhSuwrkpoNHnlIP9AbjKmUMQiPc=
+
+Name: org/eclipse/jetty/http/HttpGenerator$1.class
+SHA1-Digest: OqVr0KhGiJ3tIoA6P0nZblnVsGE=
+

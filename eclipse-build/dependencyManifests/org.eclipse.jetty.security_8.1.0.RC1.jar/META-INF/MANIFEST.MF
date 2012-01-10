@@ -1,0 +1,238 @@
+Manifest-Version: 1.0
+Bundle-DocURL: http://www.eclipse.org/jetty
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: jesse
+Bundle-SymbolicName: org.eclipse.jetty.security
+Bundle-Version: 8.1.0.RC1
+Export-Package: org.eclipse.jetty.security;uses:="javax.servlet,org.ec
+ lipse.jetty.server,org.eclipse.jetty.util.security,org.eclipse.jetty.
+ http,org.eclipse.jetty.util,javax.servlet.http,org.eclipse.jetty.secu
+ rity.authentication,javax.security.auth,org.eclipse.jetty.util.resour
+ ce,org.eclipse.jetty.util.log,org.eclipse.jetty.util.component,org.ec
+ lipse.jetty.server.handler,org.ietf.jgss";version="8.1.0",org.eclipse
+ .jetty.security.authentication;uses:="javax.servlet,org.eclipse.jetty
+ .server,org.eclipse.jetty.security,javax.servlet.http,org.eclipse.jet
+ ty.util,org.eclipse.jetty.util.security,org.eclipse.jetty.util.log,ja
+ vax.security.auth";version="8.1.0"
+url: http://www.eclipse.org/jetty
+Bundle-Description: Jetty security infrastructure
+Build-Jdk: 1.6.0_26
+Bundle-Classpath: .
+Bundle-Vendor: Eclipse Jetty Project
+Bnd-LastModified: 1323208277855
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Name: Jetty :: Security
+Tool: Bnd-1.15.0
+Archiver-Version: Plexus Archiver
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Created-By: Apache Maven Bundle Plugin
+Implementation-Version: 8.1.0.RC1
+Import-Package: javax.security.auth,javax.security.cert,javax.servlet;
+ version="2.6.0",javax.servlet.http;version="2.6.0",org.eclipse.jetty.
+ http;version="[8.1,9)",org.eclipse.jetty.server;version="[8.1,9)",org
+ .eclipse.jetty.server.handler;version="[8.1,9)",org.eclipse.jetty.uti
+ l;version="[8.1,9)",org.eclipse.jetty.util.component;version="[8.1,9)
+ ",org.eclipse.jetty.util.log;version="[8.1,9)",org.eclipse.jetty.util
+ .resource;version="[8.1,9)",org.eclipse.jetty.util.security;version="
+ [8.1,9)",org.ietf.jgss
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/jetty/security/authentication/LoginAuthenticator.cla
+ ss
+SHA1-Digest: lu4luwbXi4nWXwUbNbpwwsl4qT4=
+
+Name: org/eclipse/jetty/security/ConstraintAware.class
+SHA1-Digest: vkcq5yyFonYShsU4lbPqaiUs00Y=
+
+Name: org/eclipse/jetty/security/LoginService.class
+SHA1-Digest: x52bsw6DIs8OXoXrQQ4owuWtP9A=
+
+Name: org/eclipse/jetty/security/UserDataConstraint.class
+SHA1-Digest: PgaaojmPZ5dDVMtcMsnreaxeCV0=
+
+Name: org/eclipse/jetty/security/ConstraintSecurityHandler.class
+SHA1-Digest: TUaRwdcF+UUGO67AaFNPzAar6+E=
+
+Name: org/eclipse/jetty/security/PropertyUserStore$1.class
+SHA1-Digest: s0H5GjvR6+wZgdFqq4RGRSsuSRo=
+
+Name: org/eclipse/jetty/security/RunAsToken.class
+SHA1-Digest: +IbGarkmBcXS5C1aG2lTTzayYrg=
+
+Name: org/eclipse/jetty/security/authentication/FormAuthenticator$Form
+ Request.class
+SHA1-Digest: oJk84E0/CRlXsCX2FsuzEyHJzRc=
+
+Name: org/eclipse/jetty/security/IdentityService.class
+SHA1-Digest: vMJbuNV7YNsYZww1bgr7bIqpckg=
+
+Name: org/eclipse/jetty/security/UserAuthentication.class
+SHA1-Digest: n3nrVoQxFAouiACTGSZuo2JeDJM=
+
+Name: org/eclipse/jetty/security/authentication/DigestAuthenticator$No
+ nce.class
+SHA1-Digest: toJQIo7ffrlncyDrP/VP2jHwtf4=
+
+Name: org/eclipse/jetty/security/authentication/BasicAuthenticator.cla
+ ss
+SHA1-Digest: wp6IMmUioGAwlUk+OhfXWcz0iXY=
+
+Name: org/eclipse/jetty/security/Authenticator$AuthConfiguration.class
+SHA1-Digest: WAw984e8/x7tOZXsFxvHDGtdOJU=
+
+Name: org/eclipse/jetty/security/SpnegoLoginService.class
+SHA1-Digest: 9fYF4EysS3gjviOooIROQ8SNMIs=
+
+Name: org/eclipse/jetty/security/SecurityHandler$NotChecked.class
+SHA1-Digest: 1r6vWlA0D0JI8GNPRM17jvHwCPs=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: org/eclipse/jetty/security/RoleRunAsToken.class
+SHA1-Digest: 818Q4VbXV50FNT6ZxV4JTfjrvg0=
+
+Name: org/eclipse/jetty/security/SecurityHandler.class
+SHA1-Digest: 5Mf1VAnzXHBux/SKAOqxglgAfSA=
+
+Name: org/eclipse/jetty/security/authentication/LoginCallbackImpl.clas
+ s
+SHA1-Digest: cfUPTddVYMqZyz/nZVrkPn9ekpU=
+
+Name: org/eclipse/jetty/security/HashLoginService.class
+SHA1-Digest: d1i3eq7ok0WTlqQ2Dup/3XSQEvk=
+
+Name: org/eclipse/jetty/security/authentication/FormAuthenticator$Form
+ Response.class
+SHA1-Digest: e3okFW6MRhW86s/8RvXOeVdRdhE=
+
+Name: org/eclipse/jetty/security/Authenticator.class
+SHA1-Digest: 7aqQz4zMmwSK89fIRCqkxAjn2DE=
+
+Name: org/eclipse/jetty/security/SecurityHandler$1.class
+SHA1-Digest: ey/zyT4cZuxA1evlj9KSWijMEzA=
+
+Name: org/eclipse/jetty/security/DefaultAuthenticatorFactory.class
+SHA1-Digest: etWoMO8yE2s+1Yq2fDJ9qbUUrtc=
+
+Name: org/eclipse/jetty/security/PropertyUserStore$UserListener.class
+SHA1-Digest: HmqXj/fgfrso4IIQFrpXKxwBhGk=
+
+Name: org/eclipse/jetty/security/SecurityHandler$3.class
+SHA1-Digest: 0p55XLCY5YZspOrYBL15X/xa0TE=
+
+Name: org/eclipse/jetty/security/RoleInfo.class
+SHA1-Digest: Zaa1mzjJHa+tRVkOPBMwbWPTJEU=
+
+Name: org/eclipse/jetty/security/authentication/DeferredAuthentication
+ $2.class
+SHA1-Digest: 67paesjV+HPiFBwKnEdMgghzid8=
+
+Name: org/eclipse/jetty/security/JDBCLoginService.class
+SHA1-Digest: n+n2zSIxuQxIda8ECfExaGhj4fY=
+
+Name: org/eclipse/jetty/security/MappedLoginService$Anonymous.class
+SHA1-Digest: kHDGjW7yPVmnOzzLpl55uDo28T0=
+
+Name: org/eclipse/jetty/security/MappedLoginService$KnownUser.class
+SHA1-Digest: +DDdMYtidTfVeOpmNMMbrD565hc=
+
+Name: org/eclipse/jetty/security/PropertyUserStore.class
+SHA1-Digest: 6MSGAr9u3IzEXUgsTZGteXsykTU=
+
+Name: org/eclipse/jetty/security/authentication/ClientCertAuthenticato
+ r.class
+SHA1-Digest: EEHuph+Ywf4xs3thRfNSwVWzixY=
+
+Name: org/eclipse/jetty/security/ServerAuthException.class
+SHA1-Digest: Oihj9JPF8rt1FlLHo/UQCrD4uf0=
+
+Name: org/eclipse/jetty/security/SpnegoUserPrincipal.class
+SHA1-Digest: dT8m2Wz7YhhRCjzHpM0ko6qKlOU=
+
+Name: org/eclipse/jetty/security/CrossContextPsuedoSession.class
+SHA1-Digest: LQRe2zDj+IvOLc5/AZiH1vMqvrk=
+
+Name: org/eclipse/jetty/security/DefaultUserIdentity.class
+SHA1-Digest: SyPXBMgvlO7c6tYDEyT0VO2ikWg=
+
+Name: org/eclipse/jetty/security/DefaultIdentityService.class
+SHA1-Digest: mQezL3v9u81VcSXpmcgjQP7zWlw=
+
+Name: org/eclipse/jetty/security/authentication/SessionAuthentication.
+ class
+SHA1-Digest: 499dn4WYyepM7Qy9cTsNlON0GSs=
+
+Name: org/eclipse/jetty/security/PropertyUserStore$2.class
+SHA1-Digest: 4yQpklgM8/6HeofQLkM92A1wFZY=
+
+Name: org/eclipse/jetty/security/authentication/DigestAuthenticator$Di
+ gest.class
+SHA1-Digest: h9apSz5lYIFME7FQpMlcj+miK2c=
+
+Name: org/eclipse/jetty/security/MappedLoginService.class
+SHA1-Digest: heiaUHolu9HZUFh8B9wqHi/jV2Y=
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-security/pom.properties
+SHA1-Digest: VOzP5Qb5zJ14FAnL71v3FFZlON8=
+
+Name: org/eclipse/jetty/security/HashCrossContextPsuedoSession.class
+SHA1-Digest: rvTocy9DJcT6KjPRzH5DCWrL1LM=
+
+Name: org/eclipse/jetty/security/authentication/FormAuthenticator$Form
+ Authentication.class
+SHA1-Digest: /RIYPKL+Cs80YXMvXXgIaul5rRA=
+
+Name: org/eclipse/jetty/security/MappedLoginService$RolePrincipal.clas
+ s
+SHA1-Digest: iT/ygEcVNeJhJoJo32Iky/e0QMA=
+
+Name: about.html
+SHA1-Digest: bN8wMjgI189rPX05Pg8epneJ6CI=
+
+Name: org/eclipse/jetty/security/authentication/LoginCallback.class
+SHA1-Digest: ciUmAL1nGIK2ETqZNJwaMI9jwUc=
+
+Name: org/eclipse/jetty/security/authentication/FormAuthenticator.clas
+ s
+SHA1-Digest: i3I6wfl7UCW69PT90UE1Z+Dr18M=
+
+Name: org/eclipse/jetty/security/authentication/DeferredAuthentication
+ .class
+SHA1-Digest: Cq6K6aKL3HSxWrWffakRqzwi5dQ=
+
+Name: org/eclipse/jetty/security/authentication/DigestAuthenticator.cl
+ ass
+SHA1-Digest: YNdn2oXPYpNPY6p6l/ZAQg1wrKo=
+
+Name: org/eclipse/jetty/security/ConstraintMapping.class
+SHA1-Digest: xjE+yQfZdntd4d7A+xVeXA362fU=
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-security/pom.xml
+SHA1-Digest: PAC9M2iCwzuOyvGxYw8fIO4o5Y0=
+
+Name: org/eclipse/jetty/security/MappedLoginService$UserPrincipal.clas
+ s
+SHA1-Digest: /xqoAXUz9trlzr3sUsT+QFHMmGM=
+
+Name: org/eclipse/jetty/security/authentication/SpnegoAuthenticator.cl
+ ass
+SHA1-Digest: GCTymOP00k0L3MZ+nPv/942kyI8=
+
+Name: org/eclipse/jetty/security/SecurityHandler$2.class
+SHA1-Digest: 0i7UVo/8SnVPTtLFNunOJl2pS4E=
+
+Name: org/eclipse/jetty/security/Authenticator$Factory.class
+SHA1-Digest: l18li2/Jmdih6ebQfewH9SOawSs=
+
+Name: org/eclipse/jetty/security/SpnegoUserIdentity.class
+SHA1-Digest: hMCIVw6whtoDnW6qgTDCYXYbeFg=
+
+Name: org/eclipse/jetty/security/authentication/DeferredAuthentication
+ $1.class
+SHA1-Digest: /bqGnE3ekXrBL6A+6ryQC/hTHes=
+

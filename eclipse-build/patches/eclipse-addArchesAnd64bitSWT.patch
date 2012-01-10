@@ -1,6 +1,6 @@
 --- a/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh.orig	2009-12-08 09:00:12.000000000 +0200
 +++ b/plugins/org.eclipse.swt/Eclipse SWT PI/gtk/library/build.sh	2010-04-13 17:24:11.418047380 +0300
-@@ -89,6 +89,18 @@ if [ "${MODEL}" = "" ]; then
+@@ -83,6 +83,18 @@ if [ "${MODEL}" = "" ]; then
  	fi
  fi
  case $MODEL in

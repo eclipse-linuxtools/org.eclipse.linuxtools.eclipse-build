@@ -1,0 +1,21 @@
+--- features/org.eclipse.jdt/Copy of feature.xml	2012-01-16 11:55:47.000000000 +0100
++++ features/org.eclipse.jdt/feature.xml	2012-01-18 18:47:15.489195402 +0100
+@@ -211,4 +211,18 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
++   <plugin
++          id="org.apache.el"
++          download-size="0"
++          install-size="0"
++          version="7.0.21"
++          unpack="false"/>
++
++   <plugin
++          id="javax.el"
++          download-size="0"
++          install-size="0"
++          version="0.0.0"
++          unpack="false"/>
++
+ </feature>

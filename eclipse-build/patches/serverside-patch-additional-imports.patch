@@ -1,0 +1,25 @@
+--- features/org.eclipse.equinox.serverside.sdk/feature.xml.old	2012-01-14 12:38:46.714594091 +0100
++++ features/org.eclipse.equinox.serverside.sdk/feature.xml	2012-01-14 12:39:04.959639056 +0100
+@@ -152,6 +152,21 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
++
++  <plugin
++         id="org.apache.jasper"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         unpack="false"/> 
++
++  <plugin
++         id="org.apache.commons.el"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         unpack="false"/> 
++
+    <plugin
+          id="org.apache.jasper.glassfish.source"
+          download-size="0"
+

@@ -1,0 +1,92 @@
+diff -r -Nu eclipse-3.8.0-M1-src/features/org.eclipse.help/feature.xml eclipse-3.8.0-M1-src.patched/features/org.eclipse.help/feature.xml
+--- eclipse-3.8.0-M1-src/features/org.eclipse.help/feature.xml	2011-03-27 10:30:27.000000000 -0400
++++ eclipse-3.8.0-M1-src.patched/features/org.eclipse.help/feature.xml	2011-08-23 14:01:19.026328809 -0400
+@@ -34,30 +34,37 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+-  
+-   <plugin
+-         id="com.sun.el"
++
++  <plugin
++         id="javax.el"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.commons.logging"
++  <plugin
++         id="org.apache.tomcat"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.jasper.glassfish"
++  <plugin
++         id="org.apache.juli"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         unpack="false"/>
++
++  <plugin
++         id="org.apache.el"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
+ 
+    <plugin
+-         id="org.apache.lucene"
++         id="org.apache.commons.logging"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"
+@@ -182,5 +189,19 @@
+          install-size="0"
+          version="0.0.0"
+          unpack="false"/>
++
++ <plugin
++         id="org.apache.jasper"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         unpack="false"/> 
++
++  <plugin
++         id="org.apache.commons.el"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         unpack="false"/> 
+   
+ </feature>
+diff -r -Nu eclipse-3.8.0-M1-src/plugins/org.eclipse.help.base/META-INF/MANIFEST.MF eclipse-3.8.0-M1-src.patched/plugins/org.eclipse.help.base/META
+--- eclipse-3.8.0-M1-src/plugins/org.eclipse.help.base/META-INF/MANIFEST.MF    2011-06-21 11:41:09.000000000 -0400
++++ eclipse-3.8.0-M1-src.patched/plugins/org.eclipse.help.base/META-INF/MANIFEST.MF    2011-08-23 11:09:30.399033718 -0400
+@@ -39,7 +39,7 @@
+  org.eclipse.help.search,
+  org.eclipse.help.server,
+  org.eclipse.help.standalone
+-Require-Bundle: org.apache.lucene;bundle-version="[2.9.0,3.0.0)";visibility:=reexport,
++Require-Bundle: org.apache.lucene.core;bundle-version="[2.9.0,3.0.0)";visibility:=reexport,
+  org.apache.lucene.analysis;bundle-version="[2.9.0,3.0.0)";visibility:=reexport,
+  org.eclipse.ant.core;bundle-version="3.2.200";resolution:=optional,
+  org.eclipse.core.runtime;bundle-version="3.6.0",
+--- a/plugins/org.eclipse.help.base/src/org/eclipse/help/internal/search/SearchIndex.java.old	2012-01-18 08:58:41.397436636 +0100
++++ b/plugins/org.eclipse.help.base/src/org/eclipse/help/internal/search/SearchIndex.java	2012-01-18 08:59:35.994625494 +0100
+@@ -106,7 +106,7 @@
+ 
+ 	public static final String DEPENDENCIES_KEY_ANALYZER = "analyzer"; //$NON-NLS-1$
+ 
+-	private static final String LUCENE_BUNDLE_ID = "org.apache.lucene"; //$NON-NLS-1$
++	private static final String LUCENE_BUNDLE_ID = "org.apache.lucene.core"; //$NON-NLS-1$
+ 
+ 	private static final String FIELD_NAME = "name"; //$NON-NLS-1$
+ 

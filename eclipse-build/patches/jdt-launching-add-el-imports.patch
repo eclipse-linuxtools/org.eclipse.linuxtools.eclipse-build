@@ -1,0 +1,13 @@
+--- plugins/org.eclipse.jdt.launching/META-INF/Copy of MANIFEST.MF	2012-01-18 18:42:16.464377717 +0100
++++ plugins/org.eclipse.jdt.launching/META-INF/MANIFEST.MF	2012-01-16 11:55:51.000000000 +0100
+@@ -19,9 +19,7 @@
+  org.eclipse.core.variables;bundle-version="[3.2.0,4.0.0)",
+  org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
+  org.eclipse.osgi;bundle-version="[3.8.0,4.0.0)",
+- org.eclipse.core.expressions;bundle-version="[3.4.0,4.0.0)",
+- javax.el,
+- org.apache.el;bundle-version="[7.0.0,8.0.0)"
++ org.eclipse.core.expressions;bundle-version="[3.4.0,4.0.0)"
+ Bundle-ActivationPolicy: lazy
+ Import-Package: com.ibm.icu.text
+ Bundle-RequiredExecutionEnvironment: J2SE-1.4

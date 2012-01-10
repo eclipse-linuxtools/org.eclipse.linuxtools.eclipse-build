@@ -6,10 +6,10 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="I20110803-1800"
-baseBuilderTag="v20110711"
+buildID="I20120103-0800"
+baseBuilderTag="vI20120103-0800"
 eclipseBuilderTag=""
-label="3.8.0-M1"
+label="3.8.0-M4b"
 fetchTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
@@ -125,16 +125,20 @@ cd "${fetchDirectory}"
 
 # Extract osgi.util src for rebuilding
 pushd plugins/org.eclipse.osgi.util
-  unzip -q -d src src.zip
-  # Remove pre-compiled class files and the source.zip
-  rm -r org/ src.zip
+  if [ -e src.zip ]; then
+    unzip -q -d src src.zip
+    # Remove pre-compiled class files and the source.zip
+    rm -r org/ src.zip
+  fi
 popd
 
 # Extract osgi.services src for rebuilding
 pushd plugins/org.eclipse.osgi.services
-  unzip -q -d src src.zip
-  # Remove pre-compiled class files and the source.zip
-  rm -r org/ src.zip
+  if [ -e src.zip ]; then
+    unzip -q -d src src.zip
+    # Remove pre-compiled class files and the source.zip
+    rm -r org/ src.zip
+  fi
 popd
 
 # Remove sources for service.io
@@ -146,6 +150,7 @@ popd
 # Remove scmCache directory
 rm -rf scmCache
 
+#fetch and prepare ecf
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
 cd org.eclipse.ecf
 git archive --format=tar --prefix=ecf-3.5.0/ R-Release_HEAD-sdk_feature-19_2011-03-13_18-40-16 | gzip >ecf-3.5.0.tar.gz
@@ -163,7 +168,8 @@ for f in \
     org.eclipse.ecf.identity \
     org.eclipse.ecf.ssl \
 ; do
-mv framework/bundles/$f ../plugins;
+cp -rf framework/bundles/$f ../plugins;
+rm -rf framework/bundles/$f
 done
 
 for f in \
@@ -172,10 +178,26 @@ for f in \
     org.eclipse.ecf.provider.filetransfer.httpclient.ssl \
     org.eclipse.ecf.provider.filetransfer.ssl \
 ; do
-mv  providers/bundles/$f ../plugins;
+#mv -f  providers/bundles/$f ../plugins;
+cp -rf  providers/bundles/$f ../plugins;
+rm -rf providers/bundles/$f
 done
 cd ..
 rm -fr ecf-3.5.0
+
+#fix paths here - they are not correctly rendered
+#fetch and prepare initializer
+#rm -rf rt.equinox.incubator
+git clone git://git.eclipse.org/gitroot/equinox/rt.equinox.incubator.git
+cd rt.equinox.incubator
+git archive --format=tar --prefix=org.eclipse.equinox.initializer/ HEAD:framework/bundles/org.eclipse.equinox.initializer | gzip > org.eclipse.equinox.initializer.tar.gz
+cp org.eclipse.equinox.initializer.tar.gz ../
+cd ..
+rm -rf rt.equinox.incubator
+tar -xf org.eclipse.equinox.initializer.tar.gz
+rm -rf org.eclipse.equinox.initializer.tar.gz
+cp -rf org.eclipse.equinox.initializer plugins
+#rm -rf org.eclipse.equinox.initializer
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
@@ -212,7 +234,9 @@ find -name '*.orig' -delete
 find -type d -empty -delete
 
 cd ..
-mv fetch eclipse-${label}-src
+#mv -f fetch eclipse-${label}-src
+cp -rf fetch eclipse-${label}-src
+rm -rf fetch
 tar cjf "${workDirectory}"/eclipse-${label}-src.tar.bz2 \
   eclipse-${label}-src
 cd "${eclipseBuilder}"
@@ -241,8 +265,9 @@ fetchSdkTestsFeature \
 2>&1 | tee "${workDirectory}"/testsFetch.log
 
 cd ${workDirectory}
-mkdir ${workDirectory}/eclipse-sdktests-${label}-src
-mv ${fetchDirectory}/* ${workDirectory}/eclipse-sdktests-${label}-src
+mkdir -p ${workDirectory}/eclipse-sdktests-${label}-src
+cp -rf ${fetchDirectory}/* ${workDirectory}/eclipse-sdktests-${label}-src
+rm -rf ${fetchDirectory}/*
 tar cjf ${workDirectory}/eclipse-sdktests-${label}-src.tar.bz2 \
  eclipse-sdktests-${label}-src
 
@@ -253,9 +278,11 @@ testScripts=eclipse-sdktests-${label}-scripts
 rm -rf org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts/*
 cvs -d ${cvsRepo} co -r ${buildID} ${scriptsDir}
 
-mkdir ${testScripts}
-mv ${scriptsDir}/runtests ${testScripts}
-mv ${scriptsDir}/test.xml ${testScripts}
+mkdir -p ${testScripts}
+cp -rf ${scriptsDir}/runtests ${testScripts}
+rm -rf ${scriptsDir}/runtests
+cp -rf ${scriptsDir}/test.xml ${testScripts}
+rm -rf ${scriptsDir}/test.xml
 rm -rf org.eclipse.releng.eclipsebuilder
 tar cjf ${workDirectory}/eclipse-sdktests-${label}-scripts.tar.bz2 ${testScripts}
 

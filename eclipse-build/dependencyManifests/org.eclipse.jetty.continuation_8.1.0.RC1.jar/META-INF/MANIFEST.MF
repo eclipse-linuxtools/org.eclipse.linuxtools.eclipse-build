@@ -1,0 +1,77 @@
+Manifest-Version: 1.0
+Bundle-DocURL: http://www.eclipse.org/jetty
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Built-By: jesse
+Bundle-SymbolicName: org.eclipse.jetty.continuation
+Bundle-Version: 8.1.0.RC1
+Export-Package: org.eclipse.jetty.continuation;uses:="javax.servlet,or
+ g.mortbay.log,org.mortbay.util.ajax";version="8.1.0"
+url: http://www.eclipse.org/jetty
+Bundle-Description: Asynchronous API
+Build-Jdk: 1.6.0_26
+Bundle-Classpath: .
+Bundle-Vendor: Eclipse Jetty Project
+Bnd-LastModified: 1323208011890
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Name: Jetty :: Continuation
+Tool: Bnd-1.15.0
+Archiver-Version: Plexus Archiver
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Created-By: Apache Maven Bundle Plugin
+Implementation-Version: 8.1.0.RC1
+Import-Package: javax.servlet;version="2.6.0",org.mortbay.log;resoluti
+ on:=optional;version="[6.1,7)",org.mortbay.util.ajax;resolution:=opti
+ onal;version="[6.1,7)"
+Bundle-ManifestVersion: 2
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-continuation/pom.properti
+ es
+SHA1-Digest: qGH4hb8yJ1hR6GolkbKZb6hmhr0=
+
+Name: org/eclipse/jetty/continuation/Servlet3Continuation.class
+SHA1-Digest: NYQkS9HqcZFSVHYNWpUX2/XHWOk=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: org/eclipse/jetty/continuation/ContinuationListener.class
+SHA1-Digest: hcKZt/RR39tbzSWDwT5Jaon2tIk=
+
+Name: META-INF/maven/org.eclipse.jetty/jetty-continuation/pom.xml
+SHA1-Digest: 3wcGbLV7DHb+GUCxe8XmsvRu1UI=
+
+Name: about.html
+SHA1-Digest: bN8wMjgI189rPX05Pg8epneJ6CI=
+
+Name: org/eclipse/jetty/continuation/Jetty6Continuation.class
+SHA1-Digest: h69OODydIti6/o81+v2rJbFxYz4=
+
+Name: org/eclipse/jetty/continuation/ContinuationFilter.class
+SHA1-Digest: PJB8asv7XEqACprmWorOsrb3EoY=
+
+Name: org/eclipse/jetty/continuation/ContinuationSupport.class
+SHA1-Digest: Ywzs5ogk3ZKzhP3fN9eEZQrWebk=
+
+Name: org/eclipse/jetty/continuation/Servlet3Continuation$1.class
+SHA1-Digest: FxByDASLvjhaONulEIDe6p/LMhE=
+
+Name: org/eclipse/jetty/continuation/Servlet3Continuation$2.class
+SHA1-Digest: FNws/LULKixEUn7RcEcEjcLk2T4=
+
+Name: org/eclipse/jetty/continuation/FauxContinuation.class
+SHA1-Digest: /eWXcVF0TH5xSJ+UXheSeLcwHRY=
+
+Name: org/eclipse/jetty/continuation/Continuation.class
+SHA1-Digest: A9dw23TVNM5Kax3ZF2Hsp6KLC1k=
+
+Name: org/eclipse/jetty/continuation/ContinuationFilter$FilteredContin
+ uation.class
+SHA1-Digest: S5MRcvuHp2+Y7R9Qy9cfoK5eFeA=
+
+Name: org/eclipse/jetty/continuation/ContinuationThrowable.class
+SHA1-Digest: gZJ9HLSzdibfz9V2BwjBQv2GM2Y=
+

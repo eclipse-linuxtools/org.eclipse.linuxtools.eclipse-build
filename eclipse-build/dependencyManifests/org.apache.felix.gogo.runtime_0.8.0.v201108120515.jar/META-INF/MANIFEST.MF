@@ -1,0 +1,24 @@
+Manifest-Version: 1
+Bnd-LastModified: 1324045880669
+Build-Jdk: 1.6.0_22
+Built-By: mockbuild
+Bundle-Activator: org.apache.felix.gogo.runtime.activator.Activator
+Bundle-Description: Apache Felix Gogo Subproject
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Felix Gogo Runtime
+Bundle-SymbolicName: org.apache.felix.gogo.runtime
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 0.10.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.felix.service.command;status=provisional;mand
+ atory:=status;version="0.10.0",org.apache.felix.service.threadio;status
+ =provisional;mandatory:=status;version="0.10.0",org.apache.felix.gogo.a
+ pi;uses:="org.apache.felix.service.command";version="0.10.0"
+Import-Package: org.apache.felix.gogo.api;version="[0.10,1)",org.apache.
+ felix.service.command;status=provisional;version="[0.10,1)",org.apache.
+ felix.service.threadio;status=provisional;version="[0.10,1)",org.osgi.f
+ ramework;version="[1.5,2)",org.osgi.service.event;resolution:=optional;
+ version="[1.2,2)",org.osgi.util.tracker;version="[1.4,2)"
+Tool: Bnd-1.43.0
