@@ -144,7 +144,13 @@
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">
-		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src" src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
+		<exec executable="tar" failonerror="true">
+			<arg value="xjf" />
+			<arg value="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
+			<arg value="-C" />
+			<arg value="${basedir}/build/eclipse-${label}-src" />
+		</exec>
+
 		<exec executable="${basedir}/jasper7.sh">
 			<arg value="${label}"/>
 		</exec>
@@ -155,7 +161,12 @@
 
 	<target name="extractSource" unless="onlyExtractedSdkSourcePresent">
 		<echo message="Extracting SDK source (tar jxf eclipse-${label}-src.tar.bz2)" />
-		<untar dest="${topBuildDir}" src="${basedir}/eclipse-${label}-src.tar.bz2" compression="bzip2" />
+		<exec executable="tar" failonerror="true">
+			<arg value="xjf" />
+			<arg value="${basedir}/eclipse-${label}-src.tar.bz2" />
+			<arg value="-C" />
+			<arg value="${topBuildDir}" />
+		</exec>
 	</target>
 
 	<target name="copySource" unless="sdkSourcePresent">
