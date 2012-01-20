@@ -1,0 +1,17 @@
+diff -rNu eclipse-3.8.0-M1-src/plugins/org.eclipse.core.net/natives/unix/linux/makefile eclipse-3.8.0-M1-src.patched/plugins/org.eclipse.core.net/natives/unix/linux/makefile
+--- eclipse-3.8.0-M1-src/plugins/org.eclipse.core.net/natives/unix/linux/makefile	2012-01-20 10:03:33.023313778 -0500
++++ eclipse-3.8.0-M1-src.patched/plugins/org.eclipse.core.net/natives/unix/linux/makefile	2012-01-20 10:02:20.027318769 -0500
+@@ -20,11 +20,11 @@
+ 
+ OS_TYPE = linux
+ JDK_INCLUDE = -I${JAVA_HOME}/include -I${JAVA_HOME}/include/${OS_TYPE}
+-INCLUDE = -I/usr/include/gconf/2/ -I/usr/include/orbit-2.0/ -I/usr/include/glib-2.0/ -I/usr/lib/glib-2.0/include/ \
++INCLUDE = -I/usr/include/gconf/2/ -I/usr/include/glib-2.0/ -I/usr/lib/glib-2.0/include/ \
+ 	  -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+ COMPILER_FLAGS = -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m32
+ 
+-LIBS := -lgconf-2 -lORBit-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0
++LIBS := -lgconf-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0
+ LINKER_FLAGS= -m32
+ 
+ all: link

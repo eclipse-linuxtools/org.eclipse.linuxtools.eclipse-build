@@ -1,3 +1,8 @@
+2012-01-20  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* patches/eclipse-dont-link-in-orbit2.patch: New patch.
+	* build.xml: Apply patch eclipse-dont-link-in-orbit2.patch.
+
 2012-01-06  Roland Grunberg  <rgrunber@redhat.com>
 
 	* build.xml: Create proper org.junit_3* and org.junit_4* jar files by

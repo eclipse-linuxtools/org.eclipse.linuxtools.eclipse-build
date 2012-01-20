@@ -381,6 +381,7 @@
 		<!--patch patchfile="${basedir}/patches/jdt-launching-add-el-imports.patch" dir="${buildDirectory}" strip="0"  reverse="true" /-->
 		<patch patchfile="${basedir}/patches/jdt-feature-add-el-imports.patch" dir="${buildDirectory}" strip="0"/>
 		<patch patchfile="${basedir}/patches/webkit.patch" dir="${buildDirectory}" strip="0"/>
+		<patch patchfile="${basedir}/patches/eclipse-dont-link-in-orbit2.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
