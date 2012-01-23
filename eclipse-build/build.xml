@@ -340,43 +340,57 @@
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<!-- eclipse-build-only patches -->
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
-		<!--
-		<patch patchfile="${basedir}/patches/eclipse-swt-buildagainstxulrunner.patch" dir="${buildDirectory}" strip="1" />
-		-->
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
+		
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
+		
+		<!-- This one should be removed when Eclipse bug 369204	is fixed -->
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
+
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
+
+		<!-- This one should be removed when Eclipse bug 369215 is fixed -->
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
+
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-xpcom-h.patch" dir="${buildDirectory}/plugins/org.eclipse.swt/Eclipse SWT Mozilla/common/library"/>
-		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1">
+
+		<!-- Those two are to be removed when Eclipse bug 369221 is fixed -->
 		<patch patchfile="${basedir}/patches/addDontFetchBinaries-launcher.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/addDontFetchBinaries-executable.patch" dir="${buildDirectory}" strip="1" />
+
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
 		<!-- end eclipse-build-only patches -->
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
+		
+		<!-- This one is to be removed after Eclipse bug 369223 is fixed -->
 		<patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" />
+
+		<!-- This one is to be removed after Eclipse bug 369224 is fixed -->		
 		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
+
 		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
+
 		<!--patch patchfile="${basedir}/patches/eclipse-equinox-http-servlet.patch" dir="${buildDirectory}" strip="0" /-->
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
+		
+		<!-- This one is to be removed after using the build younger than the 20th of January -->
 		<patch patchfile="${basedir}/patches/eclipse-swt-remove-deprecated.patch" dir="${buildDirectory}" strip="0" />
 		<!--
 		<patch patchfile="${basedir}/patches/jdt-feature-add-el-imports.patch" dir="${buildDirectory}" strip="0"/>
 		<patch patchfile="${basedir}/patches/jdt-launching-add-el-imports.patch" dir="${buildDirectory}" strip="0" reverse="true"/
 		-->
-		<!-- this should be removed once it is get commited to SWT head -->
+		<!-- This one is to be removed after using the build younger than the 20th of January -->
 		<patch patchfile="${basedir}/patches/webkit.patch" dir="${buildDirectory}" strip="0"/>
 		<patch patchfile="${basedir}/patches/eclipse-dont-link-in-orbit2.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
