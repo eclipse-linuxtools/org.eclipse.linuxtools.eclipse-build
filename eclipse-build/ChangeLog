@@ -1,3 +1,9 @@
+2012-01-24  Andrew Robinson  <arobinso@redhat.com>
+
+	Bug #210014.
+
+	* pdebuild/eclipse-copy-platform.sh: Make symlinking paths relative.
+
 2012-01-20  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* patches/eclipse-dont-link-in-orbit2.patch: New patch.

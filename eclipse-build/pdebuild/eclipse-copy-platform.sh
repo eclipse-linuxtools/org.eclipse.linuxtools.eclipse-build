@@ -80,26 +80,25 @@ if [ $# -gt 0 ]; then
 fi
 for p in $(ls -d $eclipse/dropins/jdt/plugins/*); do
     plugin=$(basename $p)
-    [ ! -e $where/plugins/$plugin ] && ln -s $eclipse/dropins/jdt/plugins/$plugin $where/plugins/$plugin
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/jdt/plugins/$plugin plugins/$plugin
 done
 for f in $(ls -d $eclipse/dropins/jdt/features/*); do
     feature=$(basename $f)
-    [ ! -e $where/features/$feature ] && ln -s $eclipse/dropins/jdt/features/$feature $where/features/$feature
+    [ ! -e features/$feature ] && ln -s $eclipse/dropins/jdt/features/$feature features/$feature
 done
 for p in $(ls -d $eclipse/dropins/sdk/plugins/*); do
     plugin=$(basename $p)
-    [ ! -e $where/plugins/$plugin ] && ln -s $eclipse/dropins/sdk/plugins/$plugin $where/plugins/$plugin
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/sdk/plugins/$plugin plugins/$plugin
 done
 for f in $(ls -d $eclipse/dropins/sdk/features/*); do
     feature=$(basename $f)
-    [ ! -e $where/features/$feature ] && ln -s $eclipse/dropins/sdk/features/$feature $where/features/$feature
+    [ ! -e features/$feature ] && ln -s $eclipse/dropins/sdk/features/$feature features/$feature
 done
 for p in $(ls -d $eclipse/plugins/*); do
     plugin=$(basename $p)
-    [ ! -e $where/plugins/$plugin ] && ln -s $eclipse/plugins/$plugin $where/plugins/$plugin
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/plugins/$plugin plugins/$plugin
 done
 for f in $(ls -d $eclipse/features/*); do
     feature=$(basename $f)
-    [ ! -e $where/features/$feature ] && ln -s $eclipse/features/$feature $where/features/$feature
+    [ ! -e features/$feature ] && ln -s $eclipse/features/$feature features/$feature
 done
-# Code after this point is automatically created by eclipse.spec.
