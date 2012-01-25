@@ -358,7 +358,7 @@
 
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1">
+		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
 
 		<!-- Those two are to be removed when Eclipse bug 369221 is fixed -->
 		<patch patchfile="${basedir}/patches/addDontFetchBinaries-launcher.patch" dir="${buildDirectory}" strip="1" />
@@ -385,14 +385,16 @@
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
 		
 		<!-- This one is to be removed after using the build younger than the 20th of January -->
-		<patch patchfile="${basedir}/patches/eclipse-swt-remove-deprecated.patch" dir="${buildDirectory}" strip="0" />
+		<!-- patch patchfile="${basedir}/patches/eclipse-swt-remove-deprecated.patch" dir="${buildDirectory}" strip="0" / -->
 		<!--
 		<patch patchfile="${basedir}/patches/jdt-feature-add-el-imports.patch" dir="${buildDirectory}" strip="0"/>
-		<patch patchfile="${basedir}/patches/jdt-launching-add-el-imports.patch" dir="${buildDirectory}" strip="0" reverse="true"/
+		<patch patchfile="${basedir}/patches/jdt-launching-add-el-imports.patch" dir="${buildDirectory}" strip="0" reverse="true"/>
 		-->
 		<!-- This one is to be removed after using the build younger than the 20th of January -->
+
 		<patch patchfile="${basedir}/patches/webkit.patch" dir="${buildDirectory}" strip="0"/>
 		<patch patchfile="${basedir}/patches/eclipse-dont-link-in-orbit2.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/jdt-debug-compilation.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
 	</target>
 
