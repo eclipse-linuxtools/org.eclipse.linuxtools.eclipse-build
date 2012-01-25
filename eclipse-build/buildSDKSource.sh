@@ -6,10 +6,10 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="I20120103-0800"
-baseBuilderTag="vI20120103-0800"
+buildID="I20120123-0800"
+baseBuilderTag="v20120123-0800"
 eclipseBuilderTag=""
-label="3.8.0-M4b"
+label="3.8.0-M4c"
 fetchTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
