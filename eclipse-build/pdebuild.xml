@@ -245,7 +245,7 @@
 		<taskdef name="eclipse.versionReplacer"
 		         classname="org.eclipse.pde.internal.build.tasks.GenericVersionReplacer"
 		         classpathref="pdebuildClasspath" />
-		<subant>
+		<subant inheritall="true">
 			<filelist refid="depsDirs2" />
 		</subant>
 	</target>
