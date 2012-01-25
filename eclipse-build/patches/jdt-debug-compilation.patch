@@ -1,0 +1,131 @@
+--- plugins/org.eclipse.jdt.debug/jdi/org/eclipse/jdi/internal/request/EventRequestManagerImpl.java.old	2012-01-25 10:51:29.833289484 +0100
++++ plugins/org.eclipse.jdt.debug/jdi/org/eclipse/jdi/internal/request/EventRequestManagerImpl.java	2012-01-25 10:54:16.964880491 +0100
+@@ -429,84 +429,84 @@
+ 	 * @see com.sun.jdi.request.EventRequestManager#accessWatchpointRequests()
+ 	 */
+ 	public List<AccessWatchpointRequest> accessWatchpointRequests() {
+-		return new ArrayList<AccessWatchpointRequest>((Collection<? extends AccessWatchpointRequest>) fRequests.get(ACCESS_WATCHPOINT_INDEX));
++		return new ArrayList<AccessWatchpointRequest>((Collection<? extends AccessWatchpointRequest>) (Object) fRequests.get(ACCESS_WATCHPOINT_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#breakpointRequests()
+ 	 */
+ 	public List<BreakpointRequest> breakpointRequests() {
+-		return new ArrayList<BreakpointRequest>((Collection<? extends BreakpointRequest>) fRequests.get(BREAKPOINT_INDEX));
++		return new ArrayList<BreakpointRequest>((Collection<? extends BreakpointRequest>) (Object) fRequests.get(BREAKPOINT_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#classPrepareRequests()
+ 	 */
+ 	public List<ClassPrepareRequest> classPrepareRequests() {
+-		return new ArrayList<ClassPrepareRequest>((Collection<? extends ClassPrepareRequest>) fRequests.get(CLASS_PREPARE_INDEX));
++		return new ArrayList<ClassPrepareRequest>((Collection<? extends ClassPrepareRequest>) (Object) fRequests.get(CLASS_PREPARE_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#classUnloadRequests()
+ 	 */
+ 	public List<ClassUnloadRequest> classUnloadRequests() {
+-		return new ArrayList<ClassUnloadRequest>((Collection<? extends ClassUnloadRequest>) fRequests.get(CLASS_UNLOAD_INDEX));
++		return new ArrayList<ClassUnloadRequest>((Collection<? extends ClassUnloadRequest>) (Object) fRequests.get(CLASS_UNLOAD_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#exceptionRequests()
+ 	 */
+ 	public List<ExceptionRequest> exceptionRequests() {
+-		return new ArrayList<ExceptionRequest>((Collection<? extends ExceptionRequest>) fRequests.get(EXCEPTION_INDEX));
++		return new ArrayList<ExceptionRequest>((Collection<? extends ExceptionRequest>) (Object) fRequests.get(EXCEPTION_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#methodEntryRequests()
+ 	 */
+ 	public List<MethodEntryRequest> methodEntryRequests() {
+-		return new ArrayList<MethodEntryRequest>((Collection<? extends MethodEntryRequest>) fRequests.get(METHOD_ENTRY_INDEX));
++		return new ArrayList<MethodEntryRequest>((Collection<? extends MethodEntryRequest>) (Object) fRequests.get(METHOD_ENTRY_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#methodExitRequests()
+ 	 */
+ 	public List<MethodExitRequest> methodExitRequests() {
+-		return new ArrayList<MethodExitRequest>((Collection<? extends MethodExitRequest>) fRequests.get(METHOD_EXIT_INDEX));
++		return new ArrayList<MethodExitRequest>((Collection<? extends MethodExitRequest>) (Object) fRequests.get(METHOD_EXIT_INDEX));
+ 	}
+ 	
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#modificationWatchpointRequests()
+ 	 */
+ 	public List<ModificationWatchpointRequest> modificationWatchpointRequests() {
+-		return new ArrayList<ModificationWatchpointRequest>((Collection<? extends ModificationWatchpointRequest>) fRequests.get(MODIFICATION_WATCHPOINT_INDEX));
++		return new ArrayList<ModificationWatchpointRequest>((Collection<? extends ModificationWatchpointRequest>) (Object) fRequests.get(MODIFICATION_WATCHPOINT_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#stepRequests()
+ 	 */
+ 	public List<StepRequest> stepRequests() {
+-		return new ArrayList<StepRequest>((Collection<? extends StepRequest>) fRequests.get(STEP_INDEX));
++		return new ArrayList<StepRequest>((Collection<? extends StepRequest>) (Object) fRequests.get(STEP_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#threadDeathRequests()
+ 	 */
+ 	public List<ThreadDeathRequest> threadDeathRequests() {
+-		return new ArrayList<ThreadDeathRequest>((Collection<? extends ThreadDeathRequest>) fRequests.get(THREAD_DEATH_INDEX));
++		return new ArrayList<ThreadDeathRequest>((Collection<? extends ThreadDeathRequest>) (Object) fRequests.get(THREAD_DEATH_INDEX));
+ 	}
+ 
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#threadStartRequests()
+ 	 */
+ 	public List<ThreadStartRequest> threadStartRequests() {
+-		return new ArrayList<ThreadStartRequest>((Collection<? extends ThreadStartRequest>) fRequests.get(THREAD_START_INDEX));
++		return new ArrayList<ThreadStartRequest>((Collection<? extends ThreadStartRequest>) (Object) fRequests.get(THREAD_START_INDEX));
+ 	}
+ 	
+ 	/* (non-Javadoc)
+ 	 * @see com.sun.jdi.request.EventRequestManager#vmDeathRequests()
+ 	 */
+ 	public List<VMDeathRequest> vmDeathRequests() {
+-		return new ArrayList<VMDeathRequest>((Collection<? extends VMDeathRequest>) fRequests.get(VM_DEATH_INDEX));
++		return new ArrayList<VMDeathRequest>((Collection<? extends VMDeathRequest>) (Object) fRequests.get(VM_DEATH_INDEX));
+ 	}
+ 
+ 	public void removeRequestIDMapping(EventRequestImpl req) {
+@@ -634,27 +634,27 @@
+ 	 * @see com.sun.jdi.request.EventRequestManager#monitorContendedEnterRequests()
+ 	 */
+ 	public List<MonitorContendedEnterRequest> monitorContendedEnterRequests() {
+-		return new ArrayList<MonitorContendedEnterRequest>((Collection<? extends MonitorContendedEnterRequest>) fRequests.get(MONITOR_CONTENDED_ENTER_INDEX));
++		return new ArrayList<MonitorContendedEnterRequest>((Collection<? extends MonitorContendedEnterRequest>) (Object)fRequests.get(MONITOR_CONTENDED_ENTER_INDEX));
+ 	}
+ 
+     /* (non-Javadoc)
+      * @see com.sun.jdi.request.EventRequestManager#monitorContendedEnteredRequests()
+      */
+     public List<MonitorContendedEnteredRequest> monitorContendedEnteredRequests() {
+-    	return new ArrayList<MonitorContendedEnteredRequest>((Collection<? extends MonitorContendedEnteredRequest>) fRequests.get(MONITOR_CONTENDED_ENTERED_INDEX));
++    	return new ArrayList<MonitorContendedEnteredRequest>((Collection<? extends MonitorContendedEnteredRequest>) (Object) fRequests.get(MONITOR_CONTENDED_ENTERED_INDEX));
+     }
+     
+     /* (non-Javadoc)
+      * @see com.sun.jdi.request.EventRequestManager#monitorWaitRequests()
+      */
+     public List<MonitorWaitRequest> monitorWaitRequests() {
+-    	return new ArrayList<MonitorWaitRequest>((Collection<? extends MonitorWaitRequest>) fRequests.get(MONITOR_WAIT_INDEX));
++    	return new ArrayList<MonitorWaitRequest>((Collection<? extends MonitorWaitRequest>) (Object) fRequests.get(MONITOR_WAIT_INDEX));
+     }
+ 
+     /* (non-Javadoc)
+      * @see com.sun.jdi.request.EventRequestManager#monitorWaitedRequests()
+      */
+     public List<MonitorWaitedRequest> monitorWaitedRequests() {
+-    	return new ArrayList<MonitorWaitedRequest>((Collection<? extends MonitorWaitedRequest>) fRequests.get(MONITOR_WAITED_INDEX));
++    	return new ArrayList<MonitorWaitedRequest>((Collection<? extends MonitorWaitedRequest>) (Object) fRequests.get(MONITOR_WAITED_INDEX));
+     }
+ }
