@@ -394,9 +394,6 @@
 
 		<patch patchfile="${basedir}/patches/webkit.patch" dir="${buildDirectory}" strip="0"/>
 
-  		<!-- To be removed when Eclipse bug 369215 is fixed -->
-		<patch patchfile="${basedir}/patches/eclipse-dont-link-in-orbit2.patch" dir="${buildDirectory}" strip="1" />
-
 		<patch patchfile="${basedir}/patches/jdt-debug-compilation.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
