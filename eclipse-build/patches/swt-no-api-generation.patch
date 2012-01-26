@@ -1,0 +1,24 @@
+--- plugins/org.eclipse.swt/build.xml.old	2012-01-25 15:07:36.501002932 +0100
++++ plugins/org.eclipse.swt/build.xml	2012-01-25 15:07:58.763080264 +0100
+@@ -44,12 +44,12 @@
+ 
+ 	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
+ 		<mkdir dir="${destination.temp.folder}/${full.name}" />
+-		<antcall target="apitools.generation">
++		<!--antcall target="apitools.generation">
+ 			<param name="target.folder" value="${destination.temp.folder}/${full.name}"/>
+ 			<param name="projectLocation" value="${basedir}"/>
+ 			<param name="binary.folders" value="${build.result.folder}"/>
+ 			<param name="projectName" value="${full.name}"/>
+-		</antcall>
++		</antcall-->
+ 		<copy todir="${destination.temp.folder}/${full.name}">
+ 			<fileset dir="${basedir}" includes="plugin.properties,about.html,about_files/,META-INF/" />
+ 		</copy>
+@@ -82,4 +82,4 @@
+ 			binary="${binary.folders}"
+ 			target="${target.folder}"/>
+ 	</target>
+-</project>
+\ No newline at end of file
++</project>
