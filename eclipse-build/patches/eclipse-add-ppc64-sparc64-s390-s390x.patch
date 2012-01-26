@@ -1,6 +1,6 @@
 --- a/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
 +++ b/plugins/org.eclipse.core.runtime/src/org/eclipse/core/internal/runtime/InternalPlatform.java
-@@ -49,6 +49,14 @@
+@@ -48,6 +48,14 @@
  			Platform.ARCH_X86, //
  			Platform.ARCH_AMD64, // 
  			Platform.ARCH_IA64, //
@@ -17,7 +17,7 @@
  	// debug support:  set in loadOptions()
 --- a/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java
 +++ b/plugins/org.eclipse.core.runtime/src/org/eclipse/core/runtime/Platform.java
-@@ -349,6 +349,15 @@
+@@ -348,6 +348,15 @@
  	 * @since 3.1
  	 */
  	public static final String ARCH_IA64_32 = "ia64_32";//$NON-NLS-1$
