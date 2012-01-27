@@ -1,0 +1,11 @@
+--- a/plugins/org.eclipse.core.net/natives/unix/linux/makefile.old	2012-01-27 15:33:41.300591202 +0100
++++ b/plugins/org.eclipse.core.net/natives/unix/linux/makefile	2012-01-27 15:34:06.512675970 +0100
+@@ -24,7 +24,7 @@
+ 	  -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+ COMPILER_FLAGS = -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m32
+ 
+-LIBS := -lgconf-2 -lORBit-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0
++LIBS := -lgconf-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0
+ LINKER_FLAGS= -m32
+ 
+ all: link
