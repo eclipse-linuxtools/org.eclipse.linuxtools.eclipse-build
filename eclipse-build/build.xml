@@ -397,7 +397,7 @@
 		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
-		<patch patchfile="${basedir}/patches/eclipse-ua.patch" dir="${testsBuildDirectory}/plugins" strip="1" />
+		<!--patch patchfile="${basedir}/patches/eclipse-ua.patch" dir="${testsBuildDirectory}/plugins" strip="1" /-->
 		<echo file="testspatch-stamp" />
 	</target>
 

@@ -7,7 +7,7 @@ retrieving revision 1.59
 diff -u -r1.59 feature.xml
 --- feature.xml	27 Feb 2009 13:46:35 -0000	1.59
 +++ feature.xml	1 May 2009 17:50:01 -0000
-@@ -80,6 +80,7 @@
+@@ -84,6 +84,7 @@
           install-size="0"
           version="0.0.0"/>
  
@@ -15,7 +15,7 @@ diff -u -r1.59 feature.xml
     <plugin
           id="org.eclipse.jdt.apt.tests"
           download-size="0"
-@@ -97,6 +98,7 @@
+@@ -101,6 +102,7 @@
           download-size="0"
           install-size="0"
           version="0.0.0"/>
