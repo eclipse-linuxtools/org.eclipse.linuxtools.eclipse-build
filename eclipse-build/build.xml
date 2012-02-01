@@ -355,7 +355,6 @@
 
 		<!-- This one should be removed when Eclipse bug 369215 is fixed -->
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/gnomeproxy-makefile2.patch" dir="${buildDirectory}" strip="1" />
 
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
