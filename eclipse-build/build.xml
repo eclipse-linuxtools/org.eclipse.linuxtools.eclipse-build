@@ -655,7 +655,6 @@
 	</target>
 
 	<target name="p2prep" depends="build" unless="p2prep.complete">
-		<!--<property name="builtZip" value="${buildDirectory}/${buildLabel}/${featureToBuild}-${buildTag}-group.group.group.zip" />-->
 		<!-- archiveName is set in the build config's customTargets.xml -->
 		<!-- FIXME buildLabel should be used here but it's not defined so we cheat and use I.${buildId} instead. -->
 		<property name="builtZip" value="${buildDirectory}/I.${buildId}/eclipse-SDK-${buildId}.zip" />
