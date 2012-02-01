@@ -1,7 +1,0 @@
---- plugins/org.eclipse.ecf.provider.filetransfer.ssl/META-INF/MANIFEST.MF
-+++ plugins/org.eclipse.ecf.provider.filetransfer.ssl/META-INF/MANIFEST.MF
-@@ -7,4 +7,3 @@
- Fragment-Host: org.eclipse.ecf.provider.filetransfer;bundle-version="2.0.0"
- Bundle-RequiredExecutionEnvironment: J2SE-1.4
- Bundle-Localization: plugin
--Import-Package: javax.net.ssl
