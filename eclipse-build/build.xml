@@ -124,9 +124,6 @@
 			</or>
 		</and>
 	</condition>
-	<condition property="build.libgnomeproxy">
-		<equals arg1="${buildArch}" arg2="x86" />
-	</condition>
 
 	<target name="setLib64Dir" if="setLib64">
 		<property name="libDir" value="lib64" />
@@ -609,7 +606,7 @@
 		<echo file="testsbuild-stamp" />
 	</target>
 
-	<target name="compile.libgnomeproxy" if="build.libgnomeproxy">
+	<target name="compile.libgnomeproxy">
 		<!-- build libgnomeproxy -->
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux/libgnomeproxy-1.0.0.so" todir="${buildDirectory}/plugins/org.eclipse.core.net.linux.${buildArch}/" />
