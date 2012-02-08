@@ -1,5 +1,5 @@
 diff --git a/bundles/org.eclipse.core.net/natives/unix/linux/makefile b/bundles/org.eclipse.core.net/natives/unix/linux/makefile
-index 0aa0cbe..21d27ac 100644
+index 0aa0cbe..a6cf350 100644
 --- a/plugins/org.eclipse.core.net/natives/unix/linux/makefile
 +++ b/plugins/org.eclipse.core.net/natives/unix/linux/makefile
 @@ -1,5 +1,5 @@
@@ -9,7 +9,7 @@ index 0aa0cbe..21d27ac 100644
  # All rights reserved. This program and the accompanying materials 
  # are made available under the terms of the Eclipse Public License v1.0
  # which accompanies this distribution, and is available at
-@@ -8,6 +8,8 @@
+@@ -8,23 +8,27 @@
  # Contributors:
  #	Oakland Software Incorporated - initial submission
  #	IBM Corporation - refactoring, bug 245849
@@ -18,7 +18,13 @@ index 0aa0cbe..21d27ac 100644
  #
  #********************************************************************** 
  #
-@@ -18,13 +20,13 @@ GNOMEPROXY.O = gnomeproxy.o
+ # makefile for libgnomeproxy-1.0.0.so
+-
++#
++# To build for a specific platform environment,
++# please make sure that TARGET_ENVIRONMENT variable is set to -m32 or -m64
+ GNOMEPROXY.C = ../gnomeproxy.c
+ GNOMEPROXY.O = gnomeproxy.o
  LIB_NAME = gnomeproxy.so
  LIB_NAME_FULL = libgnomeproxy-1.0.0.so
  
@@ -28,12 +34,12 @@ index 0aa0cbe..21d27ac 100644
 -INCLUDE = -I/usr/include/gconf/2/ -I/usr/include/orbit-2.0/ -I/usr/include/glib-2.0/ -I/usr/lib/glib-2.0/include/
 -COMPILER_FLAGS = -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m32
 +INCLUDE = `pkg-config --cflags gconf-2.0`
-+COMPILER_FLAGS= -O0 -fPIC -g3 -Wall -c -fmessage-length=0 -m64
++COMPILER_FLAGS= -O0 -fPIC -g3 -Wall -c -fmessage-length=0 ${TARGET_ENVIRONMENT}
  
 -LIBS := -lgconf-2 -lORBit-2 -lgthread-2.0 -lrt -lgobject-2.0 -lglib-2.0
 -LINKER_FLAGS= -m32
 +LIBS := `pkg-config --libs gconf-2.0`
-+LINKER_FLAGS= -m64
++LINKER_FLAGS= ${TARGET_ENVIRONMENT}
  
  all: link
  
@@ -92,4 +98,3 @@ index 407f9c5..0000000
 -	-$(RM) $(GNOMEPROXY.O) $(LIB_NAME_FULL)
 -	-@echo " "
 \ No newline at end of file
-
