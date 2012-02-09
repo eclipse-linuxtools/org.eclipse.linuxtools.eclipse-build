@@ -1,0 +1,11 @@
+--- eclipse/buildConfigs/master/customTargets.xml.old	2012-02-08 18:13:30.242367105 +0100
++++ eclipse/buildConfigs/master/customTargets.xml	2012-02-08 18:14:26.489977256 +0100
+@@ -34,7 +34,7 @@
+ 	<!-- Replace values for mapsCheckoutTag as desired. -->
+ 	<!-- ===================================================================== -->
+ 
+-	<target name="getMapFiles" depends="checkLocalMaps" unless="skipMaps">
++	<target name="getMapFiles" depends="checkLocalMaps">
+ 		<property name="mapsGitRepo" value="${buildDirectory}/commonrepo" />
+ 		<mkdir dir="${mapsGitRepo}" />
+ 		<exec executable="git" dir="${mapsGitRepo}">
