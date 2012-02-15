@@ -434,27 +434,10 @@
 			<regexp pattern="junit\.jar" />
 			<substitution expression="\." />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^Name.*" />
-			<substitution expression="" />
-		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="^SHA1-Digest.*" />
-			<substitution expression="" />
-		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="junit\.jar" />
-			<substitution expression="\." />
-		</replaceregexp>
-
-		<jar destfile="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705.jar" manifest="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/META-INF/MANIFEST.MF">
-			<fileset dir="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/"/>
-			<zipfileset src="/usr/share/java/junit4.jar"/>
-		</jar>
 
 		<jar destfile="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.jar" manifest="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF">
 			<fileset dir="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/"/>
-			<zipfileset src="/usr/share/java/junit4.jar"/>
+			<zipfileset src="/usr/share/java/junit.jar"/>
 		</jar>
 
 		<delete dir="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/"/>
