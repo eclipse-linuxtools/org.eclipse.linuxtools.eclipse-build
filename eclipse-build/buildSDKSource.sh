@@ -5,16 +5,19 @@ baseDir=$(pwd)
 workDirectory=
 baseBuilder=
 eclipseBuilder=
+e4Builder=
 
-buildID="I20120214-0800"
-baseBuilderTag="vI20120214-0800"
-eclipseBuilderTag="vI20120214-0800"
-label="3.8.0-I20120214-0800"
+e4Build=true;
+buildID="R4_HEAD"
+baseBuilderTag="R4_HEAD"
+eclipseBuilderTag="R4_HEAD"
+e4BuilderTag="master"
+label="4.2.test"
 emfTag="HEAD"
 mapVersionTag="${buildID}"
 fetchTests="yes"
 
-usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests] [-emfTag <emf tag to check out>]"
+usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-e4Builder <path to org.eclipse.releng.e4.builder checkout>] [-e4BuilderTag <org.eclipse.releng.e4Builder tag to check out>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>]  [-noTests] [-emfTag <emf tag to check out>]"
 
 while [ $# -gt 0 ]
 do
@@ -25,6 +28,8 @@ do
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
                 -eclipseBuilderTag) eclipseBuilderTag="$2"; shift;;
+                -e4Builder) e4Builder="$2"; shift;;
+                -e4BuilderTag) e4BuilderTag="$2"; shift;;
 		-emfTag) eclipseBuilderTag="$2"; shift;;
                 -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
@@ -60,6 +65,10 @@ fi
 if [ "x${eclipseBuilderTag}x" = "xx" ]; then
   eclipseBuilderTag="v${buildID}"
 fi
+if [ "x${e4Builder}x" = "xx" ]; then
+  e4Builder="${workDirectory}"/org.eclipse.releng.e4.builder
+  echo "e4Builder checkout not specified; will check out into ${e4Builder}."
+fi
 
 fetchDirectory="${workDirectory}"/fetch
 mkdir -p "${fetchDirectory}"
@@ -90,6 +99,33 @@ if [ ! -e ${eclipseBuilder} ]; then
   cd "${baseDir}"
 fi
 
+#Fetch e4 builder and e4 sdk
+if [ ! -e ${e4Builder} ]; then
+	mkdir -p "${e4Builder}"
+	pushd "${e4Builder}"
+	git clone git://git.eclipse.org/gitroot/e4/org.eclipse.e4.releng.git
+	cd org.eclipse.e4.releng
+	git checkout ${e4BuilderTag}
+	git archive --format=tar --prefix=e4builder/ HEAD | gzip > e4builder.tar.gz
+	cp e4builder.tar.gz ../
+	cd ..
+	rm -fr org.eclipse.e4.releng
+	tar -xf e4builder.tar.gz
+	rm -fr e4builder.tar.gz
+	cd e4builder
+	cd org.eclipse.e4.builder
+  	patch -p0 < "${baseDir}"/patches/e4-addFetchTarget.patch
+	cd ..
+	cd org.eclipse.e4.sdk
+	patch -p0 < "${baseDir}"/patches/e4-removeSkipMapsCheck.patch
+	cd ..
+	cp -fr org.eclipse.e4.builder/* ../
+	cp -fr org.eclipse.e4.sdk ../../
+	cd ..
+	rm -rf e4builder
+	popd
+fi
+
 if [ -e ${fetchDirectory}/orbitRepo ]; then
   cd "${eclipseBuilder}"
   patch -p0 < "${baseDir}"/patches/eclipse-dontusefullmoonformaster.patch
@@ -102,8 +138,14 @@ if [ -e ${fetchDirectory}/ecfBundles ]; then
   cd "${baseDir}"
 fi
 
-# Build must be run from within o.e.r.eclipsebuilder checkout
-cd "${eclipseBuilder}"
+#if [ ${e4Build} = "true" ]; then
+	# Build must be run from within o.e.e4.builder checkout
+#	cd "${e4Builder}/scripts"
+#else
+	# Build must be run from within o.e.r.eclipsebuilder checkout
+	cd "${eclipseBuilder}"
+#fi
+
 
 java -jar \
 "${baseBuilder}"/plugins/org.eclipse.equinox.launcher_*.jar \
@@ -183,26 +225,27 @@ done
 cd ..
 rm -fr ecf-3.5.0
 
-#Source for EMF that aren't part of E4 map files
-git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
-git checkout ${emfTag}
-for f in \
-	org.eclipse.emf.common-feature \
-	org.eclipse.emf.ecore-feature \
-; do
-cp -rf  org.eclipse.emf/features/$f features;
-done
+if [ ${e4Build} = "true" ]; then
+	#Source for EMF that aren't part of E4 map files
+	git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
+	git checkout ${emfTag}
+	for f in \
+		org.eclipse.emf.common-feature \
+		org.eclipse.emf.ecore-feature \
+	; do
+		cp -rf  org.eclipse.emf/features/$f features;
+	done
 
-for f in \
-	org.eclipse.emf.common \
-	org.eclipse.emf.ecore \
-	org.eclipse.emf.ecore.change \
-	org.eclipse.emf.ecore.xmi \
-; do
-cp -rf  org.eclipse.emf/plugins/$f plugins;
-done
-rm -rf org.eclipse.emf
-
+	for f in \
+		org.eclipse.emf.common \
+		org.eclipse.emf.ecore \
+		org.eclipse.emf.ecore.change \
+		org.eclipse.emf.ecore.xmi \
+	; do
+	cp -rf  org.eclipse.emf/plugins/$f plugins;
+	done
+	rm -rf org.eclipse.emf
+fi
 #fix paths here - they are not correctly rendered
 #fetch and prepare initializer
 #rm -rf rt.equinox.incubator

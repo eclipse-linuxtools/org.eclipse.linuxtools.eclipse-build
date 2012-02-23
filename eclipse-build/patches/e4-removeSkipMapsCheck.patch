@@ -1,18 +1,11 @@
-### Eclipse Workspace Patch 1.0
-#P org.eclipse.e4.sdk
-Index: builder/customTargets.xml
-===================================================================
-RCS file: /cvsroot/eclipse/e4/releng/org.eclipse.e4.sdk/builder/customTargets.xml,v
-retrieving revision 1.43
-diff -u -r1.43 customTargets.xml
---- builder/customTargets.xml	29 Jun 2011 14:35:36 -0000	1.43
-+++ builder/customTargets.xml	20 Jul 2011 19:02:13 -0000
+--- builder/customTargets.xml.orig	2012-02-17 23:32:49.000000000 +0100
++++ builder/customTargets.xml	2012-02-23 14:55:07.867654963 +0100
 @@ -17,7 +17,7 @@
  	<!-- Check out map files from correct repository -->
  	<!-- Replace values for mapsCheckoutTag as desired. -->
  	<!-- ===================================================================== -->
 -	<target name="getMapFiles" depends="checkLocalMaps,initLocations" unless="skipMaps">
 +	<target name="getMapFiles" depends="checkLocalMaps,initLocations">
- 		<property name="mapsCheckoutTag" value="HEAD" />
- 		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot_sdk}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
- 		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot_e4}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
+ 		<mkdir dir="${buildDirectory}/maps" />
+ 		<copy todir="${buildDirectory}/maps">
+ 			<fileset dir="${builder}/../maps" />
