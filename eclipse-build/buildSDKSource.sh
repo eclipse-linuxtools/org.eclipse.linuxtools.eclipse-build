@@ -11,6 +11,7 @@ baseBuilderTag="vI20120214-0800"
 eclipseBuilderTag="vI20120214-0800"
 label="3.8.0-I20120214-0800"
 emfTag="HEAD"
+mapVersionTag="${buildID}"
 fetchTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests] [-emfTag <emf tag to check out>]"
@@ -69,7 +70,6 @@ workspace="${workDirectory}"/workspace
 rm -rf "${workspace}"
 mkdir -p "${workspace}"
 cvsRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse"
-mapsRoot="org.eclipse.releng/maps"
 
 # Fetch basebuilder
 if [ ! -e "${baseBuilder}" ]; then
@@ -112,15 +112,11 @@ java -jar \
 -application org.eclipse.ant.core.antRunner \
 -f buildAll.xml \
 fetchMasterFeature \
+-Dhudson=true\
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
 -Duser.home="${homeDirectory}" \
+-DmapVersionTag="${mapVersionTag}" \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
 
 cd "${fetchDirectory}"
@@ -280,13 +276,8 @@ java -jar \
 fetchSdkTestsFeature \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--Dhuson=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
+-Dhudson=true \
+-DmapVersionTag="${mapVersionTag}" \
 -Duser.home="${homeDirectory}" \
 2>&1 | tee "${workDirectory}"/testsFetch.log
 
