@@ -10,9 +10,10 @@ buildID="I20120214-0800"
 baseBuilderTag="vI20120214-0800"
 eclipseBuilderTag="vI20120214-0800"
 label="3.8.0-I20120214-0800"
+emfTag="HEAD"
 fetchTests="yes"
 
-usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
+usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests] [-emfTag <emf tag to check out>]"
 
 while [ $# -gt 0 ]
 do
@@ -23,6 +24,7 @@ do
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
                 -eclipseBuilderTag) eclipseBuilderTag="$2"; shift;;
+		-emfTag) eclipseBuilderTag="$2"; shift;;
                 -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
                 --help) echo $usage; exit 0;;
@@ -185,6 +187,26 @@ done
 cd ..
 rm -fr ecf-3.5.0
 
+#Source for EMF that aren't part of E4 map files
+git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
+git checkout ${emfTag}
+for f in \
+	org.eclipse.emf.common-feature \
+	org.eclipse.emf.ecore-feature \
+; do
+cp -rf  org.eclipse.emf/features/$f features;
+done
+
+for f in \
+	org.eclipse.emf.common \
+	org.eclipse.emf.ecore \
+	org.eclipse.emf.ecore.change \
+	org.eclipse.emf.ecore.xmi \
+; do
+cp -rf  org.eclipse.emf/plugins/$f plugins;
+done
+rm -rf org.eclipse.emf
+
 #fix paths here - they are not correctly rendered
 #fetch and prepare initializer
 #rm -rf rt.equinox.incubator
@@ -197,7 +219,11 @@ rm -rf rt.equinox.incubator
 tar -xf org.eclipse.equinox.initializer.tar.gz
 rm -rf org.eclipse.equinox.initializer.tar.gz
 cp -rf org.eclipse.equinox.initializer plugins
-#rm -rf org.eclipse.equinox.initializer
+rm -rf org.eclipse.equinox.initializer
+
+
+
+
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
