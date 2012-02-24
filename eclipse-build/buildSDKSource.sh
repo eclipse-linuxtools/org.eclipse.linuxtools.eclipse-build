@@ -8,8 +8,8 @@ eclipseBuilder=
 e4Builder=
 
 buildID="R4_HEAD"
-baseBuilderTag="R4_HEAD"
-eclipseBuilderTag="R4_HEAD"
+baseBuilderTag="R4_2_primary"
+eclipseBuilderTag="R4_2_primary"
 label="4.2.warmup"
 emfTag="HEAD"
 mapVersionTag="${buildID}"
@@ -57,10 +57,6 @@ fi
 if [ "x${eclipseBuilder}x" = "xx" ]; then
   eclipseBuilder="${workDirectory}"/org.eclipse.releng.eclipsebuilder
   echo "Eclipsebuilder checkout not specified; will check out into ${eclipseBuilder}."
-fi
-if [ "x${e4Builder}x" = "xx" ]; then
-  e4Builder="${workDirectory}"/org.eclipse.releng.e4.builder
-  echo "e4Builder checkout not specified; will check out into ${e4Builder}."
 fi
 
 fetchDirectory="${workDirectory}"/fetch
