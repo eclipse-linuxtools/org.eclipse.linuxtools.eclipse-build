@@ -85,6 +85,7 @@ if [ ! -e ${eclipseBuilder} ]; then
   cd "${eclipseBuilder}"
   patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
   patch -p0 < "${baseDir}"/patches/eclipse-removeSkipMapsCheck.patch
+  patch -p0 < "${baseDir}"/patches/e4-doNotMirrorEMF.patch
   cd "${baseDir}"
 fi
 
@@ -186,22 +187,16 @@ rm -fr ecf-3.5.0
 	#Source for EMF that aren't part of E4 map files
 	git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
 	git checkout ${emfTag}
-	for f in \
-		org.eclipse.emf.common-feature \
-		org.eclipse.emf.ecore-feature \
-	; do
-		cp -rf  org.eclipse.emf/features/$f features;
-	done
+	cp -rf org.eclipse.emf.common-feature features/org.eclipse.emf.common
+	cp -rf org.eclipse.emf.ecore-feature features/org.eclipse.emf.ecore
 
-	for f in \
-		org.eclipse.emf.common \
-		org.eclipse.emf.ecore \
-		org.eclipse.emf.ecore.change \
-		org.eclipse.emf.ecore.xmi \
-	; do
-	cp -rf  org.eclipse.emf/plugins/$f plugins;
-	done
+	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/org.eclipse.emf.common;
+	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore plugins/org.eclipse.emf.ecore;
+	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.change plugins/org.eclipse.emf.ecore.change;
+	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.xml plugins/org.eclipse.emf.ecore.xml;
+
 	rm -rf org.eclipse.emf
+
 #fix paths here - they are not correctly rendered
 #fetch and prepare initializer
 #rm -rf rt.equinox.incubator
