@@ -53,7 +53,6 @@
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
 	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
 	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
-	<uptodate property="buildEMF.complete" srcfile="unpackEMF-stamp" targetfile="buildEMF-stamp" />
 	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<uptodate property="provision.platform.complete" srcfile="build-stamp" targetfile="provision.platform-stamp" />
@@ -335,16 +334,18 @@
 	</target>
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
+		<patch patchfile="${basedir}/patches/e4-temporaryw3cremovel.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
+		<patch patchfile="${basedir}/patches/nocoreupdate.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
 		<!-- eclipse-build-only patches -->
-		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" backups="true"/>
+		<!--patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" /-->
 		
-		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
-		
+		<!--patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" /-->
+		<patch patchfile="${basedir}/patches/e4-disableBuildDoc.patch" dir="${buildDirectory}" strip="0" backups="true"/>
 		<!-- This one should be removed when Eclipse bug 369204	is fixed -->
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
 
@@ -453,7 +454,7 @@
 	  </antcall>
 	</target>
 
-	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
+	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs">
 		
 
 
@@ -477,7 +478,7 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
-		<mkdir dir="${buildDirectory}/home" />
+		<!--mkdir dir="${buildDirectory}/home" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
@@ -488,7 +489,23 @@
 			<arg line="-f build.xml" />
 			<arg line="build.update.jar" />
 			<jvmarg value="-Xmx512M" />
-		</java>
+		</java-->
+
+		<!--exec executable="${provisionDir}/eclipse" failonerror="true">
+			<arg line="-nosplash " />
+			<arg line="-consolelog " />
+			<arg line="-application org.eclipse.ant.core.antRunner " />
+			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
+			<arg line="-Dtype=feature -Did=org.eclipse.emf.ecore " />
+			<arg line="-DbaseLocation=${provisionDir} " />
+			<arg line="-DbuildLabel=${EMFLabel} " />
+			<arg line="-data ${EMFbuildworkspace} " />
+		</exec-->
+
+		<echo file="buildEMF-stamp" />
+
 
 		<!--
 		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
@@ -525,22 +542,23 @@
 		<property name="pdebuilddir" refid="pdebuilddir.id" />
 	</target>
 
-	<target name="buildEMF" depends="unpackEMF,setPDEBuildPath" unless="buildEMF.complete">
+	<target name="buildEMF" depends="setPDEBuildPath">
 
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}" fork="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-Dtype=feature -Did=org.eclipse.emf.common-feature"/>
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-Duser.home=${buildDirectory}/home" />
+			<arg line="-application org.eclipse.ant.core.antRunner" />
+			<arg line="-f ${pdebuilddir}/scripts/build.xml" />
+			<arg line="build.update.jar" />
 			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.common " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${EMFLabel} " />
-			<arg line="-data ${EMFbuildworkspace} " />
-		</exec>
-		
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
+			<jvmarg value="-Xmx512M" />
+		</java>
+
+		<!--exec executable="${provisionDir}/eclipse" failonerror="true">
 			<arg line="-nosplash " />
 			<arg line="-consolelog " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
@@ -551,7 +569,7 @@
 			<arg line="-DbaseLocation=${provisionDir} " />
 			<arg line="-DbuildLabel=${EMFLabel} " />
 			<arg line="-data ${EMFbuildworkspace} " />
-		</exec>
+		</exec-->
 
 		<echo file="buildEMF-stamp" />
 	</target>
@@ -626,7 +644,7 @@
 		<!-- build libgnomeproxy -->
 		<antcall target="compile.libgnomeproxy" />
 		<!-- build libupdate -->
-		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
+		<!--ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" /-->
 
 		<echo file="compilelibs-stamp" />
 	</target>
@@ -790,9 +808,19 @@
 	<target name="provision.platform" depends="p2prep" unless="provision.platform.complete">
 		<echo message="Installing into:  ${provisionDir}" />
 		<antcall target="provision">
+			<param name="p2.director.installIU" value="org.eclipse.emf.common" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+
+		<antcall target="provision">
+			<param name="p2.director.installIU" value="org.eclipse.emf.ecore" />
+			<param name="profileName" value="PlatformProfile" />
+		</antcall>
+		<antcall target="provision">
 			<param name="p2.director.installIU" value="org.eclipse.platform.ide" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
+
 
 		<!-- Re-symlink system JARs -->
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
