@@ -1,0 +1,14 @@
+--- plugins/org.eclipse.platform.doc.isv/buildDoc.xml.orig	2012-02-24 09:22:20.000000000 +0100
++++ plugins/org.eclipse.platform.doc.isv/buildDoc.xml	2012-02-24 14:38:23.024475887 +0100
+@@ -10,9 +10,8 @@
+ 		</pathconvert>
+ 	</target>
+ 
+-	<target name="all" depends="init" unless="index.present">
+-		<antcall target="copyFrom3.xBinary" />
+-		<antcall target="build.index" />
++	<target name="all">
++		<echo>Do not forget to fix it!</echo>
+ 	</target>
+ 
+ 
