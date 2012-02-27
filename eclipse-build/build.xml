@@ -336,6 +336,7 @@
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		<patch patchfile="${basedir}/patches/e4-temporaryw3cremovel.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
 		<patch patchfile="${basedir}/patches/nocoreupdate.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
+		<patch patchfile="${basedir}/patches/e4-emfNoLicenceFeature.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
 		<!-- eclipse-build-only patches -->
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" backups="true"/>
 		<!--patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
