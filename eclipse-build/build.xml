@@ -455,14 +455,8 @@
 	  </antcall>
 	</target>
 
-	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs">
+	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
 		
-
-
-
-		<!-- build equinox initializer -->
-		<echo message="build.xml: building equinox initializer"/>
-
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
@@ -479,15 +473,6 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
-		<echo file="buildEMF-stamp" />
-
-
-		<!--
-		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}">
-			<property name="arch" value="${buildArch}"/>
-			<property name="builder" value="${buildConfig}" />
-		</ant>
--->
 		<echo file="build-stamp" />
 	</target>
 
@@ -515,38 +500,6 @@
 		</path>
 
 		<property name="pdebuilddir" refid="pdebuilddir.id" />
-	</target>
-
-	<target name="buildEMF" depends="setPDEBuildPath">
-
-		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}" fork="true">
-			<classpath>
-				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
-			</classpath>
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.common-feature"/>
-			<arg line="-data ${buildworkspace} " />
-			<arg line="-Duser.home=${buildDirectory}/home" />
-			<arg line="-application org.eclipse.ant.core.antRunner" />
-			<arg line="-f ${pdebuilddir}/scripts/build.xml" />
-			<arg line="build.update.jar" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<jvmarg value="-Xmx512M" />
-		</java>
-
-		<!--exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.ecore " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${EMFLabel} " />
-			<arg line="-data ${EMFbuildworkspace} " />
-		</exec-->
-
-		<echo file="buildEMF-stamp" />
 	</target>
 
 	<target name="buildTests" depends="provisionSDKinDropins,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
@@ -618,8 +571,6 @@
 		</move>
 		<!-- build libgnomeproxy -->
 		<antcall target="compile.libgnomeproxy" />
-		<!-- build libupdate -->
-		<!--ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" /-->
 
 		<echo file="compilelibs-stamp" />
 	</target>
@@ -795,7 +746,6 @@
 			<param name="p2.director.installIU" value="org.eclipse.platform.ide" />
 			<param name="profileName" value="PlatformProfile" />
 		</antcall>
-
 
 		<!-- Re-symlink system JARs -->
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
