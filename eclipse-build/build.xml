@@ -479,32 +479,6 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
-		<!--mkdir dir="${buildDirectory}/home" />
-		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
-			<classpath>
-				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
-			</classpath>
-			<arg line="-data ${buildworkspace} " />
-			<arg line="-Duser.home=${buildDirectory}/home" />
-			<arg line="-application org.eclipse.ant.core.antRunner" />
-			<arg line="-f build.xml" />
-			<arg line="build.update.jar" />
-			<jvmarg value="-Xmx512M" />
-		</java-->
-
-		<!--exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.ecore " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${EMFLabel} " />
-			<arg line="-data ${EMFbuildworkspace} " />
-		</exec-->
-
 		<echo file="buildEMF-stamp" />
 
 
