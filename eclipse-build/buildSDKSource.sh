@@ -184,18 +184,22 @@ done
 cd ..
 rm -fr ecf-3.5.0
 
-	#Source for EMF that aren't part of E4 map files
-	git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
-	git checkout ${emfTag}
-	cp -rf org.eclipse.emf.common-feature features/org.eclipse.emf.common
-	cp -rf org.eclipse.emf.ecore-feature features/org.eclipse.emf.ecore
 
-	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/org.eclipse.emf.common;
-	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore plugins/org.eclipse.emf.ecore;
-	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.change plugins/org.eclipse.emf.ecore.change;
-	cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.xml plugins/org.eclipse.emf.ecore.xml;
+        #Source for EMF that aren't part of E4 map files
+        rm -rf org.eclipse.emf
+        git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
+#       git checkout ${emfTag}
+        rm -rf features/org.eclipse.emf.* plugins/org.eclipse.emf.*
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.common-feature features/
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.ecore-feature features/
 
-	rm -rf org.eclipse.emf
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.change plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.xmi plugins/
+
+        rm -rf org.eclipse.emf
+
 
 #fix paths here - they are not correctly rendered
 #fetch and prepare initializer
