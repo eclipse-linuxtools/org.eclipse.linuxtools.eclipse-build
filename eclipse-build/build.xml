@@ -337,16 +337,16 @@
 		<patch patchfile="${basedir}/patches/e4-temporaryw3cremovel.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
 		<patch patchfile="${basedir}/patches/nocoreupdate.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
 		<patch patchfile="${basedir}/patches/e4-emfNoLicenceFeature.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
+		<patch patchfile="${basedir}/patches/e4-disableBuildDoc.patch" dir="${buildDirectory}" strip="0" backups="true"/>
 		<!-- eclipse-build-only patches -->
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" backups="true"/>
-		<!--patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/e4-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" /-->
+		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
 		
-		<!--patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" /-->
-		<patch patchfile="${basedir}/patches/e4-disableBuildDoc.patch" dir="${buildDirectory}" strip="0" backups="true"/>
+		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
 		<!-- This one should be removed when Eclipse bug 369204	is fixed -->
 		<patch patchfile="${basedir}/patches/donotsetjavahomeandoptimizeliblocalfile.patch" dir="${buildDirectory}" strip="1" />
 
@@ -394,6 +394,7 @@
 		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
+		<patch patchfile="${basedir}/patches/e4-removeUpdateTests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 

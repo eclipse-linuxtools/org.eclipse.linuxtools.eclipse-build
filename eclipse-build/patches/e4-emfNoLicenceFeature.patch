@@ -1,5 +1,5 @@
---- features/org.eclipse.emf.ecore/feature.xml.old	2012-02-27 14:21:08.859805007 +0100
-+++ features/org.eclipse.emf.ecore/feature.xml	2012-02-27 14:21:31.296898952 +0100
+--- features/org.eclipse.emf.ecore-feature/feature.xml.old	2012-02-27 14:21:08.859805007 +0100
++++ features/org.eclipse.emf.ecore-feature/feature.xml	2012-02-27 14:21:31.296898952 +0100
 @@ -4,8 +4,7 @@
        label="%featureName"
        version="2.8.0.qualifier"
@@ -10,8 +10,8 @@
  
     <description>
        %description
---- features/org.eclipse.emf.common/feature.xml.old	2012-02-27 14:21:50.371978819 +0100
-+++ features/org.eclipse.emf.common/feature.xml	2012-02-27 14:22:05.553042380 +0100
+--- features/org.eclipse.emf.common-feature/feature.xml.old	2012-02-27 14:21:50.371978819 +0100
++++ features/org.eclipse.emf.common-feature/feature.xml	2012-02-27 14:22:05.553042380 +0100
 @@ -4,8 +4,7 @@
        label="%featureName"
        version="2.8.0.qualifier"
