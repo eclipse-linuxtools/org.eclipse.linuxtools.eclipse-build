@@ -113,12 +113,6 @@
 		<include name="javax.servlet*" />
 		<include name="javax.el*" />
 		<include name="org.objectweb.asm*" />
-
-		<include name="org.apache.batik*" />
-		<include name="javax.inject*" />
-		<include name="javax.annotation*" />
-		<include name="javax.xml*" />
-		<include name="org.w3c*" />
 	</fileset>
 	<path id="pdebuildClasspath">
 		<pathelement location="${sdkSource}/plugins/org.eclipse.pde.build/lib/pdebuild-ant.jar" />
