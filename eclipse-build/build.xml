@@ -407,13 +407,13 @@
 	</target>
 
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
-		<symlinkOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
+		<symlinkOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<!-- delete all windows scripts and symlink linux ones -->
 		<delete dir="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20120109-1030/bin"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins"  copyFiles="${copyFiles}"/>
-		<symlinkOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
-		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" copyFiles="${copyFiles}"/>
-		<symlinkOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins"  copyFiles="${copyFiles}"/>
+		<symlinkOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" copyFiles="${copyFiles}"/>
+		<symlinkOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20120109-1030/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
@@ -795,8 +795,8 @@
 		</antcall>
 
 		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<echo file="provision.platform-stamp" />
 	</target>
 
@@ -810,8 +810,8 @@
 		</antcall>
 
 		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<echo file="provision.cvs-stamp" />
 	</target>
 
@@ -890,11 +890,11 @@
 		<symlink link="${provisionWithTestsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
 
 		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
 		
 		<!-- Install test framework -->
 		<antcall target="provision">
@@ -1283,13 +1283,13 @@
 		<delete file="${jdtDropinsDir}/plugins/${junit4jar.path}" />
 		<symlink link="${jdtDropinsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
 
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		
-		<symlinkInstalledOSGiJars dependencies="${basedir}/jdtdependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/jdtnonosgidependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
+		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
 		
-		<symlinkInstalledOSGiJars dependencies="${basedir}/sdkdependencies.properties" topLevelDir="${sdkDropinsDir}/plugins" />
+		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${sdkDropinsDir}/plugins" />
 		
 		<delete dir="${platformAndCVSInstallation}" />
 		<delete dir="${jdtInstallation}" />
