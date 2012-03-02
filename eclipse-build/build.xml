@@ -392,6 +392,9 @@
 		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
 		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
+
+		<!-- remove when 373107 is fixed -->
+		<patch patchfile="${basedir}/patches/tests-unpackAntUITests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<echo file="testspatch-stamp" />
 	</target>
 
@@ -454,12 +457,8 @@
 	</target>
 
 	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
-		
 
-
-
-		<!-- build equinox initializer -->
-		<echo message="build.xml: building equinox initializer"/>
+			
 
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
@@ -477,7 +476,9 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
-		<mkdir dir="${buildDirectory}/home" />
+		<!-- build equinox initializer -->
+		<echo message="build.xml: building equinox initializer"/>
+		<mkdir dir="${buildDirectory}/home" />	
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />

@@ -1,0 +1,12 @@
+--- feature.xml.old	2012-03-02 12:53:20.500583042 +0100
++++ feature.xml	2012-03-02 12:54:43.650931423 +0100
+@@ -40,7 +40,8 @@
+          id="org.eclipse.ant.tests.ui"
+          download-size="0"
+          install-size="0"
+-         version="0.0.0"/>
++         version="0.0.0"
++	 unpack="true"/>
+ 
+    <plugin
+          id="org.eclipse.compare.tests"
