@@ -1,0 +1,19 @@
+--- a/features/org.eclipse.platform/feature.xml	2012-02-29 12:00:52.000000000 -0500
++++ b/features/org.eclipse.platform/feature.xml	2012-03-05 11:57:38.000000000 -0500
+@@ -144,6 +144,16 @@
+          unpack="false"/>
+ 
+    <plugin
++         id="org.eclipse.core.net.linux.arm"
++         os="linux"
++         arch="arm"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++
++   <plugin
+          id="org.eclipse.core.resources"
+          download-size="0"
+          install-size="0"
