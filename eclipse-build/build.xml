@@ -369,7 +369,7 @@
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 		
 		<!-- This one is to be removed after Eclipse bug 369223 is fixed -->
-		<patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" />
+		<!-- patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" / -->
 
 		<!-- This one is to be removed after Eclipse bug 369224 is fixed -->		
 		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
