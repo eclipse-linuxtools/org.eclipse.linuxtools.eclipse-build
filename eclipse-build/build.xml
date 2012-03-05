@@ -354,8 +354,7 @@
 		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
 
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
+
 
 		<!-- Those two are to be removed when Eclipse bug 369221 is fixed -->
 		<patch patchfile="${basedir}/patches/addDontFetchBinaries-launcher.patch" dir="${buildDirectory}" strip="1" />
@@ -371,8 +370,12 @@
 		<!-- This one is to be removed after Eclipse bug 369223 is fixed -->
 		<!-- patch patchfile="${basedir}/patches/eclipse-core-resources-compilation-profile.patch" dir="${buildDirectory}" strip="0" / -->
 
-		<!-- This one is to be removed after Eclipse bug 369224 is fixed -->		
+		<!-- Remove this one after Eclipse bug 373258 is fixed -->
 		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
+
+		<!-- This two is to be removed after Eclipse bug 369224 is fixed -->		
+		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
 
 		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
