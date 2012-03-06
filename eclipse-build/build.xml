@@ -22,9 +22,6 @@
 
 	<available file="eclipse-${label}-src.tar.bz2" property="sdkSourcePresent" value="true" />
 	<available file="eclipse/plugins/org.eclipse.equinox.launcher/build.properties" property="extractedSdkSourcePresent" value="true" />
-	<property name="emfSourceDir" value="emfFore4-${EMFlabel}-src" />
-	<property name="emfTarball" value="${emfSourceDir}.tar.bz2" />
-	<available file="${emfTarball}" property="emfSourceTarballPresent" value="true" />
 
 	<condition property="onlyExtractedSdkSourcePresent">
 		<and>
@@ -44,18 +41,12 @@
 	<available file="eclipse-sdktests-${label}-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
-	<available property="unpack.complete" file="unpack-stamp" value="true" />
-	<available property="unpackEMF.complete" file="unpackEMF-stamp" value="true" />
-	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
 	<uptodate property="symlinks.complete" srcfile="patch-stamp" targetfile="symlinks-stamp" />
-	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
 	<uptodate property="compilelibs.complete" srcfile="unpack-stamp" targetfile="compilelibs-stamp" />
 	<uptodate property="build.complete" srcfile="patch-stamp" targetfile="build-stamp" />
-	<uptodate property="buildEMF.complete" srcfile="unpackEMF-stamp" targetfile="buildEMF-stamp" />
 	<uptodate property="p2prep.complete" srcfile="build-stamp" targetfile="p2prep-stamp" />
-	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	<uptodate property="provision.platform.complete" srcfile="build-stamp" targetfile="provision.platform-stamp" />
 	<uptodate property="provision.cvs.complete" srcfile="build-stamp" targetfile="provision.cvs-stamp" />
 	<uptodate property="provision.tests.complete" srcfile="testsbuild-stamp" targetfile="provision.tests-stamp" />
@@ -63,20 +54,16 @@
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build" />
-	<property name="testsBuildDir" value="${basedir}/testsBuild" />
+	
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
-	<property name="EMFbuildworkspace" value="${basedir}/EMFbuildworkspace" />
 	<property name="buildDirectory" value="${topBuildDir}/eclipse-${label}-src" />
-	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
-	<property name="emfBuildDirectory" value="${topBuildDir}/${emfSourceDir}" />
 	<property name="buildConfigs" value="${buildDirectory}/buildConfigs" />
 	<property name="buildConfig" value="${buildConfigs}/eclipse-build-config" />
 	<property name="productFiles" value="${buildConfig}/productFiles" />
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="provisionDir" value="${buildDirectory}/installation" />
-	<property name="provisionWithTestsDir" value="${buildDirectory}/installationWithTests" />
 
 	<!-- Distros with alternative JUnit 4 JAR locations should pass this
 	     parameter in to ant -->
@@ -138,7 +125,6 @@
 		<echo message="Installation directory will be ${destDir}/${prefix}/${libDir}" />
 	</target>
 
-	<property name="doTests" value="true" />
 
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
@@ -155,18 +141,6 @@
 
 	<target name="fetch" unless="sdkSourceTarballPresent">
 		<fail message="SDK source tarball eclipse-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or update build.properties file to reflect your tarball version." />
-	</target>
-
-	<target name="fetchTestSources" unless="testsSourcePresent">
-		<fail message="SDK tests source tarball eclipse-sdktests-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
-	</target>
-
-	<target name="fetchTestScripts" unless="testsScriptsPresent">
-		<fail message="Scripts for the SDK tests tarball eclipse-sdktests-${label}-scripts.tar.bz2 are not present.  Please either download a file such as eclipse-sdktests-${label}-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
-	</target>
-
-	<target name="fetchEMF" unless="emfSourceTarballPresent">
-		<fail message="EMF source tarball ${emfTarball} is not present.  Please either download a file such as emfFore4-2.7.0-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./builde4AndEMFSources.sh or correct the build.properties file to reflect your EMF source tarball version." />
 	</target>
 
 	<target name="extractBuildXmls" if="scriptsPresent">
@@ -250,44 +224,6 @@
 		<!--delete dir="${buildDirectory}/plugins/org.eclipse.equinox.http.jetty_1.1.100" /-->
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
-	</target>
-
-	<target name="unpackEMF" depends="fetchEMF, provisionSDKinDropins" unless="unpackEMF.complete">
-		<delete dir="${topBuildDir}/${emfSourceDir}" />
-		<mkdir dir="${topBuildDir}/${emfSourceDir}" />
-
-		<delete dir="${EMFbuildworkspace}" />
-		<mkdir dir="${EMFbuildworkspace}" />
-
-		<untar dest="${topBuildDir}" src="${basedir}/${emfTarball}" compression="bzip2" />
-		<echo file="unpackEMF-stamp" />
-	</target>
-
-	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
-		<delete dir="${testsBuildDir}" />
-		<mkdir dir="${testsBuildDir}" />
-
-		<!-- User home used for build -->
-		<delete dir="${homeDir}" />
-		<mkdir dir="${homeDir}" />
-
-		<!-- Workspaces used for build -->
-		<delete dir="${baseworkspace}" />
-		<mkdir dir="${baseworkspace}" />
-		<delete dir="${buildworkspace}" />
-		<mkdir dir="${buildworkspace}" />
-
-		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${label}-src.tar.bz2)" />
-		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" compression="bzip2" />
-		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${label}-scripts.tar.bz2" compression="bzip2" />
-		<move todir="${testsBuildDir}">
-			<fileset dir="${testsBuildDir}/eclipse-sdktests-${label}-scripts">
-				<include name="**/*" />
-			</fileset>
-		</move>
-
-		<!-- Create a stamp file -->
-		<echo file="testsunpack-stamp" />
 	</target>
 
 	<target name="clean-sdk">
@@ -385,20 +321,6 @@
 
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 		<echo file="patch-stamp" />
-	</target>
-
-	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
-		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-noequinoxregiontests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-BZ295666.patch" dir="${testsBuildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.pde.ui.tests" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
-		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
-
-		<!-- remove when 373107 is fixed -->
-		<patch patchfile="${basedir}/patches/tests-unpackAntUITests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
-		<echo file="testspatch-stamp" />
 	</target>
 
 	<target name="buildHelperTask">
@@ -504,95 +426,7 @@
 -->
 		<echo file="build-stamp" />
 	</target>
-
-	<!--
-	<target name="checkBuildTests" depends="buildTests.check" if="buildTests.run">
-	</target>
-
-	<target name="buildTests.check">
-		<condition property="buildTests.run">
-			<and>
-				<istrue value="${doTests}"/>
-				<not>
-					<istrue value="${testsbuild.complete}"/>
-				</not>
-			</and>
-		</condition>
-	</target>
-	-->
 	
-	<target name="setPDEBuildPath" depends="provisionSDKinDropins">
-		<path id="pdebuilddir.id">
-			<dirset dir="${provisionDir}/dropins/sdk/plugins">
-				<include name="org.eclipse.pde.build_*" />
-			</dirset>
-		</path>
-
-		<property name="pdebuilddir" refid="pdebuilddir.id" />
-	</target>
-
-	<target name="buildEMF" depends="unpackEMF,setPDEBuildPath" unless="buildEMF.complete">
-
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.common " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${EMFLabel} " />
-			<arg line="-data ${EMFbuildworkspace} " />
-		</exec>
-		
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${emfBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.emf.ecore " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${EMFLabel} " />
-			<arg line="-data ${EMFbuildworkspace} " />
-		</exec>
-
-		<echo file="buildEMF-stamp" />
-	</target>
-
-	<target name="buildTests" depends="provisionSDKinDropins,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
-
-		<!-- Test framework -->
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.test " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${testsBuildLabel} " />
-			<arg line="-data ${buildworkspace} " />
-		</exec>
-		<!-- SDK tests -->
-		<exec executable="${provisionDir}/eclipse" failonerror="true">
-			<arg line="-nosplash " />
-			<arg line="-consolelog " />
-			<arg line="-application org.eclipse.ant.core.antRunner " />
-			<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
-			<arg line="-DbuildDirectory=${testsBuildDirectory} " />
-			<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
-			<arg line="-DbaseLocation=${provisionDir} " />
-			<arg line="-DbuildLabel=${testsBuildLabel} " />
-			<arg line="-data ${buildworkspace} " />
-		</exec>
-		<echo file="testsbuild-stamp" />
-	</target>
-
 	<target name="compile.libgnomeproxy">
 		<!-- build libgnomeproxy -->
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
@@ -852,108 +686,6 @@
 		</antcall>
 	</target>
 
-	<target name="checkDebugAndVerbose">
-		<condition property="bothDebugAndVerbose.set">
-			<and>
-				<isset property="debugTests" />
-				<isset property="verboseTests" />
-			</and>
-		</condition>
-	</target>
-
-	<target name="setDebugAndVerbose" depends="checkDebugAndVerbose" if="bothDebugAndVerbose.set">
-		<property name="testSwitches" value="-dv" />
-	</target>
-
-	<target name="setDebugTests" if="debugTests">
-		<property name="testSwitches" value="-d" />
-	</target>
-
-	<target name="setVerboseTests" if="verboseTests">
-		<property name="testSwitches" value="-v" />
-	</target>
-
-	<target name="setDebugAndVerboseArgs" depends="setDebugAndVerbose,setDebugTests,setVerboseTests" />
-
-	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs">
-		<!-- These two next calls just set the properties to an empty string if they are not previously set -->
-		<property name="debugTestsSwitch" value="" />
-		<property name="verboseTestsSwitch" value="" />
-
-		<!-- Install a clean SDK for testing -->
-		<antcall target="provision">
-			<param name="provisionDir" value="${provisionWithTestsDir}"/>
-			<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
-			<param name="profileName" value="SDKProfile" />
-		</antcall>
-
-		<fileset id="junit4.jar" dir="${provisionWithTestsDir}/plugins">
-			<include name="**/org.junit4_**/junit.jar" />
-		</fileset>
-		<property name="junit4jar.path" refid="junit4.jar" />
-
-		<delete file="${provisionWithTestsDir}/plugins/${junit4jar.path}" />
-		<symlink link="${provisionWithTestsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
-
-		<!-- Re-symlink system JARs -->
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
-		
-		<!-- Install test framework -->
-		<antcall target="provision">
-			<param name="provisionDir" value="${provisionWithTestsDir}"/>
-			<param name="reposource" value="${testsBuildDirectory}/buildRepo" />
-			<param name="p2.director.installIU" value="org.eclipse.test.feature.group" />
-			<param name="profileName" value="SDKProfile" />
-		</antcall>
-		
-		<echo message="###################################################################" />
-		<echo message="#                                                                 #" />
-		<echo message="#             Please post and discuss results here:               #" />
-		<echo message="# http://wiki.eclipse.org/Linux_Tools_Project/Eclipse_Build/Tests #" />
-		<echo message="#                                                                 #" />
-		<echo message="###################################################################" />
-		<echo message="" />
-		<tstamp>
-			<format property="timestamp" pattern="yyyyMMddHHmmss" />
-		</tstamp>
-		<chmod perm="ugo+rx" file="${basedir}/runtests.sh" />
-		<!--
-		<echo message="Calling runtests with (debug, verbose) = (${testSwitches})" />
-		-->
-		<exec executable="${basedir}/runtests.sh" dir="${basedir}">
-			<arg value="-t${timestamp}" />
-			<arg value="-b ${testsBuildDirectory}" />
-			<arg value="-p ${provisionWithTestsDir}" />
-			<arg value="${testSwitches}" />
-		</exec>
-		<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
-		<!-- Copy over the XML to generate a top-level report for all of the tests -->
-		<mkdir dir="${testResultDir}/origXml" />
-		<copy failonerror="false" todir="${testResultDir}/origXml">
-			<fileset dir="${testResultDir}/xml">
-				<include name="**/*" />
-			</fileset>
-		</copy>
-		<!-- Un-"collect" the results -->
-		<replace dir="${testResultDir}/origXml" value="">
-			<include name="**/*.xml" />
-			<replacetoken>&lt;testsuites&gt;</replacetoken>
-		</replace>
-		<replace dir="${testResultDir}/origXml" value="">
-			<include name="**/*.xml" />
-			<replacetoken>&lt;/testsuites&gt;</replacetoken>
-		</replace>
-		<!-- Aggregate XML report files -->
-		<junitreport todir="${testResultDir}/xml" tofile="org.eclipse.sdk.tests.xml">
-			<fileset dir="${testResultDir}/origXml" includes="*.xml" />
-		</junitreport>
-		<!-- Generate top-level HTML report -->
-		<xslt style="${provisionWithTestsDir}/plugins/${testframework}/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
-	</target>
 
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2" />
