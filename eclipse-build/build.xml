@@ -403,7 +403,9 @@
 
 	<target name="buildHelperTask">
 		<mkdir dir="task-bin" />
-		<javac compiler="modern" target="1.5" source="1.5" debug="true" srcdir="${basedir}/task-src" destdir="${basedir}/task-bin" />
+		<javac compiler="modern" target="1.5" source="1.5" debug="true" srcdir="${basedir}/task-src" destdir="${basedir}/task-bin" includeantruntime="true" >
+			<compilerarg value="-Xlint:-options"/>
+		</javac>
 	</target>
 
 	<target name="defineTasks" depends="buildHelperTask">
