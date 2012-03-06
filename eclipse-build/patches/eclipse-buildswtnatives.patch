@@ -1,6 +1,6 @@
 --- a/plugins/org.eclipse.swt/buildFragment.xml
 +++ b/plugins/org.eclipse.swt/buildFragment.xml
-@@ -566,4 +566,28 @@
+@@ -584,4 +584,28 @@
  			extraManifests="${extraManifests}"
  			extraSourceLocations="${extraSourceLocations}"/>
  	</target>
