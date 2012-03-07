@@ -213,8 +213,10 @@
 			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.SF" />
 			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.RSA" />
 		</delete>
-		<!-- add additional archs -->
-		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src/plugins" src="${basedir}/eclipse-build-additionalArchs.tar.bz2" />
+		
+		<!-- add additional archs for org.eclipse.swt, org.eclipse.equinox.launcher & org.eclipse.core.filesystem -->
+		<antcall target="generateSecondaryFragments"/>
+		
 		<!-- prepare ecf build tree -->
 		<delete>
 			<fileset dir="${buildDirectory}/plugins" includes="org.eclipse.ecf*" />
@@ -224,6 +226,59 @@
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
 	</target>
+	
+	<target name="generateSecondaryFragments">
+		<!-- TODO: replace the rename.sh with ant -->
+		
+		<copy file="additionalArchs/rename.sh" todir="${buildDirectory}/plugins" /> 
+		
+		<generateArch newArch="alpha" />
+		<generateArch newArch="arm" />
+		<generateArch newArch="ia64" />
+		<generateArch newArch="mips" />
+		<generateArch newArch="mipsel" />
+		<generateArch newArch="PA_RISC" />
+		<generateArch newArch="ppc" />
+		<generateArch newArch="ppc64" />
+		<generateArch newArch="sparc" />
+                <generateArch newArch="sparc64" />
+
+		<delete file="${buildDirectory}/plugins/rename.sh"/>
+	</target>
+	<macrodef name="copyPlugin">
+		<attribute name="pluginName" />
+		<attribute name="newArch" />
+		<sequential>
+			<copy todir="${buildDirectory}/plugins/@{pluginName}.@{newArch}">
+				<resources>
+					<fileset dir="${buildDirectory}/plugins/@{pluginName}.x86_64">
+						<include name="**" />
+					</fileset>
+				</resources>
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="generateArch">
+		<attribute name="newArch" />
+		<sequential>
+			<copyPlugin pluginName="org.eclipse.swt.gtk.linux"
+			            newArch="@{newArch}" />
+			<copyPlugin pluginName="org.eclipse.core.filesystem.linux"
+			            newArch="@{newArch}" />
+			<copyPlugin pluginName="org.eclipse.equinox.launcher.gtk.linux"
+			            newArch="@{newArch}" />
+			<exec dir="${buildDirectory}/plugins" executable="sh" failonerror="true">
+				<arg line="rename.sh @{newArch}" />
+			</exec>
+			<replace dir="${buildDirectory}/plugins" value="@{newArch}">
+				<exclude name="rename.sh" />
+				<include name="*@{newArch}/**/*.*" />
+				<excludesfile name="${buildDirectory}/plugins/rename.sh" />
+				<replacetoken>x86_64</replacetoken>
+			</replace>
+		</sequential>
+	</macrodef>
 
 	<target name="clean-sdk">
 		<delete dir="${homeDir}" />
