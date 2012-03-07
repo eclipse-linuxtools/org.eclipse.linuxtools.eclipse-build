@@ -41,6 +41,7 @@
 	<available file="eclipse-sdktests-${label}-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
 
 	<!-- Check what has already been done -->
+	<available property="unpack.complete" file="unpack-stamp" value="true" />
 	<uptodate property="buildId.complete" srcfile="unpack-stamp" targetfile="buildId-stamp" />
 	<uptodate property="patch.complete" srcfile="unpack-stamp" targetfile="patch-stamp" />
 	<uptodate property="symlinks.complete" srcfile="patch-stamp" targetfile="symlinks-stamp" />
@@ -54,7 +55,6 @@
 	<available file="bootstrap/plugins" property="bootstrapped" value="true" />
 
 	<property name="topBuildDir" value="${basedir}/build" />
-	
 	<property name="homeDir" value="${basedir}/home" />
 	<property name="baseworkspace" value="${basedir}/baseworkspace" />
 	<property name="buildworkspace" value="${basedir}/buildworkspace" />
@@ -124,7 +124,6 @@
 	<target name="getInstallationDir" depends="setLibDir">
 		<echo message="Installation directory will be ${destDir}/${prefix}/${libDir}" />
 	</target>
-
 
 	<target name="bootstrap" unless="bootstrapped">
 		<ant inheritall="false" antfile="pdebuild.xml">
@@ -426,7 +425,7 @@
 -->
 		<echo file="build-stamp" />
 	</target>
-	
+
 	<target name="compile.libgnomeproxy">
 		<!-- build libgnomeproxy -->
 		<exec dir="${buildDirectory}/plugins/org.eclipse.core.net/natives/unix/linux" executable="make" failonerror="true" />
@@ -685,7 +684,6 @@
 			<param name="p2.repo" value="${reposource}" />
 		</antcall>
 	</target>
-
 
 	<target name="run.director">
 		<property name="baseBuilderConfig" value="${baseBuilder}/p2" />
