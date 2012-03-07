@@ -18,6 +18,9 @@
 	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
 
 	<property name="topBuildDir" value="${basedir}/build" />
+	<property name="homeDir" value="${basedir}/home" />
+	<property name="baseworkspace" value="${basedir}/baseworkspace" />
+	<property name="buildworkspace" value="${basedir}/buildworkspace" />
 	<property name="buildDirectory" value="${topBuildDir}/eclipse-${label}-src" />
 	<property name="testsBuildDir" value="${basedir}/testsBuild" />
 	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
