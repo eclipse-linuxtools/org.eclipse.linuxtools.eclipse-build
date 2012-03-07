@@ -1,5 +1,6 @@
 <project name="Eclipse SDK Test build" default="runTests" basedir=".">
 	
+	<!-- check java -->
 	<property environment="env"/>
 		<property name="jhome" value="${env.JAVA_HOME}"/>
 		<condition property="javaHomeExists">
@@ -9,17 +10,36 @@
 		</condition>
 	<fail unless="javaHomeExists" message="JAVA_HOME is not set properly"/>
 	
+
+	<!-- load properties used by build.xml -->
+	<loadproperties srcFile="build.properties"/>
+	<!-- Distros with alternative JUnit 4 JAR locations should pass this
+	     parameter in to ant -->
+	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
+
+	<property name="topBuildDir" value="${basedir}/build" />
+	<property name="buildDirectory" value="${topBuildDir}/eclipse-${label}-src" />
+	<property name="testsBuildDir" value="${basedir}/testsBuild" />
+	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
+	<property name="provisionDir" value="${buildDirectory}/installation" />
+	<property name="provisionWithTestsDir" value="${buildDirectory}/installationWithTests" />
+
+	<available file="eclipse-sdktests-${label}-src.tar.bz2" property="testsSourcePresent" value="true" />
+	<available file="eclipse-sdktests-${label}-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
+	
+	<!-- check what is already done -->
 	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" targetfile="testsunpack-stamp" />
 	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
 	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
 	
-	<property name="testsBuildDir" value="${basedir}/testsBuild" />
-	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
-	
-	<property name="provisionWithTestsDir" value="${buildDirectory}/installationWithTests" />
-	
-	<property name="doTests" value="true" />
-	
+	<target name="fetchTestSources" unless="testsSourcePresent">
+		<fail message="SDK tests source tarball eclipse-sdktests-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
+	</target>
+
+	<target name="fetchTestScripts" unless="testsScriptsPresent">
+		<fail message="Scripts for the SDK tests tarball eclipse-sdktests-${label}-scripts.tar.bz2 are not present.  Please either download a file such as eclipse-sdktests-${label}-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
+	</target>
+
 	<target name="checkDebugAndVerbose">
 		<condition property="bothDebugAndVerbose.set">
 			<and>
@@ -57,6 +77,12 @@
 		<ant antfile="build.xml" target="provisionSDKinDropins"/>
 	</target>
 	
+	<target name="buildHelperTask" >
+		<ant antfile="build.xml" target="buildHelperTask"/>
+		<taskdef name="symlinkOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkInstalledOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkInstalledOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkNonOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkNonOSGiJars" classpath="${basedir}/task-bin" />
+	</target>
 	
 	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
 		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
@@ -70,15 +96,6 @@
 		<!-- remove when 373107 is fixed -->
 		<patch patchfile="${basedir}/patches/tests-unpackAntUITests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
 		<echo file="testspatch-stamp" />
-	</target>
-	
-	
-	<target name="fetchTestSources" unless="testsSourcePresent">
-		<fail message="SDK tests source tarball eclipse-sdktests-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
-	</target>
-
-	<target name="fetchTestScripts" unless="testsScriptsPresent">
-		<fail message="Scripts for the SDK tests tarball eclipse-sdktests-${label}-scripts.tar.bz2 are not present.  Please either download a file such as eclipse-sdktests-${label}-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
 	</target>
 			
 	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
@@ -141,17 +158,17 @@
 		</target>
 	
 	
-	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs">
+	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs, buildHelperTask">
 			<!-- These two next calls just set the properties to an empty string if they are not previously set -->
 			<property name="debugTestsSwitch" value="" />
 			<property name="verboseTestsSwitch" value="" />
 
 			<!-- Install a clean SDK for testing -->
-			<antcall target="provision">
-				<param name="provisionDir" value="${provisionWithTestsDir}"/>
-				<param name="p2.director.installIU" value="org.eclipse.sdk.ide" />
-				<param name="profileName" value="SDKProfile" />
-			</antcall>
+			<ant antfile="build.xml" target="provision">
+				<property name="provisionDir" value="${provisionWithTestsDir}"/>
+				<property name="p2.director.installIU" value="org.eclipse.sdk.ide" />
+				<property name="profileName" value="SDKProfile" />
+			</ant>
 
 			<fileset id="junit4.jar" dir="${provisionWithTestsDir}/plugins">
 				<include name="**/org.junit4_**/junit.jar" />
@@ -169,12 +186,12 @@
 			<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
 			
 			<!-- Install test framework -->
-			<antcall target="provision">
-				<param name="provisionDir" value="${provisionWithTestsDir}"/>
-				<param name="reposource" value="${testsBuildDirectory}/buildRepo" />
-				<param name="p2.director.installIU" value="org.eclipse.test.feature.group" />
-				<param name="profileName" value="SDKProfile" />
-			</antcall>
+			<ant antfile="build.xml" target="provision">
+				<property name="provisionDir" value="${provisionWithTestsDir}"/>
+				<property name="reposource" value="${testsBuildDirectory}/buildRepo" />
+				<property name="p2.director.installIU" value="org.eclipse.test.feature.group" />
+				<property name="profileName" value="SDKProfile" />
+			</ant>
 			
 			<echo message="###################################################################" />
 			<echo message="#                                                                 #" />
