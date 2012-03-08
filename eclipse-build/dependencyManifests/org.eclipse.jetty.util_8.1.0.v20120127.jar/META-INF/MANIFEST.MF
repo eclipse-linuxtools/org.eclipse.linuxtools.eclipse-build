@@ -1,0 +1,48 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.jetty.util.security;uses:="org.eclipse.jet
+ ty.util,org.eclipse.jetty.util.resource,org.eclipse.jetty.util.log";v
+ ersion="8.1.0",org.eclipse.jetty.util.statistic;version="8.1.0",org.e
+ clipse.jetty.util.thread;uses:="org.eclipse.jetty.util.component,org.
+ eclipse.jetty.util.log,org.eclipse.jetty.util";version="8.1.0",org.ec
+ lipse.jetty.util.component;uses:="org.eclipse.jetty.util.log,org.ecli
+ pse.jetty.util,org.eclipse.jetty.util.resource";version="8.1.0",org.e
+ clipse.jetty.util.resource;uses:="org.eclipse.jetty.util.log,org.ecli
+ pse.jetty.util";version="8.1.0",org.eclipse.jetty.util.log;uses:="org
+ .slf4j.spi,org.slf4j.helpers,org.slf4j,org.eclipse.jetty.util";versio
+ n="8.1.0",org.eclipse.jetty.util.ssl;uses:="javax.net.ssl,org.eclipse
+ .jetty.util.security,org.eclipse.jetty.util.component,org.eclipse.jet
+ ty.util.resource,org.eclipse.jetty.util.log,org.eclipse.jetty.util";v
+ ersion="8.1.0",org.eclipse.jetty.util;uses:="org.eclipse.jetty.util.l
+ og,org.eclipse.jetty.util.thread,javax.servlet,javax.servlet.http,org
+ .eclipse.jetty.util.component";version="8.1.0",org.eclipse.jetty.util
+ .ajax;uses:="org.eclipse.jetty.util,org.eclipse.jetty.util.log";versi
+ on="8.1.0"
+Implementation-Version: 8.1.0.v20120127
+Bundle-Classpath: .
+Built-By: mockbuild
+Tool: Bnd-1.50.0
+Bundle-Localization: plugin
+Bundle-Name: Jetty :: Utilities
+Created-By: Apache Maven Bundle Plugin
+url: http://www.eclipse.org/jetty
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Bundle-Vendor: Eclipse Jetty Project
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Version: 8.1.0.v20120127
+Build-Jdk: 1.7.0_b147-icedtea
+Bnd-LastModified: 1330080178481
+Bundle-ManifestVersion: 2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Description: Utility classes for Jetty
+Bundle-DocURL: http://www.eclipse.org/jetty
+Bundle-SymbolicName: org.eclipse.jetty.util
+Import-Package: javax.net.ssl,javax.servlet;version="2.6.0",javax.serv
+ let.http;version="2.6.0",org.slf4j;resolution:=optional;version="[1.5
+ ,2.0)",org.slf4j.helpers;version="[1.6,2)";resolution:=optional,org.s
+ lf4j.impl;version="[1.5,2.0)";resolution:=optional,org.slf4j.spi;vers
+ ion="[1.6,2)";resolution:=optional
+Archiver-Version: Plexus Archiver
+

@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: mockbuild
+Build-Jdk: 1.6.0_22
+Implementation-Title: Commons Logging
+Implementation-Vendor: Apache Software Foundation
+Implementation-Vendor-Id: org.apache
+Implementation-Version: 1.1.1
+Specification-Title: Commons Logging
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 1.0
+X-Compile-Source-JDK: 1.2
+X-Compile-Target-JDK: 1.1
+Extension-Name: org.apache.commons.logging
+Bundle-ManifestVersion: 2
+Export-Package: org.apache.commons.logging;version="1.1.1",org.apache.
+ commons.logging.impl;version="1.1.1"
+Bundle-Version: 1.1.1.v20080605-1930
+Bundle-SymbolicName: org.apache.commons.logging
+Bundle-Name: Apache Commons Logging Plug-in
+Bundle-RequiredExecutionEnvironment: CDC-1.0/Foundation-1.0,J2SE-1.3
+Bundle-Localization: plugin
+Bundle-Vendor: Apache Software Foundation
