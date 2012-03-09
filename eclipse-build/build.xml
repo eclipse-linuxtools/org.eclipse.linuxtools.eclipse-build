@@ -232,26 +232,27 @@
 		
 		<copy file="additionalArchs/rename.sh" todir="${buildDirectory}/plugins" /> 
 		
-		<generateArch newArch="alpha" />
-		<generateArch newArch="arm" />
-		<generateArch newArch="ia64" />
-		<generateArch newArch="mips" />
-		<generateArch newArch="mipsel" />
-		<generateArch newArch="PA_RISC" />
-		<generateArch newArch="ppc" />
-		<generateArch newArch="ppc64" />
-		<generateArch newArch="sparc" />
-                <generateArch newArch="sparc64" />
+		<generateArch newArch="alpha" archBase="x86_64"/>
+		<generateArch newArch="arm" archBase="x86"/>
+		<generateArch newArch="ia64" archBase="x86_64"/>
+		<generateArch newArch="mips" archBase="x86_64"/>
+		<generateArch newArch="mipsel" archBase="x86_64"/>
+		<generateArch newArch="PA_RISC" archBase="x86_64"/>
+		<generateArch newArch="ppc" archBase="x86" />
+		<generateArch newArch="ppc64" archBase="x86_64"/>
+		<generateArch newArch="sparc" archBase="x86" />
+                <generateArch newArch="sparc64" archBase="x86_64"/>
 
 		<delete file="${buildDirectory}/plugins/rename.sh"/>
 	</target>
 	<macrodef name="copyPlugin">
 		<attribute name="pluginName" />
+		<attribute name="archBase" />
 		<attribute name="newArch" />
 		<sequential>
 			<copy todir="${buildDirectory}/plugins/@{pluginName}.@{newArch}">
 				<resources>
-					<fileset dir="${buildDirectory}/plugins/@{pluginName}.x86_64">
+					<fileset dir="${buildDirectory}/plugins/@{pluginName}.@{archBase}">
 						<include name="**" />
 					</fileset>
 				</resources>
@@ -260,22 +261,22 @@
 	</macrodef>
 
 	<macrodef name="generateArch">
+		<attribute name="archBase" />
 		<attribute name="newArch" />
 		<sequential>
 			<copyPlugin pluginName="org.eclipse.swt.gtk.linux"
-			            newArch="@{newArch}" />
+			            archBase="@{archBase}" newArch="@{newArch}" />
 			<copyPlugin pluginName="org.eclipse.core.filesystem.linux"
-			            newArch="@{newArch}" />
+			            archBase="@{archBase}" newArch="@{newArch}" />
 			<copyPlugin pluginName="org.eclipse.equinox.launcher.gtk.linux"
-			            newArch="@{newArch}" />
+			            archBase="@{archBase}" newArch="@{newArch}" />
 			<exec dir="${buildDirectory}/plugins" executable="sh" failonerror="true">
-				<arg line="rename.sh @{newArch}" />
+				<arg line="rename.sh @{archBase} @{newArch}" />
 			</exec>
-			<replace dir="${buildDirectory}/plugins" value="@{newArch}">
+			<replace dir="${buildDirectory}/plugins" value="@{newArch}" token="@{archBase}">
 				<exclude name="rename.sh" />
 				<include name="*@{newArch}/**/*.*" />
 				<excludesfile name="${buildDirectory}/plugins/rename.sh" />
-				<replacetoken>x86_64</replacetoken>
 			</replace>
 		</sequential>
 	</macrodef>
