@@ -309,6 +309,8 @@
 
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/bug373640.patch" dir="${buildDirectory}" strip="1" />
+
+		<patch patchfile="${basedir}/patches/jdtlaunchinglib.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
@@ -374,8 +376,6 @@
 
 	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
 
-			
-
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<echo message="${basedir}"/>
 		<echo message="${buildConfig}"/>
@@ -394,6 +394,9 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
+
+
+		
 		<!-- build equinox initializer -->
 		<echo message="build.xml: building equinox initializer"/>
 		<mkdir dir="${buildDirectory}/home" />	
