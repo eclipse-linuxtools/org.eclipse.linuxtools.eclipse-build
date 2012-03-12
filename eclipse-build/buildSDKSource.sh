@@ -197,7 +197,7 @@ rm -rf rt.equinox.incubator
 tar -xf org.eclipse.equinox.initializer.tar.gz
 rm -rf org.eclipse.equinox.initializer.tar.gz
 cp -rf org.eclipse.equinox.initializer plugins
-#rm -rf org.eclipse.equinox.initializer
+rm -rf org.eclipse.equinox.initializer
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
@@ -216,6 +216,26 @@ find \( -name '*.cvsignore' \) -delete
 
 # Remove unnecessary repo
 rm -rf tempSite
+# Before removing all binary JARs extract source code
+# of execution profiles to build them later
+pushd plugins/org.eclipse.osgi/osgi
+for f in \
+        ee.foundation \
+        ee.minimum-1.2.0 \
+        ee.minimum \
+        osgi.cmpn \
+        osgi.core \
+; do
+	mkdir -p  ../../../environments/$f/
+	mkdir -p $f
+	cp "$f.jar" $f/
+	cd $f
+	jar xf "$f.jar" || unzip "$f.jar"
+	cp -rf OSGI-OPT/src/ ../../../../environments/$f/ || echo "Copying $f failed"
+	cp -rf META-INF ../../../../environments/$f/ || echo "Copying $f META-INF failed"
+	cd ..
+done;
+popd
 
 # Remove binary JARs
 find -type f -name '*.jar' -delete
