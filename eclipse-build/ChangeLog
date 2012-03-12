@@ -1,3 +1,11 @@
+2012-02-22  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* patches/add-plugin-version-of-arm-launcher-fragment.patch:
+	New patch.
+	* build.xml: Apply the above patch.
+	* eclipse-build-additionalArchs.tar.bz2: Update the arm fragments
+	base on x86 fragments.
+
 2012-01-24  Andrew Robinson  <arobinso@redhat.com>
 
 	Bug #210014.

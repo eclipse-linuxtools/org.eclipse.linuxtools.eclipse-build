@@ -365,6 +365,7 @@
 
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/bug373640.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/add-plugin-version-of-arm-launcher-fragment.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
