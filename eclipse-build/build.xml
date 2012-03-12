@@ -278,6 +278,10 @@
 				<include name="*@{newArch}/**/*.*" />
 				<excludesfile name="${buildDirectory}/plugins/rename.sh" />
 			</replace>
+			<copy todir="${buildDirectory}/features/org.eclipse.platform/about_files/linux.gtk.@{newArch}/">
+    				<fileset dir="${buildDirectory}/features/org.eclipse.platform/about_files/linux.gtk.@{archBase}"/>
+ 			</copy>
+			<mkdir dir="${buildDirectory}/features/" />
 		</sequential>
 	</macrodef>
 
