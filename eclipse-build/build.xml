@@ -126,6 +126,11 @@
 	</target>
 
 	<target name="bootstrap" unless="bootstrapped">
+
+		<!-- Some of the equinox plugins are required to use this environment, because their build will fail with full vm. Bootstrap needs to have this available.-->		
+		<javac compiler="classic" srcdir="${buildDirectory}/environments/ee.minimum/src" destdir="${buildDirectory}/environments/ee.minimum" target="1.1" source="1.1" />
+		<jar basedir="${buildDirectory}/environments/ee.minimum" destfile="bootstrap/environment/ee.minimum.jar"/>
+
 		<ant inheritall="false" antfile="pdebuild.xml">
 			<property name="buildId" value="${buildId}" />
 			<property name="buildArch" value="${buildArch}" />
@@ -293,9 +298,6 @@
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
-		
-		<!-- Remove this one after Eclipse bug 373258 is fixed -->
-		<patch patchfile="${basedir}/patches/eclipse-equinox-util.patch" dir="${buildDirectory}" strip="0" />
 
 		<!-- This two is to be removed after Eclipse bug 369224 is fixed -->		
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
@@ -386,9 +388,11 @@
 			<arg line="-configuration configuration " />
 			<arg line="-application org.eclipse.ant.core.antRunner " />
 			<arg line="-buildfile ${eclipse.pdebuild.scripts}/build.xml" />
-			<arg line="-propertyfile ${basedir}/build.properties " />
+			<arg line="-propertyfile ${basedir}/build.properties" />
 			<arg line="-Dbuilder=${buildConfig} " />
 			<arg line="-DbuildDirectory=${buildDirectory} " />
+			<!-- Setup this manually -->
+			<arg line="-DOSGi/Minimum-1.1=${basedir}/bootstrap/environment/ee.minimum.jar" />
 			<arg line="-DdontFetchBinaries=true" />
 			<arg line="-consolelog " />
 			<jvmarg value="-Xmx512M" />
