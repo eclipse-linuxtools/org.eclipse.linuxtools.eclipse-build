@@ -233,6 +233,8 @@ for f in \
 	jar xf "$f.jar" || unzip "$f.jar"
 	cp -rf OSGI-OPT/src/ ../../../../environments/$f/ || echo "Copying $f failed"
 	cp -rf META-INF ../../../../environments/$f/ || echo "Copying $f META-INF failed"
+	cp -rf LICENSE ../../../../environments/$f/ || echo "Copying $f LICENCE failed"
+	cp -rf about.html ../../../../environments/$f/ || echo "Copying $f about.html failed"
 	cd ..
 done;
 popd
