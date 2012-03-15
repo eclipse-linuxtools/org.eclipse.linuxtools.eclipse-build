@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %bundleName
+Bundle-SymbolicName: com.jcraft.jsch
+Bundle-Version: 0.1.44.v201101211721
+Bundle-ClassPath: com.jcraft.jsch_0.1.44.v201101211721.jar
+Bundle-Vendor: %venderName
+Bundle-Localization: plugin
+Export-Package: com.jcraft.jsch;version="0.1.44",
+ com.jcraft.jsch.jce;version="0.1.44";x-internal:=true,
+ com.jcraft.jsch.jcraft;version="0.1.44";x-internal:=true,
+ com.jcraft.jsch.jgss;version="0.1.44";x-internal:=true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Created-By: 1.4.0 (Sun Microsystems Inc.)
+
+
