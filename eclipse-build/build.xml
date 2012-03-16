@@ -299,7 +299,14 @@
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 
-		<!-- This two could we contributed if it will be possible to build those plugins from source upstream -->		
+		<!-- It would be good to remove those two entries, however, before you spent some time here, be warned that: -->		
+		<!-- (1) Those plugins contain precompiled classes with source in zips -->
+		<!-- (2) Those plugins have no source folders -->
+		<!-- (3) Those plugins have dependencies -->
+		<!-- Point (3) implies that you cannot have your own build.xml, because you need dependencies that only PDE can discover -->
+		<!-- Point (2) implies that you cannot use PDE build.xml, because there is no source folder, so nothing will be compiled -->
+		<!-- Point (1) implies that developers will not create a source folder, because they want to ship binaries -->
+		<!-- So we have to live with those two patches -->
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="0" backups="true"/>
 		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="0" />
 
