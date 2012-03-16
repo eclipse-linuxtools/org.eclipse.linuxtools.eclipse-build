@@ -299,9 +299,9 @@
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 
-		<!-- This two is to be removed after Eclipse bug 369224 is fixed -->		
-		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="1" />
+		<!-- This two could we contributed if it will be possible to build those plugins from source upstream -->		
+		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="0" backups="true"/>
+		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="0" />
 
 		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
@@ -310,9 +310,7 @@
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
 
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/bug373640.patch" dir="${buildDirectory}" strip="1" />
 
-		<patch patchfile="${basedir}/patches/jdtlaunchinglib.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
