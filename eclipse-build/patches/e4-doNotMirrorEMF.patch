@@ -1,20 +1,20 @@
---- eclipse/buildConfigs/master/customTargets.xml.orig  2012-03-19 07:12:37.000000000 -0400
-+++ eclipse/buildConfigs/master/customTargets.xml       2012-03-19 07:21:27.000000000 -0400
-@@ -124,7 +124,7 @@
-        <!-- Steps to do before setup -->
-        <!-- ===================================================================== -->
-        <target name="preSetup">
--               <echo message="Mirror from ${emfRepoURL} to ${localRepoLocation}" />
-+               <!--echo message="Mirror from ${emfRepoURL} to ${localRepoLocation}" />
-                <p2.mirror destination="file:${localRepoLocation}" ignoreerrors="true">
-                        <source location="${emfRepoURL}" />
-                        <slicingOptions includeOptional="false" includeNonGreedy="false" latestVersionOnly="true" />
-@@ -136,7 +136,7 @@
+--- eclipse/buildConfigs/master/customTargets.xml.olf	2012-02-27 09:40:58.428455018 +0100
++++ eclipse/buildConfigs/master/customTargets.xml	2012-02-27 09:41:10.359505271 +0100
+@@ -130,7 +130,7 @@
+ 	<!-- Steps to do after setup but before starting the build proper -->
+ 	<!-- ===================================================================== -->
+ 	<target name="postSetup">
+-		<echo message="Mirror from ${emfRepoURL} to ${localRepoLocation}" />					
++		<!--echo message="Mirror from ${emfRepoURL} to ${localRepoLocation}" />					
+ 				<p2.mirror destination="file:${localRepoLocation}" ignoreerrors="true">
+ 					<source location="${emfRepoURL}" />
+ 					<slicingOptions includeOptional="false" includeNonGreedy="false" latestVersionOnly="true" />
+@@ -142,7 +142,7 @@
+ 				
+ 				<p2.repo2runnable destination="${transformedRepoLocation}">
+ 					<source location="file:${localRepoLocation}"/>
+-				</p2.repo2runnable>			
++				</p2.repo2runnable-->			
+ 	</target>
  
-                <p2.repo2runnable destination="${transformedRepoLocation}">
-                        <source location="file:${localRepoLocation}" />
--               </p2.repo2runnable>
-+               </p2.repo2runnable-->
-        </target>
- 
-        <!-- ===================================================================== -->
+ 	<!-- ===================================================================== -->
