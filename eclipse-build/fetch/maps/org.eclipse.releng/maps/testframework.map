@@ -1,0 +1,12 @@
+!***************  Test Framework CONTRIBUTION  ******************************************************** 
+feature@org.eclipse.test=GIT,tag=v20110503,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.test-feature
+
+plugin@org.eclipse.test=GIT,tag=v20120313-1326,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.test
+fragment@org.eclipse.ant.optional.junit=GIT,tag=v20110503,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.ant.optional.junit
+
+plugin@org.eclipse.test.performance=GIT,tag=v20120127-1407,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.test.performance
+fragment@org.eclipse.test.performance.win32=GIT,tag=v20110817,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.test.performance.win32
+
+plugin@org.eclipse.test.performance.data=GIT,tag=v20120104-1203,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.test.performance.data
+
+plugin@org.eclipse.test.dispatcher=GIT,tag=HEAD,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.test.dispatcher

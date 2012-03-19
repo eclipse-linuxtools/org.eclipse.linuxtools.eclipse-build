@@ -1,0 +1,10 @@
+!***************  COMPARE CONTRIBUTION  ******************************************************** 
+
+plugin@org.eclipse.compare=GIT,tag=v20120306-1149,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=bundles/org.eclipse.compare
+plugin@org.eclipse.compare.core=GIT,tag=v20120314-1627,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=bundles/org.eclipse.compare.core
+plugin@org.eclipse.compare.win32=GIT,tag=v20111215-1439,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=bundles/org.eclipse.compare.win32
+
+plugin@org.eclipse.compare.examples=GIT,tag=I20111011-0800,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=examples/org.eclipse.compare.examples
+plugin@org.eclipse.compare.examples.xml=GIT,tag=I20111011-0800,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=examples/org.eclipse.compare.examples.xml
+
+plugin@org.eclipse.compare.tests=GIT,tag=I20111108-0800,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=tests/org.eclipse.compare.tests
