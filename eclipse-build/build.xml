@@ -387,7 +387,7 @@
 		<echo message="${basedir}"/>
 		<echo message="${buildConfig}"/>
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
-			<jvmarg line="-server -Xcomp -Xbatch -XX:+PrintCompilation"/>
+			<jvmarg line="-XX:+PrintCompilation"/>
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
