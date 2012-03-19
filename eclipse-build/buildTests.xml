@@ -1,0 +1,243 @@
+<project name="Eclipse SDK Test build" default="runTests" basedir=".">
+	
+	<!-- check java -->
+	<property environment="env"/>
+		<property name="jhome" value="${env.JAVA_HOME}"/>
+		<condition property="javaHomeExists">
+			<resourceexists>
+				<file file="${jhome}"/>
+			</resourceexists>
+		</condition>
+	<fail unless="javaHomeExists" message="JAVA_HOME is not set properly"/>
+	
+
+	<!-- load properties used by build.xml -->
+	<loadproperties srcFile="build.properties"/>
+	<!-- Distros with alternative JUnit 4 JAR locations should pass this
+	     parameter in to ant -->
+	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
+
+	<property name="topBuildDir" value="${basedir}/build" />
+	<property name="homeDir" value="${basedir}/home" />
+	<property name="baseworkspace" value="${basedir}/baseworkspace" />
+	<property name="buildworkspace" value="${basedir}/buildworkspace" />
+	<property name="buildDirectory" value="${topBuildDir}/eclipse-${label}-src" />
+	<property name="testsBuildDir" value="${basedir}/testsBuild" />
+	<property name="testsBuildDirectory" value="${testsBuildDir}/eclipse-sdktests-${label}-src" />
+	<property name="provisionDir" value="${buildDirectory}/installation" />
+	<property name="provisionWithTestsDir" value="${buildDirectory}/installationWithTests" />
+
+	<available file="eclipse-sdktests-${label}-src.tar.bz2" property="testsSourcePresent" value="true" />
+	<available file="eclipse-sdktests-${label}-scripts.tar.bz2" property="testsScriptsPresent" value="true" />
+	
+	<!-- check what is already done -->
+	<uptodate property="testsunpack.complete" srcfile="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" targetfile="testsunpack-stamp" />
+	<uptodate property="testspatch.complete" srcfile="testsunpack-stamp" targetfile="testspatch-stamp" />
+	<uptodate property="testsbuild.complete" srcfile="testspatch-stamp" targetfile="testsbuild-stamp" />
+	
+	<target name="fetchTestSources" unless="testsSourcePresent">
+		<fail message="SDK tests source tarball eclipse-sdktests-${label}-src.tar.bz2 is not present.  Please either download a file such as eclipse-${label}-src.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
+	</target>
+
+	<target name="fetchTestScripts" unless="testsScriptsPresent">
+		<fail message="Scripts for the SDK tests tarball eclipse-sdktests-${label}-scripts.tar.bz2 are not present.  Please either download a file such as eclipse-sdktests-${label}-scripts.tar.bz2 from http://download.eclipse.org/technology/linuxtools/eclipse-build/, generate one by running ./buildSDKSource.sh or correct build.properties file to reflect your tarball version." />
+	</target>
+
+	<target name="checkDebugAndVerbose">
+		<condition property="bothDebugAndVerbose.set">
+			<and>
+				<isset property="debugTests" />
+				<isset property="verboseTests" />
+			</and>
+		</condition>
+	</target>
+	
+	<target name="setPDEBuildPath" depends="provisionSDKinDropins">
+			<path id="pdebuilddir.id">
+				<dirset dir="${provisionDir}/dropins/sdk/plugins">
+					<include name="org.eclipse.pde.build_*" />
+				</dirset>
+			</path>
+
+			<property name="pdebuilddir" refid="pdebuilddir.id" />
+	</target>
+
+	<target name="setDebugAndVerbose" depends="checkDebugAndVerbose" if="bothDebugAndVerbose.set">
+		<property name="testSwitches" value="-dv" />
+	</target>
+
+	<target name="setDebugTests" if="debugTests">
+		<property name="testSwitches" value="-d" />
+	</target>
+
+	<target name="setVerboseTests" if="verboseTests">
+		<property name="testSwitches" value="-v" />
+	</target>
+
+	<target name="setDebugAndVerboseArgs" depends="setDebugAndVerbose,setDebugTests,setVerboseTests" />
+
+	<target name="provisionSDKinDropins">
+		<ant antfile="build.xml" target="provisionSDKinDropins"/>
+	</target>
+	
+	<target name="buildHelperTask" >
+		<ant antfile="build.xml" target="buildHelperTask"/>
+		<taskdef name="symlinkOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkInstalledOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkInstalledOSGiJars" classpath="${basedir}/task-bin" />
+		<taskdef name="symlinkNonOSGiJars" classname="org.eclipse.linuxtools.eclipsebuild.SymlinkNonOSGiJars" classpath="${basedir}/task-bin" />
+	</target>
+	
+	<target name="applyTestPatches" depends="unpackTests" unless="testspatch.complete">
+		<patch patchfile="${basedir}/patches/tests-noapttests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-noequinoxregiontests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-BZ295666.patch" dir="${testsBuildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-org.eclipse.pde.ui.tests-LocalTargetDefinitionTests.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.pde.ui.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-nop2discoverytests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.core.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.core" strip="0" />
+		<patch patchfile="${basedir}/patches/tests-org.eclipse.ant.tests.ui.patch" dir="${testsBuildDirectory}/plugins/org.eclipse.ant.tests.ui" strip="0" />
+
+		<!-- remove when 373107 is fixed -->
+		<patch patchfile="${basedir}/patches/tests-unpackAntUITests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<echo file="testspatch-stamp" />
+	</target>
+			
+	<target name="unpackTests" depends="fetchTestSources,fetchTestScripts" unless="testsunpack.complete">
+		<delete dir="${testsBuildDir}" />
+		<mkdir dir="${testsBuildDir}" />
+
+		<!-- User home used for build -->
+		<delete dir="${homeDir}" />
+		<mkdir dir="${homeDir}" />
+
+		<!-- Workspaces used for build -->
+		<delete dir="${baseworkspace}" />
+		<mkdir dir="${baseworkspace}" />
+		<delete dir="${buildworkspace}" />
+		<mkdir dir="${buildworkspace}" />
+
+		<echo message="Extracting SDK tests source (tar jxf eclipse-sdktests-${label}-src.tar.bz2)" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${label}-src.tar.bz2" compression="bzip2" />
+		<untar dest="${testsBuildDir}" src="${basedir}/eclipse-sdktests-${label}-scripts.tar.bz2" compression="bzip2" />
+		<move todir="${testsBuildDir}">
+			<fileset dir="${testsBuildDir}/eclipse-sdktests-${label}-scripts">
+				<include name="**/*" />
+			</fileset>
+		</move>
+
+		<!-- Create a stamp file -->
+		<echo file="testsunpack-stamp" />
+	</target>
+	
+		
+	<target name="buildTests" depends="provisionSDKinDropins,applyTestPatches,setPDEBuildPath" unless="testsbuild.complete">
+
+			<!-- Test framework -->
+			<exec executable="${provisionDir}/eclipse" failonerror="true">
+				<arg line="-nosplash " />
+				<arg line="-consolelog " />
+				<arg line="-application org.eclipse.ant.core.antRunner " />
+				<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+				<arg line="-propertyfile ${basedir}/build.properties " />
+				<arg line="-DbuildDirectory=${testsBuildDirectory} " />
+				<arg line="-Dtype=feature -Did=org.eclipse.test " />
+				<arg line="-DbaseLocation=${provisionDir} " />
+				<arg line="-DbuildLabel=${testsBuildLabel} " />
+				<arg line="-data ${buildworkspace} " />
+			</exec>
+			<!-- SDK tests -->
+			<exec executable="${provisionDir}/eclipse" failonerror="true">
+				<arg line="-nosplash " />
+				<arg line="-consolelog " />
+				<arg line="-application org.eclipse.ant.core.antRunner " />
+				<arg line="-buildfile ${pdebuilddir}/scripts/build.xml" />
+				<arg line="-propertyfile ${basedir}/build.properties " />
+				<arg line="-DbuildDirectory=${testsBuildDirectory} " />
+				<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
+				<arg line="-DbaseLocation=${provisionDir} " />
+				<arg line="-DbuildLabel=${testsBuildLabel} " />
+				<arg line="-data ${buildworkspace} " />
+			</exec>
+			<echo file="testsbuild-stamp" />
+		</target>
+	
+	
+	<target name="runTests" depends="buildTests,setDebugAndVerboseArgs, buildHelperTask">
+			<!-- These two next calls just set the properties to an empty string if they are not previously set -->
+			<property name="debugTestsSwitch" value="" />
+			<property name="verboseTestsSwitch" value="" />
+
+			<!-- Install a clean SDK for testing -->
+			<ant antfile="build.xml" target="provision">
+				<property name="provisionDir" value="${provisionWithTestsDir}"/>
+				<property name="p2.director.installIU" value="org.eclipse.sdk.ide" />
+				<property name="profileName" value="SDKProfile" />
+			</ant>
+
+			<fileset id="junit4.jar" dir="${provisionWithTestsDir}/plugins">
+				<include name="**/org.junit4_**/junit.jar" />
+			</fileset>
+			<property name="junit4jar.path" refid="junit4.jar" />
+
+			<delete file="${provisionWithTestsDir}/plugins/${junit4jar.path}" />
+			<symlink link="${provisionWithTestsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
+
+			<!-- Re-symlink system JARs -->
+			<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+			<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+			<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+			<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+			<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${provisionWithTestsDir}/plugins" />
+			
+			<!-- Install test framework -->
+			<ant antfile="build.xml" target="provision">
+				<property name="provisionDir" value="${provisionWithTestsDir}"/>
+				<property name="reposource" value="${testsBuildDirectory}/buildRepo" />
+				<property name="p2.director.installIU" value="org.eclipse.test.feature.group" />
+				<property name="profileName" value="SDKProfile" />
+			</ant>
+			
+			<echo message="###################################################################" />
+			<echo message="#                                                                 #" />
+			<echo message="#             Please post and discuss results here:               #" />
+			<echo message="# http://wiki.eclipse.org/Linux_Tools_Project/Eclipse_Build/Tests #" />
+			<echo message="#                                                                 #" />
+			<echo message="###################################################################" />
+			<echo message="" />
+			<tstamp>
+				<format property="timestamp" pattern="yyyyMMddHHmmss" />
+			</tstamp>
+			<chmod perm="ugo+rx" file="${basedir}/runtests.sh" />
+			<!--
+			<echo message="Calling runtests with (debug, verbose) = (${testSwitches})" />
+			-->
+			<exec executable="${basedir}/runtests.sh" dir="${basedir}">
+				<arg value="-t${timestamp}" />
+				<arg value="-b ${testsBuildDirectory}" />
+				<arg value="-p ${provisionWithTestsDir}" />
+				<arg value="${testSwitches}" />
+			</exec>
+			<property name="testResultDir" value="${basedir}/tests_${timestamp}/results" />
+			<!-- Copy over the XML to generate a top-level report for all of the tests -->
+			<mkdir dir="${testResultDir}/origXml" />
+			<copy failonerror="false" todir="${testResultDir}/origXml">
+				<fileset dir="${testResultDir}/xml">
+					<include name="**/*" />
+				</fileset>
+			</copy>
+			<!-- Un-"collect" the results -->
+			<replace dir="${testResultDir}/origXml" value="">
+				<include name="**/*.xml" />
+				<replacetoken>&lt;testsuites&gt;</replacetoken>
+			</replace>
+			<replace dir="${testResultDir}/origXml" value="">
+				<include name="**/*.xml" />
+				<replacetoken>&lt;/testsuites&gt;</replacetoken>
+			</replace>
+			<!-- Aggregate XML report files -->
+			<junitreport todir="${testResultDir}/xml" tofile="org.eclipse.sdk.tests.xml">
+				<fileset dir="${testResultDir}/origXml" includes="*.xml" />
+			</junitreport>
+			<!-- Generate top-level HTML report -->
+			<xslt style="${provisionWithTestsDir}/plugins/${testframework}/JUNIT.XSL" basedir="${testResultDir}/xml" includes="org.eclipse.sdk.tests.xml" destdir="${testResultDir}/html" />
+		</target>
+</project>

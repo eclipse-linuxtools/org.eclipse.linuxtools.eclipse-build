@@ -1,0 +1,49 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.jetty.servlet;uses:="org.eclipse.jetty.ser
+ ver,org.eclipse.jetty.io,org.eclipse.jetty.http,org.eclipse.jetty.ser
+ ver.nio,org.eclipse.jetty.server.handler,org.eclipse.jetty.util.resou
+ rce,javax.servlet,org.eclipse.jetty.server.ssl,org.eclipse.jetty.util
+ .log,javax.servlet.http,org.eclipse.jetty.util,org.eclipse.jetty.util
+ .component,javax.servlet.descriptor,org.eclipse.jetty.server.session,
+ org.eclipse.jetty.security,org.eclipse.jetty.continuation";version="8
+ .1.0",org.eclipse.jetty.servlet.jmx;uses:="org.eclipse.jetty.servlet,
+ org.eclipse.jetty.jmx";version="8.1.0",org.eclipse.jetty.servlet.list
+ ener;uses:="javax.servlet,org.eclipse.jetty.util.log,org.eclipse.jett
+ y.util";version="8.1.0"
+Implementation-Version: 8.1.0.v20120127
+Bundle-Classpath: .
+Built-By: mockbuild
+Tool: Bnd-1.50.0
+Bundle-Localization: plugin
+Bundle-Name: Jetty :: Servlet Handling
+Created-By: Apache Maven Bundle Plugin
+url: http://www.eclipse.org/jetty
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Bundle-Vendor: Eclipse Jetty Project
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Version: 8.1.0.v20120127
+Build-Jdk: 1.7.0_b147-icedtea
+Bnd-LastModified: 1330080189642
+Bundle-ManifestVersion: 2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Description: Jetty Servlet Container
+Bundle-DocURL: http://www.eclipse.org/jetty
+Bundle-SymbolicName: org.eclipse.jetty.servlet
+Import-Package: javax.servlet;version="2.6.0",javax.servlet.descriptor
+ ;version="2.6.0",javax.servlet.http;version="2.6.0",org.eclipse.jetty
+ .continuation;version="[8.1,9)",org.eclipse.jetty.http;version="[8.1,
+ 9)",org.eclipse.jetty.io;version="[8.1,9)",org.eclipse.jetty.jmx;reso
+ lution:=optional;version="8.0",org.eclipse.jetty.security;version="[8
+ .1,9)",org.eclipse.jetty.server;version="[8.1,9)",org.eclipse.jetty.s
+ erver.handler;version="[8.1,9)",org.eclipse.jetty.server.nio;version=
+ "[8.1,9)",org.eclipse.jetty.server.session;version="[8.1,9)",org.ecli
+ pse.jetty.server.ssl;version="[8.1,9)",org.eclipse.jetty.util;version
+ ="[8.1,9)";resolution:=optional,org.eclipse.jetty.util.component;vers
+ ion="[8.1,9)";resolution:=optional,org.eclipse.jetty.util.log;version
+ ="[8.1,9)";resolution:=optional,org.eclipse.jetty.util.resource;versi
+ on="[8.1,9)";resolution:=optional
+Archiver-Version: Plexus Archiver
+
