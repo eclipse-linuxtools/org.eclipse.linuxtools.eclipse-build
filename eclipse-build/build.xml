@@ -460,6 +460,7 @@
 		
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
+			<jvmarg line="-XX:+PrintCompilation"/>
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
 			</classpath>
