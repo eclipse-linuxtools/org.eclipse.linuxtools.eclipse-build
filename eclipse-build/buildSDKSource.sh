@@ -214,13 +214,6 @@ tar -xf org.eclipse.equinox.initializer.tar.gz
 rm -rf org.eclipse.equinox.initializer.tar.gz
 cp -rf org.eclipse.equinox.initializer plugins
 rm -rf org.eclipse.equinox.initializer
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> master
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
