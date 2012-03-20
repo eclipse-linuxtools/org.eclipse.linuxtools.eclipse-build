@@ -1,7 +1,10 @@
 !***************  FEATURE CONTRIBUTION  ******************************************************
 
-feature@org.eclipse.sdk=GIT,tag=v20120223-1510,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.sdk
-plugin@org.eclipse.sdk=GIT,tag=v20110803,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.git,path=platform/org.eclipse.sdk
+feature@org.eclipse.sdk=GIT,tag=v20120221-1643,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.sdk
+plugin@org.eclipse.sdk=GIT,tag=v20120314-0312,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.git,path=platform/org.eclipse.sdk
+
+feature@org.eclipse.platform=GIT,tag=v20120221-1643,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.platform-feature
+plugin@org.eclipse.platform=GIT,tag=v20120314-1642,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.git,path=platform/org.eclipse.platform
 
 feature@org.eclipse.pde=GIT,tag=v20120104-1740,repo=git://git.eclipse.org/gitroot/pde/eclipse.pde,path=org.eclipse.pde-feature
 
@@ -16,12 +19,6 @@ feature@org.eclipse.pde.api.tools.ee.jre11_feature=GIT,tag=v20120213-1710,repo=g
 feature@org.eclipse.pde.api.tools.ee.osgiminimum10_feature=GIT,tag=v20120213-1710,repo=git://git.eclipse.org/gitroot/pde/eclipse.pde.ui.git,path=apitools/org.eclipse.pde.api.tools.ee.osgiminimum10-feature
 feature@org.eclipse.pde.api.tools.ee.osgiminimum11_feature=GIT,tag=v20120213-1710,repo=git://git.eclipse.org/gitroot/pde/eclipse.pde.ui.git,path=apitools/org.eclipse.pde.api.tools.ee.osgiminimum11-feature
 feature@org.eclipse.pde.api.tools.ee.osgiminimum12_feature=GIT,tag=v20120213-1710,repo=git://git.eclipse.org/gitroot/pde/eclipse.pde.ui.git,path=apitools/org.eclipse.pde.api.tools.ee.osgiminimum12-feature
-
-feature@org.eclipse.platform=GIT,tag=v20120103-2134,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=oldfeatures/org.eclipse.platform-feature
-plugin@org.eclipse.platform=GIT,tag=v20120111-1427,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.git,path=platform/org.eclipse.platform
-
-feature@org.eclipse.sdk.examples=GIT,tag=v20110912,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.sdk.examples-feature
-plugin@org.eclipse.sdk.examples=GIT,tag=v20110503,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.sdk.examples
 
 feature@org.eclipse.sdk.tests=GIT,tag=v20120228-1902,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.sdk.tests
 plugin@org.eclipse.sdk.tests=GIT,tag=v20100907,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.sdk.tests
