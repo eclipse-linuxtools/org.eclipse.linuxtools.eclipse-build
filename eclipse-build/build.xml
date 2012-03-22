@@ -218,8 +218,10 @@
 			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.SF" />
 			<fileset dir="${buildDirectory}/plugins" includes="**/ECLIPSEF.RSA" />
 		</delete>
-		<!-- add additional archs -->
-		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src/plugins" src="${basedir}/eclipse-build-additionalArchs.tar.bz2" />
+		
+		<!-- add additional archs for org.eclipse.swt, org.eclipse.equinox.launcher & org.eclipse.core.filesystem -->
+		<antcall target="generateSecondaryFragments"/>
+		
 		<!-- prepare ecf build tree -->
 		<delete>
 			<fileset dir="${buildDirectory}/plugins" includes="org.eclipse.ecf*" />
@@ -229,6 +231,66 @@
 		<!-- Create a stamp file -->
 		<echo file="unpack-stamp" />
 	</target>
+	
+	<target name="generateSecondaryFragments">
+		<!-- TODO: replace the rename.sh with ant -->
+		
+		<copy file="additionalArchs/rename.sh" todir="${buildDirectory}/plugins" /> 
+		
+		<generateArch newArch="alpha" archBase="x86_64"/>
+		<generateArch newArch="arm" archBase="x86"/>
+		<generateArch newArch="ia64" archBase="x86_64"/>
+		<generateArch newArch="mips" archBase="x86_64"/>
+		<generateArch newArch="mipsel" archBase="x86_64"/>
+		<generateArch newArch="PA_RISC" archBase="x86_64"/>
+		<generateArch newArch="ppc" archBase="x86" />
+		<generateArch newArch="ppc64" archBase="x86_64"/>
+		<generateArch newArch="sparc" archBase="x86" />
+                <generateArch newArch="sparc64" archBase="x86_64"/>
+
+		<delete file="${buildDirectory}/plugins/rename.sh"/>
+	</target>
+	<macrodef name="copyPlugin">
+		<attribute name="pluginName" />
+		<attribute name="archBase" />
+		<attribute name="newArch" />
+		<sequential>
+			<copy todir="${buildDirectory}/plugins/@{pluginName}.@{newArch}">
+				<resources>
+					<fileset dir="${buildDirectory}/plugins/@{pluginName}.@{archBase}">
+						<include name="**" />
+					</fileset>
+				</resources>
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="generateArch">
+		<attribute name="archBase" />
+		<attribute name="newArch" />
+		<sequential>
+			<copyPlugin pluginName="org.eclipse.swt.gtk.linux"
+			            archBase="@{archBase}" newArch="@{newArch}" />
+			<copyPlugin pluginName="org.eclipse.core.filesystem.linux"
+			            archBase="@{archBase}" newArch="@{newArch}" />
+			<copyPlugin pluginName="org.eclipse.core.net.linux"
+			            archBase="@{archBase}" newArch="@{newArch}" />
+			<copyPlugin pluginName="org.eclipse.equinox.launcher.gtk.linux"
+			            archBase="@{archBase}" newArch="@{newArch}" />
+			<exec dir="${buildDirectory}/plugins" executable="sh" failonerror="true">
+				<arg line="rename.sh @{archBase} @{newArch}" />
+			</exec>
+			<replace dir="${buildDirectory}/plugins" value="@{newArch}" token="@{archBase}">
+				<exclude name="rename.sh" />
+				<include name="*@{newArch}/**/*.*" />
+				<excludesfile name="${buildDirectory}/plugins/rename.sh" />
+			</replace>
+			<copy todir="${buildDirectory}/features/org.eclipse.platform/about_files/linux.gtk.@{newArch}/">
+    				<fileset dir="${buildDirectory}/features/org.eclipse.platform/about_files/linux.gtk.@{archBase}"/>
+ 			</copy>
+			<mkdir dir="${buildDirectory}/features/" />
+		</sequential>
+	</macrodef>
 
 	<target name="clean-sdk">
 		<delete dir="${homeDir}" />
@@ -318,6 +380,7 @@
 
 		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 
+		<patch patchfile="${basedir}/patches/add-plugin-version-of-arm-launcher-fragment.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
