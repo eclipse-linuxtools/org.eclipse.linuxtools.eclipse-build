@@ -153,13 +153,13 @@ rm -rf scmCache
 #fetch and prepare ecf
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
 cd org.eclipse.ecf
-git archive --format=tar --prefix=ecf-3.5.0/ R-Release_HEAD-sdk_feature-19_2011-03-13_18-40-16 | gzip >ecf-3.5.0.tar.gz
-cp ecf-3.5.0.tar.gz ../
+git archive --format=tar --prefix=ecf-3.5.5/ R-Release_HEAD-sdk_feature-51_2012-03-19_06-12-11 | gzip >ecf-3.5.5.tar.gz
+cp ecf-3.5.5.tar.gz ../
 cd ..
 rm -fr org.eclipse.ecf
-tar -xf ecf-3.5.0.tar.gz
-rm -fr ecf-3.5.0.tar.gz
-cd ecf-3.5.0
+tar -xf ecf-3.5.5.tar.gz
+rm -fr ecf-3.5.5.tar.gz
+cd ecf-3.5.5
 
 # Source for ECF bthat aren't part of SDK map files
 for f in \
@@ -178,12 +178,11 @@ for f in \
     org.eclipse.ecf.provider.filetransfer.httpclient.ssl \
     org.eclipse.ecf.provider.filetransfer.ssl \
 ; do
-#mv -f  providers/bundles/$f ../plugins;
 cp -rf  providers/bundles/$f ../plugins;
 rm -rf providers/bundles/$f
 done
 cd ..
-rm -fr ecf-3.5.0
+rm -fr ecf-3.5.5
 
 #fix paths here - they are not correctly rendered
 #fetch and prepare initializer
