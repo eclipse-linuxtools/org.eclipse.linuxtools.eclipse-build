@@ -400,16 +400,16 @@
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<!-- delete all windows scripts and symlink linux ones -->
-		<delete dir="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20120109-1030/bin"/>
+		<delete dir="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/bin"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins"  copyFiles="${copyFiles}"/>
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" copyFiles="${copyFiles}"/>
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20120109-1030/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.2.v20120109-1030/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*" />
 			<substitution expression="" />
 		</replaceregexp>
