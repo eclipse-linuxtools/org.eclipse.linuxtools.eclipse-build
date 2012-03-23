@@ -1,0 +1,31 @@
+--- org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/master/customTargets.xml.bak	2012-03-23 04:31:36.000000000 -0400
++++ org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/master/customTargets.xml	2012-03-23 04:37:23.000000000 -0400
+@@ -34,7 +34,7 @@
+ 	<!-- Replace values for mapsCheckoutTag as desired. -->
+ 	<!-- ===================================================================== -->
+ 
+-	<target name="getMapFiles" depends="checkLocalMaps" unless="skipMaps">
++	<target name="getMapFiles" depends="checkLocalMaps">
+ 		<property name="mapsGitRepo" value="${buildDirectory}/commonrepo" />
+ 		<mkdir dir="${mapsGitRepo}" />
+ 		<exec executable="git" dir="${mapsGitRepo}">
+@@ -124,19 +124,6 @@
+ 	<!-- Steps to do before setup -->
+ 	<!-- ===================================================================== -->
+ 	<target name="preSetup">
+-		<echo message="Mirror from ${emfRepoURL} to ${localRepoLocation}" />
+-		<p2.mirror destination="file:${localRepoLocation}" ignoreerrors="true">
+-			<source location="${emfRepoURL}" />
+-			<slicingOptions includeOptional="false" includeNonGreedy="false" latestVersionOnly="true" />
+-			<iu id="org.eclipse.emf.ecore.feature.group" version="0.0.0" />
+-			<iu id="org.eclipse.emf.common.feature.group" version="0.0.0" />
+-			<iu id="org.eclipse.emf.ecore.source.feature.group" version="0.0.0" />
+-			<iu id="org.eclipse.emf.common.source.feature.group" version="0.0.0" />
+-		</p2.mirror>
+-
+-		<p2.repo2runnable destination="${transformedRepoLocation}">
+-			<source location="file:${localRepoLocation}" />
+-		</p2.repo2runnable>
+ 	</target>
+ 
+ 	<!-- ===================================================================== -->
