@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="eclipse-build-feature"
-      version="3.6.2.qualifier">
+      version="4.2.0.qualifier">
 
    <includes
          id="master-jetty"
