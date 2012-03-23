@@ -1,2 +1,0 @@
-feature@org.eclipse.rcp=GIT,tag=v20120105-1545,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=features/org.eclipse.rcp
-plugin@org.eclipse.rcp=GIT,tag=v20110504-0800,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.releng.git,path=bundles/org.eclipse.rcp
