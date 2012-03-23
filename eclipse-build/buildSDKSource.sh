@@ -7,10 +7,10 @@ baseBuilder=
 eclipseBuilder=
 e4Builder=
 
-buildID="R4_HEAD"
+buildID="c8dd06d313315b7e68ee7b307304bf6ea00302d4"
 baseBuilderTag="R4_2_primary"
 eclipseBuilderTag="R4_2_primary"
-label="4.2.warmup"
+label="4.2.c8dd06"
 emfTag="HEAD"
 mapVersionTag="${buildID}"
 fetchTests="yes"
