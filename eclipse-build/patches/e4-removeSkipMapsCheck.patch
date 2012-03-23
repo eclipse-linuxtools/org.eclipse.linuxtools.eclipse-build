@@ -1,5 +1,5 @@
---- eclipse/buildConfigs/master/customTargets.xml.orig  2012-03-23 03:47:24.000000000 -0400
-+++ eclipse/buildConfigs/master/customTargets.xml       2012-03-23 03:47:51.000000000 -0400
+--- eclipse/buildConfigs/master/customTargets.xml.bak   2012-03-23 04:21:11.000000000 -0400
++++ eclipse/buildConfigs/master/customTargets.xml       2012-03-23 04:21:31.000000000 -0400
 @@ -34,7 +34,7 @@
         <!-- Replace values for mapsCheckoutTag as desired. -->
         <!-- ===================================================================== -->
@@ -9,4 +9,3 @@
                 <property name="mapsGitRepo" value="${buildDirectory}/commonrepo" />
                 <mkdir dir="${mapsGitRepo}" />
                 <exec executable="git" dir="${mapsGitRepo}">
-
