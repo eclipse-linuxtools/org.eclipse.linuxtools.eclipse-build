@@ -84,8 +84,8 @@ if [ ! -e ${eclipseBuilder} ]; then
   cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
   patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
-  patch -p0 < "${baseDir}"/patches/eclipse-removeSkipMapsCheck.patch
-  patch -p0 < "${baseDir}"/patches/e4-doNotMirrorEMF.patch
+  patch -p0 < "${baseDir}"/patches/e4-removeSkipMapsCheck.patch
+  patch -p1 < "${baseDir}"/patches/e4-doNotMirrorEMF.patch
   cd "${baseDir}"
 fi
 
