@@ -98,6 +98,7 @@
 
 		<!-- remove when 373107 is fixed -->
 		<patch patchfile="${basedir}/patches/tests-unpackAntUITests.patch" dir="${testsBuildDirectory}/features/org.eclipse.sdk.tests" strip="0" />
+		<patch patchfile="${basedir}/patches/e4-fixTestCompilationProblems1.patch" dir="${testsBuildDirectory}/plugins/" strip="2" />
 		<echo file="testspatch-stamp" />
 	</target>
 			
@@ -155,6 +156,8 @@
 				<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
 				<arg line="-DbaseLocation=${provisionDir} " />
 				<arg line="-DbuildLabel=${testsBuildLabel} " />
+				<arg line="-DjavacFailOnError=true"/>
+				<arg line="-DcustomBuildCallbacks.failonerror"/>
 				<arg line="-data ${buildworkspace} " />
 			</exec>
 			<echo file="testsbuild-stamp" />
