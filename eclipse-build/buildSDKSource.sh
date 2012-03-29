@@ -11,11 +11,10 @@ buildID="c8dd06d313315b7e68ee7b307304bf6ea00302d4"
 baseBuilderTag="R4_2_primary"
 eclipseBuilderTag="R4_2_primary"
 label="4.2.0-fa15ab"
-emfTag="HEAD"
 mapVersionTag="${buildID}"
 fetchTests="yes"
 
-usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>]  [-noTests] [-emfTag <emf tag to check out>]"
+usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>]  [-noTests]"
 
 while [ $# -gt 0 ]
 do
@@ -26,7 +25,6 @@ do
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
                 -eclipseBuilderTag) eclipseBuilderTag="$2"; shift;;
-		-emfTag) eclipseBuilderTag="$2"; shift;;
                 -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
                 --help) echo $usage; exit 0;;
@@ -182,26 +180,7 @@ done
 cd ..
 rm -fr ecf-3.5.5
 
-
-        #Source for EMF that aren't part of E4 map files
-        rm -rf org.eclipse.emf
-        git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
-#       git checkout ${emfTag}
-        rm -rf features/org.eclipse.emf.* plugins/org.eclipse.emf.*
-        cp -rf org.eclipse.emf/features/org.eclipse.emf.common-feature features/
-        cp -rf org.eclipse.emf/features/org.eclipse.emf.ecore-feature features/
-
-        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/
-        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore plugins/
-        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.change plugins/
-        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.xmi plugins/
-
-        rm -rf org.eclipse.emf
-
-
-#fix paths here - they are not correctly rendered
-#fetch and prepare initializer
-#rm -rf rt.equinox.incubator
+# fetch initializer
 git clone git://git.eclipse.org/gitroot/equinox/rt.equinox.incubator.git
 cd rt.equinox.incubator
 git archive --format=tar --prefix=org.eclipse.equinox.initializer/ HEAD:framework/bundles/org.eclipse.equinox.initializer | gzip > org.eclipse.equinox.initializer.tar.gz
