@@ -186,7 +186,9 @@ rm -fr ecf-3.5.5
         #Source for EMF that aren't part of E4 map files
         rm -rf org.eclipse.emf
         git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
-#       git checkout ${emfTag}
+        cd org.eclipse.emf
+        git checkout ${emfTag}
+        cd ..
         rm -rf features/org.eclipse.emf.* plugins/org.eclipse.emf.*
         cp -rf org.eclipse.emf/features/org.eclipse.emf.common-feature features/
         cp -rf org.eclipse.emf/features/org.eclipse.emf.ecore-feature features/
