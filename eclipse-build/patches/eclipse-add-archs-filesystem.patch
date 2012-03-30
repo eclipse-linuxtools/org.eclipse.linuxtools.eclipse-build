@@ -1,6 +1,6 @@
 --- a/features/org.eclipse.platform/feature.xml
 +++ b/features/org.eclipse.platform/feature.xml
-@@ -445,6 +445,116 @@
+@@ -396,6 +396,116 @@
           version="0.0.0"
           fragment="true"
           unpack="false"/>
