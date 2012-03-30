@@ -191,6 +191,7 @@ rm -fr ecf-3.5.5
         cd ..
         rm -rf features/org.eclipse.emf.* plugins/org.eclipse.emf.*
         cp -rf org.eclipse.emf/features/org.eclipse.emf.common-feature features/
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.license-feature features/
         cp -rf org.eclipse.emf/features/org.eclipse.emf.ecore-feature features/
 
         cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/
