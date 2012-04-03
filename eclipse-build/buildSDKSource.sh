@@ -5,14 +5,19 @@ baseDir=$(pwd)
 workDirectory=
 baseBuilder=
 eclipseBuilder=
+e4Builder=
 
-buildID="I20110803-1800"
-baseBuilderTag="v20110711"
-eclipseBuilderTag=""
-label="3.8.0-M1"
+buildID="c8dd06d313315b7e68ee7b307304bf6ea00302d4"
+baseBuilderTag="R4_2_primary"
+eclipseBuilderTag="vI20120320-1400"
+#For some reason http or git protocols do not work
+eclipseBuilderGITrepo="ssh://cdaniel@git.eclipse.org/gitroot/platform/eclipse.platform.releng.eclipsebuilder.git"
+label="4.2.0-fa15ab"
+emfTag="HEAD"
+mapVersionTag="${buildID}"
 fetchTests="yes"
 
-usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
+usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>]  [-noTests] [-emfTag <emf tag to check out>]"
 
 while [ $# -gt 0 ]
 do
@@ -23,6 +28,7 @@ do
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
                 -eclipseBuilderTag) eclipseBuilderTag="$2"; shift;;
+				-emfTag) emfTag="$2"; shift;;
                 -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
                 --help) echo $usage; exit 0;;
@@ -67,7 +73,6 @@ workspace="${workDirectory}"/workspace
 rm -rf "${workspace}"
 mkdir -p "${workspace}"
 cvsRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse"
-mapsRoot="org.eclipse.releng/maps"
 
 # Fetch basebuilder
 if [ ! -e "${baseBuilder}" ]; then
@@ -79,12 +84,18 @@ fi
 
 # Fetch eclipsebuilder
 if [ ! -e ${eclipseBuilder} ]; then
+  rm -rf eclipse.platform.releng.eclipsebuilder
+  git clone ${eclipseBuilderGITrepo}
+  cd eclipse.platform.releng.eclipsebuilder
+    git checkout ${eclipseBuilderTag}
+  cd ..
   mkdir -p "${eclipseBuilder}"
+  cp -rf eclipse.platform.releng.eclipsebuilder/* "${eclipseBuilder}"
+  rm -rf eclipse.platform.releng.eclipsebuilder
   cd "${eclipseBuilder}"/..
-  cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
-  patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
-  patch -p0 < "${baseDir}"/patches/eclipse-removeSkipMapsCheck.patch
+  patch -p1 < "${baseDir}"/patches/e4-addFetchMasterAndTestsTargets.patch
+  patch -p1 < "${baseDir}"/patches/e4-dontFetchEMFAndSkipMaps.patch
   cd "${baseDir}"
 fi
 
@@ -100,8 +111,9 @@ if [ -e ${fetchDirectory}/ecfBundles ]; then
   cd "${baseDir}"
 fi
 
-# Build must be run from within o.e.r.eclipsebuilder checkout
+#Build must be run from within o.e.r.eclipsebuilder checkout
 cd "${eclipseBuilder}"
+
 
 java -jar \
 "${baseBuilder}"/plugins/org.eclipse.equinox.launcher_*.jar \
@@ -110,31 +122,31 @@ java -jar \
 -application org.eclipse.ant.core.antRunner \
 -f buildAll.xml \
 fetchMasterFeature \
+-Dhudson=true \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
 -Duser.home="${homeDirectory}" \
+-DmapVersionTag="${mapVersionTag}" \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
 
 cd "${fetchDirectory}"
 
 # Extract osgi.util src for rebuilding
 pushd plugins/org.eclipse.osgi.util
-  unzip -q -d src src.zip
-  # Remove pre-compiled class files and the source.zip
-  rm -r org/ src.zip
+  if [ -e src.zip ]; then
+    unzip -q -d src src.zip
+    # Remove pre-compiled class files and the source.zip
+    rm -r org/ src.zip
+  fi
 popd
 
 # Extract osgi.services src for rebuilding
 pushd plugins/org.eclipse.osgi.services
-  unzip -q -d src src.zip
-  # Remove pre-compiled class files and the source.zip
-  rm -r org/ src.zip
+  if [ -e src.zip ]; then
+    unzip -q -d src src.zip
+    # Remove pre-compiled class files and the source.zip
+    rm -r org/ src.zip
+  fi
 popd
 
 # Remove sources for service.io
@@ -146,15 +158,16 @@ popd
 # Remove scmCache directory
 rm -rf scmCache
 
+#fetch and prepare ecf
 git clone git://git.eclipse.org/gitroot/ecf/org.eclipse.ecf.git
 cd org.eclipse.ecf
-git archive --format=tar --prefix=ecf-3.5.0/ R-Release_HEAD-sdk_feature-19_2011-03-13_18-40-16 | gzip >ecf-3.5.0.tar.gz
-cp ecf-3.5.0.tar.gz ../
+git archive --format=tar --prefix=ecf-3.5.5/ R-Release_HEAD-sdk_feature-51_2012-03-19_06-12-11 | gzip >ecf-3.5.5.tar.gz
+cp ecf-3.5.5.tar.gz ../
 cd ..
 rm -fr org.eclipse.ecf
-tar -xf ecf-3.5.0.tar.gz
-rm -fr ecf-3.5.0.tar.gz
-cd ecf-3.5.0
+tar -xf ecf-3.5.5.tar.gz
+rm -fr ecf-3.5.5.tar.gz
+cd ecf-3.5.5
 
 # Source for ECF bthat aren't part of SDK map files
 for f in \
@@ -163,7 +176,8 @@ for f in \
     org.eclipse.ecf.identity \
     org.eclipse.ecf.ssl \
 ; do
-mv framework/bundles/$f ../plugins;
+cp -rf framework/bundles/$f ../plugins;
+rm -rf framework/bundles/$f
 done
 
 for f in \
@@ -172,10 +186,45 @@ for f in \
     org.eclipse.ecf.provider.filetransfer.httpclient.ssl \
     org.eclipse.ecf.provider.filetransfer.ssl \
 ; do
-mv  providers/bundles/$f ../plugins;
+cp -rf  providers/bundles/$f ../plugins;
+rm -rf providers/bundles/$f
 done
 cd ..
-rm -fr ecf-3.5.0
+rm -fr ecf-3.5.5
+
+
+        #Source for EMF that aren't part of E4 map files
+        rm -rf org.eclipse.emf
+        git clone git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git
+        cd org.eclipse.emf
+        git checkout ${emfTag}
+        cd ..
+        rm -rf features/org.eclipse.emf.* plugins/org.eclipse.emf.*
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.common-feature features/
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.license-feature features/
+        cp -rf org.eclipse.emf/features/org.eclipse.emf.ecore-feature features/
+
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.common plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.change plugins/
+        cp -rf  org.eclipse.emf/plugins/org.eclipse.emf.ecore.xmi plugins/
+
+        rm -rf org.eclipse.emf
+
+
+#fix paths here - they are not correctly rendered
+#fetch and prepare initializer
+#rm -rf rt.equinox.incubator
+git clone git://git.eclipse.org/gitroot/equinox/rt.equinox.incubator.git
+cd rt.equinox.incubator
+git archive --format=tar --prefix=org.eclipse.equinox.initializer/ HEAD:framework/bundles/org.eclipse.equinox.initializer | gzip > org.eclipse.equinox.initializer.tar.gz
+cp org.eclipse.equinox.initializer.tar.gz ../
+cd ..
+rm -rf rt.equinox.incubator
+tar -xf org.eclipse.equinox.initializer.tar.gz
+rm -rf org.eclipse.equinox.initializer.tar.gz
+cp -rf org.eclipse.equinox.initializer plugins
+rm -rf org.eclipse.equinox.initializer
 
 cd "${fetchDirectory}"
 # We don't want to re-ship these as those bundles inside will already be
@@ -194,6 +243,28 @@ find \( -name '*.cvsignore' \) -delete
 
 # Remove unnecessary repo
 rm -rf tempSite
+# Before removing all binary JARs extract source code
+# of execution profiles to build them later
+pushd plugins/org.eclipse.osgi/osgi
+for f in \
+        ee.foundation \
+        ee.minimum-1.2.0 \
+        ee.minimum \
+        osgi.cmpn \
+        osgi.core \
+; do
+	mkdir -p  ../../../environments/$f/
+	mkdir -p $f
+	cp "$f.jar" $f/
+	cd $f
+	jar xf "$f.jar" || unzip "$f.jar"
+	cp -rf OSGI-OPT/src/ ../../../../environments/$f/ || echo "Copying $f failed"
+	cp -rf META-INF ../../../../environments/$f/ || echo "Copying $f META-INF failed"
+	cp -rf LICENSE ../../../../environments/$f/ || echo "Copying $f LICENCE failed"
+	cp -rf about.html ../../../../environments/$f/ || echo "Copying $f about.html failed"
+	cd ..
+done;
+popd
 
 # Remove binary JARs
 find -type f -name '*.jar' -delete
@@ -212,7 +283,9 @@ find -name '*.orig' -delete
 find -type d -empty -delete
 
 cd ..
-mv fetch eclipse-${label}-src
+#mv -f fetch eclipse-${label}-src
+cp -rf fetch eclipse-${label}-src
+rm -rf fetch
 tar cjf "${workDirectory}"/eclipse-${label}-src.tar.bz2 \
   eclipse-${label}-src
 cd "${eclipseBuilder}"
@@ -230,19 +303,15 @@ java -jar \
 fetchSdkTestsFeature \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--Dhuson=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
+-Dhudson=true \
+-DmapVersionTag="${mapVersionTag}" \
 -Duser.home="${homeDirectory}" \
 2>&1 | tee "${workDirectory}"/testsFetch.log
 
 cd ${workDirectory}
-mkdir ${workDirectory}/eclipse-sdktests-${label}-src
-mv ${fetchDirectory}/* ${workDirectory}/eclipse-sdktests-${label}-src
+mkdir -p ${workDirectory}/eclipse-sdktests-${label}-src
+cp -rf ${fetchDirectory}/* ${workDirectory}/eclipse-sdktests-${label}-src
+rm -rf ${fetchDirectory}/*
 tar cjf ${workDirectory}/eclipse-sdktests-${label}-src.tar.bz2 \
  eclipse-sdktests-${label}-src
 
@@ -253,9 +322,11 @@ testScripts=eclipse-sdktests-${label}-scripts
 rm -rf org.eclipse.releng.eclipsebuilder/eclipse/buildConfigs/sdk.tests/testScripts/*
 cvs -d ${cvsRepo} co -r ${buildID} ${scriptsDir}
 
-mkdir ${testScripts}
-mv ${scriptsDir}/runtests ${testScripts}
-mv ${scriptsDir}/test.xml ${testScripts}
+mkdir -p ${testScripts}
+cp -rf ${scriptsDir}/runtests ${testScripts}
+rm -rf ${scriptsDir}/runtests
+cp -rf ${scriptsDir}/test.xml ${testScripts}
+rm -rf ${scriptsDir}/test.xml
 rm -rf org.eclipse.releng.eclipsebuilder
 tar cjf ${workDirectory}/eclipse-sdktests-${label}-scripts.tar.bz2 ${testScripts}
 

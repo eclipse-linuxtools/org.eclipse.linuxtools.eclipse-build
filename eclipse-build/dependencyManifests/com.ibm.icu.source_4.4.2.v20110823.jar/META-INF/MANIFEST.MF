@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Eclipse-SourceBundle: com.ibm.icu;version="4.4.2.v20110823";roots:="."
+Bundle-Version: 4.4.2.v20110823
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ibm.icu.source
+

@@ -1,0 +1,234 @@
+--- plugins/org.eclipse.equinox.jsp.jasper/src/org/eclipse/equinox/jsp/jasper/JspServlet.java	2012-01-16 11:56:16.162034430 +0100
++++ plugins/org.eclipse.equinox.jsp.jasper/src/org/eclipse/equinox/jsp/jasper/JspServlet.java	2012-01-18 09:10:59.060929292 +0100
+@@ -24,19 +24,27 @@
+ import java.security.PermissionCollection;
+ import java.util.Collections;
+ import java.util.Enumeration;
++import java.util.EventListener;
+ import java.util.HashMap;
+ import java.util.HashSet;
+ import java.util.Map;
+ import java.util.Set;
+ 
++import javax.servlet.Filter;
++import javax.servlet.FilterRegistration;
++import javax.servlet.FilterRegistration.Dynamic;
+ import javax.servlet.Servlet;
+ import javax.servlet.ServletConfig;
+ import javax.servlet.ServletContext;
+ import javax.servlet.ServletException;
++import javax.servlet.ServletRegistration;
++import javax.servlet.SessionCookieConfig;
++import javax.servlet.descriptor.JspConfigDescriptor;
+ import javax.servlet.http.HttpServlet;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+ 
++import org.apache.tomcat.InstanceManager;
+ import org.eclipse.equinox.internal.jsp.jasper.JspClassLoader;
+ import org.osgi.framework.Bundle;
+ 
+@@ -109,6 +117,9 @@
+ 	}
+ 
+ 	public void init(ServletConfig config) throws ServletException {
++		// Set the InstanceManager conforming to Apache Tomcat 7
++		config.getServletContext().setAttribute(InstanceManager.class.getName(), new MyInstanceManager());
++
+ 		ClassLoader original = Thread.currentThread().getContextClassLoader();
+ 		try {
+ 			Thread.currentThread().setContextClassLoader(jspLoader);
+@@ -318,5 +329,135 @@
+ 			}
+ 			return result;
+ 		}
++
++		public Dynamic addFilter(String arg0, String arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Dynamic addFilter(String arg0, Filter arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Dynamic addFilter(String arg0, Class arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public void addListener(Class arg0) {
++			// TODO Auto-generated method stub
++
++		}
++
++		public void addListener(String arg0) {
++			// TODO Auto-generated method stub
++
++		}
++
++		public void addListener(EventListener arg0) {
++			// TODO Auto-generated method stub
++
++		}
++
++		public javax.servlet.ServletRegistration.Dynamic addServlet(String arg0, String arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public javax.servlet.ServletRegistration.Dynamic addServlet(String arg0, Servlet arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public javax.servlet.ServletRegistration.Dynamic addServlet(String arg0, Class arg1) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Filter createFilter(Class arg0) throws ServletException {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public EventListener createListener(Class arg0) throws ServletException {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Servlet createServlet(Class arg0) throws ServletException {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public void declareRoles(String[] arg0) {
++			// TODO Auto-generated method stub
++
++		}
++
++		public ClassLoader getClassLoader() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Set getDefaultSessionTrackingModes() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public int getEffectiveMajorVersion() {
++			// TODO Auto-generated method stub
++			return 0;
++		}
++
++		public int getEffectiveMinorVersion() {
++			// TODO Auto-generated method stub
++			return 0;
++		}
++
++		public Set getEffectiveSessionTrackingModes() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public FilterRegistration getFilterRegistration(String arg0) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Map getFilterRegistrations() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public JspConfigDescriptor getJspConfigDescriptor() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public ServletRegistration getServletRegistration(String arg0) {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public Map getServletRegistrations() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public SessionCookieConfig getSessionCookieConfig() {
++			// TODO Auto-generated method stub
++			return null;
++		}
++
++		public boolean setInitParameter(String arg0, String arg1) {
++			// TODO Auto-generated method stub
++			return false;
++		}
++
++		public void setSessionTrackingModes(Set arg0) throws IllegalStateException, IllegalArgumentException {
++			// TODO Auto-generated method stub
++
++		}
+ 	}
+ }
+--- plugins/org.eclipse.equinox.jsp.jasper/src/org/eclipse/equinox/jsp/jasper/MyInstanceManager.java.old	1969-12-31 19:00:00.000000000 -0500
++++ plugins/org.eclipse.equinox.jsp.jasper/src/org/eclipse/equinox/jsp/jasper/MyInstanceManager.java	2011-08-16 14:51:34.499027605 -0400
+@@ -0,0 +1,35 @@
++package org.eclipse.equinox.jsp.jasper;
++
++import org.apache.tomcat.InstanceManager;
++
++public class MyInstanceManager implements InstanceManager {
++
++	public Object newInstance(String className) {
++		// TODO Auto-generated method stub
++		return null;
++	}
++
++	public Object newInstance(String fqcn, ClassLoader classLoader) throws ClassNotFoundException {
++
++		try {
++			return classLoader.loadClass(fqcn).newInstance();
++		} catch (InstantiationException e) {
++			// TODO Auto-generated catch block
++			e.printStackTrace();
++		} catch (IllegalAccessException e) {
++			// TODO Auto-generated catch block
++			e.printStackTrace();
++		}
++		return null;
++	}
++
++	public void newInstance(Object o) {
++		// TODO Auto-generated method stub
++
++	}
++
++	public void destroyInstance(Object o) {
++		// TODO Auto-generated method stub
++
++	}
++}
+--- plugins/org.eclipse.equinox.jsp.jasper/META-INF/MANIFEST.MF.old	2011-08-16 16:02:24.734122177 -0400
++++ plugins/org.eclipse.equinox.jsp.jasper/META-INF/MANIFEST.MF	2011-08-16 16:06:15.933599606 -0400
+@@ -6,12 +6,13 @@
+ Bundle-SymbolicName: org.eclipse.equinox.jsp.jasper
+ Bundle-Version: 1.0.300.qualifier
+ Bundle-Activator: org.eclipse.equinox.internal.jsp.jasper.Activator
+-Import-Package: javax.servlet;version="[2.4, 3.1)",
++Import-Package: javax.servlet;version="[2.4.0,3.1)",
+  javax.servlet.annotation;version="2.6";resolution:=optional,
+  javax.servlet.descriptor;version="2.6";resolution:=optional,
+- javax.servlet.http;version="[2.4, 3.1)",
+- javax.servlet.jsp;version="[2.0, 2.3)",
+- org.apache.jasper.servlet;version="[0, 6)",
++ javax.servlet.http;version="[2.4.0,3.0.0]",
++ javax.servlet.jsp;version="[2.0.0,2.3)",
++ org.apache.jasper.servlet;version="7.0.21",
++ org.apache.tomcat;version="7.0.21",
+  org.osgi.framework;version="1.3.0",
+  org.osgi.service.http;version="1.2.0",
+  org.osgi.service.packageadmin;version="1.2.0",

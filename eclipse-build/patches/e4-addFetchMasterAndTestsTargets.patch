@@ -1,0 +1,24 @@
+--- org.eclipse.releng.eclipsebuilder/buildAll.xml.bak	2012-04-03 02:56:53.000000000 -0400
++++ org.eclipse.releng.eclipsebuilder/buildAll.xml	2012-04-03 02:59:06.000000000 -0400
+@@ -830,4 +830,21 @@
+         <echo message="DEBUG: buildDirectory did not exist, so nothing to clean up" />
+     </target>
+     
++	<target name="fetchMasterFeature" depends="init">
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
++			<property name="builder" value="${eclipse.build.configs}/master" />
++		</ant>
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
++			<property name="builder" value="${eclipse.build.configs}/master" />
++		</ant>
++	</target>
++
++	<target name="fetchSdkTestsFeature" depends="init">
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
++			<property name="builder" value="${eclipse.build.configs}/sdk.tests" />
++		</ant>
++		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
++			<property name="builder" value="${eclipse.build.configs}/sdk.tests" />
++		</ant>
++	</target>    
+ </project>

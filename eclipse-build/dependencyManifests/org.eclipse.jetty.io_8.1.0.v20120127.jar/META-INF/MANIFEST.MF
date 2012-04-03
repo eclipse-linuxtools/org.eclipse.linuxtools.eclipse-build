@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.jetty.io.nio;uses:="org.eclipse.jetty.io,o
+ rg.eclipse.jetty.util.log,org.eclipse.jetty.util.thread,org.eclipse.j
+ etty.util.component,org.eclipse.jetty.util,javax.net.ssl";version="8.
+ 1.0",org.eclipse.jetty.io.bio;uses:="javax.net.ssl,org.eclipse.jetty.
+ util.log,org.eclipse.jetty.io";version="8.1.0",org.eclipse.jetty.io;u
+ ses:="org.eclipse.jetty.util.log,org.eclipse.jetty.util,org.eclipse.j
+ etty.io.nio,org.eclipse.jetty.util.thread";version="8.1.0"
+Implementation-Version: 8.1.0.v20120127
+Bundle-Classpath: .
+Built-By: mockbuild
+Tool: Bnd-1.50.0
+Bundle-Localization: plugin
+Bundle-Name: Jetty :: IO Utility
+Created-By: Apache Maven Bundle Plugin
+url: http://www.eclipse.org/jetty
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Copyright: Copyright (c) 2008-2009 Mort Bay Consulting Pty. Ltd
+ .
+Bundle-Vendor: Eclipse Jetty Project
+Implementation-Vendor: Eclipse.org - Jetty
+Bundle-Version: 8.1.0.v20120127
+Build-Jdk: 1.7.0_b147-icedtea
+Bnd-LastModified: 1330080181661
+Bundle-ManifestVersion: 2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0, http://www
+ .eclipse.org/org/documents/epl-v10.php
+Bundle-Description: Administrative parent pom for Jetty modules
+Bundle-DocURL: http://www.eclipse.org/jetty
+Bundle-SymbolicName: org.eclipse.jetty.io
+Import-Package: javax.net.ssl,org.eclipse.jetty.util;version="[8.1,9)"
+ ,org.eclipse.jetty.util.component;version="[8.1,9)",org.eclipse.jetty
+ .util.log;version="[8.1,9)",org.eclipse.jetty.util.thread;version="[8
+ .1,9)"
+Archiver-Version: Plexus Archiver
+

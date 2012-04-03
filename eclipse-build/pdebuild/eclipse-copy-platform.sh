@@ -35,36 +35,41 @@ cd $where
 # Are there any optional arguments left?
 if [ $# -gt 0 ]; then
    for optional in "$@"; do
-      (cd $eclipse; ls -d plugins/*"$optional"* features/*"$optional"*) |
+      (cd $eclipse;
+	ls -d plugins/*"$optional"* features/*"$optional"* 2>/dev/null) |
       while read f; do
          [ ! -e $f ] && ln -s $eclipse/$f $f
       done
-      (cd $eclipse/dropins; ls -d "$optional") |
+      (cd $eclipse/dropins; ls -d "$optional" 2>/dev/null) |
       while read f; do
 	  if [ -e $eclipse/dropins/$f/eclipse ]; then
-	      (cd $eclipse/dropins/$f/eclipse; ls -d plugins/* features/*) |
+	      (cd $eclipse/dropins/$f/eclipse;
+				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
 		  [ ! -e $g ] && \
 		    ln -s $eclipse/dropins/$f/eclipse/$g $g
 	      done
           else
-	      (cd $eclipse/dropins/$f; ls -d plugins/* features/*) |
+	      (cd $eclipse/dropins/$f;
+				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
 	          [ ! -e $g ] && \
 		    ln -s $eclipse/dropins/$f/$g $g
 	      done
           fi
       done
-      (cd $datadir/dropins; ls -d "$optional") |
+      (cd $datadir/dropins; ls -d "$optional" 2>/dev/null) |
       while read f; do
 	  if [ -e $datadir/dropins/$f/eclipse ]; then
-	      (cd $datadir/dropins/$f/eclipse; ls -d plugins/* features/*) |
+	      (cd $datadir/dropins/$f/eclipse;
+				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
 		  [ ! -e $g ] && \
 		    ln -s $datadir/dropins/$f/eclipse/$g $g
 	      done
           else
-	      (cd $datadir/dropins/$f; ls -d plugins/* features/*) |
+	      (cd $datadir/dropins/$f;
+				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
 	          [ ! -e $g ] && \
 		    ln -s $datadir/dropins/$g $g
@@ -73,5 +78,27 @@ if [ $# -gt 0 ]; then
       done
    done
 fi
-
-# Code after this point is automatically created by eclipse.spec.
+for p in $(ls -d $eclipse/dropins/jdt/plugins/*); do
+    plugin=$(basename $p)
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/jdt/plugins/$plugin plugins/$plugin
+done
+for f in $(ls -d $eclipse/dropins/jdt/features/*); do
+    feature=$(basename $f)
+    [ ! -e features/$feature ] && ln -s $eclipse/dropins/jdt/features/$feature features/$feature
+done
+for p in $(ls -d $eclipse/dropins/sdk/plugins/*); do
+    plugin=$(basename $p)
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/sdk/plugins/$plugin plugins/$plugin
+done
+for f in $(ls -d $eclipse/dropins/sdk/features/*); do
+    feature=$(basename $f)
+    [ ! -e features/$feature ] && ln -s $eclipse/dropins/sdk/features/$feature features/$feature
+done
+for p in $(ls -d $eclipse/plugins/*); do
+    plugin=$(basename $p)
+    [ ! -e plugins/$plugin ] && ln -s $eclipse/plugins/$plugin plugins/$plugin
+done
+for f in $(ls -d $eclipse/features/*); do
+    feature=$(basename $f)
+    [ ! -e features/$feature ] && ln -s $eclipse/features/$feature features/$feature
+done

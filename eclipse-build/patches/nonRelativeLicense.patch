@@ -1,0 +1,20 @@
+--- plugins/org.eclipse.pde.build/src/org/eclipse/pde/internal/build/builder/FeatureBuildScriptGenerator.java	2011-11-02 12:30:11.000000000 -0400
++++ plugins/org.eclipse.pde.build/src/org/eclipse/pde/internal/build/builder/FeatureBuildScriptGenerator.java	2011-12-08 16:44:16.169816674 -0500
+@@ -336,7 +336,7 @@
+ 			script.println("   buildResultFolder=\"" + featureTemp + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+ 		script.println("   baseDirectory=\"${basedir}\""); //$NON-NLS-1$
+ 		if (getLicenseFeature() != null) {
+-			IPath licenseLocation = Utils.makeRelative(new Path(getLicenseFeatureRootLocation()), new Path(featureRootLocation));
++		    IPath licenseLocation = new Path(getLicenseFeatureRootLocation());
+ 			String licensePath = licenseLocation.isAbsolute() ? licenseLocation.toString() : "${basedir}/" + licenseLocation.toString(); //$NON-NLS-1$
+ 			script.println("   licenseDirectory=\"" + licensePath + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+ 		}
+@@ -419,7 +419,7 @@
+ 			return;
+ 		}
+ 
+-		IPath licenseLocation = Utils.makeRelative(new Path(getLicenseFeatureRootLocation()), new Path(featureRootLocation));
++		IPath licenseLocation = new Path(getLicenseFeatureRootLocation());
+ 		String licensePath = licenseLocation.isAbsolute() ? licenseLocation.toString() : "${basedir}/" + licenseLocation.toString(); //$NON-NLS-1$
+ 
+ 		if (printCopy) {

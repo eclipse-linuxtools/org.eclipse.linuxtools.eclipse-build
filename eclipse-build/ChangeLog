@@ -1,3 +1,75 @@
+2012-02-22  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* patches/add-plugin-version-of-arm-launcher-fragment.patch:
+	New patch.
+	* build.xml: Apply the above patch.
+	* eclipse-build-additionalArchs.tar.bz2: Update the arm fragments
+	base on x86 fragments.
+
+2012-01-24  Andrew Robinson  <arobinso@redhat.com>
+
+	Bug #210014.
+
+	* pdebuild/eclipse-copy-platform.sh: Make symlinking paths relative.
+
+2012-01-20  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* patches/eclipse-dont-link-in-orbit2.patch: New patch.
+	* build.xml: Apply patch eclipse-dont-link-in-orbit2.patch.
+
+2012-01-06  Roland Grunberg  <rgrunber@redhat.com>
+
+	* build.xml: Create proper org.junit_3* and org.junit_4* jar files by
+	merging the system jar classes with the manifest and other content.
+
+2011-12-19  Roland Grunberg  <rgrunber@redhat.com>
+
+	* jdtnonosgidependencies.properties:
+		Use the junit 4 system jar for junit 3 dependencies.
+
+2011-11-08  Roland Grunberg  <rgrunber@redhat.com>
+
+	* build.xml : Add new patches, and modify conents of pre-generated
+	build scripts.
+	* patches/eclipse-equinox-http-jetty.patch:
+	Update dependency versions.
+	* patches/eclipse-equinox-http-servlet.patch:
+	Update dependency versions, and API.
+	* patches/eclipse-equinox-jsp-jasper.patch:
+	Update depenency versions, and API.
+	* patches/eclipse-help-feature.patch:
+	Add/Update dependency versions for this feature.
+	* patches/eclipse-ua.patch:
+	Update API.
+	* dependencies.properties: Update jar versions for Tomcat 7 Jasper
+	and specify system location.
+	* jasper7.sh : Make the following changes to the contents of
+	eclipse-build-generatedScripts.tar.bz2.
+	java.servlet_2.5.0.qualifier => javax.servlet_3.0.0
+	java.servlet.jsp_2.0.0.qualifier => javax.servlet.jsp_2.2.0
+	org.apache.jasper_5.5.17.qualifier => org.apache.jasper_7.0.21
+
+	Rename.
+	* dependencyManifests/javax.servlet.jsp_{2.0.0.v201101211617,2.2.0}.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/javax.servlet_{2.5.0.v201103041518,3.0.0}.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.jasper_{5.5.17.v200903231320,7.0.21}.jar/META-INF/MANIFEST.MF
+
+	New.
+	* dependencyManifests/javax.el_2.2.0.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.juli_7.0.21.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.tomcat_7.0.21.jar/META-INF/MANIFEST.MF
+	* dependencyManifests/org.apache.el_7.0.21.jar/META-INF/MANIFEST.MF
+
+2011-10-31  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* build.xml: Move running of the initializer to its own
+	target, and add a property to prevent running it.
+
+2011-10-03  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* pdebuild.xml: Do not uninstall the initializer.
+	Remove all empty metadata directories.
+
 2011-08-23  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* buildSDKSource.sh: Remove directory scmCache.
@@ -67,6 +139,13 @@
 	* task-src/org/eclipse/linuxtools/eclipsebuild/CorrectJarPaths.java:
 	New.
 
+2011-08-09  Niels Thykier  <niels@thykier.net>
+
+	Bug #322271
+
+	* pdebuild/eclipse-pdebuild.sh: Pass JVM arguments directly to the VM and
+	pass -data to avoid using the user's real workspace.
+
 2011-08-11  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* build.xml: Apply addDontFetchBinaries-executable.patch and
@@ -92,6 +171,20 @@
 
 	* buildSDKSource.sh: Update baseBuilderTag and eclipseBuilderTag.
 	Prevent 'find' statements from matching diretories.
+
+2011-08-05  Niels Thykier  <niels@thykier.net>
+
+	* build.xml: Re-enabled four patches for adding extra architectures to eclipse.
+	* patches/donotstorebuildlogsinfiles.patch: Refreshed to apply cleanly.
+	* patches/eclipse-add-archs-executable.patch: Ditto
+	* patches/eclipse-add-archs-filesystem.patch: Ditto
+	* patches/eclipse-add-archs-swt.patch: Ditto
+	* patches/eclipse-add-ppc64-sparc64-s390-s390x.patch: Ditto
+	* patches/eclipse-addArchesAnd64bitSWT.patch: Ditto
+	* patches/eclipse-buildswtnatives.patch: Ditto
+	* patches/eclipse-no-jetty5.patch: Ditto
+	* patches/eclipse-swt-buildagainstxulrunner.patch: Ditto, though this patch
+	was not re-enabled.
 
 2011-08-02  Sami Wagiaalla  <swagiaal@redhat.com>
 

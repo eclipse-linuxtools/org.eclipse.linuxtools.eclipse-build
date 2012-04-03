@@ -1,0 +1,88 @@
+Manifest-Version: 1.0
+Bundle-DocURL: http://www.apache.org/
+Bundle-Localization: plugin
+Bundle-SymbolicName: org.apache.felix.gogo.shell
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/too
+ ls:org.eclipse.orbit/org.apache.felix.gogo.shell;tag=v201110170705
+Bundle-Activator: org.apache.felix.gogo.shell.Activator
+Bundle-Version: 0.8.0.v201110170705
+Bundle-Description: Apache Felix Gogo Subproject
+Bundle-Vendor: %providerName
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-Name: %pluginName
+Import-Package: org.apache.felix.service.command;status=provisional;ve
+ rsion="0.8.0", org.osgi.framework, org.osgi.service.startlevel, org.o
+ sgi.util.tracker
+Bundle-ManifestVersion: 2
+
+Name: org/apache/felix/gogo/shell/Telnet.class
+SHA1-Digest: dWTm9DcquRF/xNVO77AyCLNEq8k=
+
+Name: org/apache/felix/gogo/options/Options.class
+SHA1-Digest: LtoumhJRRC2tgjrdjWex90J8L3A=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/apache/felix/gogo/shell/Shell.class
+SHA1-Digest: 1NKxOGCpqlaZPV5F7QAWU9lPtSE=
+
+Name: org/apache/felix/gogo/options/Option.class
+SHA1-Digest: S9Ep+5qrQk0oqGBNodc/3tUA7Wg=
+
+Name: gosh_profile
+SHA1-Digest: pfHS7zPHVvb8EXoAt0npawPXmpM=
+
+Name: org/apache/felix/gogo/shell/Activator.class
+SHA1-Digest: WZw2bh+Y2nOa7aJYqy/muMpPmkQ=
+
+Name: META-INF/LICENSE
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/apache/felix/gogo/shell/Console.class
+SHA1-Digest: 9+7GOJdFW6mD+z0H1H9BIRbEin0=
+
+Name: about.html
+SHA1-Digest: ZL0NXaQeqvGlncRLXh3nTF4HGL0=
+
+Name: plugin.properties
+SHA1-Digest: /d4NLOC3zIffwzUYDC9Azs/FZe0=
+
+Name: org/apache/felix/gogo/shell/Telnet$1.class
+SHA1-Digest: CKz/2ovjf+gwj1eoXMJ1h4/ICsM=
+
+Name: META-INF/NOTICE
+SHA1-Digest: BsX6KY7OTwjCD4OqsccP8Va5X3I=
+
+Name: org/apache/felix/gogo/shell/Converters.class
+SHA1-Digest: nVDnKmHtAQmf24U68T2PBm2qBaw=
+
+Name: META-INF/maven/org.apache.felix/org.apache.felix.gogo.shell/pom.
+ xml
+SHA1-Digest: AHDhKp2zSFw/wHXjnX9KjMJI3xk=
+
+Name: META-INF/maven/org.apache.felix/org.apache.felix.gogo.shell/pom.
+ properties
+SHA1-Digest: rRSsASNgQEYp8h79aJQYTn/WVFE=
+
+Name: about_files/LICENSE
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+
+Name: org/apache/felix/gogo/shell/Activator$1.class
+SHA1-Digest: IvDmMV0igXw6NPjN7eqS+FaHeW8=
+
+Name: org/apache/felix/gogo/shell/Posix.class
+SHA1-Digest: +lQOLjAbkdxbP0EUc26e9Ij4rYk=
+
+Name: org/apache/felix/gogo/shell/Builtin.class
+SHA1-Digest: xQHZA3Hx5zSTcr2DwWNPY8QjPgE=
+
+Name: org/apache/felix/gogo/shell/Procedural.class
+SHA1-Digest: 9HgBiWAoNkgsjoFuh6ScFjxdBbw=
+
+Name: org/apache/felix/gogo/shell/Converters$1.class
+SHA1-Digest: 109I3TiCKg6wnnZs3SRpuuq29f0=
+
+Name: META-INF/DEPENDENCIES
+SHA1-Digest: A5RXsZ6ciaG+ms+bo/i0NKKCZFs=
+

@@ -42,6 +42,11 @@ public class SymlinkInstalledOSGiJars extends SymlinkJars {
     		// but we want to have what matches this glob:
     		//   org.mortbay.jetty.util_*
     		File fileToSymlink = findFileToSymlink(origLocation, new File(topLevelDir));
+			if (fileToSymlink == null) {
+				System.out.println("File to symlink not found ");
+				System.out.println("origLocation " + origLocation);
+				System.out.println("topLevelDir " + topLevelDir);
+			}	
     		JarFile fileToSymlinkJarFile;
     		Manifest fileToSymlinkManifest = null;
     		try {

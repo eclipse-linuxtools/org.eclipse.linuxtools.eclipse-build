@@ -33,23 +33,12 @@
  		
 --- a/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
 +++ b/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
-@@ -119,7 +119,7 @@
+@@ -120,7 +120,7 @@
  		<delete dir="reference/api"/>
  		<mkdir dir="reference/api"/>
  
--		<exec dir="." executable="${javadoc15}" output="doc.bin.log">
-+		<exec dir="." executable="${javadoc15}" >
+-		<exec dir="." executable="${javadoc16}" output="doc.bin.log">
++		<exec dir="." executable="${javadoc16}" >
  			<arg line="@${basedir}/${optionsFile} -J-Xmx1000M" />
  		</exec>
  		
---- a/plugins/org.eclipse.swt/tasks/build.xml	2010-08-06 19:35:21.199817105 +0200
-+++ b/plugins/org.eclipse.swt/tasks/build.xml	2010-08-06 19:36:32.704372712 +0200
-@@ -1121,7 +1121,7 @@
- 				<argument value="${tasks}"/>
- 			</commandline>
- 		</cvs>
--		<ant antfile="${tasks}/build.xml" output="${logdir}/${build_version}/${fragment}.log" dir="${tmpdir}" target="build_fragment">
-+		<ant antfile="${tasks}/build.xml" dir="${tmpdir}" target="build_fragment">
- 			<property name="cp" value="${cp}"/>
- 			<property name="fragment" value="${fragment}"/>
- 			<property name="build_target" value="${build_target}"/>
