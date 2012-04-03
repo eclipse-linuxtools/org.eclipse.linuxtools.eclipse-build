@@ -6,12 +6,15 @@
    <includes
          id="master-jetty"
          version="0.0.0"/>
+         
    <includes
 	 id="org.eclipse.emf.common"
 	version="0.0.0"/>
+	
    <includes
 	id="org.eclipse.emf.ecore"
 	version="0.0.0"/>
+	
    <includes
          id="org.eclipse.sdk"
          version="0.0.0"/>

@@ -9,7 +9,9 @@ e4Builder=
 
 buildID="c8dd06d313315b7e68ee7b307304bf6ea00302d4"
 baseBuilderTag="R4_2_primary"
-eclipseBuilderTag="R4_2_primary"
+eclipseBuilderTag="vI20120320-1400"
+#For some reason http or git protocols do not work
+eclipseBuilderGITrepo="ssh://cdaniel@git.eclipse.org/gitroot/platform/eclipse.platform.releng.eclipsebuilder.git"
 label="4.2.0-fa15ab"
 emfTag="HEAD"
 mapVersionTag="${buildID}"
@@ -26,7 +28,7 @@ do
                 -baseBuilderTag) baseBuilderTag="$2"; shift;;
                 -eclipseBuilder) eclipseBuilder="$2"; shift;;
                 -eclipseBuilderTag) eclipseBuilderTag="$2"; shift;;
-		-emfTag) eclipseBuilderTag="$2"; shift;;
+				-emfTag) emfTag="$2"; shift;;
                 -noTests) fetchTests="no"; shift;;
                 -help) echo $usage; exit 0;;
                 --help) echo $usage; exit 0;;
@@ -58,6 +60,9 @@ if [ "x${eclipseBuilder}x" = "xx" ]; then
   eclipseBuilder="${workDirectory}"/org.eclipse.releng.eclipsebuilder
   echo "Eclipsebuilder checkout not specified; will check out into ${eclipseBuilder}."
 fi
+if [ "x${eclipseBuilderTag}x" = "xx" ]; then
+  eclipseBuilderTag="v${buildID}"
+fi
 
 fetchDirectory="${workDirectory}"/fetch
 mkdir -p "${fetchDirectory}"
@@ -79,9 +84,15 @@ fi
 
 # Fetch eclipsebuilder
 if [ ! -e ${eclipseBuilder} ]; then
+  rm -rf eclipse.platform.releng.eclipsebuilder
+  git clone ${eclipseBuilderGITrepo}
+  cd eclipse.platform.releng.eclipsebuilder
+    git checkout ${eclipseBuilderTag}
+  cd ..
   mkdir -p "${eclipseBuilder}"
+  cp -rf eclipse.platform.releng.eclipsebuilder/* "${eclipseBuilder}"
+  rm -rf eclipse.platform.releng.eclipsebuilder
   cd "${eclipseBuilder}"/..
-  cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
   patch -p1 < "${baseDir}"/patches/e4-addFetchMasterAndTestsTargets.patch
   patch -p1 < "${baseDir}"/patches/e4-dontFetchEMFAndSkipMaps.patch
