@@ -155,6 +155,8 @@
 				<arg line="-Dtype=feature -Did=org.eclipse.sdk.tests " />
 				<arg line="-DbaseLocation=${provisionDir} " />
 				<arg line="-DbuildLabel=${testsBuildLabel} " />
+				<arg line="-DjavacFailOnError=true"/>
+				<arg line="-DcustomBuildCallbacks.failonerror"/>
 				<arg line="-data ${buildworkspace} " />
 			</exec>
 			<echo file="testsbuild-stamp" />

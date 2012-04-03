@@ -4,7 +4,7 @@
 	</tstamp>
 	<record name="build_${timestamp}.log" />
 	<echo message="Build log is available in build_${timestamp}.log" />
-	
+
 	<property environment="env"/>
 	<property name="jhome" value="${env.JAVA_HOME}"/>
 	<condition property="javaHomeExists">
@@ -127,7 +127,7 @@
 
 	<target name="bootstrap" unless="bootstrapped">
 
-		<!-- Some of the equinox plugins are required to use this environment, because their build will fail with full vm. Bootstrap needs to have this available.-->		
+		<!-- Some of the equinox plugins are required to use this environment, because their build will fail with full vm. Bootstrap needs to have this available.-->
 		<javac compiler="classic" srcdir="${buildDirectory}/environments/ee.minimum/src" destdir="${buildDirectory}/environments/ee.minimum" target="1.1" source="1.1" />
 		<jar basedir="${buildDirectory}/environments/ee.minimum" destfile="bootstrap/environment/ee.minimum.jar"/>
 
@@ -149,9 +149,9 @@
 
 	<target name="extractBuildXmls" if="scriptsPresent">
 		<untar compression="bzip2" dest="${basedir}/build/eclipse-${label}-src" src="${basedir}/eclipse-build-generatedScripts.tar.bz2" />
-	<exec executable="${basedir}/jasper7.sh">
-		<arg value="${label}"/>
-	</exec>
+		<exec executable="${basedir}/jasper7.sh">
+			<arg value="${label}"/>
+		</exec>
 		<!--
 		<fail message="Build scripts to bootstrap PDE Build must be generated and present in eclipse-build-generatedScripts.tar.bz2.  See pdebuild.xml for details."/>
 		-->
@@ -174,14 +174,14 @@
 
 	<available file="${basedir}/eclipse-build-feature" property="buildFeaturePresent" value="true" />
 	<target name="symlinkBuildFeature" unless="buildFeaturePresent">
-	  <echo message="creating link to feature dir (../eclipse-build-feature)" />
-	  <symlink link="${basedir}/eclipse-build-feature" resource="${basedir}/../eclipse-build-feature"/>
+		<echo message="creating link to feature dir (../eclipse-build-feature)" />
+		<symlink link="${basedir}/eclipse-build-feature" resource="${basedir}/../eclipse-build-feature"/>
 	</target>
 
 	<available file="${basedir}/eclipse-build-config" property="buildConfigPresent" value="true" />
 	<target name="symlinkBuildConfig" unless="buildConfigPresent">
-	  <echo message="creating link to config dir (../eclipse-build-config)" />
-	  <symlink link="${basedir}/eclipse-build-config" resource="${basedir}/../eclipse-build-config"/>
+		<echo message="creating link to config dir (../eclipse-build-config)" />
+		<symlink link="${basedir}/eclipse-build-config" resource="${basedir}/../eclipse-build-config"/>
 	</target>
 
 	<target name="unpack" depends="fetch,setLibDir,symlinkBuildFeature,symlinkBuildConfig" unless="unpack.complete">
@@ -337,31 +337,40 @@
 	</target>
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
+		
 		<!-- eclipse-build-only patches -->
-		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" />
+		
+		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" backups="true"/>
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-swt.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-executable.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
-		
+
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
 
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
 
-		<!-- This one should be removed when Eclipse bug 369215 is fixed -->
-		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="2" backups="true"/>
 
-		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="1" />
-
+		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
+		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
+		
 		<replace file="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build/build.properties" token="/usr/share/eclipse" value="/usr/${libDir}/eclipse" />
 		<chmod dir="${buildDirectory}/plugins/org.eclipse.pde.build/templates/package-build" includes="*.sh" perm="a+x" />
+		
 		<!-- end eclipse-build-only patches -->
+		
 		<!-- Only build for one target (bug #293952) -->
 		<copy file="${buildConfigs}/eclipse-build-config/build.properties.in" tofile="${buildConfigs}/eclipse-build-config/build.properties" />
 		<replace file="${buildConfigs}/eclipse-build-config/build.properties" token="@build_arch@" value="${buildArch}" />
 
-		<!-- It would be good to remove those two entries, however, before you spent some time here, be warned that: -->		
+
+		<!-- This one should be removed when Eclipse bug 369215 is fixed -->
+		<patch patchfile="${basedir}/patches/gnomeproxy-makefile.patch" dir="${buildDirectory}" strip="1" />
+
+		<!-- It would be good to remove those two entries, however, before you spent some time here, be warned that: -->
 		<!-- (1) Those plugins contain precompiled classes with source in zips -->
 		<!-- (2) Those plugins have no source folders -->
 		<!-- (3) Those plugins have dependencies -->
@@ -372,13 +381,7 @@
 		<patch patchfile="${basedir}/patches/osgi-util.patch" dir="${buildDirectory}" strip="0" backups="true"/>
 		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="0" />
 
-		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
-		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
-		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
-
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
-
-		<patch patchfile="${basedir}/patches/swt-no-api-generation.patch" dir="${buildDirectory}" strip="0" />
 
 		<patch patchfile="${basedir}/patches/add-plugin-version-of-arm-launcher-fragment.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
@@ -400,16 +403,16 @@
 	<target name="symlinkDeps" depends="applyPatches,defineTasks" unless="symlinks.complete">
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<!-- delete all windows scripts and symlink linux ones -->
-		<delete dir="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/bin"/>
+		<delete dir="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120321-1730/bin"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins"  copyFiles="${copyFiles}"/>
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${buildDirectory}/plugins" copyFiles="${copyFiles}"/>
 		<symlinkOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${buildDirectory}/plugins" manifests="${basedir}/dependencyManifests" copyFiles="${copyFiles}"/>
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120321-1730/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^Name.*" />
 			<substitution expression="" />
 		</replaceregexp>
-		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120316-1400/META-INF/MANIFEST.MF" flags="m,g,s">
+		<replaceregexp file="${buildDirectory}/plugins/org.apache.ant_1.8.3.v20120321-1730/META-INF/MANIFEST.MF" flags="m,g,s">
 			<regexp pattern="^SHA1-Digest.*" />
 			<substitution expression="" />
 		</replaceregexp>
@@ -439,9 +442,9 @@
 	</target>
 
 	<target name="copyDeps">
-	  <antcall target="symlinkDeps">
-	    <param name="copyFiles" value="true"/>
-	  </antcall>
+		<antcall target="symlinkDeps">
+			<param name="copyFiles" value="true"/>
+		</antcall>
 	</target>
 
 	<target name="build" depends="applyPatches,symlinkDeps,bootstrap,compilelibs" unless="build.complete">
@@ -466,12 +469,9 @@
 			<jvmarg value="-Xmx512M" />
 		</java>
 
-
-
-		
 		<!-- build equinox initializer -->
 		<echo message="build.xml: building equinox initializer"/>
-		<mkdir dir="${buildDirectory}/home" />	
+		<mkdir dir="${buildDirectory}/home" />
 		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.equinox.initializer" fork="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
@@ -531,8 +531,6 @@
 		</move>
 		<!-- build libgnomeproxy -->
 		<antcall target="compile.libgnomeproxy" />
-		<!-- build libupdate -->
-		<ant dir="${buildDirectory}/plugins/org.eclipse.update.core.linux/src" antfile="build.xml" />
 
 		<echo file="compilelibs-stamp" />
 	</target>
@@ -813,24 +811,24 @@
 	</target>
 
 	<target name="run.installed.director.uninstall">
-                <chmod perm="ugo+rx" file="${directorToRun}" />
-                <exec executable="${directorToRun}" failonerror="true">
-                        <arg line="-nosplash " />
-                        <arg line="-consoleLog" />
-                        <arg line="-data ${buildworkspace} " />
-                        <arg line="-application org.eclipse.equinox.p2.director " />
-                        <arg line="-flavor ${p2.flavor}" />
-                        <arg line="-uninstallIU ${p2.director.uninstallIU}" />
-                        <arg line="-profile ${p2.director.profile}" />
-                       	<arg line="-destination ${p2.director.install.path}" />
-                        <arg line="-p2.os ${p2.os}" />
-                        <arg line="-p2.ws ${p2.ws}" />
-                        <arg line="-p2.arch ${p2.arch}" />
-                        <arg line="${p2.director.extraArgs}" />
-                        <arg line="-metadatarepository file:${p2.repo}" />
-                        <arg line="-artifactrepository file:${p2.repo}" />
-                </exec>
-        </target>
+		<chmod perm="ugo+rx" file="${directorToRun}" />
+		<exec executable="${directorToRun}" failonerror="true">
+			<arg line="-nosplash " />
+			<arg line="-consoleLog" />
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-application org.eclipse.equinox.p2.director " />
+			<arg line="-flavor ${p2.flavor}" />
+			<arg line="-uninstallIU ${p2.director.uninstallIU}" />
+			<arg line="-profile ${p2.director.profile}" />
+			<arg line="-destination ${p2.director.install.path}" />
+			<arg line="-p2.os ${p2.os}" />
+			<arg line="-p2.ws ${p2.ws}" />
+			<arg line="-p2.arch ${p2.arch}" />
+			<arg line="${p2.director.extraArgs}" />
+			<arg line="-metadatarepository file:${p2.repo}" />
+			<arg line="-artifactrepository file:${p2.repo}" />
+		</exec>
+	</target>
 
 	<target name="installSDKinDropins" depends="provisionSDKinDropins">
 		<antcall target="installIntoDestDir">
@@ -839,46 +837,46 @@
 	</target>
 
 	<target name="extractSos" unless="dontExtractSos">
-	  <java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true" dir="${destDir}">
-	    <classpath>
-	      <fileset dir="${installationDir}/plugins">
-		<include name="org.eclipse.equinox.launcher_*.jar" />
-	      </fileset>
-	    </classpath>
-	    <arg value="-application" />
-	    <arg value="org.eclipse.equinox.initializer.configInitializer" />
-	    <arg value="-debug" />
-	    <arg value="-consolelog" />
-	    <arg value="-metadataRepository" />
-	    <arg value="file:${installationDir}/metadata/" />
-	    <arg value="-artifactRepository" />
-	    <arg value="file:${installationDir}/metadata/" />
-	    <arg value="-data" />
-	    <arg value="${buildworkspace}" />
-	    <arg value="-fileInitializer" />
-	    <arg value="${basedir}/extract_patterns.txt" />
-	    <jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
-	  </java>
+		<java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true" dir="${destDir}">
+			<classpath>
+				<fileset dir="${installationDir}/plugins">
+					<include name="org.eclipse.equinox.launcher_*.jar" />
+				</fileset>
+			</classpath>
+			<arg value="-application" />
+			<arg value="org.eclipse.equinox.initializer.configInitializer" />
+			<arg value="-debug" />
+			<arg value="-consolelog" />
+			<arg value="-metadataRepository" />
+			<arg value="file:${installationDir}/metadata/" />
+			<arg value="-artifactRepository" />
+			<arg value="file:${installationDir}/metadata/" />
+			<arg value="-data" />
+			<arg value="${buildworkspace}" />
+			<arg value="-fileInitializer" />
+			<arg value="${basedir}/extract_patterns.txt" />
+			<jvmarg value="-Dosgi.sharedConfiguration.area=${installationDir}/configuration" />
+		</java>
 	</target>
 
 	<target name="installIntoDestDir">
 		<mkdir dir="${installationDir}" />
-                <exec executable="rsync" failonerror="true">
-                       <arg value="-vrpl" />
-                       <arg value="--exclude=dropins" />
-                       <arg value="${provisionDir}/" />
-                       <arg value="${installationDir}/" />
-                </exec>
+		<exec executable="rsync" failonerror="true">
+			<arg value="-vrpl" />
+			<arg value="--exclude=dropins" />
+			<arg value="${provisionDir}/" />
+			<arg value="${installationDir}/" />
+		</exec>
 
 		<!-- install desktop file -->
 		<copy file="eclipse.desktop" todir="${destDir}${prefix}/share/applications" />
 		<!-- install Eclipse Java code formatter launcher -->
 		<property name="efj" value="${destDir}${prefix}/bin/efj"/>
 		<copy file="efj.sh" tofile="${efj}" />
-	    <fileset id="equinoxLauncher" dir="${installationDir}/plugins">
-	      <include name="org.eclipse.equinox.launcher_*.jar" />
-	    </fileset>
-	    <property name="launcherJar" refid="equinoxLauncher"/>
+		<fileset id="equinoxLauncher" dir="${installationDir}/plugins">
+			<include name="org.eclipse.equinox.launcher_*.jar" />
+		</fileset>
+		<property name="launcherJar" refid="equinoxLauncher"/>
 		<replace file="${efj}" token="@LAUNCHER@" value="${prefix}/${libDir}/eclipse/plugins/${launcherJar}"/>
 		<!-- install icons -->
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png" tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
@@ -906,23 +904,23 @@
 
 		<!-- remove the initializer -->
 		<property name="directorToRun" value="${installationDir}/eclipse" />
-                <antcall target="run.installed.director.uninstall">
-                        <param name="p2.director.uninstallIU" value="org.eclipse.equinox.initializer" />
-                        <param name="p2.director.profile" value="PlatformProfile" />
-                        <param name="p2.director.install.path" value="${installationDir}" />
-                        <param name="p2.director.extraArgs" value="-purgeHistory" />
+		<antcall target="run.installed.director.uninstall">
+			<param name="p2.director.uninstallIU" value="org.eclipse.equinox.initializer" />
+			<param name="p2.director.profile" value="PlatformProfile" />
+			<param name="p2.director.install.path" value="${installationDir}" />
+			<param name="p2.director.extraArgs" value="-purgeHistory" />
 			<param name="p2.os" value="linux" />
-                        <param name="p2.ws" value="gtk" />
-                        <param name="p2.arch" value="${buildArch}" />
-                        <param name="p2.repo" value="${installationDir}" />
-                </antcall>
+			<param name="p2.ws" value="gtk" />
+			<param name="p2.arch" value="${buildArch}" />
+			<param name="p2.repo" value="${installationDir}" />
+		</antcall>
 
 		<!-- copy PDE and JDT to dropins -->
-                <exec executable="rsync" failonerror="true">
-                       <arg value="-vrpl" />
-                       <arg value="${provisionDir}/dropins/" />
-                       <arg value="${installationDir}/dropins/" />
-                </exec>
+		<exec executable="rsync" failonerror="true">
+			<arg value="-vrpl" />
+			<arg value="${provisionDir}/dropins/" />
+			<arg value="${installationDir}/dropins/" />
+		</exec>
 
 		<!-- Remove unnecessary configuration data -->
 		<delete dir="${installationDir}/configuration/org.eclipse.core.runtime" />
@@ -932,14 +930,14 @@
 			<fileset dir="${installationDir}/configuration" includes="**/data/**" />
 			<fileset dir="${installationDir}/configuration" includes="org.eclipse.update/**" />
 		</delete>
-		
+
 		<!-- Fix paths in p2 data -->
 		<delete includeemptydirs="true" failonerror="false">
 			<fileset dir="${installationDir}/p2/org.eclipse.equinox.p2.core" includes="cache/**" />
 		</delete>
 
 		<property name="profileDir" value="p2/org.eclipse.equinox.p2.engine/profileRegistry/${profile}.profile" />
-		
+
 		<!-- Strip some build artifacts from installation -->
 		<exec executable="sed" inputstring="${destDir}" outputproperty="destDirWithUnderscores" failonerror="true">
 			<arg value="s@/@_@g" />
@@ -987,7 +985,7 @@
 				<include name="*.profile" />
 			</fileset>
 		</apply>
-		
+
 		<!-- Move config file to /etc -->
 		<mkdir dir="${destDir}/etc" />
 		<move file="${installationDir}/eclipse.ini" tofile="${destDir}/etc/eclipse.ini" />
@@ -997,7 +995,7 @@
 
 	<target name="provisionSDKinDropins" depends="provision.cvs" unless="provisionSDKinDropins.complete" >
 		<property name="platformAndCVSInstallation" value="${provisionDir}.cvs"/>
-		
+
 		<property name="jdtDropinsName" value="jdt"/>
 		<property name="sdkDropinsName" value="sdk"/>
 
@@ -1028,7 +1026,7 @@
 			<arg value="${jdtInstallation}" />
 			<arg value="${jdtInstallation}.orig" />
 		</exec>
-		
+
 		<!-- restore clean platform+CVS installation -->
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
@@ -1036,7 +1034,7 @@
 			<arg value="${platformAndCVSInstallation}" />
 			<arg value="${provisionDir}" />
 		</exec>
-		
+
 		<!-- Install SDK -->
 		<property name="sdkInstallation" value="${provisionDir}.sdk"/>
 		<antcall target="provision.installed">
@@ -1046,7 +1044,7 @@
 		<!-- rename the entire SDK installation -->
 		<move file="${provisionDir}"
 			tofile="${sdkInstallation}"/>
-		
+
 		<!-- restore clean platform+CVS installation -->
 		<exec executable="cp" failonerror="true">
 			<arg value="-rd" />
@@ -1054,19 +1052,19 @@
 			<arg value="${platformAndCVSInstallation}" />
 			<arg value="${provisionDir}" />
 		</exec>
-		
+
 		<!-- diff of platform+CVS and JDT goes into platform+CVS/dropins/jdt -->
 		<antcall target="moveNewStuffToDropins">
 			<param name="orig" value="${provisionDir}" />
 			<param name="new" value="${jdtInstallation}" />
 			<param name="dropinsDir" value="${jdtDropinsName}" />
 		</antcall>
-		
+
 		<!-- restore clean JDT installation for comparison -->
 		<delete dir="${jdtInstallation}" />
 		<move file="${jdtInstallation}.orig"
 			tofile="${jdtInstallation}"/>
-		
+
 		<!-- diff of JDT and SDK ... -->
 		<antcall target="moveNewStuffToDropins">
 			<param name="orig" value="${jdtInstallation}" />
@@ -1076,7 +1074,7 @@
 		<!-- ... goes into platform+CVS/dropins/pde -->
 		<move file="${jdtInstallation}/dropins/${sdkDropinsName}"
 			todir="${provisionDir}/dropins"/>
-		
+
 		<!-- Re-symlink system JARs -->
 		<fileset id="junit4.jar" dir="${jdtDropinsDir}/plugins">
 			<include name="**/org.junit4_**/junit.jar" />
@@ -1088,12 +1086,12 @@
 
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
-		
+
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/jdtdependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/jdtnonosgidependencies.properties" topLevelDir="${jdtDropinsDir}/plugins" />
-		
+
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/sdkdependencies.properties" topLevelDir="${sdkDropinsDir}/plugins" />
-		
+
 		<delete dir="${platformAndCVSInstallation}" />
 		<delete dir="${jdtInstallation}" />
 		<delete dir="${sdkInstallation}" />
@@ -1102,12 +1100,12 @@
 	</target>
 
 	<target name="moveNewStuffToDropins">
-		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />		
-                <move todir="${dropinsDirectory}/features" includeemptydirs="true">
-                        <fileset dir="${new}/features" id="newFeatures.fileset">
-                                <present present="srconly" targetdir="${orig}/features"/>
-                        </fileset>
-                </move>
+		<property name="dropinsDirectory" value="${orig}/dropins/${dropinsDir}" />
+		<move todir="${dropinsDirectory}/features" includeemptydirs="true">
+			<fileset dir="${new}/features" id="newFeatures.fileset">
+				<present present="srconly" targetdir="${orig}/features"/>
+			</fileset>
+		</move>
 		<move todir="${dropinsDirectory}/plugins" includeemptydirs="true">
 			<fileset dir="${new}/plugins" id="newPlugins.fileset">
 				<present present="srconly" targetdir="${orig}/plugins"/>

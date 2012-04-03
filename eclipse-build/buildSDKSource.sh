@@ -10,6 +10,7 @@ buildID="I20120320-1400"
 baseBuilderTag="R4_2_primary"
 eclipseBuilderTag="R4_2_primary"
 label="3.8.0-I20120320-1400"
+mapVersionTag="${buildID}"
 fetchTests="yes"
 
 usage="usage:  <build ID> [-workdir <working directory>] [-baseBuilder <path to org.eclipse.releng.basebuilder checkout>] [-eclipseBuilder <path to org.eclipse.releng.eclipsebuilder checkout>] [-baseBuilderTag <org.eclipse.releng.basebuilder tag to check out>] [-noTests]"
@@ -67,7 +68,6 @@ workspace="${workDirectory}"/workspace
 rm -rf "${workspace}"
 mkdir -p "${workspace}"
 cvsRepo=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse"
-mapsRoot="org.eclipse.releng/maps"
 
 # Fetch basebuilder
 if [ ! -e "${baseBuilder}" ]; then
@@ -100,8 +100,9 @@ if [ -e ${fetchDirectory}/ecfBundles ]; then
   cd "${baseDir}"
 fi
 
-# Build must be run from within o.e.r.eclipsebuilder checkout
+#Build must be run from within o.e.r.eclipsebuilder checkout
 cd "${eclipseBuilder}"
+
 
 java -jar \
 "${baseBuilder}"/plugins/org.eclipse.equinox.launcher_*.jar \
@@ -110,15 +111,11 @@ java -jar \
 -application org.eclipse.ant.core.antRunner \
 -f buildAll.xml \
 fetchMasterFeature \
+-Dhudson=true \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
 -Duser.home="${homeDirectory}" \
+-DmapVersionTag="${mapVersionTag}" \
 2>&1 | tee ${workDirectory}/sourcesFetch.log
 
 cd "${fetchDirectory}"
@@ -275,13 +272,8 @@ java -jar \
 fetchSdkTestsFeature \
 -DbuildDirectory="${fetchDirectory}" \
 -DskipBase=true \
--Dhuson=true \
--DmapsRepo=${cvsRepo} \
--DmapCvsRoot=${cvsRepo} \
--DmapsCvsRoot=${cvsRepo} \
--DmapsRoot=${mapsRoot} \
--DmapsCheckoutTag=${buildID} \
--DmapVersionTag=${buildID} \
+-Dhudson=true \
+-DmapVersionTag="${mapVersionTag}" \
 -Duser.home="${homeDirectory}" \
 2>&1 | tee "${workDirectory}"/testsFetch.log
 

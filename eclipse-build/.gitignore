@@ -26,3 +26,6 @@ Xvnc.log
 sdk-tests.properties
 tests_*
 EMFbuildworkspace
+/eclipse
+/fetch
+/baseworkspace
