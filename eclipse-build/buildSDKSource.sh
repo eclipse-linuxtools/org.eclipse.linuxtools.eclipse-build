@@ -8,7 +8,9 @@ eclipseBuilder=
 
 buildID="I20120322-1340"
 baseBuilderTag="HEAD"
-eclipseBuilderTag="HEAD"
+eclipseBuilderTag="vI20120320-1400"
+#For some reason http or git protocols do not work
+eclipseBuilderGITrepo="ssh://cdaniel@git.eclipse.org/gitroot/platform/eclipse.platform.releng.eclipsebuilder.git"
 label="3.8.0-I20120322-1340"
 mapVersionTag="${buildID}"
 fetchTests="yes"
@@ -79,9 +81,15 @@ fi
 
 # Fetch eclipsebuilder
 if [ ! -e ${eclipseBuilder} ]; then
+  rm -rf eclipse.platform.releng.eclipsebuilder
+  git clone ${eclipseBuilderGITrepo}
+  cd eclipse.platform.releng.eclipsebuilder
+    git checkout ${eclipseBuilderTag}
+  cd ..
   mkdir -p "${eclipseBuilder}"
+  cp -rf eclipse.platform.releng.eclipsebuilder/* "${eclipseBuilder}"
+  rm -rf eclipse.platform.releng.eclipsebuilder
   cd "${eclipseBuilder}"/..
-  cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
   patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
   patch -p0 < "${baseDir}"/patches/eclipse-removeSkipMapsCheck.patch
