@@ -340,6 +340,8 @@
 		
 		<!-- eclipse-build-only patches -->
 		
+		<patch patchfile="${basedir}/patches/nocoreupdate.patch" dir="${buildDirectory}" strip="0" reverse="false" backups="true" />
+
 		<patch patchfile="${basedir}/patches/eclipse-buildswtnatives.patch" dir="${buildDirectory}" strip="1" backups="true"/>
 		<patch patchfile="${basedir}/patches/eclipse-addArchesAnd64bitSWT.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-filesystem.patch" dir="${buildDirectory}" strip="1" />
