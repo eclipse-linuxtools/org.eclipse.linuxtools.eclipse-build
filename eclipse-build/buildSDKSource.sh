@@ -6,10 +6,10 @@ workDirectory=
 baseBuilder=
 eclipseBuilder=
 
-buildID="I20120320-1400"
-baseBuilderTag="R4_2_primary"
-eclipseBuilderTag="R4_2_primary"
-label="3.8.0-I20120320-1400"
+buildID="I20120322-1340"
+baseBuilderTag="HEAD"
+eclipseBuilderTag="HEAD"
+label="3.8.0-I20120322-1340"
 mapVersionTag="${buildID}"
 fetchTests="yes"
 
