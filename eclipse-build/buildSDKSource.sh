@@ -83,11 +83,10 @@ if [ ! -e ${eclipseBuilder} ]; then
   cd "${eclipseBuilder}"/..
   cvs -d${cvsRepo} co -r ${eclipseBuilderTag} org.eclipse.releng.eclipsebuilder
   cd "${eclipseBuilder}"
-  patch -p0 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
+  patch -p1 < "${baseDir}"/patches/eclipse-addFetchMasterAndTestsTargets.patch
   patch -p1 < "${baseDir}"/patches/e4-noEMFSkipMaps.patch
   cd "${baseDir}"
 fi
-
 
 if [ -e ${fetchDirectory}/orbitRepo ]; then
   cd "${eclipseBuilder}"

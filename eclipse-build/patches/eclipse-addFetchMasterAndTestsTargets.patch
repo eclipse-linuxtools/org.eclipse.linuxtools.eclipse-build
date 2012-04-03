@@ -1,14 +1,9 @@
-Index: buildAll.xml
-===================================================================
-RCS file: /cvsroot/eclipse/org.eclipse.releng.eclipsebuilder/buildAll.xml,v
-retrieving revision 1.243
-diff -u -r1.243 buildAll.xml
---- buildAll.xml	20 May 2009 18:12:20 -0000	1.243
-+++ buildAll.xml	26 May 2009 19:12:58 -0000
-@@ -602,4 +602,22 @@
- 		<copy file="${buildrssproperties}" tofile="${base.builder}/plugins/org.eclipse.build.tools/properties/${rssproperties}" overwrite="true" failonerror="true" />
- 	</target>
- 
+--- org.eclipse.releng.eclipsebuilder/buildAll.xml.bak	2012-04-03 02:56:53.000000000 -0400
++++ org.eclipse.releng.eclipsebuilder/buildAll.xml	2012-04-03 02:59:06.000000000 -0400
+@@ -830,4 +830,21 @@
+         <echo message="DEBUG: buildDirectory did not exist, so nothing to clean up" />
+     </target>
+     
 +	<target name="fetchMasterFeature" depends="init">
 +		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="preBuild">
 +			<property name="builder" value="${eclipse.build.configs}/master" />
@@ -25,6 +20,5 @@ diff -u -r1.243 buildAll.xml
 +		<ant antfile="build.xml" dir="${eclipse.pdebuild.scripts}" target="fetch">
 +			<property name="builder" value="${eclipse.build.configs}/sdk.tests" />
 +		</ant>
-+	</target>
-+
++	</target>    
  </project>
