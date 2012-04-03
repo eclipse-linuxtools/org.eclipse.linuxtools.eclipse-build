@@ -26,3 +26,10 @@ Xvnc.log
 sdk-tests.properties
 tests_*
 EMFbuildworkspace
+/eclipse
+/fetch
+/baseworkspace
+/temp.folder
+/.ant-targets-build.xml
+/.ant-targets-testsBuild.xml
+/.directory
