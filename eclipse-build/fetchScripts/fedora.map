@@ -1,0 +1,28 @@
+###############################################################################
+# Copyright (c) 2012 Red Hat, Inc. and others.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v1.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v10.html
+#
+# Contributors:
+#     Red Hat, Inc. - initial API and implementation
+###############################################################################
+
+
+# Some sources are not mapped as source, but as downloadable plugins, but Fedora needs them.
+
+
+# EMF is needed for 4.2 build
+feature@org.eclipse.emf.common=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=features/org.eclipse.emf.common-feature
+feature@org.eclipse.emf.ecore=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=features/org.eclipse.emf.ecore-feature
+feature@org.eclipse.emf.license=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=features/org.eclipse.emf.license-feature
+
+plugin@org.eclipse.emf.common=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=plugins/org.eclipse.emf.common
+plugin@org.eclipse.emf.ecore=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=plugins/org.eclipse.emf.ecore
+plugin@org.eclipse.emf.ecore.change=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=plugins/org.eclipse.emf.ecore.change
+plugin@org.eclipse.emf.ecore.xmi=GIT,tag=master,repo=git://git.eclipse.org/gitroot/emf/org.eclipse.emf.git,path=plugins/org.eclipse.emf.ecore.xmi
+
+
+# Equinox initialized
+plugin@org.eclipse.equinox.initializer=GIT,tag=master,repo=git://git.eclipse.org/gitroot/equinox/rt.equinox.incubator.git,path=framework/bundles/org.eclipse.equinox.initializer
