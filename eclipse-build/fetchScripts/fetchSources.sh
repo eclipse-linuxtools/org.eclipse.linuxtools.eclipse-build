@@ -14,10 +14,10 @@
 set -e
 
 #eg 3.8.0-I20320
-BUILD_ID=4.2.0-I20120405-0114
+BUILD_ID=4.2.0-I20120405-1114
 
 MAPS_RELENG_GIT_URL=http://git.eclipse.org/gitroot/platform/eclipse.platform.releng.maps.git
-MAPS_RELENG_TAG=I20120405-0114
+MAPS_RELENG_TAG=I20120405-1114
 MAPS_PULL_BRANCH=R4_HEAD
 
 # Small optimization: to do proper pull of existing repos.
@@ -68,6 +68,7 @@ function download {
   echo "REPO = ${repo}"
   echo "clonedFolder = ${clonedFolder}"
   echo "path = ${path}"
+  echo "Tag = ${tag}"
 
   cd temp/
     if [ ! -d $clonedFolder ]
@@ -75,8 +76,11 @@ function download {
 	git clone $repo
       else
 	cd $clonedFolder
-	git checkout $PULL_BRANCH --force
-	git pull origin $PULL_BRANCH
+	#git reset --hard
+	#git pull origin $PULL_BRANCH --force
+	#git reset --hard
+	#git checkout $PULL_BRANCH --force
+	#git reset --hard
 	cd ..
     fi 
     cd $clonedFolder
@@ -84,7 +88,8 @@ function download {
 #       then
 #	pushd $path 
 # || pushd ${path//-feature/}  || pushd ${path//features/oldfeatures}
-	  git checkout $tag --force
+	  git checkout --force $tag 
+	 # git reset --hard
 #	popd 
 	mkdir -p ../../temp/$type/"${target}s"/${name}
 	cp -r $path/* ../../temp/$type/"${target}s"/${name} || cp -r ${path//-feature/}/* ../../temp/$type/"${target}s"/${name}
@@ -186,8 +191,8 @@ mkdir -p temp/${TESTS_ARCHIVE_NAME}
 # clone and update maps
 git clone ${MAPS_RELENG_GIT_URL} || echo "Maps checked out, attempting to pull"
 pushd eclipse.platform.releng.maps
-  git pull -f origin ${MAPS_PULL_BRANCH}
-  git reset --hard
+#  git pull -f origin ${MAPS_PULL_BRANCH}
+#  git reset --hard
   git checkout ${MAPS_RELENG_TAG}
 popd
 
@@ -201,8 +206,8 @@ ls eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map | while read mapFi
 done
 
 # create some listings (they may be unnecessary, but Kim's script created them)
-cat eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map > temp/eclipse/directory.txt
-cat eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map > temp/tests/directory.txt
+cat eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map > temp/${ECLIPSE_ARCHIVE_NAME}/directory.txt
+cat eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map > temp/${TESTS_ARCHIVE_NAME}/directory.txt
 
 # create environments sources (for Fedora build)
 pushd temp/${ECLIPSE_ARCHIVE_NAME}
