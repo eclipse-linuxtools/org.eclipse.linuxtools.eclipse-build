@@ -14,10 +14,11 @@
 set -e
 
 #eg 3.8.0-I20320
-BUILD_ID=4.2.0-20120404-byChris
+BUILD_ID=4.2.0-I20120405-0114
 
 MAPS_RELENG_GIT_URL=http://git.eclipse.org/gitroot/platform/eclipse.platform.releng.maps.git
-MAPS_RELENG_TAG=R4_HEAD
+MAPS_RELENG_TAG=I20120405-0114
+MAPS_PULL_BRANCH=R4_HEAD
 
 # Small optimization: to do proper pull of existing repos.
 # This branch should match the branch which will be pulled if repo already exists. 
@@ -49,19 +50,24 @@ function download {
     then
       type=${TESTS_ARCHIVE_NAME}
     else
-      # fragments go here, too
       type=${ECLIPSE_ARCHIVE_NAME}
    fi
   local name=${processedLine[0]//=GIT/}
   name=${name//feature@/}
   name=${name//plugin@/}
   name=${name//fragment@/}
+  name=${name//bundle@/}
 
   local tag=${processedLine[1]//tag=/}
   local repo=${processedLine[2]//repo=/}
+  
   local clonedFolder=${repo//*\//}
   clonedFolder=${clonedFolder//.git/}
   local path=${processedLine[3]//path=/}
+
+  echo "REPO = ${repo}"
+  echo "clonedFolder = ${clonedFolder}"
+  echo "path = ${path}"
 
   cd temp/
     if [ ! -d $clonedFolder ]
@@ -70,23 +76,67 @@ function download {
       else
 	cd $clonedFolder
 	git checkout $PULL_BRANCH --force
-	git pull -f
+	git pull origin $PULL_BRANCH
 	cd ..
     fi 
     cd $clonedFolder
-      if [ -d $path ]; 
-      then
-	pushd $path 
+#       if [ -d $path ]; 
+#       then
+#	pushd $path 
+# || pushd ${path//-feature/}  || pushd ${path//features/oldfeatures}
 	  git checkout $tag --force
-	popd 
-	mkdir -p ../../temp/$type/"${target}s"/
-	cp -r $path ../../temp/$type/"${target}s"/
+#	popd 
+	mkdir -p ../../temp/$type/"${target}s"/${name}
+	cp -r $path/* ../../temp/$type/"${target}s"/${name} || cp -r ${path//-feature/}/* ../../temp/$type/"${target}s"/${name}
+#  || cp -r ${path//features/oldfeatures}/* ../../temp/$type/"${target}s"/${name}
 	echo "${name},0.0.0=${tag}" >> ../../temp/$type/"${target}Versions.properties"
 	echo "${name},0.0.0=scm:git:${repo};path=\"${path}\";tag=${tag}" >> ../../temp/$type/"sourceReferences.properties"
-      else
-	echo "${path} not found!"
-      fi
+#       else
+# 	echo "${path} not found!"
+#       fi
     cd ..
+  cd ..
+}
+
+
+function downloadCVS {
+   local target;
+   if [[ "${processedLine[0]}" == feature* ]]
+    then
+      target="feature"
+    else
+      # fragments go here, too
+      target="plugin"
+   fi
+
+  local type;
+  if [[ "${processedLine[0]}" == *test* ]]
+    then
+      type=${TESTS_ARCHIVE_NAME}
+    else
+      type=${ECLIPSE_ARCHIVE_NAME}
+  fi
+
+  local name=${processedLine[0]//=CVS/}
+  name=${name//feature@/}
+  name=${name//plugin@/}
+  name=${name//fragment@/}
+  name=${name//bundle@/}
+
+  local tag=${processedLine[1]//*=/}
+  local version=${processedLine[1]//=*/}
+  local repo=${processedLine[2]//repo=/}
+  
+  local clonedFolder=${repo}
+  local path=${processedLine[3]}
+
+  echo "REPO = ${repo}"
+  echo "path = ${path}"
+
+  cd temp/
+      cvs -d $repo checkout -r $tag $path
+      mkdir -p ${type}/${target}s/${name}_${version}.${tag}
+      cp -rf $path/* ${type}/${target}s/${name}_${version}.${tag}
   cd ..
 }
 
@@ -95,8 +145,19 @@ function processSingleMapLine {
   processedLine=( `echo "$mapLine" | tr "," " "` )
   if [[ "${processedLine[0]}" ==  *=GIT ]]
   then
-     download $processedLine
-  else 
+    if ( [[ "${processedLine[0]}" != fragment@org.eclipse.core.resources.win32=GIT ]] \
+      && [[ "${processedLine[0]}" != plugin@org.eclipse.test.dispatcher=GIT ]]  \
+      && [[ "${processedLine[0]}" != fragment@org.eclipse.ui.cocoa=GIT ]] )
+      then
+# 	echo "skipped"
+	download $processedLine
+      else
+	echo "Skipping ${processedLine[0]}".
+    fi
+  elif [[ "${processedLine[0]}" ==  *=CVS ]]; then
+# 	echo "hit ant"
+	downloadCVS $processedLine
+  else
     processBinaryInstallableUnit $processedLine
   fi
 }
@@ -125,7 +186,7 @@ mkdir -p temp/${TESTS_ARCHIVE_NAME}
 # clone and update maps
 git clone ${MAPS_RELENG_GIT_URL} || echo "Maps checked out, attempting to pull"
 pushd eclipse.platform.releng.maps
-  git pull -f
+  git pull -f origin ${MAPS_PULL_BRANCH}
   git reset --hard
   git checkout ${MAPS_RELENG_TAG}
 popd
@@ -135,7 +196,7 @@ cp fedora.map eclipse.platform.releng.maps/org.eclipse.releng/maps/
 
 # process map files (download what should be downloaded)
 ls eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map | while read mapFile; do
-  dos2unix $mapFile
+#   dos2unix $mapFile
   processMapFile $mapFile
 done
 
@@ -163,12 +224,35 @@ pushd temp/${ECLIPSE_ARCHIVE_NAME}
   done
 popd
 
-# Remove files from the version control system
-find -depth -name CVS -exec rm -rf {} \;
-
-
 #Cleanup source code
 pushd temp/${ECLIPSE_ARCHIVE_NAME}
+  # Extract osgi.util src for rebuilding
+  pushd plugins/org.eclipse.osgi.util
+  if [ -e src.zip ]; then
+    unzip -q -d src src.zip
+    # Remove pre-compiled class files and the source.zip
+    rm -r org/ src.zip
+  fi
+  popd
+
+  # Extract osgi.services src for rebuilding
+  pushd plugins/org.eclipse.osgi.services
+    if [ -e src.zip ]; then
+      unzip -q -d src src.zip
+      # Remove pre-compiled class files and the source.zip
+      rm -r org/ src.zip
+    fi
+  popd
+
+  # Remove sources for service.io
+  pushd plugins
+    rm -rf org.eclipse.equinox.io
+    rm -rf org.eclipse.osgi.services/src/org/osgi/service/io/
+  popd
+
+  # Remove files from the version control system
+  find -depth -name CVS -exec rm -rf {} \;  
+  
   # Remove prebuilt binaries
   find \( -name '*.exe' -o -name '*.dll' \) -delete
   find -type f \( -name '*.so' -o -name '*.so.2' -o -name '*.a' \) -delete
@@ -190,7 +274,20 @@ pushd temp/${ECLIPSE_ARCHIVE_NAME}
   find -type d -empty -delete
 popd
 
-tar cjf ${ECLIPSE_ARCHIVE_NAME}.tar.bz2 temp/${ECLIPSE_ARCHIVE_NAME}
-tar cjf ${TESTS_ARCHIVE_NAME}.tar.bz2 temp/${TESTS_ARCHIVE_NAME}
+# add maps to the source (Kim's build did that)
+#mkdir -p temp/${ECLIPSE_ARCHIVE_NAME}/commonrepo/eclipse.platform.releng.maps
+#cp -rf eclipse.platform.releng.maps/org.eclipse.releng temp/${ECLIPSE_ARCHIVE_NAME}/commonrepo/eclipse.platform.releng.maps/
+
+mkdir -p temp/${ECLIPSE_ARCHIVE_NAME}/maps
+pushd temp/${ECLIPSE_ARCHIVE_NAME}/maps
+tar cf maps.tar ../../../eclipse.platform.releng.maps/org.eclipse.releng
+popd
+
+cd temp/
+tar cjf ${ECLIPSE_ARCHIVE_NAME}.tar.bz2 ${ECLIPSE_ARCHIVE_NAME}
+tar cjf ${TESTS_ARCHIVE_NAME}.tar.bz2 ${TESTS_ARCHIVE_NAME}
+mv -f ${ECLIPSE_ARCHIVE_NAME}.tar.bz2 ${TESTS_ARCHIVE_NAME}.tar.bz2 ../
+cd ..
+
 
 rm -rf temp/${ECLIPSE_ARCHIVE_NAME} temp/${TESTS_ARCHIVE_NAME}
