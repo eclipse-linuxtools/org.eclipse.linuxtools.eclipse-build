@@ -434,6 +434,11 @@
 			<regexp pattern="junit\.jar" />
 			<substitution expression="\." />
 		</replaceregexp>
+		
+		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
+		            <regexp pattern="qualifier" />
+		            <substitution expression="v3_8_2_v20100427-1100" />
+		        </replaceregexp>
 
 		<jar destfile="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.jar" manifest="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF">
 			<fileset dir="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/"/>

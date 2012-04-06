@@ -15,15 +15,9 @@ set -e
 
 #eg 3.8.0-I20320
 BUILD_ID=4.2.0-I20120405-1114
+MAPS_RELENG_TAG=I20120405-1114
 
 MAPS_RELENG_GIT_URL=http://git.eclipse.org/gitroot/platform/eclipse.platform.releng.maps.git
-MAPS_RELENG_TAG=I20120405-1114
-MAPS_PULL_BRANCH=R4_HEAD
-
-# Small optimization: to do proper pull of existing repos.
-# This branch should match the branch which will be pulled if repo already exists. 
-
-PULL_BRANCH=master
 
 ECLIPSE_ARCHIVE_NAME=eclipse-${BUILD_ID}-src
 TESTS_ARCHIVE_NAME=eclipse-sdktests-${BUILD_ID}-src
@@ -31,6 +25,7 @@ TESTS_ARCHIVE_NAME=eclipse-sdktests-${BUILD_ID}-src
 
 # Orbit or other pre-built software
 function processBinaryInstallableUnit {
+    echo "$processedLine" >> temp/$ECLIPSE_ARCHIVE_NAME/could-not-download.txt
     echo "Unit $processedLine will not be downloaded, and I cannot do anything with it yet"
 }
 
@@ -74,31 +69,14 @@ function download {
     if [ ! -d $clonedFolder ]
       then
 	git clone $repo
-      else
-	cd $clonedFolder
-	#git reset --hard
-	#git pull origin $PULL_BRANCH --force
-	#git reset --hard
-	#git checkout $PULL_BRANCH --force
-	#git reset --hard
-	cd ..
     fi 
     cd $clonedFolder
-#       if [ -d $path ]; 
-#       then
-#	pushd $path 
-# || pushd ${path//-feature/}  || pushd ${path//features/oldfeatures}
-	  git checkout --force $tag 
-	 # git reset --hard
-#	popd 
+	git checkout --force $tag 
 	mkdir -p ../../temp/$type/"${target}s"/${name}
+	echo "Copying $path/* or ${path//-feature/}/* into temp/$type/"${target}s"/${name}"
 	cp -r $path/* ../../temp/$type/"${target}s"/${name} || cp -r ${path//-feature/}/* ../../temp/$type/"${target}s"/${name}
-#  || cp -r ${path//features/oldfeatures}/* ../../temp/$type/"${target}s"/${name}
-	echo "${name},0.0.0=${tag}" >> ../../temp/$type/"${target}Versions.properties"
+	echo "${name//_3.0.0/},0.0.0=${tag}" >> ../../temp/$type/"${target}Versions.properties"
 	echo "${name},0.0.0=scm:git:${repo};path=\"${path}\";tag=${tag}" >> ../../temp/$type/"sourceReferences.properties"
-#       else
-# 	echo "${path} not found!"
-#       fi
     cd ..
   cd ..
 }
@@ -142,6 +120,9 @@ function downloadCVS {
       cvs -d $repo checkout -r $tag $path
       mkdir -p ${type}/${target}s/${name}_${version}.${tag}
       cp -rf $path/* ${type}/${target}s/${name}_${version}.${tag}
+      if [ ${name} != org.junit ]; then
+	echo "${name},${version}=${tag}" >> $type/"${target}Versions.properties"
+      fi
   cd ..
 }
 
@@ -154,13 +135,16 @@ function processSingleMapLine {
       && [[ "${processedLine[0]}" != plugin@org.eclipse.test.dispatcher=GIT ]]  \
       && [[ "${processedLine[0]}" != fragment@org.eclipse.ui.cocoa=GIT ]] )
       then
-# 	echo "skipped"
+	#regular plugin@org.eclipse.equinox.event=GIT,tag=v20111010-1614,repo=git://git.eclipse.org/gitroot/equinox/rt.equinox.bundles.git,path=bundles/org.eclipse.equinox.event
 	download $processedLine
       else
 	echo "Skipping ${processedLine[0]}".
     fi
+  elif [[ "${processedLine[1]}" == *=GIT ]]; then
+	#special case where plugin@org.eclipse.equinox.http.jetty,3.0.0=GIT,tag=v20120216-2249,repo=git://git.eclipse.org/gitroot/equinox/rt.equinox.bundles.git,path=bundles/org.eclipse.equinox.http.jetty8
+	processedLine=( "${processedLine[0]}_${processedLine[1]//=GIT/}" "${processedLine[2]}" "${processedLine[3]}" "${processedLine[4]}" )
+	download $processedLine
   elif [[ "${processedLine[0]}" ==  *=CVS ]]; then
-# 	echo "hit ant"
 	downloadCVS $processedLine
   else
     processBinaryInstallableUnit $processedLine
@@ -189,10 +173,8 @@ mkdir -p temp/${ECLIPSE_ARCHIVE_NAME}
 mkdir -p temp/${TESTS_ARCHIVE_NAME}
 
 # clone and update maps
-git clone ${MAPS_RELENG_GIT_URL} || echo "Maps checked out, attempting to pull"
+git clone ${MAPS_RELENG_GIT_URL} || echo "Maps already checked out"
 pushd eclipse.platform.releng.maps
-#  git pull -f origin ${MAPS_PULL_BRANCH}
-#  git reset --hard
   git checkout ${MAPS_RELENG_TAG}
 popd
 
@@ -201,7 +183,6 @@ cp fedora.map eclipse.platform.releng.maps/org.eclipse.releng/maps/
 
 # process map files (download what should be downloaded)
 ls eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map | while read mapFile; do
-#   dos2unix $mapFile
   processMapFile $mapFile
 done
 
@@ -279,10 +260,7 @@ pushd temp/${ECLIPSE_ARCHIVE_NAME}
   find -type d -empty -delete
 popd
 
-# add maps to the source (Kim's build did that)
-#mkdir -p temp/${ECLIPSE_ARCHIVE_NAME}/commonrepo/eclipse.platform.releng.maps
-#cp -rf eclipse.platform.releng.maps/org.eclipse.releng temp/${ECLIPSE_ARCHIVE_NAME}/commonrepo/eclipse.platform.releng.maps/
-
+# Add maps
 mkdir -p temp/${ECLIPSE_ARCHIVE_NAME}/maps
 pushd temp/${ECLIPSE_ARCHIVE_NAME}/maps
 tar cf maps.tar ../../../eclipse.platform.releng.maps/org.eclipse.releng
