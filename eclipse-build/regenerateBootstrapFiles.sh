@@ -18,5 +18,5 @@ $launcherDir/plugins/org.eclipse.equinox.launcher_*.jar \
 -application org.eclipse.ant.core.antRunner \
 -f pdebuild.xml generateScripts \
 -DskipBase=true \
--DsdkSource=build/eclipse-4.2.0-fa15ab-src \
+-DsdkSource=build/eclipse-4.2.0-I20120405-0114-src \
 2>&1 | tee ./generatePdeBuildScripts.log
