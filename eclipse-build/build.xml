@@ -262,7 +262,11 @@
 					</fileset>
 				</resources>
 			</copy>
+			<exec dir="${buildDirectory}/" executable="sh" failonerror="true">
+				<arg line="../../additionalArchs/appendFragment.sh @{pluginName} @{archBase} @{newArch}"  />
+			</exec>
 		</sequential>
+		
 	</macrodef>
 
 	<macrodef name="generateArch">
@@ -388,8 +392,6 @@
 		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="0" />
 
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
-
-		<patch patchfile="${basedir}/patches/add-plugin-version-of-arm-launcher-fragment.patch" dir="${buildDirectory}" strip="1" />
 		<echo file="patch-stamp" />
 	</target>
 
