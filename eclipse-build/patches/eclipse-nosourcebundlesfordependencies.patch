@@ -10,8 +10,8 @@
 \ No newline at end of file
 +           plugin@org.eclipse.ecf.provider.filetransfer.httpclient.ssl.source;version=1.0.0.qualifier;unpack="false"
 \ No newline at end of file
---- build/eclipse-4.2.0-fa15ab-src/features/org.eclipse.sdk/build.properties.orig	2012-03-27 16:28:36.000000000 +0200
-+++ build/eclipse-4.2.0-fa15ab-src/features/org.eclipse.sdk/build.properties	2012-03-30 09:08:52.811695108 +0200
+--- build/eclipse-4.2.0-I20120405-1114-src/features/org.eclipse.sdk/build.properties.orig	2012-04-06 11:35:38.000000000 +0200
++++ build/eclipse-4.2.0-I20120405-1114-src/features/org.eclipse.sdk/build.properties	2012-04-06 13:02:22.997174313 +0200
 @@ -11,33 +11,12 @@
  bin.includes=eclipse_update_120.jpg,feature.xml,feature.properties
  
@@ -47,5 +47,4 @@
 -  plugin@org.eclipse.javax.el.source;version=2.2.0.qualifier;unpack="false"
 +generate.feature@org.eclipse.help.source=org.eclipse.help
  
-  generatedVersionLength=45
-\ No newline at end of file
+ generatedVersionLength=45
