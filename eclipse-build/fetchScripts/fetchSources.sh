@@ -250,7 +250,8 @@ pushd temp/${ECLIPSE_ARCHIVE_NAME}
   rm -rf features/org.eclipse.sdk.examples
   rm -rf plugins/*.examples*
 
-  # Remove binary JARs
+  # Remove binary JARs and classes
+  find -type f -name '*.class' -delete
   find -type f -name '*.jar' -delete
 
   # Remove temporary files
