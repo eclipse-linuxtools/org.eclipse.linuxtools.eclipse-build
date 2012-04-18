@@ -247,8 +247,8 @@ pushd temp/${ECLIPSE_ARCHIVE_NAME}
   find \( -name '*.cvsignore' \) -delete
 
   # Remove unnecessary feature and plugins
-  rm -rf features/org.eclipse.sdk.examples
-  rm -rf plugins/*.examples*
+  #rm -rf features/org.eclipse.sdk.examples
+  #rm -rf plugins/*.examples*
 
   # Remove binary JARs and classes
   find -type f -name '*.class' -delete
