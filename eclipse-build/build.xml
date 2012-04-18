@@ -355,6 +355,7 @@
 		<patch patchfile="${basedir}/patches/eclipse-add-archs-net.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/eclipse-add-ppc64-sparc64-s390-s390x.patch" dir="${buildDirectory}" strip="1" />
 
+		<patch patchfile="${basedir}/patches/fix-gnomeproxy-includes.patch" dir="${buildDirectory}" strip="1" />
 		<patch patchfile="${basedir}/patches/donotstorebuildlogsinfiles.patch" dir="${buildDirectory}" strip="1" />
 
 		<patch patchfile="${basedir}/patches/eclipse-pde.build-add-package-build.patch" dir="${buildDirectory}" strip="1" />
