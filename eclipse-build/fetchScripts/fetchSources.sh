@@ -179,7 +179,7 @@ pushd eclipse.platform.releng.maps
 popd
 
 # add fedora specific maps
-cp fedora.map eclipse.platform.releng.maps/org.eclipse.releng/maps/
+cp additionalBundles.map eclipse.platform.releng.maps/org.eclipse.releng/maps/
 
 # process map files (download what should be downloaded)
 ls eclipse.platform.releng.maps/org.eclipse.releng/maps/*.map | while read mapFile; do
