@@ -46,3 +46,26 @@ plugin@org.eclipse.ecf.provider.filetransfer.ssl=GIT,tag=R-Release_HEAD-sdk_feat
 plugin@org.apache.ant=CVS,1.8.3=v20120321-1730,:pserver:anonymous@dev.eclipse.org:/cvsroot/tools,,org.eclipse.orbit/org.apache.ant
 plugin@org.junit=CVS,3.8.2=v3_8_2_v20100427-1100,:pserver:anonymous@dev.eclipse.org:/cvsroot/tools,,org.eclipse.orbit/org.junit
 plugin@org.junit=CVS,4.8.2=v4_8_2_v20110321-1705,:pserver:anonymous@dev.eclipse.org:/cvsroot/tools,,org.eclipse.orbit/org.junit
+
+
+#Examples (See bug https://bugzilla.redhat.com/show_bug.cgi?id=813343 )
+plugin@org.eclipse.swt.examples=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples
+plugin@org.eclipse.swt.examples.browser=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.browser
+plugin@org.eclipse.swt.examples.controls=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.controls
+plugin@org.eclipse.swt.examples.launcher=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.launcher
+plugin@org.eclipse.swt.examples.layouts=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.layouts
+plugin@org.eclipse.swt.examples.ole.win32=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.ole.win32
+plugin@org.eclipse.swt.examples.paint=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git,path=examples/org.eclipse.swt.examples.paint
+plugin@org.eclipse.compare.examples=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=examples/org.eclipse.compare.examples
+plugin@org.eclipse.compare.examples.xml=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=examples/org.eclipse.compare.examples.xml
+plugin@org.eclipse.team.examples.filesystem=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.team.git,path=examples/org.eclipse.team.examples.filesystem
+
+plugin@org.eclipse.ui.examples.javaeditor=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.text.git,path=org.eclipse.ui.examples.javaeditor
+
+plugin@org.eclipse.ui.examples.propertysheet=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git,path=examples/org.eclipse.ui.examples.propertysheet
+plugin@org.eclipse.ui.examples.readmetool=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git,path=examples/org.eclipse.ui.examples.readmetool
+plugin@org.eclipse.ui.examples.multipageeditor=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git,path=examples/org.eclipse.ui.examples.multipageeditor
+plugin@org.eclipse.ui.examples.fieldassist=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git,path=examples/org.eclipse.ui.examples.fieldassist
+plugin@org.eclipse.ui.examples.undo=GIT,tag=master,repo=git://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git,path=examples/org.eclipse.ui.examples.undo
+
+

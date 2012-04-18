@@ -466,6 +466,24 @@
 		<echo message="build.xml:  eclipse.pdebuild.scripts = ${eclipse.pdebuild.scripts}" />
 		<echo message="${basedir}"/>
 		<echo message="${buildConfig}"/>
+		
+		<mkdir dir="${buildDirectory}/home" />
+		<java classname="org.eclipse.core.launcher.Main" dir="${buildDirectory}/plugins/org.eclipse.core.runtime" fork="true">
+			<classpath>
+				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
+			</classpath>
+			<arg line="-data ${buildworkspace} " />
+			<arg line="-Duser.home=${buildDirectory}/home" />
+			<arg line="-application org.eclipse.ant.core.antRunner" />
+			<arg line="-f build.xml" />
+			<arg line="build.update.jar" />
+			<jvmarg value="-Xmx512M" />
+		</java>
+
+		<mkdir dir="${buildDirectory}/plugins/org.eclipse.core.runtime.compatibility.registry/classes/"/>
+		<copy file="${buildDirectory}/plugins/org.eclipse.core.runtime/@dot/org/eclipse/core/runtime/IPluginDescriptor.class" todir="${buildDirectory}/plugins/org.eclipse.core.runtime.compatibility.registry/classes/org/eclipse/core/runtime/"/>
+
+
 		<java classname="org.eclipse.equinox.launcher.Main" fork="true" dir="${basedir}" failonerror="true">
 			<classpath>
 				<pathelement path="bootstrap/plugins/org.eclipse.equinox.launcher.jar" />
