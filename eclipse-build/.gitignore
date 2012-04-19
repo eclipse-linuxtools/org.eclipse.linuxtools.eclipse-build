@@ -33,3 +33,5 @@ EMFbuildworkspace
 /.ant-targets-build.xml
 /.ant-targets-testsBuild.xml
 /.directory
+/temp
+/.options

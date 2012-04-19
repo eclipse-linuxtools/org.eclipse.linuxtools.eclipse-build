@@ -65,10 +65,6 @@
 	<property name="reposource" value="${buildDirectory}/reposource" />
 	<property name="provisionDir" value="${buildDirectory}/installation" />
 
-	<!-- Distros with alternative JUnit 4 JAR locations should pass this
-	     parameter in to ant -->
-	<property name="junit4JarLocation" value="/usr/share/java/junit4.jar" />
-
 	<!-- Determine host architecture -->
 	<exec executable="uname" outputproperty="uname-m">
 		<arg line="-m" />
@@ -204,6 +200,9 @@
 
 		<delete dir="${buildDirectory}/buildConfigs" />
 		<mkdir dir="${buildDirectory}/buildConfigs" />
+		
+		<!-- we use system one, delete the junit folder if it exists -->
+		<delete dir="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/"/>
 
 		<echo message="Copying eclipse-build main feature source" />
 		<copy todir="${buildConfigs}/eclipse-build-config">
@@ -435,22 +434,9 @@
 			<substitution expression="" />
 		</replaceregexp>
 		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
-			<regexp pattern="junit\.jar" />
-			<substitution expression="\." />
-		</replaceregexp>
-		
-		<replaceregexp file="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF" flags="m,g,s">
 		            <regexp pattern="qualifier" />
 		            <substitution expression="v3_8_2_v20100427-1100" />
-		        </replaceregexp>
-
-		<jar destfile="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.jar" manifest="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/META-INF/MANIFEST.MF">
-			<fileset dir="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/"/>
-			<zipfileset src="/usr/share/java/junit.jar"/>
-		</jar>
-
-		<delete dir="${buildDirectory}/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/"/>
-		<delete dir="${buildDirectory}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/"/>
+		</replaceregexp>
 
 		<!-- Create a stamp file -->
 		<echo file="symlinks-stamp" />
@@ -1116,15 +1102,6 @@
 		<!-- ... goes into platform+CVS/dropins/pde -->
 		<move file="${jdtInstallation}/dropins/${sdkDropinsName}"
 			todir="${provisionDir}/dropins"/>
-
-		<!-- Re-symlink system JARs -->
-		<fileset id="junit4.jar" dir="${jdtDropinsDir}/plugins">
-			<include name="**/org.junit4_**/junit.jar" />
-		</fileset>
-		<property name="junit4jar.path" refid="junit4.jar" />
-
-		<delete file="${jdtDropinsDir}/plugins/${junit4jar.path}" />
-		<symlink link="${jdtDropinsDir}/plugins/${junit4jar.path}" resource="${junit4JarLocation}" />
 
 		<symlinkInstalledOSGiJars dependencies="${basedir}/dependencies/dependencies.properties" topLevelDir="${provisionDir}/plugins" />
 		<symlinkNonOSGiJars dependencies="${basedir}/dependencies/nonosgidependencies.properties" topLevelDir="${provisionDir}/plugins" />
