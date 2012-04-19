@@ -901,6 +901,7 @@
 		<!-- install Eclipse Java code formatter launcher -->
 		<property name="efj" value="${destDir}${prefix}/bin/efj"/>
 		<copy file="efj.sh" tofile="${efj}" />
+		<chmod file="${efj}" perm="ugo+rx"/>
 		<fileset id="equinoxLauncher" dir="${installationDir}/plugins">
 			<include name="org.eclipse.equinox.launcher_*.jar" />
 		</fileset>
