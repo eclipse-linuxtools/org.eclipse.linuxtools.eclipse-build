@@ -255,8 +255,10 @@
 		<generateArch newArch="PA_RISC" archBase="x86_64"/>
 		<generateArch newArch="ppc" archBase="x86" />
 		<generateArch newArch="ppc64" archBase="x86_64"/>
+		<generateArch newArch="s390" archBase="x86"/>
+		<generateArch newArch="s390x" archBase="x86"/>
 		<generateArch newArch="sparc" archBase="x86" />
-                <generateArch newArch="sparc64" archBase="x86_64"/>
+        <generateArch newArch="sparc64" archBase="x86_64"/>
 
 		<delete file="${buildDirectory}/plugins/rename.sh"/>
 	</target>
