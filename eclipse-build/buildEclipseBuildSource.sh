@@ -29,6 +29,7 @@ fi
 
 echo "Going to create source tarball for eclipse-build ${eclipsebuildTag}."
 
+rm -rf "${workDirectory}"
 mkdir "${workDirectory}"
 cd "${workDirectory}"
 git clone git://git.eclipse.org/gitroot/linuxtools/org.eclipse.linuxtools.eclipse-build.git .
