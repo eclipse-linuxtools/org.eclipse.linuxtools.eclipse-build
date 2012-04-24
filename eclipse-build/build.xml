@@ -207,6 +207,9 @@
 
 		<antcall target="extractSource" />
 		<antcall target="copySource" />
+		
+		<delete dir="${buildDirectory}/plugins/org.eclipse.equinox.launcher.gtk.linux.s390" />
+		<delete dir="${buildDirectory}/plugins/org.eclipse.equinox.launcher.gtk.linux.s390x" />
 		<antcall target="extractBuildXmls" />
 
 		<delete dir="${buildDirectory}/buildConfigs" />
