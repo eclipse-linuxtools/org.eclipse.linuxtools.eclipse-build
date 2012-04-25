@@ -137,7 +137,7 @@
           id="org.eclipse.swt.gtk.linux.x86_64"
           os="linux"
           ws="gtk"
-@@ -282,6 +381,28 @@
+@@ -282,6 +381,48 @@
           download-size="0"
           install-size="0"
           version="0.0.0"
@@ -146,6 +146,26 @@
 +
 +   <plugin
 +         id="org.eclipse.swt.gtk.solaris.sparc"
++         os="solaris"
++         ws="gtk"
++         arch="sparc"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++   <plugin
++         id="org.eclipse.swt.gtk.linux.s390"
++         os="solaris"
++         ws="gtk"
++         arch="sparc"
++         download-size="0"
++         install-size="0"
++         version="0.0.0"
++         fragment="true"
++         unpack="false"/>
++   <plugin
++         id="org.eclipse.swt.gtk.linux.s390x"
 +         os="solaris"
 +         ws="gtk"
 +         arch="sparc"
