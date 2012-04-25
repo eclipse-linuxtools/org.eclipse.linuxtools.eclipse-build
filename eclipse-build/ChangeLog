@@ -1,3 +1,10 @@
+2012-04-25  Sami Wagiaalla  <swagiaal@redhat.com>
+
+	* patches/eclipse-add-archs-net.patch:
+	Add org.eclipse.core.net.linux.s390 and
+	org.eclipse.core.net.linux.s390x fragments to
+	org.eclipse.platform/feature.xml.
+
 2012-04-18  Sami Wagiaalla  <swagiaal@redhat.com>
 
 	* patches/fix-gnomeproxy-includes.patch:
