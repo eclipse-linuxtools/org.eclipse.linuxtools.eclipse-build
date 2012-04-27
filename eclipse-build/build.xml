@@ -104,6 +104,7 @@
 				<!-- Is it a 64-bit architecture? -->
 				<equals arg1="${buildArch}" arg2="x86_64" />
 				<equals arg1="${buildArch}" arg2="ppc64" />
+			    <equals arg1="${buildArch}" arg2="s390x" />
 			</or>
 		</and>
 	</condition>
