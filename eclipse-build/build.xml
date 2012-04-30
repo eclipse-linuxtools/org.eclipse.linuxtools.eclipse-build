@@ -932,11 +932,11 @@
 		<property name="launcherJar" refid="equinoxLauncher"/>
 		<replace file="${efj}" token="@LAUNCHER@" value="${prefix}/${libDir}/eclipse/plugins/${launcherJar}"/>
 		<!-- install icons -->
-		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse.png" tofile="${destDir}${prefix}/share/icons/hicolor/16x16/apps/eclipse.png" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse32.png" tofile="${destDir}${prefix}/share/icons/hicolor/32x32/apps/eclipse.png" />
 		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse48.png" tofile="${destDir}${prefix}/share/icons/hicolor/48x48/apps/eclipse.png" />
+		<copy file="${buildDirectory}/plugins/org.eclipse.platform/eclipse256.png" tofile="${destDir}${prefix}/share/icons/hicolor/256x256/apps/eclipse.png" />
 		<mkdir dir="${destDir}${prefix}/share/pixmaps" />
-		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/48x48/apps/eclipse.png" overwrite="true"/>
+		<symlink link="${destDir}${prefix}/share/pixmaps/eclipse.png" resource="../icons/hicolor/256x256/apps/eclipse.png" overwrite="true"/>
 		<!--shared dropins folder for architecture-independent plugins-->
 		<mkdir dir="${destDir}${prefix}/share/eclipse/dropins" />
 		<!-- eclipse binary -->
