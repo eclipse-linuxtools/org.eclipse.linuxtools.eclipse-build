@@ -1,0 +1,11 @@
+--- a/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/adaptor/LocationManager.java.orig	2012-05-05 14:40:27.000000000 +0200
++++ b/org.eclipse.osgi/eclipseAdaptor/src/org/eclipse/core/runtime/adaptor/LocationManager.java	2012-05-18 09:18:35.819051000 +0200
+@@ -317,7 +317,7 @@
+ 				String appVersion = props.getProperty(PRODUCT_SITE_VERSION);
+ 				if (appVersion == null || appVersion.trim().length() == 0)
+ 					appVersion = ""; //$NON-NLS-1$
+-				appName += File.separator + appId + "_" + appVersion + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
++				appName += File.separator + appId + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
+ 			} catch (IOException e) {
+ 				// Do nothing if we get an exception.  We will default to a standard location 
+ 				// in the user's home dir.

@@ -1,6 +1,6 @@
 --- a/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java.orig	2012-05-05 14:41:12.000000000 +0200
 +++ b/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java	2012-05-17 15:58:03.814793518 +0200
-@@ -8,7 +8,8 @@
+@@ -8,7 +8,7 @@
   * Contributors:
   *     IBM Corporation - initial API and implementation
   *     Anton Leherbauer (Wind River Systems) - bug 301226
@@ -9,7 +9,7 @@
   *******************************************************************************/
  package org.eclipse.equinox.launcher;
  
-@@ -235,6 +235,8 @@
+@@ -235,6 +235,9 @@
  	protected BufferedWriter log = null;
  	protected boolean newSession = true;
  
@@ -19,6 +19,7 @@
  	// for variable substitution
  	public static final String VARIABLE_DELIM_STRING = "$"; //$NON-NLS-1$
  	public static final char VARIABLE_DELIM_CHAR = '$';
+ 	
 @@ -555,6 +557,12 @@
  		setupVMProperties();
  		processConfiguration();
