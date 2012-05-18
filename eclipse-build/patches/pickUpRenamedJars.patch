@@ -1,0 +1,11 @@
+--- plugins/org.eclipse.equinox.p2.publisher.eclipse/src/org/eclipse/equinox/p2/publisher/eclipse/BundlesAction.java.orig	2012-05-05 15:24:03.000000000 +0200
++++ plugins/org.eclipse.equinox.p2.publisher.eclipse/src/org/eclipse/equinox/p2/publisher/eclipse/BundlesAction.java	2012-05-17 16:14:48.607827015 +0200
+@@ -752,7 +752,7 @@
+ 				//First check to see if there is already an IU around for this
+ 				IInstallableUnit bundleIU = queryForIU(result, bundleDescriptions[i].getSymbolicName(), PublisherHelper.fromOSGiVersion(bd.getVersion()));
+ 				IArtifactKey key = createBundleArtifactKey(bd.getSymbolicName(), bd.getVersion().toString());
+-				if (bundleIU == null) {
++				if (bundleIU == null || !bd.getLocation().equals(bundleIU.getProperty("file.name"))) {
+ 					createAdviceFileAdvice(bundleDescriptions[i], info);
+ 					// Create the bundle IU according to any shape advice we have
+ 					bundleIU = doCreateBundleIU(bd, key, info);

@@ -364,6 +364,10 @@
 
 	<target name="applyPatches" depends="insertBuildId" unless="patch.complete">
 		
+		
+		<patch patchfile="${basedir}/patches/doNotRunAsRoot.patch" dir="${buildDirectory}/plugins" strip="1" backups="true"/>
+		<patch patchfile="${basedir}/patches/pickUpRenamedJars.patch" dir="${buildDirectory}/plugins" strip="1" backups="true"/>
+		<patch patchfile="${basedir}/patches/populateUpdateSites.patch" dir="${buildDirectory}/plugins" strip="2" backups="true"/>
 		<!-- eclipse-build-only patches -->
 		
 		<patch patchfile="${basedir}/patches/e4-remove-w3c-smil-and-use-geronimo.patch" dir="${buildDirectory}" strip="0" reverse="false"/>
