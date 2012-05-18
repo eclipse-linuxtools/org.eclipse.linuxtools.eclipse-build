@@ -188,7 +188,7 @@ index 0000000..fac54ea
  
  /**
   * Common code shared between artifact and metadata repository managers.
-@@ -981,6 +983,62 @@
+@@ -981,6 +983,61 @@
  		saveToPreferences();
  	}
  
@@ -199,8 +199,7 @@ index 0000000..fac54ea
 +           return;
 +
 +       {
-+           ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider> tracker = new ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider>(Activator.get
-+Context(), IMasterProfilePreferencesProvider.class.getName(), null);
++           ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider> tracker = new ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider>(Activator.getContext(), IMasterProfilePreferencesProvider.class.getName(), null);
 +           tracker.open();
 +           IMasterProfilePreferencesProvider pprovider = tracker.getService();
 +
