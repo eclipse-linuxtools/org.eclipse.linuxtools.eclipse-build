@@ -21,7 +21,7 @@ index cb812be2..21ba682 100644
  Bundle-ActivationPolicy: lazy
 -Service-Component: OSGI-INF/profileRegistry.xml, OSGI-INF/engine.xml
 +Service-Component: OSGI-INF/profileRegistry.xml, OSGI-INF/engine.xml,
-+ MasterRepositoryPreferenceProvider.xml
++ OSGI-INF/MasterRepositoryPreferenceProvider.xml
  Import-Package: javax.xml.parsers,
   org.eclipse.core.internal.preferences,
   org.eclipse.core.runtime.preferences,
@@ -40,7 +40,7 @@ diff --git a/bundles/org.eclipse.equinox.p2.engine/MasterRepositoryPreferencePro
 new file mode 100644
 index 0000000..026fa0e
 --- /dev/null
-+++ b/bundles/org.eclipse.equinox.p2.engine/MasterRepositoryPreferenceProvider.xml
++++ b/bundles/org.eclipse.equinox.p2.engine/OSGI-INF/MasterRepositoryPreferenceProvider.xml
 @@ -0,0 +1,7 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.eclipse.equinox.p2.engine.IMasterRepositoryPreferenceProviderService">
@@ -142,10 +142,36 @@ index e32ff0f..b1d12c1 100644
   org.eclipse.core.runtime.jobs,
   org.eclipse.core.runtime.preferences;version="3.2.0",
   org.eclipse.equinox.internal.p2.core,
-diff --git a/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java
-index 207eebc..df9ef28 100644
---- a/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java
-+++ b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java
+diff --git a/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java
+new file mode 100644
+index 0000000..fac54ea
+--- /dev/null
++++ b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java
+@@ -0,0 +1,22 @@
++/*******************************************************************************
++ * Copyright (c) 2012 Red Hat,Inc. and others.
++ * All rights reserved. This program and the accompanying materials
++ * are made available under the terms of the Eclipse Public License v1.0
++ * which accompanies this distribution, and is available at
++ * http://www.eclipse.org/legal/epl-v10.html
++ * 
++ * Contributors:
++ *     Red Hat,Inc. - initial API and implementation
++ *******************************************************************************/
++package org.eclipse.equinox.internal.p2.repository.helpers;
++
++import org.osgi.service.prefs.Preferences;
++
++/**
++ * This service does its best to locate master profile and get preferences
++ * stored in master ProfileScope.
++ *
++ */
++public interface IMasterProfilePreferencesProvider {
++   public Preferences getMasterPreferences(String profileName, String node);
++}
+--- a/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java.orig	2012-05-05 15:24:03.000000000 +0200
++++ b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/AbstractRepositoryManager.java	2012-05-18 16:18:18.029669647 +0200
 @@ -9,6 +9,7 @@
   *     IBM Corporation - initial API and implementation
   *     Wind River - fix for bug 299227
@@ -162,19 +188,19 @@ index 207eebc..df9ef28 100644
  
  /**
   * Common code shared between artifact and metadata repository managers.
-
-@@ -995,6 +997,60 @@
-        }
-    }
+@@ -981,6 +983,62 @@
+ 		saveToPreferences();
+ 	}
  
-+private void restoreFromMasterPreferences() {
++   private void restoreFromMasterPreferences() {
 +       // restore the list of repositories from the preference store
 +       Preferences node = getPreferences();
 +       if (node == null)
 +           return;
 +
 +       {
-+           ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider> tracker = new ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider>(Activator.getContext(), IMasterProfilePreferencesProvider.class.getName(), null);
++           ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider> tracker = new ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider>(Activator.get
++Context(), IMasterProfilePreferencesProvider.class.getName(), null);
 +           tracker.open();
 +           IMasterProfilePreferencesProvider pprovider = tracker.getService();
 +
@@ -221,44 +247,15 @@ index 207eebc..df9ef28 100644
 +        }
 +    }
 +
-    /**
-     * Restores the repository list.
-     */
-@@ -1004,6 +1060,7 @@
-            restoreSpecialRepositories();
-            restoreFromSystemProperty();
-            restoreFromPreferences();
-+           restoreFromMasterPreferences();
-        }
-    }
++
+ 	private void restoreFromSystemProperty() {
+ 		String locationString = Activator.getContext().getProperty(getRepositorySystemProperty());
+ 		if (locationString != null) {
+@@ -1004,6 +1062,7 @@
+ 			restoreSpecialRepositories();
+ 			restoreFromSystemProperty();
+ 			restoreFromPreferences();
++			restoreFromMasterPreferences();
+ 		}
+ 	}
  
-
-
-diff --git a/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java
-new file mode 100644
-index 0000000..fac54ea
---- /dev/null
-+++ b/bundles/org.eclipse.equinox.p2.repository/src/org/eclipse/equinox/internal/p2/repository/helpers/IMasterProfilePreferencesProvider.java
-@@ -0,0 +1,22 @@
-+/*******************************************************************************
-+ * Copyright (c) 2012 Red Hat,Inc. and others.
-+ * All rights reserved. This program and the accompanying materials
-+ * are made available under the terms of the Eclipse Public License v1.0
-+ * which accompanies this distribution, and is available at
-+ * http://www.eclipse.org/legal/epl-v10.html
-+ * 
-+ * Contributors:
-+ *     Red Hat,Inc. - initial API and implementation
-+ *******************************************************************************/
-+package org.eclipse.equinox.internal.p2.repository.helpers;
-+
-+import org.osgi.service.prefs.Preferences;
-+
-+/**
-+ * This service does its best to locate master profile and get preferences
-+ * stored in master ProfileScope.
-+ *
-+ */
-+public interface IMasterProfilePreferencesProvider {
-+   public Preferences getMasterPreferences(String profileName, String node);
-+}
