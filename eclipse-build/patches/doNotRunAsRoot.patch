@@ -1,4 +1,4 @@
---- a/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java.orig	2012-05-05 14:41:12.000000000 +0200
+--- a/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java	2012-05-05 14:41:12.000000000 +0200
 +++ a/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java	2012-05-18 15:28:28.553493782 +0200
 @@ -8,7 +8,7 @@
   * Contributors:
@@ -38,7 +38,7 @@
  			}
 + if (args[i].equalsIgnoreCase(FORBIDDEN_MASTER_ECLIPSE)) {
 +               forbiddenMasterEclipse = true;
-+               continue;
++               found = true;
 +           }
  
  			// check if development mode should be enabled for the entire platform
