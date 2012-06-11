@@ -202,7 +202,7 @@ index 0000000..fac54ea
 +           ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider> tracker = new ServiceTracker<IMasterProfilePreferencesProvider, IMasterProfilePreferencesProvider>(Activator.getContext(), IMasterProfilePreferencesProvider.class.getName(), null);
 +           tracker.open();
 +           IMasterProfilePreferencesProvider pprovider = tracker.getService();
-+
++	    if(pprovider == null) return;
 +           String profileName = node.parent().parent().name();
 +           String nodeName = node.parent().name();
 +
