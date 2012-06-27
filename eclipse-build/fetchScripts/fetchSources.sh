@@ -14,8 +14,8 @@
 set -e
 
 #eg 3.8.0-I20320
-BUILD_ID=4.2.0-I20120503-1800
-MAPS_RELENG_TAG=I20120503-1800
+BUILD_ID=4.2.0-I20120608-1400
+MAPS_RELENG_TAG=R4_2
 
 MAPS_RELENG_GIT_URL=http://git.eclipse.org/gitroot/platform/eclipse.platform.releng.maps.git
 
