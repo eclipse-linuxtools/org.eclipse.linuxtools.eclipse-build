@@ -15,7 +15,7 @@ diff --git a/bundles/org.eclipse.equinox.p2.engine/META-INF/MANIFEST.MF b/bundle
 index cb812be2..21ba682 100644
 --- a/bundles/org.eclipse.equinox.p2.engine/META-INF/MANIFEST.MF
 +++ b/bundles/org.eclipse.equinox.p2.engine/META-INF/MANIFEST.MF
-@@ -27,16 +27,19 @@
+@@ -25,16 +25,19 @@
   J2SE-1.4,
   CDC-1.1/Foundation-1.1
  Bundle-ActivationPolicy: lazy
