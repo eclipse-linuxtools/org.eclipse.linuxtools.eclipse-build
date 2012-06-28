@@ -423,7 +423,33 @@
 		<patch patchfile="${basedir}/patches/osgi-services-build.patch" dir="${buildDirectory}" strip="0" />
 
 		<patch patchfile="${basedir}/patches/nonRelativeLicense.patch" dir="${buildDirectory}" strip="0" />
+
+		<!-- jsr14 is practically unusable with java7 -->
+		<antcall target="jsr14To15" />
+
 		<echo file="patch-stamp" />
+	</target>
+
+	<target name="jsr14To15">
+		<fileset dir="${buildDirectory}/plugins" id="buildxmls">
+			<include name="**/build.xml" />
+		</fileset>
+
+		<replace token="name=&quot;bundleJavacTarget&quot; value=&quot;jsr14&quot;"
+			value="name=&quot;bundleJavacTarget&quot; value=&quot;1.5&quot;"
+			summary="true">
+			<fileset refid="buildxmls"/>
+		</replace>
+
+	      <fileset dir="${buildDirectory}/plugins" id="buildproperties">
+	            <include name="**/build.properties" />
+	        </fileset>
+
+	        <replace token="javacTarget=jsr14"
+	            value="javacTarget=1.5"
+	            summary="true">
+	            <fileset refid="buildproperties"/>
+	        </replace>
 	</target>
 
 	<target name="buildHelperTask">
