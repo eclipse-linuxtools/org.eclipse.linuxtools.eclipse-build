@@ -33,7 +33,7 @@
  		
 --- a/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
 +++ b/plugins/org.eclipse.platform.doc.isv/buildDoc.xml
-@@ -120,7 +120,7 @@
+@@ -121,7 +121,7 @@
  		<delete dir="reference/api"/>
  		<mkdir dir="reference/api"/>
  
