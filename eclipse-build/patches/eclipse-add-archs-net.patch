@@ -1,6 +1,6 @@
 --- a/features/org.eclipse.platform/feature.xml	2012-02-29 12:00:52.000000000 -0500
 +++ b/features/org.eclipse.platform/feature.xml	2012-03-05 11:57:38.000000000 -0500
-@@ -144,6 +144,36 @@
+@@ -137,6 +137,36 @@
           unpack="false"/>
  
     <plugin
