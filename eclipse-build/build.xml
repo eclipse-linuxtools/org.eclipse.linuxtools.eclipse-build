@@ -392,6 +392,7 @@
 		<patch patchfile="${basedir}/patches/eclipse-nosourcebundlesfordependencies.patch" dir="${buildDirectory}" strip="2" backups="true"/>
 
 		<patch patchfile="${basedir}/patches/eclipse-help-feature-adjust-dependencies.patch" dir="${buildDirectory}" strip="1" />
+		<patch patchfile="${basedir}/patches/eclipse-help-fix-webapp-jsp-compilation.patch" dir="${buildDirectory}/plugins" strip="1"/>
 		<patch patchfile="${basedir}/patches/eclipse-equinox-jsp-jasper.patch" dir="${buildDirectory}" strip="0" />
 		<patch patchfile="${basedir}/patches/serverside-patch-additional-imports.patch" dir="${buildDirectory}" strip="0" />
 		
