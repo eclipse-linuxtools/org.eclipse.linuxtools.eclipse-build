@@ -216,7 +216,7 @@
 +++ plugins/org.eclipse.equinox.jsp.jasper/META-INF/MANIFEST.MF	2011-08-16 16:06:15.933599606 -0400
 @@ -6,12 +6,13 @@
  Bundle-SymbolicName: org.eclipse.equinox.jsp.jasper
- Bundle-Version: 1.0.300.qualifier
+ Bundle-Version: 1.0.400.qualifier
  Bundle-Activator: org.eclipse.equinox.internal.jsp.jasper.Activator
 -Import-Package: javax.servlet;version="[2.4, 3.1)",
 +Import-Package: javax.servlet;version="[2.4.0,3.1)",
