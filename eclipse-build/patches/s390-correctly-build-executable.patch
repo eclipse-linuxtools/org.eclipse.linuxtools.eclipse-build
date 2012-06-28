@@ -20,7 +20,7 @@
  		<chmod perm="755" dir="${feature.base}/linux.gtk.s390/${collectingFolder}" includes="launcher" /> 
 --- a/features/org.eclipse.equinox.executable/library/gtk/build.sh.bak	2012-04-18 17:43:40.000000000 +0200
 +++ b/features/org.eclipse.equinox.executable/library/gtk/build.sh	2012-04-25 15:14:23.234010339 +0200
-@@ -78,12 +78,12 @@
+@@ -81,12 +81,12 @@
  			"s390")
  				defaultOSArch="s390"
  				defaultJava=DEFAULT_JAVA_EXEC
