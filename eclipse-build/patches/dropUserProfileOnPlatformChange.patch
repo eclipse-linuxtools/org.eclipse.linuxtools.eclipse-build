@@ -6,7 +6,7 @@
  
 -				return (userBundles.containsAll(sharedBundles)) ? userConfigURL : sharedConfigURL;
 +				boolean useUserConfigArea = userBundles.containsAll(sharedBundles);
-+				System.setProperty("org.eclipse.equinox.simpleconfigurator.shared.useUser", "" + useUserConfigArea);
++				System.setProperty("org.eclipse.equinox.simpleconfigurator.shared.useUser", "" + System.currentTimeMillis());
 +
 +				return useUserConfigArea ? userConfigURL : sharedConfigURL;
  			}
@@ -14,17 +14,18 @@
  			return null;
 --- a/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/SimpleProfileRegistry.java
 +++ b/bundles/org.eclipse.equinox.p2.engine/src/org/eclipse/equinox/internal/p2/engine/SimpleProfileRegistry.java
-@@ -236,8 +236,13 @@
+@@ -236,8 +236,14 @@
  		if (SELF.equals(id))
  			id = self;
  		Profile profile = getProfileMap().get(id);
 -		if (profile == null && self != null && self.equals(id))
-+		if ("false".equals(System.getProperty("org.eclipse.equinox.simpleconfigurator.shared.useUser"))) {
++		String s = System.getProperty("org.eclipse.equinox.simpleconfigurator.shared.useUser");
++		if (s != null && profile != null && (profile.getTimestamp() < new Long(s))) {
 +			profile = null;
 +		}
 +		if (profile == null && self != null && self.equals(id)) {
  			profile = createSurrogateProfile(id);
-+			System.setProperty("org.eclipse.equinox.simpleconfigurator.shared.useUser", "" + true);
++			
 +		}
  
  		return profile;
