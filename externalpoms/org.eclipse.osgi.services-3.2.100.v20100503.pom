@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xsi:noNamespaceSchemaLocation="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.eclipse.osgi</groupId>
+  <artifactId>org.eclipse.osgi.services</artifactId>
+  <version>3.2.100.v20100503</version>
+  <description>OSGi Release 4.2.0 Services
+OSGi Service Platform Release 4.2.0 Service Interfaces and Classes</description>
+  <!-- See https://issues.sonatype.org/browse/OSSRH-739 -->
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.osgi</groupId>
+      <artifactId>org.eclipse.osgi</artifactId>
+      <version>3.6.0.v20100517</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.osgi.foundation</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+  </dependencies>
+</project>
