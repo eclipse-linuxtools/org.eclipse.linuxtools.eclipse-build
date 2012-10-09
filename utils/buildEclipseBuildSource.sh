@@ -37,12 +37,9 @@ cd "${workDirectory}"
 git archive --format=tar --prefix=eclipse-build-${eclipsebuildTag}/ ${eclipsebuildTag} | gzip >eclipse-build-${eclipsebuildTag}-tmp.tar.gz 
 tar -xf eclipse-build-${eclipsebuildTag}-tmp.tar.gz
 cd eclipse-build-${eclipsebuildTag}
-mv eclipse-build eclipse-build-${eclipsebuildTag}
+
 rm -rf .project .settings
-mv -f eclipse-build-config eclipse-build-${eclipsebuildTag}
-mv -f eclipse-build-feature eclipse-build-${eclipsebuildTag}
-mv -f eclipse-build-${eclipsebuildTag}/* .
-rm -fr eclipse-build-${eclipsebuildTag}
+
 cd ..
 
 
