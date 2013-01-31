@@ -12,9 +12,10 @@
 # Base Eclipse installation is required to not have JDT or PDE installed.
 
 
+LOCATION=${1}
+REPO=${2}
 
-REPO=${1}
-
+pushd ${LOCATION}
 #make a backup 
 cp -rf eclipse eclipse-backup-with-jdt
 # go into backup
@@ -65,4 +66,5 @@ for i in `ls eclipse-backup-with-jdt-pde/plugins` ; do \
 done
 
 
-cp -r jdt sdk eclipse/dropins 
+cp -r jdt sdk eclipse/dropins
+popd
