@@ -19,7 +19,7 @@ pushd $1
     #if -makejar is specified, zip the plugin into a jar
     if [ "-makejar" = $3 ]; then
     	cd ..
-    	pluginName=`ls | grep $1`
+    	pluginName=`ls | grep org.junit_`
     	zip -y -r ${pluginName}.jar ${pluginName}
     fi
     
