@@ -124,7 +124,7 @@ buildDir=$PWD/build
 SDK=$buildDir/SDK
 homeDir=$buildDir/home
 workspaceDir=$homeDir/workspace
-datadir=`rpm --eval "%{_libdir}"`
+datadir=@LIBDIR@
 pdeBuildDir=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@
 
 featureId=
