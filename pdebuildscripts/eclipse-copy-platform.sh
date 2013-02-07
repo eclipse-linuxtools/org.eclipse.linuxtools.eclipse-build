@@ -27,7 +27,7 @@ fi
 where=$1; shift
 eclipse=$1; shift
 
-datadir=/usr/share/eclipse
+datadir=@DATADIR@/eclipse
 
 mkdir -p $where/plugins $where/features
 cd $where
