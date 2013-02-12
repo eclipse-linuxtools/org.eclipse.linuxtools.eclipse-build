@@ -2,11 +2,17 @@
 # It goes into a folder that is first argument of the script
 # Then into plugins, and then symlinks 
 
+# SCL java dir is different from default
+SCL_JAVA_DIR=$2
 
 function _symlink {
-	_f=`ls | grep -e "^$1"`; \
-	rm -rf ${_f} ; \
-	ln -s /usr/share/java/$2 ${_f} 
+	_f=`ls | grep -e "^$1"`;
+	rm -rf ${_f} ;
+	if [[ -e ${SCL_JAVA_DIR}$2  ]]; then
+		ln -s ${SCL_JAVA_DIR}$2 ${_f}
+	else
+		ln -s /usr/share/java/$2 ${_f}
+	fi 
 }
 pushd $1
 	#symlink what should be symlinked
