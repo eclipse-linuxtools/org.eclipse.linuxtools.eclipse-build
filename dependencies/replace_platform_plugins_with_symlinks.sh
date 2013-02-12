@@ -8,7 +8,7 @@ SCL_JAVA_DIR=$2
 function _symlink {
 	_f=`ls | grep -e "^$1"`;
 	rm -rf ${_f} ;
-	if [ -f ${SCL_JAVA_DIR}$/2  ]; then
+	if [ -f ${SCL_JAVA_DIR}/$2  ]; then
 		echo "found ${SCL_JAVA_DIR}/$2"
 		ln -s ${SCL_JAVA_DIR}/$2 ${_f}
 	else
