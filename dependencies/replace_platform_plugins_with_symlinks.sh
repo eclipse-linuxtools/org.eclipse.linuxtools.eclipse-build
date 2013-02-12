@@ -8,9 +8,11 @@ SCL_JAVA_DIR=$2
 function _symlink {
 	_f=`ls | grep -e "^$1"`;
 	rm -rf ${_f} ;
-	if [[ -e ${SCL_JAVA_DIR}$2  ]]; then
-		ln -s ${SCL_JAVA_DIR}$2 ${_f}
+	if [ -f ${SCL_JAVA_DIR}$/2  ]; then
+		echo "found ${SCL_JAVA_DIR}/$2"
+		ln -s ${SCL_JAVA_DIR}/$2 ${_f}
 	else
+		echo "not found ${SCL_JAVA_DIR}/$2"
 		ln -s /usr/share/java/$2 ${_f}
 	fi 
 }
