@@ -32,7 +32,8 @@ pushd $1
 		_symlink org.apache.batik.util_ batik/batik-util.jar
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
 		_symlink org.apache.commons.codec_ commons-codec.jar
-		_symlink org.apache.commons.httpclient_ commons-httpclient.jar
+		_symlink org.apache.httpcomponents.httpcore_ httpcomponents/httpcore.jar
+		_symlink org.apache.httpcomponents.httpclient_ chttpcomponents/httpclient.jar
 		_symlink org.apache.commons.logging_ commons-logging.jar
 		_symlink org.apache.felix.gogo.command_ felix/org.apache.felix.gogo.command.jar
 		_symlink org.apache.felix.gogo.runtime_ felix/org.apache.felix.gogo.runtime.jar
@@ -44,7 +45,9 @@ pushd $1
 		_symlink org.eclipse.ecf.identity_ ecf/eclipse/plugins/org.eclipse.ecf.identity_*.jar
 		_symlink org.eclipse.ecf.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.filetransfer_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.httpclient_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient_*.jar
+		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient4_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.httpclient.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient.ssl_*.jar
+		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient.ssl4_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.ssl_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer_*.jar
 		_symlink org.eclipse.ecf.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.ssl_*.jar
