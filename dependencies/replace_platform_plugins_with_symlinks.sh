@@ -44,9 +44,7 @@ pushd $1
 		_symlink org.eclipse.ecf_ ecf/eclipse/plugins/org.eclipse.ecf_*.jar
 		_symlink org.eclipse.ecf.identity_ ecf/eclipse/plugins/org.eclipse.ecf.identity_*.jar
 		_symlink org.eclipse.ecf.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.filetransfer_*.jar
-		_symlink org.eclipse.ecf.provider.filetransfer.httpclient_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient4_*.jar
-		_symlink org.eclipse.ecf.provider.filetransfer.httpclient.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient.ssl_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient4.ssl_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.ssl_*.jar
 		_symlink org.eclipse.ecf.provider.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer_*.jar
