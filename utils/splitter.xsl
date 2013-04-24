@@ -15,7 +15,7 @@
 
 	<xsl:template match="testsuite">
 		<xsl:variable name="filename"
-			select="concat('origXml/',@package,@name,'.xml')" />
+			select="concat(@package,@name,'.xml')" />
 		<redirect:write file="{$filename}">
 			<xsl:copy-of select="." />
 		</redirect:write>
