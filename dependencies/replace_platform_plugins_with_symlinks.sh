@@ -60,7 +60,7 @@ pushd $1
 		_symlink org.eclipse.jetty.io_ jetty/jetty-io.jar
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
-		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp/javax.servlet.jsp.jar
+		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.w3c.css.sac_ sac.jar
