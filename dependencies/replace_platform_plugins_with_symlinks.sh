@@ -11,10 +11,13 @@ function _symlink {
 	if [ -f ${SCL_JAVA_DIR}/$2  ]; then
 		echo "found ${SCL_JAVA_DIR}/$2"
 		ln -s ${SCL_JAVA_DIR}/$2 ${_f}
-	else
-		echo "not found ${SCL_JAVA_DIR}/$2"
+	elif [ -f /usr/share/java/$2 ]; then
+		echo "found /usr/share/java/$2"
 		ln -s /usr/share/java/$2 ${_f}
-	fi 
+	else
+		echo "not found ${SCL_JAVA_DIR}/$2 or /usr/share/java/$2"
+		exit 1
+	fi
 }
 pushd $1
 	#symlink what should be symlinked
