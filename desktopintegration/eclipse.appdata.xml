@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 First Lastname <your@email.com> -->
+<application>
+ <id type="desktop">eclipse.desktop</id>
+ <licence>EPL</licence>
+ <name>Eclipse</name>
+ <summary>Powerful and extensible IDE.</summary>
+ <description>
+  <p>The Eclipse platform is designed for building integrated development
+environments (IDEs), server-side applications, desktop applications, and
+everything in between.</p>
+  <p>It comes with following extensions by default:</p>
+  <ul>
+   <li>JDT, which is required to use Eclipse for
+developing software written in the Java programming language.</li>
+   <li>PDE, which is required for
+developing Eclipse plugins.</li>
+  </ul>
+  <p>However, the true power of Eclipse lies in extensions, such as:</p>
+  <ul>
+    <li>Mylyn - a great context tool hiding unnecessary piece of UI, thus making coding much faster.</li>
+    <li>CDT - adding support for C/C++ language</li>
+  </ul>
+ </description>
+ <screenshots>
+  <screenshot type="default" width="1600" height="900">hhttp://kdaniel.fedorapeople.org/IDE.png</screenshot>
+  <screenshot width="1600" height="900">http://kdaniel.fedorapeople.org/HELP.png</screenshot>
+ </screenshots>
+ <url type="homepage">http://eclipse.org</url>
+ <updatecontact>kdaniel@fedoraproject.org</updatecontact>
+</application>
