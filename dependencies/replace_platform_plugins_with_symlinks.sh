@@ -30,7 +30,8 @@ pushd $1
 		_symlink javax.xml_ xml-commons-apis.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet_ tomcat-servlet-api.jar
-		_symlink javax.servlet.jsp_ glassfish-jsp-api.jar
+		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
+		_symlink javax.servlet-api_ glassfish-servlet-api.jar
 		_symlink org.apache.batik.css_ batik/batik-css.jar
 		_symlink org.apache.batik.util_ batik/batik-util.jar
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
@@ -39,7 +40,7 @@ pushd $1
 		_symlink org.apache.httpcomponents.httpclient_ httpcomponents/httpclient.jar
 		_symlink org.apache.commons.logging_ commons-logging.jar
 		_symlink org.apache.felix.gogo.command_ felix/org.apache.felix.gogo.command.jar
-		_symlink org.apache.felix.gogo.runtime_ felix/org.apache.felix.gogo.runtime.jar
+		_symlink org.apache.felix.gogo.runtime_ felix/felix-gogo-runtime.jar
 		_symlink org.apache.felix.gogo.shell_ felix/org.apache.felix.gogo.shell.jar
 		_symlink org.apache.geronimo.specs.geronimo-annotation_1.1_spec_ geronimo-annotation.jar
 		_symlink org.apache.lucene.core_ lucene.jar
