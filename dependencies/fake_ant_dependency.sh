@@ -43,10 +43,6 @@ pushd $1
         rm -rf *
         ln -s $3/ant ant
         ln -s $3/antRun antRun
-        ln -s $3/antRun.pl antRun.pl
-        ln -s $3/runant.pl runant.pl
-        ln -s $3/runant.py runant.py
-        ln -s $3/complete-ant-cmd.pl complete-and-cmd.pl
     popd
     
     
