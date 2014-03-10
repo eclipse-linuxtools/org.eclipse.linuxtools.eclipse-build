@@ -26,12 +26,11 @@ pushd $1
 	#So, remove duplicated jars and symlink them
 		_symlink com.ibm.icu_ icu4j-eclipse/plugins/com.ibm.icu_*.jar
 		_symlink com.jcraft.jsch_ jsch.jar 
-		_symlink javax.el_ tomcat-el-api.jar
+		_symlink com.sun.el.javax.el_ glassfish-el.jar
 		_symlink javax.xml_ xml-commons-apis.jar
 		_symlink javax.inject_ atinject.jar
-		_symlink javax.servlet_ tomcat-servlet-api.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
-		_symlink javax.servlet-api_ glassfish-servlet-api.jar
+		_symlink javax.servlet_ glassfish-servlet-api.jar
 		_symlink org.apache.batik.css_ batik/batik-css.jar
 		_symlink org.apache.batik.util_ batik/batik-util.jar
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
