@@ -42,8 +42,8 @@ pushd $1
 		_symlink org.apache.felix.gogo.runtime_ felix/felix-gogo-runtime.jar
 		_symlink org.apache.felix.gogo.shell_ felix/org.apache.felix.gogo.shell.jar
 		_symlink org.apache.geronimo.specs.geronimo-annotation_1.1_spec_ geronimo-annotation.jar
-		_symlink org.apache.lucene.core_ lucene.jar
-		_symlink org.apache.lucene.analysis_ lucene/analyzers-common.jar
+		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
+		_symlink org.apache.lucene.analysis_ lucene/lucene-analyzers-common.jar
 		_symlink org.eclipse.ecf_ ecf/eclipse/plugins/org.eclipse.ecf.jar
 		_symlink org.eclipse.ecf.identity_ ecf/eclipse/plugins/org.eclipse.ecf.identity.jar
 		_symlink org.eclipse.ecf.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.filetransfer.jar
