@@ -64,7 +64,8 @@ pushd $1
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
-		_symlink org.objectweb.asm.all_ objectweb-asm/asm-all.jar
+		_symlink org.objectweb.asm_ objectweb-asm/asm.jar
+		_symlink org.objectweb.asm.tree_ objectweb-asm/asm-tree.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.w3c.css.sac_ sac.jar
