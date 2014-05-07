@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2013 Krzysztof Daniel <kdaniel@redhat.com> -->
+<!-- Copyright 2013-2014 Krzysztof Daniel <kdaniel@redhat.com> / Mat Booth <mat.booth@redhat.com> -->
 <application>
  <id type="desktop">eclipse.desktop</id>
- <licence>CC0</licence>
+ <metadata_license>CC0-1.0</metadata_license>
+ <project_license>EPL-1.0</project_license>
  <name>Eclipse</name>
  <summary>Powerful and extensible IDE</summary>
  <description>
@@ -12,15 +13,14 @@ everything in between.</p>
   <p>It comes with following extensions by default:</p>
   <ul>
    <li>JDT, which is required to use Eclipse for Java development</li>
-   <li>PDE, which is required for
-developing Eclipse plugins</li>
+   <li>PDE, which is required for developing Eclipse plug-ins</li>
   </ul>
   <p>However, the true power of Eclipse lies in extensions, such as:</p>
   <ul>
     <li>Mylyn - a great context tool hiding unnecessary piece of UI, thus making coding much faster</li>
     <li>CDT - adding support for C/C++ language</li>
     <li>EMF - powerful modeling support</li>
-    <li>GIt/SVN/CVS integrations</li>
+    <li>Git/SVN/CVS integrations</li>
   </ul>
  </description>
  <screenshots>
@@ -28,5 +28,5 @@ developing Eclipse plugins</li>
   <screenshot width="1600" height="896">http://kdaniel.fedorapeople.org/eclipsescreenshots/HELP.png</screenshot>
  </screenshots>
  <url type="homepage">http://eclipse.org</url>
- <updatecontact>kdaniel@fedoraproject.org</updatecontact>
+ <updatecontact>mat.booth@redhat.com</updatecontact>
 </application>
