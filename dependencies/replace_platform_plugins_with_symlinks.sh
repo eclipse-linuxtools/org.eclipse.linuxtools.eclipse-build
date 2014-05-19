@@ -38,9 +38,9 @@ pushd $1
 		_symlink org.apache.httpcomponents.httpcore_ httpcomponents/httpcore.jar
 		_symlink org.apache.httpcomponents.httpclient_ httpcomponents/httpclient.jar
 		_symlink org.apache.commons.logging_ commons-logging.jar
-		_symlink org.apache.felix.gogo.command_ felix/org.apache.felix.gogo.command.jar
+		_symlink org.apache.felix.gogo.command_ felix-gogo-command/org.apache.felix.gogo.command.jar
 		_symlink org.apache.felix.gogo.runtime_ felix/felix-gogo-runtime.jar
-		_symlink org.apache.felix.gogo.shell_ felix/org.apache.felix.gogo.shell.jar
+		_symlink org.apache.felix.gogo.shell_ felix-gogo-shell/org.apache.felix.gogo.shell.jar
 		_symlink org.apache.geronimo.specs.geronimo-annotation_1.1_spec_ geronimo-annotation.jar
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
 		_symlink org.apache.lucene.analysis_ lucene/lucene-analyzers-common.jar
