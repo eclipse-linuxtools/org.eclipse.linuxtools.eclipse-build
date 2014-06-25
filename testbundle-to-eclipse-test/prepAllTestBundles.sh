@@ -24,7 +24,7 @@ echo 'Eclipse-BundleShape: dir' > MANIFEST.MF
 
 extraIUs=
 
-for jar in `find ${testBundleFolder} -name "*.jar"`; do
+for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
   jarPomPath=`jar -tf ${jar} | grep 'pom.xml'`
   unzip -p ${jar} ${jarPomPath} | grep -q '<packaging>eclipse-test-plugin</packaging>'
   if [ $? -eq 0 ]; then
