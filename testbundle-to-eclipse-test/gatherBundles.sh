@@ -6,18 +6,20 @@
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 
-prefix=$ROOT_PREFIX
+set -e
+
 sdk=$1'-sdk'
 repo=$1
 
-eclipse=$prefix$(rpm --eval '%{_libdir}')/eclipse
+scl_root=
+eclipse=$scl_root$(rpm --eval '%{_libdir}')/eclipse
 
-datadir=$prefix/usr/share/eclipse
-javadir=$prefix/usr/share/java
-jnidir=$prefix/usr/lib/java
+datadir=$scl_root/usr/share/eclipse
+javadir=`echo {"$scl_root",""}/usr/share/java | tr ' ' '\n' | sort -u`
+jnidir=`echo {"$scl_root",""}/usr/lib/java | tr ' ' '\n' | sort -u`
 
 mkdir -p $sdk/plugins $sdk/features
-pushd $sdk
+pushd $sdk >/dev/null
 
       (cd $eclipse;
 	ls -d plugins/* features/* 2>/dev/null) |
@@ -61,49 +63,31 @@ pushd $sdk
           fi
       done
 
-for p in $(ls -d $eclipse/dropins/jdt/plugins/*); do
+for p in $(ls -d $eclipse/dropins/jdt/plugins/* 2>/dev/null); do
     plugin=$(basename $p)
     [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/jdt/plugins/$plugin plugins/$plugin
 done
-for f in $(ls -d $eclipse/dropins/jdt/features/*); do
+for f in $(ls -d $eclipse/dropins/jdt/features/* 2>/dev/null); do
     feature=$(basename $f)
     [ ! -e features/$feature ] && ln -s $eclipse/dropins/jdt/features/$feature features/$feature
 done
-for p in $(ls -d $eclipse/dropins/sdk/plugins/*); do
+for p in $(ls -d $eclipse/dropins/sdk/plugins/* 2>/dev/null); do
     plugin=$(basename $p)
     [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/sdk/plugins/$plugin plugins/$plugin
 done
-for f in $(ls -d $eclipse/dropins/sdk/features/*); do
+for f in $(ls -d $eclipse/dropins/sdk/features/* 2>/dev/null); do
     feature=$(basename $f)
     [ ! -e features/$feature ] && ln -s $eclipse/dropins/sdk/features/$feature features/$feature
-done
-for p in $(ls -d $eclipse/plugins/*); do
-    plugin=$(basename $p)
-    [ ! -e plugins/$plugin ] && ln -s $eclipse/plugins/$plugin plugins/$plugin
-done
-for f in $(ls -d $eclipse/features/*); do
-    feature=$(basename $f)
-    [ ! -e features/$feature ] && ln -s $eclipse/features/$feature features/$feature
 done
 
 # jars in %%{_javadir} may not be uniquely named
 id=1
-for p in $(find $javadir -name "*.jar"); do
-    unzip -p $p 'META-INF/MANIFEST.MF' | grep -q 'Bundle-SymbolicName'
-    if [ $? = 0 ]; then
-        plugin=${id}-$(basename $p)
-        [ ! -e plugins/$plugin ] && ln -s $p plugins/$plugin
-        id=$((${id} + 1))
-    fi
-done
-id=1
-for p in $(find $jnidir -name "*.jar"); do
-    unzip -p $p 'META-INF/MANIFEST.MF' | grep -q 'Bundle-SymbolicName'
-    if [ $? = 0 ]; then
+for p in $(find $javadir $jnidir -name "*.jar"); do
+    if unzip -p $p 'META-INF/MANIFEST.MF' | grep -q 'Bundle-SymbolicName'; then
         plugin=${id}-$(basename $p)
         [ ! -e plugins/$plugin ] && ln -s $p plugins/$plugin
         id=$((${id} + 1))
     fi
 done
 
-popd
+popd >/dev/null

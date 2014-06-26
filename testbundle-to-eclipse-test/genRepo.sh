@@ -6,11 +6,11 @@
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 
-prefix=$ROOT_PREFIX
+scl_root=
 sdk=$1'-sdk'
 repo=$1
 
-java -jar $prefix/usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
+java -jar $scl_root/usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
 -metadataRepository file:$repo \
 -artifactRepository file:$repo \
 -source $sdk \
