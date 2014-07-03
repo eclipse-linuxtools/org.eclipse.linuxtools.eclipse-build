@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 # JDT and PDE are built as update sites.
 # The procedure of moving them to dropins is following:
 #
@@ -7,64 +9,49 @@
 #
 # This must go this way to initialize all the plugins.
 #
-# There is one argument required : a path to a repo that contains JDT and PDE.
+# Arguments:
+#  1: path to the location of the materialised IDE product
+#  2: path to a repository that contains the plug-ins
+#  3: the IDs of the plug-ins that should be moved to dropins
 #
-# Base Eclipse installation is required to not have JDT or PDE installed.
+# Base Eclipse installation is required to not have plug-ins installed.
 
-
-LOCATION=${1}
-REPO=${2}
+LOCATION="${1}"
+REPO="${2}"
+PLUGINS="${3}"
 
 pushd ${LOCATION}
-#make a backup 
-cp -rf eclipse eclipse-backup-with-jdt
-# go into backup
-pushd eclipse-backup-with-jdt
-        ./eclipse -application org.eclipse.equinox.p2.director \
+
+backup_dir=eclipse
+
+for p in $PLUGINS ; do
+
+  # Take a backup of the installation
+  old_dir="$backup_dir"
+  backup_dir="$backup_dir-$p"
+  cp -rf $old_dir $backup_dir
+
+  # Install plug-in into backup dir
+  pushd $backup_dir
+    ./eclipse -application org.eclipse.equinox.p2.director -noSplash \
         -repository file:/${REPO} \
-        -installIU org.eclipse.jdt.feature.group
-#exit backup
-popd
+        -installIU org.eclipse.${p}.feature.group
+  popd
 
-mkdir -p jdt/plugins jdt/features
-
-
-#get the difference and copy all files into jdt folder
-for i in `ls eclipse-backup-with-jdt/features` ; do \
-    if [ ! -e eclipse/features/$i ]; \
-        then cp -r eclipse-backup-with-jdt/features/$i jdt/features ; \
-    fi  \
+  # Get the difference and copy all files into plug-in directory
+  mkdir -p $p/plugins $p/features
+  for i in $(ls $backup_dir/features) ; do
+    if [ ! -e $old_dir/features/$i ] ; then
+      cp -pr $backup_dir/features/$i $p/features
+    fi
+  done
+  for i in $(ls $backup_dir/plugins) ; do
+    if [ ! -e $old_dir/plugins/$i ] ; then
+      cp -pr $backup_dir/plugins/$i $p/plugins
+    fi
+  done
 done
 
-for i in `ls eclipse-backup-with-jdt/plugins` ; do \
-    if [ ! -e eclipse/plugins/$i ]; \
-        then cp -r eclipse-backup-with-jdt/plugins/$i jdt/plugins ; \
-    fi  \
-done
-
-cp -rf eclipse-backup-with-jdt eclipse-backup-with-jdt-pde
-
-pushd eclipse-backup-with-jdt-pde
-    ./eclipse -application org.eclipse.equinox.p2.director \
-        -repository file:/${REPO} \
-        -installIU org.eclipse.sdk.feature.group
-popd
-
-mkdir -p sdk/plugins sdk/features
-
-#get the difference and copy all files into pde folder
-for i in `ls eclipse-backup-with-jdt-pde/features` ; do \
-    if [ ! -e eclipse-backup-with-jdt/features/$i ]; \
-        then cp -r eclipse-backup-with-jdt-pde/features/$i sdk/features ; \
-    fi  \
-done
-
-for i in `ls eclipse-backup-with-jdt-pde/plugins` ; do \
-    if [ ! -e eclipse-backup-with-jdt/plugins/$i ]; \
-        then cp -r eclipse-backup-with-jdt-pde/plugins/$i sdk/plugins ; \
-    fi  \
-done
-
-
-cp -r jdt sdk eclipse/dropins
+# Move all plug-ins into dropins
+cp -pr $PLUGINS eclipse/dropins
 popd
