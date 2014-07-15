@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Mat Booth <mat.booth@redhat.com> -->
+<component type="addon">
+ <id>eclipse-jdt</id>
+ <metadata_license>CC0-1.0</metadata_license>
+ <project_license>EPL-1.0</project_license>
+ <name>Java Development Tools</name>
+ <summary>Tooling required for developing software written in the Java programming language</summary>
+ <extends>eclipse.desktop</extends>
+ <url type="homepage">http://www.eclipse.org/jdt/</url>
+ <updatecontact>mat.booth@redhat.com</updatecontact>
+</component>

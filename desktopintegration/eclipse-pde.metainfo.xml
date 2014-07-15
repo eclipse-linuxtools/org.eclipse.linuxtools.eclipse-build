@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Mat Booth <mat.booth@redhat.com> -->
+<component type="addon">
+ <id>eclipse-pde</id>
+ <metadata_license>CC0-1.0</metadata_license>
+ <project_license>EPL-1.0</project_license>
+ <name>Plug-in Development Environment</name>
+ <summary>Tooling required for developing Eclipse plug-ins</summary>
+ <extends>eclipse.desktop</extends>
+ <url type="homepage">http://www.eclipse.org/pde/</url>
+ <updatecontact>mat.booth@redhat.com</updatecontact>
+</component>
