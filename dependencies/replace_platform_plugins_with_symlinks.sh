@@ -6,31 +6,30 @@
 SCL_JAVA_DIR=$2
 
 function _symlink {
-	_f=`ls | grep -e "^$1"`;
-	rm -rf ${_f} ;
+	_f=`ls | grep -e "^$1"`
+	rm -rf $_f
 	if [ -f ${SCL_JAVA_DIR}/$2  ]; then
 		echo "found ${SCL_JAVA_DIR}/$2"
-		ln -s ${SCL_JAVA_DIR}/$2 ${_f}
+		ln -s ${SCL_JAVA_DIR}/$2 ${_f%.jar}.jar
 	elif [ -f /usr/share/java/$2 ]; then
 		echo "found /usr/share/java/$2"
-		ln -s /usr/share/java/$2 ${_f}
+		ln -s /usr/share/java/$2 ${_f%.jar}.jar
 	else
 		echo "not found ${SCL_JAVA_DIR}/$2 or /usr/share/java/$2"
 		exit 1
 	fi
 }
+
 pushd $1
-	#symlink what should be symlinked
+	# Remove and symlink all duplicate jars in the platform
 	pushd plugins
-	
-	#So, remove duplicated jars and symlink them
 		_symlink com.ibm.icu_ icu4j-eclipse/plugins/com.ibm.icu_*.jar
 		_symlink com.jcraft.jsch_ jsch.jar 
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
 		_symlink javax.xml_ xml-commons-apis.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
-		_symlink javax.servlet_ glassfish-servlet-api.jar
+		_symlink javax.servlet-api_ glassfish-servlet-api.jar
 		_symlink org.apache.batik.css_ batik/batik-css.jar
 		_symlink org.apache.batik.util_ batik/batik-util.jar
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
@@ -64,11 +63,21 @@ pushd $1
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
-		_symlink org.objectweb.asm_ objectweb-asm/asm.jar
-		_symlink org.objectweb.asm.tree_ objectweb-asm/asm-tree.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.w3c.css.sac_ sac.jar
 		_symlink org.w3c.dom.svg_ xml-commons-apis-ext.jar
+	popd
+
+	# Remove and symlink all duplicate jars in the jdt feature
+	pushd dropins/jdt/plugins
+		_symlink org.hamcrest.core_ hamcrest/core.jar
+		_symlink org.junit_4 junit.jar
+	popd
+
+	# Remove and symlink all duplicate jars in the pde feature
+	pushd dropins/sdk/plugins
+		_symlink org.objectweb.asm_ objectweb-asm/asm.jar
+		_symlink org.objectweb.asm.tree_ objectweb-asm/asm-tree.jar
 	popd
 popd
