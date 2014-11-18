@@ -23,7 +23,7 @@ function _symlink {
 pushd $1
 	# Remove and symlink all duplicate jars in the platform
 	pushd plugins
-		_symlink com.ibm.icu_ icu4j-eclipse/plugins/com.ibm.icu_*.jar
+		_symlink com.ibm.icu_ icu4j/icu4j.jar
 		_symlink com.jcraft.jsch_ jsch.jar 
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
 		_symlink javax.xml_ xml-commons-apis.jar
