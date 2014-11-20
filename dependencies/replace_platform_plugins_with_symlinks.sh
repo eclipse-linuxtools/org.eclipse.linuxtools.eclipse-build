@@ -51,10 +51,6 @@ pushd $1
 		_symlink org.eclipse.ecf.provider.filetransfer.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.ssl.jar
 		_symlink org.eclipse.ecf.provider.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.jar
 		_symlink org.eclipse.ecf.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.ssl.jar
-		_symlink org.eclipse.emf.common_ emf/eclipse/plugins/org.eclipse.emf.common.jar
-		_symlink org.eclipse.emf.ecore.change_ emf/eclipse/plugins/org.eclipse.emf.ecore.change.jar
-		_symlink org.eclipse.emf.ecore_ emf/eclipse/plugins/org.eclipse.emf.ecore.jar
-		_symlink org.eclipse.emf.ecore.xmi_ emf/eclipse/plugins/org.eclipse.emf.ecore.xmi.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
