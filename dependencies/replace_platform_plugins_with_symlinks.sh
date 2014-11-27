@@ -43,14 +43,6 @@ pushd $1
 		_symlink org.apache.geronimo.specs.geronimo-annotation_1.1_spec_ geronimo-annotation.jar
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
 		_symlink org.apache.lucene.analysis_ lucene/lucene-analyzers-common.jar
-		_symlink org.eclipse.ecf_ ecf/eclipse/plugins/org.eclipse.ecf.jar
-		_symlink org.eclipse.ecf.identity_ ecf/eclipse/plugins/org.eclipse.ecf.identity.jar
-		_symlink org.eclipse.ecf.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.filetransfer.jar
-		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient4.jar
-		_symlink org.eclipse.ecf.provider.filetransfer.httpclient4.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.httpclient4.ssl.jar
-		_symlink org.eclipse.ecf.provider.filetransfer.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.ssl.jar
-		_symlink org.eclipse.ecf.provider.filetransfer_ ecf/eclipse/plugins/org.eclipse.ecf.provider.filetransfer.jar
-		_symlink org.eclipse.ecf.ssl_ ecf/eclipse/plugins/org.eclipse.ecf.ssl.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
