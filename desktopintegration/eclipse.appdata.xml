@@ -24,8 +24,7 @@ everything in between.</p>
   </ul>
  </description>
  <screenshots>
-  <screenshot type="default" width="1597" height="897">http://kdaniel.fedorapeople.org/eclipsescreenshots/IDE.png</screenshot>
-  <screenshot width="1600" height="896">http://kdaniel.fedorapeople.org/eclipsescreenshots/HELP.png</screenshot>
+  <screenshot type="default" width="1200" height="675">http://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/desktopintegration/screenshot1.png</screenshot>
  </screenshots>
  <url type="homepage">http://eclipse.org</url>
  <updatecontact>mat.booth@redhat.com</updatecontact>
