@@ -112,6 +112,12 @@ function findMaxBREE {
          "JavaSE-1.6")
          	 bree=1.6
              ;;
+         "JavaSE-1.7")
+         	 bree=1.7
+             ;;
+         "JavaSE-1.8")
+         	 bree=1.8
+             ;;
      	esac
      	if [ "$bree" \> "$maxBree" ]; then
      		maxBree=$bree
@@ -125,7 +131,7 @@ SDK=$buildDir/SDK
 homeDir=$buildDir/home
 workspaceDir=$homeDir/workspace
 datadir=@LIBDIR@
-pdeBuildDir=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@
+pdeBuildDir=$(cd $datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_* && pwd)
 
 featureId=
 dependencies=
@@ -284,7 +290,7 @@ if [ $testing != true ]; then
     -DbaseLocation=$SDK \
     -DsourceDirectory=$sourceDir \
     -DbuildDirectory=$buildDir \
-    -Dbuilder=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@/templates/package-build \
+    -Dbuilder=$pdeBuildDir/templates/package-build \
     $orbitDeps \
     -Dtesting="$testing" \
     $additionalArgs \
@@ -303,7 +309,7 @@ else
     -DbaseLocation=$SDK \
     -DsourceDirectory=$sourceDir \
     -DbuildDirectory=$buildDir \
-    -Dbuilder=$datadir/eclipse/dropins/sdk/plugins/org.eclipse.pde.build_@PDEBUILDVERSION@/templates/package-build \
+    -Dbuilder=$pdeBuildDir/templates/package-build \
     $orbitDeps \
     -Dtesting=\"$testing\" \
     $additionalArgs \
