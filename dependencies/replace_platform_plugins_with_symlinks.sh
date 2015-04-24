@@ -35,9 +35,7 @@ pushd $1
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
 		_symlink org.apache.httpcomponents.httpcore_ httpcomponents/httpcore.jar
 		_symlink org.apache.httpcomponents.httpclient_ httpcomponents/httpclient.jar
-		_symlink org.apache.commons.beanutils_ commons-beanutils.jar
 		_symlink org.apache.commons.codec_ commons-codec.jar
-		_symlink org.apache.commons.collections_ commons-collections.jar
 		_symlink org.apache.commons.jxpath_ commons-jxpath.jar
 		_symlink org.apache.commons.logging_ commons-logging.jar
 		_symlink org.apache.felix.gogo.command_ felix-gogo-command/org.apache.felix.gogo.command.jar
@@ -54,7 +52,6 @@ pushd $1
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
-		_symlink org.jdom_ jdom.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.w3c.css.sac_ sac.jar
