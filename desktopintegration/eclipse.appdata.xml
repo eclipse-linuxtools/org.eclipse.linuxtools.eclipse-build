@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2013-2014 Krzysztof Daniel <kdaniel@redhat.com> / Mat Booth <mat.booth@redhat.com> -->
+<!--
+   Copyright (C) 2014,2015 Red Hat, Inc.
+
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+-->
 <application>
  <id type="desktop">eclipse.desktop</id>
- <metadata_license>CC0-1.0</metadata_license>
+ <metadata_license>CC-BY-SA-3.0</metadata_license>
  <project_license>EPL-1.0</project_license>
  <name>Eclipse</name>
  <summary>Powerful and extensible IDE</summary>
@@ -10,7 +17,7 @@
   <p>The Eclipse platform is designed for building integrated development
 environments (IDEs), server-side applications, desktop applications, and
 everything in between.</p>
-  <p>It comes with following extensions by default:</p>
+  <p>It integrates deeply with following extensions:</p>
   <ul>
    <li>JDT, which is required to use Eclipse for Java development</li>
    <li>PDE, which is required for developing Eclipse plug-ins</li>
