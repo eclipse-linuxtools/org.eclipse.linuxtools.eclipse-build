@@ -3,6 +3,9 @@
 # Then into plugins, and then symlinks 
 
 # SCL java dir is different from default
+
+set -e
+
 SCL_JAVA_DIR=$2
 
 function _symlink {
@@ -43,7 +46,9 @@ pushd $1
 		_symlink org.apache.felix.gogo.shell_ felix-gogo-shell/org.apache.felix.gogo.shell.jar
 		_symlink org.apache.geronimo.specs.geronimo-annotation_1.1_spec_ geronimo-annotation.jar
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
-		_symlink org.apache.lucene.analysis_ lucene/lucene-analyzers-common.jar
+		_symlink org.apache.lucene.analyzers-common_ lucene/lucene-analyzers-common.jar
+		_symlink org.apache.lucene.analyzers-smartcn_ lucene/lucene-analyzers-smartcn.jar
+		_symlink org.apache.lucene.queryparser lucene/lucene-queryparser.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
