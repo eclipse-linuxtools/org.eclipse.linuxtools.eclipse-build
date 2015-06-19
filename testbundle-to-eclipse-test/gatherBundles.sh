@@ -32,15 +32,13 @@ pushd $sdk >/dev/null
 	      (cd $eclipse/dropins/$f/eclipse;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		  [ ! -e $g ] && \
-		    ln -s $eclipse/dropins/$f/eclipse/$g $g
+		    ln -sf $eclipse/dropins/$f/eclipse/$g $g
 	      done
           else
 	      (cd $eclipse/dropins/$f;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-	          [ ! -e $g ] && \
-		    ln -s $eclipse/dropins/$f/$g $g
+		    ln -sf $eclipse/dropins/$f/$g $g
 	      done
           fi
       done
@@ -50,15 +48,13 @@ pushd $sdk >/dev/null
 	      (cd $datadir/dropins/$f/eclipse;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		  [ ! -e $g ] && \
-		    ln -s $datadir/dropins/$f/eclipse/$g $g
+		    ln -sf $datadir/dropins/$f/eclipse/$g $g
 	      done
           else
 	      (cd $datadir/dropins/$f;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-	          [ ! -e $g ] && \
-		    ln -s $datadir/dropins/$f/$g $g
+		    ln -sf $datadir/dropins/$f/$g $g
 	      done
           fi
       done

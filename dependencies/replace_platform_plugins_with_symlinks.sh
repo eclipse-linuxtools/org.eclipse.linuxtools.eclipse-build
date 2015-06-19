@@ -6,21 +6,20 @@
 
 set -e
 
-SCL_JAVA_DIR=$2
+SCL_JAVA_DIRS=${@:2}
 
 function _symlink {
 	_f=`ls | grep -e "^$1"`
 	rm -rf $_f
-	if [ -f ${SCL_JAVA_DIR}/$2  ]; then
-		echo "found ${SCL_JAVA_DIR}/$2"
-		ln -s ${SCL_JAVA_DIR}/$2 ${_f%.jar}.jar
-	elif [ -f /usr/share/java/$2 ]; then
-		echo "found /usr/share/java/$2"
-		ln -s /usr/share/java/$2 ${_f%.jar}.jar
-	else
-		echo "not found ${SCL_JAVA_DIR}/$2 or /usr/share/java/$2"
-		exit 1
-	fi
+	for SCL_JAVA_DIR in ${SCL_JAVA_DIRS}; do
+		if [ -f ${SCL_JAVA_DIR}/$2  ]; then
+			echo "found ${SCL_JAVA_DIR}/$2"
+			ln -s ${SCL_JAVA_DIR}/$2 ${_f%.jar}.jar
+			return 0
+		fi
+	done
+	echo "not found $2 in any of ${SCL_JAVADIRS}"
+	exit 1
 }
 
 pushd $1
