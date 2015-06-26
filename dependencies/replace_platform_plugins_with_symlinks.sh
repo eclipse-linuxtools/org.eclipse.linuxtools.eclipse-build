@@ -47,7 +47,13 @@ pushd $1
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
 		_symlink org.apache.lucene.analyzers-common_ lucene/lucene-analyzers-common.jar
 		_symlink org.apache.lucene.analyzers-smartcn_ lucene/lucene-analyzers-smartcn.jar
+		_symlink org.apache.lucene.queries lucene/lucene-queries.jar
 		_symlink org.apache.lucene.queryparser lucene/lucene-queryparser.jar
+		_symlink org.apache.lucene.sandbox lucene/lucene-sandbox.jar
+		_symlink org.apache.xalan xalan-j2.jar
+		_symlink org.apache.xerces xerces-j2.jar
+		_symlink org.apache.xml.resolver xml-commons-resolver.jar
+		_symlink org.apache.xml.serializer xalan-j2-serializer.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
