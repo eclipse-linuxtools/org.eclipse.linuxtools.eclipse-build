@@ -17,17 +17,15 @@
   <p>The Eclipse platform is designed for building integrated development
 environments (IDEs), server-side applications, desktop applications, and
 everything in between.</p>
-  <p>It integrates deeply with following extensions:</p>
+  <p>It is the base of all IDE plugins but doesn't include any. However, 
+  the true power of Eclipse lies in extensions and combining them, such as:</p>
   <ul>
    <li>JDT, which is required to use Eclipse for Java development</li>
    <li>PDE, which is required for developing Eclipse plug-ins</li>
-  </ul>
-  <p>However, the true power of Eclipse lies in extensions, such as:</p>
-  <ul>
-    <li>Mylyn - a great context tool hiding unnecessary piece of UI, thus making coding much faster</li>
-    <li>CDT - adding support for C/C++ language</li>
-    <li>EMF - powerful modeling support</li>
-    <li>Git/SVN/CVS integrations</li>
+   <li>Mylyn - a great context tool hiding unnecessary piece of UI, thus making coding much faster</li>
+   <li>CDT - adding support for C/C++ language</li>
+   <li>EMF - powerful modeling support</li>
+   <li>Git/SVN/CVS integrations</li>
   </ul>
  </description>
  <screenshots>
