@@ -18,6 +18,45 @@
 # Test to see if the minimum arguments
 # are specified
 
+function symlinkInternal () {
+(cd $eclipse/$1; ls -d "$optional" 2>/dev/null) |
+      while read f; do
+	  if [ -e $eclipse/$1/$f/eclipse ]; then
+	      (cd $eclipse/$1/$f/eclipse;
+				ls -d plugins/* features/* 2>/dev/null) |
+	      while read g; do
+		  [ ! -e $g ] && \
+		    ln -s $eclipse/$1/$f/eclipse/$g $g
+	      done
+          else
+	      (cd $eclipse/$1/$f;
+				ls -d plugins/* features/* 2>/dev/null) |
+	      while read g; do
+	          [ ! -e $g ] && \
+		    ln -s $eclipse/$1/$f/$g $g
+	      done
+          fi
+      done
+      (cd $datadir/$1; ls -d "$optional" 2>/dev/null) |
+      while read f; do
+	  if [ -e $datadir/$1/$f/eclipse ]; then
+	      (cd $datadir/$1/$f/eclipse;
+				ls -d plugins/* features/* 2>/dev/null) |
+	      while read g; do
+		  [ ! -e $g ] && \
+		    ln -s $datadir/$1/$f/eclipse/$g $g
+	      done
+          else
+	      (cd $datadir/$1/$f;
+				ls -d plugins/* features/* 2>/dev/null) |
+	      while read g; do
+	          [ ! -e $g ] && \
+		    ln -s $datadir/$1/$g $g
+	      done
+          fi
+      done
+}
+
 if [ $# -lt 2 ]; then
   echo "Usage: copy-platform where eclipse_base optional_directories"
   echo "For example: copy-plaform ~/SDK /usr/lib/eclipse cdt pydev jdt"
@@ -40,42 +79,8 @@ if [ $# -gt 0 ]; then
       while read f; do
          [ ! -e $f ] && ln -s $eclipse/$f $f
       done
-      (cd $eclipse/dropins; ls -d "$optional" 2>/dev/null) |
-      while read f; do
-	  if [ -e $eclipse/dropins/$f/eclipse ]; then
-	      (cd $eclipse/dropins/$f/eclipse;
-				ls -d plugins/* features/* 2>/dev/null) |
-	      while read g; do
-		  [ ! -e $g ] && \
-		    ln -s $eclipse/dropins/$f/eclipse/$g $g
-	      done
-          else
-	      (cd $eclipse/dropins/$f;
-				ls -d plugins/* features/* 2>/dev/null) |
-	      while read g; do
-	          [ ! -e $g ] && \
-		    ln -s $eclipse/dropins/$f/$g $g
-	      done
-          fi
-      done
-      (cd $datadir/dropins; ls -d "$optional" 2>/dev/null) |
-      while read f; do
-	  if [ -e $datadir/dropins/$f/eclipse ]; then
-	      (cd $datadir/dropins/$f/eclipse;
-				ls -d plugins/* features/* 2>/dev/null) |
-	      while read g; do
-		  [ ! -e $g ] && \
-		    ln -s $datadir/dropins/$f/eclipse/$g $g
-	      done
-          else
-	      (cd $datadir/dropins/$f;
-				ls -d plugins/* features/* 2>/dev/null) |
-	      while read g; do
-	          [ ! -e $g ] && \
-		    ln -s $datadir/dropins/$g $g
-	      done
-          fi
-      done
+   symlinkInternal dropins
+   symlinkInternal droplets
    done
 fi
 for p in $(ls -d $eclipse/dropins/jdt/plugins/*); do
