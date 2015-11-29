@@ -33,4 +33,8 @@ everything in between.</p>
  </screenshots>
  <url type="homepage">http://eclipse.org</url>
  <updatecontact>mat.booth@redhat.com</updatecontact>
+ <kudos>
+  <kudo>HiDpiIcon</kudo>
+  <kudo>ModernToolkit</kudo>
+ </kudos>
 </application>
