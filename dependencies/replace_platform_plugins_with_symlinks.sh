@@ -9,17 +9,19 @@ set -e
 SCL_JAVA_DIRS=${@:2}
 
 function _symlink {
-	_f=`ls | grep -e "^$1"`
-	rm -rf $_f
-	for SCL_JAVA_DIR in ${SCL_JAVA_DIRS}; do
-		if [ -f ${SCL_JAVA_DIR}/$2  ]; then
-			echo "found ${SCL_JAVA_DIR}/$2"
-			ln -s ${SCL_JAVA_DIR}/$2 ${_f%.jar}.jar
-			return 0
-		fi
-	done
-	echo "not found $2 in any of ${SCL_JAVADIRS}"
-	exit 1
+	_f=$(ls | grep -e "^$1" || :)
+	if [ -n "$_f" ] ; then
+		rm -rf $_f
+		for SCL_JAVA_DIR in ${SCL_JAVA_DIRS}; do
+			if [ -f ${SCL_JAVA_DIR}/$2  ]; then
+				echo "found ${SCL_JAVA_DIR}/$2"
+				ln -s ${SCL_JAVA_DIR}/$2 ${_f%.jar}.jar
+				return 0
+			fi
+		done
+		echo "not found $2 in any of ${SCL_JAVA_DIRS}"
+		exit 1
+	fi
 }
 
 pushd $1
@@ -49,7 +51,14 @@ pushd $1
 		_symlink org.apache.lucene.analyzers-smartcn_ lucene/lucene-analyzers-smartcn.jar
 		_symlink org.apache.lucene.queries lucene/lucene-queries.jar
 		_symlink org.apache.lucene.queryparser lucene/lucene-queryparser.jar
-		_symlink org.apache.lucene.sandbox lucene/lucene-sandbox.jar
+		_symlink org.apache.lucene.sandbox_ lucene/lucene-sandbox.jar
+		_symlink org.apache.lucene.spatial3d_ lucene/lucene-spatial3d.jar
+		_symlink org.apache.lucene.spatial_ lucene/lucene-spatial.jar
+		_symlink com.spatial4j_ spatial4j.jar
+		_symlink org.apache.xalan xalan-j2.jar
+		_symlink org.apache.xerces xerces-j2.jar
+		_symlink org.apache.xml.resolver xml-commons-resolver.jar
+		_symlink org.apache.xml.serializer xalan-j2-serializer.jar
 		_symlink org.apache.regexp_ regexp.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
