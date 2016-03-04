@@ -74,16 +74,4 @@ pushd $1
 		_symlink org.w3c.css.sac_ sac.jar
 		_symlink org.w3c.dom.svg_ xml-commons-apis-ext.jar
 	popd
-
-	# Remove and symlink all duplicate jars in the jdt feature
-	pushd dropins/jdt/plugins
-		_symlink org.hamcrest.core_ hamcrest/core.jar
-		_symlink org.junit_4 junit.jar
-	popd
-
-	# Remove and symlink all duplicate jars in the pde feature
-	pushd dropins/sdk/plugins
-		_symlink org.objectweb.asm_ objectweb-asm/asm.jar
-		_symlink org.objectweb.asm.tree_ objectweb-asm/asm-tree.jar
-	popd
 popd
