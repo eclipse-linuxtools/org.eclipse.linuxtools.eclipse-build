@@ -1,19 +1,16 @@
 Manifest-Version: 1.0
-Bundle-ClassPath: lib/ant-antlr.jar,lib/ant-apache-bcel.jar,lib/ant-ap
- ache-bsf.jar,lib/ant-apache-log4j.jar,lib/ant-apache-oro.jar,lib/ant-
- apache-regexp.jar,lib/ant-apache-resolver.jar,lib/ant-apache-xalan2.j
- ar,lib/ant-commons-logging.jar,lib/ant-commons-net.jar,lib/ant-jai.ja
- r,lib/ant-javamail.jar,lib/ant-jdepend.jar,lib/ant-jmf.jar,lib/ant-js
- ch.jar,lib/ant-junit.jar,lib/ant-junit4.jar,lib/ant-launcher.jar,lib/
- ant-netrexx.jar,lib/ant-swing.jar,lib/ant-testutil.jar,lib/ant.jar
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Name: %pluginName
+Implementation-Title: org.apache.tools.ant
 Bundle-SymbolicName: org.apache.ant
+Implementation-Version: 1.9.6
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Specification-Vendor: Apache Software Foundation
 Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/too
- ls:org.eclipse.orbit/org.apache.ant;tag=v201410062020
-Bundle-Version: 1.9.4.v201410062020
+ ls:org.eclipse.orbit/org.apache.ant;tag=v201510161327
+Specification-Title: Apache Ant
+Bundle-Vendor: %providerName
+Main-Class: org.apache.tools.ant.Main
+Implementation-Vendor: Apache Software Foundation
 Export-Package: org.apache.tools.ant,org.apache.tools.ant.attribute,or
  g.apache.tools.ant.dispatch,org.apache.tools.ant.filters,org.apache.t
  ools.ant.filters.util,org.apache.tools.ant.helper,org.apache.tools.an
@@ -55,5 +52,16 @@ Export-Package: org.apache.tools.ant,org.apache.tools.ant.attribute,or
  .tools.ant.util.optional,org.apache.tools.ant.util.regexp,org.apache.
  tools.bzip2,org.apache.tools.mail,org.apache.tools.tar,org.apache.too
  ls.zip
-Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Version: 1.9.6.v201510161327
+Bundle-Localization: plugin
+Bundle-ClassPath: lib/ant-antlr.jar,lib/ant-apache-bcel.jar,lib/ant-ap
+ ache-bsf.jar,lib/ant-apache-log4j.jar,lib/ant-apache-oro.jar,lib/ant-
+ apache-regexp.jar,lib/ant-apache-resolver.jar,lib/ant-apache-xalan2.j
+ ar,lib/ant-commons-logging.jar,lib/ant-commons-net.jar,lib/ant-jai.ja
+ r,lib/ant-javamail.jar,lib/ant-jdepend.jar,lib/ant-jmf.jar,lib/ant-js
+ ch.jar,lib/ant-junit.jar,lib/ant-junit4.jar,lib/ant-launcher.jar,lib/
+ ant-netrexx.jar,lib/ant-swing.jar,lib/ant-testutil.jar,lib/ant.jar
+Extension-name: org.apache.tools.ant
+Specification-Version: 1.9.6
 

@@ -1,58 +1,53 @@
 #!/bin/bash
+set -x
 
 # Part of this file are following directories:
-# .m2/p2/repo-sdk/plugins/org.apache.ant_1.9.2.v201307241445
+# .m2/p2/repo-sdk/plugins/org.apache.ant_1.9.6.v201510161327
 
 # Ant plugin is not a part of Fedora, so it needs to be created at build time.
 
 # Usage:
-# ./fake_ant_dependency ${ant_plugin_folder} ${javadir} ${binddir}
+# ./fake_ant_dependency ${ant_plugin_folder} [-makejar]
 # where
 #    ant_plugin_folder - a plugin that will have content replaced with symlinks
-#    javadir - main java folder, currently /usr/share/java
-#    bindir - a place where executable can be found. $3
-#	 -makejar
+#    -makejar - optionally create a jar-shaped bundle instead of dir-shaped
 
 pushd $1
-	  mkdir -p lib bin
-    pushd lib
-        rm -rf *
-        ln -s $2/ant/ant-antlr.jar
-        ln -s $2/ant/ant-apache-bcel.jar
-        ln -s $2/ant/ant-apache-bsf.jar
-        ln -s $2/ant/ant-apache-log4j.jar
-        ln -s $2/ant/ant-apache-oro.jar
-        ln -s $2/ant/ant-apache-regexp.jar
-        ln -s $2/ant/ant-apache-resolver.jar
-        ln -s $2/ant/ant-apache-xalan2.jar
-        ln -s $2/ant/ant-commons-logging.jar
-        ln -s $2/ant/ant-commons-net.jar
-        ln -s $2/ant/ant-javamail.jar
-        ln -s $2/ant/ant-jdepend.jar
-        ln -s $2/ant/ant-jmf.jar
-        ln -s $2/ant/ant-jsch.jar
-        ln -s $2/ant/ant-junit.jar
-        ln -s $2/ant/ant-junit.jar junit4.jar
-        ln -s $2/ant-launcher.jar
-        ln -s $2/ant/ant-swing.jar
-        ln -s $2/ant/ant-testutil.jar
-        ln -s $2/ant.jar
-    popd
-    pushd etc
-        ln -s $2/ant-bootstrap.jar
-    popd
-    pushd bin
-        rm -rf *
-        ln -s $3/ant ant
-        ln -s $3/antRun antRun
-    popd
-    
-    
-    #if -makejar is specified, zip the plugin into a jar
-    if [ "-makejar" = "$4" ]; then
-    	cd ..
-    	pluginName=`ls | grep org.apache.ant_`
-    	zip -y -r ${pluginName}.jar ${pluginName}
+    mkdir -p lib bin
+    rm -f {lib,etc}/*.jar
+    build-jar-repository -s -p lib \
+        ant/ant-antlr \
+        ant/ant-apache-bcel \
+        ant/ant-apache-bsf \
+        ant/ant-apache-log4j \
+        ant/ant-apache-oro \
+        ant/ant-apache-regexp \
+        ant/ant-apache-resolver \
+        ant/ant-apache-xalan2 \
+        ant/ant-commons-logging \
+        ant/ant-commons-net \
+        ant/ant-javamail \
+        ant/ant-jdepend \
+        ant/ant-jmf \
+        ant/ant-jsch \
+        ant/ant-junit4 \
+        ant/ant-junit \
+        ant/ant-launcher \
+        ant/ant-swing \
+        ant/ant-testutil \
+        ant/ant
+    for j in lib/*.jar ; do
+        mv $j $(echo $j | sed -e 's/ant_//')
+    done
+    build-jar-repository -s -p etc ant-bootstrap
+    rm -f ant antRun
+    ln -s $(which ant) bin/ant
+    ln -s $(which antRun) bin/antRun
+
+    # If -makejar is specified, zip the plugin into a jar
+    if [ "-makejar" = "$2" ]; then
+        cd ..
+        pluginName=`ls | grep org.apache.ant_`
+        zip -y -r ${pluginName}.jar ${pluginName}
     fi
-    
 popd
