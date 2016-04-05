@@ -38,27 +38,35 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
        useSWTBot='true'
     fi
 
-    # Find Test class(es)
-    includepatterns=
-    testclasses=
-    testclass=`unzip -p ${jar} ${jarPomPath} | grep '<testClass>' | sed 's/.*<testClass>\(.*\)<\/testClass>.*/\1/'`
-    if [ "${testclass}" = '' ]; then
-      # Check for custom includes
-      includepatterns=`unzip -p ${jar} ${jarPomPath} | sed -n '/<includes>/,/<\/includes>/p' | sed -n 's/.*<include>\(.*\)<\/include>.*/\1/p' | sed 's/\*\*/\.\*/'`
-      for pat in ${includepatterns}; do
-        testclasses="${testclasses} `jar -tf ${jar} | grep -E "${pat}" | grep '.class' | grep -v '\\$' | tr '/' '.' | sed 's/\.class//'`"
+    # Check for explicit test class
+    testclasses=$(unzip -p ${jar} ${jarPomPath} | grep '<testClass>' | sed 's/.*<testClass>\(.*\)<\/testClass>.*/\1/')
+    if [ -z "$testclasses" ] ; then
+      # Check for custom includes and excludes
+      includepatterns=`unzip -p ${jar} ${jarPomPath} | sed -n '/<includes>/,/<\/includes>/p' | sed -n 's/.*<include>\(.*\)<\/include>.*/\1/p' | sed -e 's/\*\*/\*/' -e 's/\./\\\\./g' -e 's/\*/\.\*/g'`
+      excludepatterns=`unzip -p ${jar} ${jarPomPath} | sed -n '/<excludes>/,/<\/excludes>/p' | sed -n 's/.*<exclude>\(.*\)<\/exclude>.*/\1/p' | sed -e 's/\*\*/\*/' -e 's/\./\\\\./g' -e 's/\*/\.\*/g'`
+      # List of all non-inner classes
+      allclasses="$(jar -tf ${jar} | grep '.class$' | grep -v '\$')"
+      # Default includes, if custom includes are not specified
+      if [ -z "$includepatterns" ] ; then
+        includepatterns='.*/(Test.*\.class|.*Test\.class)'
+        # Override and use the "all" classes instead, if one is detected and neither custom includes nor excludes are specified
+        if [ -z "$excludepatterns" ] ; then
+          allpattern='.*/AllTests\.class'
+          all="$(echo "$allclasses" | grep -E "${allpattern}\$")"
+          if [ -n "$all" ] ; then
+            includepatterns='.*/AllTests\.class'
+          fi
+        fi
+      fi
+      # Trim list down using include and exclude patterns
+      for pat in $includepatterns ; do
+        testclasses="$testclasses $(echo "$allclasses" | grep -E "${pat}\$")"
       done
-      if [ "${includepatterns}" = '' ]; then
-        testclass=`jar -tf ${jar} | grep '/AllTests.class' | tr '/' '.' | sed 's/\.class//'`
-      fi
-    fi
-    if [ "${testclass}" = '' ]; then
-      if [ "${includepatterns}" = '' ]; then
-        # Use default includes
-        testclasses=`jar -tf ${jar} | grep -E '/(Test.*\.class|.*Test\.class)' | grep -vE '/(Abstract.*\.class|.*Abstract\.class)' | grep -v '\\$' | tr '/' '.' | sed 's/\.class//'`
-      fi
-    else
-      testclasses="${testclass}"
+      for pat in $excludepatterns '.*/Abstract.*\.class' ; do
+        testclasses="$(echo "$testclasses" | grep -vE "${pat}\$")"
+      done
+      # Convert to dotted class names
+      testclasses="$(echo "$testclasses" | tr '/' '.' | sed 's/\.class//')"
     fi
 
     for testclass in ${testclasses} ; do
