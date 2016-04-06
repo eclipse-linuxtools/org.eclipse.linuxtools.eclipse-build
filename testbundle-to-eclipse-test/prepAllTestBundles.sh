@@ -38,6 +38,10 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
        useSWTBot='true'
     fi
 
+    # Find Test Product and Application
+    testproduct=`unzip -p ${jar} ${jarPomPath} | grep '<product>' | sed 's/.*<product>\(.*\)<\/product>.*/\1/'`
+    testapplication=`unzip -p ${jar} ${jarPomPath} | grep '<application>' | sed 's/.*<application>\(.*\)<\/application>.*/\1/'`
+
     # Check for explicit test class
     testclasses=$(unzip -p ${jar} ${jarPomPath} | grep '<testClass>' | sed 's/.*<testClass>\(.*\)<\/testClass>.*/\1/')
     if [ -z "$testclasses" ] ; then
@@ -74,6 +78,8 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
       <exec executable=\"\${basedir}/updateTestBundleXML.sh\"> \\
       <arg value=\"${bsname}\" /> \\
       <arg value=\"${testclass}\" /> \\
+      <arg value=\"${testproduct}\" /> \\
+      <arg value=\"${testapplication}\" /> \\
       <arg value=\"${useSWTBot}\" /> \\
       </exec> \\
       <runTests testPlugin=\"${bsname}\" testClass=\"${testclass}\" />" \

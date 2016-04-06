@@ -3,6 +3,8 @@
 <project name="testsuite" default="run" basedir=".">
 <property name="test-classname" value="" />
 <property name="test-plugin-name" value="" />
+<property name="test-product" value="" />
+<property name="test-application" value="" />
 
 <property name="library-file" value="${eclipse-home}/dropins/${subProjectName2}/plugins/org.eclipse.test/library.xml" />
 

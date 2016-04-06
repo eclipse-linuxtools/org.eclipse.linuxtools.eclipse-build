@@ -78,7 +78,4 @@ sed -i 's/"-installIUs \(.*\)"/"-installIUs \1,org.eclipse.swtbot.eclipse.junit.
 sed -i '/cp \${testslocation}\/\*\.properties/ a cp \${testslocation}\/{JUNIT.XSL,alltest.xml,updateTestBundleXML.sh,swtbot-library.xml} \.' target/runtests.sh
 sed -i '/^properties=/ a testslocation=\$(pwd)' target/runtests.sh
 
-# Do not print test properties (output is annoying)
-sed -i '/echoproperties/d' target/library.xml
-
 cp swtbot-library.xml alltest.xml updateTestBundleXML.sh target/
