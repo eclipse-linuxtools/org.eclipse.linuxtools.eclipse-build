@@ -30,6 +30,7 @@ pushd $1
 		_symlink com.ibm.icu_ icu4j/icu4j.jar
 		_symlink com.jcraft.jsch_ jsch.jar 
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
+		_symlink javax.el-api_ glassfish-el-api.jar
 		_symlink javax.xml_ xml-commons-apis.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
