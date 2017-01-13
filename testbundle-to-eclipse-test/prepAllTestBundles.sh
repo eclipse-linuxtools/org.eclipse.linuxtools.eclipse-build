@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (C) 2013, Red Hat, Inc.
+# Copyright (C) 2013-2017, Red Hat, Inc.
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
@@ -127,5 +127,4 @@ extraIUs=`echo -n ${extraIUs} | tr ' ' '\n' | sort | uniq | tr '\n' ','`
 sed -i "s/\"-installIUs \(.*\)\"/\"-installIUs \1,${extraIUs}\"/" target/test.xml
 
 rm ./MANIFEST.MF
-pushd target
-../genRepo.sh $(pwd)
+

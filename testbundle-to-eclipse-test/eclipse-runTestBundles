@@ -1,19 +1,71 @@
 #! /bin/bash
 
-# Copyright (C) 2013, Red Hat, Inc.
+# Copyright (C) 2013-2017, Red Hat, Inc.
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 
-if [ ! $# -eq 1 ]; then
-  echo "USAGE : $0 PATH/TO/BUNDLES/DIRECTORY"
-  exit 1
+eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-testing && pwd)
+
+# Prepare test execution environment
+mkdir target
+cp -rp $eclipse_testing_dir/* target/
+. target/label.properties
+executionDir=$(pwd)/target/workarea/${buildId}/eclipse-testing
+mkdir -p $executionDir
+cp -p target/library.xml target/JUNIT.XSL target/*.txt $executionDir
+
+# Create directory of all system OSGi bundles plus specified test bundles
+# Do not create into p2 repo yet (we must make test bundles have dir shape)
+sdk=$(pwd)/target-sdk
+$eclipse_testing_dir/testbundle/gatherBundles.sh "$sdk" "$1"
+
+# If a test location was specified, prep for and use those tests
+if [ -n "$1" ] ; then
+  $eclipse_testing_dir/testbundle/prepRuntimeLocation.sh || exit 1
+  $eclipse_testing_dir/testbundle/prepAllTestBundles.sh $1 || exit 1
 fi
 
-./prepRuntimeLocation.sh || exit 1
-./prepAllTestBundles.sh $1 || exit 1
+# Build a p2 repository from the constructed SDK
+java -jar $(dirname $(readlink -f $(which eclipse)))/plugins/org.eclipse.equinox.launcher_*.jar \
+ -nosplash \
+ -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
+ -metadataRepository file:$executionDir/testRepo \
+ -artifactRepository file:$executionDir/testRepo \
+ -source $sdk \
+ -compress -append -publishArtifacts
+rm -rf $sdk
 
-pushd target
+# Get arch of running platform
+if uname -m > /dev/null 2>&1; then
+  arch=$(uname -m)
+else
+  arch=$(uname -p)
+fi
 
-./runtests.sh -os linux -ws gtk -arch `arch`
+# Massage arch for Eclipse-uname differences
+case $arch in
+  i[0-9]*86)
+    arch=x86 ;;
+  ppc64p7)
+    arch=ppc64 ;;
+  arm*)
+    arch=arm ;;
+esac
+
+# Set some values expected by runtests.sh
+export jvm=/usr/lib/jvm/java-1.8.0/jre/bin/java
+export stableEclipseInstallLocation=$executionDir/platformLocation
+
+# Create platform tarball used during testing
+mkdir -p $stableEclipseInstallLocation
+pushd $(dirname $(readlink -f $(which eclipse)))/.. 2>&1 >/dev/null
+tar caf $stableEclipseInstallLocation/eclipse-SDK-${buildId}-linux-gtk-x86_64.tar.gz eclipse
+cp -p $stableEclipseInstallLocation/eclipse-SDK-${buildId}-linux-gtk-x86_64.tar.gz $executionDir
+popd 2>&1 >/dev/null
+
+# Kick off tests
+pushd target 2>&1 >/dev/null
+./runtests.sh -os linux -ws gtk -arch $arch
+popd 2>&1 >/dev/null

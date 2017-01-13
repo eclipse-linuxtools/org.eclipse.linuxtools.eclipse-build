@@ -6,27 +6,7 @@
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 
-mkdir target
-pushd target
-
-# Prepare testing environment
-if [ ! -e /usr/share/java/eclipse-testing ]; then
-  echo "/usr/share/java/eclipse-testing/ does not exist. Please install the package providing this location."
-  exit 1
-fi
-cp -rp /usr/share/java/eclipse-testing/* ./
-
-# Remove eclipse-tests p2 repo and generate for system
-rm -rf features plugins content.jar artifacts.jar binary
-
-# Create directory of all system OSGi bundles
-# Do not create into p2 repo yet (we must make test bundles have dir shape)
-../gatherBundles.sh $(pwd)
-
-popd
-
 # Prepare the test.xml file
-
 sed -i 's/\${eclipse-home}\/plugins\/\${testPluginX}/\${testPluginX}/' target/test.xml
 sed -i '/<fileset/,/<\/fileset>/ s/dir="\${eclipse-home}\/plugins"/dir="\${basedir}"/' target/test.xml
 sed -i 's/refid="test.plugin.file" \/>/value="\${basedir}\/alltest.xml" \/>/' target/test.xml
@@ -74,8 +54,5 @@ sed -i '/<target name="quickTests">/ i \
 
 sed -i 's/"-installIUs \(.*\)"/"-installIUs \1,org.eclipse.swtbot.eclipse.junit.headless"/' target/test.xml
 
-# Prepare the runtests.sh file
-sed -i '/cp \${testslocation}\/\*\.properties/ a cp \${testslocation}\/{JUNIT.XSL,alltest.xml,updateTestBundleXML.sh,swtbot-library.xml} \.' target/runtests.sh
-sed -i '/^properties=/ a testslocation=\$(pwd)' target/runtests.sh
-
-cp swtbot-library.xml alltest.xml updateTestBundleXML.sh target/
+eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-testing && pwd)
+cp $eclipse_testing_dir/testbundle/{swtbot-library.xml,alltest.xml,updateTestBundleXML.sh} target/

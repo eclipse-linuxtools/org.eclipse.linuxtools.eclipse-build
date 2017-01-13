@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Copyright (C) 2013, Red Hat, Inc.
+# Copyright (C) 2013-2017, Red Hat, Inc.
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
@@ -8,82 +8,60 @@
 
 set -e
 
-sdk=$1'-sdk'
-repo=$1
+sdk=$1
+tests=$2
 
-scl_root=
-eclipse=$scl_root$(rpm --eval '%{_libdir}')/eclipse
+eclipse_archful=$(dirname $(readlink -f $(which eclipse) ))
+eclipse_noarch=$(cd ${eclipse_archful}/../../share/eclipse && pwd)
 
-datadir=$scl_root/usr/share/eclipse
-javadir=`echo {"$scl_root",""}/usr/share/java | tr ' ' '\n' | sort -u`
-jnidir=`echo {"$scl_root",""}/usr/lib/java | tr ' ' '\n' | sort -u`
+if [ -z "$tests" ] ; then
+  tests=$(cd $eclipse_noarch/../java/eclipse-testing && pwd)
+fi
 
 mkdir -p $sdk/plugins $sdk/features
 pushd $sdk >/dev/null
 
-      (cd $eclipse;
+      (cd $tests;
 	ls -d plugins/* features/* 2>/dev/null) |
       while read f; do
-         [ ! -e $f ] && ln -s $eclipse/$f $f
+         [ ! -e $f ] && ln -s $tests/$f $f
       done
-      (cd $eclipse/dropins; ls -d * 2>/dev/null) |
+      (cd $eclipse_archful;
+	ls -d plugins/* features/* 2>/dev/null) |
       while read f; do
-	  if [ -e $eclipse/dropins/$f/eclipse ]; then
-	      (cd $eclipse/dropins/$f/eclipse;
+         [ ! -e $f ] && ln -s $eclipse_archful/$f $f
+      done
+      (cd $eclipse_archful/droplets; ls -d * 2>/dev/null) |
+      while read f; do
+	  if [ -e $eclipse_archful/droplets/$f/eclipse ]; then
+	      (cd $eclipse_archful/droplets/$f/eclipse;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		    ln -sf $eclipse/dropins/$f/eclipse/$g $g
+		    ln -sf $eclipse_archful/droplets/$f/eclipse/$g $g
 	      done
           else
-	      (cd $eclipse/dropins/$f;
+	      (cd $eclipse_archful/droplets/$f;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		    ln -sf $eclipse/dropins/$f/$g $g
+		    ln -sf $eclipse_archful/droplets/$f/$g $g
 	      done
           fi
       done
-      (cd $datadir/dropins; ls -d * 2>/dev/null) |
+      (cd $eclipse_noarch/droplets; ls -d * 2>/dev/null) |
       while read f; do
-	  if [ -e $datadir/dropins/$f/eclipse ]; then
-	      (cd $datadir/dropins/$f/eclipse;
+	  if [ -e $eclipse_noarch/droplets/$f/eclipse ]; then
+	      (cd $eclipse_noarch/droplets/$f/eclipse;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		    ln -sf $datadir/dropins/$f/eclipse/$g $g
+		    ln -sf $eclipse_noarch/droplets/$f/eclipse/$g $g
 	      done
           else
-	      (cd $datadir/dropins/$f;
+	      (cd $eclipse_noarch/droplets/$f;
 				ls -d plugins/* features/* 2>/dev/null) |
 	      while read g; do
-		    ln -sf $datadir/dropins/$f/$g $g
+		    ln -sf $eclipse_noarch/droplets/$f/$g $g
 	      done
           fi
       done
-
-for p in $(ls -d $eclipse/dropins/jdt/plugins/* 2>/dev/null); do
-    plugin=$(basename $p)
-    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/jdt/plugins/$plugin plugins/$plugin
-done
-for f in $(ls -d $eclipse/dropins/jdt/features/* 2>/dev/null); do
-    feature=$(basename $f)
-    [ ! -e features/$feature ] && ln -s $eclipse/dropins/jdt/features/$feature features/$feature
-done
-for p in $(ls -d $eclipse/dropins/sdk/plugins/* 2>/dev/null); do
-    plugin=$(basename $p)
-    [ ! -e plugins/$plugin ] && ln -s $eclipse/dropins/sdk/plugins/$plugin plugins/$plugin
-done
-for f in $(ls -d $eclipse/dropins/sdk/features/* 2>/dev/null); do
-    feature=$(basename $f)
-    [ ! -e features/$feature ] && ln -s $eclipse/dropins/sdk/features/$feature features/$feature
-done
-
-# jars in %%{_javadir} may not be uniquely named
-id=1
-for p in $(find $javadir $jnidir -name "*.jar"); do
-    if unzip -p $p 'META-INF/MANIFEST.MF' | grep -q 'Bundle-SymbolicName'; then
-        plugin=${id}-$(basename $p)
-        [ ! -e plugins/$plugin ] && ln -s $p plugins/$plugin
-        id=$((${id} + 1))
-    fi
-done
 
 popd >/dev/null

@@ -46,7 +46,6 @@ pushd $1
 		_symlink org.apache.felix.gogo.command_ felix-gogo-command/org.apache.felix.gogo.command.jar
 		_symlink org.apache.felix.gogo.runtime_ felix/felix-gogo-runtime.jar
 		_symlink org.apache.felix.gogo.shell_ felix-gogo-shell/org.apache.felix.gogo.shell.jar
-		_symlink javax.annotation-api_ glassfish-annotation-api.jar
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
 		_symlink org.apache.lucene.analyzers-common_ lucene/lucene-analyzers-common.jar
 		_symlink org.apache.lucene.analyzers-smartcn_ lucene/lucene-analyzers-smartcn.jar
