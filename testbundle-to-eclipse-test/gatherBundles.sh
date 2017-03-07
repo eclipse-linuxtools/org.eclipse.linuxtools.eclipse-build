@@ -14,10 +14,6 @@ tests=$2
 eclipse_archful=$(dirname $(readlink -f $(which eclipse) ))
 eclipse_noarch=$(cd ${eclipse_archful}/../../share/eclipse && pwd)
 
-if [ -z "$tests" ] ; then
-  tests=$(cd $eclipse_noarch/../java/eclipse-testing && pwd)
-fi
-
 mkdir -p $sdk/plugins $sdk/features
 pushd $sdk >/dev/null
 

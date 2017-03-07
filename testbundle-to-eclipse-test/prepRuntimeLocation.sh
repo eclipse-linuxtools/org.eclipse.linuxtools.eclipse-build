@@ -19,9 +19,9 @@ sed -i 's/\${testPlugin}\.xml/\${output-file}/' target/test.xml
 sed -i 's/\${testPlugin}_\${platform}\.xml/\${output-file}/' target/test.xml
 
 # Insert our test task
+sed -i '/<antcall target="quickTests" \/>/ a <antcall target="linuxtoolsTests" \/>' target/test.xml
 sed -i '/<antcall target="quickTests" \/>/ d' target/test.xml
 sed -i '/<antcall target="longRunningTests" \/>/ d' target/test.xml
-sed -i '/<target name="all">/ a <antcall target="linuxtoolsTests" \/>' target/test.xml
 
 # A VERY dirty hack to mimic Tycho's improper usage of test bundle resources
 sed -i '/<antcall target="configureTeamTest" \/>/ i \
@@ -37,20 +37,6 @@ sed -i '/<antcall target="configureTeamTest" \/>/ i \
   <fileset dir="\${testBundlePath}" includes="**" \/> \
 </copy>' target/test.xml
 
-
-# Define our test task
-sed -i '/<target name="quickTests">/ i \
-<target name="linuxtoolsTests"> \
-<!-- Copy over the XML to generate a top-level report for all of the tests --> \
-    	    	<mkdir dir="\${results}\/origXml" \/> \
-    			<xslt style="\${repoLocation}\/splitter.xsl" basedir="\${results}\/xml" includes="*.xml" destdir="\${results}\/origXml"\/> \
-    	    	<!-- Aggregate XML report files --> \
-    	    	<junitreport todir="\${results}\/xml" tofile="org.eclipse.sdk.tests.xml"> \
-    	    		<fileset dir="\${results}/origXml" includes="*.xml" \/> \
-    	    	<\/junitreport> \
-    	    	<!-- Generate top-level HTML report --> \
-    	    	<xslt style="\${repoLocation}\/JUNIT.XSL" basedir="\${results}\/xml" includes="org.eclipse.sdk.tests.xml" destdir="\${results}\/html" \/> \
-<\/target>' target/test.xml
 
 sed -i 's/"-installIUs \(.*\)"/"-installIUs \1,org.eclipse.swtbot.eclipse.junit.headless"/' target/test.xml
 

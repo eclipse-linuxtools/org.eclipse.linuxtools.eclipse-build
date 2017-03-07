@@ -22,8 +22,6 @@ fi
 testBundleFolder=$1
 echo 'Eclipse-BundleShape: dir' > MANIFEST.MF
 
-extraIUs=
-
 for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
   jarPomPath=`jar -tf ${jar} | grep 'pom.xml'`
   unzip -p ${jar} ${jarPomPath} | grep -q '<packaging>eclipse-test-plugin</packaging>'
@@ -86,28 +84,6 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
       target/test.xml
     done
 
-    # Collect any extra IUs from each test bundle's tycho-surefire-plugin
-    unzip -p ${jar} ${jarPomPath} | grep -q '<artifactId>tycho-surefire-plugin<\/artifactId>'
-    if [ $? -eq 0 ]; then
-      IUList=`unzip -p ${jar} ${jarPomPath} | sed -n '/<dependency>/,/<\/dependency>/ p' | grep -B 1 '<artifactId>'`
-      isFeature=0
-      for elem in ${IUList}; do
-        echo ${elem} | grep -q '<type>eclipse-feature<\/type>'
-        if [ $? -eq 0 ]; then
-          isFeature=1
-        fi
-        echo ${elem} | grep -q '<artifactId>'
-        if [ $? -eq 0 ]; then
-          extraIU=`echo ${elem} | sed 's/.*<artifactId>\(.*\)<\/artifactId>.*/\1/'`
-          if [ ${isFeature} -eq 1 ]; then
-            extraIU=${extraIU}'.feature.group'
-          fi
-          extraIUs="${extraIUs} ${extraIU}"
-          isFeature=0
-        fi
-      done
-    fi
-    
     # Make 'Eclipse-BundleShape: dir'
     jarName=`basename ${jar}`
     symJarName=`ls target-sdk/plugins/ | grep ${jarName}`
@@ -120,11 +96,6 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
 
   fi
 done
-
-# Always install the extra IUs
-# Not by choice but because this is easier to do
-extraIUs=`echo -n ${extraIUs} | tr ' ' '\n' | sort | uniq | tr '\n' ','`
-sed -i "s/\"-installIUs \(.*\)\"/\"-installIUs \1,${extraIUs}\"/" target/test.xml
 
 rm ./MANIFEST.MF
 

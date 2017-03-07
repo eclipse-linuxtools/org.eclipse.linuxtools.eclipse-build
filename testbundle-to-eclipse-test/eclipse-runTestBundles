@@ -6,25 +6,52 @@
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 
+# The first argument of this script is the location of the tests to run
+# If no argument is given, the platform tests are run
+tests=$1
+
+# Location of test machinery
 eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-testing && pwd)
+
+# If tests are not specified, then find the platform tests
+if [ -z "$tests" ] ; then
+  if [ ! -d "$eclipse_testing_dir" ] ; then
+    echo "No tests specified and platform tests are not installed."
+    exit 2
+  else
+    tests=$(cd $eclipse_testing_dir && pwd)
+  fi
+else
+  if [ ! -d "$tests" ] ; then
+    echo "Specified tests are not installed."
+    exit 2
+  fi
+fi
+
+# Tests might exist in a sub-directory
+if [ -d "$tests/eclipse" ] ; then
+  tests="$tests/eclipse"
+fi
 
 # Prepare test execution environment
 mkdir target
 cp -rp $eclipse_testing_dir/* target/
 . target/label.properties
-executionDir=$(pwd)/target/workarea/${buildId}/eclipse-testing
+executionDir=$(pwd)/target/workarea/$buildId/eclipse-testing
 mkdir -p $executionDir
-cp -p target/library.xml target/JUNIT.XSL target/*.txt $executionDir
+cp -p target/library.xml target/JUNIT.XSL target/splitter.xsl target/*.txt $executionDir
 
-# Create directory of all system OSGi bundles plus specified test bundles
-# Do not create into p2 repo yet (we must make test bundles have dir shape)
-sdk=$(pwd)/target-sdk
-$eclipse_testing_dir/testbundle/gatherBundles.sh "$sdk" "$1"
+# Create an SDK of all system OSGi bundles plus specified test bundles
+$eclipse_testing_dir/testbundle/gatherBundles.sh "$(pwd)/target/sdk" "$tests"
+
+# Gather extra IUs to install when running tests that have extra requirements
+# specified in the pom.xml
+$eclipse_testing_dir/testbundle/gatherExtraIUs.sh "$tests"
 
 # If a test location was specified, prep for and use those tests
 if [ -n "$1" ] ; then
   $eclipse_testing_dir/testbundle/prepRuntimeLocation.sh || exit 1
-  $eclipse_testing_dir/testbundle/prepAllTestBundles.sh $1 || exit 1
+  $eclipse_testing_dir/testbundle/prepAllTestBundles.sh $tests || exit 1
 fi
 
 # Build a p2 repository from the constructed SDK
@@ -33,9 +60,8 @@ java -jar $(dirname $(readlink -f $(which eclipse)))/plugins/org.eclipse.equinox
  -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
  -metadataRepository file:$executionDir/testRepo \
  -artifactRepository file:$executionDir/testRepo \
- -source $sdk \
+ -source $(pwd)/target/sdk \
  -compress -append -publishArtifacts
-rm -rf $sdk
 
 # Get arch of running platform
 if uname -m > /dev/null 2>&1; then
