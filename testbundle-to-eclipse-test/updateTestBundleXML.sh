@@ -19,7 +19,7 @@ sed -i "s/<property name=\"test-application\" value=\".*\" \/>/<property name=\"
 sed -i 's/<ant target=".*-test" antfile=".*"/<ant target="ui-test" antfile="\${library-file}"/' alltest.xml
 
 if [ "${useSWTBot}" = 'true' ]; then
-  sed -i 's/<ant target=".*-test" antfile=".*"/<ant target="swtbot-test" antfile="\${swtbot-library-file}"/' alltest.xml
+  sed -i 's/<ant target=".*-test"/<ant target="swtbot-test"/' alltest.xml
 fi
 
 if [ -z "$product" ] ; then

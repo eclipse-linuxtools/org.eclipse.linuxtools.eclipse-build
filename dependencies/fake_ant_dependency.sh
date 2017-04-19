@@ -2,7 +2,7 @@
 set -x
 
 # Part of this file are following directories:
-# .m2/p2/repo-sdk/plugins/org.apache.ant_1.9.6.v201510161327
+# .m2/p2/repo-sdk/plugins/org.apache.ant_1.10.1.v20170407-1341
 
 # Ant plugin is not a part of Fedora, so it needs to be created at build time.
 
@@ -13,8 +13,8 @@ set -x
 #    -makejar - optionally create a jar-shaped bundle instead of dir-shaped
 
 pushd $1
-    mkdir -p lib bin
-    rm -f {lib,etc}/*.jar
+    mkdir -p lib
+    rm -f lib/*.jar
     build-jar-repository -s -p lib \
         ant/ant-antlr \
         ant/ant-apache-bcel \
@@ -39,10 +39,6 @@ pushd $1
     for j in lib/*.jar ; do
         mv $j $(echo $j | sed -e 's/ant_//')
     done
-    build-jar-repository -s -p etc ant-bootstrap
-    rm -f ant antRun
-    ln -s $(which ant) bin/ant
-    ln -s $(which antRun) bin/antRun
 
     # If -makejar is specified, zip the plugin into a jar
     if [ "-makejar" = "$2" ]; then

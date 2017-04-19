@@ -11,15 +11,17 @@
 tests=$1
 
 # Location of test machinery
-eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-testing && pwd)
+eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/eclipse-testing && pwd)
+# Location of platform tests
+platform_tests=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-tests && pwd)
 
 # If tests are not specified, then find the platform tests
 if [ -z "$tests" ] ; then
-  if [ ! -d "$eclipse_testing_dir" ] ; then
+  if [ ! -d "$platform_tests" ] ; then
     echo "No tests specified and platform tests are not installed."
     exit 2
   else
-    tests=$(cd $eclipse_testing_dir && pwd)
+    tests=$(cd $platform_tests && pwd)
   fi
 else
   if [ ! -d "$tests" ] ; then
@@ -51,7 +53,7 @@ $eclipse_testing_dir/testbundle/gatherExtraIUs.sh "$tests"
 # If a test location was specified, prep for and use those tests
 if [ -n "$1" ] ; then
   $eclipse_testing_dir/testbundle/prepRuntimeLocation.sh || exit 1
-  $eclipse_testing_dir/testbundle/prepAllTestBundles.sh $tests || exit 1
+  $eclipse_testing_dir/testbundle/prepAllTestBundles.sh "$tests" || exit 1
 fi
 
 # Build a p2 repository from the constructed SDK

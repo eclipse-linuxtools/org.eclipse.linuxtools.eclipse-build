@@ -20,12 +20,12 @@ pushd $sdk >/dev/null
       (cd $tests;
 	ls -d plugins/* features/* 2>/dev/null) |
       while read f; do
-         [ ! -e $f ] && ln -s $tests/$f $f
+         ln -sf $tests/$f $f
       done
       (cd $eclipse_archful;
 	ls -d plugins/* features/* 2>/dev/null) |
       while read f; do
-         [ ! -e $f ] && ln -s $eclipse_archful/$f $f
+         ln -sf $eclipse_archful/$f $f
       done
       (cd $eclipse_archful/droplets; ls -d * 2>/dev/null) |
       while read f; do

@@ -10,16 +10,16 @@
 sed -i 's/\${eclipse-home}\/plugins\/\${testPluginX}/\${testPluginX}/' target/test.xml
 sed -i '/<fileset/,/<\/fileset>/ s/dir="\${eclipse-home}\/plugins"/dir="\${basedir}"/' target/test.xml
 sed -i 's/refid="test.plugin.file" \/>/value="\${basedir}\/alltest.xml" \/>/' target/test.xml
-sed -i 's/\${report}/\${testPlugin}/' target/test.xml
 
 # Support multiple XML reports from same bundle but different test classes
+sed -i 's/\${report}/\${testPlugin}/' target/test.xml
 sed -i '/<attribute name="testPlugin"/ a <attribute name="testClass" \/>'  target/test.xml
 sed -i 's/@{testPlugin}\.xml/@{testPlugin}-@{testClass}\.xml/' target/test.xml
 sed -i 's/\${testPlugin}\.xml/\${output-file}/' target/test.xml
-sed -i 's/\${testPlugin}_\${platform}\.xml/\${output-file}/' target/test.xml
+sed -i 's/\${testPlugin}_\${testedPlatform}\.xml/\${output-file}/' target/test.xml
 
 # Insert our test task
-sed -i '/<antcall target="quickTests" \/>/ a <antcall target="linuxtoolsTests" \/>' target/test.xml
+sed -i '/<antcall target="quickTests" \/>/ a <antcall target="distroCustomTests" \/>' target/test.xml
 sed -i '/<antcall target="quickTests" \/>/ d' target/test.xml
 sed -i '/<antcall target="longRunningTests" \/>/ d' target/test.xml
 
@@ -37,8 +37,5 @@ sed -i '/<antcall target="configureTeamTest" \/>/ i \
   <fileset dir="\${testBundlePath}" includes="**" \/> \
 </copy>' target/test.xml
 
-
-sed -i 's/"-installIUs \(.*\)"/"-installIUs \1,org.eclipse.swtbot.eclipse.junit.headless"/' target/test.xml
-
-eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/java/eclipse-testing && pwd)
-cp $eclipse_testing_dir/testbundle/{swtbot-library.xml,alltest.xml,updateTestBundleXML.sh} target/
+eclipse_testing_dir=$(cd $(dirname $(readlink -f $(which eclipse)))/../../share/eclipse-testing && pwd)
+cp $eclipse_testing_dir/testbundle/{alltest.xml,updateTestBundleXML.sh} target/

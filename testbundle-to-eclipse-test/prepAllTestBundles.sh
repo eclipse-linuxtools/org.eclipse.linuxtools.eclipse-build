@@ -72,28 +72,27 @@ for jar in `find ${testBundleFolder} -name "*.jar" | grep -v eclipse-tests`; do
     fi
 
     for testclass in ${testclasses} ; do
-      sed -i "/<target name=\"linuxtoolsTests\">/ a \\
-      <exec executable=\"\${basedir}/updateTestBundleXML.sh\"> \\
-      <arg value=\"${bsname}\" /> \\
-      <arg value=\"${testclass}\" /> \\
-      <arg value=\"${testproduct}\" /> \\
-      <arg value=\"${testapplication}\" /> \\
-      <arg value=\"${useSWTBot}\" /> \\
-      </exec> \\
-      <runTests testPlugin=\"${bsname}\" testClass=\"${testclass}\" />" \
+      sed -i "/<target name=\"distroCustomTests\"/ a \\
+    <exec executable=\"\${basedir}/updateTestBundleXML.sh\">\\
+      <arg value=\"${bsname}\" />\\
+      <arg value=\"${testclass}\" />\\
+      <arg value=\"${testproduct}\" />\\
+      <arg value=\"${testapplication}\" />\\
+      <arg value=\"${useSWTBot}\" />\\
+    </exec>\\
+    <runTests testPlugin=\"${bsname}\" testClass=\"${testclass}\" />" \
       target/test.xml
     done
 
     # Make 'Eclipse-BundleShape: dir'
-    jarName=`basename ${jar}`
-    symJarName=`ls target-sdk/plugins/ | grep ${jarName}`
+    jarName=$(basename ${jar})
+    symJarName=$(ls target/sdk/plugins/ | grep ${jarName})
     # Might be multiple symlinked jars providing same bundle (rare)
     for file in ${symJarName}; do
-      rm target-sdk/plugins/${file}
+      rm target/sdk/plugins/${file}
     done
-    cp ${jar} target-sdk/plugins/
-    jar -umf ./MANIFEST.MF target-sdk/plugins/${jarName}
-
+    cp ${jar} target/sdk/plugins/
+    jar -umf ./MANIFEST.MF target/sdk/plugins/${jarName}
   fi
 done
 
