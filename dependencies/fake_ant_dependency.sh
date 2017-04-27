@@ -2,18 +2,25 @@
 set -x
 
 # Part of this file are following directories:
-# .m2/p2/repo-sdk/plugins/org.apache.ant_1.10.1.v20170407-1341
+dir=".m2/p2/repo-sdk/plugins/org.apache.ant_*"
+
+# Use above directory if none specified
+if [ -z "$1" ] ; then
+    adir="$(dirname $0)/../$dir"
+    makejar=1
+else
+    adir="$1"
+fi
 
 # Ant plugin is not a part of Fedora, so it needs to be created at build time.
 
 # Usage:
-# ./fake_ant_dependency ${ant_plugin_folder} [-makejar]
+# ./fake_ant_dependency ${ant_plugin_folder}
 # where
 #    ant_plugin_folder - a plugin that will have content replaced with symlinks
-#    -makejar - optionally create a jar-shaped bundle instead of dir-shaped
 
-pushd $1
-    mkdir -p lib
+pushd $adir 2>&1 >/dev/null
+    mkdir -p lib bin
     rm -f lib/*.jar
     build-jar-repository -s -p lib \
         ant/ant-antlr \
@@ -39,11 +46,15 @@ pushd $1
     for j in lib/*.jar ; do
         mv $j $(echo $j | sed -e 's/ant_//')
     done
+    rm -f bin/ant bin/antRun
+    ln -s $(which ant) bin/ant
+    ln -s $(which antRun) bin/antRun
 
-    # If -makejar is specified, zip the plugin into a jar
-    if [ "-makejar" = "$2" ]; then
+    # If makejar is specified, zip the plugin into a jar
+    if [ "$makejar" = "1" ]; then
         cd ..
+        rm -f *.jar
         pluginName=`ls | grep org.apache.ant_`
         zip -y -r ${pluginName}.jar ${pluginName}
     fi
-popd
+popd 2>&1 >/dev/null
