@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Eclipse SDK
+Comment=The Eclipse Platform with JDT and PDE plug-ins
+Icon=org.eclipse.Sdk
+Exec=eclipse
+Terminal=false
+Categories=Development;IDE;

@@ -1,0 +1,48 @@
+{
+  "id" : "org.eclipse.Sdk",
+  "branch" : "master",
+  "runtime" : "org.gnome.Platform",
+  "runtime-version" : "3.26",
+  "sdk" : "org.gnome.Sdk",
+  "sdk-extensions" : [ "org.freedesktop.Sdk.Extension.openjdk9" ],
+  "command" : "eclipse",
+  "build-options" : {
+	  "env" : {
+	  }
+  },
+  "modules" : [
+    {
+      "name" : "eclipse",
+      "no-autogen" : true,
+      "sources" : [
+        {
+          "url" : "http://download.eclipse.org/eclipse/downloads/drops4/I20171015-2000/eclipse-SDK-I20171015-2000-linux-gtk-x86_64.tar.gz",
+          "sha256" : "85fc41cfab1e8320ba9447023cd4103dd40944702067c41733e1e1039c4b1c01",
+          "type" : "archive"
+        },
+        {
+          "path" : "org.eclipse.Sdk.desktop",
+          "dest-filename" : "org.eclipse.Sdk.desktop",
+          "type" : "file"
+        },
+        {
+          "path" : "org.eclipse.Sdk.appdata.xml",
+          "dest-filename" : "org.eclipse.Sdk.appdata.xml",
+          "type" : "file"
+        },
+        {
+          "path" : "Makefile",
+          "dest-filename" : "Makefile",
+          "type" : "file"
+        }
+      ]
+    }
+  ],
+  "finish-args" : [
+    "--filesystem=home",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--share=network"
+  ]
+}
