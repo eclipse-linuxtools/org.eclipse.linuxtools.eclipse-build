@@ -39,9 +39,11 @@ pushd $adir 2>&1 >/dev/null
         ant/ant-jsch \
         ant/ant-junit4 \
         ant/ant-junit \
+        ant/ant-junitlauncher \
         ant/ant-launcher \
         ant/ant-swing \
         ant/ant-testutil \
+        ant/ant-xz \
         ant/ant
     for j in lib/*.jar ; do
         mv $j $(echo $j | sed -e 's/ant_//')
