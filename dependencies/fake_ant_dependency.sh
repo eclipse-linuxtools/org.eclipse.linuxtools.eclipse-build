@@ -48,9 +48,8 @@ pushd $adir 2>&1 >/dev/null
     for j in lib/*.jar ; do
         mv $j $(echo $j | sed -e 's/ant_//')
     done
-    rm -f bin/ant bin/antRun
+    rm -f bin/ant
     ln -s $(which ant) bin/ant
-    ln -s $(which antRun) bin/antRun
 
     # If makejar is specified, zip the plugin into a jar
     if [ "$makejar" = "1" ]; then
