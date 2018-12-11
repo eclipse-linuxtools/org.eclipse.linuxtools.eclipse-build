@@ -22,31 +22,9 @@ fi
 pushd $adir 2>&1 >/dev/null
     mkdir -p lib bin
     rm -f lib/*.jar
-    build-jar-repository -s -p lib \
-        ant/ant-antlr \
-        ant/ant-apache-bcel \
-        ant/ant-apache-bsf \
-        ant/ant-apache-log4j \
-        ant/ant-apache-oro \
-        ant/ant-apache-regexp \
-        ant/ant-apache-resolver \
-        ant/ant-apache-xalan2 \
-        ant/ant-commons-logging \
-        ant/ant-commons-net \
-        ant/ant-javamail \
-        ant/ant-jdepend \
-        ant/ant-jmf \
-        ant/ant-jsch \
-        ant/ant-junit4 \
-        ant/ant-junit \
-        ant/ant-junitlauncher \
-        ant/ant-launcher \
-        ant/ant-swing \
-        ant/ant-testutil \
-        ant/ant-xz \
-        ant/ant
-    for j in lib/*.jar ; do
-        mv $j $(echo $j | sed -e 's/ant_//')
+    antlibdir="$(realpath $(dirname $(which ant) )/../share/ant/lib)"
+    for antlib in $(ls -1 $antlibdir) ; do
+        ln -s $antlibdir/$antlib lib/$antlib
     done
     rm -f bin/ant
     ln -s $(which ant) bin/ant
