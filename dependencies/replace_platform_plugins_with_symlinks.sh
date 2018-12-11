@@ -36,10 +36,13 @@ pushd $1
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
 		_symlink javax.servlet-api_ glassfish-servlet-api.jar
 		_symlink javax.xml_ xml-commons-apis.jar
+		_symlink org.apache.batik.constants_ batik/batik-constants.jar
 		_symlink org.apache.batik.css_ batik/batik-css.jar
+		_symlink org.apache.batik.i18n_ batik/batik-i18n.jar
 		_symlink org.apache.batik.util_ batik/batik-util.jar
 		_symlink org.apache.batik.util.gui_ batik/batik-gui-util.jar
 		_symlink org.apache.commons.codec_ commons-codec.jar
+		_symlink org.apache.commons.io_ commons-io.jar
 		_symlink org.apache.commons.jxpath_ commons-jxpath.jar
 		_symlink org.apache.commons.logging_ commons-logging.jar
 		_symlink org.apache.felix.gogo.command_ felix/org.apache.felix.gogo.command.jar
@@ -52,6 +55,7 @@ pushd $1
 		_symlink org.apache.lucene.analyzers-smartcn_ lucene/lucene-analyzers-smartcn.jar
 		_symlink org.apache.lucene.core_ lucene/lucene-core.jar
 		_symlink org.apache.lucene.misc_ lucene/lucene-misc.jar
+		_symlink org.apache.xmlgraphics_ xmlgraphics-commons.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
