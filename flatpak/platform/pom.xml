@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.eclipse</groupId>
+    <artifactId>eclipse-flatpak-parent</artifactId>
+    <version>4.11.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.eclipse.platform.ide</artifactId>
+  <packaging>eclipse-repository</packaging>
+
+  <properties>
+    <product-id>org.eclipse.platform.ide</product-id>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-director-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>materialize-products</id>
+            <goals>
+              <goal>materialize-products</goal>
+            </goals>
+            <configuration>
+              <profile>SDKProfile</profile>
+              <products>
+                <product>
+                  <id>org.eclipse.platform.ide</id>
+                  <rootFolder>eclipse</rootFolder>
+                  <rootFolders>
+                    <macosx>Eclipse.app</macosx>
+                  </rootFolders>
+                </product>
+              </products>
+            </configuration>
+          </execution>
+          <execution>
+            <id>archive-products</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>archive-products</goal>
+            </goals>
+            <configuration>
+              <formats>
+                <win32>zip</win32>
+                <linux>tar.gz</linux>
+                <macosx>tar.gz</macosx>
+              </formats>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>flatpak</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.cbi.maven.plugins</groupId>
+            <artifactId>eclipse-flatpak-packager</artifactId>
+            <version>${cbi-plugins.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>package-flatpak</goal>
+                </goals>
+                <phase>integration-test</phase>
+                <configuration>
+                  <id>org.eclipse.platform</id>
+                  <name>Eclipse Platform</name>
+                  <summary>Eclipse Platform</summary>
+                  <description>The Eclipse Platform only.</description>
+                  <screenshots>
+                    <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-welcome.png</screenshot>
+                    <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-workbench.png</screenshot>
+                  </screenshots>
+                  <branch>master</branch>
+                  <runtimeVersion>3.30</runtimeVersion>
+                  <source>${project.build.directory}/products/org.eclipse.platform.ide-linux.gtk.x86_64.tar.gz</source>
+                  <continueOnFail>true</continueOnFail>
+                  <sign>true</sign>
+                  <additionalSources>
+                    <additionalSource>
+                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.jar</source>
+                      <destination>/app/eclipse/flatpak-dev-shim.jar</destination>
+                    </additionalSource>
+                    <additionalSource>
+                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.so</source>
+                      <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
+                    </additionalSource>
+                    <additionalSource>
+                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.exe</source>
+                      <destination>/app/bin/hostcommandrunner</destination>
+                      <permissions>755</permissions>
+                    </additionalSource>
+                  </additionalSources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

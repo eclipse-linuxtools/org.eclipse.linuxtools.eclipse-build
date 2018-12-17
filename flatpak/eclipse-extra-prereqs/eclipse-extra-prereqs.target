@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.8"?>
+
+<target name="eclipse-extra-prereqs">
+  <locations>
+    <!-- Marketplace Client -->
+    <location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+      <unit id="org.eclipse.epp.mpc.dependencies.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/mpc/drops/1.7.3/v20181205-1546/" />
+    </location>
+
+    <!-- Deps of Marketplace Client -->
+    <location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+      <unit id="org.eclipse.userstorage.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/usssdk/drops/release/1.1.0/" />
+    </location>
+  </locations>
+</target>

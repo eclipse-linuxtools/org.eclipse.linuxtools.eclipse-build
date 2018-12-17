@@ -1,4 +1,2 @@
-/key.gpg
-/nightly/
-/eclipse-sdk/
-/.flatpak-builder/
+target/
+workspace/
