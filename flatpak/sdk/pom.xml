@@ -88,21 +88,35 @@
                     <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-pde.png</screenshot>
                   </screenshots>
                   <branch>master</branch>
-                  <runtimeVersion>3.30</runtimeVersion>
+                  <runtime>org.gnome.Sdk</runtime>
                   <source>${project.build.directory}/products/org.eclipse.sdk.ide-linux.gtk.x86_64.tar.gz</source>
                   <continueOnFail>true</continueOnFail>
                   <sign>true</sign>
                   <additionalSources>
                     <additionalSource>
-                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.jar</source>
+                      <artifact>
+                        <artifactId>flatpak-dev-shim</artifactId>
+                        <groupId>org.eclipse.flatpak</groupId>
+                        <version>0.0.1-SNAPSHOT</version>
+                      </artifact>
                       <destination>/app/eclipse/flatpak-dev-shim.jar</destination>
                     </additionalSource>
                     <additionalSource>
-                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.so</source>
+                      <artifact>
+                        <artifactId>flatpak-dev-shim</artifactId>
+                        <groupId>org.eclipse.flatpak</groupId>
+                        <version>0.0.1-SNAPSHOT</version>
+                        <type>so</type>
+                      </artifact>
                       <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
                     </additionalSource>
                     <additionalSource>
-                      <source>${user.home}/.m2/repository/org/eclipse/flatpak/flatpak-dev-shim/0.0.1-SNAPSHOT/flatpak-dev-shim-0.0.1-SNAPSHOT.exe</source>
+                      <artifact>
+                        <artifactId>flatpak-dev-shim</artifactId>
+                        <groupId>org.eclipse.flatpak</groupId>
+                        <version>0.0.1-SNAPSHOT</version>
+                        <type>exe</type>
+                      </artifact>
                       <destination>/app/bin/hostcommandrunner</destination>
                       <permissions>755</permissions>
                     </additionalSource>
