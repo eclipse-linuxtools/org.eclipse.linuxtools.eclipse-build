@@ -14,6 +14,18 @@
   <artifactId>eclipse-flatpak-parent</artifactId>
   <packaging>pom</packaging>
 
+  <repositories>
+    <repository>
+      <id>eclipse</id>
+      <url>https://repo.eclipse.org/content/repositories/eclipse/</url>
+    </repository>
+    <repository>
+      <id>eclipse-p2</id>
+      <url>${eclipse-p2-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
+
   <build>
     <plugins>
       <plugin>
