@@ -83,9 +83,9 @@
                     Platform, Java Development Tools (JDT), and Plug-in
                     Development Environment (PDE).</description>
                   <screenshots>
-                    <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-welcome.png</screenshot>
-                    <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-jdt.png</screenshot>
-                    <screenshot>https://raw.githubusercontent.com/mbooth101/org.eclipse.linuxtools.eclipse-build/master/flatpak/platform/screenshots/screenshot-pde.png</screenshot>
+                    <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-welcome.png</screenshot>
+                    <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-jdt.png</screenshot>
+                    <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-pde.png</screenshot>
                   </screenshots>
                   <branch>master</branch>
                   <runtime>org.gnome.Sdk</runtime>
@@ -96,16 +96,16 @@
                     <additionalSource>
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>org.eclipse.flatpak</groupId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <groupId>uk.co.matbooth.flatpak</groupId>
+                        <version>0.0.1</version>
                       </artifact>
                       <destination>/app/eclipse/flatpak-dev-shim.jar</destination>
                     </additionalSource>
                     <additionalSource>
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>org.eclipse.flatpak</groupId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <groupId>uk.co.matbooth.flatpak</groupId>
+                        <version>0.0.1</version>
                         <type>so</type>
                       </artifact>
                       <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
@@ -113,8 +113,8 @@
                     <additionalSource>
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>org.eclipse.flatpak</groupId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <groupId>uk.co.matbooth.flatpak</groupId>
+                        <version>0.0.1</version>
                         <type>exe</type>
                       </artifact>
                       <destination>/app/bin/hostcommandrunner</destination>
