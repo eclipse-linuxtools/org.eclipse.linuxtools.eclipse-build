@@ -9,7 +9,7 @@
    <launcherArgs>
       <programArgs>-protect master --launcher.defaultAction openFile  --launcher.appendVmargs
       </programArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.8 -Dosgi.dataAreaRequiresExplicitInit=true -Xms256m -Xmx1024m --add-modules=ALL-SYSTEM
+      <vmArgs>-Dosgi.requiredJavaVersion=1.8 -Dosgi.dataAreaRequiresExplicitInit=true -Xms256m -Xmx2048m --add-modules=ALL-SYSTEM
       </vmArgs>
       <vmArgsLin>-Dosgi.configuration.area=@user.home/.var/app/org.eclipse.Sdk/eclipse/configuration --patch-module=java.base=/app/eclipse/flatpak-dev-shim.jar
       </vmArgsLin>

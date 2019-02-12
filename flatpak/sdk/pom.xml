@@ -78,16 +78,14 @@
                 <configuration>
                   <id>org.eclipse.sdk</id>
                   <name>Eclipse SDK</name>
-                  <summary>Eclipse SDK</summary>
-                  <description>The Eclipse SDK includes the Eclipse
-                    Platform, Java Development Tools (JDT), and Plug-in
-                    Development Environment (PDE).</description>
+                  <summary>The Eclipse IDE SDK</summary>
+                  <description>The Eclipse IDE SDK includes the Eclipse Platform, Java Development Tools (JDT), Plug-in Development Environment (PDE) and all the sources necessary for debugging the Eclipse IDE itself.</description>
                   <screenshots>
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-welcome.png</screenshot>
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-jdt.png</screenshot>
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/sdk/screenshots/screenshot-pde.png</screenshot>
                   </screenshots>
-                  <branch>master</branch>
+                  <branch>${releaseNumberSDK}</branch>
                   <runtime>org.gnome.Sdk</runtime>
                   <source>${project.build.directory}/products/org.eclipse.sdk.ide-linux.gtk.x86_64.tar.gz</source>
                   <continueOnFail>true</continueOnFail>

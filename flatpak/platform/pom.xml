@@ -77,13 +77,13 @@
                 <configuration>
                   <id>org.eclipse.platform</id>
                   <name>Eclipse Platform</name>
-                  <summary>Eclipse Platform</summary>
-                  <description>The Eclipse Platform only.</description>
+                  <summary>The Eclipse IDE Platform</summary>
+                  <description>The Eclipse IDE Platform includes the Eclipse Market Place Client with which you can install plug-ins to tailor the IDE to your needs.</description>
                   <screenshots>
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/platform/screenshots/screenshot-welcome.png</screenshot>
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/platform/screenshots/screenshot-workbench.png</screenshot>
                   </screenshots>
-                  <branch>master</branch>
+                  <branch>${releaseNumberPlatform}</branch>
                   <runtime>org.gnome.Sdk</runtime>
                   <source>${project.build.directory}/products/org.eclipse.platform.ide-linux.gtk.x86_64.tar.gz</source>
                   <continueOnFail>true</continueOnFail>
