@@ -4,14 +4,14 @@
 
     <!-- Deps of Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.7.5.v20190313-2005"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.7.5.v20190313-2005"/>
-		  <repository location="https://download.eclipse.org/mpc/drops/1.7.5/v20190313-2005"/>
+		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.7.7.v20190521-1752"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.7.7.v20190521-1752"/>
+		  <repository location="https://download.eclipse.org/mpc/drops/1.7.7/v20190521-1752"/>
 	  </location>
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 		  <unit id="org.eclipse.userstorage.feature.group" version="1.2.0.v20190308-0433"/>
 		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20190308-0433"/>
-		  <repository location="https://download.eclipse.org/usssdk/drops/milestone/S911-1.2-RC1"/>
+		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.0"/>
 	  </location>
   </locations>
 </target>
