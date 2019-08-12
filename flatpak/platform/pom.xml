@@ -93,7 +93,7 @@
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
                         <groupId>uk.co.matbooth.flatpak</groupId>
-                        <version>0.0.1</version>
+                        <version>1.0.0</version>
                       </artifact>
                       <destination>/app/eclipse/flatpak-dev-shim.jar</destination>
                     </additionalSource>
@@ -101,7 +101,7 @@
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
                         <groupId>uk.co.matbooth.flatpak</groupId>
-                        <version>0.0.1</version>
+                        <version>1.0.0</version>
                         <type>so</type>
                       </artifact>
                       <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
@@ -110,7 +110,7 @@
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
                         <groupId>uk.co.matbooth.flatpak</groupId>
-                        <version>0.0.1</version>
+                        <version>1.0.0</version>
                         <type>exe</type>
                       </artifact>
                       <destination>/app/bin/hostcommandrunner</destination>
