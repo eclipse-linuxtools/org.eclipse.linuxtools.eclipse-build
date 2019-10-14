@@ -85,6 +85,7 @@
                   </screenshots>
                   <branch>${releaseNumberPlatform}</branch>
                   <runtime>org.gnome.Sdk</runtime>
+                  <runtimeVersion>3.34</runtimeVersion>
                   <source>${project.build.directory}/products/org.eclipse.platform.ide-linux.gtk.x86_64.tar.gz</source>
                   <continueOnFail>true</continueOnFail>
                   <sign>true</sign>
