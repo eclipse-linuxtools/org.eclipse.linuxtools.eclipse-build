@@ -109,16 +109,6 @@
                       </artifact>
                       <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
                     </additionalSource>
-                    <additionalSource>
-                      <artifact>
-                        <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>uk.co.matbooth.flatpak</groupId>
-                        <version>${flatpak.shim.version}</version>
-                        <type>exe</type>
-                      </artifact>
-                      <destination>/app/bin/hostcommandrunner</destination>
-                      <permissions>755</permissions>
-                    </additionalSource>
                   </additionalSources>
                 </configuration>
               </execution>
