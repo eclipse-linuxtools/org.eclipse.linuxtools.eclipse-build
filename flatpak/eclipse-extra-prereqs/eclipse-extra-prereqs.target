@@ -4,14 +4,14 @@
 
     <!-- Deps of Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.8.0.v20190725-1807"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.8.0.v20190725-1807"/>
-		  <repository location="https://download.eclipse.org/mpc/drops/1.8.0/v20190725-1807/"/>
+		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.8.1.v20191119-1757"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.8.1.v20191119-1757"/>
+		  <repository location="https://download.eclipse.org/mpc/drops/1.8.1/v20191119-1757/"/>
 	  </location>
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.userstorage.feature.group" version="1.2.0.v20190308-0433"/>
-		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20190308-0433"/>
-		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.0"/>
+		  <unit id="org.eclipse.userstorage.feature.group" version="1.2.0.v20191120-1614"/>
+		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20191120-1614"/>
+		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.1"/>
 	  </location>
   </locations>
 </target>
