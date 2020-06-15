@@ -3,7 +3,7 @@
     <!-- Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.8.3.v20200526-1554"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.8.3.v20200526-1554.jar"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.8.3.v20200526-1554"/>
 		  <repository location="https://download.eclipse.org/mpc/drops/1.8.3/v20200526-2328/"/>
 	  </location>
 
