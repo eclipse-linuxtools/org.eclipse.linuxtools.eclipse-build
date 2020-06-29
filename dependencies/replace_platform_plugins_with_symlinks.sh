@@ -31,6 +31,7 @@ pushd $1
 		_symlink com.jcraft.jsch_ jsch.jar
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
 		_symlink javax.annotation-api_ glassfish-annotation-api.jar
+		_symlink jakarta.annotation-api_ jakarta-annotations/jakarta.annotation-api.jar
 		_symlink javax.el-api_ glassfish-el-api.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
@@ -64,12 +65,10 @@ pushd $1
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
-		_symlink org.kxml2_ kxml.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.tukaani.xz_ xz-java.jar
 		_symlink org.w3c.css.sac_ sac.jar
 		_symlink org.w3c.dom.svg_ xml-commons-apis-ext.jar
-		_symlink org.xmlpull_ xpp3.jar
 	popd
 popd
