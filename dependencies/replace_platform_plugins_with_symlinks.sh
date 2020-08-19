@@ -30,8 +30,10 @@ pushd $1
 		_symlink com.ibm.icu_ icu4j/icu4j.jar
 		_symlink com.jcraft.jsch_ jsch.jar
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
-		_symlink javax.annotation-api_ glassfish-annotation-api.jar
 		_symlink jakarta.annotation-api_ jakarta-annotations/jakarta.annotation-api.jar
+		_symlink jakarta.el-api_ jakarta-el/jakarta.el-api.jar
+		_symlink jakarta.servlet-api_ jakarta-servlet/jakarta.servlet-api.jar
+		_symlink javax.annotation-api_ glassfish-annotation-api.jar
 		_symlink javax.el-api_ glassfish-el-api.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
@@ -64,6 +66,7 @@ pushd $1
 		_symlink org.eclipse.jetty.io_ jetty/jetty-io.jar
 		_symlink org.eclipse.jetty.security_ jetty/jetty-security.jar
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
+		_symlink org.glassfish.jakarta.el_ jakarta-el/jakarta.el.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
