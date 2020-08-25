@@ -32,11 +32,13 @@ pushd $1
 		_symlink com.sun.el.javax.el_ glassfish-el.jar
 		_symlink jakarta.annotation-api_ jakarta-annotations/jakarta.annotation-api.jar
 		_symlink jakarta.el-api_ jakarta-el/jakarta.el-api.jar
+		_symlink jakarta.servlet.jsp-api_ jakarta-server-pages/jakarta.servlet.jsp-api.jar
 		_symlink jakarta.servlet-api_ jakarta-servlet/jakarta.servlet-api.jar
 		_symlink javax.annotation-api_ glassfish-annotation-api.jar
 		_symlink javax.el-api_ glassfish-el-api.jar
 		_symlink javax.inject_ atinject.jar
 		_symlink javax.servlet.jsp_ glassfish-jsp-api/javax.servlet.jsp-api.jar
+		_symlink javax.servlet.jsp-api_ jakarta-server-pages/jakarta.servlet.jsp-api.jar
 		_symlink javax.servlet-api_ glassfish-servlet-api.jar
 		_symlink javax.xml_ xml-commons-apis.jar
 		_symlink org.apache.batik.constants_ batik/batik-constants.jar
@@ -68,6 +70,7 @@ pushd $1
 		_symlink org.eclipse.jetty.servlet_ jetty/jetty-servlet.jar
 		_symlink org.glassfish.jakarta.el_ jakarta-el/jakarta.el.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
+		_symlink org.glassfish.web.jakarta.servlet.jsp_ jakarta-server-pages/jakarta.servlet.jsp.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.tukaani.xz_ xz-java.jar
