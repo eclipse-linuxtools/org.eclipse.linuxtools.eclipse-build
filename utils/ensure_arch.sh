@@ -14,13 +14,17 @@ if [ -z "$src" ] ; then
 	exit 1
 fi
 for a in ${@:3} ; do
-	tgt=${src/$2/$a/}
+	tgt=${src/$2/$a}
 	if [ -d "$tgt" ] ; then
 		echo "bundle $tgt already exists"
 	else
 		cp -r ${src} $tgt
+		for f in $(cd $tgt && find . -type f | grep $2) ; do
+			mv $tgt/$f $tgt/${f/$2/$a}
+		done
 		find $tgt -type f -exec sed -i -e "s/$2/$a/g" {} \;
 		echo "bundle $tgt created"
 	fi
 done
 popd 1>/dev/null
+
