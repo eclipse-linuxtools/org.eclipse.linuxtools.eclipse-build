@@ -107,7 +107,7 @@
                         <version>${flatpak.shim.version}</version>
                         <type>so</type>
                       </artifact>
-                      <destination>/app/jdk/lib/libflatpakdevshim.so</destination>
+                      <destination>/app/openjdk-11/lib/libflatpakdevshim.so</destination>
                     </additionalSource>
                   </additionalSources>
                 </configuration>
