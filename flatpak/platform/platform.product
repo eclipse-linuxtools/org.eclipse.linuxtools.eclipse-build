@@ -9,7 +9,7 @@
    <launcherArgs>
       <programArgs>-protect master --launcher.defaultAction openFile --launcher.appendVmargs
       </programArgs>
-      <vmArgs>-Dosgi.requiredJavaVersion=1.8 -Dosgi.dataAreaRequiresExplicitInit=true -Xms256m -Xmx2048m --add-modules=ALL-SYSTEM
+      <vmArgs>-Dosgi.requiredJavaVersion=11 -Dosgi.dataAreaRequiresExplicitInit=true -Xms256m -Xmx2048m --add-modules=ALL-SYSTEM
       </vmArgs>
       <vmArgsLin>-Dosgi.configuration.area=@user.home/.var/app/org.eclipse.Platform/eclipse/configuration --patch-module=java.base=/app/eclipse/flatpak-dev-shim.jar
       </vmArgsLin>
@@ -21,7 +21,8 @@
       location="org.eclipse.platform" />
    <launcher name="eclipse">
       <linux icon="icons/icon.xpm"/>
-      <win useIco="true">
+      <macosx icon="icons/Eclipse.icns"/>
+      <win useIco="false">
          <bmp/>
       </win>
    </launcher>
@@ -67,7 +68,7 @@ downloadable archives (&quot;Downloads&quot;).
     include plug-ins (&quot;Plug-ins&quot;), plug-in fragments (&quot;Fragments&quot;), and
     features (&quot;Features&quot;).
 -   Each Plug-in or Fragment may be packaged as a sub-directory or JAR
-    (Javaâ„¢ ARchive) in a directory named &quot;plugins&quot;.
+    (Java&#8482; ARchive) in a directory named &quot;plugins&quot;.
 -   A Feature is a bundle of one or more Plug-ins and/or Fragments and
     associated material. Each Feature may be packaged as a sub-directory in a
     directory named &quot;features&quot;. Within a Feature, files named &quot;feature.xml&quot; may
@@ -180,19 +181,19 @@ United States, other countries, or both.
 
    <features>
       <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.epp.mpc"/>
+      <!-- feature id="org.eclipse.epp.mpc"/ -->
       <feature id="org.eclipse.equinox.p2.user.ui"/>
    </features>
 
    <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
-      <property name="eclipse.buildId" value="${unqualifiedVersion}.${buildQualifier}" />
       <property name="org.eclipse.update.reconcile" value="false" />
+      <property name="eclipse.buildId" value="${unqualifiedVersion}.${buildQualifier}" />
       <property name="osgi.bundles.defaultStartLevel" value="4" />
    </configurations>
 
