@@ -71,6 +71,8 @@ pushd $1
 		_symlink org.glassfish.jakarta.el_ jakarta-el/jakarta.el.jar
 		_symlink org.glassfish.web.javax.servlet.jsp_ glassfish-jsp.jar
 		_symlink org.glassfish.web.jakarta.servlet.jsp_ jakarta-server-pages/jakarta.servlet.jsp.jar
+		_symlink com.sun.jna_ jna/jna.jar
+		_symlink com.sun.jna.platform_ jna/jna-platform.jar
 		_symlink org.sat4j.core_ org.sat4j.core.jar
 		_symlink org.sat4j.pb_ org.sat4j.pb.jar
 		_symlink org.tukaani.xz_ xz-java.jar
