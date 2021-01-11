@@ -2,9 +2,9 @@
   <locations>
     <!-- Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.8.5.v20200902-1804"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.8.5.v20200902-1804"/>
-		  <repository location="https://download.eclipse.org/mpc/drops/1.8.5/v20200902-1804/"/>
+		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.0.v20210108-0835"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.0.v20210108-0835"/>
+		  <repository location="https://download.eclipse.org/mpc/drops/1.9.0/v20210108-0835/"/>
 	  </location>
 
     <!-- Deps of Marketplace Client -->
