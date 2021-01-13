@@ -93,7 +93,7 @@
                     <additionalSource>
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>uk.co.matbooth.flatpak</groupId>
+                        <groupId>org.eclipse.linuxtools.flatpak</groupId>
                         <version>${flatpak.shim.version}</version>
                       </artifact>
                       <destination>/app/eclipse/flatpak-dev-shim.jar</destination>
@@ -101,11 +101,11 @@
                     <additionalSource>
                       <artifact>
                         <artifactId>flatpak-dev-shim</artifactId>
-                        <groupId>uk.co.matbooth.flatpak</groupId>
+                        <groupId>org.eclipse.linuxtools.flatpak</groupId>
                         <version>${flatpak.shim.version}</version>
                         <type>so</type>
                       </artifact>
-                      <destination>/app/openjdk-11/lib/libflatpakdevshim.so</destination>
+                      <destination>/app/lib/libflatpakdevshim.so</destination>
                     </additionalSource>
                   </additionalSources>
                 </configuration>

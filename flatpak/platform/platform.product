@@ -11,7 +11,7 @@
       </programArgs>
       <vmArgs>-Dosgi.requiredJavaVersion=11 -Dosgi.dataAreaRequiresExplicitInit=true -Xms256m -Xmx2048m --add-modules=ALL-SYSTEM
       </vmArgs>
-      <vmArgsLin>-Dosgi.configuration.area=@user.home/.var/app/org.eclipse.Platform/eclipse/configuration --patch-module=java.base=/app/eclipse/flatpak-dev-shim.jar
+      <vmArgsLin>-Dosgi.configuration.area=@user.home/.var/app/org.eclipse.Platform/eclipse/configuration --patch-module=java.base=/app/eclipse/flatpak-dev-shim.jar -Dsun.boot.library.path=/app/lib
       </vmArgsLin>
       <vmArgsMac>-Xdock:icon=../Resources/Eclipse.icns -XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -181,7 +181,8 @@ United States, other countries, or both.
 
    <features>
       <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.epp.mpc"/>
+      <feature id="org.eclipse.epp.mpc" installMode="root"/>
+      <feature id="org.eclipse.justj.openjdk.hotspot.jre.full" installMode="root"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
    </features>
 

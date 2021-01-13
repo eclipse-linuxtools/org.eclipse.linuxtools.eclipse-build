@@ -13,5 +13,10 @@
 		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20191120-1614"/>
 		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.1"/>
 	  </location>
+
+	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="15.0.1.v20201027-0507"/>
+		  <repository location="https://download.eclipse.org/justj/jres/15/updates/release/15.0.1"/>
+	  </location>
   </locations>
 </target>
