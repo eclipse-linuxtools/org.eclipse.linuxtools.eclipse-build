@@ -1,5 +1,5 @@
 /*********************************************************************
- * Copyright (c) 2018, 2019 Red Hat, Inc. and others.
+ * Copyright (c) 2018, 2021 Red Hat, Inc. and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,6 +33,14 @@ class ProcessImplFactory {
             // If the desired executable program lives in /var/run/host (where the sandbox
             // host is mounted) then execute it on the sandbox host
             cmdarray[0] = Paths.get("/").resolve(exe.subpath(3, exe.getNameCount())).toString();
+            return runOnHost(cmdarray, environment, dir, redirects, redirectErrStream);
+        }
+        // TODO this is pretty nasty, and will only work for configured jvms -- this
+        // should be more generic
+        if (exe.startsWith(Paths.get("/run/user"))) {
+            // If the desired executable program lives in /run/user (where the sandbox
+            // portal directories are mounted) then execute it on the sandbox host
+            cmdarray[0] = Paths.get("/usr/lib/jvm").resolve(exe.subpath(5, exe.getNameCount())).toString();
             return runOnHost(cmdarray, environment, dir, redirects, redirectErrStream);
         }
         // 1) Invoking "which" directly, the command we really want to test for is the

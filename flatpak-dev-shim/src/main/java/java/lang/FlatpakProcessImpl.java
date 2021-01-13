@@ -1,5 +1,5 @@
 /*********************************************************************
- * Copyright (c) 2018, 2019 Red Hat, Inc. and others.
+ * Copyright (c) 2018, 2021 Red Hat, Inc. and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import jdk.internal.misc.JavaIOFileDescriptorAccess;
-import jdk.internal.misc.SharedSecrets;
+import jdk.internal.access.JavaIOFileDescriptorAccess;
+import jdk.internal.access.SharedSecrets;
 
 /**
  * A java.lang.Process implementation to break out of the Flatpak sandbox and
@@ -116,8 +116,7 @@ final class FlatpakProcessImpl extends Process {
         List<String> argarray = new ArrayList<>();
         argarray.add("flatpak-spawn");
         argarray.add("--host");
-        // TODO Add working dir support to flatpak-spawn
-        // argarray.add(workdir);
+        argarray.add("--directory=" + workdir);
         argarray.addAll(Arrays.asList(cmdarray));
         byte[] argv = toCStrings(argarray.toArray(new String[0]));
 

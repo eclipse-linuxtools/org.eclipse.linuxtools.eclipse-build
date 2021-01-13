@@ -35,9 +35,9 @@
   </licenses>
 
   <properties>
-    <java.version>11</java.version>
-    <maven.version>3.5.4</maven.version>
-    <junit.jupiter.version>5.5.2</junit.jupiter.version>
+    <java.version>15</java.version>
+    <maven.version>3.6.3</maven.version>
+    <junit.jupiter.version>5.7.0</junit.jupiter.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.test.failure.ignore>true</maven.test.failure.ignore>
   </properties>
@@ -83,7 +83,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-source-plugin</artifactId>
