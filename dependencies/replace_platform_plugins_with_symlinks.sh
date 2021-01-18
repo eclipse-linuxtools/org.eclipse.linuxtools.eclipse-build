@@ -62,6 +62,7 @@ pushd $1
 		_symlink org.apache.lucene.misc_ lucene/lucene-misc.jar
 		_symlink org.apache.xmlgraphics_ xmlgraphics-commons.jar
 		_symlink org.eclipse.jetty.util_ jetty/jetty-util.jar
+		_symlink org.eclipse.jetty.util.ajax_ jetty/jetty-util-ajax.jar
 		_symlink org.eclipse.jetty.server_ jetty/jetty-server.jar
 		_symlink org.eclipse.jetty.http_ jetty/jetty-http.jar
 		_symlink org.eclipse.jetty.continuation_ jetty/jetty-continuation.jar
