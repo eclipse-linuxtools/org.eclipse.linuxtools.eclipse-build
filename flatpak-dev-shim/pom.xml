@@ -56,6 +56,19 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <distributionManagement>
+		<repository>
+			<id>repo.eclipse.org</id>
+			<name>Eclipse Dash Nexus Repository - Releases</name>
+			<url>https://repo.eclipse.org/content/repositories/linuxtools-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>repo.eclipse.org</id>
+			<name>Eclipse Dash Nexus Repository - Snapshots</name>
+			<url>https://repo.eclipse.org/content/repositories/linuxtools-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
   <build>
     <pluginManagement>
