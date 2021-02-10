@@ -17,6 +17,11 @@
     </developer>
   </developers>
 
+  <scm>
+    <connection>scm:git:git://git.eclipse.org/gitroot/linuxtools/org.eclipse.linuxtools.eclipse-build.git</connection>
+    <developerConnection>scm:git:ssh://git.eclipse.org:29418/linuxtools/org.eclipse.linuxtools.eclipse-build.git</developerConnection>
+  </scm>
+
   <licenses>
     <license>
       <name>Eclipse Public License - Version 2.0</name>
