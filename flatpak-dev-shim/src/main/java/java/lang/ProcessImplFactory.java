@@ -35,12 +35,9 @@ class ProcessImplFactory {
             cmdarray[0] = Paths.get("/").resolve(exe.subpath(3, exe.getNameCount())).toString();
             return runOnHost(cmdarray, environment, dir, redirects, redirectErrStream);
         }
-        // TODO this is pretty nasty, and will only work for configured jvms -- this
-        // should be more generic
-        if (exe.startsWith(Paths.get("/run/user"))) {
-            // If the desired executable program lives in /run/user (where the sandbox
-            // portal directories are mounted) then execute it on the sandbox host
-            cmdarray[0] = Paths.get("/usr/lib/jvm").resolve(exe.subpath(5, exe.getNameCount())).toString();
+        if (exe.startsWith(Paths.get(System.getenv("XDG_RUNTIME_DIR")))) {
+            // Shortcut for paths mounted in the document store portal, flatpak should do the
+            // right thing automatically
             return runOnHost(cmdarray, environment, dir, redirects, redirectErrStream);
         }
         // 1) Invoking "which" directly, the command we really want to test for is the
