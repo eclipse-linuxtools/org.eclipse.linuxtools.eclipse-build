@@ -2,9 +2,9 @@
   <locations>
     <!-- Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.0.v20210108-0835"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.0.v20210108-0835"/>
-		  <repository location="https://download.eclipse.org/mpc/drops/1.9.0/v20210108-0835/"/>
+		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.1.v20210204-1408"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.1.v20210204-1408"/>
+		  <repository location="https://download.eclipse.org/mpc/drops/1.9.1/v20210204-1408/"/>
 	  </location>
 
     <!-- Deps of Marketplace Client -->
@@ -15,8 +15,8 @@
 	  </location>
 
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="15.0.1.v20201027-0507"/>
-		  <repository location="https://download.eclipse.org/justj/jres/15/updates/release/15.0.1"/>
+		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="15.0.2.v20210201-0955"/>
+		  <repository location="https://download.eclipse.org/justj/jres/15/updates/release/15.0.2"/>
 	  </location>
   </locations>
 </target>
