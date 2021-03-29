@@ -85,7 +85,7 @@
                   </screenshots>
                   <branch>${releaseNumberPlatform}</branch>
                   <runtime>org.gnome.Platform</runtime>
-                  <runtimeVersion>3.38</runtimeVersion>
+                  <runtimeVersion>40</runtimeVersion>
                   <source>${project.build.directory}/products/org.eclipse.platform.ide-linux.gtk.x86_64.tar.gz</source>
                   <continueOnFail>true</continueOnFail>
                   <sign>true</sign>
