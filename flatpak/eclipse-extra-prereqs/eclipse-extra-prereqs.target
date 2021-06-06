@@ -15,8 +15,8 @@
 	  </location>
 
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="15.0.2.v20210201-0955"/>
-		  <repository location="https://download.eclipse.org/justj/jres/15/updates/release/15.0.2"/>
+		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="16.0.1.v20210528-1205"/>
+		  <repository location="https://download.eclipse.org/justj/jres/16/updates/release/16.0.1"/>
 	  </location>
   </locations>
 </target>
