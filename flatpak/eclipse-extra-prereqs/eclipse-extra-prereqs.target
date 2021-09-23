@@ -2,21 +2,21 @@
   <locations>
     <!-- Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.1.v20210204-1408"/>
-		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.1.v20210204-1408"/>
-		  <repository location="https://download.eclipse.org/mpc/drops/1.9.1/v20210204-1408/"/>
+		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.2.v20210826-0851"/>
+		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.2.v20210826-0851"/>
+		  <repository location="https://download.eclipse.org/mpc/drops/1.9.2/v20210826-0851/"/>
 	  </location>
 
     <!-- Deps of Marketplace Client -->
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.userstorage.feature.group" version="1.2.0.v20191120-1614"/>
-		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20191120-1614"/>
-		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.1"/>
+		  <unit id="org.eclipse.userstorage.feature.group" version="1.2.0.v20210517-0327"/>
+		  <unit id="org.eclipse.userstorage.sdk.feature.group" version="1.2.0.v20210518-1310"/>
+		  <repository location="https://download.eclipse.org/usssdk/drops/release/1.2.2"/>
 	  </location>
 
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="16.0.1.v20210528-1205"/>
-		  <repository location="https://download.eclipse.org/justj/jres/16/updates/release/16.0.1"/>
+		  <unit id="org.eclipse.justj.openjdk.hotspot.jre.full.feature.group" version="16.0.2.v20210721-1149"/>
+		  <repository location="https://download.eclipse.org/justj/jres/16/updates/release/16.0.2"/>
 	  </location>
   </locations>
 </target>
