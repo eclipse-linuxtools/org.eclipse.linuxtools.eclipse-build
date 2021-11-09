@@ -1,0 +1,41 @@
+pipeline {
+    options {
+		timeout(time: 60, unit: 'MINUTES')
+		buildDiscarder(logRotator(numToKeepStr:'10'))
+	}
+    agent {
+        kubernetes {
+            label 'centos-7'
+        }
+    }
+   	tools {
+   	    maven 'apache-maven-latest'
+        jdk 'openjdk-jdk15-latest'
+    }
+   stages {
+      stage('clone repo') {
+          steps {
+             git branch: 'master', url: 'git://git.eclipse.org/gitroot/linuxtools/org.eclipse.linuxtools.eclipse-build.git'
+          }
+        }
+        stage('Build') {
+			steps {
+			    dir('flatpak-dev-shim') {
+                    sh "mvn clean verify -B -Dmaven.test.skip=true"
+			    }
+			}
+			post {
+				always {
+					archiveArtifacts artifacts: 'flatpak-dev-shim/target/**'
+				}
+			}
+		}
+		stage('Deploy') {
+			steps {
+			    dir('flatpak-dev-shim') {
+                    sh "mvn deploy -B -Dmaven.test.skip=true"
+			    }
+			}
+		}
+    }
+}
