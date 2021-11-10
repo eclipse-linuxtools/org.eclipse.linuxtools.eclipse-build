@@ -13,11 +13,6 @@ pipeline {
         jdk 'openjdk-jdk15-latest'
     }
    stages {
-      stage('clone repo') {
-          steps {
-             git branch: 'master', url: 'git://git.eclipse.org/gitroot/linuxtools/org.eclipse.linuxtools.eclipse-build.git'
-          }
-        }
         stage('Build') {
 			steps {
 			    dir('flatpak-dev-shim') {
