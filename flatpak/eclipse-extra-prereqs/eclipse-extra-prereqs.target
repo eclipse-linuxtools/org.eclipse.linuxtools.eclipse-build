@@ -4,6 +4,8 @@
 	  <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 		  <unit id="org.eclipse.epp.mpc.feature.group" version="1.9.2.v20210826-0851"/>
 		  <unit id="org.eclipse.epp.mpc.source.feature.group" version="1.9.2.v20210826-0851"/>
+		  <unit id="org.apache.httpcomponents.httpcore" version="0.0.0"/>
+		  <unit id="org.apache.httpcomponents.httpclient" version="0.0.0"/>
 		  <repository location="https://download.eclipse.org/mpc/drops/1.9.2/v20210826-0851/"/>
 	  </location>
 
