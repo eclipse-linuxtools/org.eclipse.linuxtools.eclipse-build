@@ -4,19 +4,19 @@
 FROM eclipsecbi/fedora:35
 
 # Install flatpak tools
-RUN yum -y install flatpak flatpak-builder
-RUN yum clean all
-
+RUN dnf -y install flatpak ostree
 # Install java
-RUN yum -y install java-11-openjdk-devel
-RUN yum clean all
+RUN dnf -y install java-11-openjdk-devel
+
+RUN dnf clean all
 
 # Install maven
-ENV MAVEN_VERSION 3.8.3
+ENV MAVEN_VERSION 3.8.4
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_OPTS -Xmx1024m
 
 # Configure flathub remote
 ENV FLATPAK_GL_DRIVERS=dummy
