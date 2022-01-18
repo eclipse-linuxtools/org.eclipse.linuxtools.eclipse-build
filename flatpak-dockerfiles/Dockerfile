@@ -3,10 +3,13 @@
 
 FROM eclipsecbi/fedora:35
 
-# Install flatpak tools
-RUN dnf -y install flatpak ostree
+# Install latest updates
+RUN dnf -y update --setopt=install_weak_deps=False
+
 # Install java
-RUN dnf -y install java-11-openjdk-devel
+RUN dnf -y install --setopt=install_weak_deps=False java-11-openjdk-devel
+# Install flatpak tools
+RUN dnf -y install --setopt=install_weak_deps=False flatpak ostree openssh-clients
 
 RUN dnf clean all
 
