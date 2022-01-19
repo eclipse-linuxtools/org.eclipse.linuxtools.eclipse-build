@@ -84,6 +84,7 @@
                     <screenshot>https://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/plain/flatpak/platform/screenshots/screenshot-workbench.png</screenshot>
                   </screenshots>
                   <branch>${releaseNumberPlatform}</branch>
+                  <branchAlias>master</branchAlias>
                   <runtime>org.gnome.Platform</runtime>
                   <runtimeVersion>41</runtimeVersion>
                   <source>${project.build.directory}/products/org.eclipse.platform.ide-linux.gtk.x86_64.tar.gz</source>
