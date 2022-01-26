@@ -17,9 +17,9 @@ To install the Eclipse Flatpak via the command line:
     `flatpak install eclipse-nightly org.eclipse.Platform` or
     `flatpak install eclipse-nightly org.eclipse.Sdk`
 
-    This will prompt you to chose a branch or abort, to skip this you can specify a branch by adding `/x86_64/[branch]` to the command:
+    This will prompt you to chose a branch or abort, to skip this you can specify a branch by adding it to the command:
 
-    `flatpak install eclipse-nightly org.eclipse.Platform/x86_64/master` 
+    `flatpak install eclipse-nightly org.eclipse.Platform master` 
 
 For more information on Flatpak commands you can reference the official [documentation](https://docs.flatpak.org/en/latest/using-flatpak.html#basic-commands).
 
