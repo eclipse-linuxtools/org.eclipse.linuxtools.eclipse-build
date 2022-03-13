@@ -27,7 +27,7 @@ For more information on Flatpak commands you can reference the official [documen
 
  The flatpak is built by the [flatpak-nightly](https://ci.eclipse.org/linuxtools/job/flatpak-nightly/) job in the Eclipse Linux Tools Jenkins instance using the [eclipse-flatpak-packager](https://www.eclipse.org/cbi/sitedocs/eclipse-flatpak-packager/package-flatpak-mojo.html) maven plugin. 
 
- *Despite being called a nightly build it polls for new [Eclipse I-Builds](https://download.eclipse.org/eclipse/updates/4.23-I-builds/) every 4 hours and builds if there is a new one.*
+ *Despite being called a nightly build it polls for new [Eclipse I-Builds](https://download.eclipse.org/eclipse/updates/4.24-I-builds/) every 4 hours and builds if there is a new one.*
 
 ## Source
 
