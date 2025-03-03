@@ -26,6 +26,9 @@ pipeline {
 			}
 		}
 		stage('Deploy') {
+			when {
+				branch 'master'
+			}
 			steps {
 			    dir('flatpak-dev-shim') {
                     sh "mvn deploy -B -Dmaven.test.skip=true"
