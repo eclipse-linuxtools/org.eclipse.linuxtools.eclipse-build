@@ -40,7 +40,7 @@
   </licenses>
 
   <properties>
-    <java.version>15</java.version>
+    <java.version>17</java.version>
     <maven.version>3.9.9</maven.version>
     <junit.jupiter.version>5.12.0</junit.jupiter.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -90,8 +90,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.14.0</version>
           <configuration>
-            <source>${java.version}</source>
-            <target>${java.version}</target>
+            <release>${java.version}</release>
             <compilerArgs>
               <arg>-h</arg>
               <arg>${project.basedir}/jni</arg>
