@@ -7,3 +7,4 @@ Icon=eclipse-rcptt
 Exec=eclipse-rcptt
 Terminal=false
 Categories=Development;IDE;
+StartupWMClass=RCP Testing Tool IDE

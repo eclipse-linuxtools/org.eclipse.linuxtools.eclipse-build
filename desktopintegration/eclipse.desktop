@@ -6,3 +6,4 @@ Icon=eclipse
 Exec=eclipse
 Terminal=false
 Categories=Development;IDE;Java;
+StartupWMClass=Eclipse
