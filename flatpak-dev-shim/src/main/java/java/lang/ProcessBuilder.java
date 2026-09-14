@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 import jdk.internal.event.ProcessStartEvent;
-import sun.security.action.GetPropertyAction;
 
 /**
  * This class is used to create operating system processes.
@@ -469,7 +468,7 @@ public final class ProcessBuilder
      */
     public abstract static class Redirect {
         private static final File NULL_FILE = new File(
-                (GetPropertyAction.privilegedGetProperty("os.name")
+                (System.getProperty("os.name")
                         .startsWith("Windows") ? "NUL" : "/dev/null")
         );
 
